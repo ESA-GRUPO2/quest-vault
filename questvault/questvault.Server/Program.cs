@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using questvault.Server.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<questvaultServerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("questvaultServerContext") ?? throw new InvalidOperationException("Connection string 'questvaultServerContext' not found.")));
 
 // Add services to the container.
 
