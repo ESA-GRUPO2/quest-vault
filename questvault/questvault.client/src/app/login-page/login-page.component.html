@@ -1,0 +1,25 @@
+
+  <div class="main-section">
+    <form>
+      <fieldset>
+        <h1>Log in</h1>
+        <div class="row">
+          <div class="col-sm-5">
+            <input type="email" class="form-control" id="username" placeholder="Email/Username">
+          </div>
+        </div>
+        <div class=" row" style="padding-bottom:10%">
+          <div class="col-sm-5">
+            <input type="password" class="form-control" id="Password" placeholder="Password" autocomplete="off">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+        <p class="google-auth">Google Auth Placeholder</p>
+        <p>Still don't have an account? <a [routerLink]="['/']" style="font-size:100%;">Register</a></p>
+        <a [routerLink]="['/']">Forgot your password?</a>
+      </fieldset>
+    </form>
+  </div>
+  
+
+
