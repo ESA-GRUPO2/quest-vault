@@ -25,17 +25,17 @@ namespace questvault.Server.Controllers.API
 
         // GET: Users/Details/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(Guid? id)
+        public async Task<ActionResult<User>> GetUser(string? id)
         {
-            var user = await _context.User.FindAsync();
+            var user = await _context.User.FindAsync(id);
             if (user == null) return NotFound();
             return user;
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(Guid id, User user)
+        public async Task<IActionResult> PutUser(string id, User user)
         {
-            if (id != user.UserID) return BadRequest();
+            if (id != user.Id) return BadRequest();
             _context.Entry(user).State = EntityState.Modified;
             try { await _context.SaveChangesAsync(); }
             catch (DbUpdateConcurrencyException)

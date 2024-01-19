@@ -7,4 +7,9 @@
     <!-- Folder where production build objects will be placed -->
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist\questvault.client\</PublishAssetsDirectory>
   </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties angular_1json__JsonSchema="https://www.facets.cloud/assets/fsdl/application.schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

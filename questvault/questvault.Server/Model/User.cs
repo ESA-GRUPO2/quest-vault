@@ -1,11 +1,9 @@
-﻿namespace questvault.Server.Model
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace questvault.Server.Model
 {
-    public class User(Guid userID, string userName, string email, string password)
+    public class User : IdentityUser
     {
-        public Guid UserID { get; set; } = userID;
-        public string UserName { get; set; } = userName;
-        public string Email { get; set; } = email;
-        public string Password { get; set; } = password;
         public bool IsDeactivated { get; set; } = false;
         public bool IsPrivate { get; set; } = false;
         // public SystemSettings SystemSettings { get; set;}
@@ -13,6 +11,15 @@
 
         public bool ToggleActivation() { return IsDeactivated = !IsDeactivated; }
         public bool TogglePrivate() { return IsPrivate = !IsPrivate; }
-        public int UpgradeClearance() { return ++Clearance; }
+        public int UpgradeClearance()
+        {
+            if (Clearance >= 2) return Clearance = 2;
+            return ++Clearance;
+        }
+        public int DowngradeClearance()
+        {
+            if (Clearance <= 0) return Clearance = 0;
+            return --Clearance;
+        }
     }
 }
