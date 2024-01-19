@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavMenuComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
