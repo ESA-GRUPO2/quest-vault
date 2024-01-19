@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-
   constructor(private http: HttpClient) {}
 
   title = 'questvault.client';
