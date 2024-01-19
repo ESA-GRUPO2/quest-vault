@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { PasswordResetPageComponent } from './password-reset-page/password-reset-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavMenuComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    PasswordResetPageComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
