@@ -13,6 +13,10 @@
     width: 7%;
 }
 
+.nav-link {
+    color: #ffffff
+}
+
 .nav-menu{
   align-items: end;
 }
@@ -31,4 +35,11 @@
   width: 138px;
   height: 44px;
   padding: 6px;
+}
+
+.form-select {
+  width: fit-content;
+  background: #091833;
+  color: #ffffff;
+  border: none;
 }
