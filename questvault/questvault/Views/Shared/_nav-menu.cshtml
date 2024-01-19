@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<nav class="navbar navbar-expand-lg nav-main nav-bg">
+    <div class="container-fluid">
+        <a class="nav-logo" asp-controller="Home" asp-action="Index">
+            <img src="\img\icon.png" alt="QuestVault Logo" class="img-fluid">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto me-1 mb-lg-0">
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary nav-btn" asp-area="Identity" asp-page="/Account/Login">Sign in</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary nav-btn-2" asp-area="Identity" asp-page="/Account/Register">Sign up</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <select #lang (change)="onSelected(lang.value)" class="form-select mb-3">
+                        <option selected>en</option>
+                        <option default>pt</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

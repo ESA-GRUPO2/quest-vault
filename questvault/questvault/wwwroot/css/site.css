@@ -1,0 +1,156 @@
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  font-size: 14px;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+.nav-main {
+    padding: 1.5%;
+    height: 100%;
+}
+
+.nav-bg {
+    background: fixed;
+    background-color: #091833;
+}
+
+.nav-logo {
+    min-width: 100px;
+    width: 7%;
+}
+
+.nav-link {
+    color: #ffffff
+}
+
+.nav-menu {
+    align-items: end;
+}
+
+.nav-btn {
+    background: #0abdc6;
+    border-radius: 24px;
+    width: 138px;
+    height: 44px;
+    padding: 6px;
+}
+
+.nav-btn-2 {
+    background: #EA00D9;
+    border-radius: 24px;
+    width: 138px;
+    height: 44px;
+    padding: 6px;
+}
+
+.form-select {
+    width: fit-content;
+    background: #091833;
+    color: #ffffff;
+    border: none;
+}
+.main-section {
+    padding-top: 2.5%;
+    margin: auto;
+    margin-top: 4%;
+    background-color: #091833;
+    width: 400px;
+    border-radius: 16px;
+    border: 6px solid #711C91;
+    padding-bottom: 2%;
+}
+
+
+h1 {
+    color: white;
+    font-size: 170%;
+    margin-bottom: 40px;
+}
+
+a, p {
+    color: white;
+    font-size: 88%;
+}
+
+p {
+    font-weight: 400;
+}
+
+
+
+.btn {
+    background-color: #0ABDC6;
+    padding-left: 13%;
+    padding-right: 13%;
+    color: #091833;
+    font-weight: 700;
+    border: 3px #711C91;
+    border-radius: 60px;
+    margin-bottom: 40px;
+}
+
+.btn:focus {
+    background-color: white;
+    color: #091833;
+}
+
+.form-control {
+    background-color: #133E7C;
+    font-size: 85%;
+    border: 3px #711C91;
+    width: 260px;
+    color: #D9D9D9;
+}
+
+    .form-control:hover, active, focus, current, defined, enabled {
+        background-color: #133E7C;
+        border: 3px #711C91;
+        color: #D9D9D9;
+    }
+
+::placeholder {
+    color: #D9D9D9;
+    opacity: 1;
+}
+
+.google-auth {
+    width: 60%;
+    margin: auto;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: 1px solid white;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+.row {
+    justify-content: center;
+    padding-bottom: 5%;
+    width: 100%;
+}
+
+.col-sm-5 {
+    width: 260px;
+}
