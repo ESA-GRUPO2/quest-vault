@@ -1,16 +1,15 @@
 
-
 .main-section {
   padding-top: 2.5%;
   margin: auto;
-  position: relative;
+  margin-top: 4%;
   background-color: #091833;
   width: 400px;
-  height: 500%;
   border-radius: 16px;
   border: 6px solid #711C91;
-  padding-bottom:2%;
+  padding-bottom: 2%;
 }
+
 
 h1{
     color: white;
@@ -22,18 +21,21 @@ a,p {
     color:white;
     font-size: 88%;
 }
+p{
+    font-weight:400;
+}
 
 
 
 .btn {
   background-color: #0ABDC6;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 13%;
+  padding-right: 13%;
   color: #091833;
   font-weight: 700;
   border: 3px #711C91;
   border-radius: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .btn:focus {
@@ -60,6 +62,15 @@ a,p {
     opacity: 1;
 }
 
+.google-auth {
+  width: 60%;
+  margin: auto;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border: 1px solid white;
+  border-radius: 3px;
+  margin-bottom: 50px;
+}
 
 
 
