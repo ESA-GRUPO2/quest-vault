@@ -51,11 +51,6 @@ p{
   color: #D9D9D9;
 }
 
-  .form-control:hover, active, focus, current, defined, enabled {
-    background-color: #133E7C;
-    border: 3px #711C91;
-    color: #D9D9D9;
-  }
 
 ::placeholder{
     color: #D9D9D9;
