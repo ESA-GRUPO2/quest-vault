@@ -24,6 +24,7 @@ body {
   margin-bottom: 60px;
 }
 
+/*-------------------------------------------------- NAVBAR -----------------------------------------------*/
 
 .nav-main {
     padding: 1.5%;
@@ -38,6 +39,11 @@ body {
 .nav-logo {
     min-width: 100px;
     width: 7%;
+}
+
+.nav-logo2 {
+    min-width: 100px;
+    width: 5%;
 }
 
 .nav-link {
@@ -64,7 +70,7 @@ body {
     padding: 6px;
 }
 
-.form-select {
+.nav-form-select {
     width: fit-content;
     background: #091833;
     color: #ffffff;
@@ -97,14 +103,14 @@ body {
     background-color: #091833;
 }
 .main-section-login {
-    padding-top: 2.5%;
+    padding-top: 3%;
     margin: auto;
     margin-top: 4%;
     background-color: #091833;
     width: 400px;
     border-radius: 16px;
     border: 6px solid #711C91;
-    padding-bottom: 2%;
+    padding-bottom: 3%;
     text-align: center;
     color: white;
 }
@@ -118,7 +124,11 @@ body {
 .a-login, .p-login {
     color: white;
     font-size: 88%;
-    text-decoration: none;
+}
+
+.a-login:hover {
+    color: white;
+    font-size: 88%;
 }
 
 .p-login {
@@ -138,23 +148,12 @@ body {
     margin-bottom: 40px;
 }
 
-    .btn-login:focus {
-     background-color: white;
-     color: #091833;
-     border: 3px #711C91;
-    }
-
 .btn-login:active {
      background-color: white;
      color: #091833;
      border: 3px #711C91;
 }
 
-
-.btn-login:target {
-    background-color: white;
-    color: #0ABDC6;
-}
 
 .form-control-login {
     background-color: #133E7C;
@@ -190,10 +189,19 @@ body {
 
 .row-login {
     justify-content: center;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
     width: 100%;
 }
 
+.text-danger-login {
+    color: red;
+    font-size: 88%;
+}
 
+/*-------------------------------------------------- HOME -----------------------------------------------*/
 
+.bg-image-full {
+    background-image: url(../img/home_cover.png);
+    height: 70vh;
+}
 

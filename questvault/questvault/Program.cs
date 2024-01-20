@@ -6,6 +6,14 @@ using questvault.Models;
 using questvault.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
+
+// Google Authentication
+builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+{
+  googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+  googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+});
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -18,7 +26,7 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 .AddDefaultTokenProviders()
 .AddDefaultUI();
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddControllersWithViews();
 
@@ -46,16 +54,19 @@ else
   app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
+
+app.UseAuthentication();
+app.UseRouting();
+app.UseAuthorization();
+
 
 app.Run();
