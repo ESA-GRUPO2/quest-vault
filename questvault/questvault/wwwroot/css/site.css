@@ -205,3 +205,77 @@ body {
     height: 70vh;
 }
 
+/*-------------------------------------------------- FORGOT PASSWORD/PASSWORD RECOVERY -----------------------------------------------*/
+.main-section-forgotp {
+    padding-top: 2.5%;
+    margin: auto;
+    margin-top: 4%;
+    background-color: #091833;
+    width: 950px;
+    border-radius: 16px;
+    border: 6px solid #711C91;
+    padding-bottom: 2%;
+    text-align: center;
+}
+
+.h1-forgotp {
+    color: white;
+    font-size: 160%;
+    margin-bottom: 40px;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.p-forgotp {
+    color: white;
+    font-size: 100%;
+    margin-bottom: 4%;
+    font-weight: 300;
+    text-align: center;
+}
+
+.btn-forgotp {
+    background-color: #0ABDC6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #091833;
+    font-weight: 700;
+    border: 3px #711C91;
+    border-radius: 60px;
+    /*margin-bottom: 40px;*/
+}
+
+.btn-forgotp:active {
+    background-color: white;
+    color: #091833;
+    border: 3px #711C91;
+}
+
+
+.form-control-forgotp {
+    background-color: #133E7C;
+    font-size: 100%;
+    border: 3px #711C91;
+    border-radius: 5px;
+    color: #D9D9D9;
+    width: 50%;
+    padding: 4px;
+}
+
+.form-floating-forgotp {
+    text-align: center;
+}
+
+
+.row-forgotp {
+    justify-content: center;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+.col-sm-5-forgotp {
+    text-align: right;
+}
