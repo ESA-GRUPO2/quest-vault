@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
+using questvault.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,17 +12,25 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+                              options.SignIn.RequireConfirmedAccount = true)
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders()
+.AddDefaultUI();
 
-//builder.Services.AddIdentity<User, IdentityRole>(options =>
-//                              options.SignIn.RequireConfirmedAccount = false)
-//.AddEntityFrameworkStores<ApplicationDbContext>()
-//.AddDefaultTokenProviders()
-//.AddDefaultUI();
 builder.Services.AddRazorPages();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
+  new EmailSender(
+      builder.Configuration["EmailSender:Host"],
+      builder.Configuration.GetValue<int>("EmailSender:Port"),
+      builder.Configuration.GetValue<bool>("EmailSender:EnableSSL"),
+      builder.Configuration["EmailSender:UserName"],
+      builder.Configuration["EmailSender:Password"]
+  )
+);
 
 var app = builder.Build();
 
