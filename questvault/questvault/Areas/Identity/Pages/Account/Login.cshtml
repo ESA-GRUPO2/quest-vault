@@ -28,12 +28,24 @@
                 @Html.DisplayNameFor(m => m.Input.RememberMe)
             </label>
         </div>
-            <button typ" id="login-e=" submit" class="btn-login btn-primary submit">Log in</button>
+            <button id="login-e=" type= "submit" class="btn-login btn-primary submit">Log in</button>
         <p class="google-auth">Google Auth Placeholder</p>
                 <p class="p-login">Still don't have an account? <a class="a-login" style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
                 <a class="a-login"  id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
       </form>
-  </section>
+      <!-- Google login button start -->
+      <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+          <div>
+              <p>
+                  @foreach (var provider in Model.ExternalLogins!)
+                  {
+                      <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                  }
+              </p>
+          </div>
+      </form>
+      <!-- Google login button finish -->
+      </section>
 </div>
 </body>
 
