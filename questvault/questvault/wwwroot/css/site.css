@@ -3,6 +3,13 @@
     font-size: 16px;
   }
 }
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "slnt";
+}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -77,6 +84,7 @@ body {
     margin-top: 4%;
     background-color: #091833;
     width: 400px;
+    text-align: center;
     border-radius: 16px;
     border: 6px solid #711C91;
     padding-bottom: 2%;
@@ -89,6 +97,7 @@ h1 {
     margin-bottom: 40px;
 }
 
+
 a, p {
     color: white;
     font-size: 88%;
@@ -97,7 +106,6 @@ a, p {
 p {
     font-weight: 400;
 }
-
 
 
 .btn {
@@ -111,7 +119,7 @@ p {
     margin-bottom: 40px;
 }
 
-.btn:focus {
+.btn:focus, hover, select {
     background-color: white;
     color: #091833;
 }
@@ -124,11 +132,11 @@ p {
     color: #D9D9D9;
 }
 
-    .form-control:hover, active, focus, current, defined, enabled {
-        background-color: #133E7C;
-        border: 3px #711C91;
-        color: #D9D9D9;
-    }
+.form-control:hover, active, focus, current, defined, enabled {
+   background-color: #133E7C;
+   border: 3px #711C91;
+   color: #D9D9D9;
+}
 
 ::placeholder {
     color: #D9D9D9;

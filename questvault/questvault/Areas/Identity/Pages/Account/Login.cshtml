@@ -22,19 +22,20 @@
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
         </div>
-        <div class="checkbox mb-3">
-            <label asp-for="Input.RememberMe" class="form-label">
+                <div class="checkbox mb-3">
+            <label asp-for="Input.RememberMe" class="form-label" >
                 <input class="form-check-input" asp-for="Input.RememberMe" />
                 @Html.DisplayNameFor(m => m.Input.RememberMe)
             </label>
         </div>
-        <button type="submit" class="btn btn-primary" id="login-submit" type="submit">Log in</button>
+        <button type="submit" class="btn btn-primary" id="login-submit">Log in</button>
         <p class="google-auth">Google Auth Placeholder</p>
         <p>Still don't have an account? <a style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
       </form>
   </section>
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
