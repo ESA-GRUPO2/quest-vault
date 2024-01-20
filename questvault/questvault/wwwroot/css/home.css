@@ -1,6 +1,6 @@
 ﻿/*-------------------------------------------------- HOME -----------------------------------------------*/
 
-.bg-image-full {
+.home-bg-image {
     background-image: url(../img/home_cover.png);
     height: 70vh;
 }
