@@ -24,6 +24,7 @@ body {
   margin-bottom: 60px;
 }
 
+/*-------------------------------------------------- NAVBAR -----------------------------------------------*/
 
 .nav-main {
     padding: 1.5%;
@@ -192,10 +193,15 @@ body {
     width: 100%;
 }
 
-.text-danger-login{
-    color:red;
+.text-danger-login {
+    color: red;
     font-size: 88%;
 }
 
+/*-------------------------------------------------- HOME -----------------------------------------------*/
 
+.bg-image-full {
+    background-image: url(../img/home_cover.png);
+    height: 70vh;
+}
 
