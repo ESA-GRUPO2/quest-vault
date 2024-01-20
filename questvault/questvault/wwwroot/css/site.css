@@ -118,7 +118,11 @@ body {
 .a-login, .p-login {
     color: white;
     font-size: 88%;
-    text-decoration: none;
+}
+
+.a-login:hover {
+    color: white;
+    font-size: 88%;
 }
 
 .p-login {
@@ -138,23 +142,12 @@ body {
     margin-bottom: 40px;
 }
 
-    .btn-login:focus {
-     background-color: white;
-     color: #091833;
-     border: 3px #711C91;
-    }
-
 .btn-login:active {
      background-color: white;
      color: #091833;
      border: 3px #711C91;
 }
 
-
-.btn-login:target {
-    background-color: white;
-    color: #0ABDC6;
-}
 
 .form-control-login {
     background-color: #133E7C;
@@ -190,10 +183,14 @@ body {
 
 .row-login {
     justify-content: center;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
     width: 100%;
 }
 
+.text-danger-login{
+    color:red;
+    font-size: 88%;
+}
 
 
 
