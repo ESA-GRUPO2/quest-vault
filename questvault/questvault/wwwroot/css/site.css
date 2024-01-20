@@ -203,10 +203,10 @@ body {
     margin: auto;
     margin-top: 4%;
     background-color: #091833;
-    width: 950px;
+    width: 900px;
     border-radius: 16px;
     border: 6px solid #711C91;
-    padding-bottom: 2%;
+    padding-bottom: 3.5%;
     text-align: center;
 }
 
@@ -231,9 +231,21 @@ body {
     color: #091833;
     font-weight: 700;
     border: 3px #711C91;
-    font-size: 96%; 
-
+    border-radius: 60px;
+    font-size: 96%;
+    margin-top: 4%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
+
+.btn-forgotp:active {
+    background-color: white;
+    color: #091833;
+    border: 3px #711C91;
+}
+
 
 
 .form-control-forgotp {
@@ -242,8 +254,10 @@ body {
     border: 3px #711C91;
     border-radius: 5px;
     color: #D9D9D9;
-    width: 130%;
+    width: 60%;
     padding: 4px;
+    padding-left:10px;
+    
 }
 
 .form-floating-forgotp{
@@ -259,4 +273,6 @@ body {
 }
 
 
-
+.col-sm-5-forgotp{
+    text-align:right;
+}
