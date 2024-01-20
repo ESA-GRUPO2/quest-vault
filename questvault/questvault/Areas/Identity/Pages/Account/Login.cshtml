@@ -4,31 +4,31 @@
 @{
 }
 
-<div class="main-section">
+<div class="main-section-login">
   <section>
       <form id="account" method="post">
         <h1>Log in</h1>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-        <div class="row">
-            <div class="col-sm-5">
-                <input type="email" class="form-control" id="username" placeholder="Email/Username" asp-for="Input.Email" autocomplete="username" aria-required="true"> 
+        <div class="row-login">
+            <div class="col-sm-5-login">
+                <input type="email" class="form-control-login" id="username" placeholder="Email/Username" asp-for="Input.Email" autocomplete="username" aria-required="true"> 
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
         </div>
-        <div class=" row" style="padding-bottom:10%">
-            <div class="col-sm-5">
-                <input type="password" class="form-control" id="Password" placeholder="Password" autocomplete="current-password" asp-for="Input.Password" aria-required="true">
+        <div class="row-login" style="padding-bottom:10%">
+            <div class="col-sm-5-login">
+                <input type="password" class="form-control-login" id="Password" placeholder="Password" autocomplete="current-password" asp-for="Input.Password" aria-required="true">
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
         </div>
-                <div class="checkbox mb-3">
+        <div class="checkbox mb-3">
             <label asp-for="Input.RememberMe" class="form-label" >
                 <input class="form-check-input" asp-for="Input.RememberMe" />
                 @Html.DisplayNameFor(m => m.Input.RememberMe)
             </label>
         </div>
-        <button type="submit" class="btn btn-primary" id="login-submit">Log in</button>
+        <button type="submit" class="btn-login btn-primary" id="login-submit">Log in</button>
         <p class="google-auth">Google Auth Placeholder</p>
         <p>Still don't have an account? <a style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>

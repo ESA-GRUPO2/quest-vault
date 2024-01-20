@@ -14,18 +14,34 @@
         </button>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto me-1 mb-lg-0">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                @* @joaoCoelho o q queres por se o user tiver signed in? *@
                 <li class="nav-item ms-3">
-                    <a class="btn btn-primary nav-btn" asp-area="Identity" asp-page="/Account/Login">Sign in</a>
+                  <a class="btn btn-primary nav-btn" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
                 </li>
                 <li class="nav-item ms-3">
-                    <a class="btn btn-primary nav-btn-2" asp-area="Identity" asp-page="/Account/Register">Sign up</a>
+                  <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
+                    <button type="submit" class="btn btn-primary nav-btn">Logout</button>
+                  </form>
                 </li>
-                <li class="nav-item ms-3">
-                    <select #lang (change)="onSelected(lang.value)" class="form-select mb-3">
-                        <option selected>en</option>
-                        <option default>pt</option>
-                    </select>
-                </li>
+            }
+            else
+            {
+
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-primary nav-btn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">Sign in</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-primary nav-btn-2" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">Sign up</a>
+                    </li>
+            }
+            <li class="nav-item ms-3">
+                <select #lang (change)="onSelected(lang.value)" class="form-select mb-3">
+                    <option selected>en</option>
+                    <option default>pt</option>
+                </select>
+            </li>
             </ul>
         </div>
     </div>
