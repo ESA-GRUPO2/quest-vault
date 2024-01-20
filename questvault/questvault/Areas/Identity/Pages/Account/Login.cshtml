@@ -3,12 +3,12 @@
 
 @{
 }
-
+<body class="login-body">
 <div class="main-section-login">
   <section>
-      <form id="account" method="post">
-        <h1>Log in</h1>
-        <hr />
+      <form class="form-login" id="account" method="post">
+        <h1 class="h1-login">Log in</h1>
+        
         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
         <div class="row-login">
             <div class="col-sm-5-login">
@@ -28,14 +28,14 @@
                 @Html.DisplayNameFor(m => m.Input.RememberMe)
             </label>
         </div>
-        <button type="submit" class="btn-login btn-primary" id="login-submit">Log in</button>
+            <button typ" id="login-e=" submit" class="btn-login btn-primary submit">Log in</button>
         <p class="google-auth">Google Auth Placeholder</p>
-        <p>Still don't have an account? <a style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
-        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                <p class="p-login">Still don't have an account? <a class="a-login" style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
+                <a class="a-login"  id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
       </form>
   </section>
 </div>
-
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
