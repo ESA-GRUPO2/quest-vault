@@ -246,12 +246,6 @@ body {
     color: #091833;
     border: 3px #711C91;
 }
-/*-------------------------------------------------- HOME -----------------------------------------------*/
-
-.bg-image-full {
-    background-image: url(../img/home_cover.png);
-    height: 70vh;
-}
 
 
 .form-control-forgotp {
@@ -262,11 +256,10 @@ body {
     color: #D9D9D9;
     width: 60%;
     padding: 4px;
-    padding-left:10px;
-    
+    padding-left: 10px;
 }
 
-.form-floating-forgotp{
+.form-floating-forgotp {
     text-align: center;
 }
 
@@ -279,6 +272,13 @@ body {
 }
 
 
-.col-sm-5-forgotp{
-    text-align:right;
+.col-sm-5-forgotp {
+    text-align: right;
+}
+
+/*-------------------------------------------------- HOME -----------------------------------------------*/
+
+.bg-image-full {
+    background-image: url(../img/home_cover.png);
+    height: 70vh;
 }
