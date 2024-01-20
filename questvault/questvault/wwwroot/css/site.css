@@ -1,7 +1,5 @@
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+
 }
 * {
     font-family: "Inter", sans-serif;
@@ -16,22 +14,16 @@
 }
 
 html {
-  position: relative;
-  min-height: 100%;
-  font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    font-size: 16px;
+    background-color: #091833;
 }
 
 body {
   margin-bottom: 60px;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px;
-}
 
 .nav-main {
     padding: 1.5%;
@@ -78,20 +70,44 @@ body {
     color: #ffffff;
     border: none;
 }
+/*-------------------------------------------------- FOOTER -----------------------------------------------*/
 
+.side-text-footer {
+    margin-left: 55%;
+    font-size: 100%;
+}
+
+.main-text-footer{
+    font-size:100%;
+    text-decoration: none;
+    color: white;
+}
+
+.main-text-footer:hover {
+    font-size: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.section{
+    text-align:center;
+}
 /*-------------------------------------------------- LOGIN PAGE -----------------------------------------------*/
+.login-body {
+    background-color: #091833;
+}
 .main-section-login {
     padding-top: 2.5%;
     margin: auto;
     margin-top: 4%;
     background-color: #091833;
     width: 400px;
-    text-align: center;
     border-radius: 16px;
     border: 6px solid #711C91;
     padding-bottom: 2%;
+    text-align: center;
+    color: white;
 }
-
 
 .h1-login {
     color: white;
@@ -99,21 +115,22 @@ body {
     margin-bottom: 40px;
 }
 
-
 .a-login, .p-login {
     color: white;
     font-size: 88%;
+    text-decoration: none;
 }
 
 .p-login {
     font-weight: 400;
 }
 
-
 .btn-login {
     background-color: #0ABDC6;
-    padding-left: 13%;
-    padding-right: 13%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 12%;
+    padding-right: 12%;
     color: #091833;
     font-weight: 700;
     border: 3px #711C91;
@@ -121,15 +138,30 @@ body {
     margin-bottom: 40px;
 }
 
-.btn-login:focus, hover, select {
+    .btn-login:focus {
+     background-color: white;
+     color: #091833;
+     border: 3px #711C91;
+    }
+
+.btn-login:active {
+     background-color: white;
+     color: #091833;
+     border: 3px #711C91;
+}
+
+
+.btn-login:target {
     background-color: white;
-    color: #091833;
+    color: #0ABDC6;
 }
 
 .form-control-login {
     background-color: #133E7C;
-    font-size: 85%;
+    font-size: 80%;
     border: 3px #711C91;
+    border-radius: 5px;
+    padding: 6px;
     width: 260px;
     color: #D9D9D9;
 }
@@ -141,8 +173,8 @@ body {
 }
 
 ::placeholder {
-    color: #D9D9D9;
-    opacity: 1;
+   color: #D9D9D9;
+   opacity: 1;
 }
 
 .google-auth {
@@ -153,6 +185,7 @@ body {
     border: 1px solid white;
     border-radius: 3px;
     margin-bottom: 50px;
+    font-size:85%;
 }
 
 .row-login {
@@ -161,6 +194,6 @@ body {
     width: 100%;
 }
 
-.col-sm-5-login {
-    width: 260px;
-}
+
+
+
