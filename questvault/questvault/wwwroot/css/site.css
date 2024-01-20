@@ -198,23 +198,16 @@ body {
     font-size: 88%;
 }
 
-/*-------------------------------------------------- HOME -----------------------------------------------*/
-
-.bg-image-full {
-    background-image: url(../img/home_cover.png);
-    height: 70vh;
-}
-
-/*-------------------------------------------------- FORGOT PASSWORD/PASSWORD RECOVERY -----------------------------------------------*/
+/*-------------------------------------------------- FORGOT PASSWORD -----------------------------------------------*/
 .main-section-forgotp {
     padding-top: 2.5%;
     margin: auto;
     margin-top: 4%;
     background-color: #091833;
-    width: 950px;
+    width: 900px;
     border-radius: 16px;
     border: 6px solid #711C91;
-    padding-bottom: 2%;
+    padding-bottom: 3.5%;
     text-align: center;
 }
 
@@ -236,15 +229,16 @@ body {
 
 .btn-forgotp {
     background-color: #0ABDC6;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
     color: #091833;
     font-weight: 700;
     border: 3px #711C91;
     border-radius: 60px;
-    /*margin-bottom: 40px;*/
+    font-size: 96%;
+    margin-top: 4%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .btn-forgotp:active {
@@ -260,8 +254,9 @@ body {
     border: 3px #711C91;
     border-radius: 5px;
     color: #D9D9D9;
-    width: 50%;
+    width: 60%;
     padding: 4px;
+    padding-left: 10px;
 }
 
 .form-floating-forgotp {
@@ -276,6 +271,14 @@ body {
     margin: auto;
 }
 
+
 .col-sm-5-forgotp {
     text-align: right;
+}
+
+/*-------------------------------------------------- HOME -----------------------------------------------*/
+
+.bg-image-full {
+    background-image: url(../img/home_cover.png);
+    height: 70vh;
 }
