@@ -26,7 +26,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //.AddEntityFrameworkStores<ApplicationDbContext>()
 //.AddDefaultTokenProviders()
 //.AddDefaultUI();
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddControllersWithViews();
 
