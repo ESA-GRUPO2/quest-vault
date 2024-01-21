@@ -4,10 +4,10 @@
 @{
 }
 <body class="login-body">
-<div class="main-section-login">
-  <section>
-      <form class="form-login" id="account" method="post">
-          <h1 class="h1-login">Log in</h1>
+    <div class="main-section-login">
+      <section>
+          <form class="form-login" id="account" method="post">
+              <h1 class="h1-login">Log in</h1>
         
           <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
           <div class="row-login">
@@ -40,20 +40,20 @@
                                 <img width="16" height="16" src="/img/google_icon.png" />
                           Sign in with Google
 
-                      </button>
-                  }
-              </p>
-          </div>
-      </form>
-      <!-- Google login button finish -->
+                          </button>
+                      }
+                  </p>
+              </div>
+          </form>
+          <!-- Google login button finish -->
       
-      <!-- <p class="google-auth" >Google Auth Placeholder</p> -->
-                <p class="p-login">Still don't have an account? <a class="a-login" style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
-                <a class="a-login"  id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+          <!-- <p class="google-auth" >Google Auth Placeholder</p> -->
+                    <p class="p-login">Still don't have an account? <a class="a-login" style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
+                    <a class="a-login"  id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
      
 
-      </section>
-</div>
+          </section>
+    </div>
 </body>
 
 @section Scripts {
