@@ -12,13 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240121212312_init.Designer.cs
-    [Migration("20240121212312_init")]
+    [Migration("20240121225900_init")]
     partial class init
-========
-    [Migration("20240121221404_Initial")]
-    partial class Initial
->>>>>>>> master:questvault/questvault/Migrations/20240121221404_Initial.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
