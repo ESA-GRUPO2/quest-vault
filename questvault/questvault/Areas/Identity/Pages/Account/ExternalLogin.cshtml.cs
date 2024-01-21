@@ -125,6 +125,19 @@ namespace questvault.Areas.Identity.Pages.Account
             }
             else
             {
+
+                // // If the user does not have an account, then ask the user to create an account.
+                // ReturnUrl = returnUrl;
+                // ProviderDisplayName = info.ProviderDisplayName;
+                // if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+                // {
+                //     Input = new InputModel
+                //     {
+                //         Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                //     };
+                // }
+                // return Page();
+
                 // If the user does not have an account, then ask the user to create an account.
                 ReturnUrl = returnUrl;
                 ProviderDisplayName = info.ProviderDisplayName;
@@ -135,7 +148,45 @@ namespace questvault.Areas.Identity.Pages.Account
                         Email = info.Principal.FindFirstValue(ClaimTypes.Email)
                     };
                 }
+
+                // Check if the user already exists by email
+                var existingUser = await _userManager.FindByEmailAsync(Input.Email);
+                if (existingUser == null)
+                {
+                    // User does not exist, create a new account (email activated)
+                    var newUser = new User { UserName = Input.Email, Email = Input.Email, EmailConfirmed = true };
+                    var createResult = await _userManager.CreateAsync(newUser);
+
+                    if (createResult.Succeeded)
+                    {
+                        // Add external login to the new user
+                        var addLoginResult = await _userManager.AddLoginAsync(newUser, info);
+
+                        if (addLoginResult.Succeeded)
+                        {
+                            // // Sign in the new user
+                            // await _signInManager.SignInAsync(newUser, isPersistent: false);
+                            // return LocalRedirect(returnUrl);
+
+                            // Redirect the user to the SetPassword page for initial password setup
+                            await _signInManager.SignInAsync(newUser, isPersistent: false);
+                            return Redirect("/Identity/Account/Manage/SetPassword");
+
+                            //return RedirectToAction("SetPassword", "Manage", new { area = "Identity" });
+                        }
+                    }
+                    else
+                    {
+                        foreach (var error in createResult.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                    }
+                }
+
                 return Page();
+
+
             }
         }
 
