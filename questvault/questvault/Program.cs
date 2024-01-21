@@ -1,10 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.EntityFrameworkCore;
-using questvault.Data;
-using questvault.Models;
-using questvault.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
@@ -13,7 +6,7 @@ var configuration = builder.Configuration;
 //{
 //  googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
 //  googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-//});
+
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");

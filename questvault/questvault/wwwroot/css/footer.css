@@ -1,0 +1,22 @@
+﻿/*-------------------------------------------------- FOOTER -----------------------------------------------*/
+
+.side-text-footer {
+    margin-left: 55%;
+    font-size: 100%;
+}
+
+.main-text-footer {
+    font-size: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+    .main-text-footer:hover {
+        font-size: 100%;
+        text-decoration: none;
+        color: white;
+    }
+
+.section {
+    text-align: center;
+}
