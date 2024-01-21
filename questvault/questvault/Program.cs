@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using questvault.Data;
 using questvault.Models;
 using questvault.Services;
@@ -10,19 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 // Google Authentication
-// builder.Services.AddAuthentication().AddGoogle(googleOptions =>
-// {
-//     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-//     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-// }
-
 builder.Services.AddAuthentication()
     .AddGoogle(options =>
     {
-        IConfigurationSection googleAuthNSection =
-            configuration.GetSection("Authentication:Google");
-        options.ClientId = googleAuthNSection["ClientId"];
-        options.ClientSecret = googleAuthNSection["ClientSecret"];
+      IConfigurationSection googleAuthNSection = configuration.GetSection("Authentication:Google");
+      options.ClientId = googleAuthNSection["ClientId"];
+      options.ClientSecret = googleAuthNSection["ClientSecret"];
     });
 
 // Add services to the container.
@@ -40,6 +32,7 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddControllersWithViews();
 
+// Emailing Service
 builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
   new EmailSender(
       configuration["EmailSender:Host"],
