@@ -1,3 +1,10 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
+using questvault.Data;
+using questvault.Models;
+using questvault.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
