@@ -9,11 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 // Google Authentication
-builder.Services.AddAuthentication().AddGoogle(googleOptions =>
-{
-  googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-  googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-});
+//builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+//{
+//  googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+//  googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+//});
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -32,11 +32,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
   new EmailSender(
-      builder.Configuration["EmailSender:Host"],
-      builder.Configuration.GetValue<int>("EmailSender:Port"),
-      builder.Configuration.GetValue<bool>("EmailSender:EnableSSL"),
-      builder.Configuration["EmailSender:UserName"],
-      builder.Configuration["EmailSender:Password"]
+      configuration["EmailSender:Host"],
+      configuration.GetValue<int>("EmailSender:Port"),
+      configuration.GetValue<bool>("EmailSender:EnableSSL"),
+      configuration["EmailSender:UserName"],
+      configuration["EmailSender:Password"]
   )
 );
 
