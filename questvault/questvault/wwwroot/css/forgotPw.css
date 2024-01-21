@@ -27,6 +27,15 @@
     text-align: center;
 }
 
+.p-forgotp2 {
+    color: white;
+    font-size: 100%;
+    margin-bottom: 4%;
+    font-weight: 300;
+    text-align: left;
+    margin-left: 10%;
+}
+
 .btn-forgotp {
     background-color: #0ABDC6;
     color: #091833;
