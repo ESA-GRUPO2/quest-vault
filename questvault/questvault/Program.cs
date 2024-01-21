@@ -9,17 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 // Google Authentication
-// builder.Services.AddAuthentication().AddGoogle(googleOptions =>
-// {
-//     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-//     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-// }
-
 builder.Services.AddAuthentication()
     .AddGoogle(options =>
     {
-      IConfigurationSection googleAuthNSection =
-          configuration.GetSection("Authentication:Google");
+      IConfigurationSection googleAuthNSection = configuration.GetSection("Authentication:Google");
       options.ClientId = googleAuthNSection["ClientId"];
       options.ClientSecret = googleAuthNSection["ClientSecret"];
     });
@@ -39,6 +32,7 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddControllersWithViews();
 
+// Emailing Service
 builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
   new EmailSender(
       configuration["EmailSender:Host"],
