@@ -1,6 +1,0 @@
-@questvault.Server_HostAddress = http://localhost:5288
-
-GET {{questvault.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

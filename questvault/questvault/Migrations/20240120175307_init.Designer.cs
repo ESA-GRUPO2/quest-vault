@@ -12,7 +12,7 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240119191113_init")]
+    [Migration("20240120175307_init")]
     partial class init
     {
         /// <inheritdoc />

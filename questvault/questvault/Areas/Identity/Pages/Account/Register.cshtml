@@ -2,6 +2,47 @@
 @model RegisterModel
 @{
 }
+<<<<<<< HEAD
+<div class="main-section mt-5">
+  <form id="registerForm" asp-rout-returnUrl="@Model.ReturnUrl" method="post">
+    <h1>Sign up</h1>
+    <hr/>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+    <div class="col-sm-5">
+        <input type="email" class="form-control" id="email" placeholder="Email" asp-for="Input.Email" autocomplete="email" aria-required="true">
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-5">
+        <input type="text" class="form-control" id="username" placeholder="Username" asp-for="Input.UserName" autocomplete="username" aria-required="true">
+        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-5">
+        <input type="password" class="form-control" id="password" placeholder="Password" asp-for="Input.Password" autocomplete="new-password" aria-required="true">
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    </div>
+    <div class="row" style="padding-bottom:10%">
+    <div class="col-sm-5">
+        <input type="password" class="form-control" id="passwordconfirm" placeholder="Confirm password" asp-for="Input.ConfirmPassword" autocomplete="new-password" aria-required="true">
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div>
+    </div>
+    <div class=" row" style="padding-bottom:10%">
+    <div class="col-sm-5">
+        <p>ReCaptcha Placeholder</p>
+    </div>
+    </div>
+    <button id="registerSubmit" type="submit" class="btn btn-primary">Sign up</button>
+    <p>Already have an account? <a asp-area="Identity" asp-page="/Account/Login" style="font-size:100%;">Sign in</a></p>
+  </form>
+</div>
+=======
+>>>>>>> 236d04b56a600a92f6e817c8d0d166f9258c8c5f
 
 <body class="login-body">
     <div class="main-section-login mt-5">
