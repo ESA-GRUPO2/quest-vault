@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using questvault.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace questvault.Controllers
 {
@@ -18,6 +19,7 @@ namespace questvault.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
