@@ -31,6 +31,11 @@
     border: 3px #711C91;
 }
 
+.btn-2fa:hover {
+    background: #133E7C;
+    color: #ffffff;
+}
+
 .form-check-2fa {
     color: white;
 }
@@ -44,7 +49,7 @@
     flex: 50%;
     text-decoration-color: white;
     margin: auto;
-    font-size: 110%;
+    font-size: 100%;
 }
 
 
