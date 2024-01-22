@@ -2,37 +2,101 @@
     ViewData["Title"] = "Home Page";
 }
 
-<section class="py-5 home-bg-image bg-image-full">
-    <div class="container text-center my-5">
-        <div class="row">
-            <div class="col">
-                <h1 class="fs-3 fw-bolder text-light">Store your games on our vault, traveller.</h1>
-            </div>
-            <div class="col">
-                <p class="mb-0">Landing Page Template</p>
-            </div>
-        </div>
-    </div>
-</section>
+<body class="home-body">
 
-<section class="py-5">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col">
-                1 of 2
-            </div>
-            <div class="col">
-                2 of 2
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                1 of 2
-            </div>
-            <div class="col">
-                2 of 2
+    <!-- Banner -->
+    <section class="home-banner-image bg-image-full">
+        <div class="container h-100 d-flex justify-content-evenly text-center">
+            <div class="row d-flex justify-content-evenly align-self-center">
+                <div class="col-8 my-5 d-flex">
+                    <!--Title-->
+                    <p class="fs-1 fw-bolder home-text-color home-main-title">Your game collection at your fingertips.</p>
+                </div>
+                <div class="col-4 my-5 d-flex justify-content-end align-self-center ">
+                    <div class="nav-item ms-auto my-lg-4">
+                        <a class="btn btn-primary home-btn fs-4 " asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">Join now</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <!-- Functionalities Container -->
+    <section class="mt-4 mb-5 container">
+
+        <p class="d-flex justify-content-center align-items-center my-auto">
+            <img src="\img\icons\joystick.gif" alt="Joystick GIF" class="card-img home-thumbnails" style="width: 8rem; height: auto;">
+        </p>
+
+        <div class="row pt-1 mb-3 d-flex justify-content-evenly">
+
+            <!--IGDB Card-->
+            <div class="col-sm-6 d-flex justify-content-center">
+                <div class="card home-card">
+                    <div class="row g-0 d-flex justify-content-center">
+                        <div class="col-md-4">
+                            <img src="\img\external\igdb_logo.png" alt="IGDB Logo" class="card-img home-thumbnails">
+                        </div>
+                        <div class="col-md-6 my-5">
+                            <div class="card-body d-flex justify-content-start">
+                                <p class="h5 card-text home-text-color">The largest videogame database.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Library Card-->
+            <div class="col-sm-6 d-flex justify-content-center">
+                <div class="card home-card">
+                    <div class="row g-0 d-flex justify-content-center">
+                        <div class="col-md-4">
+                            <img src="\img\icons\books.png" alt="Library Logo" class="card-img home-thumbnails" style="padding: 2.5rem;">
+                        </div>
+                        <div class="col-md-6 my-5">
+                            <div class="card-body">
+                                <p class="h5 card-text home-text-color">Your own personal collection.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row py-4 mb-3 d-flex justify-content-evenly">
+
+            <!--APIs Card-->
+            <div class="col-sm-6 mb-sm-0 d-flex justify-content-center">
+                <div class="card home-card">
+                    <div class="row g-0 d-flex justify-content-center">
+                        <div class="col-md-4 py-2">
+                            <img src="\img\external\libraries_api.png" alt="APIs Logos" class="card-img home-thumbnails">
+                        </div>
+                        <div class="col-md-6 my-5">
+                            <div class="card-body">
+                                <p class="h5 card-text home-text-color">Connect to your favorite platforms.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Friends Card-->
+            <div class="col-sm-6 d-flex justify-content-center">
+                <div class="card home-card">
+                    <div class="row g-0 d-flex justify-content-center">
+                        <div class="col-md-4">
+                            <img src="\img\icons\support.png" alt="HighFive Icon" class="card-img home-thumbnails" style="padding: 2.5rem;">
+                        </div>
+                        <div class="col-md-6 my-5">
+                            <div class="card-body">
+                                <p class="h5 card-text home-text-color">Know what your friends are playing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
