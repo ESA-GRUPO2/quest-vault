@@ -4,7 +4,7 @@
     padding: 2rem;
     height: 6rem;
     width: 100%;
-    position: static;
+    position: fixed;
 }
 
 .nav-bg {
