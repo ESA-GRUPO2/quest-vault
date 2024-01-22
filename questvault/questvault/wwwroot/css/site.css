@@ -27,3 +27,7 @@ html {
     font-size: 16px;
     background-color: #091833;
 }
+
+body {
+    margin-top: 10rem;
+}

@@ -3,11 +3,11 @@
 .home-banner-image {
     background-image: url(../img/home_cover.png);
     height: 73vh;
-    margin-top: 5rem;
 }
 
 .home-body {
     background-color: #091833;
+    margin-top:5rem;
 }
 
 .home-card {
