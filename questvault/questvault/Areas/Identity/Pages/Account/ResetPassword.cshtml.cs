@@ -4,6 +4,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using questvault.Models;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace questvault.Areas.Identity.Pages.Account
 {
@@ -72,7 +74,7 @@ namespace questvault.Areas.Identity.Pages.Account
 
         }
 
-        public IActionResult OnGet(string code = null)
+        public IActionResult OnGet(string code = null, string email = null)
         {
             if (code == null)
             {
@@ -82,7 +84,8 @@ namespace questvault.Areas.Identity.Pages.Account
             {
                 Input = new InputModel
                 {
-                    Code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code))
+                    Code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code)),
+                    Email = email
                 };
                 return Page();
             }
@@ -92,6 +95,16 @@ namespace questvault.Areas.Identity.Pages.Account
         {
             if (!ModelState.IsValid)
             {
+
+                //Console.Write("Erros de validação:");
+
+                //foreach (var modelStateEntry in ModelState.Values)
+                //{
+                //    foreach (var error in modelStateEntry.Errors)
+                //    {
+                //        Console.Write($" - {error.ErrorMessage}");
+                //    }
+                //}
                 return Page();
             }
 
