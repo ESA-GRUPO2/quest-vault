@@ -3,38 +3,41 @@
 @{
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
-
 <body class="login-body">
-    <div class="main-section-login mt-5">
+    <div class="main-section-login mt-4">
       <form id="registerForm" asp-rout-returnUrl="@Model.ReturnUrl" method="post">
         <h1 class="h1-login">Sign up</h1>
         <div class="row-login">
         <div class="col-sm-5-login">
             <input type="email" class="form-control-login" id="email" placeholder="Email" asp-for="Input.Email" autocomplete="email" aria-required="true">
-            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <div class="danger-login">
+                    <p><span asp-validation-for="Input.Email" class="text-danger-login"></span></p>
+                    </div>
         </div>
         </div>
         <div class="row-login">
         <div class="col-sm-5-login">
+
             <input type="text" class="form-control-login" id="username" placeholder="Username" asp-for="Input.UserName" autocomplete="username" aria-required="true">
-            <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                    <div class="danger-login">
+                        <p><span asp-validation-for="Input.UserName" class="text-danger-login"></span></p>
+                    </div>
         </div>
         </div>
         <div class="row-login">
         <div class="col-sm-5-login">
             <input type="password" class="form-control-login" id="password" placeholder="Password" asp-for="Input.Password" autocomplete="new-password" aria-required="true">
-            <span asp-validation-for="Input.Password" class="text-danger"></span>
-        </div>
+                    <div class="danger-login">
+                        <p><span asp-validation-for="Input.Password" class="text-danger-login"></span></p>
+                    </div>
+                    </div>
         </div>
         <div class="row-login">
         <div class="col-sm-5-login">
             <input type="password" class="form-control-login" id="passwordconfirm" placeholder="Confirm password" asp-for="Input.ConfirmPassword" autocomplete="new-password" aria-required="true">
-            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    <div class="danger-login">
+                        <p><span asp-validation-for="Input.ConfirmPassword" class="text-danger-login"></span></p>
+                        </div>
         </div>
         </div>
         <div class="row-login">
@@ -43,11 +46,11 @@
         </div>
         </div>
         <button id="registerSubmit" type="submit" class="btn-login btn-primary submit">Sign up</button>
-        <p>Already have an account? <a asp-area="Identity" asp-page="/Account/Login" style="font-size:100%;">Sign in</a></p>
+        <p>Already have an account? <a asp-area="Identity" asp-page="/Account/Login" style="font-size:100%; color: white">Sign in</a></p>
       </form>
     </div>
 </body>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
 }
