@@ -46,6 +46,11 @@
     color: #ffffff;
 }
 
+
+.nav-btn:hover .nav-vector {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
+}
+
 .nav-btn-2 {
     background: #EA00D9;
     color: #ffffff;
@@ -70,4 +75,16 @@
     border: none;
     text-align: center;
     height: 100%;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+}
+
+.icon-option {
+    display: inline-block;
+    width: 20px; /* Defina a largura desejada para o ícone */
+    height: 20px; /* Defina a altura desejada para o ícone */
+    background-size: cover; /* Garante que a imagem cubra completamente o espaço especificado */
+    margin-right: 5px; /* Adiciona um espaço à direita do ícone */
 }
