@@ -15,29 +15,18 @@ using System.Text.Encodings.Web;
 
 namespace questvault.Areas.Identity.Pages.Account
 {
-  public class RegisterModel : PageModel
+  public class RegisterModel(
+      SignInManager<User> _signInManager,
+      UserManager<User> _userManager,
+      IUserStore<User> _userStore,
+      ILogger<RegisterModel> _logger,
+      IEmailSender _emailSender
+    ) : PageModel
   {
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
-    private readonly IUserStore<User> _userStore;
-    private readonly IUserEmailStore<User> _emailStore;
-    private readonly ILogger<RegisterModel> _logger;
-    private readonly IEmailSender _emailSender;
-
-    public RegisterModel(
-        UserManager<User> userManager,
-        IUserStore<User> userStore,
-        SignInManager<User> signInManager,
-        ILogger<RegisterModel> logger,
-        IEmailSender emailSender)
-    {
-      _userManager = userManager;
-      _userStore = userStore;
-      _emailStore = GetEmailStore();
-      _signInManager = signInManager;
-      _logger = logger;
-      _emailSender = emailSender;
-    }
+    private readonly IUserEmailStore<User> _emailStore =
+                      _userManager.SupportsUserEmail ?
+                      (IUserEmailStore<User>)_userStore :
+                      throw new NotSupportedException("the deffault ui requires a user store with email support");
 
     /// <summary>
     ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

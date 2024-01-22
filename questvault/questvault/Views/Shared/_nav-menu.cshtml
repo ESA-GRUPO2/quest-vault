@@ -23,7 +23,6 @@
             <ul class="navbar-nav ms-auto me-1 mb-lg-0">
             @if (SignInManager.IsSignedIn(User))
             {
-                @* @joaoCoelho o q queres por se o user tiver signed in? *@
                 <li class="nav-item ms-3">
                   <a class="btn btn-primary nav-btn" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
                 </li>
