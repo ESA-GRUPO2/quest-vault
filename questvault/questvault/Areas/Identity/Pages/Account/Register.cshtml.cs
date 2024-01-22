@@ -109,11 +109,11 @@ namespace questvault.Areas.Identity.Pages.Account
     {
       returnUrl ??= Url.Content("~/");
       ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+      
       if (ModelState.IsValid)
       {
-        var user = CreateUser();
+        var user = CreateUser(); 
         user.UserName = Input.UserName;
-
         await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
         await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
         var result = await _userManager.CreateAsync(user, Input.Password);
