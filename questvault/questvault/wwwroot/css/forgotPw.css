@@ -41,12 +41,16 @@
     padding-right: 2%;
 }
 
-    .btn-forgotp:active {
-        background-color: white;
-        color: #091833;
-        border: 3px #711C91;
-    }
+.btn-forgotp:active {
+    background-color: white;
+    color: #091833;
+    border: 3px #711C91;
+}
 
+.btn-forgotp:hover {
+    background: #133E7C;
+    color: #ffffff;
+}
 
 .form-control-forgotp {
     background-color: #133E7C;

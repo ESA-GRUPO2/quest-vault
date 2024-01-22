@@ -11,11 +11,13 @@
             <div class=".col-sm-5-2fa">
         <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
             <input asp-for="RememberMe" type="hidden" />
-            <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div>
+                    <div class="danger-login"><div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div></div>
             <div class="form-floating mb-3">
                         <input asp-for="Input.TwoFactorCode" class="form-control-forgotp" autocomplete="off" style="text-align: center; width:30%" />
                         @*<label asp-for="Input.TwoFactorCode" class="form-label"></label>*@
-                        <p><span asp-validation-for="Input.TwoFactorCode" class="text-danger-login"></span></p>
+                        <div class="danger-login">
+                        <p style="margin-bottom:0px"><span asp-validation-for="Input.TwoFactorCode" class="text-danger-login"></span></p>
+                        </div>
             </div>
             <div class="row-2fa">
             <div class="column-2fa" style="text-align: left;">
