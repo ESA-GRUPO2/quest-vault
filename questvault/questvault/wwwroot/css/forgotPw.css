@@ -27,6 +27,15 @@
     text-align: center;
 }
 
+.p-forgotp2 {
+    color: white;
+    font-size: 100%;
+    margin-bottom: 4%;
+    font-weight: 300;
+    text-align: left;
+    margin-left: 10%;
+}
+
 .btn-forgotp {
     background-color: #0ABDC6;
     color: #091833;
@@ -41,12 +50,16 @@
     padding-right: 2%;
 }
 
-    .btn-forgotp:active {
-        background-color: white;
-        color: #091833;
-        border: 3px #711C91;
-    }
+.btn-forgotp:active {
+    background-color: white;
+    color: #091833;
+    border: 3px #711C91;
+}
 
+.btn-forgotp:hover {
+    background: #133E7C;
+    color: #ffffff;
+}
 
 .form-control-forgotp {
     background-color: #133E7C;

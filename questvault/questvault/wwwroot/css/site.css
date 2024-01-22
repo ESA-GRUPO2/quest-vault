@@ -3,6 +3,7 @@
 @import url(login.css);
 @import url(navbar.css);
 @import url(forgotPw.css);
+@import url(2fa-login.css);
 
 
 @media (min-width: 768px) {
@@ -28,5 +29,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-top: 10rem;
+    background-color: #091833;
 }
+

@@ -1,8 +1,10 @@
 ﻿/*-------------------------------------------------- NAVBAR -----------------------------------------------*/
 
 .nav-main {
-    padding: 1.5%;
-    height: 100%;
+    padding: 2rem;
+    height: 6rem;
+    width: 100%;
+    position: fixed;
 }
 
 .nav-bg {
@@ -11,13 +13,11 @@
 }
 
 .nav-logo {
-    min-width: 100px;
-    width: 7%;
+    width: 7rem;
 }
 
 .nav-logo2 {
-    min-width: 100px;
-    width: 5%;
+    width: 7rem;
 }
 
 .nav-link {
@@ -30,23 +30,56 @@
 
 .nav-btn {
     background: #0abdc6;
+    color: #091833;
     border-radius: 24px;
-    width: 138px;
-    height: 44px;
+    width: 8.5rem;
+    height: 2.75rem;
     padding: 6px;
+    border: none;
+    text-align: center;
+    font-weight: bolder;
+    line-height: 30px;
+}
+
+.nav-btn:hover {
+    background: #133E7C;
+    color: #ffffff;
+}
+
+.nav-vector {
+    height: 1.5rem;
+}
+
+.nav-btn:hover .nav-vector {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
 }
 
 .nav-btn-2 {
     background: #EA00D9;
+    color: #ffffff;
     border-radius: 24px;
-    width: 138px;
-    height: 44px;
+    width: 8.5rem;
+    height: 2.75rem;
     padding: 6px;
+    border: none;
+    text-align: center;
+    font-weight: bolder;
+    line-height: 30px;
+}
+
+.nav-btn-2:hover {
+    background: #711C91;
 }
 
 .nav-form-select {
     width: fit-content;
-    background: #091833;
+    background-color: #091833;
     color: #ffffff;
     border: none;
+    text-align: center;
+    height: 100%;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
 }

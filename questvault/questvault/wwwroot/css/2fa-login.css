@@ -1,0 +1,97 @@
+﻿/*-------------------------------------------------- PAGE 2FA TO LOGIN -----------------------------------------------*/
+
+.main-section-2fa {
+    padding-top: 1.5%;
+    margin: auto;
+    margin-top: 4%;
+    background-color: #091833;
+    width: 800px;
+    border-radius: 16px;
+    border: 6px solid #711C91;
+    padding-bottom: 1.5%;
+    text-align: center;
+}
+
+.btn-2fa {
+    background-color: #0ABDC6;
+    color: #091833;
+    font-weight: 700;
+    border: 3px #711C91;
+    border-radius: 60px;
+    font-size: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.btn-2fa:active {
+    background-color: white;
+    color: #091833;
+    border: 3px #711C91;
+}
+
+.btn-2fa:hover {
+    background: #133E7C;
+    color: #ffffff;
+}
+
+.form-check-2fa {
+    color: white;
+}
+
+.row-2fa {
+    margin-top:6%;
+    display: flex;
+}
+
+.column-2fa {
+    flex: 50%;
+    text-decoration-color: white;
+    margin: auto;
+    font-size: 100%;
+}
+
+.code-container-2fa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.code-2fa {
+    caret-color: transparent;
+    background-color: #091833;
+    border-radius: 10px;
+    border: 2px solid white;
+    font-size: 30px;
+    font-family: "Inter", sans-serif;
+    width: 75px;
+    height: 80px;
+    margin: 10px;
+    text-align: center;
+    font-weight: 300;
+    color: white;
+}
+
+@media(max-width:600px){
+    .code-container-2fa{
+        flex-wrap: wrap;
+    }
+    .code-2fa{
+        font-size: 24px;
+        height: 50px;
+        max-width: 50px;
+        font-size: 110%;
+    }
+}
+
+.code-2fa::-webkit-outer-spin-button, 
+.code-2fa::-webkit-inner-spin-button{
+    -webkit-appearance:none;
+}
+
+.code-2fa:valid {
+    border-color: #711C91;
+    box-shadow: 4px 4px 12px -2px #9256b8;
+}

@@ -4,23 +4,24 @@
 @{
 }
 <body class="login-body">
-<div class="main-section-login">
-  <section>
-      <form class="form-login" id="account" method="post">
-          <h1 class="h1-login">Log in</h1>
+    <div class="main-section-login mt-4">
+      <section>
+          <form class="form-login" id="account" method="post">
+              <h1 class="h1-login">Log in</h1>
         
           <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
           <div class="row-login">
-              <div class="col-sm-5-login">
+              
                   <input type="email" class="form-control-login" id="username" placeholder="Email/Username" asp-for="Input.Email" autocomplete="username" aria-required="true">
+                    <div class="danger-login">
                   <p><span asp-validation-for="Input.Email" class="text-danger-login"></span></p>
-              </div>
+                    </div>
           </div>
-          <div class="row-login" style="padding-bottom:4%">
-              <div class="col-sm-5-login">
+          <div class="row-login" style="padding-bottom:3%">
                   <input type="password" class="form-control-login" id="Password" placeholder="Password" autocomplete="current-password" asp-for="Input.Password" aria-required="true">
+                    <div class="danger-login">
                   <p><span asp-validation-for="Input.Password" class="text-danger-login"></span></p>
-              </div>
+                  </div>
           </div>
           <div class="checkbox mb-3">
               <label asp-for="Input.RememberMe" class="form-label" >
@@ -33,27 +34,27 @@
       <!-- Google login button start -->
       <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
           <div>
-              <p>
+              <p style="margin-bottom: 0%">
                   @foreach (var provider in Model.ExternalLogins!)
                   {
                       <button type="submit" class="google-auth" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
                                 <img width="16" height="16" src="/img/google_icon.png" />
                           Sign in with Google
 
-                      </button>
-                  }
-              </p>
-          </div>
-      </form>
-      <!-- Google login button finish -->
+                          </button>
+                      }
+                  </p>
+              </div>
+          </form>
+          <!-- Google login button finish -->
       
-      <!-- <p class="google-auth" >Google Auth Placeholder</p> -->
-                <p class="p-login">Still don't have an account? <a class="a-login" style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
-                <a class="a-login"  id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+          <!-- <p class="google-auth" >Google Auth Placeholder</p> -->
+                    <p class="p-login">Still don't have an account? <a class="a-login" style="font-size:100%;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
+                    <a class="a-login"  id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
      
 
-      </section>
-</div>
+          </section>
+    </div>
 </body>
 
 @section Scripts {

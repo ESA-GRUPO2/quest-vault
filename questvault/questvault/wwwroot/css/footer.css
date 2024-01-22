@@ -11,12 +11,18 @@
     color: white;
 }
 
-    .main-text-footer:hover {
-        font-size: 100%;
-        text-decoration: none;
-        color: white;
-    }
+.main-text-footer:hover {
+    font-size: 100%;
+    text-decoration: none;
+    color: white;
+}
 
 .section {
     text-align: center;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

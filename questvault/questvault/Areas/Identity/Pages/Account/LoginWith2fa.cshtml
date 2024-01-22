@@ -1,38 +1,55 @@
 ﻿@page
 @model LoginWith2faModel
 @{
-    ViewData["Title"] = "Two-factor authentication";
+    ViewData["Title"] = "2FA Code";
 }
-
-<h1>@ViewData["Title"]</h1>
-<hr />
-<p>Your login is protected with an authenticator app. Enter your authenticator code below.</p>
-<div class="row">
-    <div class="col-md-4">
+<body class="login-body">
+    <div class="main-section-2fa">
+<h1 class="h1-forgotp">@ViewData["Title"]</h1>
+    <p class="p-forgotp">Insert the 2FA code that was sent to your email.</p>
+    <div class="row-forgotp">
+            <div class=".col-sm-5-2fa">
         <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
             <input asp-for="RememberMe" type="hidden" />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="danger-login"><div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div></div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" />
-                <label asp-for="Input.TwoFactorCode" class="form-label"></label>
-                <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+                        <input asp-for="Input.TwoFactorCode" class="form-control-forgotp" autocomplete="off" style="text-align: center; width:30%"/>
+                        @*<label asp-for="Input.TwoFactorCode" class="form-label"></label>*@
+                        @*
+                        <div class="code-container-2fa">
+                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
+                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
+                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
+                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
+                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
+                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
+                        </div>
+                        <div class="danger-login">
+                        <p style="margin-bottom:0px"><span asp-validation-for="Input.TwoFactorCode" class="text-danger-login"></span></p>
+                        </div>
+                        *@
             </div>
-            <div class="checkbox mb-3">
-                <label asp-for="Input.RememberMachine" class="form-label">
-                    <input asp-for="Input.RememberMachine" />
+            <div class="row-2fa">
+            <div class="column-2fa" style="text-align: left;">
+                <label asp-for="Input.RememberMachine" class="form-label" style="color: white; margin-bottom: 0px;">
+                      <input class="form-check-2fa" asp-for="Input.RememberMachine" />
                     @Html.DisplayNameFor(m => m.Input.RememberMachine)
                 </label>
+             </div>
+             <div class="column-2fa" style="text-align: right;">
+                <button type="submit" class="btn-2fa btn-primary submit">Confirm</button>
             </div>
-            <div>
-                <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
             </div>
         </form>
     </div>
 </div>
+</div>
+</body>
+@*
 <p>
     Don't have access to your authenticator device? You can
     <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
-</p>
+</p>*@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
