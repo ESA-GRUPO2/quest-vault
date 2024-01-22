@@ -13,28 +13,27 @@
             <input asp-for="RememberMe" type="hidden" />
                     <div class="danger-login"><div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div></div>
             <div class="form-floating mb-3">
-                        <input asp-for="Input.TwoFactorCode" class="form-control-forgotp" autocomplete="off" style="text-align: center; width:30%"/>
-                        @*<label asp-for="Input.TwoFactorCode" class="form-label"></label>*@
+                        <input asp-for="Input.TwoFactorCode" class="form-control-forgotp" autocomplete="off" id="code-input" style="text-align: center; width:30%"/>
                         @*
                         <div class="code-container-2fa">
-                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
-                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
-                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
-                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
-                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
-                            <input type="text" class="code-2fa" placeholder="0" min="0" max="9" required>
-                        </div>
+                            <input type="text" class="code-2fa" maxlength="1" min="0" max="9" required>
+                            <input type="text" class="code-2fa" maxlength="1" min="0" max="9" required>
+                            <input type="text" class="code-2fa" maxlength="1" min="0" max="9" required>
+                            <input type="text" class="code-2fa" maxlength="1" min="0" max="9" required>
+                            <input type="text" class="code-2fa" maxlength="1" min="0" max="9" required>
+                            <input type="text" class="code-2fa" maxlength="1" min="0" max="9" required>
+                        </div>*@
                         <div class="danger-login">
                         <p style="margin-bottom:0px"><span asp-validation-for="Input.TwoFactorCode" class="text-danger-login"></span></p>
                         </div>
-                        *@
+                        
             </div>
             <div class="row-2fa">
             <div class="column-2fa" style="text-align: left;">
-                <label asp-for="Input.RememberMachine" class="form-label" style="color: white; margin-bottom: 0px;">
+              @*   <label asp-for="Input.RememberMachine" class="form-label" style="color: white; margin-bottom: 0px;">
                       <input class="form-check-2fa" asp-for="Input.RememberMachine" />
                     @Html.DisplayNameFor(m => m.Input.RememberMachine)
-                </label>
+                </label> *@
              </div>
              <div class="column-2fa" style="text-align: right;">
                 <button type="submit" class="btn-2fa btn-primary submit">Confirm</button>

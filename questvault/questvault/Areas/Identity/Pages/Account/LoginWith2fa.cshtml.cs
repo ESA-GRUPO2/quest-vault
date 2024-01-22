@@ -76,6 +76,7 @@ namespace questvault.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnGetAsync(bool rememberMe, string returnUrl = null)
         {
+        
             // Ensure the user has gone through the username & password screen first
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
 
@@ -96,7 +97,7 @@ namespace questvault.Areas.Identity.Pages.Account
             {
                 return Page();
             }
-
+            Console.WriteLine(Input.TwoFactorCode);
             returnUrl = returnUrl ?? Url.Content("~/");
 
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
