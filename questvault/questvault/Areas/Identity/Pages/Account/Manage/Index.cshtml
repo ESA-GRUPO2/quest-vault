@@ -32,17 +32,17 @@
 
 
         <div class="col-4">
-            <form>
+            <form id="profile-form" method="post" asp-page-handler="ChangeUsername">
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label text-light">Email</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control-login" disabled placeholder=@User.Identity?.Name>
+                        <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="inputName" class="col-sm-4 col-form-label text-light">Username</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control-login" id="inputName" placeholder=@User.Identity?.Name>
+                        <input asp-for="Input.Username" type="text" class="form-control-login" id="inputName" placeholder=@Model.Username>
                     </div>
                 </div>
                 <div class="row mb-3">
