@@ -140,3 +140,9 @@ body {
     border: 5px solid #711C91;
     border-radius: 27px;
 }
+
+.text-danger-login-2 {
+    color: red;
+    font-size: 88%;
+    margin-top: 10px;
+}

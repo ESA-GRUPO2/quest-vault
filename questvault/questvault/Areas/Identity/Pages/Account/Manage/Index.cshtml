@@ -61,23 +61,33 @@
         </div>
 
         <div class="col-4">
-            <form>
+            <form id="change-password-form" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div>
                 <div class="row mb-3">
-                    <label for="inputCPassword" class="col-sm-4 col-form-label text-light">Current password</label>
+                    <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
                     <div class="col-sm-8">
-                        <input type="password" class="form-control-login" id="inputCPassword" placeholder="Insert current password" />
+                        <input asp-for="Input.OldPassword" type="password" class="form-control-login" autocomplete="current-password" aria-required="true" placeholder="Insert current password" />
+                        <div style="height:1px">
+                            <span asp-validation-for="Input.OldPassword" class="text-danger-login-2"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="inputNPassword" class="col-sm-4 col-form-label text-light">New password</label>
+                    <label asp-for="Input.OldPassword" class=" col-sm-4 col-form-label text-light">New password</label>
                     <div class="col-sm-8">
-                        <input type="password" class="form-control-login" id="inputNPassword" placeholder="Insert new password">
+                        <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
+                        <div style="height:1px">
+                            <span asp-validation-for="Input.NewPassword" class="text-danger-login-2"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="inputNPassword2" class="col-sm-4 col-form-label text-light">Confirm new password</label>
+                    <label asp-for="Input.ConfirmPassword" class="col-sm-4 col-form-label text-light">Confirm new password</label>
                     <div class="col-sm-8">
-                        <input type="password" class="form-control-login" id="inputNPassword2" placeholder="Confirm new password">
+                        <input asp-for="Input.ConfirmPassword" class="form-control-login" autocomplete="new-password" aria-required="true" placeholder="Confirm new password">
+                        <div style="height:1px">
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger-login-2"></span>
+                        </div>
                     </div>
                 </div>
                 <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue submit">Change password</button>
@@ -85,11 +95,11 @@
         </div>
         <div class="col-2">
             <form>
-                <div class="form-check form-switch row mb-3">
+                <div class="form-check form-switch">
                     <label class="text-light">Activate 2FA</label>
-                    <input style="float:right" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+                    <input style="float:right" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
                 </div>
-                <div class="form-check form-switch row mb-3" style="margin-top: 2rem;">
+                <div class="form-check form-switch" style="margin-top: 2rem; margin-bottom: 1rem;">
                     <label class="text-light">Private account</label>
                     <input style="float:right" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 </div>
