@@ -23,13 +23,46 @@
             <ul class="navbar-nav ms-auto me-1 mb-lg-0">
             @if (SignInManager.IsSignedIn(User))
             {
-                    <li class="nav-item ms-3 d-flex align-self-center">
-                  <a class="btn btn-primary nav-btn" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                    <li class="align-self-center" style="padding-right: 15rem">
+                    <div class="search-bar d-flex">
+                        <input type="text" class="search-bar-text" placeholder="Search for games and users" />
+                        <!--<button class="search-btn" type="submit">Search</button>-->
+                        <img src="\img\vector\magnifying.svg" class="search-btn" />
+                    </div>
                 </li>
+
                 <li class="nav-item ms-3 d-flex align-self-center">
-                  <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                    <button type="submit" class="btn btn-primary nav-btn">Logout</button>
-                  </form>
+                    <a class="btn btn-primary nav-btn" asp-area="" asp-page="" asp-route-returnUrl="">
+                        <img src="\img\vector\gamepad.svg" alt="Key Icon" class="nav-vector pe-2"> Games
+                    </a>
+                </li>
+
+                <li class="nav-item ms-3 d-flex align-self-center">
+                    <a class="btn btn-primary nav-btn-2" asp-area="" asp-page="" asp-route-returnUrl="">
+                        <img src="\img\vector\bookmark.svg" alt="FilePen Icon" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="nav-vector pe-2"> MyLibrary
+                    </a>
+                </li>
+
+                <li class="nav-item ms-3 d-flex align-self-center">
+                    <div class="dropdown">
+                        <button class="btn btn-info user-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="\img\vector\user.svg" alt="Key Icon" class="nav-vector">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><p class="dropdown-item">@User.Identity?.Name</p></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Manage/Index" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
+                                    <button type="submit" class="btn btn-primary dropdown-item">Profile</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class ="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
+                                        <button type="submit" class="btn btn-primary dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             }
             else

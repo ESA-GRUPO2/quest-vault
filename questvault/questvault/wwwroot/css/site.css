@@ -33,3 +33,22 @@ body {
     background-color: #091833;
 }
 
+.bar {
+    background: #711C91;
+    margin-right: auto;
+    margin-left: auto;
+    width: 94%;
+    height: 10px;
+    opacity: 1;
+}
+
+.title {
+    padding-left: 57px;
+}
+
+.user-foto {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #0abdc6;
+}
