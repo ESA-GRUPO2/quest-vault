@@ -20,42 +20,84 @@
         </form>
     </div>
 </div>-->
-<div class="container" style="margin-top: 100px">
-    <div class="row align-items-center">
-        <div class="col-2 d-block justify-content-evenly">
-            <div class="user-foto justify-content-center">
-                <img style="height:80px;width:80px;background-position: 50% 50%;background-size: cover;border-radius: 50%;" src="\img\vector\user.svg" alt="User">
+<div class="container-fluid">
+    <div class="row align-items-baseline" style="margin: 100px">
+        <div class="row"><h4 style="margin-left:17%; margin-bottom: 2rem" class="text-light">Account Details</h4></div>
+        <div class="col-2 d-block justify-content-center">
+            <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
+                <img style="height:80px;width:80px;margin-left: 12%;margin-top: 10%; background-size: cover;border-radius: 50%;" src="\img\vector\user.svg" alt="User">
             </div>
-            <button style="margin-top:.2rem" class="btn-primary nav-btn-2">Change Avatar</button>
+            <button style="margin:auto" class="btn-primary btn-purple">Change Avatar</button>
         </div>
 
+
         <div class="col-4">
-            <h4 class="text-light">Account Details</h4>
             <form>
                 <div class="row mb-3">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label text-light">Email</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control-login" id="inputEmail3" disabled placeholder=@User.Identity?.Name>
+                    <label class="col-sm-4 col-form-label text-light">Email</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control-login" disabled placeholder=@User.Identity?.Name/>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label text-light">Username</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control-login" id="inputPassword3">
+                    <label for="inputName" class="col-sm-4 col-form-label text-light">Username</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control-login" id="inputName">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label text-light">Country</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control-login" id="inputEmail3">
+                    <label for="inputCountry" class="col-sm-4 col-form-label text-light">Country</label>
+                    <div class="col-sm-8">
+                        <select class="form-control-login">
+                            <option selected>Portugal(PT)</option>
+                            <option value="1">fill1</option>
+                            <option value="2">fill2</option>
+                            <option value="3">fill3</option>
+                        </select>
                     </div>
                 </div>
+                <button style="float: right; margin-right: 15%" type="submit" class="btn-blue submit">Save Changes</button>
             </form>
         </div>
 
-        <div class="col-4"></div>
-
-        <div class="col-2"></div>
+        <div class="col-4">
+            <form>
+                <div class="row mb-3">
+                    <label for="inputCPassword" class="col-sm-4 col-form-label text-light">Current password</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control-login" id="inputCPassword" placeholder="Insert current password" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputNPassword" class="col-sm-4 col-form-label text-light">New password</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control-login" id="inputNPassword" placeholder="Insert new password">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputNPassword2" class="col-sm-4 col-form-label text-light">Confirm new password</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control-login" id="inputNPassword2" placeholder="Confirm new password">
+                    </div>
+                </div>
+                <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue submit">Change password</button>
+            </form>
+        </div>
+        <div class="col-2">
+            <form>
+                <div class="form-check form-switch row mb-3">
+                    <label class="text-light">Activate 2FA</label>
+                    <input style="float:right" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+                </div>
+                <div class="form-check form-switch row mb-3" style="margin-top: 2rem;">
+                    <label class="text-light">Private account</label>
+                    <input style="float:right" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                </div>
+                <div class="form-check form-switch row mb-3">
+                    <button style="float: right; margin-right: 15%; margin-top: 1rem;" type="submit" class="btn-purple submit">Disable account</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
