@@ -15,49 +15,44 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> ChangeUsername(string newUsername)
     {
-        // Check if the new username is already taken
-        var existingUser = await _userManager.FindByNameAsync(newUsername);
-        if (existingUser != null)
+        if (!string.IsNullOrEmpty(newUsername))
         {
-            ModelState.AddModelError(string.Empty, "Username is already taken.");
-            return View();
-        }
+            var existingUser = await _userManager.FindByNameAsync(newUsername);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("newUsername", "Username already exists.");
+                return View(); // Return the view with validation errors
+            }
 
-        // Get the current user
-        var user = await _userManager.GetUserAsync(User);
-
-        // Ensure user exists
-        if (user == null)
-        {
-            return NotFound();
-        }
-
-        // Check if the new username is valid
-        // Add more validation here
-        if (string.IsNullOrWhiteSpace(newUsername))
-        {
-            ModelState.AddModelError(string.Empty, "Username cannot be empty");
-            return View();
-        }
-
-        // Update the username
-        user.UserName = newUsername;
-        var result = await _userManager.UpdateAsync(user);
-
-        if (result.Succeeded)
-        {
-            // Username successfully updated
-            return RedirectToAction("Index", "Home");
+            var user = await _userManager.GetUserAsync(User);
+            if (user != null)
+            {
+                user.UserName = newUsername;
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    // Username successfully updated
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "User not found.");
+            }
         }
         else
         {
-            // Failed to update username, handle errors
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
-            return View();
+            ModelState.AddModelError("newUsername", "Username cannot be empty");
         }
+
+        // If we're here, there was an error, so return to the view with errors
+        return View();
     }
 }
-
