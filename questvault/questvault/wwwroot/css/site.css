@@ -4,6 +4,7 @@
 @import url(navbar.css);
 @import url(forgotPw.css);
 @import url(2fa-login.css);
+@import url(results.css);
 
 
 @media (min-width: 768px) {
