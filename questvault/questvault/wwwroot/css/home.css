@@ -49,3 +49,8 @@
 .home-btn:hover {
     background: #711C91;
 }
+
+hr {
+    height: 10px; /* adjust the height to reduce the line thickness */
+    width: 90%; /* adjust the width to reduce the line length */
+}
