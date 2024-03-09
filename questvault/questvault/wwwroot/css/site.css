@@ -101,3 +101,26 @@ body {
 .btn-purple:hover {
     background: #711C91;
 }
+
+.row-spacing {
+    margin: 100px
+}
+
+.img-size-sm {
+    height: 40px;
+}
+
+.table-profile {
+    --bs-table-bg: #091833;
+    background-color: #091833;
+}
+
+.game-button-sm {
+    width: 220px; /* Para distribuir igualmente os botões com alguma margem */
+    height: 280px;
+    padding: 0;
+    border: 2px solid white;
+    background: black;
+    margin-right: 3%;
+    margin-bottom: 3%;
+}

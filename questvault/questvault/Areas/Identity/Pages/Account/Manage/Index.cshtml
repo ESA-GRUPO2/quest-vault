@@ -21,8 +21,8 @@
     </div>
 </div>-->
 <div class="container-fluid">
-    <div class="row align-items-baseline" style="margin: 100px">
-        <div class="row"><h4 style="margin-left:17%; margin-bottom: 2rem" class="text-light">Account Details</h4></div>
+    <div class="row align-items-baseline row-spacing">
+        <div class="row"><h4 style="padding-left:18rem; margin-bottom: 2rem" class="text-light">Account Details</h4></div>
         <div class="col-2 d-block justify-content-center">
             <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
                 <img style="height:80px;width:80px;margin-left: 12%;margin-top: 10%; background-size: cover;border-radius: 50%;" src="\img\vector\user.svg" alt="User">
@@ -36,13 +36,13 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label text-light">Email</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control-login" disabled placeholder=@User.Identity?.Name/>
+                        <input type="text" class="form-control-login" disabled placeholder=@User.Identity?.Name>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="inputName" class="col-sm-4 col-form-label text-light">Username</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control-login" id="inputName">
+                        <input type="text" class="form-control-login" id="inputName" placeholder=@User.Identity?.Name>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -99,6 +99,43 @@
             </form>
         </div>
     </div>
+
+    <div class="row row-spacing">
+        <div class="col-8">
+            <h4 class="text-light">My Top 5</h4>
+            <div class="game-section">
+                <div class="game-row">
+                    <button class="game-button"><img src="/img/gta.png"></button>
+                    <button class="game-button"><img src="/img/granturismo.png"></button>
+                    <button class="game-button"><img src="/img/gta.png"></button>
+                    <button class="game-button"><img src="/img/gta.png"></button>
+                    <button class="game-button"><img src="/img/gta.png"></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <h4 class="text-light">Connections</h4>
+            <table class="table table-borderless table-profile">
+                <tr>
+                    <th><img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam" /></th>
+                    <th><button class="btn-blue">Connect to Steam</button></th>
+                </tr>
+                <tr>
+                    <th><img class="img-size-sm" src="/img/external/Epic_Games_logo.png" alt="Epic" /></th>
+                    <th><button class="btn-blue">Connect to Epic</button></th>
+                </tr>
+                <tr>
+                    <th><img class="img-size-sm" src="/img/external/xbox-logo.png" alt="Xbox" /></th>
+                    <th><button class="btn-blue">Connect to Xbox</button></th>
+                </tr>
+                <tr>
+                    <th><img style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="img-size-sm" style src="/img/vector/file-csv-solid.svg" alt="CSV" /></th>
+                    <th><button class="btn-blue">Import .csv</button></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
 </div>
 
 @section Scripts {
