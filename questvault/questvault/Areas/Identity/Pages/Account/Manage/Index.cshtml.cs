@@ -102,10 +102,10 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       if (user == null)
         return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
 
-      if (Input.NewUserName == null)
+      //if (Input.NewUserName == null) se rebentar a culpa é tua
+      if (Input.NewUserName.Equals(null))
       {
-        await Console.Out.WriteLineAsync("aqui");
-        StatusMessage = "Model is invalid";
+        StatusMessage = "Empty field";
         return Page();
       }
 
