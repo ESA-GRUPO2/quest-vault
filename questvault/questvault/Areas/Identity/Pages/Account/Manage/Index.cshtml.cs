@@ -97,18 +97,20 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
     public async Task<IActionResult> OnPostUserNameAsync()
     {
-      foreach (var a in ModelState) await Console.Out.WriteLineAsync("model: " + a);
+      //foreach (var a in ModelState) await Console.Out.WriteLineAsync("model: " + a);
       var user = await userManager.GetUserAsync(User);
       if (user == null)
         return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
 
-      if (!ModelState.IsValid)
+      if (Input.NewUserName == null)
       {
+        await Console.Out.WriteLineAsync("aqui");
         StatusMessage = "Model is invalid";
         return Page();
       }
 
-      if (!Input.NewUserName.Equals(user.UserName))
+    var userName = await userManager.GetUserNameAsync(user);
+    if (Input.NewUserName != userName)
       {
         var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
         if (!setUserNameResult.Succeeded)

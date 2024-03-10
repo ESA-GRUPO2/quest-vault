@@ -22,7 +22,10 @@
 </div>-->
 <div class="container-fluid">
     <div class="row align-items-baseline row-spacing">
-        <div class="row"><h4 style="padding-left:18rem; margin-bottom: 2rem" class="text-light">Account Details</h4></div>
+        <div class="row">
+            <h4 style="padding-left:18rem; margin-bottom: 2rem" class="text-light">Account Details</h4>
+            <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div>
+        </div>
         <div class="col-2 d-block justify-content-center">
             <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
                 <img style="height:80px;width:80px;margin-left: 12%;margin-top: 10%; background-size: cover;border-radius: 50%;" src="\img\vector\user.svg" alt="User">
@@ -33,7 +36,6 @@
 
         <div class="col-4">
             <form id="change-username-form" method="post" asp-page-handler="UserName">
-                <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div>
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label text-light">Email</label>
                     <div class="col-sm-8">
@@ -66,7 +68,6 @@
 
         <div class="col-4">
             <form id="change-password-form" method="post" asp-page-handler="Password">
-                <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div>
                 <div class="row mb-3">
                     <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
                     <div class="col-sm-8">

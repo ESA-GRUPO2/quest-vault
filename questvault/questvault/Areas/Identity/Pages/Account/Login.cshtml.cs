@@ -64,6 +64,7 @@ namespace questvault.Areas.Identity.Pages.Account
       ///     directly from your code. This API may change or be removed in future releases.
       /// </summary>
       [Required]
+      //[DataType(DataType.Text)]
       [EmailAddress]
       public string Email { get; set; }
 
