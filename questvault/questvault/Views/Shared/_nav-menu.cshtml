@@ -24,11 +24,19 @@
             @if (SignInManager.IsSignedIn(User))
             {
                     <li class="align-self-center" style="padding-right: 15rem">
-                    <div class="search-bar d-flex">
-                        <input type="text" class="search-bar-text" placeholder="Search for games and users" />
-                        <!--<button class="search-btn" type="submit">Search</button>-->
-                        <img src="\img\vector\magnifying.svg" class="search-btn" />
-                    </div>
+                        <form asp-controller="TesteIGDB" asp-action="SearchForm" method="post">
+                        <div class="search-bar d-flex">
+                             <input id="searchTerm" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
+                             <div id="searchResults" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <!-- Resultados da pesquisa aqui -->
+                             </div>
+                            <button class="search-btn" type="submit">
+                                    <img src="\img\vector\magnifying.svg" class="search-btn" />
+                            </button>
+                            
+                             
+                        </div>
+                    </form>
                 </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
@@ -91,3 +99,10 @@
         </div>
     </div>
 </nav>
+@section Scripts {
+    <script >
+        console.log("samuel");
+
+    </script>
+
+}

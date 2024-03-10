@@ -11,6 +11,7 @@ using IGDB;
 using IGDB.Models;
 using questvault.Migrations;
 using RestEase;
+using questvault.Services;
 
 namespace questvault.Controllers
 {
@@ -18,10 +19,13 @@ namespace questvault.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+
+
         public TesteIGDBController(ApplicationDbContext context)
         {
             _context = context;
         }
+
 
         // GET: TesteIGDB
         public async Task<IActionResult> Index()
@@ -37,8 +41,8 @@ namespace questvault.Controllers
             string query = $"fields id,name, genres; search *\"{searchTerm}\"*; limit 5;";
             try
             {
-            var games = await igdb.QueryAsync<Game>(IGDBClient.Endpoints.Games, query);
-            Console.Write("TERMO: " + searchTerm);
+                var games = await igdb.QueryAsync<Game>(IGDBClient.Endpoints.Games, query);
+                Console.Write("TERMO: " + searchTerm);
                 var jogos = games.Select(game => new Jogos
                 {
                     JogoId = (int)game.Id,
@@ -54,11 +58,13 @@ namespace questvault.Controllers
                 //    return RedirectToAction(nameof(Index));
                 //}
 
-            ViewBag.Titulo = "Detalhes do Jogo";
-            ViewBag.Jogos = jogos;
-            return View(jogos);
+                ViewBag.Titulo = "Detalhes do Jogo";
+                ViewBag.Jogos = jogos;
+                return View(jogos);
 
-            }catch (ApiException ex) {
+            }
+            catch (ApiException ex)
+            {
                 // A ApiException contém detalhes sobre o erro, incluindo o código de status HTTP
                 if (ex.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 {
@@ -78,133 +84,56 @@ namespace questvault.Controllers
             }
         }
 
-        // GET: TesteIGDB/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var jogos = await _context.Jogos
-                .FirstOrDefaultAsync(m => m.JogoId == id);
-            if (jogos == null)
-            {
-                return NotFound();
-            }
-
-            return View(jogos);
-        }
-
-        // GET: TesteIGDB/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: TesteIGDB/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("JogoId,Nome,Genero")] Jogos jogos)
+        public async Task<IActionResult> SearchForm(string searchTerm)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(jogos);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var _igdbService = new IGDBService("uzhx4rrftyohllg1mrpy3ajo7090q5", "7rvcth933kxra92ddery5qn3jxwap7");
+                Console.WriteLine("term: " + searchTerm);
+                var jogos = await _igdbService.SearchGames(searchTerm);
+                // Retorna os dados como JSON
+                return Json(new { Jogos = jogos });
             }
-            return View(jogos);
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.Content);
+                return Json(new { Erro = "Erro na API IGDB" });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return Json(new { Erro = "Erro interno no servidor" });
+            }
         }
 
-        // GET: TesteIGDB/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var jogos = await _context.Jogos.FindAsync(id);
-            if (jogos == null)
-            {
-                return NotFound();
-            }
-            return View(jogos);
-        }
-
-        // POST: TesteIGDB/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("JogoId,Nome,Genero")] Jogos jogos)
+        public async Task<IActionResult> Search([FromBody] string searchTerm)
         {
-            if (id != jogos.JogoId)
+            try
             {
-                return NotFound();
+                var _igdbService = new IGDBService("uzhx4rrftyohllg1mrpy3ajo7090q5", "7rvcth933kxra92ddery5qn3jxwap7");
+                Console.WriteLine("term: " + searchTerm);
+                var jogos = await _igdbService.SearchGames(searchTerm);
+                // Retorna os dados como JSON
+                return Json(new { Jogos = jogos });
             }
-
-            if (ModelState.IsValid)
+            catch (ApiException ex)
             {
-                try
-                {
-                    _context.Update(jogos);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!JogosExists(jogos.JogoId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                Console.WriteLine(ex.Content);
+                return Json(new { Erro = "Erro na API IGDB" });
             }
-            return View(jogos);
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return Json(new { Erro = "Erro interno no servidor" });
+            }
         }
 
-        // GET: TesteIGDB/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var jogos = await _context.Jogos
-                .FirstOrDefaultAsync(m => m.JogoId == id);
-            if (jogos == null)
-            {
-                return NotFound();
-            }
 
-            return View(jogos);
-        }
 
-        // POST: TesteIGDB/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var jogos = await _context.Jogos.FindAsync(id);
-            if (jogos != null)
-            {
-                _context.Jogos.Remove(jogos);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool JogosExists(int id)
-        {
-            return _context.Jogos.Any(e => e.JogoId == id);
-        }
     }
 }
