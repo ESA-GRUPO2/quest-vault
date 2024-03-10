@@ -31,6 +31,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
         public string Username { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -56,10 +57,10 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [StringLength(100, ErrorMessage = "The {0} already exits.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "This {0} already exits.")]
             [DataType(DataType.Text)]
             [Display(Name = "user name")]
-            public string UserName { get; set; }
+            public string NewUserName { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -84,10 +85,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             var email = await _userManager.GetEmailAsync(user);
 
             Username = userName;
+            Email = email;
 
             Input = new InputModel
             {
-                Email = email
+               NewUserName = userName
             };
         }
 
@@ -103,11 +105,43 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostUserNameAsync()
         {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
             if (!ModelState.IsValid)
             {
-                return Page();
+  
+                return RedirectToPage();
+            }
+
+            var userName = await _userManager.GetUserNameAsync(user);
+            await Console.Out.WriteLineAsync("siuuu");
+            if (!Input.NewUserName.Equals(userName))
+            {
+                var setUserNameResult = await _userManager.SetUserNameAsync(user, Input.NewUserName);
+                if (!setUserNameResult.Succeeded)
+                {
+                    StatusMessage = "Unexpected error when trying to update username.";
+                    return RedirectToPage();
+                }
+            }
+
+            await _signInManager.RefreshSignInAsync(user);
+            StatusMessage = "Your profile has been updated";
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostPasswordAsync()
+        {
+            await Console.Out.WriteLineAsync("ola");
+            if (!ModelState.IsValid)
+            {
+                return RedirectToPage();
             }
 
             var user = await _userManager.GetUserAsync(User);
@@ -117,21 +151,20 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             }
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
-            var changeUserNameResult = await _userManager.ChangeUserNameAsync(user, Input.NewUserName);
             if (!changePasswordResult.Succeeded)
             {
                 foreach (var error in changePasswordResult.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-                return Page();
+                return RedirectToPage();
             }
 
             await _signInManager.RefreshSignInAsync(user);
             _logger.LogInformation("User changed their password successfully.");
             StatusMessage = "Your password has been changed.";
 
-            return Page();
+            return RedirectToPage();
         }
     }
 }
