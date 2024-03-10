@@ -1,0 +1,48 @@
+﻿.game-details {
+    margin: 0px 71px 0px 71px;
+}
+
+.game-title {
+    color: white;
+}
+
+.game-cover{
+    max-width: 13rem;
+    border: solid white 1px;
+}
+
+.game-filters{
+
+}
+
+.game-user-stats{
+
+}
+
+.game-score{
+
+}
+
+.game-platforms{
+
+}
+
+.game-about{
+    color: white;
+}
+
+.game-captures{
+
+}
+
+.game-review{
+
+}
+
+.review-user-score{
+
+}
+
+.review-user-publish{
+
+}
