@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
-                    <a class="btn btn-primary nav-btn" asp-area="" asp-page="" asp-route-returnUrl="">
+                        <a class="btn btn-primary nav-btn" asp-controller="Home" asp-action="GameResults">
                         <img src="\img\vector\gamepad.svg" alt="Key Icon" class="nav-vector pe-2"> Games
                     </a>
                 </li>
@@ -60,9 +60,7 @@
                             <li><p class="dropdown-item">@User.Identity?.Name</p></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Manage/Index" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                                    <button type="submit" class="btn btn-primary dropdown-item">Profile</button>
-                                </form>
+                                    <a href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">Profile</a>
                             </li>
                             <li>
                                 <form class ="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
