@@ -10,161 +10,149 @@ using System.ComponentModel.DataAnnotations;
 
 namespace questvault.Areas.Identity.Pages.Account.Manage
 {
-    public class IndexModel : PageModel
+  public class IndexModel(
+      UserManager<User> userManager,
+      SignInManager<User> signInManager,
+      ILogger<IndexModel> logger) : PageModel
+  {
+
+    /// <summary>
+    ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+    ///     directly from your code. This API may change or be removed in future releases.
+    /// </summary>
+    public string Username { get; set; }
+    public string Email { get; set; }
+
+    /// <summary>
+    ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+    ///     directly from your code. This API may change or be removed in future releases.
+    /// </summary>
+    [TempData]
+    public string StatusMessage { get; set; }
+
+    /// <summary>
+    ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+    ///     directly from your code. This API may change or be removed in future releases.
+    /// </summary>
+    [BindProperty]
+    public InputModel Input { get; set; }
+
+    /// <summary>
+    ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+    ///     directly from your code. This API may change or be removed in future releases.
+    /// </summary>
+    public class InputModel
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly ILogger<IndexModel> _logger;
+      /// <summary>
+      ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+      ///     directly from your code. This API may change or be removed in future releases.
+      /// </summary>
+      [StringLength(100, ErrorMessage = "This {0} already exits.")]
+      [DataType(DataType.Text)]
+      [Display(Name = "user name")]
+      public string NewUserName { get; set; }
 
-        public IndexModel(
-            UserManager<User> userManager,
-            SignInManager<User> signInManager,
-            ILogger<IndexModel> logger)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager; 
-            _logger = logger;
-        }
+      [Required]
+      [DataType(DataType.Password)]
+      [Display(Name = "password")]
+      public string OldPassword { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public string Username { get; set; }
-        public string Email { get; set; }
+      [Required]
+      [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+      [DataType(DataType.Password)]
+      [Display(Name = "new password")]
+      public string NewPassword { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        [TempData]
-        public string StatusMessage { get; set; }
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        [BindProperty]
-        public InputModel Input { get; set; }
-
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        public class InputModel
-        {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [StringLength(100, ErrorMessage = "This {0} already exits.")]
-            [DataType(DataType.Text)]
-            [Display(Name = "user name")]
-            public string NewUserName { get; set; }
-
-            [Required]
-            [DataType(DataType.Password)]
-            [Display(Name = "password")]
-            public string OldPassword { get; set; }
-            
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-            [DataType(DataType.Password)]
-            [Display(Name = "new password")]
-            public string NewPassword { get; set; }
-
-            [DataType(DataType.Password)]
-            [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "The passwords do not match.")]
-            public string ConfirmPassword { get; set; }
-        }
-
-        private async Task LoadAsync(User user)
-        {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var email = await _userManager.GetEmailAsync(user);
-
-            Username = userName;
-            Email = email;
-
-            Input = new InputModel
-            {
-               NewUserName = userName
-            };
-        }
-
-        public async Task<IActionResult> OnGetAsync()
-        {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            await LoadAsync(user);
-            return Page();
-        }
-
-        public async Task<IActionResult> OnPostUserNameAsync()
-        {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            if (!ModelState.IsValid)
-            {
-  
-                return RedirectToPage();
-            }
-
-            var userName = await _userManager.GetUserNameAsync(user);
-            await Console.Out.WriteLineAsync("siuuu");
-            if (!Input.NewUserName.Equals(userName))
-            {
-                var setUserNameResult = await _userManager.SetUserNameAsync(user, Input.NewUserName);
-                if (!setUserNameResult.Succeeded)
-                {
-                    StatusMessage = "Unexpected error when trying to update username.";
-                    return RedirectToPage();
-                }
-            }
-
-            await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
-            return RedirectToPage();
-        }
-
-        public async Task<IActionResult> OnPostPasswordAsync()
-        {
-            await Console.Out.WriteLineAsync("ola");
-            if (!ModelState.IsValid)
-            {
-                return RedirectToPage();
-            }
-
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
-            if (!changePasswordResult.Succeeded)
-            {
-                foreach (var error in changePasswordResult.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-                return RedirectToPage();
-            }
-
-            await _signInManager.RefreshSignInAsync(user);
-            _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
-
-            return RedirectToPage();
-        }
+      [DataType(DataType.Password)]
+      [Display(Name = "Confirm new password")]
+      [Compare("NewPassword", ErrorMessage = "The passwords do not match.")]
+      public string ConfirmPassword { get; set; }
     }
+
+    private async Task LoadAsync(User user)
+    {
+      var userName = await userManager.GetUserNameAsync(user);
+      var email = await userManager.GetEmailAsync(user);
+
+      Username = userName;
+      Email = email;
+
+      Input = new InputModel
+      {
+        NewUserName = userName
+      };
+    }
+
+    public async Task<IActionResult> OnGetAsync()
+    {
+      var user = await userManager.GetUserAsync(User);
+      if (user == null)
+      {
+        return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+      }
+
+      await LoadAsync(user);
+      return Page();
+    }
+
+    public async Task<IActionResult> OnPostUserNameAsync()
+    {
+      foreach (var a in ModelState) await Console.Out.WriteLineAsync("model: " + a);
+      var user = await userManager.GetUserAsync(User);
+      if (user == null)
+        return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+
+      if (!ModelState.IsValid)
+      {
+        StatusMessage = "Model is invalid";
+        return Page();
+      }
+
+      if (!Input.NewUserName.Equals(user.UserName))
+      {
+        var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
+        if (!setUserNameResult.Succeeded)
+        {
+          StatusMessage = "Unexpected error when trying to update username.";
+          return Page();
+        }
+      }
+
+      await signInManager.RefreshSignInAsync(user);
+      StatusMessage = "Your profile has been updated";
+      return RedirectToPage();
+    }
+
+    public async Task<IActionResult> OnPostPasswordAsync()
+    {
+      foreach(var a in ModelState) await Console.Out.WriteLineAsync("model: "+a);
+      if (!ModelState.IsValid)
+      {
+        StatusMessage = "Model is invalid";
+        return Page();
+      }
+
+      var user = await userManager.GetUserAsync(User);
+      if (user == null)
+      {
+        return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+      }
+
+      var changePasswordResult = await userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
+      if (!changePasswordResult.Succeeded)
+      {
+        foreach (var error in changePasswordResult.Errors)
+        {
+          ModelState.AddModelError(string.Empty, error.Description);
+        }
+        return Page();
+      }
+
+      await signInManager.RefreshSignInAsync(user);
+      logger.LogInformation("User changed their password successfully.");
+      StatusMessage = "Your password has been changed.";
+
+      return RedirectToPage();
+    }
+  }
 }
