@@ -95,24 +95,17 @@
         </div>
         <div class="col-2">
             <form>
-                <div class="form-check form-switch">
-                    @* <label class="text-light">Activate 2FA</label>
-                     <input  style="float:right" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked> *@
-                      
-            
+                <div class="form-check form-switch">  
                     @if (Model.Is2faEnabled)
                     {
                         Console.WriteLine(Model.Is2faEnabled);
-                        <a asp-page="./Disable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px" class="btn-purple submit">Disable 2FA</a>
-                 
+                        <a asp-page="./Disable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px" class="btn-purple submit">Disable 2FA</a>               
                     }
                     else
                     {
                         Console.WriteLine(Model.Is2faEnabled);
                         <a asp-page="./Enable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px"  class="btn-blue-big submit">Enable 2FA</a>
                     }
-                       
-                    
                 </div>
                 <div class="form-check form-switch" style="margin-top: 2rem; margin-bottom: 1rem;">
                     <label class="text-light">Private account</label>

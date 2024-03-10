@@ -107,9 +107,8 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            Console.WriteLine("AAAAAAAAAAAA");
+           
             Is2faEnabled = await _userManager.GetTwoFactorEnabledAsync(user);
-            Console.WriteLine(Is2faEnabled);
             return Page();
         }
 
