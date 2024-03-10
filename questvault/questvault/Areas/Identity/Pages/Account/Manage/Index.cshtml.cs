@@ -36,6 +36,12 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
+        public bool Is2faEnabled { get; set; }
+
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
         [TempData]
         public string StatusMessage { get; set; }
 
@@ -87,17 +93,23 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             {
                 PhoneNumber = phoneNumber
             };
+            
+            Is2faEnabled = await _userManager.GetTwoFactorEnabledAsync(user);
+           
+            
         }
 
         public async Task<IActionResult> OnGetAsync()
         {
+        
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
-            await LoadAsync(user);
+            Console.WriteLine("AAAAAAAAAAAA");
+            Is2faEnabled = await _userManager.GetTwoFactorEnabledAsync(user);
+            Console.WriteLine(Is2faEnabled);
             return Page();
         }
 

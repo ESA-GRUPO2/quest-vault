@@ -5,6 +5,7 @@
 @import url(forgotPw.css);
 @import url(2fa-login.css);
 @import url(results.css);
+@import url(2fa.css);
 
 
 @media (min-width: 768px) {
@@ -63,6 +64,19 @@ body {
     border: 3px #711C91;
     border-radius: 60px;
     margin-bottom: 40px;
+}
+
+.btn-blue-big {
+    background: #0ABDC6;
+    color: #091833;
+    border-radius: 24px;
+    width: 10.5rem;
+    height: 2.75rem;
+    padding: 6px;
+    border: none;
+    text-align: center;
+    font-weight: bolder;
+    line-height: 30px;
 }
 
 .btn-blue:active {
