@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Results";
+}
+
+<div class="results-game">
+    <h2 style="color:white">Games</h2>
+    <hr class="bar" style="margin-bottom: 25px; width: 100%;">
+    <div class="d-flex main-section-result">
+         <div class="filter-section">
+            <h4 style="color: white; margin-bottom:50px">Filters</h4>
+            <select class="select-results" name="Category" id="category">
+                <option value="none" selected disabled hidden>Category</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select><br>
+            <select class="select-results" name="Rating" id="rating">
+                <option value="none" selected disabled hidden>Rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            <select class="select-results" name="Year" id="year">
+                <option value="none" selected disabled hidden>Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            <select class="select-results" name="Platform" id="platform">
+                <option value="none" selected disabled hidden>Platform</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                </select><br>
+            <a class="clear-results" href="" style="color:white; font-size: 120%; margin-top:25px">Clear Filters</a>
+         </div>
+        <div class="game-section">
+             <div class="game-row">
+                <button class="game-button"><img src="../img/gta.png"></button>
+                <button class="game-button"><img src="../img/granturismo.png"></button>
+                <button class="game-button"><img src="../img/gta.png"></button>
+                <button class="game-button"><img src="../img/gta.png"></button>
+                <button class="game-button"><img src="../img/gta.png"></button>
+            </div>
+            <div class="game-row">
+                <button class="game-button"><img src="../img/granturismo.png"></button>
+                <button class="game-button"><img src="../img/gta.png"></button>
+                <button class="game-button"><img src="../img/gta.png"></button>
+            </div>
+         
+        </div>
+    </div>
+   
+
+</div>
