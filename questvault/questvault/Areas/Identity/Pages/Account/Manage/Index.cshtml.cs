@@ -56,9 +56,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Phone]
-            [Display(Name = "Phone number")]
-            public string PhoneNumber { get; set; }
+            [StringLength(100, ErrorMessage = "The {0} already exits.", MinimumLength = 6)]
+            [DataType(DataType.Text)]
+            [Display(Name = "user name")]
+            public string UserName { get; set; }
+
             [Required]
             [DataType(DataType.Password)]
             [Display(Name = "password")]
@@ -79,13 +81,13 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
         private async Task LoadAsync(User user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var email = await _userManager.GetEmailAsync(user);
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                Email = email
             };
         }
 
@@ -115,6 +117,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             }
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
+            var changeUserNameResult = await _userManager.ChangeUserNameAsync(user, Input.NewUserName);
             if (!changePasswordResult.Succeeded)
             {
                 foreach (var error in changePasswordResult.Errors)
