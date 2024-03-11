@@ -12,5 +12,6 @@ namespace questvault.Data
       base.OnModelCreating(builder);
       builder.Entity<TwoFactorAuthenticationTokens>().HasKey(t => t.UserId);
     }
+      public DbSet<questvault.Models.Games> Games { get; set; } = default!;
   }
 }
