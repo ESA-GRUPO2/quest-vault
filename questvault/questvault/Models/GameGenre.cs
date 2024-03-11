@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace questvault.Models
 {
     [PrimaryKey(nameof(GamesID), nameof(GenresID))]
-    public class GamesGenres
+    public class GameGenre
     {
 
         [Column(Order = 0)]
@@ -14,9 +14,9 @@ namespace questvault.Models
         public int GenresID { get; set; }
 
         [ForeignKey(nameof(GamesID))]
-        public virtual Games? Game { get; set; }
+        public virtual Game? Game { get; set; }
 
         [ForeignKey(nameof(GenresID))]
-        public virtual Genres? Genre { get; set; }
+        public virtual Genre? Genre { get; set; }
     }
 }

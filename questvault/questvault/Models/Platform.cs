@@ -10,7 +10,7 @@ namespace questvault.Models
 
         // Relacionamento Muitos-Para-Muitos com Games
     
-        public virtual List<Games>? Games { get; set; }
+        public virtual List<GamePlatform>? GamePlatform { get; set; }
 
     }
 }

@@ -12,7 +12,7 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240311174350_initial")]
+    [Migration("20240311221358_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -167,7 +167,6 @@ namespace questvault.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CompanyID"));
 
                     b.Property<string>("CompanyName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CompanyID");
@@ -175,7 +174,7 @@ namespace questvault.Migrations
                     b.ToTable("Company");
                 });
 
-            modelBuilder.Entity("questvault.Models.Games", b =>
+            modelBuilder.Entity("questvault.Models.Game", b =>
                 {
                     b.Property<int>("GameID")
                         .ValueGeneratedOnAdd()
@@ -183,15 +182,9 @@ namespace questvault.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GameID"));
 
-                    b.Property<int?>("CompanyID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PlatformID")
-                        .HasColumnType("int");
 
                     b.Property<double>("Rating")
                         .HasColumnType("float");
@@ -201,10 +194,6 @@ namespace questvault.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GameID");
-
-                    b.HasIndex("CompanyID");
-
-                    b.HasIndex("PlatformID");
 
                     b.ToTable("Games");
 
@@ -234,14 +223,14 @@ namespace questvault.Migrations
                         {
                             GameID = 472,
                             Name = "The Elder Scrolls V: Skyrim",
-                            Rating = 87.69369540690036,
+                            Rating = 87.693632575276098,
                             Summary = "Skyrim reimagines and revolutionizes the open-world fantasy epic, bringing to life a complete virtual world open for you to explore any way you choose. Play any type of character you can imagine, and do whatever you want; the legendary freedom of choice, storytelling, and adventure of The Elder Scrolls is realized like never before."
                         },
                         new
                         {
                             GameID = 71,
                             Name = "Portal",
-                            Rating = 86.777775518353337,
+                            Rating = 86.77786063289426,
                             Summary = "Waking up in a seemingly empty laboratory, the player is made to complete various physics-based puzzle challenges through numerous test chambers in order to test out the new Aperture Science Handheld Portal Device, without an explanation as to how, why or by whom."
                         },
                         new
@@ -262,7 +251,7 @@ namespace questvault.Migrations
                         {
                             GameID = 1009,
                             Name = "The Last of Us",
-                            Rating = 93.352240521857155,
+                            Rating = 93.378495290975025,
                             Summary = "A third person shooter/stealth/survival hybrid, in which twenty years after the outbreak of a parasitic fungus which takes over the neural functions of humans, Joel, a Texan with a tragic familial past, finds himself responsible with smuggling a fourteen year old girl named Ellie to a militia group called the Fireflies, while avoiding strict and deadly authorities, infected fungal hosts and other violent survivors."
                         },
                         new
@@ -283,7 +272,7 @@ namespace questvault.Migrations
                         {
                             GameID = 733,
                             Name = "Grand Theft Auto: Vice City",
-                            Rating = 87.668782476460905,
+                            Rating = 87.668736667965959,
                             Summary = "In the year 1986, Tommy Vercetti is heavily indebted to his mafia superiors after a drug deal gone awry, but his dreams of taking over Vice City (based on Miami) push him down a different path. Featuring a wide variety of vehicles and weapons, radio stations playing hit songs from the era and an intense atmosphere, GTA: Vice City is an open-world sandbox satire of '80's Miami."
                         },
                         new
@@ -332,14 +321,14 @@ namespace questvault.Migrations
                         {
                             GameID = 25076,
                             Name = "Red Dead Redemption 2",
-                            Rating = 92.518490744523689,
+                            Rating = 92.518578035229169,
                             Summary = "Red Dead Redemption 2 is the epic tale of outlaw Arthur Morgan and the infamous Van der Linde gang, on the run across America at the dawn of the modern age."
                         },
                         new
                         {
                             GameID = 73,
                             Name = "Mass Effect",
-                            Rating = 86.295074852037885,
+                            Rating = 86.29489295166735,
                             Summary = "What starts as a routine mission to an agrarian outpost quickly becomes the opening salvo in an epic war. As the newly appointed Executive Officer of the SSV Normandy, you'll assemble and lead an elite squad of heroes into battle after heart-pounding battle. Each decision you make will impact not only your fate, but the destiny of the entire galaxy in the Mass Effect trilogy.\n\nKey Features:\n\nIncredible, interactive storytelling. Create and customize your own character, from Commander Shepard's appearance and skills to a personalized arsenal. Unleash devastating abilities as you command and train. Your decisions will control the outcome of each mission, your relationships with your crew and ultimately the entire war.\n\nAn amazing universe to explore. From the massive Citadel to the harsh, radioactive landscape of the Krogan home world – the incredible breadth of the Mass Effect universe will blow you away. Travel to the farthest outposts aboard the SSV Normandy, the most technologically advanced ship in the galaxy. You'll follow the clues left by ancient civilizations, discover hidden bases with fantastic new tech and lead your hand-picked crew into explosive alien battles.\n\nEdge-of-your-seat excitement meets strategic combat. Find the perfect combination of squad-mates and weapons for each battle if you want to lead them to victory. Sun-Tzu's advice remains as pertinent in 2183 as it is today – know your enemy. You'll need different tactics for a squad of enemies with devastating biotic attacks than a heavily armored Geth Colossus so choose your teams wisely."
                         },
                         new
@@ -395,14 +384,14 @@ namespace questvault.Migrations
                         {
                             GameID = 16,
                             Name = "Fallout: New Vegas",
-                            Rating = 87.019966534345784,
+                            Rating = 87.019099720547615,
                             Summary = "In this first-person Western RPG, the player takes on the role of Courier 6, barely surviving after being robbed of their cargo, shot and put into a shallow grave by a New Vegas mob boss. The Courier sets out to track down their robbers and retrieve their cargo, and winds up getting tangled in the complex ideological and socioeconomic web of the many factions and settlements of post-nuclear Nevada."
                         },
                         new
                         {
                             GameID = 121,
                             Name = "Minecraft",
-                            Rating = 84.033979625235503,
+                            Rating = 84.033924710567121,
                             Summary = "Minecraft focuses on allowing the player to explore, interact with, and modify a dynamically-generated map made of one-cubic-meter-sized blocks. In addition to blocks, the environment features plants, mobs, and items. Some activities in the game include mining for ore, fighting hostile mobs, and crafting new blocks and tools by gathering various resources found in the game. The game's open-ended model allows players to create structures, creations, and artwork on various multiplayer servers or their single-player maps. Other features include redstone circuits for logic computations and remote actions, minecarts and tracks, and a mysterious underworld called the Nether. A designated but completely optional goal of the game is to travel to a dimension called the End, and defeat the ender dragon."
                         },
                         new
@@ -479,7 +468,7 @@ namespace questvault.Migrations
                         {
                             GameID = 731,
                             Name = "Grand Theft Auto IV",
-                            Rating = 83.571344737558988,
+                            Rating = 83.571419141337344,
                             Summary = "Grand Theft Auto IV is an action-adventure video game developed by Rockstar North and published by Rockstar Games. It is the eleventh title in the Grand Theft Auto series, and the first main entry since 2004's Grand Theft Auto: San Andreas.\n\nThe game is played from a third-person perspective and its world is navigated on-foot or by vehicle. Throughout the single-player mode, players play as Niko Bellic. An online multiplayer mode is included with the game, allowing up to 32 players to engage in both co-operative and competitive gameplay in a recreation of the single-player setting.\n\nTwo expansion packs were later released for the game, The Lost and Damned and The Ballad of Gay Tony, which both feature new plots that are interconnected with the main Grand Theft Auto IV storyline, and follow new protagonists."
                         },
                         new
@@ -561,7 +550,24 @@ namespace questvault.Migrations
                         });
                 });
 
-            modelBuilder.Entity("questvault.Models.GamesGenres", b =>
+            modelBuilder.Entity("questvault.Models.GameCompany", b =>
+                {
+                    b.Property<int>("GameID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<int>("CompanyID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("GameID", "CompanyID");
+
+                    b.HasIndex("CompanyID");
+
+                    b.ToTable("GameCompany");
+                });
+
+            modelBuilder.Entity("questvault.Models.GameGenre", b =>
                 {
                     b.Property<int>("GamesID")
                         .HasColumnType("int")
@@ -575,7 +581,7 @@ namespace questvault.Migrations
 
                     b.HasIndex("GenresID");
 
-                    b.ToTable("GamesGenres");
+                    b.ToTable("GameGenre");
 
                     b.HasData(
                         new
@@ -1205,7 +1211,24 @@ namespace questvault.Migrations
                         });
                 });
 
-            modelBuilder.Entity("questvault.Models.Genres", b =>
+            modelBuilder.Entity("questvault.Models.GamePlatform", b =>
+                {
+                    b.Property<int>("GameID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<int>("PlatformID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("GameID", "PlatformID");
+
+                    b.HasIndex("PlatformID");
+
+                    b.ToTable("GamePlatform");
+                });
+
+            modelBuilder.Entity("questvault.Models.Genre", b =>
                 {
                     b.Property<int>("GenreID")
                         .ValueGeneratedOnAdd()
@@ -1214,7 +1237,6 @@ namespace questvault.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenreID"));
 
                     b.Property<string>("GenreName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GenreID");
@@ -1502,26 +1524,34 @@ namespace questvault.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("questvault.Models.Games", b =>
+            modelBuilder.Entity("questvault.Models.GameCompany", b =>
                 {
-                    b.HasOne("questvault.Models.Company", null)
-                        .WithMany("Games")
-                        .HasForeignKey("CompanyID");
+                    b.HasOne("questvault.Models.Company", "Company")
+                        .WithMany("GameCompany")
+                        .HasForeignKey("CompanyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("questvault.Models.Platform", null)
-                        .WithMany("Games")
-                        .HasForeignKey("PlatformID");
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany("GameCompany")
+                        .HasForeignKey("GameID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Game");
                 });
 
-            modelBuilder.Entity("questvault.Models.GamesGenres", b =>
+            modelBuilder.Entity("questvault.Models.GameGenre", b =>
                 {
-                    b.HasOne("questvault.Models.Games", "Game")
+                    b.HasOne("questvault.Models.Game", "Game")
                         .WithMany("GamesGenres")
                         .HasForeignKey("GamesID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("questvault.Models.Genres", "Genre")
+                    b.HasOne("questvault.Models.Genre", "Genre")
                         .WithMany("GamesGenres")
                         .HasForeignKey("GenresID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1530,6 +1560,25 @@ namespace questvault.Migrations
                     b.Navigation("Game");
 
                     b.Navigation("Genre");
+                });
+
+            modelBuilder.Entity("questvault.Models.GamePlatform", b =>
+                {
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany("GamePlatform")
+                        .HasForeignKey("GameID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.Platform", "Platform")
+                        .WithMany("GamePlatform")
+                        .HasForeignKey("PlatformID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+
+                    b.Navigation("Platform");
                 });
 
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
@@ -1545,22 +1594,26 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.Company", b =>
                 {
-                    b.Navigation("Games");
+                    b.Navigation("GameCompany");
                 });
 
-            modelBuilder.Entity("questvault.Models.Games", b =>
+            modelBuilder.Entity("questvault.Models.Game", b =>
                 {
+                    b.Navigation("GameCompany");
+
+                    b.Navigation("GamePlatform");
+
                     b.Navigation("GamesGenres");
                 });
 
-            modelBuilder.Entity("questvault.Models.Genres", b =>
+            modelBuilder.Entity("questvault.Models.Genre", b =>
                 {
                     b.Navigation("GamesGenres");
                 });
 
             modelBuilder.Entity("questvault.Models.Platform", b =>
                 {
-                    b.Navigation("Games");
+                    b.Navigation("GamePlatform");
                 });
 #pragma warning restore 612, 618
         }

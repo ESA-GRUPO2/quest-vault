@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace questvault.Models
 {
-    public class Games
+    public class Game
     {
 
         [Key]
@@ -13,13 +13,13 @@ namespace questvault.Models
 
         // Relacionamento Muitos-Para-Muitos com Genres
        
-        public List<GamesGenres> GamesGenres { get; set; }
+        public List<GameGenre>? GamesGenres { get; set; }
 
         //// Relacionamento Muitos-Para-Muitos com Platforms
-        //public virtual List<Platform>? Platforms { get; set; }
+        public virtual List<GamePlatform>? GamePlatform { get; set; }
 
         //// Relacionamento Muitos-Para-Muitos com Companies
-        //public virtual List<Company>? Companies { get; set; }
+        public virtual List<GameCompany>? GameCompany { get; set; }
 
         public double Rating { get; set; }
 
