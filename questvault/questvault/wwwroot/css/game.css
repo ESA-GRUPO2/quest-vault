@@ -1,13 +1,14 @@
 ﻿.game-details {
     margin: 0px 71px 0px 71px;
-}
-
-.game-title {
     color: white;
 }
 
+.game-title {
+
+}
+
 .game-cover{
-    max-width: 13rem;
+    max-width: 12rem;
     border: solid white 1px;
 }
 
@@ -27,12 +28,22 @@
 
 }
 
-.game-about{
-    color: white;
+.game-about {
+
 }
 
 .game-captures{
 
+}
+
+.game-captures .card-group {
+    padding: .7rem;
+    background-color: #133e7c;
+    border-radius: 5px;
+}
+
+.game-captures .card, .card-img {
+    border-radius: unset;
 }
 
 .game-review{

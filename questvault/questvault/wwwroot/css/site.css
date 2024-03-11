@@ -11,10 +11,10 @@
 @media (min-width: 768px) {
 
 }
+
 * {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 500;
     font-style: normal;
     font-variation-settings: "slnt";
 }
@@ -40,8 +40,12 @@ body {
     margin-right: auto;
     margin-left: auto;
     width: 94%;
-    height: 10px;
+    height: 8px;
     opacity: 1;
+    border-top: none;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    width: 100%;
 }
 
 .title {
