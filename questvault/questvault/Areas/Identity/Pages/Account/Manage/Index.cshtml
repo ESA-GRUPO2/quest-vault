@@ -24,7 +24,7 @@
     <div class="row align-items-baseline row-spacing">
         <div class="row">
             <h4 style="padding-left:18rem; margin-bottom: 2rem" class="text-light">Account Details</h4>
-            <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div>
+             <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div> @* isto precisa de estar, pode nao ser aqui mas quanto a isso desenmerda-te *@
         </div>
         <div class="col-2 d-block justify-content-center">
             <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label asp-for="Input.OldPassword" class=" col-sm-4 col-form-label text-light">New password</label>
+                    <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
                     <div class="col-sm-8">
                         <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
                         <div style="height:1px">

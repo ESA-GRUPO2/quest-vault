@@ -47,20 +47,24 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
       ///     directly from your code. This API may change or be removed in future releases.
       /// </summary>
+
       [StringLength(100, ErrorMessage = "This {0} already exits.")]
       [DataType(DataType.Text)]
       [Display(Name = "user name")]
       public string NewUserName { get; set; }
 
+      [Required]
       [DataType(DataType.Password)]
       [Display(Name = "password")]
       public string OldPassword { get; set; }
 
+      [Required]
       [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
       [DataType(DataType.Password)]
       [Display(Name = "new password")]
       public string NewPassword { get; set; }
 
+      [Required]
       [DataType(DataType.Password)]
       [Display(Name = "Confirm new password")]
       [Compare("NewPassword", ErrorMessage = "The passwords do not match.")]
@@ -97,9 +101,9 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     {
       var user = await userManager.GetUserAsync(User);
       if (user == null) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
-      if (!ModelState.IsValid)
+      if (string.IsNullOrEmpty(Input.NewUserName))
       {
-        StatusMessage = "Model is invalid";
+        ModelState.AddModelError(string.Empty, "UserName field cannot be empty");
         return Page();
       }
 
@@ -109,7 +113,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
         var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
         if (!setUserNameResult.Succeeded)
         {
-          StatusMessage = "Unexpected error when trying to update username.";
+          ModelState.AddModelError(string.Empty, "Unexpected error when trying to update username.");
           return Page();
         }
       }
@@ -123,7 +127,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     {
       if (!ModelState.IsValid)
       {
-        StatusMessage = "Model is invalid";
+        ModelState.AddModelError(string.Empty, "Fields cannot be empty");
         return Page();
       }
 
