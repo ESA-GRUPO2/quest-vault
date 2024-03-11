@@ -7,9 +7,9 @@ namespace questvault.Models
     {
         [Key]
         public int CompanyID { get; set; }
-        public string CompanyName { get; set; }
+        public string? CompanyName { get; set; }
 
         // Relacionamento Muitos-Para-Muitos com Games
-        public virtual List<Games>? Games { get; set; }
+        public virtual List<GameCompany>? GameCompany { get; set; }
     }
 }
