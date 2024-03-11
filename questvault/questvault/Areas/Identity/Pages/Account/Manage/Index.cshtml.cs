@@ -103,8 +103,8 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       if (user == null) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
       if (string.IsNullOrEmpty(Input.NewUserName))
       {
-        ModelState.AddModelError(string.Empty, "UserName field cannot be empty");
-        return Page();
+            ModelState.AddModelError(string.Empty, "User name cannot be empty");
+            return Page();
       }
 
       var userName = user.UserName;
@@ -119,7 +119,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       }
 
       await signInManager.RefreshSignInAsync(user);
-      StatusMessage = "Your profile has been updated";
+      StatusMessage = "Your username has been updated";
       return RedirectToPage();
     }
 
