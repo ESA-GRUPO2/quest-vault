@@ -52,12 +52,10 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       [Display(Name = "user name")]
       public string NewUserName { get; set; }
 
-      [Required]
       [DataType(DataType.Password)]
       [Display(Name = "password")]
       public string OldPassword { get; set; }
 
-      [Required]
       [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
       [DataType(DataType.Password)]
       [Display(Name = "new password")]
@@ -97,20 +95,16 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
     public async Task<IActionResult> OnPostUserNameAsync()
     {
-      //foreach (var a in ModelState) await Console.Out.WriteLineAsync("model: " + a);
       var user = await userManager.GetUserAsync(User);
-      if (user == null)
-        return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
-
-      //if (Input.NewUserName == null) se rebentar a culpa é tua
-      if (Input.NewUserName.Equals(null))
+      if (user == null) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+      if (!ModelState.IsValid)
       {
-        StatusMessage = "Empty field";
+        StatusMessage = "Model is invalid";
         return Page();
       }
 
-    var userName = await userManager.GetUserNameAsync(user);
-    if (Input.NewUserName != userName)
+      var userName = user.UserName;
+      if (!Input.NewUserName.Equals(userName))
       {
         var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
         if (!setUserNameResult.Succeeded)
@@ -127,7 +121,6 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
     public async Task<IActionResult> OnPostPasswordAsync()
     {
-      foreach(var a in ModelState) await Console.Out.WriteLineAsync("model: "+a);
       if (!ModelState.IsValid)
       {
         StatusMessage = "Model is invalid";
