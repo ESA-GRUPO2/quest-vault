@@ -2,36 +2,52 @@
     ViewData["Title"] = "Game";
 }
 
-<section class="game-details">
+<div class="game-details">
 
-    <div class="d-flex main-section justify-content-evenly">
+    <section class="d-flex main-section">
         <img class="game-cover image-fluid" src="../img/gta.png" />
-        <div class="container-fluid ms-3">
+        <div class="container-fluid ms-3 mt-3">
             <h2 class="game-title m-auto">Game Name</h2>
-            <div class="container align-content-end d-flex">
-                <div class="game-filters me-5">
-                    <p>Add Game</p>
+            <div class="container ps-0 mt-4">
+                <div class="game-filters row me-5">
+                    <div class="col-auto text-decoration-underline">Adventure</div>
+                    <div class="col-auto text-decoration-underline">Action</div>
+                    <div class="col-auto text-decoration-underline">RPG</div>
                 </div>
-                <div class="game-user-status">
-                    <p>Game Status</p>
+                <div class="game-user-status align-content-end mt-5">
+                    <div class="d-inline-flex">
+                        <select #game (change)="onSelected(game.value)" class="select-results col-1 me-2" aria-label="Default select example">
+                            <option selected>Add Game</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <select #status (change)="onSelected(status.value)" class="select-results col-1" aria-label="Default select example">
+                            <option selected>Status</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <div class="game-score container-fluid align-items-end align-content-end">
+        <div class="game-score container-fluid align-content-end mt-3">
             <h3>User Score</h3>
-            @* rating stars *@
+            @* global rating stars *@
             <p>4.0</p>
         </div>
         <div class="game-platforms"></div>
-    </div>
+    </section>
 
     <hr class="bar">
 
-    <div class="d-flex main-section">
+    <section class="d-flex main-section">
 
         <div class="container-fluid justify-content-between">
             <div class="game-about align-top mb-5">
-                <h3 class="align-content-start">Summary</h3>
+                <h4 class="align-content-start">Summary</h4>
                 <p class="text-break text-wrap">Grand Theft Auto V is a vast open world game set in Los Santos, a sprawling sun-soaked metropolis struggling to stay afloat in an era of economic uncertainty and cheap reality TV. The game blends storytelling and gameplay in new ways as players repeatedly jump in and out of the lives of the game’s three lead characters, playing all sides of the game’s interwoven story.</p>
             </div>
             <div class="game-captures align-bottom">
@@ -51,8 +67,10 @@
             </div>
         </div>
         <div class="game-review container-fluid">
-            <h3>Your Review</h3>
-            <div class="review-user-score"></div>
+            <h4>Your Review</h4>
+            <div class="review-user-score">
+                @* user rating stars *@
+            </div>
             <div class="review-user-publish">
                 <form>
                     <textarea></textarea>
@@ -60,5 +78,5 @@
                 </form>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>

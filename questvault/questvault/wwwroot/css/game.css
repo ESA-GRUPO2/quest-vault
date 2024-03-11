@@ -1,10 +1,10 @@
 ﻿.game-details {
     margin: 0px 71px 0px 71px;
     color: white;
+    margin-bottom: 12vh;
 }
 
 .game-title {
-
 }
 
 .game-cover{
@@ -21,19 +21,19 @@
 }
 
 .game-score{
-
+    text-align: right;
 }
 
-.game-platforms{
-
+.game-platforms {
+    text-align: right;
 }
 
 .game-about {
-
+    text-align: justify;
 }
 
 .game-captures{
-
+    width: auto;
 }
 
 .game-captures .card-group {
@@ -46,8 +46,8 @@
     border-radius: unset;
 }
 
-.game-review{
-
+.game-review {
+    text-align: right;
 }
 
 .review-user-score{
