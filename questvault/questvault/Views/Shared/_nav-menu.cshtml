@@ -23,7 +23,7 @@
             <ul class="navbar-nav ms-auto me-1 mb-lg-0">
             @if (SignInManager.IsSignedIn(User))
             {
-                    <li class="align-self-center" style="padding-right: 15rem">
+                    <li class="align-self-center">
                         <form asp-controller="TesteIGDB" asp-action="SearchForm" method="post">
                         <div class="search-bar d-flex">
                              <input id="searchTerm" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
@@ -32,10 +32,16 @@
                              </div>
                             <button class="outside-search" type="submit">
                                     <img src="\img\vector\magnifying.svg" class="search-btn" />
-                            </button>                  
-                        </div>
+                            </button>
+                                
+                        </div>       
                     </form>
-                </li>
+                    </li>
+                    <li class="nav-item align-self-center ms-3" style="padding-right: 15rem">
+                        <button class="btn btn-primary nav-btn" style="margin-bottom:0; border-radius: 50%; height: 40px; width: 40px;">
+                            <img src="\img\vector\help.svg" alt="Help Icon" class="nav-vector" style="padding-bottom: 4px; height: 1.8rem;" />
+                        </button>
+                    </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
                         <a class="btn btn-primary nav-btn" asp-controller="Home" asp-action="GameResults">
@@ -51,8 +57,8 @@
 
                 <li class="nav-item ms-3 d-flex align-self-center">
                     <div class="dropdown">
-                        <button class="btn btn-info user-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="\img\vector\user.svg" alt="Key Icon" class="nav-vector">
+                            <button class="btn btn-primary nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 55px; width: 55px;">
+                                <img src="\img\vector\user.svg" alt="Key Icon" class="nav-vector ms-1" style="height: 1.6rem">
                         </button>
                         <ul class="dropdown-menu">
                             <li><p class="dropdown-item">@User.Identity?.Name</p></li>

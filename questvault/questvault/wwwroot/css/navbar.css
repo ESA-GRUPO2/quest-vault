@@ -132,16 +132,3 @@
     width: 25px;
 }
 
-.user-btn {
-    border-radius: 50%;
-    background-color: #0abdc6;
-    height: 55px;
-    width: 55px;
-}
-
-.user-btn:hover {
-    border-radius: 50%;
-    background-color: #0abdc6;
-    height: 55px;
-    width: 55px;
-}

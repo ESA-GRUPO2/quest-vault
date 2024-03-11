@@ -77,6 +77,18 @@ body {
     text-align: center;
     font-weight: bolder;
     line-height: 30px;
+    text-decoration: none;
+}
+
+.btn-blue-big:active {
+    background-color: white;
+    color: #091833;
+    border: 3px #711C91;
+}
+
+.btn-blue-big:hover {
+    background: #133E7C;
+    color: #ffffff;
 }
 
 .btn-blue:active {
