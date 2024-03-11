@@ -1,6 +1,6 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
+#nullable enable
 
 using System;
 using System.Threading.Tasks;
@@ -12,14 +12,14 @@ using questvault.Models;
 
 namespace questvault.Areas.Identity.Pages.Account.Manage
 {
-    public class Disable2faModel : PageModel
+    public class Enable2faModel : PageModel
     {
         private readonly UserManager<User> _userManager;
-        private readonly ILogger<Disable2faModel> _logger;
+        private readonly ILogger<Enable2faModel> _logger;
 
-        public Disable2faModel(
+        public Enable2faModel(
             UserManager<User> userManager,
-            ILogger<Disable2faModel> logger)
+            ILogger<Enable2faModel> logger)
         {
             _userManager = userManager;
             _logger = logger;
@@ -42,10 +42,10 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
             if (!await _userManager.GetTwoFactorEnabledAsync(user))
             {
-                throw new InvalidOperationException($"Cannot disable 2FA for user as it's not currently enabled.");
+                return Page();
             }
-
-            return Page();
+            throw new InvalidOperationException($"Cannot enable 2FA for user as it's currently enabled.");
+            
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -56,14 +56,14 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            var disable2faResult = await _userManager.SetTwoFactorEnabledAsync(user, false);
-            if (!disable2faResult.Succeeded)
+            var enable2faResult = await _userManager.SetTwoFactorEnabledAsync(user, true);
+            if (!enable2faResult.Succeeded)
             {
-                throw new InvalidOperationException($"Unexpected error occurred disabling 2FA.");
+                throw new InvalidOperationException($"Unexpected error occurred enabling 2FA.");
             }
 
-            _logger.LogInformation("User with ID '{UserId}' has disabled 2fa.", _userManager.GetUserId(User));
-            StatusMessage = "2fa has been disabled.";
+            _logger.LogInformation("User with ID '{UserId}' has Enabled 2fa.", _userManager.GetUserId(User));
+            StatusMessage = "2fa has been Enabled.";
             return RedirectToPage("./Index");
         }
     }
