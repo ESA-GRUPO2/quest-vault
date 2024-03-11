@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    
 }
 
 <nav class="navbar navbar-dark fixed-top navbar-expand-lg nav-main nav-bg">
@@ -23,24 +24,40 @@
             <ul class="navbar-nav ms-auto me-1 mb-lg-0">
             @if (SignInManager.IsSignedIn(User))
             {
-                    <li class="align-self-center" style="padding-right: 15rem">
+                    <li class="align-self-center">
                         <form asp-controller="TesteIGDB" asp-action="SearchForm" method="post">
                         <div class="search-bar d-flex">
                              <input id="searchTerm" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
                              <div id="searchResults" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <!-- Resultados da pesquisa aqui -->
                              </div>
-                            <button class="search-btn" type="submit">
+                            <button class="outside-search" type="submit">
                                     <img src="\img\vector\magnifying.svg" class="search-btn" />
                             </button>
-                            
-                             
-                        </div>
+                                
+                        </div>       
                     </form>
-                </li>
+                    </li>
+                    <li class="nav-item align-self-center ms-3" style="padding-right: 15rem">
+                        <div class="dropdown">
+                            <button class="btn btn-primary nav-btn" type="button" id="helpDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%; height: 40px; width: 40px;">
+                                <img src="\img\vector\help.svg" alt="Help Icon" class="nav-vector" style="padding-bottom: 4px; height: 1.8rem;" />
+                            </button>
+                            <ul class="dropdown-menu" style="background: #133E7C !important;" aria-labelledby="helpDropdown">
+                                <li>
+                                    <div class="dropdown-item" style="color: white !important;
+                                         background: #133E7C !important;">
+                                        @Html.Raw(@ViewData["help_Text"])
+                                    </div>
+                                </li>
+                                
+                                    <!-- Adicione mais itens de menu conforme necessário -->
+                                </ul>
+                        </div>
+                    </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
-                    <a class="btn btn-primary nav-btn" asp-area="" asp-page="" asp-route-returnUrl="">
+                        <a class="btn btn-primary nav-btn" asp-controller="Home" asp-action="GameResults">
                         <img src="\img\vector\gamepad.svg" alt="Key Icon" class="nav-vector pe-2"> Games
                     </a>
                 </li>
@@ -52,21 +69,26 @@
                 </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
-                    <div class="dropdown">
-                        <button class="btn btn-info user-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="\img\vector\user.svg" alt="Key Icon" class="nav-vector">
+                    <div class="dropdown" style="position:relative">
+                            <button class="btn btn-primary nav-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
+                                <img src="\img\vector\user.svg" alt="Key Icon" class="nav-vector mb-1" style="height: 1.7rem">
                         </button>
-                        <ul class="dropdown-menu">
-                            <li><p class="dropdown-item">@User.Identity?.Name</p></li>
+                            <ul class="dropdown-menu" style="right:0; left:auto; background: #133E7C !important;">
+                                <li>
+                                    <p class="dropdown-item" style="color: white !important;
+                                         background: #133E7C !important;">@User.Identity?.Name</p>
+                                </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Manage/Index" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                                    <button type="submit" class="btn btn-primary dropdown-item">Profile</button>
-                                </form>
+                                    <a style="color: white !important;
+                                         background: #133E7C !important;" href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">Profile</a>
                             </li>
                             <li>
                                 <form class ="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                                        <button type="submit" class="btn btn-primary dropdown-item">Logout</button>
+                                        <button style="color: white !important;
+                                         background: #133E7C !important;" type="submit" class="btn btn-primary dropdown-item">
+                                            Logout
+                                        </button>
                                 </form>
                             </li>
                         </ul>
@@ -99,10 +121,3 @@
         </div>
     </div>
 </nav>
-@section Scripts {
-    <script >
-        console.log("samuel");
-
-    </script>
-
-}

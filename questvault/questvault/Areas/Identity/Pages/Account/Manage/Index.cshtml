@@ -1,8 +1,14 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "#MyAccount";
+    ViewData["Title"] = "My Account";
     ViewData["ActivePage"] = ManageNavPages.Index;
+    ViewData["help_Text"] = @"
+       This is your #MyAccount page! <br/> 
+       In this page you can personalize your profile however you want, <br/> 
+       in the main section you can change your Usarname,Country and password.<br/>
+       On the right side theres a section for 2 Factor Authentication, <br/>
+       Privacy setting and Disabiling your account if thats what you want!";
 }
 
 <h3 class="text-light title">@ViewData["Title"]</h3>
@@ -22,27 +28,33 @@
 </div>-->
 <div class="container-fluid">
     <div class="row align-items-baseline row-spacing">
-        <div class="row"><h4 style="padding-left:18rem; margin-bottom: 2rem" class="text-light">Account Details</h4></div>
+        <div class="row">
+            <h4 style="padding-left:18rem; margin-bottom: 2rem" class="text-light">Account Details</h4>
+             <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div> @* isto precisa de estar, pode nao ser aqui mas quanto a isso desenmerda-te *@
+        </div>
         <div class="col-2 d-block justify-content-center">
             <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
                 <img style="height:80px;width:80px;margin-left: 12%;margin-top: 10%; background-size: cover;border-radius: 50%;" src="\img\vector\user.svg" alt="User">
             </div>
             <button style="margin:auto" class="btn-primary btn-purple">Change Avatar</button>
         </div>
-
+       
 
         <div class="col-4">
-            <form>
+            <form id="change-username-form" method="post" asp-page-handler="UserName">
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label text-light">Email</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control-login" disabled placeholder=@User.Identity?.Name>
+                        <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="inputName" class="col-sm-4 col-form-label text-light">Username</label>
+                    <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control-login" id="inputName" placeholder=@User.Identity?.Name>
+                        <input asp-for="Input.NewUserName" type="text" class="form-control-login" id="inputName" placeholder="@User.Identity?.Name">
+                        <div style="height:1px">
+                            <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -56,13 +68,12 @@
                         </select>
                     </div>
                 </div>
-                <button style="float: right; margin-right: 15%" type="submit" class="btn-blue submit">Save Changes</button>
+                <button style="float: right; margin-right: 15%" type="submit" class="btn-blue">Save Changes</button>
             </form>
         </div>
 
         <div class="col-4">
-            <form id="change-password-form" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div>
+            <form id="change-password-form" method="post" asp-page-handler="Password">
                 <div class="row mb-3">
                     <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
                     <div class="col-sm-8">
@@ -73,7 +84,7 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label asp-for="Input.OldPassword" class=" col-sm-4 col-form-label text-light">New password</label>
+                    <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
                     <div class="col-sm-8">
                         <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
                         <div style="height:1px">
@@ -90,14 +101,22 @@
                         </div>
                     </div>
                 </div>
-                <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue submit">Change password</button>
+                <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue">Change password</button>
             </form>
         </div>
         <div class="col-2">
             <form>
-                <div class="form-check form-switch">
-                    <label class="text-light">Activate 2FA</label>
-                    <input style="float:right" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <div class="form-check form-switch">  
+                    @if (Model.Is2faEnabled)
+                    {
+                        Console.WriteLine(Model.Is2faEnabled);
+                        <a asp-page="./Disable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</a>
+                    }
+                    else
+                    {
+                        Console.WriteLine(Model.Is2faEnabled);
+                        <a asp-page="./Enable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px"  class="btn-blue-big submit">Enable 2FA</a>
+                    }
                 </div>
                 <div class="form-check form-switch" style="margin-top: 2rem; margin-bottom: 1rem;">
                     <label class="text-light">Private account</label>
