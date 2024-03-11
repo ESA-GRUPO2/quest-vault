@@ -28,7 +28,10 @@
 </div>-->
 <div class="container-fluid">
     <div class="row align-items-baseline row-spacing">
-        <div class="row"><h4 style="padding-left:18rem; margin-bottom: 2rem" class="text-light">Account Details</h4></div>
+        <div class="row">
+            <h4 style="padding-left:18rem; margin-bottom: 2rem" class="text-light">Account Details</h4>
+             <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div> @* isto precisa de estar, pode nao ser aqui mas quanto a isso desenmerda-te *@
+        </div>
         <div class="col-2 d-block justify-content-center">
             <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
                 <img style="height:80px;width:80px;margin-left: 13%;margin-top: 13%; background-size: cover;border-radius: 50%;" src="\img\vector\user.svg" alt="User">
@@ -38,17 +41,20 @@
        
 
         <div class="col-4">
-            <form>
+            <form id="change-username-form" method="post" asp-page-handler="UserName">
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label text-light">Email</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control-login" disabled placeholder=@User.Identity?.Name>
+                        <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="inputName" class="col-sm-4 col-form-label text-light">Username</label>
+                    <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control-login" id="inputName" placeholder=@User.Identity?.Name>
+                        <input asp-for="Input.NewUserName" type="text" class="form-control-login" id="inputName" placeholder="@User.Identity?.Name">
+                        <div style="height:1px">
+                            <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -62,13 +68,12 @@
                         </select>
                     </div>
                 </div>
-                <button style="float: right; margin-right: 15%" type="submit" class="btn-blue submit">Save Changes</button>
+                <button style="float: right; margin-right: 15%" type="submit" class="btn-blue">Save Changes</button>
             </form>
         </div>
 
         <div class="col-4">
-            <form id="change-password-form" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger-login" role="alert"></div>
+            <form id="change-password-form" method="post" asp-page-handler="Password">
                 <div class="row mb-3">
                     <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
                     <div class="col-sm-8">
@@ -79,7 +84,7 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label asp-for="Input.OldPassword" class=" col-sm-4 col-form-label text-light">New password</label>
+                    <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
                     <div class="col-sm-8">
                         <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
                         <div style="height:1px">
@@ -96,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue submit">Change password</button>
+                <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue">Change password</button>
             </form>
         </div>
         <div class="col-2">

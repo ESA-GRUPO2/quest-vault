@@ -10,32 +10,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace questvault.Areas.Identity.Pages.Account.Manage
 {
-    public class IndexModel : PageModel
+    public class IndexModel(
+        UserManager<User> userManager,
+        SignInManager<User> signInManager,
+        ILogger<IndexModel> logger) : PageModel
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(
-            UserManager<User> userManager,
-            SignInManager<User> signInManager,
-            ILogger<IndexModel> logger)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager; 
-            _logger = logger;
-        }
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
         public string Username { get; set; }
+        public string Email { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public bool Is2faEnabled { get; set; }
 
         /// <summary>
@@ -62,21 +49,24 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            
-            [Phone]
-            [Display(Name = "Phone number")]
-            public string PhoneNumber { get; set; }
+
+            [StringLength(100, ErrorMessage = "This {0} already exits.")]
+            [DataType(DataType.Text)]
+            [Display(Name = "user name")]
+            public string NewUserName { get; set; }
+
             [Required]
             [DataType(DataType.Password)]
             [Display(Name = "password")]
             public string OldPassword { get; set; }
-            
+
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "new password")]
             public string NewPassword { get; set; }
 
+            [Required]
             [DataType(DataType.Password)]
             [Display(Name = "Confirm new password")]
             [Compare("NewPassword", ErrorMessage = "The passwords do not match.")]
@@ -85,48 +75,83 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
         private async Task LoadAsync(User user)
         {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var userName = await userManager.GetUserNameAsync(user);
+            var email = await userManager.GetEmailAsync(user);
+            var is2faEnabled = await userManager.GetTwoFactorEnabledAsync(user);
 
             Username = userName;
+            Email = email;
+            Is2faEnabled = is2faEnabled;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                NewUserName = userName
             };
-            
-            Is2faEnabled = await _userManager.GetTwoFactorEnabledAsync(user);
-           
-            
+            //Is2faEnabled = await userManager.GetTwoFactorEnabledAsync(user);
         }
 
         public async Task<IActionResult> OnGetAsync()
         {
-        
-            var user = await _userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
-           
-            Is2faEnabled = await _userManager.GetTwoFactorEnabledAsync(user);
+
+            await LoadAsync(user);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostUserNameAsync()
         {
-            if (!ModelState.IsValid)
+            var user = await userManager.GetUserAsync(User);
+            if (user == null) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+            if (string.IsNullOrEmpty(Input.NewUserName))
             {
+                ModelState.AddModelError(string.Empty, "User name cannot be empty");
+                await LoadAsync(user);
                 return Page();
             }
 
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
+            var userName = user.UserName;
+            if (Input.NewUserName.Equals(userName))
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                ModelState.AddModelError(string.Empty, "User name already exits");
+                await LoadAsync(user);
+                return Page();
             }
 
-            var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
+            if (!Input.NewUserName.Equals(userName))
+            {
+                var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
+                if (!setUserNameResult.Succeeded)
+                {
+                    ModelState.AddModelError(string.Empty, "Unexpected error when trying to update username.");
+                    await LoadAsync(user);
+                    return Page();
+                }
+            }
+
+            await signInManager.RefreshSignInAsync(user);
+            StatusMessage = "Your username has been updated";
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostPasswordAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError(string.Empty, "Fields cannot be empty");
+                return Page();
+            }
+
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+            }
+
+            var changePasswordResult = await userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
             if (!changePasswordResult.Succeeded)
             {
                 foreach (var error in changePasswordResult.Errors)
@@ -136,11 +161,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            await _signInManager.RefreshSignInAsync(user);
-            _logger.LogInformation("User changed their password successfully.");
+            await signInManager.RefreshSignInAsync(user);
+            logger.LogInformation("User changed their password successfully.");
             StatusMessage = "Your password has been changed.";
 
-            return Page();
+            return RedirectToPage();
         }
     }
 }

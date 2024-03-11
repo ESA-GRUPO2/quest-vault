@@ -64,8 +64,9 @@ namespace questvault.Areas.Identity.Pages.Account
       ///     directly from your code. This API may change or be removed in future releases.
       /// </summary>
       [Required]
-      [EmailAddress]
-      public string Email { get; set; }
+      [DataType(DataType.Text)]
+      //[EmailAddress]
+      public string EmailUserName { get; set; }
 
       /// <summary>
       ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -108,9 +109,18 @@ namespace questvault.Areas.Identity.Pages.Account
 
       if (ModelState.IsValid)
       {
+        var user = await context.Users.FirstOrDefaultAsync(u => u.Email.Equals(Input.EmailUserName));
+        await Console.Out.WriteLineAsync("User email: " + user);
+        user ??= await context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(Input.EmailUserName));
+        await Console.Out.WriteLineAsync("User username: " + user);
         // This doesn't count login failures towards account lockout
         // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-        var result = await signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+        if (user == null)
+        {
+          //the user with this email/username doesn't exist
+          ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        }
+        var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
         {
           logger.LogInformation("User logged in.");
@@ -119,10 +129,9 @@ namespace questvault.Areas.Identity.Pages.Account
         if (result.RequiresTwoFactor)
         {
           //send email
-          var user = await context.Users.FirstOrDefaultAsync(u => u.Email == Input.Email);
           TwoFactorAuthenticationTokens twoFactorAuthenticator = new() { UserId = user.Id, User = user };
-          await emailStore.SetEmailAsync(twoFactorAuthenticator.User, Input.Email, CancellationToken.None);
-          await emailSender.SendEmailAsync(Input.Email, "Login Code", $"Your code to login is:\n\t" + twoFactorAuthenticator.Token);
+          await emailStore.SetEmailAsync(twoFactorAuthenticator.User, user.Email, CancellationToken.None);
+          await emailSender.SendEmailAsync(user.Email, "Login Code", $"Your code to login is:\n\t" + twoFactorAuthenticator.Token);
           //registar token na db 
           if (context.EmailTokens.Any(t => t.UserId == user.Id)) context.Update(twoFactorAuthenticator);
           else context.Add(twoFactorAuthenticator);
