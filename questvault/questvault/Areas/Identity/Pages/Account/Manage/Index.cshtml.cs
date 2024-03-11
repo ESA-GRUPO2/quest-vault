@@ -109,16 +109,25 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             if (string.IsNullOrEmpty(Input.NewUserName))
             {
                 ModelState.AddModelError(string.Empty, "User name cannot be empty");
+                await LoadAsync(user);
                 return Page();
             }
 
             var userName = user.UserName;
+            if (Input.NewUserName.Equals(userName))
+            {
+                ModelState.AddModelError(string.Empty, "User name already exits");
+                await LoadAsync(user);
+                return Page();
+            }
+
             if (!Input.NewUserName.Equals(userName))
             {
                 var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
                 if (!setUserNameResult.Succeeded)
                 {
                     ModelState.AddModelError(string.Empty, "Unexpected error when trying to update username.");
+                    await LoadAsync(user);
                     return Page();
                 }
             }
