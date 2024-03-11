@@ -3,6 +3,11 @@
 @{
     ViewData["Title"] = "Enable two-factor authentication (2FA)";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+    ViewData["help_Text"] = @"
+      This page allows you to Activate your 2 Factor Authentication!<br/>
+      Dont know that it means?<br/>
+      Its simple! Now if you enable it you will need a code from your email<br/>
+      to get access into your account, that way your account is allways protected!";
 }
 
 <partial name="_StatusMessage" for="StatusMessage" />
@@ -17,9 +22,9 @@
                         <button class="btn-2fa btn-primary submit" type="submit">Enable 2FA</button>
                     </form>
             
-                    <form class="form-inline" asp-area="Identity" asp-page="./Index">
-                        <button type="submit" class="btn btn-danger btn-danger-2fa">Cancel</button>
-                    </form>
+                    
+
+                    <a href="/Identity/Account/Manage/Index" class="btn btn-danger btn-danger-2fa">Cancel</a>
                 </div>
             </div>
         </div>

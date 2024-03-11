@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "#MyAccount";
     ViewData["ActivePage"] = ManageNavPages.Index;
+    ViewData["help_Text"] = @"
+       This is your #MyAccount page! <br/> 
+       In this page you can personalize your profile however you want, <br/> 
+       in the main section you can change your Usarname,Country and password.<br/>
+       On the right side theres a section for 2 Factor Authentication, <br/>
+       Privacy setting and Disabiling your account if thats what you want!";
 }
 
 <h3 class="text-light title">@ViewData["Title"]</h3>
@@ -99,7 +105,7 @@
                     @if (Model.Is2faEnabled)
                     {
                         Console.WriteLine(Model.Is2faEnabled);
-                        <a asp-page="./Disable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px" class="btn-purple submit">Disable 2FA</a>               
+                        <a asp-page="./Disable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</a>
                     }
                     else
                     {
