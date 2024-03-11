@@ -132,3 +132,11 @@
     width: 25px;
 }
 
+.dropdown-menu {
+    background: #133E7C !important;
+}
+
+.dropdown-item {
+    color: white !important;
+    background: #133E7C !important;
+}

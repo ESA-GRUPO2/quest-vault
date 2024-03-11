@@ -43,8 +43,13 @@
                             <button class="btn btn-primary nav-btn" type="button" id="helpDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%; height: 40px; width: 40px;">
                                 <img src="\img\vector\help.svg" alt="Help Icon" class="nav-vector" style="padding-bottom: 4px; height: 1.8rem;" />
                             </button>
-                                <ul class="dropdown-menu" aria-labelledby="helpDropdown">
-                                    <li><div class="dropdown-item">@Html.Raw(@ViewData["help_Text"])</div></li>
+                            <ul class="dropdown-menu" style="background: #133E7C !important;" aria-labelledby="helpDropdown">
+                                <li>
+                                    <div class="dropdown-item" style="color: white !important;
+                                         background: #133E7C !important;">
+                                        @Html.Raw(@ViewData["help_Text"])
+                                    </div>
+                                </li>
                                 
                                     <!-- Adicione mais itens de menu conforme necessário -->
                                 </ul>
@@ -64,19 +69,26 @@
                 </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
-                    <div class="dropdown">
+                    <div class="dropdown" style="position:relative">
                             <button class="btn btn-primary nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 55px; width: 55px;">
                                 <img src="\img\vector\user.svg" alt="Key Icon" class="nav-vector ms-1" style="height: 1.6rem">
                         </button>
-                        <ul class="dropdown-menu">
-                            <li><p class="dropdown-item">@User.Identity?.Name</p></li>
+                            <ul class="dropdown-menu" style="right:0; left:auto; background: #133E7C !important;">
+                                <li>
+                                    <p class="dropdown-item" style="color: white !important;
+                                         background: #133E7C !important;">@User.Identity?.Name</p>
+                                </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                    <a href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">Profile</a>
+                                    <a style="color: white !important;
+                                         background: #133E7C !important;" href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">Profile</a>
                             </li>
                             <li>
                                 <form class ="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                                        <button type="submit" class="btn btn-primary dropdown-item">Logout</button>
+                                        <button style="color: white !important;
+                                         background: #133E7C !important;" type="submit" class="btn btn-primary dropdown-item">
+                                            Logout
+                                        </button>
                                 </form>
                             </li>
                         </ul>
