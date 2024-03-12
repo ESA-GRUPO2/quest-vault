@@ -120,6 +120,12 @@ namespace questvault.Areas.Identity.Pages.Account
           //the user with this email/username doesn't exist
           ModelState.AddModelError(string.Empty, "Invalid login attempt.");
         }
+        if (user.LockoutEnabled)
+        {
+            logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
+            return RedirectToPage("./Lockout");
+        }
+        
         var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
         {
