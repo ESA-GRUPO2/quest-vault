@@ -13,9 +13,10 @@ using questvault.Models;
 
 namespace questvault.Areas.Identity.Pages.Account.Manage
 {
-    public class Disable2faModel(
+    public class TogglePrivacyModel(
         UserManager<User> userManager,
-        ILogger<Disable2faModel> logger
+        ILogger<Disable2faModel> logger,
+        ApplicationDbContext dbContext
         ) : PageModel
         
     {
@@ -35,10 +36,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            if (!await userManager.GetTwoFactorEnabledAsync(user))
-            {
-                throw new InvalidOperationException($"Cannot disable 2FA for user as it's not currently enabled.");
-            }
+            
 
             return Page();
         }
@@ -51,15 +49,17 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            var disable2faResult = await userManager.SetTwoFactorEnabledAsync(user, false);
-
-            if (!disable2faResult.Succeeded)
+            var privateAccount = await dbContext.Users.FindAsync(user.Id);
+            privateAccount.TogglePrivate();
+            dbContext.Update(privateAccount);
+            int a = dbContext.SaveChanges();
+            if (a!=1)
             {
-                throw new InvalidOperationException($"Unexpected error occurred disabling 2FA.");
+                throw new InvalidOperationException($"Unexpected error occurred changing privacy.");
             }
 
-            logger.LogInformation("User with ID '{UserId}' has disabled 2fa.", userManager.GetUserId(User));
-            StatusMessage = "2fa has been disabled.";
+            logger.LogInformation("User with ID '{UserId}' has changed privacy.", userManager.GetUserId(User));
+            StatusMessage = "Privacy has been changed";
             return RedirectToPage("./Index");
         }
     }
