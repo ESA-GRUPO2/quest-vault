@@ -106,21 +106,21 @@
         </div>
         <div class="col-2">
             <form>
-                <div class="form-check form-switch">  
+                <div class="form-check form-switch row">
                     @if (Model.Is2faEnabled)
                     {
-                        <a asp-page="./Disable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</a>
+                        <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
                     }
                     else
                     {
-                        <a asp-page="./Enable2fa" style="float: right; margin-right: 15%; margin-bottom: 30px"  class="btn-blue-big submit">Enable 2FA</a>
+                        <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px"  class="btn-blue-big submit">Enable 2FA</button>
                     }
                 </div>
-                <div class="form-check form-switch" style="margin-top: 2rem; margin-bottom: 1rem;">
-                    <a asp-page="./TooglePrivacy" style="float: right; margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</a>
+                <div class="form-check form-switch row">
+                     <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
                 </div>
                 <div class="form-check form-switch row mb-3">
-                    <button style="float: right; margin-right: 15%; margin-top: 1rem;" type="submit" class="btn-purple submit">Disable account</button>
+                    <button style=" margin-right: 15%;" type="submit" class="btn-purple submit">Disable account</button>
                 </div>
             </form>
         </div>
