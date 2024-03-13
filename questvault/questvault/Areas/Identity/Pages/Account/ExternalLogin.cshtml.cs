@@ -154,7 +154,7 @@ namespace questvault.Areas.Identity.Pages.Account
                 if (existingUser == null)
                 {
                     // User does not exist, create a new account (email activated)
-                    var newUser = new User { UserName = Input.Email, Email = Input.Email, EmailConfirmed = true };
+                    var newUser = new User { UserName = Input.Email, Email = Input.Email, EmailConfirmed = true, LockoutEnabled = false };
                     var createResult = await _userManager.CreateAsync(newUser);
 
                     if (createResult.Succeeded)
@@ -183,7 +183,26 @@ namespace questvault.Areas.Identity.Pages.Account
                         }
                     }
                 }
+                else //user exists
+                {
+                     existingUser.EmailConfirmed = true;
+                    // Add external login to the new user
+                    var addLoginResult = await _userManager.AddLoginAsync(existingUser, info);
 
+                    if (addLoginResult.Succeeded)
+                    {
+                        // Set email to confirmed
+                        // Sign in the new user
+                        await _signInManager.SignInAsync(existingUser, isPersistent: false);
+                        return LocalRedirect(returnUrl);
+
+                        //// Redirect the user to the SetPassword page for initial password setup
+                        //await _signInManager.SignInAsync(newUser, isPersistent: false);
+                        //return Redirect("/Identity/Account/Manage/SetPassword");
+
+                        ////return RedirectToAction("SetPassword", "Manage", new { area = "Identity" });
+                    }
+                }
                 return Page();
 
 
