@@ -175,14 +175,21 @@ body {
     margin-top: 10px;
 }
 
+.text-danger-login-2 ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
 .error-box {
     color: red;
     font-size: 88%;
-    padding: 10px 12px 0px 12px;
-    margin-left: 10%;
-    height: 40px;
+    margin-left: 15%;
     width: 267px;
-    border-radius: 15px;
+}
+
+.error-box ul {
+    list-style-type: none;
+    padding-left: 0px;
 }
 
 .alert-success{
