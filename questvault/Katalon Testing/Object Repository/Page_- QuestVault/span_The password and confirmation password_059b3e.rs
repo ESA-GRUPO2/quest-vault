@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>button_Sign up</name>
+   <name>span_The password and confirmation password_059b3e</name>
    <tag></tag>
-   <elementGuidId>de47032f-953a-46ed-838a-6280faed8e61</elementGuidId>
+   <elementGuidId>6e33a480-6c39-40f0-87d6-a9ecb340dbbf</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//button[@id='registerSubmit']</value>
+         <value>//span[@id='passwordconfirm-error']</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>#registerSubmit</value>
+         <value>#passwordconfirm-error</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=button[name=&quot;Sign up&quot;i]</value>
+         <value>internal:text=&quot;The password and confirmation password do not match.&quot;i</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -28,111 +28,95 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>button</value>
-      <webElementGuid>d82cdb62-14e3-4464-8876-3467a07654a5</webElementGuid>
+      <value>span</value>
+      <webElementGuid>1339132a-fef0-4f07-8589-c71f5a2ecab7</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>id</name>
       <type>Main</type>
-      <value>registerSubmit</value>
-      <webElementGuid>e716c361-d74a-40ed-ad23-3d1be71f4f60</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>type</name>
-      <type>Main</type>
-      <value>submit</value>
-      <webElementGuid>3824b96a-e614-4aa1-95ad-262f51400e7c</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>class</name>
-      <type>Main</type>
-      <value>btn-login btn-primary submit</value>
-      <webElementGuid>e714abac-ea54-44bc-8d24-90297bb16ce6</webElementGuid>
+      <value>passwordconfirm-error</value>
+      <webElementGuid>6f65ebae-35ac-470b-a6e0-df77cb40b94d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Sign up</value>
-      <webElementGuid>5c530538-8cec-4d68-a14d-c39e0eaf4710</webElementGuid>
+      <value>The password and confirmation password do not match.</value>
+      <webElementGuid>82ab7eeb-df2a-491a-8c44-c90cde5aa5fa</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;registerSubmit&quot;)</value>
-      <webElementGuid>5e4f1fd9-af76-4680-a7b7-a99b2ac646ef</webElementGuid>
+      <value>id(&quot;passwordconfirm-error&quot;)</value>
+      <webElementGuid>d8d04bc3-c23d-46ae-a59a-c46be8281106</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//button[@id='registerSubmit']</value>
-      <webElementGuid>684e2b4c-fd0d-4e88-84c9-621e8152f51e</webElementGuid>
+      <value>//span[@id='passwordconfirm-error']</value>
+      <webElementGuid>979063fe-d3a8-45ba-a08b-65d34f91200d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//form[@id='registerForm']/button</value>
-      <webElementGuid>af1bdd5d-9b0d-4996-b6cb-72e9e0a3ebc2</webElementGuid>
+      <value>//form[@id='registerForm']/div[4]/div/div/p/span/span</value>
+      <webElementGuid>abe262ed-fac3-47be-b2da-b67fbc91da65</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='The password and confirmation password do not match.'])[1]/following::button[1]</value>
-      <webElementGuid>6b06a3fc-7841-409f-9d94-f20609efbcec</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/following::span[5]</value>
+      <webElementGuid>276fd8dd-0112-490f-ad88-af1ee8f401db</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/following::button[1]</value>
-      <webElementGuid>1c662561-1ba6-45d3-85f1-931779df6f4c</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[2]/preceding::span[1]</value>
+      <webElementGuid>21074616-be9c-4492-8142-1b4c506b7402</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign in'])[1]/preceding::button[1]</value>
-      <webElementGuid>854d7cee-8158-478c-a59a-f6f580cd1f06</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign in'])[1]/preceding::span[1]</value>
+      <webElementGuid>13819b4b-4a53-47ad-b0c4-8d256454c820</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::button[1]</value>
-      <webElementGuid>a643a28f-1633-474b-a4fe-02dba5f1511d</webElementGuid>
+      <value>//*/text()[normalize-space(.)='The password and confirmation password do not match.']/parent::*</value>
+      <webElementGuid>60efae0c-5610-4d97-a064-5608e47d260c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//form/button</value>
-      <webElementGuid>5db2698c-6fa6-4507-9dfb-e7b86f3bbe5b</webElementGuid>
+      <value>//span/span</value>
+      <webElementGuid>df7a1cbb-d02d-48e0-ae54-abcf11319c03</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//button[@id = 'registerSubmit' and @type = 'submit' and (text() = 'Sign up' or . = 'Sign up')]</value>
-      <webElementGuid>8db9dd43-2180-44e8-86e6-e2444489bc71</webElementGuid>
+      <value>//span[@id = 'passwordconfirm-error' and (text() = 'The password and confirmation password do not match.' or . = 'The password and confirmation password do not match.')]</value>
+      <webElementGuid>7866a686-26a2-4ee5-972d-b9b7213cdd9c</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

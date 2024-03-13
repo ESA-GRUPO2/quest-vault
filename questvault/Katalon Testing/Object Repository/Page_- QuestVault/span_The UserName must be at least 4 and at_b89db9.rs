@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>button_Sign up</name>
+   <name>span_The UserName must be at least 4 and at_b89db9</name>
    <tag></tag>
-   <elementGuidId>de47032f-953a-46ed-838a-6280faed8e61</elementGuidId>
+   <elementGuidId>403c7357-675d-4d1b-bd95-76c8366cef24</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//button[@id='registerSubmit']</value>
+         <value>//span[@id='username-error']</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>#registerSubmit</value>
+         <value>#username-error</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=button[name=&quot;Sign up&quot;i]</value>
+         <value>internal:text=&quot;The UserName must be at least 4 and at max 25 characters long.&quot;i</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -28,111 +28,95 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>button</value>
-      <webElementGuid>d82cdb62-14e3-4464-8876-3467a07654a5</webElementGuid>
+      <value>span</value>
+      <webElementGuid>85fe1a76-94aa-4cc2-b5cb-3a6958c12ebe</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>id</name>
       <type>Main</type>
-      <value>registerSubmit</value>
-      <webElementGuid>e716c361-d74a-40ed-ad23-3d1be71f4f60</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>type</name>
-      <type>Main</type>
-      <value>submit</value>
-      <webElementGuid>3824b96a-e614-4aa1-95ad-262f51400e7c</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>class</name>
-      <type>Main</type>
-      <value>btn-login btn-primary submit</value>
-      <webElementGuid>e714abac-ea54-44bc-8d24-90297bb16ce6</webElementGuid>
+      <value>username-error</value>
+      <webElementGuid>f3d96661-6c8b-4c64-92ef-5c63b14ea31b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Sign up</value>
-      <webElementGuid>5c530538-8cec-4d68-a14d-c39e0eaf4710</webElementGuid>
+      <value>The UserName must be at least 4 and at max 25 characters long.</value>
+      <webElementGuid>e3f2e901-e7f5-46f2-a2d6-25eb2b9f407e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;registerSubmit&quot;)</value>
-      <webElementGuid>5e4f1fd9-af76-4680-a7b7-a99b2ac646ef</webElementGuid>
+      <value>id(&quot;username-error&quot;)</value>
+      <webElementGuid>f3d2f4d9-ec9e-4927-affb-d1db30eeea99</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//button[@id='registerSubmit']</value>
-      <webElementGuid>684e2b4c-fd0d-4e88-84c9-621e8152f51e</webElementGuid>
+      <value>//span[@id='username-error']</value>
+      <webElementGuid>90e7a72c-044e-4361-a95d-cf7a3ef686cb</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//form[@id='registerForm']/button</value>
-      <webElementGuid>af1bdd5d-9b0d-4996-b6cb-72e9e0a3ebc2</webElementGuid>
+      <value>//form[@id='registerForm']/div[2]/div/div/p/span/span</value>
+      <webElementGuid>86652194-5086-4963-b30e-3709855ac04d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='The password and confirmation password do not match.'])[1]/following::button[1]</value>
-      <webElementGuid>6b06a3fc-7841-409f-9d94-f20609efbcec</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/following::span[3]</value>
+      <webElementGuid>31f37f07-9790-4787-bb9c-2da0150d9f54</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/following::button[1]</value>
-      <webElementGuid>1c662561-1ba6-45d3-85f1-931779df6f4c</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[2]/preceding::span[3]</value>
+      <webElementGuid>a8474cc0-bdbc-474d-8586-c0d1f7bc7724</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign in'])[1]/preceding::button[1]</value>
-      <webElementGuid>854d7cee-8158-478c-a59a-f6f580cd1f06</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign in'])[1]/preceding::span[3]</value>
+      <webElementGuid>0b6744b9-a24f-41e1-83c2-14c8c80fdf28</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::button[1]</value>
-      <webElementGuid>a643a28f-1633-474b-a4fe-02dba5f1511d</webElementGuid>
+      <value>//*/text()[normalize-space(.)='The UserName must be at least 4 and at max 25 characters long.']/parent::*</value>
+      <webElementGuid>57a4b2db-41e5-473c-843b-aefcbabe1805</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//form/button</value>
-      <webElementGuid>5db2698c-6fa6-4507-9dfb-e7b86f3bbe5b</webElementGuid>
+      <value>//span/span</value>
+      <webElementGuid>017c3134-ec55-432e-87ad-ec7ee46c2dc9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//button[@id = 'registerSubmit' and @type = 'submit' and (text() = 'Sign up' or . = 'Sign up')]</value>
-      <webElementGuid>8db9dd43-2180-44e8-86e6-e2444489bc71</webElementGuid>
+      <value>//span[@id = 'username-error' and (text() = 'The UserName must be at least 4 and at max 25 characters long.' or . = 'The UserName must be at least 4 and at max 25 characters long.')]</value>
+      <webElementGuid>3d2f5568-6712-4992-acbe-3021e24b229b</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

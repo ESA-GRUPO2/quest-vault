@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>button_Sign up</name>
+   <name>span_The Email field is not a valid e-mail address</name>
    <tag></tag>
-   <elementGuidId>de47032f-953a-46ed-838a-6280faed8e61</elementGuidId>
+   <elementGuidId>30f860d3-742e-4d5e-8d46-12121cb84baf</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//button[@id='registerSubmit']</value>
+         <value>//span[@id='email-error']</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>#registerSubmit</value>
+         <value>#email-error</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=button[name=&quot;Sign up&quot;i]</value>
+         <value>internal:text=&quot;The Email field is not a valid e-mail address.&quot;i</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -28,111 +28,95 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>button</value>
-      <webElementGuid>d82cdb62-14e3-4464-8876-3467a07654a5</webElementGuid>
+      <value>span</value>
+      <webElementGuid>d5340f58-5fb4-4ccd-9cf2-2de8ad1865e4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>id</name>
       <type>Main</type>
-      <value>registerSubmit</value>
-      <webElementGuid>e716c361-d74a-40ed-ad23-3d1be71f4f60</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>type</name>
-      <type>Main</type>
-      <value>submit</value>
-      <webElementGuid>3824b96a-e614-4aa1-95ad-262f51400e7c</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>class</name>
-      <type>Main</type>
-      <value>btn-login btn-primary submit</value>
-      <webElementGuid>e714abac-ea54-44bc-8d24-90297bb16ce6</webElementGuid>
+      <value>email-error</value>
+      <webElementGuid>8e45e254-06b0-48b4-b3f2-27b07480f0ba</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Sign up</value>
-      <webElementGuid>5c530538-8cec-4d68-a14d-c39e0eaf4710</webElementGuid>
+      <value>The Email field is not a valid e-mail address.</value>
+      <webElementGuid>cb2e15f9-0e01-4774-8b9c-3595eddae41b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;registerSubmit&quot;)</value>
-      <webElementGuid>5e4f1fd9-af76-4680-a7b7-a99b2ac646ef</webElementGuid>
+      <value>id(&quot;email-error&quot;)</value>
+      <webElementGuid>aaf63ed3-3d2c-4e71-966b-20a0ece4bb30</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//button[@id='registerSubmit']</value>
-      <webElementGuid>684e2b4c-fd0d-4e88-84c9-621e8152f51e</webElementGuid>
+      <value>//span[@id='email-error']</value>
+      <webElementGuid>a3c56ea0-e257-409d-8405-5d787deea3c3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//form[@id='registerForm']/button</value>
-      <webElementGuid>af1bdd5d-9b0d-4996-b6cb-72e9e0a3ebc2</webElementGuid>
+      <value>//form[@id='registerForm']/div/div/div/p/span/span</value>
+      <webElementGuid>d675f22b-b39c-4c3e-8aa4-86591f8aff3a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='The password and confirmation password do not match.'])[1]/following::button[1]</value>
-      <webElementGuid>6b06a3fc-7841-409f-9d94-f20609efbcec</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/following::span[2]</value>
+      <webElementGuid>a5e74aba-0aca-495c-90f8-a81e94455e0f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/following::button[1]</value>
-      <webElementGuid>1c662561-1ba6-45d3-85f1-931779df6f4c</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[2]/preceding::span[4]</value>
+      <webElementGuid>ff32ea05-145e-4c0e-ba92-5bd5cef13e22</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign in'])[1]/preceding::button[1]</value>
-      <webElementGuid>854d7cee-8158-478c-a59a-f6f580cd1f06</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign in'])[1]/preceding::span[4]</value>
+      <webElementGuid>b67a739a-5111-4670-ac63-3ffbe5787d53</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::button[1]</value>
-      <webElementGuid>a643a28f-1633-474b-a4fe-02dba5f1511d</webElementGuid>
+      <value>//*/text()[normalize-space(.)='The Email field is not a valid e-mail address.']/parent::*</value>
+      <webElementGuid>43e13ed3-d716-471e-bf6d-f8674fd76f01</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//form/button</value>
-      <webElementGuid>5db2698c-6fa6-4507-9dfb-e7b86f3bbe5b</webElementGuid>
+      <value>//span/span</value>
+      <webElementGuid>d156ab12-4a44-4a4e-82da-68ad9e4ce2a4</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//button[@id = 'registerSubmit' and @type = 'submit' and (text() = 'Sign up' or . = 'Sign up')]</value>
-      <webElementGuid>8db9dd43-2180-44e8-86e6-e2444489bc71</webElementGuid>
+      <value>//span[@id = 'email-error' and (text() = 'The Email field is not a valid e-mail address.' or . = 'The Email field is not a valid e-mail address.')]</value>
+      <webElementGuid>7b542de2-f4b3-49ac-9736-723a2347a338</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
