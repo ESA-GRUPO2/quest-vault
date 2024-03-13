@@ -6,6 +6,9 @@ namespace questvault.Models
 {
 
     [PrimaryKey(nameof(GameID), nameof(PlatformID))]
+    /// <summary>
+    /// Represents a many-to-many relationship between Game and Platform entities.
+    /// </summary>
     public class GamePlatform
     {
         [Column(Order = 0)]

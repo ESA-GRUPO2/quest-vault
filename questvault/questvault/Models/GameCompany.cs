@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace questvault.Models
 {
     [PrimaryKey(nameof(GameID), nameof(CompanyID))]
+    /// <summary>
+    /// Represents a many-to-many relationship between Game and Company entities.
+    /// </summary>
     public class GameCompany
     {
         [Column(Order = 0)]
