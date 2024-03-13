@@ -30,6 +30,11 @@ namespace questvault.Controllers
             return View();
         }
 
+        public IActionResult GameDetails() 
+        { 
+            return View();
+        }
+
         public IActionResult Dashboard()
         {
             return View();

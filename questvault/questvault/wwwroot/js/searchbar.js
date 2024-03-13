@@ -9,7 +9,7 @@ $(document).ready(function () {
             data: { searchTerm: searchTerm },
             success: function (data) {
                 // Atualize a drop-down com os resultados recebidos
-                // Exemplo básico: assumindo que 'data.Jogos' é a lista de jogos
+                // Exemplo bï¿½sico: assumindo que 'data.Jogos' ï¿½ a lista de jogos
                 $('#searchResults').empty();
                 $.each(data.Jogos, function (index, jogo) {
                     $('#searchResults').append('<div>' + jogo.Nome + '</div>');
