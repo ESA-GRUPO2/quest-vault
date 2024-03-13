@@ -184,3 +184,7 @@ body {
     border-radius: 15px;
 }
 
+.alert-success{
+    width:94%;
+    margin:auto;
+}
