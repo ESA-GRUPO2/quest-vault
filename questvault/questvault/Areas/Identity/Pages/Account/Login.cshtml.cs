@@ -64,8 +64,6 @@ namespace questvault.Areas.Identity.Pages.Account
       ///     directly from your code. This API may change or be removed in future releases.
       /// </summary>
       [Required]
-      [DataType(DataType.Text)]
-      //[EmailAddress]
       public string EmailUserName { get; set; }
 
       /// <summary>
@@ -84,7 +82,7 @@ namespace questvault.Areas.Identity.Pages.Account
       public bool RememberMe { get; set; }
     }
 
-    public async Task OnGetAsync(string returnUrl = null)
+    public async Task<IActionResult> OnGetAsync(string returnUrl = null)
     {
       if (!string.IsNullOrEmpty(ErrorMessage))
       {
@@ -92,6 +90,8 @@ namespace questvault.Areas.Identity.Pages.Account
       }
 
       returnUrl ??= Url.Content("~/");
+      if (HttpContext.User.Identity.IsAuthenticated)
+        return RedirectToPage(returnUrl);
 
       // Clear the existing external cookie to ensure a clean login process
       await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -99,6 +99,7 @@ namespace questvault.Areas.Identity.Pages.Account
       ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
       ReturnUrl = returnUrl;
+      return Page();
     }
 
     public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -109,25 +110,20 @@ namespace questvault.Areas.Identity.Pages.Account
 
       if (ModelState.IsValid)
       {
-        var user = await context.Users.FirstOrDefaultAsync(u => u.Email.Equals(Input.EmailUserName));
-        //await Console.Out.WriteLineAsync("User email: " + user);
-        //user ??= await context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(Input.EmailUserName));
-        //await Console.Out.WriteLineAsync("User username: " + user);
         // This doesn't count login failures towards account lockout
         // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-        //var user = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+        var user = await context.Users.FirstOrDefaultAsync(u => u.Email.Equals(Input.EmailUserName));
+        user ??= await context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(Input.EmailUserName));
         if (user == null)
         {
-            //the user with this email/username doesn't exist
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-            return Page();
+          Console.WriteLine("in: " + Input.EmailUserName);
+          ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+          return Page();
         }
-        if (user.LockoutEnabled)
+        if (user.IsDeactivated)
         {
-            logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
-            return RedirectToPage("./Lockout");
+          return RedirectToPage("./DeactivatedAccount", new { ReturnUrl = returnUrl, UserId = user.Id });
         }
-        
         var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
         {
@@ -148,6 +144,7 @@ namespace questvault.Areas.Identity.Pages.Account
         }
         if (result.IsLockedOut)
         {
+          user.LockoutEnabled = false;
           logger.LogWarning("User account locked out.");
           return RedirectToPage("./Lockout");
         }

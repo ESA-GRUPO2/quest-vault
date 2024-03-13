@@ -1,0 +1,23 @@
+﻿@page
+@model DeactivateAccountModel
+@{
+  ViewData["Title"] = "Deactivate account";
+  ViewData["help_Text"] = @"
+      This page allows you to deactivate your account!<br/>
+      Dont know that it means?<br/>
+      If you no longer want this account to be accessible you can deactivate it,<br/>
+      this can however be changed on the next login!"; 
+}
+
+<body class="login-body">
+  <div class="main-section-2fa" style="margin-top:300px">
+    <h3 class="h3-2fa">@ViewData["Title"]</h3>
+    <p class="p-forgotp" style="margin-top: 20px">Are you sure you want to deactivate this account? <br/><strong>You will be logged out</strong></p>
+    <div class="2fa-buttons action-btn">
+      <form method="post">
+        <button class="btn-2fa btn-primary submit" type="submit">Yes</button>
+      </form>
+      <a href="/Identity/Account/Manage/Index" class="btn btn-danger btn-danger-2fa">No</a>
+    </div>
+  </div>
+</body>

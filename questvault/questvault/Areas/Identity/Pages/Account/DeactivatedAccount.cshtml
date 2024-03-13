@@ -1,0 +1,23 @@
+﻿@page
+@model DeactivatedAccountModel
+@{
+  ViewData["Title"] = "Account Deactivated";
+  ViewData["help_Text"] = @"
+      This page allows you to reactivate your account as it has been deactivated!<br/>
+      Dont know that it means?<br/>
+      Your account was deactivated, this could have been done by you<br/>
+      or an administrator. You can simply reactivate it just by clicking yes!"; 
+}
+
+<body class="login-body">
+  <div class="main-section-2fa" style="margin-top:300px">
+    <h3 class="h3-2fa">@ViewData["Title"]</h3>
+    <p class="p-forgotp" style="margin-top: 20px">This account has been deactivated, would you like to reactivate it?</p>
+    <div class="2fa-buttons action-btn">
+      <form method="post">
+        <button class="btn-2fa btn-primary submit" type="submit">Yes</button>
+      </form>
+      <a href="@ViewData["returnUrl"]" class="btn btn-danger btn-danger-2fa">No</a>
+    </div>
+  </div>
+</body>
