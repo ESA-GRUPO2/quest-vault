@@ -8,10 +8,9 @@
       <section>
           <form class="form-login" id="account" method="post">
               <h1 class="h1-login">Log in</h1>
-        
-        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger-login-2" role="alert"></div>
         <div class="row-login">
-            <!--type="text"-->
             <input type="text" class="form-control-login" id="username" placeholder="Email/Username" asp-for="Input.EmailUserName" autocomplete="username" aria-required="true">
             <div class="danger-login">
                 <p><span asp-validation-for="Input.EmailUserName" class="text-danger-login"></span></p>
