@@ -83,11 +83,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             Email = email;
             Is2faEnabled = is2faEnabled;
 
-            Input = new InputModel
+
+			Input = new InputModel
             {
-                NewUserName = userName
+                //NewUserName = userName
             };
-            //Is2faEnabled = await userManager.GetTwoFactorEnabledAsync(user);
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -116,7 +116,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             var userName = user.UserName;
             if (Input.NewUserName.Equals(userName))
             {
-                ModelState.AddModelError(string.Empty, "User name already exits");
+                ModelState.AddModelError(string.Empty, "Can't change to same username");
                 await LoadAsync(user);
                 return Page();
             }
@@ -126,7 +126,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
                 var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
                 if (!setUserNameResult.Succeeded)
                 {
-                    ModelState.AddModelError(string.Empty, "Unexpected error when trying to update username.");
+                    ModelState.AddModelError(string.Empty, "This username is already taken");
                     await LoadAsync(user);
                     return Page();
                 }

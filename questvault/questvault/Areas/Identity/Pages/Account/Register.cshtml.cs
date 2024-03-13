@@ -96,9 +96,8 @@ namespace questvault.Areas.Identity.Pages.Account
       if (ModelState.IsValid)
       {
         var userExists = await _emailStore.FindByEmailAsync(Input.Email, CancellationToken.None);
-       
-        if (userExists.Email.Equals(Input.Email)) {
-            ModelState.AddModelError(string.Empty, "This email is in use");
+        if (userExists != null) {
+            ModelState.AddModelError(string.Empty, "A account with this email already exists");
             return Page();
         }
         var user = CreateUser(); 
