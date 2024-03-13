@@ -6,15 +6,17 @@
 
     <section class="d-flex main-section">
         <img class="game-cover image-fluid" src="../img/gta.png" />
-        <div class="container-fluid ms-3 mt-3">
+        <div class="container ms-3 mt-4">
             <h2 class="game-title m-auto">Game Name</h2>
-            <div class="container ps-0 mt-4">
-                <div class="game-filters row me-5">
-                    <div class="col-auto text-decoration-underline">Adventure</div>
-                    <div class="col-auto text-decoration-underline">Action</div>
-                    <div class="col-auto text-decoration-underline">RPG</div>
+            <h4>Release Date/Year</h4>
+            <h5>Publisher</h5>
+            <div class="ps-0">
+                <div class="game-filters d-inline-flex mt-3">
+                    <div class="me-3 text-decoration-underline">Adventure</div>
+                    <div class="me-3 text-decoration-underline">Action</div>
+                    <div class="text-decoration-underline">RPG</div>
                 </div>
-                <div class="game-user-status align-content-end mt-5">
+                <div class="game-user-status">
                     <div class="d-inline-flex">
                         <select #game (change)="onSelected(game.value)" class="select-results col-1 me-2" aria-label="Default select example">
                             <option selected>Add Game</option>
@@ -22,7 +24,7 @@
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
-                        <select #status (change)="onSelected(status.value)" class="select-results col-1" aria-label="Default select example">
+                        <select #status (change)="onSelected(status.value)" class="select-results col-1 ms-2" aria-label="Default select example">
                             <option selected>Status</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
@@ -33,23 +35,20 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="game-score container-fluid align-content-end mt-3">
-                <h3>Game Score</h3>
+        <div class="container-fluid game-score mt-4">
+            <h4>Game Score</h4>
+            <div class=" justify-content-end d-inline-flex">
                 @* global rating stars *@
-                <div class="rate">
-                    @* <input type="radio" id="star5" name="user-rate" value="5" /> *@
-                    <label for="star5" title="text">5 stars</label>
-                    @* <input type="radio" id="star4" name="user-rate" value="4" /> *@
-                    <label for="star4" title="text">4 stars</label>
-                    @* <input type="radio" id="star3" name="user-rate" value="3" /> *@
-                    <label for="star3" title="text">3 stars</label>
-                    @* <input type="radio" id="star2" name="user-rate" value="2" /> *@
-                    <label for="star2" title="text">2 stars</label>
-                    @* <input type="radio" id="star1" name="user-rate" value="1" /> *@
-                    <label for="star1" title="text">1 star</label>
+                <div class="global-rating">
+                    <span id="global-rating">0</span>.0
                 </div>
-                <span>4.0</span>
+                <div class="stars" id="global-stars">
+                    <span class="global-star" data-value="1">★</span>
+                    <span class="global-star" data-value="2">★</span>
+                    <span class="global-star" data-value="3">★</span>
+                    <span class="global-star" data-value="4">★</span>
+                    <span class="global-star" data-value="5">★</span>
+                </div>
             </div>
             <div class="game-platforms container-fluid mt-5">
                 <p>Windows PC</p>
@@ -64,7 +63,7 @@
 
     <section class="d-flex main-section">
 
-        <div class="container-fluid justify-content-between">
+        <div class="container-fluid justify-content-between mt-3">
             <div class="game-about align-top mb-5">
                 <h4 class="align-content-start">Summary</h4>
                 <p class="text-break text-wrap">Grand Theft Auto V is a vast open world game set in Los Santos, a sprawling sun-soaked metropolis struggling to stay afloat in an era of economic uncertainty and cheap reality TV. The game blends storytelling and gameplay in new ways as players repeatedly jump in and out of the lives of the game’s three lead characters, playing all sides of the game’s interwoven story.</p>
@@ -85,32 +84,27 @@
 
             </div>
         </div>
-        <div class="game-review container-fluid">
+        <div class="game-review container mt-3">
             <h4>Your Review</h4>
-            <div class="review-user-score">
-                @* user rating stars *@
-                <div class="rate">
-                    <input type="radio" id="star5" name="user-rate" value="5" />
-                    <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="user-rate" value="4" />
-                    <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="user-rate" value="3" />
-                    <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="user-rate" value="2" />
-                    <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="user-rate" value="1" />
-                    <label for="star1" title="text">1 star</label>
+            <div class="justify-content-end d-flex">
+                <div class="rating">
+                    <span id="rating">0</span>.0
                 </div>
-                <span>4.0</span>
+                <div class="stars" id="stars">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
             </div>
-            <div class="review-user-publish">
-                <form>
-                    <textarea></textarea>
-                    <button>Submit</button>
-                </form>
+            <textarea id="review" maxlength="255" placeholder="Write your review here (max 255)"></textarea>
+            <div>            
+                <button id="submit" class="mt-2">Submit</button>
             </div>
+            <div class="reviews" id="reviews"></div>
         </div>
     </section>
 </div>
 
-<script src="../wwwroot/js/starRating.js"></script>
+<script src="~/js/rating.js"></script>
