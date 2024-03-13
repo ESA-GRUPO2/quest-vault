@@ -64,8 +64,7 @@ namespace questvault.Areas.Identity.Pages.Account
       ///     directly from your code. This API may change or be removed in future releases.
       /// </summary>
       [Required]
-      [EmailAddress]
-      public string Email { get; set; }
+      public string EmailUserName { get; set; }
 
       /// <summary>
       ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -83,7 +82,7 @@ namespace questvault.Areas.Identity.Pages.Account
       public bool RememberMe { get; set; }
     }
 
-    public async Task OnGetAsync(string returnUrl = null)
+    public async Task<IActionResult> OnGetAsync(string returnUrl = null)
     {
       if (!string.IsNullOrEmpty(ErrorMessage))
       {
@@ -91,6 +90,8 @@ namespace questvault.Areas.Identity.Pages.Account
       }
 
       returnUrl ??= Url.Content("~/");
+      if (HttpContext.User.Identity.IsAuthenticated)
+        return RedirectToPage(returnUrl);
 
       // Clear the existing external cookie to ensure a clean login process
       await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -98,6 +99,7 @@ namespace questvault.Areas.Identity.Pages.Account
       ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
       ReturnUrl = returnUrl;
+      return Page();
     }
 
     public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -108,9 +110,23 @@ namespace questvault.Areas.Identity.Pages.Account
 
       if (ModelState.IsValid)
       {
+        foreach (var u in context.Users)
+          await Console.Out.WriteLineAsync("name: '" + u.UserName + "', email: '" + u.Email + "', written: '" + Input.EmailUserName + "' name:" + u.UserName.Equals(Input.EmailUserName) + " mail:" + u.Email.Equals(Input.EmailUserName));
         // This doesn't count login failures towards account lockout
         // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-        var result = await signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+        var user = await context.Users.FirstOrDefaultAsync(u => u.Email.Equals(Input.EmailUserName));
+        user ??= await context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(Input.EmailUserName));
+        if (user == null)
+        {
+          Console.WriteLine("in: " + Input.EmailUserName);
+          ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+          return Page();
+        }
+        if (user.IsDeactivated)
+        {
+          return RedirectToPage("./DeactivatedAccount", new { ReturnUrl = returnUrl, UserId = user.Id });
+        }
+        var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
         {
           logger.LogInformation("User logged in.");
@@ -119,10 +135,9 @@ namespace questvault.Areas.Identity.Pages.Account
         if (result.RequiresTwoFactor)
         {
           //send email
-          var user = await context.Users.FirstOrDefaultAsync(u => u.Email == Input.Email);
           TwoFactorAuthenticationTokens twoFactorAuthenticator = new() { UserId = user.Id, User = user };
-          await emailStore.SetEmailAsync(twoFactorAuthenticator.User, Input.Email, CancellationToken.None);
-          await emailSender.SendEmailAsync(Input.Email, "Login Code", $"Your code to login is:\n\t" + twoFactorAuthenticator.Token);
+          await emailStore.SetEmailAsync(twoFactorAuthenticator.User, Input.EmailUserName, CancellationToken.None);
+          await emailSender.SendEmailAsync(Input.EmailUserName, "Login Code", $"Your code to login is:\n\t" + twoFactorAuthenticator.Token);
           //registar token na db 
           if (context.EmailTokens.Any(t => t.UserId == user.Id)) context.Update(twoFactorAuthenticator);
           else context.Add(twoFactorAuthenticator);
@@ -131,6 +146,7 @@ namespace questvault.Areas.Identity.Pages.Account
         }
         if (result.IsLockedOut)
         {
+          user.LockoutEnabled = false;
           logger.LogWarning("User account locked out.");
           return RedirectToPage("./Lockout");
         }

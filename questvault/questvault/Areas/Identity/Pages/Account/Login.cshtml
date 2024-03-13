@@ -12,9 +12,9 @@
           <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
           <div class="row-login">
               
-                  <input type="email" class="form-control-login" id="username" placeholder="Email/Username" asp-for="Input.Email" autocomplete="username" aria-required="true">
+                  <input type="text" class="form-control-login" id="username" placeholder="Email/Username" asp-for="Input.EmailUserName" autocomplete="username" aria-required="true">
                     <div class="danger-login">
-                  <p><span asp-validation-for="Input.Email" class="text-danger-login"></span></p>
+                  <p><span asp-validation-for="Input.EmailUserName" class="text-danger-login"></span></p>
                     </div>
           </div>
           <div class="row-login" style="padding-bottom:3%">
