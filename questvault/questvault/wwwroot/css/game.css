@@ -141,7 +141,14 @@
 }
 
 .game-review button:hover {
-    background-color: #0056b3;
+    background: #133E7C;
+    color: #ffffff;
+}
+
+.game-review button:active {
+    background-color: white;
+    color: #091833;
+    border: 3px #711C91;
 }
 
 .game-review .reviews {
