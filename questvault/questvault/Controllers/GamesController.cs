@@ -15,15 +15,16 @@ using questvault.Services;
 
 namespace questvault.Controllers
 {
-    public class TesteIGDBController : Controller
+    public class GamesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IServiceIGDB _igdbService;
 
 
-
-        public TesteIGDBController(ApplicationDbContext context)
+        public GamesController(ApplicationDbContext context, IServiceIGDB igdbService)
         {
             _context = context;
+            _igdbService = igdbService;
         }
 
 
@@ -41,7 +42,6 @@ namespace questvault.Controllers
         {
             try
             {
-                var _igdbService = new IGDBService("uzhx4rrftyohllg1mrpy3ajo7090q5", "7rvcth933kxra92ddery5qn3jxwap7");
                 var jogos = await _igdbService.SearchGames(searchTerm);
                 Console.WriteLine("term: " + searchTerm);
                 // Retorna os dados como JSON
@@ -65,8 +65,6 @@ namespace questvault.Controllers
         {
             try
             {
-                var _igdbService = new IGDBService("uzhx4rrftyohllg1mrpy3ajo7090q5", "7rvcth933kxra92ddery5qn3jxwap7");
-                Console.WriteLine("term: " + searchTerm);
                 var jogos = await _igdbService.SearchGames(searchTerm);
                 // Retorna os dados como JSON
                 return Json(new { Jogos = jogos });

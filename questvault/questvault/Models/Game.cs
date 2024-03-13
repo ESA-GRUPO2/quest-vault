@@ -10,6 +10,8 @@ namespace questvault.Models
         public int GameID { get; set; }
         public string Name { get; set; }
         public string Summary { get; set; }
+        public double IgdbRating { get; set; }
+        public string imageUrl { get; set; }
 
         // Relacionamento Muitos-Para-Muitos com Genres
        
@@ -21,7 +23,6 @@ namespace questvault.Models
         //// Relacionamento Muitos-Para-Muitos com Companies
         public virtual List<GameCompany>? GameCompany { get; set; }
 
-        public double Rating { get; set; }
 
 
     }
