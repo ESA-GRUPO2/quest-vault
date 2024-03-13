@@ -47,9 +47,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
       var disable2faResult = await userManager.SetTwoFactorEnabledAsync(user, false);
       if (!disable2faResult.Succeeded)
-      {
         throw new InvalidOperationException($"Unexpected error occurred disabling 2FA.");
-      }
 
       logger.LogInformation("User with ID '{UserId}' has disabled 2fa.", userManager.GetUserId(User));
       StatusMessage = "2fa has been disabled.";

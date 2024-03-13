@@ -77,7 +77,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
             if (hasPassword)
             {
-                return RedirectToPage("./ChangePassword");
+                return RedirectToPage("..../Home/Index");
             }
 
             return Page();

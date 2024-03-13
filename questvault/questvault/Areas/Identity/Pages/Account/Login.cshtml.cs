@@ -110,8 +110,6 @@ namespace questvault.Areas.Identity.Pages.Account
 
       if (ModelState.IsValid)
       {
-        foreach (var u in context.Users)
-          await Console.Out.WriteLineAsync("name: '" + u.UserName + "', email: '" + u.Email + "', written: '" + Input.EmailUserName + "' name:" + u.UserName.Equals(Input.EmailUserName) + " mail:" + u.Email.Equals(Input.EmailUserName));
         // This doesn't count login failures towards account lockout
         // To enable password failures to trigger account lockout, set lockoutOnFailure: true
         var user = await context.Users.FirstOrDefaultAsync(u => u.Email.Equals(Input.EmailUserName));
@@ -136,8 +134,8 @@ namespace questvault.Areas.Identity.Pages.Account
         {
           //send email
           TwoFactorAuthenticationTokens twoFactorAuthenticator = new() { UserId = user.Id, User = user };
-          await emailStore.SetEmailAsync(twoFactorAuthenticator.User, Input.EmailUserName, CancellationToken.None);
-          await emailSender.SendEmailAsync(Input.EmailUserName, "Login Code", $"Your code to login is:\n\t" + twoFactorAuthenticator.Token);
+          await emailStore.SetEmailAsync(twoFactorAuthenticator.User, user.Email, CancellationToken.None);
+          await emailSender.SendEmailAsync(user.Email, "Login Code", $"Your code to login is:\n\t" + twoFactorAuthenticator.Token);
           //registar token na db 
           if (context.EmailTokens.Any(t => t.UserId == user.Id)) context.Update(twoFactorAuthenticator);
           else context.Add(twoFactorAuthenticator);

@@ -6,6 +6,8 @@
 @import url(2fa-login.css);
 @import url(results.css);
 @import url(2fa.css);
+@import url(dashboard.css);
+@import url(game.css);
 
 
 @media (min-width: 768px) {
@@ -141,7 +143,7 @@ body {
 }
 
 .game-button-sm {
-    width: 140px; /* Para distribuir igualmente os botões com alguma margem */
+    width: 140px; /* Para distribuir igualmente os botï¿½es com alguma margem */
     height: 200px;
     padding: 0;
     border: 2px solid white;
@@ -155,8 +157,8 @@ body {
 }
 
 .game-button-sm img {
-    width: 100%; /* Definindo a largura máxima da imagem como 100% do botão */
-    height: 100%; /* Definindo a altura máxima da imagem como 100% do botão */
+    width: 100%; /* Definindo a largura mï¿½xima da imagem como 100% do botï¿½o */
+    height: 100%; /* Definindo a altura mï¿½xima da imagem como 100% do botï¿½o */
     display: block;
 }
 
@@ -171,4 +173,26 @@ body {
     color: red;
     font-size: 88%;
     margin-top: 10px;
+}
+
+.text-danger-login-2 ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.error-box {
+    color: red;
+    font-size: 88%;
+    margin-left: 15%;
+    width: 267px;
+}
+
+.error-box ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.alert-success{
+    width:94%;
+    margin:auto;
 }

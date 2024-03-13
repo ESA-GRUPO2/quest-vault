@@ -13,7 +13,6 @@ namespace questvault.Areas.Identity.Pages.Account
 {
   public class ConfirmEmailModel(UserManager<User> userManager) : PageModel
   {
-
     /// <summary>
     ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
     ///     directly from your code. This API may change or be removed in future releases.
@@ -34,8 +33,7 @@ namespace questvault.Areas.Identity.Pages.Account
       }
 
       code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
-      var result = await userManager.ConfirmEmailAsync(user, code);
-      StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
+      await userManager.ConfirmEmailAsync(user, code);
       return Page();
     }
   }

@@ -26,6 +26,12 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
     ///     directly from your code. This API may change or be removed in future releases.
     /// </summary>
+    public string Email { get; set; }
+
+    /// <summary>
+    ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+    ///     directly from your code. This API may change or be removed in future releases.
+    /// </summary>
     public bool Is2faEnabled { get; set; }
 
     /// <summary>
@@ -52,9 +58,12 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
       ///     directly from your code. This API may change or be removed in future releases.
       /// </summary>
-      [Phone]
-      [Display(Name = "Phone number")]
-      public string PhoneNumber { get; set; }
+
+      [StringLength(100, ErrorMessage = "This {0} already exits.")]
+      [DataType(DataType.Text)]
+      [Display(Name = "user name")]
+      public string NewUserName { get; set; }
+
       [Required]
       [DataType(DataType.Password)]
       [Display(Name = "password")]
@@ -66,6 +75,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       [Display(Name = "new password")]
       public string NewPassword { get; set; }
 
+      [Required]
       [DataType(DataType.Password)]
       [Display(Name = "Confirm new password")]
       [Compare("NewPassword", ErrorMessage = "The passwords do not match.")]
@@ -75,37 +85,67 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     private async Task LoadAsync(User user)
     {
       var userName = await userManager.GetUserNameAsync(user);
-      var phoneNumber = await userManager.GetPhoneNumberAsync(user);
+      var email = await userManager.GetEmailAsync(user);
+      var is2faEnabled = await userManager.GetTwoFactorEnabledAsync(user);
 
       Username = userName;
-
-      Input = new InputModel
-      {
-        PhoneNumber = phoneNumber
-      };
-
-      Is2faEnabled = await userManager.GetTwoFactorEnabledAsync(user);
-
+      Email = email;
+      Is2faEnabled = is2faEnabled;
 
     }
 
     public async Task<IActionResult> OnGetAsync()
     {
-
       var user = await userManager.GetUserAsync(User);
       if (user == null)
       {
         return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
       }
 
-      Is2faEnabled = await userManager.GetTwoFactorEnabledAsync(user);
+      await LoadAsync(user);
       return Page();
     }
 
-    public async Task<IActionResult> OnPostAsync()
+    public async Task<IActionResult> OnPostUserNameAsync()
+    {
+      var user = await userManager.GetUserAsync(User);
+      if (user == null) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+      if (string.IsNullOrEmpty(Input.NewUserName))
+      {
+        ModelState.AddModelError(string.Empty, "User name cannot be empty");
+        await LoadAsync(user);
+        return Page();
+      }
+
+      var userName = user.UserName;
+      if (Input.NewUserName.Equals(userName))
+      {
+        ModelState.AddModelError(string.Empty, "Can't change to same username");
+        await LoadAsync(user);
+        return Page();
+      }
+
+      if (!Input.NewUserName.Equals(userName))
+      {
+        var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
+        if (!setUserNameResult.Succeeded)
+        {
+          ModelState.AddModelError(string.Empty, "This username is already taken");
+          await LoadAsync(user);
+          return Page();
+        }
+      }
+
+      await signInManager.RefreshSignInAsync(user);
+      StatusMessage = "Your username has been updated";
+      return RedirectToPage();
+    }
+
+    public async Task<IActionResult> OnPostPasswordAsync()
     {
       if (!ModelState.IsValid)
       {
+        ModelState.AddModelError(string.Empty, "Fields cannot be empty");
         return Page();
       }
 
@@ -129,7 +169,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       logger.LogInformation("User changed their password successfully.");
       StatusMessage = "Your password has been changed.";
 
-      return Page();
+      return RedirectToPage();
     }
   }
 }
