@@ -122,11 +122,11 @@ namespace questvault.Areas.Identity.Pages.Account
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return Page();
         }
-        /*if (user.LockoutEnabled)
+        if (user.LockoutEnabled)
         {
             logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
             return RedirectToPage("./Lockout");
-        }*/
+        }
         
         var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
