@@ -110,21 +110,23 @@ namespace questvault.Areas.Identity.Pages.Account
       if (ModelState.IsValid)
       {
         var user = await context.Users.FirstOrDefaultAsync(u => u.Email.Equals(Input.EmailUserName));
-        await Console.Out.WriteLineAsync("User email: " + user);
-        user ??= await context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(Input.EmailUserName));
-        await Console.Out.WriteLineAsync("User username: " + user);
+        //await Console.Out.WriteLineAsync("User email: " + user);
+        //user ??= await context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(Input.EmailUserName));
+        //await Console.Out.WriteLineAsync("User username: " + user);
         // This doesn't count login failures towards account lockout
         // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+        //var user = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (user == null)
         {
-          //the user with this email/username doesn't exist
-          ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            //the user with this email/username doesn't exist
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            return Page();
         }
-        if (user.LockoutEnabled)
+        /*if (user.LockoutEnabled)
         {
             logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
             return RedirectToPage("./Lockout");
-        }
+        }*/
         
         var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
