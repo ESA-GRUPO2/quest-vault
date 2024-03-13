@@ -95,11 +95,17 @@ namespace questvault.Areas.Identity.Pages.Account
       
       if (ModelState.IsValid)
       {
+        var userExists = await _emailStore.FindByEmailAsync(Input.Email, CancellationToken.None);
+       
+        if (userExists.Email.Equals(Input.Email)) {
+            ModelState.AddModelError(string.Empty, "This email is in use");
+            return Page();
+        }
         var user = CreateUser(); 
         user.UserName = Input.UserName;
+        user.Email = Input.Email;
         await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
         await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-        //await _userStore.set
         var result = await _userManager.CreateAsync(user, Input.Password);
 
         if (result.Succeeded)
