@@ -1,0 +1,154 @@
+﻿.game-details {
+    margin: 0px 71px 0px 71px;
+    color: white;
+    margin-bottom: 12vh;
+}
+
+.game-title {
+}
+
+.game-cover{
+    max-width: min-content;
+    max-height: 18rem;
+    border: solid white 1px;
+}
+
+.game-filters{
+    font-size: 20px;
+}
+
+.game-user-status{
+    margin-top: 5vh;
+}
+
+.game-user-status .select-results {
+    background-color: #133E7C;
+    font-size: 110%;
+    font-weight: 500;
+    border: 3px #711C91;
+    border-radius: 5px;
+    padding: 6px;
+    margin-bottom: 16px;
+    width: 10rem;
+    color: #D9D9D9;
+}
+
+.game-score{
+    text-align: right;
+}
+
+.global-rating {
+    font-size: 20px;
+    margin: 1.9vh 1rem;
+}
+
+.game-platforms {
+    text-align: right;
+}
+
+.game-about {
+    font-size: 110%;
+    text-align: justify;
+}
+
+.game-captures{
+    width: auto;
+}
+
+.game-captures .card-group {
+    padding: .7rem;
+    background-color: #133e7c;
+    border-radius: 5px;
+}
+
+.game-captures .card, .card-img {
+    border-radius: unset;
+}
+
+.game-review {
+    text-align: right;
+}
+
+.rating {
+    font-size: 20px;
+    margin: 1.9vh 1rem;
+}
+
+.stars {
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.game-review .star {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.one {
+    color: rgb(255, 255, 0);
+}
+
+.two {
+    color: rgb(255, 255, 0);
+}
+
+.three {
+    color: rgb(255, 255, 0);
+}
+
+.four {
+    color: rgb(255, 255, 0);
+}
+
+.five {
+    color: rgb(255, 255, 0);
+}
+
+.game-review textarea {
+    color: white;
+    width: 60%;
+    height: 40%;
+    padding: 10px;
+    border: 1px solid #133E7C;
+    border-radius: 4px;
+    resize: none;
+    background-color: #133E7C;
+    margin-top: 2vh;
+}
+
+.game-review button {
+    background: #0abdc6;
+    color: #091833;
+    border-radius: 24px;
+    width: 8.5rem;
+    height: 2.75rem;
+    padding: 6px;
+    border: none;
+    text-align: center;
+    font-weight: bolder;
+    line-height: 30px;
+}
+
+.game-review button:hover {
+    background-color: #0056b3;
+}
+
+.game-review .reviews {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.game-review .review {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.game-review .review p {
+    margin: 0;
+}
+
+.review-user-publish{
+
+}

@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Game";
+}
+
+<div class="game-details">
+
+    <section class="d-flex main-section">
+        <img class="game-cover image-fluid" src="../img/gta.png" />
+        <div class="container ms-3 mt-4">
+            <h2 class="game-title m-auto">Game Name</h2>
+            <h4>Release Date/Year</h4>
+            <h5>Publisher</h5>
+            <div class="ps-0">
+                <div class="game-filters d-inline-flex mt-3">
+                    <div class="me-3 text-decoration-underline">Adventure</div>
+                    <div class="me-3 text-decoration-underline">Action</div>
+                    <div class="text-decoration-underline">RPG</div>
+                </div>
+                <div class="game-user-status">
+                    <div class="d-inline-flex">
+                        <select #game (change)="onSelected(game.value)" class="select-results col-1 me-2" aria-label="Default select example">
+                            <option selected>Add Game</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <select #status (change)="onSelected(status.value)" class="select-results col-1 ms-2" aria-label="Default select example">
+                            <option selected>Status</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid game-score mt-4">
+            <h4>Game Score</h4>
+            <div class=" justify-content-end d-inline-flex">
+                @* global rating stars *@
+                <div class="global-rating">
+                    <span id="global-rating">0</span>.0
+                </div>
+                <div class="stars" id="global-stars">
+                    <span class="global-star" data-value="1">★</span>
+                    <span class="global-star" data-value="2">★</span>
+                    <span class="global-star" data-value="3">★</span>
+                    <span class="global-star" data-value="4">★</span>
+                    <span class="global-star" data-value="5">★</span>
+                </div>
+            </div>
+            <div class="game-platforms container-fluid mt-5">
+                <p>Windows PC</p>
+                <p>Playstation 4 | Playstation 3</p>
+                <p>Xbox One | Xbox 360</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="bar">
+
+    <section class="d-flex main-section">
+
+        <div class="container-fluid justify-content-between mt-3">
+            <div class="game-about align-top mb-5">
+                <h4 class="align-content-start">Summary</h4>
+                <p class="text-break text-wrap">Grand Theft Auto V is a vast open world game set in Los Santos, a sprawling sun-soaked metropolis struggling to stay afloat in an era of economic uncertainty and cheap reality TV. The game blends storytelling and gameplay in new ways as players repeatedly jump in and out of the lives of the game’s three lead characters, playing all sides of the game’s interwoven story.</p>
+            </div>
+            <div class="game-captures align-bottom">
+                <h4>Screenshots</h4>
+                <div class="card-group">
+                    <div class="card me-2">
+                        <img src="../img/test_gamecaptures/nsi3tc7jk2evyici425s.jpeg" class="card-img col-md-2" alt="...">
+                    </div>
+                    <div class="card me-2">
+                        <img src="../img/test_gamecaptures/nsi3tc7jk2evyici425s.jpeg" class="card-img col-md-2" alt="...">
+                    </div>
+                    <div class="card">
+                        <img src="../img/test_gamecaptures/nsi3tc7jk2evyici425s.jpeg" class="card-img col-md-2" alt="...">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="game-review container mt-3">
+            <h4>Your Review</h4>
+            <div class="justify-content-end d-flex">
+                <div class="rating">
+                    <span id="rating">0</span>.0
+                </div>
+                <div class="stars" id="stars">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+            </div>
+            <textarea id="review" maxlength="255" placeholder="Write your review here (max 255)"></textarea>
+            <div>            
+                <button id="submit" class="mt-2">Submit</button>
+            </div>
+            <div class="reviews" id="reviews"></div>
+        </div>
+    </section>
+</div>
+
+<script src="~/js/rating.js"></script>
