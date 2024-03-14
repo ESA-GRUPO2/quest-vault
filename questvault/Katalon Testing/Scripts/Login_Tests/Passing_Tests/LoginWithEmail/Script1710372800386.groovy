@@ -23,22 +23,17 @@ WebUI.navigateToUrl('https://localhost:7074/')
 
 WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_Sign up_nav-vector pe-2'))
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Log in'))
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.Email'), 'testInvalidEmail')
+WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tiagojoaobatista4@gmail.com')
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'test')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.Password'), 'LUp6avagZuk=')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.Password'), 
-    'LUp6avagZuk=')
+WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.ConfirmPassword'), 
-    'LUp6avagZuk=')
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_MyLibrary_nav-vector mb-1'))
 
-WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Sign up'))
-
-WebUI.verifyElementText(findTestObject('Object Repository/Page_- QuestVault/span_The Email field is not a valid e-mail address'), 
-    'The Email field is not a valid e-mail address.')
+WebUI.verifyElementText(findTestObject('Object Repository/Page_Home - QuestVault/button_Logout'), 'Logout')
 
 WebUI.closeBrowser()
 

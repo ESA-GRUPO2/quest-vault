@@ -22,13 +22,8 @@
                     <p><span asp-validation-for="Input.Password" class="text-danger-login"></span></p>
                   </div>
           </div>
-          <div class="checkbox mb-3">
-              <label asp-for="Input.RememberMe" class="form-label" >
-                  <input class="form-check-input" asp-for="Input.RememberMe" />
-                  @Html.DisplayNameFor(m => m.Input.RememberMe)
-              </label>
-          </div>
-          <button id="login-e=" type= "submit" class="btn-login btn-primary submit">Log in</button>
+          
+          <button style="margin-top:10px" id="login-e=" type= "submit" class="btn-login btn-primary submit">Log in</button>
       </form>
       <!-- Google login button start -->
       <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
@@ -38,7 +33,7 @@
                   {
                       <button type="submit" class="google-auth" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
                                 <img width="16" height="16" src="/img/google_icon.png" />
-                          Sign in with Google
+                          Log in with Google
 
                           </button>
                       }

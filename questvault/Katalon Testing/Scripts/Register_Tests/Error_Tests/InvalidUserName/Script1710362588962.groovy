@@ -27,7 +27,7 @@ WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Sign up')
 
 WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.Email'), 'test@gmail.com')
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.UserName'), '1')
+WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), '1')
 
 WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.Password'), 'LUp6avagZuk=')
 

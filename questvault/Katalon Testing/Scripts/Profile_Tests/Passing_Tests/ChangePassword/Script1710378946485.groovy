@@ -23,22 +23,31 @@ WebUI.navigateToUrl('https://localhost:7074/')
 
 WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_Sign up_nav-vector pe-2'))
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Log in'))
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.Email'), 'testInvalidEmail')
+WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'Tiago2')
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'test')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.Password'), 'LUp6avagZuk=')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.Password'), 
+WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
+
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_MyLibrary_nav-vector mb-1'))
+
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Profile'))
+
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_My Account - QuestVault/input_Current password_Input.OldPassword'), 
     'LUp6avagZuk=')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.ConfirmPassword'), 
-    'LUp6avagZuk=')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_My Account - QuestVault/input_New password_Input.NewPassword'), 
+    'TCdEHGtpZOBFdqy6dbTLjQ==')
 
-WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Sign up'))
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_My Account - QuestVault/input_Confirm new password_Input.ConfirmPassword'), 
+    'TCdEHGtpZOBFdqy6dbTLjQ==')
 
-WebUI.verifyElementText(findTestObject('Object Repository/Page_- QuestVault/span_The Email field is not a valid e-mail address'), 
-    'The Email field is not a valid e-mail address.')
+WebUI.click(findTestObject('Object Repository/Page_My Account - QuestVault/button_Change password'))
+
+WebUI.verifyElementText(findTestObject('Object Repository/Page_My Account - QuestVault/div_Your password has been changed'), 
+    'Your password has been changed.')
 
 WebUI.closeBrowser()
 

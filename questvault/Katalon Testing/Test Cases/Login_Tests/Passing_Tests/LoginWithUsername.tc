@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies if the login with username is done correctly</description>
+   <name>LoginWithUsername</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>cea6b941-9e09-489c-8161-529729a3254b</testCaseGuid>
+</TestCaseEntity>

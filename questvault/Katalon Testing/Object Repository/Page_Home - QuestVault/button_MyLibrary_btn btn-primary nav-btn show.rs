@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>button_Sign in_navbar-toggler</name>
+   <name>button_MyLibrary_btn btn-primary nav-btn show</name>
    <tag></tag>
    <elementGuidId>d038032f-0143-4d68-bacd-c148d0547d06</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value></value>
+         <value>(//button[@type='button'])[3]</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>button.navbar-toggler</value>
+         <value>button.btn.btn-primary.nav-btn.show</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:label=&quot;Toggle navigation&quot;i</value>
+         <value>internal:role=button[name=&quot;Key Icon&quot;i]</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -29,15 +29,15 @@
       <name>tag</name>
       <type>Main</type>
       <value>button</value>
-      <webElementGuid>fab7b502-84d9-4fbf-aa8b-8b88494e41ca</webElementGuid>
+      <webElementGuid>bbcdc62f-919d-46d2-8d4c-3c3c0e0bee55</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>navbar-toggler</value>
-      <webElementGuid>88f62682-4800-4a18-acbe-569cdb29acbe</webElementGuid>
+      <value>btn btn-primary nav-btn show</value>
+      <webElementGuid>4bc46ce6-bb0c-4193-9acf-16e96bc7402a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,31 +45,15 @@
       <name>type</name>
       <type>Main</type>
       <value>button</value>
-      <webElementGuid>157a12a8-c1e2-4f1c-aa0b-84a856bddcf0</webElementGuid>
+      <webElementGuid>95edd006-28b3-4c43-bb01-72fb3b3a663a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>data-bs-toggle</name>
       <type>Main</type>
-      <value>collapse</value>
-      <webElementGuid>678fa33d-9f32-4ad0-95f3-bb897cc3ac28</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>data-bs-target</name>
-      <type>Main</type>
-      <value>#navbarSupportedContent</value>
-      <webElementGuid>c2394f5d-8fb7-4efa-9d12-0b7bb928e246</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>aria-controls</name>
-      <type>Main</type>
-      <value>navbarSupportedContent</value>
-      <webElementGuid>2620bb85-c9cb-415d-bc2d-ebf381dc09db</webElementGuid>
+      <value>dropdown</value>
+      <webElementGuid>b7e18164-e916-4376-b77c-63632efef71b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -77,39 +61,55 @@
       <name>aria-expanded</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>889b03a7-ef22-490b-baf9-841051b13dc6</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>aria-label</name>
-      <type>Main</type>
-      <value>Toggle navigation</value>
-      <webElementGuid>a980e667-9b60-4e57-80c9-3d8a22109341</webElementGuid>
+      <webElementGuid>2a82ed7a-b79c-446b-8d5c-d4d624602012</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>/html[1]/body[@class=&quot;home-body&quot;]/nav[@class=&quot;navbar navbar-dark fixed-top navbar-expand-lg nav-main nav-bg&quot;]/div[@class=&quot;container-fluid&quot;]/button[@class=&quot;navbar-toggler&quot;]</value>
-      <webElementGuid>09149b11-24fb-4b07-b905-43f923022eb6</webElementGuid>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/button[@class=&quot;btn btn-primary nav-btn show&quot;]</value>
+      <webElementGuid>7273fa7e-c525-411d-bbd7-8062bcfa2d66</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//button[@type='button']</value>
-      <webElementGuid>6229db26-c3c8-4b80-9f4b-1433a054d6d0</webElementGuid>
+      <value>(//button[@type='button'])[3]</value>
+      <webElementGuid>d2a96d83-b443-4fde-bf64-b8be3aa628ca</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button</value>
+      <webElementGuid>85874768-a7c6-49d7-bbca-f84b38797792</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::button[1]</value>
+      <webElementGuid>1273eee2-0bbc-4f8d-9a4d-57e019f5ebb2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Profile'])[1]/preceding::button[1]</value>
+      <webElementGuid>df58470d-62f1-406e-aba1-1f997ffa6115</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//button</value>
-      <webElementGuid>a7c0745c-946b-4d82-852d-8d5901a7be6f</webElementGuid>
+      <value>//li[5]/div/button</value>
+      <webElementGuid>cc452640-6b8b-43e6-a8ba-00e96637b279</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,6 +117,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//button[@type = 'button']</value>
-      <webElementGuid>729c470b-ad48-48ed-ae7c-13cf289e8815</webElementGuid>
+      <webElementGuid>c2387fc3-e18f-4443-ac83-690459764778</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

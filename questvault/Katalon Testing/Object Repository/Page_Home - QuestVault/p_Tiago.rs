@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>p_Your game collection at your fingertips</name>
+   <name>p_Tiago</name>
    <tag></tag>
-   <elementGuidId>89e3fa98-834d-4ef3-bc73-96c2967563aa</elementGuidId>
+   <elementGuidId>b89ee1d8-2d30-47de-b751-5448a56e7e04</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::p[1]</value>
+         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li/p</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>p.fs-1.fw-bolder.home-text-color.home-main-title</value>
+         <value>p.dropdown-item</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:text=&quot;Your game collection at your fingertips.&quot;i</value>
+         <value>internal:text=&quot;Tiago&quot;i</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -29,55 +29,63 @@
       <name>tag</name>
       <type>Main</type>
       <value>p</value>
-      <webElementGuid>1a395896-78a9-41f6-be1b-4fd43d86dbea</webElementGuid>
+      <webElementGuid>6b71fd3c-54ca-4f87-b17c-81d309a2db3c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>fs-1 fw-bolder home-text-color home-main-title</value>
-      <webElementGuid>c39a130a-2820-4512-8ad6-082abb7fd609</webElementGuid>
+      <value>dropdown-item</value>
+      <webElementGuid>ec6e127a-ad83-4537-b42a-40988d08088f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Your game collection at your fingertips.</value>
-      <webElementGuid>d02d583e-d00f-464e-9806-9d23962e36fc</webElementGuid>
+      <value>Tiago</value>
+      <webElementGuid>012a74c3-fe04-4294-a126-af8f7c52e07e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>/html[1]/body[@class=&quot;home-body&quot;]/div[1]/main[@class=&quot;pb-3&quot;]/section[@class=&quot;home-banner-image bg-image-full&quot;]/div[@class=&quot;container h-100 d-flex justify-content-evenly text-center&quot;]/div[@class=&quot;row d-flex justify-content-evenly align-self-center&quot;]/div[@class=&quot;col-8 my-5 d-flex&quot;]/p[@class=&quot;fs-1 fw-bolder home-text-color home-main-title&quot;]</value>
-      <webElementGuid>7561805d-d7cd-43cf-9e79-90329c2483cb</webElementGuid>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[1]/p[@class=&quot;dropdown-item&quot;]</value>
+      <webElementGuid>9c84719f-11d8-455f-abbe-90ce69b91661</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>xpath:neighbor</name>
+      <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::p[1]</value>
-      <webElementGuid>f0cceb73-b4e5-4eea-aea0-3bbbe65a7907</webElementGuid>
+      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li/p</value>
+      <webElementGuid>4aa5ac1a-f26f-4d2b-9a47-c3fb09189be3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::p[5]</value>
-      <webElementGuid>ae95c820-e64d-469d-9890-fdcc01ae82df</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::p[1]</value>
+      <webElementGuid>fbbc6647-ead3-4ccb-a100-099a98d673c3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='Your game collection at your fingertips.']/parent::*</value>
-      <webElementGuid>8d95b858-8955-4140-aed1-c8f785662062</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Profile'])[1]/preceding::p[1]</value>
+      <webElementGuid>37074d83-d49d-4a45-ad51-49869e1b113d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Tiago']/parent::*</value>
+      <webElementGuid>0831345b-b68f-4f79-8149-b342679c1ae8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,14 +93,14 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//p</value>
-      <webElementGuid>bf1698f9-610f-425b-816e-bb74b733919e</webElementGuid>
+      <webElementGuid>d56b8f26-b8ec-48cd-aa47-e6afccd06108</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//p[(text() = 'Your game collection at your fingertips.' or . = 'Your game collection at your fingertips.')]</value>
-      <webElementGuid>a14ca7df-a822-4015-87b9-83be64182d7d</webElementGuid>
+      <value>//p[(text() = 'Tiago' or . = 'Tiago')]</value>
+      <webElementGuid>7270ee77-5957-4559-9493-36d2991818da</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

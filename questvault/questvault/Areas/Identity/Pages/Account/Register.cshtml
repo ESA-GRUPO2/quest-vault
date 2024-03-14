@@ -6,7 +6,7 @@
 <body class="login-body">
     <div class="main-section-login mt-4">
       <form id="registerForm" asp-rout-returnUrl="@Model.ReturnUrl" method="post">
-        <h1 class="h1-login">Sign up</h1>
+        <h1 class="h1-login">Register</h1>
         <div asp-validation-summary="ModelOnly" class="text-danger-login-2" role="alert"></div>
         <div class="row-login">
         <div class="col-sm-5-login">
@@ -41,13 +41,8 @@
                         </div>
         </div>
       </div>
-      <div class="row-login">
-        <div class="col-sm-5-login">
-          <p>ReCaptcha Placeholder</p>
-        </div>
-        </div>
-        <button id="registerSubmit" type="submit" class="btn-login btn-primary submit">Sign up</button>
-        <p style="margin-bottom: 10px;">Already have an account? <a asp-area="Identity" asp-page="/Account/Login" style="font-size:100%; color: white">Sign in</a></p>
+        <button style="margin-top:15px" id="registerSubmit" type="submit" class="btn-login btn-primary submit">Register</button>
+        <p style="margin-bottom: 10px;">Already have an account? <a asp-area="Identity" asp-page="/Account/Login" style="font-size:100%; color: white">Log in</a></p>
       </form>
     </div>
 </body>

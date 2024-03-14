@@ -23,22 +23,23 @@ WebUI.navigateToUrl('https://localhost:7074/')
 
 WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_Sign up_nav-vector pe-2'))
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Log in'))
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.Email'), 'testInvalidEmail')
+WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'Tiago2')
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'test')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.Password'), 'TCdEHGtpZOBFdqy6dbTLjQ==')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.Password'), 
-    'LUp6avagZuk=')
+WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Sign up_Input.ConfirmPassword'), 
-    'LUp6avagZuk=')
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/button_MyLibrary_btn btn-primary nav-btn show'))
 
-WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Sign up'))
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Profile'))
 
-WebUI.verifyElementText(findTestObject('Object Repository/Page_- QuestVault/span_The Email field is not a valid e-mail address'), 
-    'The Email field is not a valid e-mail address.')
+WebUI.click(findTestObject('Object Repository/Page_My Account - QuestVault/button_Enable 2FA'))
+
+WebUI.click(findTestObject('Object Repository/Page_Enable two-factor authentication (2FA)_95b15b/button_Enable 2FA'))
+
+WebUI.verifyElementText(findTestObject('Object Repository/Page_My Account - QuestVault/div_2fa has been Enabled'), '2fa has been Enabled.')
 
 WebUI.closeBrowser()
 
