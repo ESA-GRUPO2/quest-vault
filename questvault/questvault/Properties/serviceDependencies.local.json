@@ -1,8 +1,12 @@
 {
   "dependencies": {
     "mssql1": {
-      "type": "mssql.local",
-      "connectionId": "ConnectionStrings:DefaultConnection"
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ServiceLinker/locations/eastus/connectors/ConnectionStrings_8F5B243EBD",
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/questvaultdbserver/databases/questvault_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings",
+      "dynamicId": null
     }
   }
 }
