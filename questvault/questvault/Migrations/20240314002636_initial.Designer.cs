@@ -12,15 +12,15 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240310142913_Initial")]
-    partial class Initial
+    [Migration("20240314002636_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -156,6 +156,137 @@ namespace questvault.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("questvault.Models.Company", b =>
+                {
+                    b.Property<int>("CompanyID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CompanyID"));
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CompanyID");
+
+                    b.ToTable("Company");
+                });
+
+            modelBuilder.Entity("questvault.Models.Game", b =>
+                {
+                    b.Property<int>("GameID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GameID"));
+
+                    b.Property<double>("IgdbRating")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("QvRating")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("imageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GameID");
+
+                    b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("questvault.Models.GameCompany", b =>
+                {
+                    b.Property<int>("GameID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<int>("CompanyID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("GameID", "CompanyID");
+
+                    b.HasIndex("CompanyID");
+
+                    b.ToTable("GameCompany");
+                });
+
+            modelBuilder.Entity("questvault.Models.GameGenre", b =>
+                {
+                    b.Property<int>("GamesID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<int>("GenresID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("GamesID", "GenresID");
+
+                    b.HasIndex("GenresID");
+
+                    b.ToTable("GameGenre");
+                });
+
+            modelBuilder.Entity("questvault.Models.GamePlatform", b =>
+                {
+                    b.Property<int>("GameID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<int>("PlatformID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("GameID", "PlatformID");
+
+                    b.HasIndex("PlatformID");
+
+                    b.ToTable("GamePlatform");
+                });
+
+            modelBuilder.Entity("questvault.Models.Genre", b =>
+                {
+                    b.Property<int>("GenreID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenreID"));
+
+                    b.Property<string>("GenreName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenreID");
+
+                    b.ToTable("Genres");
+                });
+
+            modelBuilder.Entity("questvault.Models.Platform", b =>
+                {
+                    b.Property<int>("PlatformID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlatformID"));
+
+                    b.Property<string>("PlatformName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PlatformID");
+
+                    b.ToTable("Platform");
                 });
 
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
@@ -304,6 +435,63 @@ namespace questvault.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("questvault.Models.GameCompany", b =>
+                {
+                    b.HasOne("questvault.Models.Company", "Company")
+                        .WithMany("GameCompany")
+                        .HasForeignKey("CompanyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany("GameCompany")
+                        .HasForeignKey("GameID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Game");
+                });
+
+            modelBuilder.Entity("questvault.Models.GameGenre", b =>
+                {
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany("GamesGenres")
+                        .HasForeignKey("GamesID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.Genre", "Genre")
+                        .WithMany("GamesGenres")
+                        .HasForeignKey("GenresID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+
+                    b.Navigation("Genre");
+                });
+
+            modelBuilder.Entity("questvault.Models.GamePlatform", b =>
+                {
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany("GamePlatform")
+                        .HasForeignKey("GameID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.Platform", "Platform")
+                        .WithMany("GamePlatform")
+                        .HasForeignKey("PlatformID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+
+                    b.Navigation("Platform");
+                });
+
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
                 {
                     b.HasOne("questvault.Models.User", "User")
@@ -313,6 +501,30 @@ namespace questvault.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("questvault.Models.Company", b =>
+                {
+                    b.Navigation("GameCompany");
+                });
+
+            modelBuilder.Entity("questvault.Models.Game", b =>
+                {
+                    b.Navigation("GameCompany");
+
+                    b.Navigation("GamePlatform");
+
+                    b.Navigation("GamesGenres");
+                });
+
+            modelBuilder.Entity("questvault.Models.Genre", b =>
+                {
+                    b.Navigation("GamesGenres");
+                });
+
+            modelBuilder.Entity("questvault.Models.Platform", b =>
+                {
+                    b.Navigation("GamePlatform");
                 });
 #pragma warning restore 612, 618
         }

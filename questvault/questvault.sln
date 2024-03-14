@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "questvault", "questvault\questvault.csproj", "{7CC1D612-269A-422E-B3D2-98285A021BD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "questvaultTest", "questvaultTest\questvaultTest.csproj", "{C1915254-4E67-4B94-B50F-08193F500B77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7CC1D612-269A-422E-B3D2-98285A021BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CC1D612-269A-422E-B3D2-98285A021BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CC1D612-269A-422E-B3D2-98285A021BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1915254-4E67-4B94-B50F-08193F500B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1915254-4E67-4B94-B50F-08193F500B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1915254-4E67-4B94-B50F-08193F500B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1915254-4E67-4B94-B50F-08193F500B77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
