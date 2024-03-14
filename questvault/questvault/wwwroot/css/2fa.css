@@ -1,0 +1,20 @@
+﻿.h3-2fa {
+    color: white;
+    margin-bottom: 40px;
+    text-align: center;
+    margin: auto;
+}
+
+.2fa-buttons {
+    width: 100%;
+    margin: 0 auto;
+}
+.action_btn {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.btn-danger-2fa {
+    margin-top: 20px;
+    border-radius: 60px;
+}

@@ -43,6 +43,15 @@ builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
   )
 );
 
+//IGDB Service
+builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
+    new IGDBService(
+        i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
+        i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
+    )
+);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
