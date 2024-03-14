@@ -1,0 +1,1 @@
+search_result['670']=["topic_000000000000014F.html","IServiceIGDB.GetPlatforms Method","Gets a collection of platforms."];

@@ -1,0 +1,1 @@
+search_result['569']=["topic_000000000000011C.html","Game.GameCompany Property","Gets or sets the list of companies associated with the game.\r\nRepresents a many-to-many relationship with Companies."];
