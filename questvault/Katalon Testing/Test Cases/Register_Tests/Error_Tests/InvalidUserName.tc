@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies if the error is displayed when the username is invalid</description>
+   <name>InvalidUserName</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>06e4e739-6920-47cc-9626-60410957e216</testCaseGuid>
+</TestCaseEntity>
