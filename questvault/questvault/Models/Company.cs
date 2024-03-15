@@ -19,6 +19,6 @@ namespace questvault.Models
         /// Gets or sets the list of games associated with the company.
         /// Represents a many-to-many relationship with Games.
         /// </summary>
-        public virtual List<GameCompany>? GameCompany { get; set; }
+        //public virtual List<GameCompany>? GameCompany { get; set; }
     }
 }

@@ -27,69 +27,54 @@ namespace questvault.Services
           "sort total_rating_count desc;" +
           "limit 5;";
       var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query2);
-
-      return games.Select(game => new Models.Game
+        
+      return games.Select(game => new Game
       {
-        GameID = (int)game.Id,
+        GameId = (int)game.Id,
         Name = game.Name,
         Summary = game.Summary,
         IgdbRating = game.Rating.Value,
-        imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true)
+        imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
+
       });
     }
 
-    public async Task<IEnumerable<Models.Game>> GetPopularGames(int limit)
+    public async Task<IEnumerable<Game>> GetPopularGames(int limit)
     {
-      string query = "fields id,name,genres.name,rating,total_rating_count, summary; artworks.image_id;" +
-          "where name != null & genres != null & rating != null & total_rating_count != null;" +
+      string query = "fields id, name, genres.name, involved_companies, platforms, rating, total_rating_count, summary, artworks.image_id;" +
+          "where name != null & genres != null & rating != null & total_rating_count != null & artworks.image_id != null & involved_companies != null & platforms != null;" +
           "sort total_rating_count desc;" +
           $"limit {limit};";
 
       var popularGames = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
 
-      return popularGames.Select(game => new Models.Game
+      return popularGames.Select(game => new Game
       {
-        GameID = (int)game.Id,
+        GameId = (int)game.Id,
         Name = game.Name,
         Summary = game.Summary,
         IgdbRating = (double)game.Rating,
         imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
-        GamesGenres = game.Genres.Values.Select(genre => new GameGenre
-        {
-          GamesID = (int)game.Id,
-          GenresID = (int)genre.Id,
-          Genre = new Models.Genre
-          {
-            GenreID = (int)genre.Id,
-            GenreName = genre.Name,
-            GamesGenres = new List<GameGenre>
-                        {
-                            new GameGenre
-                            {
-                                GamesID = (int)game.Id,
-                                GenresID = (int)genre.Id
-                            }
-                        }
-          },
+        Genres = game.Genres.Values.Select(gen => new Genre 
+        { 
+            GenreId = (int)gen.Id, 
+            GenreName = gen.Name
         }).ToList()
-        //,
-        //GamePlatform = game.Platforms.Values.Select(pl => new GamePlatform
+        //GamesGenres = game.Genres.Values.Select(genre => new GameGenre
+        //{
+        //  GamesID = (int)game.Id,
+        //  GenresID = (int)genre.Id,
+        //}).ToList(),
+        //GamePlatform = game.Platforms.Ids.Select(pl => new GamePlatform
         //{
         //    GameID = (int)game.Id,
-        //    PlatformID = (int)pl.Id,
-        //    Platform = new Models.Platform
-        //    {
-        //        PlatformID = (int)pl.Id,
-        //        PlatformName = pl.Name,
-        //        GamePlatform = new List<GamePlatform>
-        //        {
-        //            new GamePlatform { 
-        //                GameID = (int)game.Id,
-        //                PlatformID = (int)pl.Id
-        //            }
-        //        }
-        //    }
+        //    PlatformID = (int)pl,
+        //}).ToList(),
+        //GameCompany = game.InvolvedCompanies.Ids.Select(c => new GameCompany { 
+        //    GameID= (int)game.Id,
+        //    CompanyID= (int)c
         //}).ToList()
+        
       });
     }
 
@@ -101,7 +86,7 @@ namespace questvault.Services
       Console.WriteLine(genres);
       return genres.Select(genre => new Models.Genre
       {
-        GenreID = (int)genre.Id,
+        GenreId = (int)genre.Id,
         GenreName = genre.Name
       });
     }

@@ -9,16 +9,16 @@ namespace questvault.Models
     public class Game
     {
 
-        [Key]
-        public int GameID { get; set; }
+        //[Key]
+        public int GameId { get; set; }
         /// <summary>
         /// Gets or sets the name of the game.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
         /// <summary>
         /// Gets or sets the summary or description of the game.
         /// </summary>
-        public string Summary { get; set; }
+        public string? Summary { get; set; }
         /// <summary>
         /// Gets or sets the rating of the game from IGDB.
         /// </summary>
@@ -26,7 +26,7 @@ namespace questvault.Models
         /// <summary>
         /// Gets or sets the URL of the game's cover image.
         /// </summary>
-        public string imageUrl { get; set; }
+        public string? imageUrl { get; set; }
         /// <summary>
         /// Gets or sets the rating of the game for our app.
         /// QV -> QuestVault
@@ -38,19 +38,20 @@ namespace questvault.Models
         /// Gets or sets the list of genres associated with the game.
         /// Represents a many-to-many relationship with Genres.
         /// </summary>
-        public List<GameGenre>? GamesGenres { get; set; }
+        public List<Genre> Genres { get; set; }
+        public List<GameGenres> GameGenres { get; set; }
 
         /// <summary>
         /// Gets or sets the list of platforms associated with the game.
         /// Represents a many-to-many relationship with Platforms.
         /// </summary>
-        public virtual List<GamePlatform>? GamePlatform { get; set; }
+        //public virtual List<GamePlatform>? GamePlatform { get; set; }
 
         /// <summary>
         /// Gets or sets the list of companies associated with the game.
         /// Represents a many-to-many relationship with Companies.
         /// </summary>
-        public virtual List<GameCompany>? GameCompany { get; set; }
+        //public virtual List<GameCompany>? GameCompany { get; set; }
 
 
 

@@ -1,4 +1,4 @@
-﻿using IGDB.Models;
+﻿
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using questvault.Models;
@@ -7,7 +7,7 @@ using System.Reflection.Emit;
 
 namespace questvault.Data
 {
-  public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<User>(options)
+  public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IServiceIGDB igdbService) : IdentityDbContext<User>(options)
   {
     public DbSet<TwoFactorAuthenticationTokens> EmailTokens { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
@@ -16,55 +16,43 @@ namespace questvault.Data
       builder.Entity<TwoFactorAuthenticationTokens>().HasKey(t => t.UserId);
 
 
-            ////POPULATE
+            builder.Entity<GameGenres>()
+         .HasKey(gg => new { gg.GameId, gg.GenreId });
 
-            
-            //var _igdbService = new IGDBService("uzhx4rrftyohllg1mrpy3ajo7090q5", "7rvcth933kxra92ddery5qn3jxwap7");
-            ////var companies = _igdbService.GetCompanies().Result;
-            ////var genres = _igdbService.GetGenres().Result;
-            ////var top500Games = _igdbService.GetPopularGames(500).Result;
+            builder.Entity<GameGenres>()
+                .HasOne(gg => gg.Game)
+                .WithMany(g => g.GameGenres)
+                .HasForeignKey(gg => gg.GameId);
 
-            ////builder.Entity<Games>().HasData(top500Games);
+            builder.Entity<GameGenres>()
+                .HasOne(gg => gg.Genre)
+                .WithMany(g => g.GameGenres)
+                .HasForeignKey(gg => gg.GenreId);
 
-            ////builder.Entity<Genres>().HasData(genres);
-            //////builder.Entity<Models.Company>().HasData(companies);
+            //// Get data from IGDB service
+            var genres = igdbService.GetGenres().Result;
+            //var platforms = igdbService.GetPlatforms().Result;
+            //var companies = igdbService.GetCompanies().Result;
+            var gamesList = igdbService.GetPopularGames(10).Result;
 
-            //var platforms = _igdbService.GetPlatforms().Result;
-            //var genres = _igdbService.GetGenres().Result;
-            //var topGames = _igdbService.GetPopularGames(50).Result;
 
-            ////builder.Entity<Models.Platform>().HasData(platforms);
-            //builder.Entity<Models.Genre>().HasData(genres);
+            var gamesWithGenres = gamesList.SelectMany(game => game.Genres.Select(genre => new GameGenres
+            {
+                GameId = game.GameId,
+                GenreId = genre.GenreId
+            }));
+            builder.Entity<Genre>().HasData(genres);
 
-            //// Adiciona apenas os jogos, pois os gêneros são adicionados separadamente
-            //builder.Entity<Models.Game>().HasData(topGames.Select(game => new
-            //{
-            //    GameID = game.GameID,
-            //    Name = game.Name,
-            //    Summary = game.Summary,
-            //    IgdbRating = game.IgdbRating
-            //}).ToArray());
+            builder.Entity<GameGenres>().HasData(gamesWithGenres);
+            //// Add data to the database
+            //builder.Entity<Platform>().HasData(platforms);
+            //builder.Entity<Company>().HasData(companies);
+            builder.Entity<Game>().HasData(gamesList);
 
-            //// Adiciona os relacionamentos muitos-para-muitos
-            //builder.Entity<GameGenre>().HasData(topGames.SelectMany(game =>
-            //    game.GamesGenres.Select(gg => new
-            //    {
-            //        GamesID = gg.GamesID,
-            //        GenresID = gg.GenresID
-            //    })
-            //).ToArray());
-
-            //builder.Entity<GamePlatform>().HasData(topGames.SelectMany(game =>
-            //    game.GamePlatform.Select(gg => new
-            //    {
-            //        GamesID = gg.GameID,
-            //        PlatformID = gg.PlatformID
-            //    })
-            //).ToArray());
         }
-      public DbSet<Models.Genre> Genres { get; set; } = default!;
-      public DbSet<questvault.Models.Platform> Platform { get; set; } = default!;
-      public DbSet<questvault.Models.Company> Company { get; set; } = default!;
-      public DbSet<Models.Game> Games { get; set; } = default!;
+      public DbSet<Game> Games { get; set; } = default!;
+      public DbSet<Genre> Genres { get; set; } = default!;
+      public DbSet<Platform> Platforms { get; set; } = default!;
+      public DbSet<Company> Companies { get; set; } = default!;
   }
 }

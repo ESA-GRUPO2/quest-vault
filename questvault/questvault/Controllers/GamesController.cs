@@ -19,6 +19,7 @@ namespace questvault.Controllers
     /// Controller for managing games.
     /// Note: This controller is a work in progress (WIP) and may undergo significant changes.
     /// </summary>
+    [Route("[controller]")]
     public class GamesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -42,6 +43,7 @@ namespace questvault.Controllers
         /// <returns>Returns the Index view.</returns>
         public async Task<IActionResult> Index()
         {
+            
             return View();
         }
 
@@ -97,6 +99,26 @@ namespace questvault.Controllers
             }
         }
 
+        [HttpGet ("Teste")]
+        public async Task<IActionResult> Popular()
+        {
+            try
+            {
+                var jogos = await _igdbService.GetPopularGames(10);
+                // Retorna os dados como JSON
+                return Json(new { Jogos = jogos });
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.Content);
+                return Json(new { Erro = "Erro na API IGDB" });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return Json(new { Erro = "Erro interno no servidor" });
+            }
+        }
 
 
 
