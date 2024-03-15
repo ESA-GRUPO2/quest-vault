@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_The Password must be at least 6 and at_26819c</name>
+   <tag></tag>
+   <elementGuidId>cb932977-09aa-4d52-8b05-c65765b47dfb</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[@id='password-error']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#password-error</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;The Password must be at least 6 and at max 100 characters long.&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>09a205c1-d6b5-4c8e-9848-f9580810e7ac</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>password-error</value>
+      <webElementGuid>d6959213-23f1-4efd-b3ee-f0e44166974d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>The Password must be at least 6 and at max 100 characters long.</value>
+      <webElementGuid>9b539ccb-ca0b-46fe-9f81-f9d6cd946ba7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;password-error&quot;)</value>
+      <webElementGuid>bcc71308-75c8-492b-876e-2703dcc47fae</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//span[@id='password-error']</value>
+      <webElementGuid>ae278b7f-1836-4744-896e-d37f6e82d0ff</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//form[@id='registerForm']/div[3]/div/div/p/span/span</value>
+      <webElementGuid>cc1ed6e6-8ac5-4eff-98ef-7b863495eb26</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/following::span[4]</value>
+      <webElementGuid>0ae26be2-6d74-4159-a5a0-b2f287f55077</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[2]/preceding::span[2]</value>
+      <webElementGuid>439971e9-8d06-4f6d-a0bb-b6e0f6cfd28f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign in'])[1]/preceding::span[2]</value>
+      <webElementGuid>ed455d91-be0e-4f89-ae44-2bdc785bfa9f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='The Password must be at least 6 and at max 100 characters long.']/parent::*</value>
+      <webElementGuid>bfe58a5a-f267-456c-9c2f-350eeea035e5</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//span/span</value>
+      <webElementGuid>50c1c0e4-830f-4c21-b721-a0086877e273</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[@id = 'password-error' and (text() = 'The Password must be at least 6 and at max 100 characters long.' or . = 'The Password must be at least 6 and at max 100 characters long.')]</value>
+      <webElementGuid>5d3f7186-fb19-45ae-ad22-dda2ff43fc70</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

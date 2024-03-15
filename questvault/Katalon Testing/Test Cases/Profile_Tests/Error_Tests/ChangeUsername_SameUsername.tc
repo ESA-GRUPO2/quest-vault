@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>ChangeUsername_SameUsername</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>f3ece639-66ec-443c-aa17-cbc815702fa0</testCaseGuid>
+</TestCaseEntity>

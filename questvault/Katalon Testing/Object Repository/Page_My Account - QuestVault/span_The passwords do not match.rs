@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_The passwords do not match</name>
+   <tag></tag>
+   <elementGuidId>49138741-21c1-458e-b54b-3617d52f9428</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[@id='Input_ConfirmPassword-error']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#Input_ConfirmPassword-error</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;The passwords do not match.&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>1e01f681-d0e1-4770-b81f-97ef38feefef</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>Input_ConfirmPassword-error</value>
+      <webElementGuid>88223ab0-df82-4626-b692-27b45d504e26</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>The passwords do not match.</value>
+      <webElementGuid>314549f3-1038-4f7f-a10f-32931bed712d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;Input_ConfirmPassword-error&quot;)</value>
+      <webElementGuid>bf46ffce-7329-4805-8551-bca6a24ea4e7</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//span[@id='Input_ConfirmPassword-error']</value>
+      <webElementGuid>da023c35-c5eb-493d-b4d3-98fd116ec1fe</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//form[@id='change-password-form']/div[3]/div/div/span/span</value>
+      <webElementGuid>1ffd4e1e-9884-4107-b474-4ed1e8afb761</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Confirm new password'])[1]/following::span[2]</value>
+      <webElementGuid>6ed987b3-1fad-46b6-90af-3bdb55c15172</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::span[3]</value>
+      <webElementGuid>61e8196c-2bd1-4e28-8248-e1b084455936</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Change password'])[1]/preceding::span[1]</value>
+      <webElementGuid>3f4a9cab-59b1-4e68-934b-49c1d39928d7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Enable 2FA'])[1]/preceding::span[1]</value>
+      <webElementGuid>f710437b-14a6-4997-8d3f-a78a71bfff30</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='The passwords do not match.']/parent::*</value>
+      <webElementGuid>b55db3b9-fb3b-4771-9562-2a99890ca745</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//span/span</value>
+      <webElementGuid>493701b6-231b-43e4-9682-e87abbb469ae</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[@id = 'Input_ConfirmPassword-error' and (text() = 'The passwords do not match.' or . = 'The passwords do not match.')]</value>
+      <webElementGuid>e5663797-e04e-44bf-bccb-4b5e6b62fe55</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
