@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace questvault.Models
 {
@@ -6,31 +7,66 @@ namespace questvault.Models
     {
         [Column(Order = 0)]
         public int UserID { get; set; }
+
+        [AllowNull]
         public List<GameLog> Games { get; set; }
+
+        [AllowNull]
+        public List<GameLog> Top5Games { get; set; }
 
         [ForeignKey(nameof(UserID))]
         public virtual User? User { get; set; }
 
-        public void AddGame(GameLog gameLog) { }
+        public void AddGame(GameLog gameLog) {
+            Games.Add(gameLog);
+        }
 
         public void UpdateGame(int gameId, GameLog gameLog) { }
 
-        public void RemoveGame(int gameId) { }
+        public void RemoveGame(int gameId) {
+            Games.RemoveAt(gameId);
+        }
 
         public String MostPlayedGenre()
         {
+            Dictionary<string, int> genre = new Dictionary<string, int>();
+
             return "";
         }
 
-        public List<GameLog> Top5Games() 
+
+        public void AddTop5Games(GameLog gameLog)
+
         {
-            return null;
+            Top5Games.Add(gameLog);
         }
 
-        public void SetTop5Games(List<GameLog> top5){ }
+        public void RemoveTop5Games(int gameId)
+        {
+            Top5Games.RemoveAt(gameId);
+        }
 
-        public int TotalHoursPlayed() {  return 0; }
+        public int TotalHoursPlayed()
+        { 
+            int hours = 0;
+            foreach (GameLog gameLog in Games)
+            {
+                hours += gameLog.HoursPlayed;
+            }
+            return hours;
+        }
 
-        public int NumberOfGamesStatus(GameStatus status) { return 0; }
+        public int NumberOfGamesStatus(GameStatus status) 
+        {
+            int nStatus = 0;
+            foreach (GameLog gameLog in Games)
+            {
+                if (gameLog.Status.Equals(status))
+                {
+                    nStatus++;
+                }
+            }
+            return nStatus;
+        }
     }
 }
