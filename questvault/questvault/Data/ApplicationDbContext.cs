@@ -66,5 +66,8 @@ namespace questvault.Data
       public DbSet<questvault.Models.Platform> Platform { get; set; } = default!;
       public DbSet<questvault.Models.Company> Company { get; set; } = default!;
       public DbSet<Models.Game> Games { get; set; } = default!;
-  }
+      public DbSet<questvault.Models.Friendship> Friendship { get; set; } = default!;
+      public DbSet<questvault.Models.FriendshipRequest> FriendshipRequest { get; set; } = default!;
+
+    }
 }
