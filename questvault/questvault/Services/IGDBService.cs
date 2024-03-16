@@ -39,6 +39,81 @@ namespace questvault.Services
             });
         }
 
+        //public async Task<IEnumerable<Game>> GetPopularGames(int limit)
+        //{
+        //    string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, artworks.image_id;" +
+        //        "where name != null & genres != null & rating != null & total_rating_count != null & artworks.image_id != null & involved_companies != null & platforms != null;" +
+        //        "sort total_rating_count desc;" +
+        //        $"limit {limit};";
+
+        //    var popularGames = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
+
+        //    return popularGames.Select(game => new Game
+        //    {
+        //        GameId = (long)game.Id,
+        //        Name = game.Name,
+        //        Summary = game.Summary,
+        //        IgdbRating = (double)game.Rating,
+        //        imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
+        //        GameGenres = game.Genres.Values.Select(genre => new GameGenre
+        //        {
+        //            GameId = (long)game.Id,
+        //            GenreId = (long)genre.Id,
+        //            Genre = new Genre
+        //            {
+        //                GenreId = (long)genre.Id,
+        //                GenreName = genre.Name,
+        //                GameGenres = new List<GameGenre>
+        //        {
+        //            new GameGenre
+        //            {
+        //                GameId = (long)game.Id,
+        //                GenreId = (long)genre.Id
+        //            }
+
+        //        }
+        //            }
+
+        //        }).ToList(),
+
+        //        GameCompanies = game.InvolvedCompanies.Values.Select(comp => new GameCompany
+        //        {
+        //            GameId = (long)game.Id,
+        //            CompanyId = (long)comp.Company.Id,
+        //            Company = new Company
+        //            {
+        //                CompanyId = (long)comp.Company.Id,
+        //                GameCompanies = new List<GameCompany>
+        //          {
+        //              new GameCompany
+        //              {
+        //                  GameId = (long)game.Id,
+        //                  CompanyId = (long)comp.Company.Id,
+        //              }
+        //          }
+        //            }
+        //        }).ToList(),
+        //        GamePlatforms = game.Platforms.Values.Select(p => new GamePlatform
+        //        {
+        //            GameId = (long)game.Id,
+        //            PlatformId = (long)p.Id,
+        //            Platform = new Platform
+        //            {
+        //                PlatformId = (long)p.Id,
+        //                GamePlatforms = new List<GamePlatform>
+        //          {
+        //              new GamePlatform
+        //              {
+        //                  GameId = (long)game.Id,
+        //                  PlatformId = (long)p.Id,
+        //              }
+        //          }
+        //            }
+        //        }
+        //        ).ToList(),
+        //    });
+        //}
+
         public async Task<IEnumerable<Game>> GetPopularGames(int limit)
         {
             string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, artworks.image_id;" +
@@ -48,72 +123,88 @@ namespace questvault.Services
 
             var popularGames = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
 
-            return popularGames.Select(game => new Game
+            return popularGames.Select(game => BuildGameFromIGDBGame(game));
+        }
+        
+        /// <summary>
+        /// Builds a Game object from IGDB game data.
+        /// </summary>
+        /// <param name="igdbGame">The IGDB game data.</param>
+        /// <returns>The constructed Game object.</returns>
+        private Game BuildGameFromIGDBGame(IGDB.Models.Game igdbGame)
+        {
+            var game = new Game
             {
-                GameId = (long)game.Id,
-                Name = game.Name,
-                Summary = game.Summary,
-                IgdbRating = (double)game.Rating,
-                imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
-                GameGenres = game.Genres.Values.Select(genre => new GameGenre
-                {
-                    GameId = (long)game.Id,
-                    GenreId = (long)genre.Id,
-                    Genre = new Genre
-                    {
-                        GenreId = (long)genre.Id,
-                        GenreName = genre.Name,
-                        GameGenres = new List<GameGenre>
-                {
-                    new GameGenre
-                    {
-                        GameId = (long)game.Id,
-                        GenreId = (long)genre.Id
-                    }
+                GameId = (long)igdbGame.Id,
+                Name = igdbGame.Name,
+                Summary = igdbGame.Summary,
+                IgdbRating = (double)igdbGame.Rating,
+                imageUrl = ImageHelper.GetImageUrl(imageId: igdbGame.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
+                GameGenres = igdbGame.Genres.Values.Select(genre => BuildGameGenreFromIGDBData(igdbGame, genre)).ToList(),
+                GameCompanies = igdbGame.InvolvedCompanies.Values.Select(company => BuildGameCompanyFromIGDBData(igdbGame, company)).ToList(),
+                GamePlatforms = igdbGame.Platforms.Values.Select(platform => BuildGamePlatformFromIGDBData(igdbGame, platform)).ToList()
+            };
 
-                }
-                    }
-
-                }).ToList(),
-
-                GameCompanies = game.InvolvedCompanies.Values.Select(comp => new GameCompany
-                {
-                    GameId = (long)game.Id,
-                    CompanyId = (long)comp.Company.Id,
-                    Company = new Company
-                    {
-                        CompanyId = (long)comp.Company.Id,
-                        GameCompanies = new List<GameCompany>
-                  {
-                      new GameCompany
-                      {
-                          GameId = (long)game.Id,
-                          CompanyId = (long)comp.Company.Id,
-                      }
-                  }
-                    }
-                }).ToList(),
-                GamePlatforms = game.Platforms.Values.Select(p => new GamePlatform
-                {
-                    GameId = (long)game.Id,
-                    PlatformId = (long)p.Id,
-                    Platform = new Platform
-                    {
-                        PlatformId = (long)p.Id,
-                        GamePlatforms = new List<GamePlatform>
-                  {
-                      new GamePlatform
-                      {
-                          GameId = (long)game.Id,
-                          PlatformId = (long)p.Id,
-                      }
-                  }
-                    }
-                }
-                ).ToList(),
-            });
+            return game;
         }
 
+        /// <summary>
+        /// Builds a GameGenre object from IGDB game genre data.
+        /// </summary>
+        /// <param name="igdbGame">The IGDB game data.</param>
+        /// <param name="genreData">The IGDB game genre data.</param>
+        /// <returns>The constructed GameGenre object.</returns>
+        private GameGenre BuildGameGenreFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.Genre genreData)
+        {
+            return new GameGenre
+            {
+                GameId = (long)igdbGame.Id,
+                GenreId = (long)genreData.Id,
+                Genre = new Genre
+                {
+                    GenreId = (long)genreData.Id,
+                    GenreName = genreData.Name
+                }
+            };
+        }
+
+        /// <summary>
+        /// Builds a GameCompany object from IGDB game company data.
+        /// </summary>
+        /// <param name="igdbGame">The IGDB game data.</param>
+        /// <param name="companyData">The IGDB game company data.</param>
+        /// <returns>The constructed GameCompany object.</returns>
+        private GameCompany BuildGameCompanyFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.InvolvedCompany companyData)
+        {
+            return new GameCompany
+            {
+                GameId = (long)igdbGame.Id,
+                CompanyId = (long)companyData.Company.Id,
+                Company = new Company
+                {
+                    CompanyId = (long)companyData.Company.Id
+                }
+            };
+        }
+
+        /// <summary>
+        /// Builds a GamePlatform object from IGDB game platform data.
+        /// </summary>
+        /// <param name="igdbGame">The IGDB game data.</param>
+        /// <param name="platformData">The IGDB game platform data.</param>
+        /// <returns>The constructed GamePlatform object.</returns>
+        private GamePlatform BuildGamePlatformFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.Platform platformData)
+        {
+            return new GamePlatform
+            {
+                GameId = (long)igdbGame.Id,
+                PlatformId = (long)platformData.Id,
+                Platform = new Platform
+                {
+                    PlatformId = (long)platformData.Id
+                }
+            };
+        }
 
         public async Task<IEnumerable<Models.Genre>> GetGenres()
         {
@@ -126,9 +217,6 @@ namespace questvault.Services
                 GenreName = genre.Name
             });
         }
-
-
-
         public async Task<IEnumerable<Company>> GetCompanies()
         {
             var endpoint = IGDBClient.Endpoints.Companies;
@@ -163,7 +251,6 @@ namespace questvault.Services
                 PlatformName = p.Name
             });
         }
-
         public async Task<IEnumerable<Platform>> GetPlatformsFromIds(List<long> ids)
         {
             var endpoint = IGDBClient.Endpoints.Platforms;
@@ -204,10 +291,6 @@ namespace questvault.Services
 
         //    return allPlatforms;
         //}
-
-
-
-
 
     }
 }

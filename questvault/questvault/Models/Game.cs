@@ -31,7 +31,7 @@ namespace questvault.Models
         /// Gets or sets the rating of the game for our app.
         /// QV -> QuestVault
         /// </summary>
-        public double QvRating { get; set; }
+        public double QvRating { get; set; } = 0;
 
 
         /// <summary>

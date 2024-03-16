@@ -12,7 +12,7 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240316155958_nun")]
+    [Migration("20240316162042_nun")]
     partial class nun
     {
         /// <inheritdoc />

@@ -21,7 +21,6 @@ namespace questvault.Data
 
             //// Get data from IGDB service
             var genres = igdbService.GetGenres().Result;
-            //var platforms = igdbService.GetPlatforms().Result;
 
             var gamesList = igdbService.GetPopularGames(10).Result;
 
@@ -34,11 +33,12 @@ namespace questvault.Data
             var companies = igdbService.GetCompaniesFromIds(idscomp).Result;
             var platforms = igdbService.GetPlatformsFromIds(idsplat).Result;
 
+            // Adds the data
             builder.Entity<Genre>().HasData(genres);
             builder.Entity<Company>().HasData(companies);
             builder.Entity<Platform>().HasData(platforms);
 
-            // Adiciona apenas os jogos, pois os gêneros são adicionados separadamente
+            
             builder.Entity<Game>().HasData(gamesList.Select(game => new
             {
                 GameId = game.GameId,
@@ -49,6 +49,7 @@ namespace questvault.Data
                 imageUrl = game.imageUrl
             }).ToArray());
 
+            // Many to many relationships:
             builder.Entity<GameGenre>().HasData(gamesList.SelectMany(game =>
             game.GameGenres.Select(gg => new
             {
