@@ -11,7 +11,6 @@ using questvault.Models;
 
 namespace questvault.Controllers
 {
-    [Route("[controller]")]
     public class FriendshipsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,13 +20,18 @@ namespace questvault.Controllers
             _context = context;
         }
 
-        // GET: Users
-        public async Task<IActionResult> Index()
+        // GET: FriendshipRequests
+        public async Task<IActionResult> IndexAsync()
         {
-            return _context.Users != null ?
-             View(await _context.Users.ToListAsync()) :
-             Problem("Entity set 'ApplicationDbContext.Users'  is null.");
+            var dbContext = await _context.FriendshipRequest.ToListAsync();
+            return View(dbContext);
         }
+        /*public Task<IActionResult> Index()
+        {
+            return _context.FriendshipRequest != null ?
+             View(await _context.FriendshipRequest.ToListAsync()) :
+             Problem("Entity set 'ApplicationDbContext.FriendRequest'  is null.");
+        }*/
 
         // GET: Friendships/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -64,7 +68,7 @@ namespace questvault.Controllers
             {
                 _context.Add(friendship);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
             return View(friendship);
         }
@@ -115,7 +119,7 @@ namespace questvault.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
             return View(friendship);
         }
@@ -150,7 +154,7 @@ namespace questvault.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexAsync));
         }
 
         private bool FriendshipExists(int id)
@@ -159,13 +163,14 @@ namespace questvault.Controllers
         }
 
         // POST: api/Friendship/Request
-        [HttpPost("Request/{id}")]
+        [HttpPost("Request/{id}"), ActionName("SendFriendRequest")]
         public async Task<IActionResult> SendFriendRequestAsync(string id)
         {
+            Console.WriteLine("Friend request sent");
             var receiver = await _context.Users.FindAsync(id);
             var sender = await _context.Users.FindAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var friendshipRequest = new FriendshipRequest { };
-            if (receiver != null || sender != null)
+            if (receiver != null && sender != null)
             {
                 friendshipRequest.Receiver = receiver;
                 friendshipRequest.Sender = sender;
@@ -174,7 +179,7 @@ namespace questvault.Controllers
                 _context.FriendshipRequest.Add(friendshipRequest);
                 _context.SaveChanges();
             }
-            return View();
+            return Created();
         }
     }
 }

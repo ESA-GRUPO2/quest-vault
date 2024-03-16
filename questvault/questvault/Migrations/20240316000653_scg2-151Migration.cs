@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace questvault.Migrations
 {
     /// <inheritdoc />
-    public partial class devMigration : Migration
+    public partial class scg2151Migration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -235,6 +235,56 @@ namespace questvault.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Friendship",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    User1Id = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    User2Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Friendship", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Friendship_AspNetUsers_User1Id",
+                        column: x => x.User1Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Friendship_AspNetUsers_User2Id",
+                        column: x => x.User2Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FriendshipRequest",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SenderId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ReceiverId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    isAccepted = table.Column<bool>(type: "bit", nullable: false),
+                    FriendshipDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FriendshipRequest", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_FriendshipRequest_AspNetUsers_ReceiverId",
+                        column: x => x.ReceiverId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_FriendshipRequest_AspNetUsers_SenderId",
+                        column: x => x.SenderId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "GameCompany",
                 columns: table => new
                 {
@@ -351,6 +401,26 @@ namespace questvault.Migrations
                 column: "UserId1");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Friendship_User1Id",
+                table: "Friendship",
+                column: "User1Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Friendship_User2Id",
+                table: "Friendship",
+                column: "User2Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FriendshipRequest_ReceiverId",
+                table: "FriendshipRequest",
+                column: "ReceiverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FriendshipRequest_SenderId",
+                table: "FriendshipRequest",
+                column: "SenderId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_GameCompany_CompanyID",
                 table: "GameCompany",
                 column: "CompanyID");
@@ -386,6 +456,12 @@ namespace questvault.Migrations
 
             migrationBuilder.DropTable(
                 name: "EmailTokens");
+
+            migrationBuilder.DropTable(
+                name: "Friendship");
+
+            migrationBuilder.DropTable(
+                name: "FriendshipRequest");
 
             migrationBuilder.DropTable(
                 name: "GameCompany");

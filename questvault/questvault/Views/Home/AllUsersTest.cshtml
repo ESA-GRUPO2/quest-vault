@@ -1,0 +1,40 @@
+﻿@model IEnumerable<questvault.Models.User>
+
+@{
+    ViewData["Title"] = "Friends Test";}
+
+<h1 class="text-light">@ViewData["Title"]</h1>
+
+<table class="table table-dark table-sm table-profile">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                    <form id="sendFriendRequestForm" method="post" action="/Friendships/SendFriendRequest">
+                        <input type="hidden" name="id" value="ID_DO_DESTINATARIO" />
+                        <button type="submit">Enviar solicitação de amizade</button>
+                    </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="Index">See Friendships</a>
