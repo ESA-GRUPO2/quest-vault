@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace questvault.Migrations
 {
     /// <inheritdoc />
-    public partial class nuno : Migration
+    public partial class nun : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -284,6 +284,30 @@ namespace questvault.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "GamePlatform",
+                columns: table => new
+                {
+                    GameId = table.Column<long>(type: "bigint", nullable: false),
+                    PlatformId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GamePlatform", x => new { x.GameId, x.PlatformId });
+                    table.ForeignKey(
+                        name: "FK_GamePlatform_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "GameId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GamePlatform_Platforms_PlatformId",
+                        column: x => x.PlatformId,
+                        principalTable: "Platforms",
+                        principalColumn: "PlatformId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Companies",
                 columns: new[] { "CompanyId", "CompanyName" },
@@ -349,6 +373,23 @@ namespace questvault.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Platforms",
+                columns: new[] { "PlatformId", "PlatformName" },
+                values: new object[,]
+                {
+                    { 3L, "Linux" },
+                    { 6L, "PC (Microsoft Windows)" },
+                    { 8L, "PlayStation 2" },
+                    { 9L, "PlayStation 3" },
+                    { 11L, "Xbox" },
+                    { 39L, "iOS" },
+                    { 49L, "Xbox One" },
+                    { 130L, "Nintendo Switch" },
+                    { 167L, "PlayStation 5" },
+                    { 169L, "Xbox Series X|S" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "GameCompany",
                 columns: new[] { "CompanyId", "GameId" },
                 values: new object[,]
@@ -400,6 +441,46 @@ namespace questvault.Migrations
                     { 1020L, 31L },
                     { 1942L, 12L },
                     { 1942L, 31L }
+                });
+
+            migrationBuilder.InsertData(
+                table: "GamePlatform",
+                columns: new[] { "GameId", "PlatformId" },
+                values: new object[,]
+                {
+                    { 20L, 6L },
+                    { 20L, 9L },
+                    { 71L, 3L },
+                    { 71L, 6L },
+                    { 71L, 9L },
+                    { 71L, 130L },
+                    { 72L, 3L },
+                    { 72L, 6L },
+                    { 72L, 9L },
+                    { 72L, 130L },
+                    { 127L, 6L },
+                    { 127L, 9L },
+                    { 127L, 39L },
+                    { 233L, 3L },
+                    { 233L, 6L },
+                    { 233L, 9L },
+                    { 233L, 11L },
+                    { 472L, 6L },
+                    { 472L, 9L },
+                    { 732L, 6L },
+                    { 732L, 8L },
+                    { 732L, 9L },
+                    { 732L, 11L },
+                    { 732L, 39L },
+                    { 1009L, 9L },
+                    { 1020L, 6L },
+                    { 1020L, 9L },
+                    { 1020L, 49L },
+                    { 1942L, 6L },
+                    { 1942L, 49L },
+                    { 1942L, 130L },
+                    { 1942L, 167L },
+                    { 1942L, 169L }
                 });
 
             migrationBuilder.CreateIndex(
@@ -455,6 +536,11 @@ namespace questvault.Migrations
                 name: "IX_GameGenre_GenreId",
                 table: "GameGenre",
                 column: "GenreId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GamePlatform_PlatformId",
+                table: "GamePlatform",
+                column: "PlatformId");
         }
 
         /// <inheritdoc />
@@ -485,7 +571,7 @@ namespace questvault.Migrations
                 name: "GameGenre");
 
             migrationBuilder.DropTable(
-                name: "Platforms");
+                name: "GamePlatform");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -497,10 +583,13 @@ namespace questvault.Migrations
                 name: "Companies");
 
             migrationBuilder.DropTable(
+                name: "Genres");
+
+            migrationBuilder.DropTable(
                 name: "Games");
 
             migrationBuilder.DropTable(
-                name: "Genres");
+                name: "Platforms");
         }
     }
 }

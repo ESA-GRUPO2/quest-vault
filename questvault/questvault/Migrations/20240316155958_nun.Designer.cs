@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240316132400_nuno")]
-    partial class nuno
+    [Migration("20240316155958_nun")]
+    partial class nun
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -366,57 +366,12 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 1020L,
-                            CompanyId = 365L
-                        },
-                        new
-                        {
-                            GameId = 1020L,
                             CompanyId = 29L
-                        },
-                        new
-                        {
-                            GameId = 1020L,
-                            CompanyId = 139L
-                        },
-                        new
-                        {
-                            GameId = 1020L,
-                            CompanyId = 306L
                         },
                         new
                         {
                             GameId = 1942L,
                             CompanyId = 50L
-                        },
-                        new
-                        {
-                            GameId = 1942L,
-                            CompanyId = 248L
-                        },
-                        new
-                        {
-                            GameId = 1942L,
-                            CompanyId = 3119L
-                        },
-                        new
-                        {
-                            GameId = 1942L,
-                            CompanyId = 1217L
-                        },
-                        new
-                        {
-                            GameId = 1942L,
-                            CompanyId = 908L
-                        },
-                        new
-                        {
-                            GameId = 1942L,
-                            CompanyId = 5696L
-                        },
-                        new
-                        {
-                            GameId = 1942L,
-                            CompanyId = 946L
                         },
                         new
                         {
@@ -435,11 +390,6 @@ namespace questvault.Migrations
                         },
                         new
                         {
-                            GameId = 472L,
-                            CompanyId = 16565L
-                        },
-                        new
-                        {
                             GameId = 71L,
                             CompanyId = 56L
                         },
@@ -451,32 +401,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 732L,
-                            CompanyId = 365L
-                        },
-                        new
-                        {
-                            GameId = 732L,
-                            CompanyId = 139L
-                        },
-                        new
-                        {
-                            GameId = 732L,
                             CompanyId = 29L
-                        },
-                        new
-                        {
-                            GameId = 732L,
-                            CompanyId = 1967L
-                        },
-                        new
-                        {
-                            GameId = 1009L,
-                            CompanyId = 401L
-                        },
-                        new
-                        {
-                            GameId = 1009L,
-                            CompanyId = 13634L
                         },
                         new
                         {
@@ -490,11 +415,6 @@ namespace questvault.Migrations
                         },
                         new
                         {
-                            GameId = 233L,
-                            CompanyId = 22994L
-                        },
-                        new
-                        {
                             GameId = 20L,
                             CompanyId = 13L
                         },
@@ -505,21 +425,6 @@ namespace questvault.Migrations
                         },
                         new
                         {
-                            GameId = 20L,
-                            CompanyId = 2492L
-                        },
-                        new
-                        {
-                            GameId = 20L,
-                            CompanyId = 649L
-                        },
-                        new
-                        {
-                            GameId = 20L,
-                            CompanyId = 411L
-                        },
-                        new
-                        {
                             GameId = 127L,
                             CompanyId = 38L
                         },
@@ -527,11 +432,6 @@ namespace questvault.Migrations
                         {
                             GameId = 127L,
                             CompanyId = 104L
-                        },
-                        new
-                        {
-                            GameId = 127L,
-                            CompanyId = 822L
                         });
                 });
 
@@ -684,6 +584,190 @@ namespace questvault.Migrations
                         });
                 });
 
+            modelBuilder.Entity("questvault.Models.GamePlatform", b =>
+                {
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint")
+                        .HasColumnOrder(0);
+
+                    b.Property<long>("PlatformId")
+                        .HasColumnType("bigint")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("GameId", "PlatformId");
+
+                    b.HasIndex("PlatformId");
+
+                    b.ToTable("GamePlatform");
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1020L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 1020L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 1020L,
+                            PlatformId = 49L
+                        },
+                        new
+                        {
+                            GameId = 1942L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 1942L,
+                            PlatformId = 49L
+                        },
+                        new
+                        {
+                            GameId = 1942L,
+                            PlatformId = 130L
+                        },
+                        new
+                        {
+                            GameId = 1942L,
+                            PlatformId = 167L
+                        },
+                        new
+                        {
+                            GameId = 1942L,
+                            PlatformId = 169L
+                        },
+                        new
+                        {
+                            GameId = 72L,
+                            PlatformId = 3L
+                        },
+                        new
+                        {
+                            GameId = 72L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 72L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 72L,
+                            PlatformId = 130L
+                        },
+                        new
+                        {
+                            GameId = 472L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 472L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 71L,
+                            PlatformId = 3L
+                        },
+                        new
+                        {
+                            GameId = 71L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 71L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 71L,
+                            PlatformId = 130L
+                        },
+                        new
+                        {
+                            GameId = 732L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 732L,
+                            PlatformId = 8L
+                        },
+                        new
+                        {
+                            GameId = 732L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 732L,
+                            PlatformId = 11L
+                        },
+                        new
+                        {
+                            GameId = 732L,
+                            PlatformId = 39L
+                        },
+                        new
+                        {
+                            GameId = 1009L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 233L,
+                            PlatformId = 3L
+                        },
+                        new
+                        {
+                            GameId = 233L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 233L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 233L,
+                            PlatformId = 11L
+                        },
+                        new
+                        {
+                            GameId = 20L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 20L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 127L,
+                            PlatformId = 6L
+                        },
+                        new
+                        {
+                            GameId = 127L,
+                            PlatformId = 9L
+                        },
+                        new
+                        {
+                            GameId = 127L,
+                            PlatformId = 39L
+                        });
+                });
+
             modelBuilder.Entity("questvault.Models.Genre", b =>
                 {
                     b.Property<long>("GenreId")
@@ -832,6 +916,58 @@ namespace questvault.Migrations
                     b.HasKey("PlatformId");
 
                     b.ToTable("Platforms");
+
+                    b.HasData(
+                        new
+                        {
+                            PlatformId = 6L,
+                            PlatformName = "PC (Microsoft Windows)"
+                        },
+                        new
+                        {
+                            PlatformId = 8L,
+                            PlatformName = "PlayStation 2"
+                        },
+                        new
+                        {
+                            PlatformId = 39L,
+                            PlatformName = "iOS"
+                        },
+                        new
+                        {
+                            PlatformId = 130L,
+                            PlatformName = "Nintendo Switch"
+                        },
+                        new
+                        {
+                            PlatformId = 11L,
+                            PlatformName = "Xbox"
+                        },
+                        new
+                        {
+                            PlatformId = 9L,
+                            PlatformName = "PlayStation 3"
+                        },
+                        new
+                        {
+                            PlatformId = 167L,
+                            PlatformName = "PlayStation 5"
+                        },
+                        new
+                        {
+                            PlatformId = 169L,
+                            PlatformName = "Xbox Series X|S"
+                        },
+                        new
+                        {
+                            PlatformId = 49L,
+                            PlatformName = "Xbox One"
+                        },
+                        new
+                        {
+                            PlatformId = 3L,
+                            PlatformName = "Linux"
+                        });
                 });
 
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
@@ -1018,6 +1154,25 @@ namespace questvault.Migrations
                     b.Navigation("Genre");
                 });
 
+            modelBuilder.Entity("questvault.Models.GamePlatform", b =>
+                {
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany("GamePlatforms")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.Platform", "Platform")
+                        .WithMany("GamePlatforms")
+                        .HasForeignKey("PlatformId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+
+                    b.Navigation("Platform");
+                });
+
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
                 {
                     b.HasOne("questvault.Models.User", "User")
@@ -1039,11 +1194,18 @@ namespace questvault.Migrations
                     b.Navigation("GameCompanies");
 
                     b.Navigation("GameGenres");
+
+                    b.Navigation("GamePlatforms");
                 });
 
             modelBuilder.Entity("questvault.Models.Genre", b =>
                 {
                     b.Navigation("GameGenres");
+                });
+
+            modelBuilder.Entity("questvault.Models.Platform", b =>
+                {
+                    b.Navigation("GamePlatforms");
                 });
 #pragma warning restore 612, 618
         }

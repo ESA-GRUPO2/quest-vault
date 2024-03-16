@@ -18,7 +18,7 @@ namespace questvault.Models
         /// Gets or sets the list of games associated with the platform.
         /// Represents a many-to-many relationship with Games.
         /// </summary>
-        //public virtual List<GamePlatform>? GamePlatform { get; set; }
+        public List<GamePlatform>? GamePlatforms { get; set; }
 
     }
 }
