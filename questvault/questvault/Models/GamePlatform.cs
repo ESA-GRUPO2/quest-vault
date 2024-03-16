@@ -1,27 +1,37 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace questvault.Models
 {
-
-    [PrimaryKey(nameof(GameID), nameof(PlatformID))]
     /// <summary>
     /// Represents a many-to-many relationship between Game and Platform entities.
     /// </summary>
+    [PrimaryKey(nameof(GameId), nameof(PlatformId))]
     public class GamePlatform
     {
+        /// <summary>
+        /// Gets or sets the ID of the game.
+        /// </summary>
         [Column(Order = 0)]
-        public int GameID { get; set; }
+        public long GameId { get; set; }
 
-        [Column(Order = 1)]
-        public int PlatformID { get; set; }
-
-        [ForeignKey(nameof(GameID))]
+        /// <summary>
+        /// Gets or sets the navigation property for the game.
+        /// </summary>
+        [ForeignKey(nameof(GameId))]
         public Game? Game { get; set; }
 
-        [ForeignKey(nameof(PlatformID))]
-        public Platform? Platform { get; set; }
+        /// <summary>
+        /// Gets or sets the ID of the platform.
+        /// </summary>
+        [Column(Order = 1)]
+        public long PlatformId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the navigation property for the platform.
+        /// </summary>
+        [ForeignKey(nameof(PlatformId))]
+        public Platform Platform { get; set; }
     }
+
 }
