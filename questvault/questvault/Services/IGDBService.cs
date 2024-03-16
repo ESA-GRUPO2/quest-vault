@@ -41,7 +41,7 @@ namespace questvault.Services
 
     public async Task<IEnumerable<Game>> GetPopularGames(int limit)
     {
-      string query = "fields id, name, genres.name, involved_companies, platforms, rating, total_rating_count, summary, artworks.image_id;" +
+      string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, artworks.image_id;" +
           "where name != null & genres != null & rating != null & total_rating_count != null & artworks.image_id != null & involved_companies != null & platforms != null;" +
           "sort total_rating_count desc;" +
           $"limit {limit};";
@@ -50,31 +50,50 @@ namespace questvault.Services
 
       return popularGames.Select(game => new Game
       {
-        GameId = (int)game.Id,
+        GameId = (long)game.Id,
         Name = game.Name,
         Summary = game.Summary,
         IgdbRating = (double)game.Rating,
         imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
-        Genres = game.Genres.Values.Select(gen => new Genre 
-        { 
-            GenreId = (int)gen.Id, 
-            GenreName = gen.Name
-        }).ToList()
-        //GamesGenres = game.Genres.Values.Select(genre => new GameGenre
-        //{
-        //  GamesID = (int)game.Id,
-        //  GenresID = (int)genre.Id,
-        //}).ToList(),
-        //GamePlatform = game.Platforms.Ids.Select(pl => new GamePlatform
-        //{
-        //    GameID = (int)game.Id,
-        //    PlatformID = (int)pl,
-        //}).ToList(),
-        //GameCompany = game.InvolvedCompanies.Ids.Select(c => new GameCompany { 
-        //    GameID= (int)game.Id,
-        //    CompanyID= (int)c
-        //}).ToList()
-        
+        GameGenres = game.Genres.Values.Select(genre => new GameGenre
+        {
+            GameId = (long)game.Id,
+            GenreId = (long)genre.Id,
+            Genre = new Genre
+            {
+                GenreId = (long)genre.Id,
+                GenreName = genre.Name,
+                GameGenres = new List<GameGenre>
+                {
+                    new GameGenre
+                    {
+                        GameId = (long)game.Id,
+                        GenreId = (long)genre.Id
+                    }
+
+                }
+            }
+
+        }).ToList(),
+         
+          GameCompanies = game.InvolvedCompanies.Values.Select(comp => new GameCompany
+          {
+              GameId = (long)game.Id,
+              CompanyId = (long)comp.Company.Id,
+              Company = new Company
+              {
+                  CompanyId = (long)comp.Company.Id,
+                  GameCompanies = new List<GameCompany>
+                  {
+                      new GameCompany
+                      {
+                          GameId = (long)game.Id,
+                          CompanyId = (long)comp.Company.Id,
+                      }
+                  }
+              }
+          }).ToList(),
+
       });
     }
 
@@ -86,31 +105,74 @@ namespace questvault.Services
       Console.WriteLine(genres);
       return genres.Select(genre => new Models.Genre
       {
-        GenreId = (int)genre.Id,
+        GenreId = (long)genre.Id,
         GenreName = genre.Name
       });
     }
 
-    public async Task<IEnumerable<Models.Company>> GetCompanies()
+
+
+    public async Task<IEnumerable<Company>> GetCompanies()
     {
       var endpoint = IGDBClient.Endpoints.Companies;
       var companies = await _api.QueryAsync<IGDB.Models.Company>(endpoint, "fields id,name; limit 500;");
       Console.WriteLine(companies);
-      return companies.Select(c => new Models.Company
+      return companies.Select(c => new Company
       {
-        CompanyID = (int)(c.Id),
+        CompanyId = (long)(c.Id),
+        CompanyName = c.Name
+      });
+    }    
+    public async Task<IEnumerable<Company>> GetCompaniesFromIds(List<long> ids)
+    {
+      var endpoint = IGDBClient.Endpoints.Companies;
+      string query = $"fields id, name; where id = ({string.Join(",", ids)});";
+      var companies = await _api.QueryAsync<IGDB.Models.Company>(endpoint, query);
+      Console.WriteLine(companies);
+      return companies.Select(c => new Company
+      {
+        CompanyId = (long)c.Id,
         CompanyName = c.Name
       });
     }
 
-    public async Task<IEnumerable<Models.Platform>> GetPlatforms()
+        //public async Task<IEnumerable<Platform>> GetAllPlatforms()
+        //{
+        //    var allPlatforms = new List<Platform>();
+        //    var pageSize = 500; // Tamanho da página, ajuste conforme necessário
+        //    var currentPage = 0;
+        //    var totalPages = 0; // Defina como 1 inicialmente para entrar no loop
+
+        //    while (currentPage <= totalPages)
+        //    {
+        //        var endpoint = IGDBClient.Endpoints.Platforms;
+        //        var queryString = $"fields id,name; limit {pageSize}; offset {currentPage * pageSize};";
+        //        var platforms = await _api.QueryAsync<IGDB.Models.Platform>(endpoint, queryString);
+
+        //        allPlatforms.AddRange(platforms.Select(p => new Platform
+        //        {
+        //            PlatformId = (long)p.Id,
+        //            PlatformName = p.Name
+        //        }));
+
+        //        // Verificar o cabeçalho de resposta para determinar o número total de páginas
+        //        totalPages = (int)Math.Floor((double)allPlatforms.Count() / pageSize); // Implemente essa função de acordo com a resposta real da API
+
+        //        currentPage++;
+        //    }
+
+        //    return allPlatforms;
+        //}
+
+
+    public async Task<IEnumerable<Platform>> GetPlatforms()
     {
       var endpoint = IGDBClient.Endpoints.Platforms;
       var platforms = await _api.QueryAsync<IGDB.Models.Platform>(endpoint, "fields id,name; limit 500;");
       Console.WriteLine(platforms);
-      return platforms.Select(p => new Models.Platform
+      return platforms.Select(p => new Platform
       {
-        PlatformID = (int)(p.Id),
+        PlatformId = (long)p.Id,
         PlatformName = p.Name
       });
     }

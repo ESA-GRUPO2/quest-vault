@@ -8,7 +8,7 @@ namespace questvault.Models
     public class Platform
     {
         [Key]
-        public int PlatformID { get; set; }
+        public long PlatformId { get; set; }
         /// <summary>
         /// Gets or sets the name of the gaming platform.
         /// </summary>

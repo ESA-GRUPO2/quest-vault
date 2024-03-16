@@ -9,7 +9,7 @@ namespace questvault.Models
     public class Company
     {
         [Key]
-        public int CompanyID { get; set; }
+        public long CompanyId { get; set; }
         /// <summary>
         /// Gets or sets the name of the game company.
         /// </summary>
@@ -19,6 +19,6 @@ namespace questvault.Models
         /// Gets or sets the list of games associated with the company.
         /// Represents a many-to-many relationship with Games.
         /// </summary>
-        //public virtual List<GameCompany>? GameCompany { get; set; }
+        public List<GameCompany>? GameCompanies { get; set; }
     }
 }

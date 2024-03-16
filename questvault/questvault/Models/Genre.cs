@@ -7,8 +7,8 @@ namespace questvault.Models
     /// </summary>
     public class Genre
     {
-        
-        public int GenreId { get; set; }
+        [Key]
+        public long GenreId { get; set; }
         /// <summary>
         /// Gets or sets the name of the gaming genre.
         /// </summary>
@@ -18,7 +18,7 @@ namespace questvault.Models
         /// Gets or sets the list of games associated with the genre.
         /// Represents a many-to-many relationship with Games.
         /// </summary>
-        public List<GameGenres> GameGenres { get; set; }
+        public List<GameGenre>? GameGenres { get; set; }
 
     }
 }

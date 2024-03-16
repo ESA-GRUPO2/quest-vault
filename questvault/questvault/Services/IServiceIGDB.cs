@@ -29,6 +29,7 @@
         /// </summary>
         /// <returns>A collection of company models.</returns>
         Task<IEnumerable<Models.Company>> GetCompanies();
+        Task<IEnumerable<Models.Company>> GetCompaniesFromIds(List<long> ids);
         /// <summary>
         /// Gets a collection of platforms.
         /// </summary>

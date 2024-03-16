@@ -9,8 +9,8 @@ namespace questvault.Models
     public class Game
     {
 
-        //[Key]
-        public int GameId { get; set; }
+        [Key]
+        public long GameId { get; set; }
         /// <summary>
         /// Gets or sets the name of the game.
         /// </summary>
@@ -38,8 +38,7 @@ namespace questvault.Models
         /// Gets or sets the list of genres associated with the game.
         /// Represents a many-to-many relationship with Genres.
         /// </summary>
-        public List<Genre> Genres { get; set; }
-        public List<GameGenres> GameGenres { get; set; }
+        public List<GameGenre>? GameGenres { get; set; }
 
         /// <summary>
         /// Gets or sets the list of platforms associated with the game.
@@ -51,7 +50,7 @@ namespace questvault.Models
         /// Gets or sets the list of companies associated with the game.
         /// Represents a many-to-many relationship with Companies.
         /// </summary>
-        //public virtual List<GameCompany>? GameCompany { get; set; }
+        public List<GameCompany>? GameCompanies { get; set; }
 
 
 
