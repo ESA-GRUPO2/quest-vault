@@ -41,13 +41,18 @@ namespace questvault.Controllers
         /// GET action method for the Index view.
         /// </summary>
         /// <returns>Returns the Index view.</returns>
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            
+            var games = await _context.Games.ToListAsync();
+            return View(games);
+        }
+        [HttpGet]
+        [Route("games/details/{id}")]
+        public IActionResult GameDetails(int id)
+        {
             return View();
         }
-
-        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
