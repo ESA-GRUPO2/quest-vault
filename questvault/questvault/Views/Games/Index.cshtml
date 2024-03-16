@@ -67,8 +67,8 @@
                 <div class="game-row">
                     @foreach (var game in batch)
                     {
-                        <a class="game-button" asp-controller="Games" asp-action="GameDetails" asp-route-id="@game.GameId">
-                            <img src="@game.imageUrl">
+                        <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.GameId">
+                            <img src="@game.ImageUrl">
                         </a>
                     }
                 </div>

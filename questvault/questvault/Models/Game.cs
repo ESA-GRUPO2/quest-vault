@@ -26,7 +26,7 @@ namespace questvault.Models
         /// <summary>
         /// Gets or sets the URL of the game's cover image.
         /// </summary>
-        public string? imageUrl { get; set; }
+        public string? ImageUrl { get; set; }
         /// <summary>
         /// Gets or sets the rating of the game for our app.
         /// QV -> QuestVault

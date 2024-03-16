@@ -34,7 +34,7 @@ namespace questvault.Services
                 Name = game.Name,
                 Summary = game.Summary,
                 IgdbRating = game.Rating.Value,
-                imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
+                ImageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
 
             });
         }
@@ -139,7 +139,7 @@ namespace questvault.Services
                 Name = igdbGame.Name,
                 Summary = igdbGame.Summary,
                 IgdbRating = (double)igdbGame.Rating,
-                imageUrl = ImageHelper.GetImageUrl(imageId: igdbGame.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
+                ImageUrl = ImageHelper.GetImageUrl(imageId: igdbGame.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
                 GameGenres = igdbGame.Genres.Values.Select(genre => BuildGameGenreFromIGDBData(igdbGame, genre)).ToList(),
                 GameCompanies = igdbGame.InvolvedCompanies.Values.Select(company => BuildGameCompanyFromIGDBData(igdbGame, company)).ToList(),
                 GamePlatforms = igdbGame.Platforms.Values.Select(platform => BuildGamePlatformFromIGDBData(igdbGame, platform)).ToList()

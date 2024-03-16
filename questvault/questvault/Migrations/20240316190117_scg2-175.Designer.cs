@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240316162042_nun")]
-    partial class nun
+    [Migration("20240316190117_scg2-175")]
+    partial class scg2175
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -257,7 +257,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 1020L,
-                            IgdbRating = 89.820973712227087,
+                            IgdbRating = 89.821145750184655,
                             Name = "Grand Theft Auto V",
                             QvRating = 0.0,
                             Summary = "Grand Theft Auto V is a vast open world game set in Los Santos, a sprawling sun-soaked metropolis struggling to stay afloat in an era of economic uncertainty and cheap reality TV. The game blends storytelling and gameplay in new ways as players repeatedly jump in and out of the lives of the game’s three lead characters, playing all sides of the game’s interwoven story.",
