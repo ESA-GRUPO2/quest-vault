@@ -1,7 +1,9 @@
-﻿@{
+﻿@model IEnumerable<questvault.Models.Game>
+@using System.Linq
+@{
     ViewData["Title"] = "Results";
     ViewData["help_Text"] = @"
-       In the Games page you can find a selection of games,<br/> 
+       In the Games page you can find a selection of games,<br/>
        this being the most popular or if you searched a especific<br/>
        name the games matching what you search will show in here!<br/>
        You can go further and search a game and then filter in: <br/>
@@ -14,11 +16,18 @@
        And search for the game you really want!";
 }
 
+@{
+    var batchSize = 5; // Defina o tamanho do lote aqui
+    var batches = Model.Select((game, index) => new { Game = game, Index = index })
+                       .GroupBy(x => x.Index / batchSize)
+                       .Select(g => g.Select(x => x.Game));
+}
+
 <div class="results-game">
     <h2 style="color:white">Games</h2>
     <hr class="bar" style="margin-bottom: 25px; width: 100%;">
     <div class="d-flex main-section-result">
-         <div class="filter-section">
+        <div class="filter-section">
             <h4 style="color: white; margin-bottom:50px">Filters</h4>
             <select class="select-results" name="Category" id="category">
                 <option value="none" selected disabled hidden>Category</option>
@@ -49,25 +58,24 @@
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-                </select><br>
+            </select><br>
             <a class="clear-results" href="" style="color:white; font-size: 120%; margin-top:25px">Clear Filters</a>
-         </div>
-        <div class="game-section">
-             <div class="game-row">
-                <a class="game-button" asp-controller="Home" asp-action="GameDetails"><img src="../img/gta.png"></a>
-                <a class="game-button"><img src="../img/granturismo.png"></a>
-                <a class="game-button"><img src="../img/gta.png"></a>
-                <a class="game-button"><img src="../img/gta.png"></a>
-                <a class="game-button"><img src="../img/gta.png"></a>
-            </div>
-            <div class="game-row">
-                <a class="game-button"><img src="../img/granturismo.png"></a>
-                <a class="game-button"><img src="../img/gta.png"></a>
-                <a class="game-button"><img src="../img/gta.png"></a>
-            </div>
-         
         </div>
+        <div class="game-section">
+            @foreach (var batch in batches)
+            {
+                <div class="game-row">
+                    @foreach (var game in batch)
+                    {
+                        <a class="game-button" asp-controller="Games" asp-action="GameDetails" asp-route-id="@game.GameId">
+                            <img src="@game.imageUrl">
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+
     </div>
-   
+
 
 </div>
