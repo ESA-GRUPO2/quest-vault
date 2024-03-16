@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_0000000000000150.html"],['416',"questvault.Services Namespace","topic_0000000000000140.html"],['420',"IGDBService Class","topic_0000000000000143.html"],['422',"Methods","topic_0000000000000143_methods--.html"],['426',"GetPopularGames Method","topic_0000000000000146.html"]];
