@@ -180,15 +180,26 @@ namespace questvault.Controllers
         {
             var receiver = await context.Users.FindAsync(id);
             var sender = await signInManager.UserManager.GetUserAsync(this.User);
-            var friendshipRequest = new FriendshipRequest { };
             if (receiver != null && sender != null)
             {
-                friendshipRequest.Receiver = receiver;
-                friendshipRequest.Sender = sender;
-                friendshipRequest.isAccepted = false;
-                friendshipRequest.FriendshipDate = DateTime.Now;
-                context.FriendshipRequest.Add(friendshipRequest);
-                context.SaveChanges();
+                var existingFriendship = await context.Friendship.Where(f => (f.User1.Id == receiver.Id && f.User2.Id == sender.Id) || (f.User1.Id == sender.Id && f.User2.Id == receiver.Id)).FirstOrDefaultAsync();
+                var existingRequest = await context.FriendshipRequest.Where(fr => (fr.Receiver.Id == receiver.Id && fr.Sender.Id == sender.Id) || (fr.Receiver.Id == sender.Id && fr.Sender.Id == receiver.Id)).FirstOrDefaultAsync();
+                if (existingFriendship == null && existingRequest == null)
+                {
+                    var friendshipRequest = new FriendshipRequest 
+                    {
+                        Receiver = receiver,
+                        Sender = sender,
+                        isAccepted = false,
+                        FriendshipDate = DateTime.Now
+                    };
+                    context.FriendshipRequest.Add(friendshipRequest);
+                    await context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.Out.WriteLine("ALREADY EXISTS");
+                }
             }
             return RedirectToAction(nameof(Index));
         }
@@ -211,8 +222,8 @@ namespace questvault.Controllers
                 else
                 {
                     friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == receiver.Id && fr.ReceiverId == sender.Id).ToListAsync();
+                    context.FriendshipRequest.Remove(friendshipRequest.First());
                 }
-                context.FriendshipRequest.Remove(friendshipRequest.First());
                 context.SaveChanges();
             }
             return RedirectToAction(nameof(Index));
@@ -220,7 +231,22 @@ namespace questvault.Controllers
         //TO DO
         public async Task<IActionResult> RejectFriendRequestAsync(string id)
         {
-            Console.Out.WriteLine("Reject triggered");
+            var receiver = await context.Users.FindAsync(id);
+            var sender = await signInManager.UserManager.GetUserAsync(this.User);
+            if (receiver != null && sender != null)
+            {
+                var friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == sender.Id && fr.ReceiverId == receiver.Id).ToListAsync();
+                if (friendshipRequest.Any())
+                {
+                    context.FriendshipRequest.Remove(friendshipRequest.First());
+                }
+                else
+                {
+                    friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == receiver.Id && fr.ReceiverId == sender.Id).ToListAsync();
+                    context.FriendshipRequest.Remove(friendshipRequest.First());
+                }
+                context.SaveChanges();
+            }
             return RedirectToAction(nameof(Index));
         }
         //TO DO
