@@ -27,12 +27,17 @@ namespace questvault.Models
         /// Gets or sets the URL of the game's cover image.
         /// </summary>
         public string? ImageUrl { get; set; }
+
+        public string[]? Screenshots { get; set; }
+
+        public string? VideoUrl { get; set; }
         /// <summary>
         /// Gets or sets the rating of the game for our app.
         /// QV -> QuestVault
         /// </summary>
         public double QvRating { get; set; } = 0;
 
+        public string? ReleaseDate { get; set; } = "";
 
         /// <summary>
         /// Gets or sets the list of genres associated with the game.

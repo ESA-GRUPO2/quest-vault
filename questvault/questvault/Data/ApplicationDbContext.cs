@@ -41,12 +41,15 @@ namespace questvault.Data
             
             builder.Entity<Game>().HasData(gamesList.Select(game => new
             {
-                GameId = game.GameId,
-                Name = game.Name,
-                Summary = game.Summary,
-                IgdbRating = game.IgdbRating,
-                QvRating = game.QvRating,
-                imageUrl = game.ImageUrl
+                game.GameId,
+                game.Name,
+                game.Summary,
+                game.IgdbRating,
+                game.ImageUrl,
+                game.Screenshots,
+                game.VideoUrl,
+                game.QvRating,
+                game.ReleaseDate
             }).ToArray());
 
             // Many to many relationships:

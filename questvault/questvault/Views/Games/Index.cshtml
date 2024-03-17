@@ -22,7 +22,9 @@
                        .GroupBy(x => x.Index / batchSize)
                        .Select(g => g.Select(x => x.Game));
 }
-
+@if (SignInManager.IsSignedIn(User))
+{
+    
 <div class="results-game">
     <h2 style="color:white">Games</h2>
     <hr class="bar" style="margin-bottom: 25px; width: 100%;">
@@ -78,4 +80,8 @@
     </div>
 
 
-</div>
+    </div>
+}else
+{
+    <h1 style="color :red">Please log in to access this page.</h1>
+}

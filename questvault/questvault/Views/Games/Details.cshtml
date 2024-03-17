@@ -6,15 +6,20 @@
       You can add the game to your library, give it a progression<br/>
       label and a review so your friends know what you think about it.";
 }
-
+@if (SignInManager.IsSignedIn(User))
+{
+    
 <div class="game-details">
 
     <section class="d-flex main-section">
         <img class="game-cover image-fluid" src="@Model.ImageUrl" />
         <div class="container ms-3 mt-4">
             <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
-            <h4>Release Date/Year</h4>
+            <h4>Released on @Model.ReleaseDate</h4>
+
+
             <h5>
+                By 
                 @foreach (var c in Model.GameCompanies)
                 {
                     <text>@c.Company.CompanyName</text>
@@ -64,7 +69,7 @@
             <div class=" justify-content-end d-inline-flex">
                 @* global rating stars *@
                 <div class="global-rating">
-                    <span id="global-rating">0</span>.0
+                    <span id="global-rating">@Model.QvRating</span>.0
                 </div>
                 <div class="stars" id="global-stars">
                     <span class="global-star" data-value="1">★</span>
@@ -91,22 +96,23 @@
         <div class="container-fluid justify-content-between mt-3">
             <div class="game-about align-top mb-5">
                 <h4 class="align-content-start">Summary</h4>
-                <p class="text-break text-wrap">Grand Theft Auto V is a vast open world game set in Los Santos, a sprawling sun-soaked metropolis struggling to stay afloat in an era of economic uncertainty and cheap reality TV. The game blends storytelling and gameplay in new ways as players repeatedly jump in and out of the lives of the game’s three lead characters, playing all sides of the game’s interwoven story.</p>
+                <p class="text-break text-wrap">@Model.Summary</p>
             </div>
             <div class="game-captures align-bottom">
                 <h4>Screenshots</h4>
-                <div class="card-group">
-                    <div class="card me-2">
-                        <img src="../img/test_gamecaptures/nsi3tc7jk2evyici425s.jpeg" class="card-img col-md-2" alt="...">
-                    </div>
-                    <div class="card me-2">
-                        <img src="../img/test_gamecaptures/nsi3tc7jk2evyici425s.jpeg" class="card-img col-md-2" alt="...">
-                    </div>
-                    <div class="card">
-                        <img src="../img/test_gamecaptures/nsi3tc7jk2evyici425s.jpeg" class="card-img col-md-2" alt="...">
-                    </div>
-                </div>
 
+                <div class="card-group">
+                    @for (int i = 0; i < Model.Screenshots.Length; i++)
+                    {
+                        <div class="card me-2">
+                            <img src="@Model.Screenshots[i]" class="card-img col-md-2" alt="...">
+                        </div>
+                    }
+                </div>
+                <iframe class="card-img col-md-2"
+                        width="280"
+                        height="318" src="@Model.VideoUrl"
+                        frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
         <div class="game-review container mt-3">
@@ -132,4 +138,8 @@
     </section>
 </div>
 
-<script src="~/js/rating.js"></script>
+    <script src="~/js/rating.js"></script>
+}else
+{
+    <h1 style="color :red">Please log in to access this page.</h1>
+}
