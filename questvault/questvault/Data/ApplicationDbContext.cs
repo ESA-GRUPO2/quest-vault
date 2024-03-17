@@ -82,7 +82,7 @@ namespace questvault.Data
                         gg.PlatformId,
                     }))
                 .ToArray());
-
+            Console.WriteLine("BLING BANG BANG BORN");
         }
         public DbSet<Game> Games { get; set; } = default!;
         public DbSet<Genre> Genres { get; set; } = default!;

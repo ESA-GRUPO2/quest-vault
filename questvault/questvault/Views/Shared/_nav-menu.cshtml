@@ -27,17 +27,13 @@
                     <li class="align-self-center">
                         
                         <div class="search-bar d-flex">
-                            <input id="searchInput" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
-                            <select id="searchResults" size="5"></select>
-                            @* <div id="searchResults" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <!-- Resultados da pesquisa aqui -->
-                             </div> *@
+                            <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
                             <button class="outside-search" type="submit">
                                     <img src="\img\vector\magnifying.svg" class="search-btn" />
                             </button>
                                 
                         </div>       
-                    
+                        <ul id="searchResults" class="list-group"></ul>
                     </li>
                     <li class="nav-item align-self-center ms-3" style="padding-right: 15rem">
                         <div class="dropdown">

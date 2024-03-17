@@ -87,13 +87,14 @@ namespace questvault.Controllers
             }
 
             var games = _context.Games
-                .Where(g => g.Name.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0)
-                .Select(s => new GameViewModel
+                .Where(g => EF.Functions.Like(g.Name, $"%{searchTerm}%"))
+                .Select(s => new
                 {
-                    GameId = s.GameId,
-                    Name = s.Name
+                    s.GameId,
+                    s.Name,
                 })
                 .ToList();
+
 
             return Json(games);
         }
