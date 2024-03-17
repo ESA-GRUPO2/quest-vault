@@ -76,55 +76,50 @@ namespace questvault.Controllers
             return View(game);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        /// <summary>
-        /// POST action method for handling the search form.
-        /// </summary>
-        /// <param name="searchTerm">The search term provided by the user.</param>
-        /// <returns>Returns JSON data containing the search results.</returns>
-        public async Task<IActionResult> SearchForm(string searchTerm)
+
+        [HttpGet]
+        [Route("search")]
+        public IActionResult Search(string searchTerm)
         {
-            try
+            if (searchTerm == null || _context.Games == null)
             {
-                var jogos = await _igdbService.SearchGames(searchTerm);
-                Console.WriteLine("term: " + searchTerm);
-                // Retorna os dados como JSON
-                return Json(new { Jogos = jogos });
+                return NotFound();
             }
-            catch (ApiException ex)
-            {
-                Console.WriteLine(ex.Content);
-                return Json(new { Erro = "Erro na API IGDB" });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return Json(new { Erro = "Erro interno no servidor" });
-            }
+
+            var games = _context.Games
+                .Where(g => g.Name.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Select(s => new GameViewModel
+                {
+                    GameId = s.GameId,
+                    Name = s.Name
+                })
+                .ToList();
+
+            return Json(games);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Search([FromBody] string searchTerm)
-        {
-            try
-            {
-                var jogos = await _igdbService.SearchGames(searchTerm);
-                // Retorna os dados como JSON
-                return Json(new { Jogos = jogos });
-            }
-            catch (ApiException ex)
-            {
-                Console.WriteLine(ex.Content);
-                return Json(new { Erro = "Erro na API IGDB" });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return Json(new { Erro = "Erro interno no servidor" });
-            }
-        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Search([FromBody] string searchTerm)
+        //{
+        //    try
+        //    {
+        //        var jogos = await _igdbService.SearchGames(searchTerm);
+        //        // Retorna os dados como JSON
+        //        return Json(new { Jogos = jogos });
+        //    }
+        //    catch (ApiException ex)
+        //    {
+        //        Console.WriteLine(ex.Content);
+        //        return Json(new { Erro = "Erro na API IGDB" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //        return Json(new { Erro = "Erro interno no servidor" });
+        //    }
+        //}
 
         [HttpGet("Teste")]
         public async Task<IActionResult> Popular()
