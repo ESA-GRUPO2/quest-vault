@@ -7,7 +7,7 @@ trigger:
 - production
 
 pool:
-  vmImage: 'linux-latest'
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
