@@ -1,5 +1,6 @@
 ﻿using IGDB;
 using questvault.Models;
+using System.Collections.Generic;
 
 namespace questvault.Services
 {
@@ -21,24 +22,13 @@ namespace questvault.Services
         public async Task<IEnumerable<Models.Game>> SearchGames(string searchTerm)
         {
 
-            string query = $"fields id,name, genres; search *\"{searchTerm}\"*; limit 5;";
-            string query2 = "fields id,name,genres.name,rating,total_rating_count, summary, artworks.image_id, first_release_date;" +
-                $"where name ~ *\"{searchTerm}\"* & genres != null & rating != null & total_rating_count != null & summary != null & artworks.image_id != null & first_release_date != null;" +
+            string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, cover.image_id, first_release_date, screenshots.image_id, videos.video_id;" +
+                $"where name ~ *\"{searchTerm}\"* & genres != null & rating != null & total_rating_count != null & cover.image_id != null & involved_companies != null & platforms != null & first_release_date != null & screenshots.image_id != null & videos.video_id != null;" +
                 "sort total_rating_count desc;" +
                 "limit 5;";
-            var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query2);
+            var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
             
-            return games.Select(game => new Game
-            {
-                GameId = (int)game.Id,
-                Name = game.Name,
-                Summary = game.Summary,
-                IgdbRating = game.Rating.Value,
-                ImageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.ScreenshotMed, retina: true),
-                ReleaseDate = game.FirstReleaseDate.Value.ToString("MMMM") + " " +
-                    game.FirstReleaseDate.Value.Day + ", " +
-                    game.FirstReleaseDate.Value.Year
-            });
+            return games.Select(game => BuildGameFromIGDBGame(game));
         }
 
         //public async Task<IEnumerable<Game>> GetPopularGames(int limit)
@@ -138,6 +128,7 @@ namespace questvault.Services
             var game = new Game
             {
                 GameId = (long)igdbGame.Id,
+                IgdbId = (long)igdbGame.Id,
                 Name = igdbGame.Name,
                 Summary = igdbGame.Summary,
                 IgdbRating = (double)igdbGame.Rating,
@@ -167,7 +158,7 @@ namespace questvault.Services
         {
             return new GameGenre
             {
-                GameId = (long)igdbGame.Id,
+                IgdbId = (long)igdbGame.Id,
                 GenreId = (long)genreData.Id,
                 Genre = new Genre
                 {
@@ -187,7 +178,8 @@ namespace questvault.Services
         {
             return new GameCompany
             {
-                GameId = (long)igdbGame.Id,
+
+                IgdbId = (long)igdbGame.Id,
                 CompanyId = (long)companyData.Company.Id,
                 Company = new Company
                 {
@@ -206,7 +198,7 @@ namespace questvault.Services
         {
             return new GamePlatform
             {
-                GameId = (long)igdbGame.Id,
+                IgdbId = (long)igdbGame.Id,
                 PlatformId = (long)platformData.Id,
                 Platform = new Platform
                 {

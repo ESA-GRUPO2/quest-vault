@@ -42,6 +42,7 @@ namespace questvault.Data
             builder.Entity<Game>().HasData(gamesList.Select(game => new
             {
                 game.GameId,
+                game.IgdbId,
                 game.Name,
                 game.Summary,
                 game.IgdbRating,
@@ -56,7 +57,7 @@ namespace questvault.Data
             builder.Entity<GameGenre>().HasData(gamesList.SelectMany(game =>
             game.GameGenres.Select(gg => new
             {
-                gg.GameId,
+                gg.IgdbId,
                 gg.GenreId,
             })
                 ).ToArray());
@@ -67,8 +68,8 @@ namespace questvault.Data
                     .Where(gg => companyIds.Contains(gg.CompanyId))
                     .Select(gg => new
                     {
-                        gg.GameId,
-                        gg.CompanyId
+                        gg.IgdbId,
+                        gg.CompanyId,
                     }))
                 .ToArray());
 
@@ -78,7 +79,7 @@ namespace questvault.Data
                     .Where(gg => platformIds.Contains(gg.PlatformId))
                     .Select(gg => new
                     {
-                        gg.GameId,
+                        gg.IgdbId,
                         gg.PlatformId,
                     }))
                 .ToArray());

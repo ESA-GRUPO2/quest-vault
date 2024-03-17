@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace questvault.Models
 {
-    [PrimaryKey(nameof(GameId), nameof(GenreId))]
+    [PrimaryKey(nameof(IgdbId), nameof(GenreId))]
     /// <summary>
     /// Represents a many-to-many relationship between Game and Genre entities.
     /// </summary>
@@ -13,7 +13,7 @@ namespace questvault.Models
         /// Gets or sets the ID of the game.
         /// </summary>
         [Column(Order = 0)]
-        public long GameId { get; set; }
+        public long IgdbId { get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the genre.
@@ -23,7 +23,7 @@ namespace questvault.Models
         /// <summary>
         /// Gets or sets the navigation property for the game.
         /// </summary>
-        [ForeignKey(nameof(GameId))]
+        [ForeignKey(nameof(IgdbId))]
         public virtual Game? Game { get; set; }
         /// <summary>
         /// Gets or sets the navigation property for the genre.

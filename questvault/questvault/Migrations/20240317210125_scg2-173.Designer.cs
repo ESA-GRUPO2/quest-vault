@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240316234710_scg2-175")]
-    partial class scg2175
+    [Migration("20240317210125_scg2-173")]
+    partial class scg2173
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -234,6 +234,9 @@ namespace questvault.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GameId"));
 
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint");
+
                     b.Property<double>("IgdbRating")
                         .HasColumnType("float");
 
@@ -266,6 +269,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 1020L,
+                            IgdbId = 1020L,
                             IgdbRating = 89.821145750184655,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2lbd.jpg",
                             Name = "Grand Theft Auto V",
@@ -278,7 +282,8 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 1942L,
-                            IgdbRating = 94.145534062906819,
+                            IgdbId = 1942L,
+                            IgdbRating = 94.145487751664035,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg",
                             Name = "The Witcher 3: Wild Hunt",
                             QvRating = 0.0,
@@ -290,6 +295,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 72L,
+                            IgdbId = 72L,
                             IgdbRating = 91.84852424624583,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs4.jpg",
                             Name = "Portal 2",
@@ -302,6 +308,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 472L,
+                            IgdbId = 472L,
                             IgdbRating = 87.693564090508843,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1tnw.jpg",
                             Name = "The Elder Scrolls V: Skyrim",
@@ -314,6 +321,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 71L,
+                            IgdbId = 71L,
                             IgdbRating = 86.778517641759336,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1x7d.jpg",
                             Name = "Portal",
@@ -326,6 +334,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 732L,
+                            IgdbId = 732L,
                             IgdbRating = 90.589426824837233,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2lb9.jpg",
                             Name = "Grand Theft Auto: San Andreas",
@@ -338,6 +347,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 1009L,
+                            IgdbId = 1009L,
                             IgdbRating = 93.378166330256974,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
                             Name = "The Last of Us",
@@ -350,6 +360,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 233L,
+                            IgdbId = 233L,
                             IgdbRating = 90.659012483195042,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1nmw.jpg",
                             Name = "Half-Life 2",
@@ -362,6 +373,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 20L,
+                            IgdbId = 20L,
                             IgdbRating = 86.738029894909729,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2mli.jpg",
                             Name = "BioShock",
@@ -374,6 +386,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 127L,
+                            IgdbId = 127L,
                             IgdbRating = 86.909133880884752,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1rcf.jpg",
                             Name = "Assassin's Creed II",
@@ -387,7 +400,7 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.GameCompany", b =>
                 {
-                    b.Property<long>("GameId")
+                    b.Property<long>("IgdbId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
@@ -395,7 +408,7 @@ namespace questvault.Migrations
                         .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GameId", "CompanyId");
+                    b.HasKey("IgdbId", "CompanyId");
 
                     b.HasIndex("CompanyId");
 
@@ -404,79 +417,79 @@ namespace questvault.Migrations
                     b.HasData(
                         new
                         {
-                            GameId = 1020L,
+                            IgdbId = 1020L,
                             CompanyId = 29L
                         },
                         new
                         {
-                            GameId = 1942L,
+                            IgdbId = 1942L,
                             CompanyId = 50L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             CompanyId = 56L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             CompanyId = 1L
                         },
                         new
                         {
-                            GameId = 472L,
+                            IgdbId = 472L,
                             CompanyId = 126L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             CompanyId = 56L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             CompanyId = 1L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             CompanyId = 29L
                         },
                         new
                         {
-                            GameId = 233L,
+                            IgdbId = 233L,
                             CompanyId = 24L
                         },
                         new
                         {
-                            GameId = 233L,
+                            IgdbId = 233L,
                             CompanyId = 56L
                         },
                         new
                         {
-                            GameId = 20L,
+                            IgdbId = 20L,
                             CompanyId = 13L
                         },
                         new
                         {
-                            GameId = 20L,
+                            IgdbId = 20L,
                             CompanyId = 8L
                         },
                         new
                         {
-                            GameId = 127L,
+                            IgdbId = 127L,
                             CompanyId = 38L
                         },
                         new
                         {
-                            GameId = 127L,
+                            IgdbId = 127L,
                             CompanyId = 104L
                         });
                 });
 
             modelBuilder.Entity("questvault.Models.GameGenre", b =>
                 {
-                    b.Property<long>("GameId")
+                    b.Property<long>("IgdbId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
@@ -484,7 +497,7 @@ namespace questvault.Migrations
                         .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GameId", "GenreId");
+                    b.HasKey("IgdbId", "GenreId");
 
                     b.HasIndex("GenreId");
 
@@ -493,139 +506,139 @@ namespace questvault.Migrations
                     b.HasData(
                         new
                         {
-                            GameId = 1020L,
+                            IgdbId = 1020L,
                             GenreId = 5L
                         },
                         new
                         {
-                            GameId = 1020L,
+                            IgdbId = 1020L,
                             GenreId = 10L
                         },
                         new
                         {
-                            GameId = 1020L,
+                            IgdbId = 1020L,
                             GenreId = 31L
                         },
                         new
                         {
-                            GameId = 1942L,
+                            IgdbId = 1942L,
                             GenreId = 12L
                         },
                         new
                         {
-                            GameId = 1942L,
+                            IgdbId = 1942L,
                             GenreId = 31L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             GenreId = 5L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             GenreId = 8L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             GenreId = 9L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             GenreId = 31L
                         },
                         new
                         {
-                            GameId = 472L,
+                            IgdbId = 472L,
                             GenreId = 12L
                         },
                         new
                         {
-                            GameId = 472L,
+                            IgdbId = 472L,
                             GenreId = 31L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             GenreId = 5L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             GenreId = 8L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             GenreId = 9L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             GenreId = 5L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             GenreId = 10L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             GenreId = 31L
                         },
                         new
                         {
-                            GameId = 1009L,
+                            IgdbId = 1009L,
                             GenreId = 5L
                         },
                         new
                         {
-                            GameId = 1009L,
+                            IgdbId = 1009L,
                             GenreId = 31L
                         },
                         new
                         {
-                            GameId = 233L,
+                            IgdbId = 233L,
                             GenreId = 5L
                         },
                         new
                         {
-                            GameId = 20L,
+                            IgdbId = 20L,
                             GenreId = 5L
                         },
                         new
                         {
-                            GameId = 20L,
+                            IgdbId = 20L,
                             GenreId = 9L
                         },
                         new
                         {
-                            GameId = 20L,
+                            IgdbId = 20L,
                             GenreId = 12L
                         },
                         new
                         {
-                            GameId = 20L,
+                            IgdbId = 20L,
                             GenreId = 31L
                         },
                         new
                         {
-                            GameId = 127L,
+                            IgdbId = 127L,
                             GenreId = 8L
                         },
                         new
                         {
-                            GameId = 127L,
+                            IgdbId = 127L,
                             GenreId = 31L
                         });
                 });
 
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>
                 {
-                    b.Property<long>("GameId")
+                    b.Property<long>("IgdbId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
@@ -633,7 +646,7 @@ namespace questvault.Migrations
                         .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GameId", "PlatformId");
+                    b.HasKey("IgdbId", "PlatformId");
 
                     b.HasIndex("PlatformId");
 
@@ -642,167 +655,167 @@ namespace questvault.Migrations
                     b.HasData(
                         new
                         {
-                            GameId = 1020L,
+                            IgdbId = 1020L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 1020L,
+                            IgdbId = 1020L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 1020L,
+                            IgdbId = 1020L,
                             PlatformId = 49L
                         },
                         new
                         {
-                            GameId = 1942L,
+                            IgdbId = 1942L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 1942L,
+                            IgdbId = 1942L,
                             PlatformId = 49L
                         },
                         new
                         {
-                            GameId = 1942L,
+                            IgdbId = 1942L,
                             PlatformId = 130L
                         },
                         new
                         {
-                            GameId = 1942L,
+                            IgdbId = 1942L,
                             PlatformId = 167L
                         },
                         new
                         {
-                            GameId = 1942L,
+                            IgdbId = 1942L,
                             PlatformId = 169L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             PlatformId = 3L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 72L,
+                            IgdbId = 72L,
                             PlatformId = 130L
                         },
                         new
                         {
-                            GameId = 472L,
+                            IgdbId = 472L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 472L,
+                            IgdbId = 472L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             PlatformId = 3L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 71L,
+                            IgdbId = 71L,
                             PlatformId = 130L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             PlatformId = 8L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             PlatformId = 11L
                         },
                         new
                         {
-                            GameId = 732L,
+                            IgdbId = 732L,
                             PlatformId = 39L
                         },
                         new
                         {
-                            GameId = 1009L,
+                            IgdbId = 1009L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 233L,
+                            IgdbId = 233L,
                             PlatformId = 3L
                         },
                         new
                         {
-                            GameId = 233L,
+                            IgdbId = 233L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 233L,
+                            IgdbId = 233L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 233L,
+                            IgdbId = 233L,
                             PlatformId = 11L
                         },
                         new
                         {
-                            GameId = 20L,
+                            IgdbId = 20L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 20L,
+                            IgdbId = 20L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 127L,
+                            IgdbId = 127L,
                             PlatformId = 6L
                         },
                         new
                         {
-                            GameId = 127L,
+                            IgdbId = 127L,
                             PlatformId = 9L
                         },
                         new
                         {
-                            GameId = 127L,
+                            IgdbId = 127L,
                             PlatformId = 39L
                         });
                 });
@@ -1165,7 +1178,7 @@ namespace questvault.Migrations
 
                     b.HasOne("questvault.Models.Game", "Game")
                         .WithMany("GameCompanies")
-                        .HasForeignKey("GameId")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1176,15 +1189,15 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.GameGenre", b =>
                 {
-                    b.HasOne("questvault.Models.Game", "Game")
-                        .WithMany("GameGenres")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("questvault.Models.Genre", "Genre")
                         .WithMany("GameGenres")
                         .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany("GameGenres")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1197,7 +1210,7 @@ namespace questvault.Migrations
                 {
                     b.HasOne("questvault.Models.Game", "Game")
                         .WithMany("GamePlatforms")
-                        .HasForeignKey("GameId")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

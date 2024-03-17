@@ -12,6 +12,8 @@ using IGDB.Models;
 //using questvault.Migrations;
 using RestEase;
 using questvault.Services;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using MailKit.Search;
 
 namespace questvault.Controllers
 {
@@ -49,6 +51,60 @@ namespace questvault.Controllers
             var games = await _context.Games.ToListAsync();
             return View(games);
         }
+
+        [HttpPost]
+        [Route ("results")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Results(string searchTerm)
+        {
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            if (searchTerm == null)
+            {
+                Console.WriteLine("primeiro if");
+                return NotFound();
+            }
+
+            var games = await _igdbService.SearchGames(searchTerm);
+            if (games == null)
+            {
+                Console.WriteLine("segundo if");
+                return NotFound();
+            }
+            foreach (var game in games)
+            {
+                // Verifique se o jogo já existe na base de dados com base no GameId
+                var existingGame = _context.Games.FirstOrDefault(g => g.IgdbId == game.IgdbId);
+                await Console.Out.WriteLineAsync("exist?:-----> " + existingGame);
+                // Se o jogo não existir, adicione-o à base de dados
+                if (existingGame == null)
+                {
+                    await Console.Out.WriteLineAsync("tem jogo!");
+                    // Crie um novo objeto Game com as propriedades desejadas
+                    var newGame = new Models.Game
+                    {
+                        IgdbId = game.IgdbId,
+                        Name = game.Name,
+                        Summary = game.Summary,
+                        IgdbRating = game.IgdbRating,
+                        ImageUrl = game.ImageUrl,
+                        Screenshots = game.Screenshots,
+                        VideoUrl = game.VideoUrl,
+                        QvRating = game.QvRating,
+                        ReleaseDate = game.ReleaseDate
+                    };
+                    Console.WriteLine("ad: "+  newGame.ToString());
+                    // Adicione o novo jogo à base de dados
+                    _context.Games.Add(newGame);
+                }
+            }
+            // Salve as mudanças na base de dados
+            await _context.SaveChangesAsync();
+            //var allgames = await _context.Games
+            //    .Where(g => EF.Functions.Like(g.Name, $"%{searchInput}%")).ToListAsync();
+            //return View(allgames);
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         [Route("details/{id}")]
         public async Task<IActionResult> Details(int? id)
@@ -65,7 +121,7 @@ namespace questvault.Controllers
                     .ThenInclude(gp => gp.Platform)
                 .Include(g => g.GameCompanies!)
                     .ThenInclude(gc => gc.Company)
-                .FirstOrDefaultAsync(m => m.GameId == id);
+                .FirstOrDefaultAsync(m => m.IgdbId == id);
 
 
             if (game == null)
@@ -90,7 +146,7 @@ namespace questvault.Controllers
                 .Where(g => EF.Functions.Like(g.Name, $"%{searchTerm}%"))
                 .Select(s => new
                 {
-                    s.GameId,
+                    s.IgdbId,
                     s.Name,
                 })
                 .ToList();
@@ -122,26 +178,26 @@ namespace questvault.Controllers
         //    }
         //}
 
-        [HttpGet("Teste")]
-        public async Task<IActionResult> Popular()
-        {
-            try
-            {
-                var jogos = await _igdbService.GetPopularGames(10);
-                // Retorna os dados como JSON
-                return Json(new { Jogos = jogos });
-            }
-            catch (ApiException ex)
-            {
-                Console.WriteLine(ex.Content);
-                return Json(new { Erro = "Erro na API IGDB" });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return Json(new { Erro = "Erro interno no servidor" });
-            }
-        }
+        //[HttpGet("Teste")]
+        //public async Task<IActionResult> Popular()
+        //{
+        //    try
+        //    {
+        //        var jogos = await _igdbService.GetPopularGames(10);
+        //        // Retorna os dados como JSON
+        //        return Json(new { Jogos = jogos });
+        //    }
+        //    catch (ApiException ex)
+        //    {
+        //        Console.WriteLine(ex.Content);
+        //        return Json(new { Erro = "Erro na API IGDB" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //        return Json(new { Erro = "Erro interno no servidor" });
+        //    }
+        //}
 
 
 
