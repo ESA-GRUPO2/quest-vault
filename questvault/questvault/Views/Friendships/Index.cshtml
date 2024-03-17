@@ -31,8 +31,8 @@
                     @Html.DisplayFor(modelItem => item.Receiver.UserName)
                 </td>
                 <td>
-                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="AcceptFriendRequest">Accept Friend Request</a>
-                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RejectFriendRequest">Reject Friend Request</a>
+                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="AcceptFriendRequest" asp-route-id="@item.Sender.Id">Accept Request</a>
+                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RejectFriendRequest">Reject Request</a>
                 </td>
             </tr>
         }

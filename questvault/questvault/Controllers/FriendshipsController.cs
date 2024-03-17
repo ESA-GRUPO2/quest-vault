@@ -25,7 +25,6 @@ namespace questvault.Controllers
 
             var dbContext = await context.FriendshipRequest.ToListAsync();
             var dbContextCopy = new List<FriendshipRequest>();
-            Console.Out.WriteLine("aqui");
             foreach(var a in dbContext)
             {
                 if(a.Receiver == user)
@@ -196,11 +195,32 @@ namespace questvault.Controllers
         //TO DO
         public async Task<IActionResult> AcceptFriendRequestAsync(string id)
         {
+            var receiver = await context.Users.FindAsync(id);
+            var sender = await signInManager.UserManager.GetUserAsync(this.User);
+            var friendship = new Friendship { };
+            if (receiver != null && sender != null)
+            {
+                friendship.User1 = receiver;
+                friendship.User2 = sender;
+                context.Friendship.Add(friendship);
+                var friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == sender.Id && fr.ReceiverId == receiver.Id).ToListAsync();
+                if (friendshipRequest.Any())
+                {
+                    context.FriendshipRequest.Remove(friendshipRequest.First());
+                }
+                else
+                {
+                    friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == receiver.Id && fr.ReceiverId == sender.Id).ToListAsync();
+                }
+                context.FriendshipRequest.Remove(friendshipRequest.First());
+                context.SaveChanges();
+            }
             return RedirectToAction(nameof(Index));
         }
         //TO DO
         public async Task<IActionResult> RejectFriendRequestAsync(string id)
         {
+            Console.Out.WriteLine("Reject triggered");
             return RedirectToAction(nameof(Index));
         }
         //TO DO
