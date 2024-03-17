@@ -22,20 +22,22 @@ namespace questvault.Services
         {
 
             string query = $"fields id,name, genres; search *\"{searchTerm}\"*; limit 5;";
-            string query2 = "fields id,name,genres.name,rating,total_rating_count, summary, artworks.image_id;" +
-                $"where name ~ *\"{searchTerm}\"* & genres != null & rating != null & total_rating_count != null & summary != null & artworks.image_id != null;" +
+            string query2 = "fields id,name,genres.name,rating,total_rating_count, summary, artworks.image_id, first_release_date;" +
+                $"where name ~ *\"{searchTerm}\"* & genres != null & rating != null & total_rating_count != null & summary != null & artworks.image_id != null & first_release_date != null;" +
                 "sort total_rating_count desc;" +
                 "limit 5;";
             var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query2);
-
+            
             return games.Select(game => new Game
             {
                 GameId = (int)game.Id,
                 Name = game.Name,
                 Summary = game.Summary,
                 IgdbRating = game.Rating.Value,
-                imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
-
+                ImageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.ScreenshotMed, retina: true),
+                ReleaseDate = game.FirstReleaseDate.Value.ToString("MMMM") + " " +
+                    game.FirstReleaseDate.Value.Day + ", " +
+                    game.FirstReleaseDate.Value.Year
             });
         }
 
@@ -116,11 +118,11 @@ namespace questvault.Services
 
         public async Task<IEnumerable<Game>> GetPopularGames(int limit)
         {
-            string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, artworks.image_id;" +
-                "where name != null & genres != null & rating != null & total_rating_count != null & artworks.image_id != null & involved_companies != null & platforms != null;" +
+            string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, cover.image_id, first_release_date, screenshots.image_id, videos.video_id;" +
+                "where name != null & genres != null & rating != null & total_rating_count != null & cover.image_id != null & involved_companies != null & platforms != null & first_release_date != null & screenshots.image_id != null & videos.video_id != null;" +
                 "sort total_rating_count desc;" +
                 $"limit {limit};";
-
+            
             var popularGames = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
 
             return popularGames.Select(game => BuildGameFromIGDBGame(game));
@@ -131,7 +133,7 @@ namespace questvault.Services
         /// </summary>
         /// <param name="igdbGame">The IGDB game data.</param>
         /// <returns>The constructed Game object.</returns>
-        private Game BuildGameFromIGDBGame(IGDB.Models.Game igdbGame)
+        private static Game BuildGameFromIGDBGame(IGDB.Models.Game igdbGame)
         {
             var game = new Game
             {
@@ -139,7 +141,14 @@ namespace questvault.Services
                 Name = igdbGame.Name,
                 Summary = igdbGame.Summary,
                 IgdbRating = (double)igdbGame.Rating,
-                imageUrl = ImageHelper.GetImageUrl(imageId: igdbGame.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
+                ImageUrl = ImageHelper.GetImageUrl(imageId: igdbGame.Cover.Value.ImageId, size: ImageSize.CoverBig, retina: false),
+                Screenshots = igdbGame.Screenshots.Values.Take(3).Select(s =>
+                    ImageHelper.GetImageUrl(imageId: s.ImageId, size: ImageSize.ScreenshotMed, retina: false)
+                ).ToArray(),
+                VideoUrl = "https://www.youtube.com/embed/" + igdbGame.Videos.Values.First().VideoId,
+                ReleaseDate = igdbGame.FirstReleaseDate.Value.ToString("MMMM") + " " + 
+                    igdbGame.FirstReleaseDate.Value.Day + ", " + 
+                    igdbGame.FirstReleaseDate.Value.Year,
                 GameGenres = igdbGame.Genres.Values.Select(genre => BuildGameGenreFromIGDBData(igdbGame, genre)).ToList(),
                 GameCompanies = igdbGame.InvolvedCompanies.Values.Select(company => BuildGameCompanyFromIGDBData(igdbGame, company)).ToList(),
                 GamePlatforms = igdbGame.Platforms.Values.Select(platform => BuildGamePlatformFromIGDBData(igdbGame, platform)).ToList()
@@ -154,7 +163,7 @@ namespace questvault.Services
         /// <param name="igdbGame">The IGDB game data.</param>
         /// <param name="genreData">The IGDB game genre data.</param>
         /// <returns>The constructed GameGenre object.</returns>
-        private GameGenre BuildGameGenreFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.Genre genreData)
+        private static GameGenre BuildGameGenreFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.Genre genreData)
         {
             return new GameGenre
             {
@@ -174,7 +183,7 @@ namespace questvault.Services
         /// <param name="igdbGame">The IGDB game data.</param>
         /// <param name="companyData">The IGDB game company data.</param>
         /// <returns>The constructed GameCompany object.</returns>
-        private GameCompany BuildGameCompanyFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.InvolvedCompany companyData)
+        private static GameCompany BuildGameCompanyFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.InvolvedCompany companyData)
         {
             return new GameCompany
             {
@@ -193,7 +202,7 @@ namespace questvault.Services
         /// <param name="igdbGame">The IGDB game data.</param>
         /// <param name="platformData">The IGDB game platform data.</param>
         /// <returns>The constructed GamePlatform object.</returns>
-        private GamePlatform BuildGamePlatformFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.Platform platformData)
+        private static GamePlatform BuildGamePlatformFromIGDBData(IGDB.Models.Game igdbGame, IGDB.Models.Platform platformData)
         {
             return new GamePlatform
             {

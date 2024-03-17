@@ -41,12 +41,15 @@ namespace questvault.Data
             
             builder.Entity<Game>().HasData(gamesList.Select(game => new
             {
-                GameId = game.GameId,
-                Name = game.Name,
-                Summary = game.Summary,
-                IgdbRating = game.IgdbRating,
-                QvRating = game.QvRating,
-                imageUrl = game.imageUrl
+                game.GameId,
+                game.Name,
+                game.Summary,
+                game.IgdbRating,
+                game.ImageUrl,
+                game.Screenshots,
+                game.VideoUrl,
+                game.QvRating,
+                game.ReleaseDate
             }).ToArray());
 
             // Many to many relationships:
@@ -54,7 +57,7 @@ namespace questvault.Data
             game.GameGenres.Select(gg => new
             {
                 gg.GameId,
-                gg.GenreId
+                gg.GenreId,
             })
                 ).ToArray());
 
@@ -76,7 +79,7 @@ namespace questvault.Data
                     .Select(gg => new
                     {
                         gg.GameId,
-                        gg.PlatformId
+                        gg.PlatformId,
                     }))
                 .ToArray());
 
@@ -85,5 +88,9 @@ namespace questvault.Data
         public DbSet<Genre> Genres { get; set; } = default!;
         public DbSet<Platform> Platforms { get; set; } = default!;
         public DbSet<Company> Companies { get; set; } = default!;
+        public DbSet<GameCompany> GameCompany { get; set; } = default!;
+        public DbSet<GameGenre> GameGenre { get; set; } = default!;
+        public DbSet<GamePlatform> GamePlatform { get; set; } = default!;
+
     }
 }

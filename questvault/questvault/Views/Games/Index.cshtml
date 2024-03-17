@@ -22,7 +22,9 @@
                        .GroupBy(x => x.Index / batchSize)
                        .Select(g => g.Select(x => x.Game));
 }
-
+@if (SignInManager.IsSignedIn(User))
+{
+    
 <div class="results-game">
     <h2 style="color:white">Games</h2>
     <hr class="bar" style="margin-bottom: 25px; width: 100%;">
@@ -67,8 +69,8 @@
                 <div class="game-row">
                     @foreach (var game in batch)
                     {
-                        <a class="game-button" asp-controller="Games" asp-action="GameDetails" asp-route-id="@game.GameId">
-                            <img src="@game.imageUrl">
+                        <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.GameId">
+                            <img src="@game.ImageUrl">
                         </a>
                     }
                 </div>
@@ -78,4 +80,8 @@
     </div>
 
 
-</div>
+    </div>
+}else
+{
+    <h1 style="color :red">Please log in to access this page.</h1>
+}

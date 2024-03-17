@@ -44,14 +44,36 @@ namespace questvault.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            if (_context.Games == null) { return NotFound(); }
+
             var games = await _context.Games.ToListAsync();
             return View(games);
         }
         [HttpGet]
-        [Route("games/details/{id}")]
-        public IActionResult GameDetails(int id)
+        [Route("details/{id}")]
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null || _context.Games == null)
+            {
+                return NotFound();
+            }
+
+            var game = await _context.Games
+                .Include(g => g.GameGenres!)
+                    .ThenInclude(gg => gg.Genre)
+                .Include(g => g.GamePlatforms!)
+                    .ThenInclude(gp => gp.Platform)
+                .Include(g => g.GameCompanies!)
+                    .ThenInclude(gc => gc.Company)
+                .FirstOrDefaultAsync(m => m.GameId == id);
+
+
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            return View(game);
         }
 
         [HttpPost]
@@ -104,7 +126,7 @@ namespace questvault.Controllers
             }
         }
 
-        [HttpGet ("Teste")]
+        [HttpGet("Teste")]
         public async Task<IActionResult> Popular()
         {
             try
