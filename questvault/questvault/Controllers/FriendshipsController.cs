@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,20 +12,32 @@ using questvault.Models;
 
 namespace questvault.Controllers
 {
-    public class FriendshipsController : Controller
+    public class FriendshipsController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
     {
-        private readonly ApplicationDbContext _context;
-
-        public FriendshipsController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
 
         // GET: FriendshipRequests
         public async Task<IActionResult> IndexAsync()
         {
-            var dbContext = await _context.FriendshipRequest.ToListAsync();
-            return View(dbContext);
+            //if (id != null) PatientList = _context.Patient.Include(p => p.Doctor).AsNoTracking().Where(p => p.DoctorId == id);
+            //else PatientList = _context.Patient.Include(p => p.Doctor).AsNoTracking().Select(p => p);
+            //context.FriendshipRequest.Include(f => f.Sender).AsNoTracking().Where(f => f.SenderId == signInManager.UserManager.GetUserAsync(this.User).Id.ToString())
+            var user = await signInManager.UserManager.GetUserAsync(this.User);
+
+            var dbContext = await context.FriendshipRequest.ToListAsync();
+            var dbContextCopy = new List<FriendshipRequest>();
+            Console.Out.WriteLine("aqui");
+            foreach(var a in dbContext)
+            {
+                if(a.Receiver == user)
+                {
+                    var sender = await context.Users.FindAsync(a.SenderId);
+                    a.Sender = sender;
+                    dbContextCopy.Add(a);
+                }
+                
+            }
+            //Console.WriteLine(dbContext);
+            return View(dbContextCopy);
         }
         /*public Task<IActionResult> Index()
         {
@@ -41,7 +54,7 @@ namespace questvault.Controllers
                 return NotFound();
             }
 
-            var friendship = await _context.Friendship
+            var friendship = await context.Friendship
                 .FirstOrDefaultAsync(m => m.id == id);
             if (friendship == null)
             {
@@ -66,8 +79,8 @@ namespace questvault.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(friendship);
-                await _context.SaveChangesAsync();
+                context.Add(friendship);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexAsync));
             }
             return View(friendship);
@@ -81,7 +94,7 @@ namespace questvault.Controllers
                 return NotFound();
             }
 
-            var friendship = await _context.Friendship.FindAsync(id);
+            var friendship = await context.Friendship.FindAsync(id);
             if (friendship == null)
             {
                 return NotFound();
@@ -105,8 +118,8 @@ namespace questvault.Controllers
             {
                 try
                 {
-                    _context.Update(friendship);
-                    await _context.SaveChangesAsync();
+                    context.Update(friendship);
+                    await context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -132,7 +145,7 @@ namespace questvault.Controllers
                 return NotFound();
             }
 
-            var friendship = await _context.Friendship
+            var friendship = await context.Friendship
                 .FirstOrDefaultAsync(m => m.id == id);
             if (friendship == null)
             {
@@ -147,28 +160,27 @@ namespace questvault.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var friendship = await _context.Friendship.FindAsync(id);
+            var friendship = await context.Friendship.FindAsync(id);
             if (friendship != null)
             {
-                _context.Friendship.Remove(friendship);
+                context.Friendship.Remove(friendship);
             }
 
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return RedirectToAction(nameof(IndexAsync));
         }
 
         private bool FriendshipExists(int id)
         {
-            return _context.Friendship.Any(e => e.id == id);
+            return context.Friendship.Any(e => e.id == id);
         }
 
         // POST: api/Friendship/Request
-        [HttpPost("Request/{id}"), ActionName("SendFriendRequest")]
+        //[HttpPost, ActionName("SendFriendRequest")]
         public async Task<IActionResult> SendFriendRequestAsync(string id)
         {
-            Console.WriteLine("Friend request sent");
-            var receiver = await _context.Users.FindAsync(id);
-            var sender = await _context.Users.FindAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var receiver = await context.Users.FindAsync(id);
+            var sender = await signInManager.UserManager.GetUserAsync(this.User);
             var friendshipRequest = new FriendshipRequest { };
             if (receiver != null && sender != null)
             {
@@ -176,10 +188,25 @@ namespace questvault.Controllers
                 friendshipRequest.Sender = sender;
                 friendshipRequest.isAccepted = false;
                 friendshipRequest.FriendshipDate = DateTime.Now;
-                _context.FriendshipRequest.Add(friendshipRequest);
-                _context.SaveChanges();
+                context.FriendshipRequest.Add(friendshipRequest);
+                context.SaveChanges();
             }
-            return Created();
+            return RedirectToAction(nameof(Index));
+        }
+        //TO DO
+        public async Task<IActionResult> AcceptFriendRequestAsync(string id)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+        //TO DO
+        public async Task<IActionResult> RejectFriendRequestAsync(string id)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+        //TO DO
+        public async Task<IActionResult> RemoveFriendAsync(string id)
+        {
+            return RedirectToAction(nameof(Index));
         }
     }
 }

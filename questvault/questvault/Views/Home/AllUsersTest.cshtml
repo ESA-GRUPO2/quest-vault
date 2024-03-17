@@ -27,10 +27,7 @@
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
                     <td>
-                    <form id="sendFriendRequestForm" method="post" action="/Friendships/SendFriendRequest">
-                        <input type="hidden" name="id" value="ID_DO_DESTINATARIO" />
-                        <button type="submit">Enviar solicitação de amizade</button>
-                    </form>
+                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Send Friend Request</a>
                     </td>
                 </tr>
             }
