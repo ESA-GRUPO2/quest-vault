@@ -85,10 +85,18 @@ body {
     text-decoration: none;
 }
 
+.btn-blue-big img {
+    filter: invert(9%) sepia(12%) saturate(7338%) hue-rotate(197deg) brightness(90%) contrast(99%);
+}
+
 .btn-blue-big:active {
     background-color: white;
     color: #091833;
     border: 3px #711C91;
+}
+
+.btn-blue-big:active img, .btn-blue-big:hover img {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
 }
 
 .btn-blue-big:hover {
@@ -128,6 +136,10 @@ body {
 
 .btn-purple:hover {
     background: #711C91;
+}
+
+.btn-purple img {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
 }
 
 .row-spacing {
