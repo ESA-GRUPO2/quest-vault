@@ -166,6 +166,9 @@ namespace questvault.Migrations
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("IgdbCompanyId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("CompanyId");
 
                     b.ToTable("Companies");
@@ -174,52 +177,62 @@ namespace questvault.Migrations
                         new
                         {
                             CompanyId = 1L,
-                            CompanyName = "Electronic Arts"
+                            CompanyName = "Electronic Arts",
+                            IgdbCompanyId = 1L
                         },
                         new
                         {
                             CompanyId = 8L,
-                            CompanyName = "2K Games"
+                            CompanyName = "2K Games",
+                            IgdbCompanyId = 8L
                         },
                         new
                         {
                             CompanyId = 13L,
-                            CompanyName = "Demiurge Studios"
+                            CompanyName = "Demiurge Studios",
+                            IgdbCompanyId = 13L
                         },
                         new
                         {
                             CompanyId = 24L,
-                            CompanyName = "Sierra Entertainment"
+                            CompanyName = "Sierra Entertainment",
+                            IgdbCompanyId = 24L
                         },
                         new
                         {
                             CompanyId = 29L,
-                            CompanyName = "Rockstar Games"
+                            CompanyName = "Rockstar Games",
+                            IgdbCompanyId = 29L
                         },
                         new
                         {
                             CompanyId = 38L,
-                            CompanyName = "Ubisoft Montreal"
+                            CompanyName = "Ubisoft Montreal",
+                            IgdbCompanyId = 38L
                         },
                         new
                         {
                             CompanyId = 50L,
-                            CompanyName = "WB Games"
+                            CompanyName = "WB Games",
+                            IgdbCompanyId = 50L
                         },
                         new
                         {
                             CompanyId = 56L,
-                            CompanyName = "Valve"
+                            CompanyName = "Valve",
+                            IgdbCompanyId = 56L
                         },
                         new
                         {
                             CompanyId = 104L,
-                            CompanyName = "Ubisoft Entertainment"
+                            CompanyName = "Ubisoft Entertainment",
+                            IgdbCompanyId = 104L
                         },
                         new
                         {
                             CompanyId = 126L,
-                            CompanyName = "Bethesda Game Studios"
+                            CompanyName = "Bethesda Game Studios",
+                            IgdbCompanyId = 126L
                         });
                 });
 
@@ -230,6 +243,9 @@ namespace questvault.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GameId"));
+
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint");
 
                     b.Property<double>("IgdbRating")
                         .HasColumnType("float");
@@ -263,6 +279,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 1020L,
+                            IgdbId = 1020L,
                             IgdbRating = 89.821145750184655,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2lbd.jpg",
                             Name = "Grand Theft Auto V",
@@ -275,7 +292,8 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 1942L,
-                            IgdbRating = 94.145534062906819,
+                            IgdbId = 1942L,
+                            IgdbRating = 94.145487751664035,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg",
                             Name = "The Witcher 3: Wild Hunt",
                             QvRating = 0.0,
@@ -287,6 +305,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 72L,
+                            IgdbId = 72L,
                             IgdbRating = 91.84852424624583,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs4.jpg",
                             Name = "Portal 2",
@@ -299,6 +318,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 472L,
+                            IgdbId = 472L,
                             IgdbRating = 87.693564090508843,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1tnw.jpg",
                             Name = "The Elder Scrolls V: Skyrim",
@@ -311,6 +331,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 71L,
+                            IgdbId = 71L,
                             IgdbRating = 86.778517641759336,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1x7d.jpg",
                             Name = "Portal",
@@ -323,6 +344,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 732L,
+                            IgdbId = 732L,
                             IgdbRating = 90.589426824837233,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2lb9.jpg",
                             Name = "Grand Theft Auto: San Andreas",
@@ -334,19 +356,8 @@ namespace questvault.Migrations
                         },
                         new
                         {
-                            GameId = 1009L,
-                            IgdbRating = 93.378166330256974,
-                            ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
-                            Name = "The Last of Us",
-                            QvRating = 0.0,
-                            ReleaseDate = "June 14, 2013",
-                            Screenshots = "[\"//images.igdb.com/igdb/image/upload/t_screenshot_med/upogjfthdffjlzfi26xe.jpg\",\"//images.igdb.com/igdb/image/upload/t_screenshot_med/emvrwg5vhpfcmn9loxgu.jpg\",\"//images.igdb.com/igdb/image/upload/t_screenshot_med/kdt90b2rbx4tmewaxur9.jpg\"]",
-                            Summary = "A third person shooter/stealth/survival hybrid, in which twenty years after the outbreak of a parasitic fungus which takes over the neural functions of humans, Joel, a Texan with a tragic familial past, finds himself responsible with smuggling a fourteen year old girl named Ellie to a militia group called the Fireflies, while avoiding strict and deadly authorities, infected fungal hosts and other violent survivors.",
-                            VideoUrl = "https://www.youtube.com/embed/fxeNaDjU7sw"
-                        },
-                        new
-                        {
                             GameId = 233L,
+                            IgdbId = 233L,
                             IgdbRating = 90.659012483195042,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1nmw.jpg",
                             Name = "Half-Life 2",
@@ -358,7 +369,21 @@ namespace questvault.Migrations
                         },
                         new
                         {
+                            GameId = 1009L,
+                            IgdbId = 1009L,
+                            IgdbRating = 93.378166330256974,
+                            ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
+                            Name = "The Last of Us",
+                            QvRating = 0.0,
+                            ReleaseDate = "June 14, 2013",
+                            Screenshots = "[\"//images.igdb.com/igdb/image/upload/t_screenshot_med/upogjfthdffjlzfi26xe.jpg\",\"//images.igdb.com/igdb/image/upload/t_screenshot_med/emvrwg5vhpfcmn9loxgu.jpg\",\"//images.igdb.com/igdb/image/upload/t_screenshot_med/kdt90b2rbx4tmewaxur9.jpg\"]",
+                            Summary = "A third person shooter/stealth/survival hybrid, in which twenty years after the outbreak of a parasitic fungus which takes over the neural functions of humans, Joel, a Texan with a tragic familial past, finds himself responsible with smuggling a fourteen year old girl named Ellie to a militia group called the Fireflies, while avoiding strict and deadly authorities, infected fungal hosts and other violent survivors.",
+                            VideoUrl = "https://www.youtube.com/embed/fxeNaDjU7sw"
+                        },
+                        new
+                        {
                             GameId = 20L,
+                            IgdbId = 20L,
                             IgdbRating = 86.738029894909729,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2mli.jpg",
                             Name = "BioShock",
@@ -371,6 +396,7 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 127L,
+                            IgdbId = 127L,
                             IgdbRating = 86.909133880884752,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1rcf.jpg",
                             Name = "Assassin's Creed II",
@@ -384,423 +410,423 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.GameCompany", b =>
                 {
-                    b.Property<long>("GameId")
+                    b.Property<long>("IgdbId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
-                    b.Property<long>("CompanyId")
+                    b.Property<long>("IgdbCompanyId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GameId", "CompanyId");
+                    b.HasKey("IgdbId", "IgdbCompanyId");
 
-                    b.HasIndex("CompanyId");
+                    b.HasIndex("IgdbCompanyId");
 
                     b.ToTable("GameCompany");
 
                     b.HasData(
                         new
                         {
-                            GameId = 1020L,
-                            CompanyId = 29L
+                            IgdbId = 1020L,
+                            IgdbCompanyId = 29L
                         },
                         new
                         {
-                            GameId = 1942L,
-                            CompanyId = 50L
+                            IgdbId = 1942L,
+                            IgdbCompanyId = 50L
                         },
                         new
                         {
-                            GameId = 72L,
-                            CompanyId = 56L
+                            IgdbId = 72L,
+                            IgdbCompanyId = 56L
                         },
                         new
                         {
-                            GameId = 72L,
-                            CompanyId = 1L
+                            IgdbId = 72L,
+                            IgdbCompanyId = 1L
                         },
                         new
                         {
-                            GameId = 472L,
-                            CompanyId = 126L
+                            IgdbId = 472L,
+                            IgdbCompanyId = 126L
                         },
                         new
                         {
-                            GameId = 71L,
-                            CompanyId = 56L
+                            IgdbId = 71L,
+                            IgdbCompanyId = 56L
                         },
                         new
                         {
-                            GameId = 71L,
-                            CompanyId = 1L
+                            IgdbId = 71L,
+                            IgdbCompanyId = 1L
                         },
                         new
                         {
-                            GameId = 732L,
-                            CompanyId = 29L
+                            IgdbId = 732L,
+                            IgdbCompanyId = 29L
                         },
                         new
                         {
-                            GameId = 233L,
-                            CompanyId = 24L
+                            IgdbId = 233L,
+                            IgdbCompanyId = 24L
                         },
                         new
                         {
-                            GameId = 233L,
-                            CompanyId = 56L
+                            IgdbId = 233L,
+                            IgdbCompanyId = 56L
                         },
                         new
                         {
-                            GameId = 20L,
-                            CompanyId = 13L
+                            IgdbId = 20L,
+                            IgdbCompanyId = 13L
                         },
                         new
                         {
-                            GameId = 20L,
-                            CompanyId = 8L
+                            IgdbId = 20L,
+                            IgdbCompanyId = 8L
                         },
                         new
                         {
-                            GameId = 127L,
-                            CompanyId = 38L
+                            IgdbId = 127L,
+                            IgdbCompanyId = 38L
                         },
                         new
                         {
-                            GameId = 127L,
-                            CompanyId = 104L
+                            IgdbId = 127L,
+                            IgdbCompanyId = 104L
                         });
                 });
 
             modelBuilder.Entity("questvault.Models.GameGenre", b =>
                 {
-                    b.Property<long>("GameId")
+                    b.Property<long>("IgdbId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
-                    b.Property<long>("GenreId")
+                    b.Property<long>("IgdbGenreId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GameId", "GenreId");
+                    b.HasKey("IgdbId", "IgdbGenreId");
 
-                    b.HasIndex("GenreId");
+                    b.HasIndex("IgdbGenreId");
 
                     b.ToTable("GameGenre");
 
                     b.HasData(
                         new
                         {
-                            GameId = 1020L,
-                            GenreId = 5L
+                            IgdbId = 1020L,
+                            IgdbGenreId = 5L
                         },
                         new
                         {
-                            GameId = 1020L,
-                            GenreId = 10L
+                            IgdbId = 1020L,
+                            IgdbGenreId = 10L
                         },
                         new
                         {
-                            GameId = 1020L,
-                            GenreId = 31L
+                            IgdbId = 1020L,
+                            IgdbGenreId = 31L
                         },
                         new
                         {
-                            GameId = 1942L,
-                            GenreId = 12L
+                            IgdbId = 1942L,
+                            IgdbGenreId = 12L
                         },
                         new
                         {
-                            GameId = 1942L,
-                            GenreId = 31L
+                            IgdbId = 1942L,
+                            IgdbGenreId = 31L
                         },
                         new
                         {
-                            GameId = 72L,
-                            GenreId = 5L
+                            IgdbId = 72L,
+                            IgdbGenreId = 5L
                         },
                         new
                         {
-                            GameId = 72L,
-                            GenreId = 8L
+                            IgdbId = 72L,
+                            IgdbGenreId = 8L
                         },
                         new
                         {
-                            GameId = 72L,
-                            GenreId = 9L
+                            IgdbId = 72L,
+                            IgdbGenreId = 9L
                         },
                         new
                         {
-                            GameId = 72L,
-                            GenreId = 31L
+                            IgdbId = 72L,
+                            IgdbGenreId = 31L
                         },
                         new
                         {
-                            GameId = 472L,
-                            GenreId = 12L
+                            IgdbId = 472L,
+                            IgdbGenreId = 12L
                         },
                         new
                         {
-                            GameId = 472L,
-                            GenreId = 31L
+                            IgdbId = 472L,
+                            IgdbGenreId = 31L
                         },
                         new
                         {
-                            GameId = 71L,
-                            GenreId = 5L
+                            IgdbId = 71L,
+                            IgdbGenreId = 5L
                         },
                         new
                         {
-                            GameId = 71L,
-                            GenreId = 8L
+                            IgdbId = 71L,
+                            IgdbGenreId = 8L
                         },
                         new
                         {
-                            GameId = 71L,
-                            GenreId = 9L
+                            IgdbId = 71L,
+                            IgdbGenreId = 9L
                         },
                         new
                         {
-                            GameId = 732L,
-                            GenreId = 5L
+                            IgdbId = 732L,
+                            IgdbGenreId = 5L
                         },
                         new
                         {
-                            GameId = 732L,
-                            GenreId = 10L
+                            IgdbId = 732L,
+                            IgdbGenreId = 10L
                         },
                         new
                         {
-                            GameId = 732L,
-                            GenreId = 31L
+                            IgdbId = 732L,
+                            IgdbGenreId = 31L
                         },
                         new
                         {
-                            GameId = 1009L,
-                            GenreId = 5L
+                            IgdbId = 233L,
+                            IgdbGenreId = 5L
                         },
                         new
                         {
-                            GameId = 1009L,
-                            GenreId = 31L
+                            IgdbId = 1009L,
+                            IgdbGenreId = 5L
                         },
                         new
                         {
-                            GameId = 233L,
-                            GenreId = 5L
+                            IgdbId = 1009L,
+                            IgdbGenreId = 31L
                         },
                         new
                         {
-                            GameId = 20L,
-                            GenreId = 5L
+                            IgdbId = 20L,
+                            IgdbGenreId = 5L
                         },
                         new
                         {
-                            GameId = 20L,
-                            GenreId = 9L
+                            IgdbId = 20L,
+                            IgdbGenreId = 9L
                         },
                         new
                         {
-                            GameId = 20L,
-                            GenreId = 12L
+                            IgdbId = 20L,
+                            IgdbGenreId = 12L
                         },
                         new
                         {
-                            GameId = 20L,
-                            GenreId = 31L
+                            IgdbId = 20L,
+                            IgdbGenreId = 31L
                         },
                         new
                         {
-                            GameId = 127L,
-                            GenreId = 8L
+                            IgdbId = 127L,
+                            IgdbGenreId = 8L
                         },
                         new
                         {
-                            GameId = 127L,
-                            GenreId = 31L
+                            IgdbId = 127L,
+                            IgdbGenreId = 31L
                         });
                 });
 
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>
                 {
-                    b.Property<long>("GameId")
+                    b.Property<long>("IgdbId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
-                    b.Property<long>("PlatformId")
+                    b.Property<long>("IgdbPlatformId")
                         .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GameId", "PlatformId");
+                    b.HasKey("IgdbId", "IgdbPlatformId");
 
-                    b.HasIndex("PlatformId");
+                    b.HasIndex("IgdbPlatformId");
 
                     b.ToTable("GamePlatform");
 
                     b.HasData(
                         new
                         {
-                            GameId = 1020L,
-                            PlatformId = 6L
+                            IgdbId = 1020L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 1020L,
-                            PlatformId = 9L
+                            IgdbId = 1020L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 1020L,
-                            PlatformId = 49L
+                            IgdbId = 1020L,
+                            IgdbPlatformId = 49L
                         },
                         new
                         {
-                            GameId = 1942L,
-                            PlatformId = 6L
+                            IgdbId = 1942L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 1942L,
-                            PlatformId = 49L
+                            IgdbId = 1942L,
+                            IgdbPlatformId = 49L
                         },
                         new
                         {
-                            GameId = 1942L,
-                            PlatformId = 130L
+                            IgdbId = 1942L,
+                            IgdbPlatformId = 130L
                         },
                         new
                         {
-                            GameId = 1942L,
-                            PlatformId = 167L
+                            IgdbId = 1942L,
+                            IgdbPlatformId = 167L
                         },
                         new
                         {
-                            GameId = 1942L,
-                            PlatformId = 169L
+                            IgdbId = 1942L,
+                            IgdbPlatformId = 169L
                         },
                         new
                         {
-                            GameId = 72L,
-                            PlatformId = 3L
+                            IgdbId = 72L,
+                            IgdbPlatformId = 3L
                         },
                         new
                         {
-                            GameId = 72L,
-                            PlatformId = 6L
+                            IgdbId = 72L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 72L,
-                            PlatformId = 9L
+                            IgdbId = 72L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 72L,
-                            PlatformId = 130L
+                            IgdbId = 72L,
+                            IgdbPlatformId = 130L
                         },
                         new
                         {
-                            GameId = 472L,
-                            PlatformId = 6L
+                            IgdbId = 472L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 472L,
-                            PlatformId = 9L
+                            IgdbId = 472L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 71L,
-                            PlatformId = 3L
+                            IgdbId = 71L,
+                            IgdbPlatformId = 3L
                         },
                         new
                         {
-                            GameId = 71L,
-                            PlatformId = 6L
+                            IgdbId = 71L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 71L,
-                            PlatformId = 9L
+                            IgdbId = 71L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 71L,
-                            PlatformId = 130L
+                            IgdbId = 71L,
+                            IgdbPlatformId = 130L
                         },
                         new
                         {
-                            GameId = 732L,
-                            PlatformId = 6L
+                            IgdbId = 732L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 732L,
-                            PlatformId = 8L
+                            IgdbId = 732L,
+                            IgdbPlatformId = 8L
                         },
                         new
                         {
-                            GameId = 732L,
-                            PlatformId = 9L
+                            IgdbId = 732L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 732L,
-                            PlatformId = 11L
+                            IgdbId = 732L,
+                            IgdbPlatformId = 11L
                         },
                         new
                         {
-                            GameId = 732L,
-                            PlatformId = 39L
+                            IgdbId = 732L,
+                            IgdbPlatformId = 39L
                         },
                         new
                         {
-                            GameId = 1009L,
-                            PlatformId = 9L
+                            IgdbId = 233L,
+                            IgdbPlatformId = 3L
                         },
                         new
                         {
-                            GameId = 233L,
-                            PlatformId = 3L
+                            IgdbId = 233L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 233L,
-                            PlatformId = 6L
+                            IgdbId = 233L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 233L,
-                            PlatformId = 9L
+                            IgdbId = 233L,
+                            IgdbPlatformId = 11L
                         },
                         new
                         {
-                            GameId = 233L,
-                            PlatformId = 11L
+                            IgdbId = 1009L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 20L,
-                            PlatformId = 6L
+                            IgdbId = 20L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 20L,
-                            PlatformId = 9L
+                            IgdbId = 20L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 127L,
-                            PlatformId = 6L
+                            IgdbId = 127L,
+                            IgdbPlatformId = 6L
                         },
                         new
                         {
-                            GameId = 127L,
-                            PlatformId = 9L
+                            IgdbId = 127L,
+                            IgdbPlatformId = 9L
                         },
                         new
                         {
-                            GameId = 127L,
-                            PlatformId = 39L
+                            IgdbId = 127L,
+                            IgdbPlatformId = 39L
                         });
                 });
 
@@ -815,6 +841,9 @@ namespace questvault.Migrations
                     b.Property<string>("GenreName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("IgdbGenreId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("GenreId");
 
                     b.ToTable("Genres");
@@ -823,117 +852,140 @@ namespace questvault.Migrations
                         new
                         {
                             GenreId = 2L,
-                            GenreName = "Point-and-click"
+                            GenreName = "Point-and-click",
+                            IgdbGenreId = 2L
                         },
                         new
                         {
                             GenreId = 4L,
-                            GenreName = "Fighting"
+                            GenreName = "Fighting",
+                            IgdbGenreId = 4L
                         },
                         new
                         {
                             GenreId = 5L,
-                            GenreName = "Shooter"
+                            GenreName = "Shooter",
+                            IgdbGenreId = 5L
                         },
                         new
                         {
                             GenreId = 7L,
-                            GenreName = "Music"
+                            GenreName = "Music",
+                            IgdbGenreId = 7L
                         },
                         new
                         {
                             GenreId = 8L,
-                            GenreName = "Platform"
+                            GenreName = "Platform",
+                            IgdbGenreId = 8L
                         },
                         new
                         {
                             GenreId = 9L,
-                            GenreName = "Puzzle"
+                            GenreName = "Puzzle",
+                            IgdbGenreId = 9L
                         },
                         new
                         {
                             GenreId = 10L,
-                            GenreName = "Racing"
+                            GenreName = "Racing",
+                            IgdbGenreId = 10L
                         },
                         new
                         {
                             GenreId = 11L,
-                            GenreName = "Real Time Strategy (RTS)"
+                            GenreName = "Real Time Strategy (RTS)",
+                            IgdbGenreId = 11L
                         },
                         new
                         {
                             GenreId = 12L,
-                            GenreName = "Role-playing (RPG)"
+                            GenreName = "Role-playing (RPG)",
+                            IgdbGenreId = 12L
                         },
                         new
                         {
                             GenreId = 13L,
-                            GenreName = "Simulator"
+                            GenreName = "Simulator",
+                            IgdbGenreId = 13L
                         },
                         new
                         {
                             GenreId = 14L,
-                            GenreName = "Sport"
+                            GenreName = "Sport",
+                            IgdbGenreId = 14L
                         },
                         new
                         {
                             GenreId = 15L,
-                            GenreName = "Strategy"
+                            GenreName = "Strategy",
+                            IgdbGenreId = 15L
                         },
                         new
                         {
                             GenreId = 16L,
-                            GenreName = "Turn-based strategy (TBS)"
+                            GenreName = "Turn-based strategy (TBS)",
+                            IgdbGenreId = 16L
                         },
                         new
                         {
                             GenreId = 24L,
-                            GenreName = "Tactical"
+                            GenreName = "Tactical",
+                            IgdbGenreId = 24L
                         },
                         new
                         {
                             GenreId = 25L,
-                            GenreName = "Hack and slash/Beat 'em up"
+                            GenreName = "Hack and slash/Beat 'em up",
+                            IgdbGenreId = 25L
                         },
                         new
                         {
                             GenreId = 26L,
-                            GenreName = "Quiz/Trivia"
+                            GenreName = "Quiz/Trivia",
+                            IgdbGenreId = 26L
                         },
                         new
                         {
                             GenreId = 30L,
-                            GenreName = "Pinball"
+                            GenreName = "Pinball",
+                            IgdbGenreId = 30L
                         },
                         new
                         {
                             GenreId = 31L,
-                            GenreName = "Adventure"
+                            GenreName = "Adventure",
+                            IgdbGenreId = 31L
                         },
                         new
                         {
                             GenreId = 32L,
-                            GenreName = "Indie"
+                            GenreName = "Indie",
+                            IgdbGenreId = 32L
                         },
                         new
                         {
                             GenreId = 33L,
-                            GenreName = "Arcade"
+                            GenreName = "Arcade",
+                            IgdbGenreId = 33L
                         },
                         new
                         {
                             GenreId = 34L,
-                            GenreName = "Visual Novel"
+                            GenreName = "Visual Novel",
+                            IgdbGenreId = 34L
                         },
                         new
                         {
                             GenreId = 35L,
-                            GenreName = "Card & Board Game"
+                            GenreName = "Card & Board Game",
+                            IgdbGenreId = 35L
                         },
                         new
                         {
                             GenreId = 36L,
-                            GenreName = "MOBA"
+                            GenreName = "MOBA",
+                            IgdbGenreId = 36L
                         });
                 });
 
@@ -944,6 +996,9 @@ namespace questvault.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("PlatformId"));
+
+                    b.Property<long>("IgdbPlatformId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("PlatformName")
                         .IsRequired()
@@ -957,51 +1012,61 @@ namespace questvault.Migrations
                         new
                         {
                             PlatformId = 6L,
+                            IgdbPlatformId = 6L,
                             PlatformName = "PC (Microsoft Windows)"
                         },
                         new
                         {
                             PlatformId = 8L,
+                            IgdbPlatformId = 8L,
                             PlatformName = "PlayStation 2"
                         },
                         new
                         {
                             PlatformId = 39L,
+                            IgdbPlatformId = 39L,
                             PlatformName = "iOS"
                         },
                         new
                         {
                             PlatformId = 130L,
+                            IgdbPlatformId = 130L,
                             PlatformName = "Nintendo Switch"
                         },
                         new
                         {
                             PlatformId = 11L,
+                            IgdbPlatformId = 11L,
                             PlatformName = "Xbox"
                         },
                         new
                         {
                             PlatformId = 9L,
+                            IgdbPlatformId = 9L,
                             PlatformName = "PlayStation 3"
                         },
                         new
                         {
                             PlatformId = 167L,
+                            IgdbPlatformId = 167L,
                             PlatformName = "PlayStation 5"
                         },
                         new
                         {
                             PlatformId = 169L,
+                            IgdbPlatformId = 169L,
                             PlatformName = "Xbox Series X|S"
                         },
                         new
                         {
                             PlatformId = 49L,
+                            IgdbPlatformId = 49L,
                             PlatformName = "Xbox One"
                         },
                         new
                         {
                             PlatformId = 3L,
+                            IgdbPlatformId = 3L,
                             PlatformName = "Linux"
                         });
                 });
@@ -1156,13 +1221,13 @@ namespace questvault.Migrations
                 {
                     b.HasOne("questvault.Models.Company", "Company")
                         .WithMany("GameCompanies")
-                        .HasForeignKey("CompanyId")
+                        .HasForeignKey("IgdbCompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("questvault.Models.Game", "Game")
                         .WithMany("GameCompanies")
-                        .HasForeignKey("GameId")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1173,15 +1238,15 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.GameGenre", b =>
                 {
-                    b.HasOne("questvault.Models.Game", "Game")
+                    b.HasOne("questvault.Models.Genre", "Genre")
                         .WithMany("GameGenres")
-                        .HasForeignKey("GameId")
+                        .HasForeignKey("IgdbGenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("questvault.Models.Genre", "Genre")
+                    b.HasOne("questvault.Models.Game", "Game")
                         .WithMany("GameGenres")
-                        .HasForeignKey("GenreId")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1194,13 +1259,13 @@ namespace questvault.Migrations
                 {
                     b.HasOne("questvault.Models.Game", "Game")
                         .WithMany("GamePlatforms")
-                        .HasForeignKey("GameId")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("questvault.Models.Platform", "Platform")
                         .WithMany("GamePlatforms")
-                        .HasForeignKey("PlatformId")
+                        .HasForeignKey("IgdbPlatformId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
