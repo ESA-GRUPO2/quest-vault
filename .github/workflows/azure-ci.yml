@@ -24,7 +24,6 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: './questvault'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8.0.202'                 # set this to the .NET Core version to use
   PROJ_PATH: './questvault/questvault'
-  OUTPUT_DIR: './questvault/output/'
 
 on:
   push:
@@ -58,13 +57,13 @@ jobs:
         run: dotnet build ${{env.PROJ_PATH}} -c Release
 
       - name: dotnet publish
-        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o ${{env.OUTPUT_DIR}} --no-build 
+        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o ${{ env.AZURE_WEBAPP_PACKAGE_PATH }} --no-build 
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.AZURE_WEBAPP_NAME }}
-          path: ${{env.OUTPUT_DIR}}
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           
       - name: Update database
         run: |
@@ -95,4 +94,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{ env.OUTPUT_DIR }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
