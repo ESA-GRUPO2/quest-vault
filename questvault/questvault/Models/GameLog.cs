@@ -1,14 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace questvault.Models
 {
     public class GameLog
     {
+        [Key]
+        public long GameLogId { get; set; }
 
-        [Column(Order = 0)]
-        public int GamesID { get; set; }
+        [ForeignKey("Game")]
+        public long GameID { get; set; }
 
-        [ForeignKey(nameof(GamesID))]
+        [ForeignKey(nameof(GameID))]
         public virtual Game? Game { get; set; }
 
         public int HoursPlayed { get; set; }
@@ -18,5 +21,4 @@ namespace questvault.Models
         public OwnageStatus Ownage {  get; set; }
        
     }
-
 }

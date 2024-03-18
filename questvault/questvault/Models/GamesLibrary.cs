@@ -1,15 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
 namespace questvault.Models
 {
     public class GamesLibrary
     {
+        [Key]
+        public int GamesLibraryId { get; set; }
+
         [Column(Order = 0)]
-        public int UserID { get; set; }
+        [ForeignKey("User")]
+        public string UserID { get; set; }
 
         [AllowNull]
-        public List<GameLog> Games { get; set; }
+        public List<GameLog> GameLogs { get; set; }
 
         [AllowNull]
         public List<GameLog> Top5Games { get; set; }
@@ -18,13 +23,19 @@ namespace questvault.Models
         public virtual User? User { get; set; }
 
         public void AddGame(GameLog gameLog) {
-            Games.Add(gameLog);
+            GameLogs.Add(gameLog);
         }
 
-        public void UpdateGame(int gameId, GameLog gameLog) { }
+        public void UpdateGame(long gameId, GameLog gameLog) { }
 
         public void RemoveGame(int gameId) {
-            Games.RemoveAt(gameId);
+            foreach (GameLog gameLog in GameLogs)
+            {
+                if (gameLog.Game.GameId == gameId)
+                {
+                    GameLogs.Remove(gameLog);
+                }
+            }
         }
 
         public String MostPlayedGenre()
@@ -33,7 +44,6 @@ namespace questvault.Models
 
             return "";
         }
-
 
         public void AddTop5Games(GameLog gameLog)
 
@@ -49,7 +59,7 @@ namespace questvault.Models
         public int TotalHoursPlayed()
         { 
             int hours = 0;
-            foreach (GameLog gameLog in Games)
+            foreach (GameLog gameLog in GameLogs)
             {
                 hours += gameLog.HoursPlayed;
             }
@@ -59,7 +69,7 @@ namespace questvault.Models
         public int NumberOfGamesStatus(GameStatus status) 
         {
             int nStatus = 0;
-            foreach (GameLog gameLog in Games)
+            foreach (GameLog gameLog in GameLogs)
             {
                 if (gameLog.Status.Equals(status))
                 {

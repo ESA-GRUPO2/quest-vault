@@ -91,6 +91,7 @@ namespace questvault.Data
         public DbSet<GameCompany> GameCompany { get; set; } = default!;
         public DbSet<GameGenre> GameGenre { get; set; } = default!;
         public DbSet<GamePlatform> GamePlatform { get; set; } = default!;
-
+        public DbSet<GameLog> GameLog { get; set; } = default!;
+        public DbSet<GamesLibrary> GamesLibrary { get; set; } = default!;
     }
 }
