@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240318163417_dev")]
-    partial class dev
+    [Migration("20240318171750_SCG2-187")]
+    partial class SCG2187
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -649,6 +649,43 @@ namespace questvault.Migrations
                         });
                 });
 
+            modelBuilder.Entity("questvault.Models.GameLog", b =>
+                {
+                    b.Property<long>("GameLogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GameLogId"));
+
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("GamesLibraryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("GamesLibraryId1")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("HoursPlayed")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Ownage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("GameLogId");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("GamesLibraryId");
+
+                    b.HasIndex("GamesLibraryId1");
+
+                    b.ToTable("GameLog");
+                });
+
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>
                 {
                     b.Property<long>("IgdbId")
@@ -831,6 +868,25 @@ namespace questvault.Migrations
                             IgdbId = 127L,
                             IgdbPlatformId = 39L
                         });
+                });
+
+            modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
+                {
+                    b.Property<long>("GamesLibraryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GamesLibraryId"));
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("GamesLibraryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GamesLibrary");
                 });
 
             modelBuilder.Entity("questvault.Models.Genre", b =>
@@ -1258,6 +1314,25 @@ namespace questvault.Migrations
                     b.Navigation("Genre");
                 });
 
+            modelBuilder.Entity("questvault.Models.GameLog", b =>
+                {
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.GamesLibrary", null)
+                        .WithMany("GameLogs")
+                        .HasForeignKey("GamesLibraryId");
+
+                    b.HasOne("questvault.Models.GamesLibrary", null)
+                        .WithMany("Top5Games")
+                        .HasForeignKey("GamesLibraryId1");
+
+                    b.Navigation("Game");
+                });
+
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>
                 {
                     b.HasOne("questvault.Models.Game", "Game")
@@ -1275,6 +1350,17 @@ namespace questvault.Migrations
                     b.Navigation("Game");
 
                     b.Navigation("Platform");
+                });
+
+            modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
+                {
+                    b.HasOne("questvault.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
@@ -1300,6 +1386,13 @@ namespace questvault.Migrations
                     b.Navigation("GameGenres");
 
                     b.Navigation("GamePlatforms");
+                });
+
+            modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
+                {
+                    b.Navigation("GameLogs");
+
+                    b.Navigation("Top5Games");
                 });
 
             modelBuilder.Entity("questvault.Models.Genre", b =>

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace questvault.Migrations
 {
     /// <inheritdoc />
-    public partial class dev : Migration
+    public partial class SCG2187 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -244,6 +244,25 @@ namespace questvault.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GamesLibrary",
+                columns: table => new
+                {
+                    GamesLibraryId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GamesLibrary", x => x.GamesLibraryId);
+                    table.ForeignKey(
+                        name: "FK_GamesLibrary_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "GameCompany",
                 columns: table => new
                 {
@@ -312,6 +331,40 @@ namespace questvault.Migrations
                         column: x => x.IgdbPlatformId,
                         principalTable: "Platforms",
                         principalColumn: "PlatformId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GameLog",
+                columns: table => new
+                {
+                    GameLogId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GameId = table.Column<long>(type: "bigint", nullable: false),
+                    HoursPlayed = table.Column<int>(type: "int", nullable: false),
+                    Ownage = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    GamesLibraryId = table.Column<long>(type: "bigint", nullable: true),
+                    GamesLibraryId1 = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameLog", x => x.GameLogId);
+                    table.ForeignKey(
+                        name: "FK_GameLog_GamesLibrary_GamesLibraryId",
+                        column: x => x.GamesLibraryId,
+                        principalTable: "GamesLibrary",
+                        principalColumn: "GamesLibraryId");
+                    table.ForeignKey(
+                        name: "FK_GameLog_GamesLibrary_GamesLibraryId1",
+                        column: x => x.GamesLibraryId1,
+                        principalTable: "GamesLibrary",
+                        principalColumn: "GamesLibraryId");
+                    table.ForeignKey(
+                        name: "FK_GameLog_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "GameId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -545,9 +598,29 @@ namespace questvault.Migrations
                 column: "IgdbGenreId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_GameLog_GameId",
+                table: "GameLog",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GameLog_GamesLibraryId",
+                table: "GameLog",
+                column: "GamesLibraryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GameLog_GamesLibraryId1",
+                table: "GameLog",
+                column: "GamesLibraryId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_GamePlatform_IgdbPlatformId",
                 table: "GamePlatform",
                 column: "IgdbPlatformId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GamesLibrary_UserId",
+                table: "GamesLibrary",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -578,13 +651,13 @@ namespace questvault.Migrations
                 name: "GameGenre");
 
             migrationBuilder.DropTable(
+                name: "GameLog");
+
+            migrationBuilder.DropTable(
                 name: "GamePlatform");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Companies");
@@ -593,10 +666,16 @@ namespace questvault.Migrations
                 name: "Genres");
 
             migrationBuilder.DropTable(
+                name: "GamesLibrary");
+
+            migrationBuilder.DropTable(
                 name: "Games");
 
             migrationBuilder.DropTable(
                 name: "Platforms");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }
