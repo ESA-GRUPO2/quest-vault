@@ -30,6 +30,11 @@ namespace questvault.Controllers
             return View();
         }
 
+        public IActionResult PublicProfile()
+        {
+            return View();
+        }
+
         public IActionResult PrivateProfile()
         {
             return View();
