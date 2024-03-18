@@ -25,7 +25,7 @@ namespace questvault.Services
             string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, cover.image_id, first_release_date, screenshots.image_id, videos.video_id;" +
                 $"where name ~ *\"{searchTerm}\"* & genres != null & rating != null & total_rating_count != null & cover.image_id != null & involved_companies != null & platforms != null & first_release_date != null & screenshots.image_id != null & videos.video_id != null;" +
                 "sort total_rating_count desc;" +
-                "limit 50;";
+                "limit 25;";
             var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
             
             return games.Select(game => BuildGameFromIGDBGame(game));

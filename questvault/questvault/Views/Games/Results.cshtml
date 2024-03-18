@@ -1,4 +1,4 @@
-﻿@model IEnumerable<questvault.Models.Game>
+﻿@model GameViewData
 @using System.Linq
 @{
     ViewData["Title"] = "Results";
@@ -18,7 +18,7 @@
 
 @{
     var batchSize = 5; // Defina o tamanho do lote aqui
-    var batches = Model.Select((game, index) => new { Game = game, Index = index })
+    var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
                        .GroupBy(x => x.Index / batchSize)
                        .Select(g => g.Select(x => x.Game));
 }
@@ -64,6 +64,7 @@
             <a class="clear-results" href="" style="color:white; font-size: 120%; margin-top:25px">Clear Filters</a>
         </div>
         <div class="game-section">
+                <h3>@Model.NumberOfResults results for @Model.SearchTerm</h3> 
             @foreach (var batch in batches)
             {
                 <div class="game-row">

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<questvault.Models.Game>
+﻿@model GameViewData
 @using System.Linq
 @{
     ViewData["Title"] = "Results";
@@ -18,70 +18,59 @@
 
 @{
     var batchSize = 5; // Defina o tamanho do lote aqui
-    var batches = Model.Select((game, index) => new { Game = game, Index = index })
+    var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
                        .GroupBy(x => x.Index / batchSize)
                        .Select(g => g.Select(x => x.Game));
 }
 @if (SignInManager.IsSignedIn(User))
 {
-    
-<div class="results-game">
-    <h2 style="color:white">Games</h2>
-    <hr class="bar" style="margin-bottom: 25px; width: 100%;">
-    <div class="d-flex main-section-result">
-        <div class="filter-section">
-            <h4 style="color: white; margin-bottom:50px">Filters</h4>
-            <select class="select-results" name="Category" id="category">
-                <option value="none" selected disabled hidden>Category</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select><br>
-            <select class="select-results" name="Rating" id="rating">
-                <option value="none" selected disabled hidden>Rating</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select><br>
-            <select class="select-results" name="Year" id="year">
-                <option value="none" selected disabled hidden>Year</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select><br>
-            <select class="select-results" name="Platform" id="platform">
-                <option value="none" selected disabled hidden>Platform</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select><br>
-            <a class="clear-results" href="" style="color:white; font-size: 120%; margin-top:25px">Clear Filters</a>
-        </div>
-        <div class="game-section">
-            @foreach (var batch in batches)
-            {
-                <div class="game-row">
-                    @foreach (var game in batch)
-                    {
-                        <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
-                            <img src="@game.ImageUrl">
-                        </a>
-                    }
-                </div>
-            }
-        </div>
 
-    </div>
+    <div class="results-game">
+        <h2 style="color:white">Games</h2>
+        <hr class="bar" style="margin-bottom: 25px; width: 100%;">
+        <div class="d-flex main-section-result">
+            <div class="filter-section">
+                <form asp-controller="Games" asp-action="Index" method="get">
+                    <h4 style="color: white; margin-bottom:50px">Filters</h4>
+                    <select class="search_select_box select-results" name="releasePlatform" id="releasePlatform">
+                        <option value="" selected disabled hidden>Platform</option>
+                        @foreach (var item in Model.Platforms)
+                        {
+                            <option value="@item.PlatformName">@item.PlatformName</option>
+                        }
+                    </select><br>
+                    <select class="select-results" name="genre" id="genre" >
+                        <option value="" selected disabled hidden>Genre</option>
+                        @foreach (var item in Model.Genres)
+                        {
+                            <option value="@item.GenreName">@item.GenreName</option>
+                        }
+                    </select><br>
+                    <button class="btn btn-primary nav-btn-2" type="submit">Apply Filters</button>
+                </form>
+                <a class="clear-results" href="" style="color:white; font-size: 120%; margin-top:25px">Clear Filters</a>
+            </div>
+            <div class="game-section">
+
+                @foreach (var batch in batches)
+                {
+                    <div class="game-row">
+                        @foreach (var game in batch)
+                        {
+                            <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
+                                <img src="@game.ImageUrl">
+                            </a>
+                        }
+                    </div>
+                }
+            </div>
+
+        </div>
 
 
     </div>
-}else
+}
+else
 {
     <h1 style="color :red">Please log in to access this page.</h1>
 }

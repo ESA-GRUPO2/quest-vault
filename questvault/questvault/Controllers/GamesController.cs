@@ -16,6 +16,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using MailKit.Search;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using MimeKit.Cryptography;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.CodeAnalysis;
 
 namespace questvault.Controllers
 {
@@ -45,17 +47,71 @@ namespace questvault.Controllers
         /// GET action method for the Index view.
         /// </summary>
         /// <returns>Returns the Index view.</returns>
+        //[HttpGet]
+        //public async Task<IActionResult> Index()
+        //{
+        //    if (_context.Games == null) { return NotFound(); }
+
+        //    var games = await _context.Games.OrderByDescending(
+        //        o => o.IgdbRating)
+
+        //        .ToListAsync();
+        //    var data = new GameViewData
+        //    {
+        //        NumberOfResults = games.Count,
+        //        Games = games,
+        //        Genres = _context.Genres,
+        //        Platforms = _context.Platforms,
+        //    };
+        //    return View(data);
+        //}
+
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string genre, string releasePlatform)
         {
-            if (_context.Games == null) { return NotFound(); }
+            if (genre == null && releasePlatform == null)
+            {
+                var filteredGames = await _context.Games.OrderByDescending(
+                    o => o.IgdbRating).ToListAsync();
+                var data = new GameViewData
+                {
+                    NumberOfResults = filteredGames.Count,
+                    Games = filteredGames,
+                    Genres = _context.Genres,
+                    Platforms = _context.Platforms.Distinct(),
+                };
+                return View(data);
+            }
+            else
+            {
+                var query = _context.Games.AsQueryable();
 
-            var games = await _context.Games.OrderByDescending(
-                o => o.IgdbRating)
+                if (!string.IsNullOrEmpty(releasePlatform))
+                {
+                    query = query.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
+                }
 
-                .ToListAsync();
-            return View(games);
+                if (!string.IsNullOrEmpty(genre))
+                {
+                    query = query.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
+                }
+
+                var filteredGames = await query.OrderByDescending(g => g.IgdbRating).ToListAsync();
+
+                var data = new GameViewData
+                {
+                    NumberOfResults = filteredGames.Count,
+                    Games = filteredGames,
+                    Genres = _context.Genres,
+                    Platforms = _context.Platforms.Distinct(),
+                };
+                return View(data);
+
+            }
+            // Processar os filtros recebidos e consultar o banco de dados
+
         }
+
 
         [HttpGet]
         [Route("results")]
@@ -64,14 +120,22 @@ namespace questvault.Controllers
             // Se o searchTerm for nulo, retorne NotFound
             if (searchTerm == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
             var results = await _context.Games.Where(e => e.Name.Contains(searchTerm))
                 .OrderByDescending(o => o.IgdbRating)
                 .ToListAsync();
-            return View(results);
+            var data = new GameViewData
+            {
+                SearchTerm = searchTerm,
+                NumberOfResults = results.Count,
+                Games = results,
+                Genres = _context.Genres,
+                Platforms = _context.Platforms,
+            };
+            return View(data);
         }
 
         [HttpPost]
@@ -82,14 +146,14 @@ namespace questvault.Controllers
             // Check if search term is null
             if (searchTerm == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             // Retrieve games from the IGDB service
             var games = await _igdbService.SearchGames(searchTerm);
             if (games == null)
             {
-                return View();
+                return NotFound();
             }
 
             // Process each game
@@ -125,10 +189,10 @@ namespace questvault.Controllers
                     // Process game platforms
                     await ProcessGamePlatformsAsync(game, newGame);
                 }
+                await _context.SaveChangesAsync();
             }
 
             // Save changes to the database
-            await _context.SaveChangesAsync();
 
             // Redirecione para a action Results [GET] com o searchTerm como parâmetro
             return RedirectToAction("Results", new { searchTerm = searchTerm });
@@ -195,9 +259,11 @@ namespace questvault.Controllers
 
             foreach (var platform in platforms)
             {
-                var existingPlatform = _context.Platforms.FirstOrDefault(c => c.IgdbPlatformId == platform.IgdbPlatformId);
+                var existingPlatform = _context.Platforms.FirstOrDefault(p => p.IgdbPlatformId == platform.IgdbPlatformId);
+                await Console.Out.WriteLineAsync("existing p= " + existingPlatform);
                 if (existingPlatform == null)
                 {
+                    await Console.Out.WriteLineAsync("Doenst have this platform");
                     // Create a new platform object
                     var newPlatform = new Models.Platform
                     {
@@ -219,6 +285,7 @@ namespace questvault.Controllers
 
                 // Add the GamePlatform to the context
                 _context.GamePlatform.Add(gamePlatform);
+                
             }
         }
 
@@ -453,8 +520,6 @@ namespace questvault.Controllers
         //        return Json(new { Erro = "Erro interno no servidor" });
         //    }
         //}
-
-
 
     }
 }
