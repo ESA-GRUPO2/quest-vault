@@ -9,7 +9,9 @@ namespace questvault.Models
     public class Company
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long CompanyId { get; set; }
+        public long IgdbCompanyId { get; set; }
         /// <summary>
         /// Gets or sets the name of the game company.
         /// </summary>

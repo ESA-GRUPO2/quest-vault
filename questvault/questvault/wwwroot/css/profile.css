@@ -1,0 +1,71 @@
+﻿.profile {
+    background-color: #091833;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.profile-banner {
+    background-color: #133e7c;
+    height: 30vh;
+    width: 100%;
+    padding: 1rem 3rem 1rem 3rem;
+}
+
+.profile-avatar img {
+    width: 13rem;
+    height: 19vh;
+}
+
+.profile-details{
+    
+}
+
+.profile-details button img {
+    filter: invert(9%) sepia(12%) saturate(7338%) hue-rotate(197deg) brightness(90%) contrast(99%);
+}
+
+.profile-details button:hover img, button:active img {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
+}
+
+.profile-username{
+    margin-right: 1rem;
+    padding-top: 0.8vh;
+}
+
+.profile-connects{
+    width: auto;
+}
+
+.profile-stats{
+    text-align: right;
+}
+
+
+.profile-hours {
+    text-align: right;
+    margin-bottom: 4vh;
+}
+
+.profile-games-played {
+    text-align: right;
+}
+
+.profile-games-backed {
+    text-align: right;
+}
+
+.profile-about{
+    margin-top: 8rem;
+}
+
+.profile-lock-msg {
+    border: solid #711c91;
+    border-radius: 15px;
+    width: 50rem;
+    height: 10rem;
+}
+
+.profile-lock-vector {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
+}

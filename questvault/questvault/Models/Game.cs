@@ -11,6 +11,8 @@ namespace questvault.Models
 
         [Key]
         public long GameId { get; set; }
+
+        public long IgdbId { get; set; }
         /// <summary>
         /// Gets or sets the name of the game.
         /// </summary>
