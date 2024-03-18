@@ -1,0 +1,40 @@
+﻿@model IEnumerable<questvault.Models.FriendshipRequest>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-light">@ViewData["Title"]</h1>
+
+<table class="table table-dark table-sm table-profile">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Sender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Receiver)
+            </th> 
+            <th>
+                Result
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sender.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Receiver.UserName)
+                </td>
+                <td>
+                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="AcceptFriendRequest" asp-route-id="@item.Sender.Id">Accept Request</a>
+                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RejectFriendRequest" asp-route-id="@item.Sender.Id">Reject Request</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

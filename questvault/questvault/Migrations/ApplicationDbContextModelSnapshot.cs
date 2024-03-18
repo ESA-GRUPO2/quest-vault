@@ -17,7 +17,7 @@ namespace questvault.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -234,6 +234,42 @@ namespace questvault.Migrations
                             CompanyName = "Bethesda Game Studios",
                             IgdbCompanyId = 126L
                         });
+                });
+
+            modelBuilder.Entity("questvault.Models.Friendship", b =>
+                {
+                    b.Property<string>("User1Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("User2Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("User1Id", "User2Id");
+
+                    b.HasIndex("User2Id");
+
+                    b.ToTable("Friendship");
+                });
+
+            modelBuilder.Entity("questvault.Models.FriendshipRequest", b =>
+                {
+                    b.Property<string>("SenderId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ReceiverId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("FriendshipDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isAccepted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("SenderId", "ReceiverId");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.ToTable("FriendshipRequest");
                 });
 
             modelBuilder.Entity("questvault.Models.Game", b =>
@@ -1277,6 +1313,44 @@ namespace questvault.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("questvault.Models.Friendship", b =>
+                {
+                    b.HasOne("questvault.Models.User", "User1")
+                        .WithMany()
+                        .HasForeignKey("User1Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.User", "User2")
+                        .WithMany()
+                        .HasForeignKey("User2Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User1");
+
+                    b.Navigation("User2");
+                });
+
+            modelBuilder.Entity("questvault.Models.FriendshipRequest", b =>
+                {
+                    b.HasOne("questvault.Models.User", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("questvault.Models.GameCompany", b =>
