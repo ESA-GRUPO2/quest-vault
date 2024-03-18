@@ -64,40 +64,41 @@ jobs:
           dotnet tool install --global dotnet-ef
           dotnet tool restore
         
-      - name: Update database
-        run: |
-          dotnet build ${{env.PROJ_PATH}} 
-          dotnet ef database update -p ${{env.PROJ_PATH}} 
-#--connection ${{ secrets.PRODUCTION_CONNECTION_STRING }} 
+#       - name: Update database
+#         run: |
+#           dotnet build ${{env.PROJ_PATH}} 
+#           dotnet ef database update -p ${{env.PROJ_PATH}} 
+# #--connection ${{ secrets.PRODUCTION_CONNECTION_STRING }} 
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.AZURE_WEBAPP_NAME }}
-          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+#       - name: Upload artifact for deployment job
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: ${{ env.AZURE_WEBAPP_NAME }}
+#           path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           
-        env:
-          ASPNETCORE_ENVIRONMENT: Development
+#         env:
+#           ASPNETCORE_ENVIRONMENT: Development
           
-  deploy:
-    permissions:
-      contents: none
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Development'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+  # deploy:
+  #   permissions:
+  #     contents: none
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   environment:
+  #     name: 'Development'
+  #     url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ env.AZURE_WEBAPP_NAME }}
+  #   steps:
+  #     - name: Download artifact from build job
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: ${{ env.AZURE_WEBAPP_NAME }}
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+  #     - name: Deploy to Azure Web App
+  #       id: deploy-to-webapp
+  #       uses: azure/webapps-deploy@v2
+  #       with:
+  #         app-name: ${{ env.AZURE_WEBAPP_NAME }}
+  #         publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+  #         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+  
