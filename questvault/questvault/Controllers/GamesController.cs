@@ -18,6 +18,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using MimeKit.Cryptography;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.CodeAnalysis;
+using Microsoft.IdentityModel.Tokens;
 
 namespace questvault.Controllers
 {
@@ -67,9 +68,14 @@ namespace questvault.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> Index(string genre, string releasePlatform)
+        public async Task<IActionResult> Index(string releaseStatus, string genre, string releasePlatform)
         {
-            if (genre == null && releasePlatform == null)
+            // Defina as variáveis de exibição para armazenar os valores selecionados
+            ViewBag.SelectedReleaseStatus = releaseStatus;
+            ViewBag.SelectedGenre = genre;
+            ViewBag.SelectedReleasePlatform = releasePlatform;
+            //ViewBag.SelectedReleaseYear = releaseYear;
+            if (genre == null && releasePlatform == null && releaseStatus == null)
             {
                 var filteredGames = await _context.Games.OrderByDescending(
                     o => o.IgdbRating).ToListAsync();
@@ -94,7 +100,16 @@ namespace questvault.Controllers
                 if (!string.IsNullOrEmpty(genre))
                 {
                     query = query.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
+                }                
+                if (!string.IsNullOrEmpty(releaseStatus))
+                {
+                    var released = (releaseStatus.Equals("released")) ? true : false;
+                    query = query.Where(g => g.IsReleased == released);
                 }
+                //if (releaseYear > 0)
+                //{
+                //    query = query.Where(g => g.ReleaseDate.Value.Year == releaseYear);
+                //}
 
                 var filteredGames = await query.OrderByDescending(g => g.IgdbRating).ToListAsync();
 

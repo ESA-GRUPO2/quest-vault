@@ -15,9 +15,23 @@
         <img class="game-cover image-fluid" src="@Model.ImageUrl" />
         <div class="container ms-3 mt-4">
             <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
-            <h4>Released on @Model.ReleaseDate</h4>
-
-
+            @* <h4>Released on @Model.ReleaseDate</h4> *@
+                @if (Model.ReleaseDate.HasValue)
+                {
+                    <h4>
+                        @if (Model.ReleaseDate.Value < DateTime.Today)
+                        {
+                            <text>Released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
+                        }
+                        else
+                        {
+                            <text>To be released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
+                        }
+                    </h4>
+                }else
+                {
+                    <text>To be decided.</text>
+                }
             <h5>
                 By 
                 @foreach (var c in Model.GameCompanies)

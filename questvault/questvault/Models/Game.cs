@@ -39,7 +39,10 @@ namespace questvault.Models
         /// </summary>
         public double QvRating { get; set; } = 0;
 
-        public string? ReleaseDate { get; set; } = "";
+        public DateTime? ReleaseDate { get; set; } 
+
+        public bool IsReleased { get; set; }
+       // public bool IsReleased { get; set; }
 
         /// <summary>
         /// Gets or sets the list of genres associated with the game.
