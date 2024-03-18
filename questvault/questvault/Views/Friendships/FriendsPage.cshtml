@@ -31,7 +31,7 @@
                     @Html.DisplayFor(modelItem => item.User2.UserName)
                 </td>
                 <td>
-                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.id">Remove Friend</a>
+                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id">Remove Friend</a>
                 </td>
             </tr>
         }
