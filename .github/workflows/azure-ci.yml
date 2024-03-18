@@ -58,6 +58,13 @@ jobs:
 
       - name: dotnet publish
         run: dotnet publish ${{env.PROJ_PATH}} -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        
+      - name: Update database
+        run: |
+          dotnet tool install --global dotnet-ef
+          dotnet tool restore
+          dotnet build ${{env.PROJ_PATH}}
+          dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }} --configuration Release
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -65,11 +72,6 @@ jobs:
           name: ${{ env.AZURE_WEBAPP_NAME }}
           path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           
-      - name: Update database
-        run: |
-          dotnet tool install --global dotnet-ef
-          dotnet tool restore
-          dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }} --no-build
         env:
           ASPNETCORE_ENVIRONMENT: Development
           
