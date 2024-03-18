@@ -71,8 +71,8 @@
                             @if (ViewBag.IsGameAddedToLibrary==true)
                             {
                                  <form asp-controller="Library" asp-action="RemoveGame" method="post">
-                                    <input type="hidden" name="gameId" value="@Model.GameId"/>
-                                    <button type="submit">Remove Game</button>
+                                    <input type="hidden" name="gameId" value="@Model.IgdbId"/>
+                                    <button class="btn btn-primary nav-btn-2" type="submit">Remove Game</button>
                                  </form>
                             }
                     </div>
