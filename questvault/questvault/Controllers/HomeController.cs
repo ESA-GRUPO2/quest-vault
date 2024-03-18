@@ -29,17 +29,22 @@ namespace questvault.Controllers
             return View();
         }
 
-        public IActionResult GameResults()
+        public IActionResult Dashboard()
         {
             return View();
         }
 
-        public IActionResult GameDetails() 
-        { 
+        public IActionResult PublicProfile()
+        {
             return View();
         }
 
-        public IActionResult Dashboard()
+        public IActionResult PrivateProfile()
+        {
+            return View();
+        }
+
+        public IActionResult UserLibrary()
         {
             return View();
         }

@@ -12,6 +12,10 @@ using IGDB.Models;
 //using questvault.Migrations;
 using RestEase;
 using questvault.Services;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using MailKit.Search;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using MimeKit.Cryptography;
 
 namespace questvault.Controllers
 {
@@ -19,6 +23,7 @@ namespace questvault.Controllers
     /// Controller for managing games.
     /// Note: This controller is a work in progress (WIP) and may undergo significant changes.
     /// </summary>
+    [Route("[controller]")]
     public class GamesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -40,63 +45,414 @@ namespace questvault.Controllers
         /// GET action method for the Index view.
         /// </summary>
         /// <returns>Returns the Index view.</returns>
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View();
+            if (_context.Games == null) { return NotFound(); }
+
+            var games = await _context.Games.OrderByDescending(
+                o => o.IgdbRating)
+
+                .ToListAsync();
+            return View(games);
         }
 
-        
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        /// <summary>
-        /// POST action method for handling the search form.
-        /// </summary>
-        /// <param name="searchTerm">The search term provided by the user.</param>
-        /// <returns>Returns JSON data containing the search results.</returns>
-        public async Task<IActionResult> SearchForm(string searchTerm)
+        [HttpGet]
+        [Route("results")]
+        public async Task<IActionResult> Results(string searchTerm)
         {
-            try
+            // Se o searchTerm for nulo, retorne NotFound
+            if (searchTerm == null)
             {
-                var jogos = await _igdbService.SearchGames(searchTerm);
-                Console.WriteLine("term: " + searchTerm);
-                // Retorna os dados como JSON
-                return Json(new { Jogos = jogos });
+                return NotFound();
             }
-            catch (ApiException ex)
-            {
-                Console.WriteLine(ex.Content);
-                return Json(new { Erro = "Erro na API IGDB" });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return Json(new { Erro = "Erro interno no servidor" });
-            }
+
+            // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
+            var results = await _context.Games.Where(e => e.Name.Contains(searchTerm))
+                .OrderByDescending(o => o.IgdbRating)
+                .ToListAsync();
+            return View(results);
         }
 
         [HttpPost]
+        [Route("results")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Search([FromBody] string searchTerm)
+        public async Task<IActionResult> ResultsPost(string searchTerm)
         {
-            try
+            // Check if search term is null
+            if (searchTerm == null)
             {
-                var jogos = await _igdbService.SearchGames(searchTerm);
-                // Retorna os dados como JSON
-                return Json(new { Jogos = jogos });
+                return NotFound();
             }
-            catch (ApiException ex)
+
+            // Retrieve games from the IGDB service
+            var games = await _igdbService.SearchGames(searchTerm);
+            if (games == null)
             {
-                Console.WriteLine(ex.Content);
-                return Json(new { Erro = "Erro na API IGDB" });
+                return View();
             }
-            catch (Exception ex)
+
+            // Process each game
+            foreach (var game in games)
             {
-                Console.WriteLine(ex);
-                return Json(new { Erro = "Erro interno no servidor" });
+                // Check if the game already exists in the database
+                var existingGame = _context.Games.FirstOrDefault(g => g.IgdbId == game.IgdbId);
+                if (existingGame == null)
+                {
+                    // Create a new game object
+                    var newGame = new Models.Game
+                    {
+                        IgdbId = game.IgdbId,
+                        Name = game.Name,
+                        Summary = game.Summary,
+                        IgdbRating = game.IgdbRating,
+                        ImageUrl = game.ImageUrl,
+                        Screenshots = game.Screenshots,
+                        VideoUrl = game.VideoUrl,
+                        QvRating = game.QvRating,
+                        ReleaseDate = game.ReleaseDate
+                    };
+
+                    // Add the new game to the database
+                    _context.Games.Add(newGame);
+
+                    // Process game companies
+                    await ProcessGameCompaniesAsync(game, newGame);
+
+                    // Process game genres
+                    ProcessGameGenres(game, newGame);
+
+                    // Process game platforms
+                    await ProcessGamePlatformsAsync(game, newGame);
+                }
+            }
+
+            // Save changes to the database
+            await _context.SaveChangesAsync();
+
+            // Redirecione para a action Results [GET] com o searchTerm como parâmetro
+            return RedirectToAction("Results", new { searchTerm = searchTerm });
+        }
+
+        private async Task ProcessGameCompaniesAsync(Models.Game game, Models.Game newGame)
+        {
+            var companyIds = game.GameCompanies.Select(comp => comp.IgdbCompanyId).Distinct().ToList();
+            var companies = await _igdbService.GetCompaniesFromIds(companyIds);
+
+            foreach (var company in companies)
+            {
+                var existingCompany = _context.Companies.FirstOrDefault(c => c.IgdbCompanyId == company.IgdbCompanyId);
+                if (existingCompany == null)
+                {
+                    // Create a new company object
+                    var newCompany = new Models.Company
+                    {
+                        IgdbCompanyId = company.IgdbCompanyId,
+                        CompanyName = company.CompanyName
+                    };
+
+                    // Add the new company to the database
+                    _context.Companies.Add(newCompany);
+                    existingCompany = newCompany;
+                }
+
+                // Create a new GameCompany object
+                var gameCompany = new GameCompany
+                {
+                    Game = newGame,
+                    Company = existingCompany
+                };
+
+                // Add the GameCompany to the context
+                _context.GameCompany.Add(gameCompany);
             }
         }
 
+        private void ProcessGameGenres(Models.Game game, Models.Game newGame)
+        {
+            foreach (var genre in game.GameGenres)
+            {
+                var existingGenre = _context.Genres.FirstOrDefault(c => c.IgdbGenreId == genre.IgdbGenreId);
+                if (existingGenre != null)
+                {
+                    // Create a new GameGenre object
+                    var gameGenre = new GameGenre
+                    {
+                        Game = newGame,
+                        Genre = existingGenre
+                    };
+
+                    // Add the GameGenre to the context
+                    _context.GameGenre.Add(gameGenre);
+                }
+            }
+        }
+
+        private async Task ProcessGamePlatformsAsync(Models.Game game, Models.Game newGame)
+        {
+            var platformIds = game.GamePlatforms.Select(pla => pla.IgdbPlatformId).Distinct().ToList();
+            var platforms = await _igdbService.GetPlatformsFromIds(platformIds);
+
+            foreach (var platform in platforms)
+            {
+                var existingPlatform = _context.Platforms.FirstOrDefault(c => c.IgdbPlatformId == platform.IgdbPlatformId);
+                if (existingPlatform == null)
+                {
+                    // Create a new platform object
+                    var newPlatform = new Models.Platform
+                    {
+                        IgdbPlatformId = platform.IgdbPlatformId,
+                        PlatformName = platform.PlatformName
+                    };
+
+                    // Add the new platform to the database
+                    _context.Platforms.Add(newPlatform);
+                    existingPlatform = newPlatform;
+                }
+
+                // Create a new GamePlatform object
+                var gamePlatform = new GamePlatform
+                {
+                    Game = newGame,
+                    Platform = existingPlatform
+                };
+
+                // Add the GamePlatform to the context
+                _context.GamePlatform.Add(gamePlatform);
+            }
+        }
+
+
+        //[HttpPost]
+        //[Route ("results")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Results(string searchTerm)
+        //{
+        //    Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        //    if (searchTerm == null)
+        //    {
+        //        Console.WriteLine("primeiro if");
+        //        return NotFound();
+        //    }
+
+        //    var games = await _igdbService.SearchGames(searchTerm);
+        //    if (games == null)
+        //    {
+        //        Console.WriteLine("segundo if");
+        //        return NotFound();
+        //    }
+        //    foreach (var game in games)
+        //    {
+        //        // Verifique se o jogo já existe na base de dados com base no GameId
+        //        var existingGame = _context.Games.FirstOrDefault(g => g.IgdbId == game.IgdbId);
+        //        await Console.Out.WriteLineAsync("exist?:-----> " + existingGame);
+        //        // Se o jogo não existir, adicione-o à base de dados
+        //        if (existingGame == null)
+        //        {
+
+        //            await Console.Out.WriteLineAsync("tem jogo!");
+        //            // Crie um novo objeto Game com as propriedades desejadas
+        //            var newGame = new Models.Game
+        //            {
+        //                IgdbId = game.IgdbId,
+        //                Name = game.Name,
+        //                Summary = game.Summary,
+        //                IgdbRating = game.IgdbRating,
+        //                ImageUrl = game.ImageUrl,
+        //                Screenshots = game.Screenshots,
+        //                VideoUrl = game.VideoUrl,
+        //                QvRating = game.QvRating,
+        //                ReleaseDate = game.ReleaseDate
+        //            };
+        //            Console.WriteLine("ad: "+  newGame.ToString());
+        //            // Adicione o novo jogo à base de dados
+
+        //            _context.Games.Add(newGame);
+        //            //-----------------------------COMP----------------------------------------
+        //            var idscomp = game.GameCompanies.Select(comp => comp.IgdbCompanyId).Distinct().ToList();
+        //            var companies = _igdbService.GetCompaniesFromIds(idscomp).Result.ToList();
+        //            foreach (var company in companies)
+        //            {
+        //                var existingCompany = _context.Companies.FirstOrDefault(c => c.IgdbCompanyId == company.IgdbCompanyId);
+        //                if (existingCompany != null)
+        //                {
+        //                    // A empresa já existe, então associe-a ao jogo sem adicioná-la novamente
+        //                    var compGameAdd = new GameCompany
+        //                    {
+        //                        Game = newGame,
+        //                        Company = existingCompany
+        //                    };
+        //                    _context.GameCompany.Add(compGameAdd);
+        //                }
+        //                else
+        //                {
+        //                    // A empresa não existe, então adicione-a ao banco de dados e associe-a ao jogo
+        //                    var newCompany = new Models.Company
+        //                    {
+        //                        IgdbCompanyId = company.IgdbCompanyId,
+        //                        CompanyName = company.CompanyName,
+        //                    };
+
+        //                    _context.Companies.Add(newCompany);
+
+        //                    var compGameAdd = new GameCompany
+        //                    {
+        //                        Game = newGame,
+        //                        Company = newCompany
+        //                    };
+        //                    _context.GameCompany.Add(compGameAdd);
+        //                }
+        //            }
+
+        //            //-----------------------------GEN----------------------------------
+        //            foreach (var genre in game.GameGenres )
+        //            {
+        //                var existingGenre = _context.Genres.FirstOrDefault(c => c.IgdbGenreId == genre.IgdbGenreId);
+        //                var gameGenreAdd = new GameGenre
+        //                {
+        //                    Game = newGame,
+        //                    Genre = existingGenre
+        //                };
+        //                _context.GameGenre.Add(gameGenreAdd);
+        //            }
+        //            //-----------------------------PLATFORMS----------------------------------
+        //            var idsplat = game.GamePlatforms.Select(pla => pla.IgdbPlatformId).Distinct().ToList();
+        //            var platforms = _igdbService.GetPlatformsFromIds(idsplat).Result.ToList();
+        //            foreach (var platform in platforms)
+        //            {
+        //                var existingPlatform = _context.Platforms.FirstOrDefault(c => c.IgdbPlatformId == platform.IgdbPlatformId);
+        //                if (existingPlatform != null)
+        //                {
+        //                    // A empresa já existe, então associe-a ao jogo sem adicioná-la novamente
+        //                    var platGameAdd = new GamePlatform
+        //                    {
+        //                        Game = newGame,
+        //                        Platform = existingPlatform
+        //                    };
+        //                    _context.GamePlatform.Add(platGameAdd);
+        //                }
+        //                else
+        //                {
+        //                    // A empresa não existe, então adicione-a ao banco de dados e associe-a ao jogo
+        //                    var newPlatform = new Models.Platform
+        //                    {
+        //                        IgdbPlatformId = platform.IgdbPlatformId,
+        //                        PlatformName = platform.PlatformName,
+        //                    };
+
+        //                    _context.Platforms.Add(newPlatform);
+
+        //                    var compGameAdd = new GamePlatform
+        //                    {
+        //                        Game = newGame,
+        //                        Platform = newPlatform
+        //                    };
+        //                    _context.GamePlatform.Add(compGameAdd);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    // Salve as mudanças na base de dados
+        //    await _context.SaveChangesAsync();
+        //    //var allgames = await _context.Games
+        //    //    .Where(g => EF.Functions.Like(g.Name, $"%{searchInput}%")).ToListAsync();
+        //    //return View(allgames);
+        //    return RedirectToAction("Index");
+        //}
+
+        [HttpGet]
+        [Route("details/{id}")]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Games == null)
+            {
+                return NotFound();
+            }
+
+            var game = await _context.Games
+                .Include(g => g.GameGenres!)
+                    .ThenInclude(gg => gg.Genre)
+                .Include(g => g.GamePlatforms!)
+                    .ThenInclude(gp => gp.Platform)
+                .Include(g => g.GameCompanies!)
+                    .ThenInclude(gc => gc.Company)
+                .FirstOrDefaultAsync(m => m.IgdbId == id);
+
+
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            return View(game);
+        }
+
+
+        [HttpGet]
+        [Route("search")]
+        public IActionResult Search(string searchTerm)
+        {
+            if (searchTerm == null || _context.Games == null)
+            {
+                return NotFound();
+            }
+
+            var games = _context.Games
+                .Where(g => EF.Functions.Like(g.Name, $"%{searchTerm}%"))
+                .Select(s => new
+                {
+                    s.IgdbId,
+                    s.Name,
+                })
+                .ToList();
+
+
+            return Json(games);
+        }
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Search([FromBody] string searchTerm)
+        //{
+        //    try
+        //    {
+        //        var jogos = await _igdbService.SearchGames(searchTerm);
+        //        // Retorna os dados como JSON
+        //        return Json(new { Jogos = jogos });
+        //    }
+        //    catch (ApiException ex)
+        //    {
+        //        Console.WriteLine(ex.Content);
+        //        return Json(new { Erro = "Erro na API IGDB" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //        return Json(new { Erro = "Erro interno no servidor" });
+        //    }
+        //}
+
+        //[HttpGet("Teste")]
+        //public async Task<IActionResult> Popular()
+        //{
+        //    try
+        //    {
+        //        var jogos = await _igdbService.GetPopularGames(10);
+        //        // Retorna os dados como JSON
+        //        return Json(new { Jogos = jogos });
+        //    }
+        //    catch (ApiException ex)
+        //    {
+        //        Console.WriteLine(ex.Content);
+        //        return Json(new { Erro = "Erro na API IGDB" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //        return Json(new { Erro = "Erro interno no servidor" });
+        //    }
+        //}
 
 
 

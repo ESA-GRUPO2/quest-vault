@@ -1,0 +1,1 @@
+c['429']=[['430',"GetCompanies Method","topic_000000000000014E.html",0],['431',"GetGenres Method","topic_000000000000014D.html",0],['432',"GetPlatforms Method","topic_000000000000014F.html",0],['433',"GetPopularGames Method","topic_000000000000014C.html",0],['434',"SearchGames Method","topic_000000000000014B.html",0]];

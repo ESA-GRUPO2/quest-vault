@@ -24,19 +24,17 @@
             <ul class="navbar-nav ms-auto me-1 mb-lg-0">
             @if (SignInManager.IsSignedIn(User))
             {
-                    <li class="align-self-center">
-                        <form asp-controller="Games" asp-action="SearchForm" method="post">
+                    <li id="search" class="align-self-center">
+                        <form asp-controller="Games" asp-action="Results" method="post">
                         <div class="search-bar d-flex">
-                             <input id="searchTerm" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
-                             <div id="searchResults" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <!-- Resultados da pesquisa aqui -->
-                             </div>
+                                <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
                             <button class="outside-search" type="submit">
                                     <img src="\img\vector\magnifying.svg" class="search-btn" />
                             </button>
                                 
-                        </div>       
-                    </form>
+                        </div>
+                        </form>
+                        <ul id="searchResults" class="list-group dropdown-menu"></ul>
                     </li>
                     <li class="nav-item align-self-center ms-3" style="padding-right: 15rem">
                         <div class="dropdown">
@@ -57,7 +55,7 @@
                     </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
-                        <a class="btn btn-primary nav-btn" asp-controller="Home" asp-action="GameResults">
+                        <a class="btn btn-primary nav-btn" asp-controller="Games" asp-action="Index">
                         <img src="\img\vector\gamepad.svg" alt="Key Icon" class="nav-vector pe-2"> Games
                     </a>
                 </li>
@@ -121,14 +119,14 @@
                 </li>
             }
 
-            <li class="nav-item ms-3 d-flex align-self-center">
+           @*  <li class="nav-item ms-3 d-flex align-self-center">
                 <select #lang (change)="onSelected(lang.value)" class="form-result nav-form-select" style="background-color:transparent">
                         <option selected style="right:0; left:auto; background: #133E7C !important;" value="en" data-content="<img src='/img/lang/en.png'></img> en">
                              en
                         </option>
                         <option value="pt" style="right:0; left:auto; background: #133E7C !important;">pt</option>
                 </select>
-            </li>
+            </li> *@
             </ul>
         </div>
     </div>

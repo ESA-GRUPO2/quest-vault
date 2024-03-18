@@ -8,7 +8,8 @@ namespace questvault.Models
     public class Platform
     {
         [Key]
-        public int PlatformID { get; set; }
+        public long PlatformId { get; set; }
+        public long IgdbPlatformId { get; set; }
         /// <summary>
         /// Gets or sets the name of the gaming platform.
         /// </summary>
@@ -18,7 +19,7 @@ namespace questvault.Models
         /// Gets or sets the list of games associated with the platform.
         /// Represents a many-to-many relationship with Games.
         /// </summary>
-        public virtual List<GamePlatform>? GamePlatform { get; set; }
+        public List<GamePlatform>? GamePlatforms { get; set; }
 
     }
 }
