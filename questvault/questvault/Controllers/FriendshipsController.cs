@@ -174,8 +174,10 @@ namespace questvault.Controllers
             return context.Friendship.Any(e => e.id == id);
         }
 
-        // POST: api/Friendship/Request
-        //[HttpPost, ActionName("SendFriendRequest")]
+        /// <summary>
+        ///     Verifies if a connection between two users already exists and if it doesnt a friend request object is created.
+        /// </summary>
+        /// <param name="id">The id of the user who recieves the friend request</param>
         public async Task<IActionResult> SendFriendRequestAsync(string id)
         {
             var receiver = await context.Users.FindAsync(id);
@@ -203,7 +205,12 @@ namespace questvault.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        //TO DO
+
+        /// <summary>
+        ///     Creates a friendship object between the current user and a selected user.
+        /// </summary>
+        /// <param name="id">The id of the user who recieves the friendship</param>
+
         public async Task<IActionResult> AcceptFriendRequestAsync(string id)
         {
             var receiver = await context.Users.FindAsync(id);
@@ -228,11 +235,15 @@ namespace questvault.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        //TO DO
+
+        /// <summary>
+        ///     Deletes a specific object of the type friendRequest
+        /// </summary>
+        /// <param name="id">The id of the user who sent the friend request</param>
         public async Task<IActionResult> RejectFriendRequestAsync(string id)
         {
-            var receiver = await context.Users.FindAsync(id);
-            var sender = await signInManager.UserManager.GetUserAsync(this.User);
+            var sender = await context.Users.FindAsync(id);
+            var receiver = await signInManager.UserManager.GetUserAsync(this.User);
             if (receiver != null && sender != null)
             {
                 var friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == sender.Id && fr.ReceiverId == receiver.Id).ToListAsync();
@@ -249,7 +260,11 @@ namespace questvault.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        //TO DO
+
+        /// <summary>
+        ///     Deletes a user from the list of friends
+        /// </summary>
+        /// <param name="id">The id of the user who recieves the friendship</param>
         public async Task<IActionResult> RemoveFriendAsync(string id)
         {
             return RedirectToAction(nameof(Index));
