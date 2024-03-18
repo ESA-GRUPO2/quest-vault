@@ -23,7 +23,7 @@ env:
   AZURE_WEBAPP_NAME: questvault    # set this to the name of your Azure Web App
   AZURE_WEBAPP_PACKAGE_PATH: './questvault'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8.0.202'                 # set this to the .NET Core version to use
-  SLN_PATH: './questvault/questvault.sln'
+  PROJ_PATH: './questvault/questvault'
 
 on:
   push:
@@ -54,10 +54,10 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Build with dotnet
-        run: dotnet build ${{env.SLN_PATH}} -c Release
+        run: dotnet build ${{env.PROJ_PATH}} -c Release
 
       - name: dotnet publish
-        run: dotnet publish ${{env.SLN_PATH}} -c Release -o ${{env.DOTNET_ROOT}}/myapp --no-build 
+        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o ${{env.DOTNET_ROOT}}/myapp --no-build 
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -69,7 +69,7 @@ jobs:
         run: |
           dotnet tool install --global dotnet-ef
           dotnet tool restore
-          dotnet ef database update -p ${{env.SLN_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
+          dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
         env:
           ASPNETCORE_ENVIRONMENT: Development
           
