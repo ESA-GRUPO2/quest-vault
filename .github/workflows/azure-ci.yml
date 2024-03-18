@@ -67,6 +67,7 @@ jobs:
       - name: Update database
         run: |
           dotnet ef database update -p ${{env.PROJ_PATH}} 
+          dotnet build ${{env.PROJ_PATH}} 
 #--connection ${{ secrets.PRODUCTION_CONNECTION_STRING }} 
 
       - name: Upload artifact for deployment job
