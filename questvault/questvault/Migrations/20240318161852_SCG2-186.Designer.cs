@@ -12,13 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240318122631_SCG2-186.Designer.cs
-    [Migration("20240318122631_SCG2-186")]
+    [Migration("20240318161852_SCG2-186")]
     partial class SCG2186
-========
-    [Migration("20240317235304_scg2-173")]
-    partial class scg2173
->>>>>>>> dev:questvault/questvault/Migrations/20240317235304_scg2-173.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -300,11 +295,8 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 1942L,
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240318122631_SCG2-186.Designer.cs
-========
                             IgdbId = 1942L,
->>>>>>>> dev:questvault/questvault/Migrations/20240317235304_scg2-173.Designer.cs
-                            IgdbRating = 94.145487751664035,
+                            IgdbRating = 94.145056494292362,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg",
                             Name = "The Witcher 3: Wild Hunt",
                             QvRating = 0.0,
@@ -329,12 +321,8 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 472L,
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240318122631_SCG2-186.Designer.cs
-                            IgdbRating = 87.693906628560399,
-========
                             IgdbId = 472L,
-                            IgdbRating = 87.693564090508843,
->>>>>>>> dev:questvault/questvault/Migrations/20240317235304_scg2-173.Designer.cs
+                            IgdbRating = 87.693906628560399,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1tnw.jpg",
                             Name = "The Elder Scrolls V: Skyrim",
                             QvRating = 0.0,
@@ -346,12 +334,8 @@ namespace questvault.Migrations
                         new
                         {
                             GameId = 71L,
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240318122631_SCG2-186.Designer.cs
-                            IgdbRating = 86.778475392348398,
-========
                             IgdbId = 71L,
-                            IgdbRating = 86.778517641759336,
->>>>>>>> dev:questvault/questvault/Migrations/20240317235304_scg2-173.Designer.cs
+                            IgdbRating = 86.778475392348398,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1x7d.jpg",
                             Name = "Portal",
                             QvRating = 0.0,
@@ -375,8 +359,8 @@ namespace questvault.Migrations
                         },
                         new
                         {
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240318122631_SCG2-186.Designer.cs
                             GameId = 1009L,
+                            IgdbId = 1009L,
                             IgdbRating = 93.378115284847709,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
                             Name = "The Last of Us",
@@ -388,8 +372,6 @@ namespace questvault.Migrations
                         },
                         new
                         {
-========
->>>>>>>> dev:questvault/questvault/Migrations/20240317235304_scg2-173.Designer.cs
                             GameId = 233L,
                             IgdbId = 233L,
                             IgdbRating = 90.659012483195042,
@@ -403,26 +385,9 @@ namespace questvault.Migrations
                         },
                         new
                         {
-                            GameId = 1009L,
-                            IgdbId = 1009L,
-                            IgdbRating = 93.378166330256974,
-                            ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
-                            Name = "The Last of Us",
-                            QvRating = 0.0,
-                            ReleaseDate = "June 14, 2013",
-                            Screenshots = "[\"//images.igdb.com/igdb/image/upload/t_screenshot_med/upogjfthdffjlzfi26xe.jpg\",\"//images.igdb.com/igdb/image/upload/t_screenshot_med/emvrwg5vhpfcmn9loxgu.jpg\",\"//images.igdb.com/igdb/image/upload/t_screenshot_med/kdt90b2rbx4tmewaxur9.jpg\"]",
-                            Summary = "A third person shooter/stealth/survival hybrid, in which twenty years after the outbreak of a parasitic fungus which takes over the neural functions of humans, Joel, a Texan with a tragic familial past, finds himself responsible with smuggling a fourteen year old girl named Ellie to a militia group called the Fireflies, while avoiding strict and deadly authorities, infected fungal hosts and other violent survivors.",
-                            VideoUrl = "https://www.youtube.com/embed/fxeNaDjU7sw"
-                        },
-                        new
-                        {
                             GameId = 20L,
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240318122631_SCG2-186.Designer.cs
-                            IgdbRating = 86.734430116136821,
-========
                             IgdbId = 20L,
-                            IgdbRating = 86.738029894909729,
->>>>>>>> dev:questvault/questvault/Migrations/20240317235304_scg2-173.Designer.cs
+                            IgdbRating = 86.734430116136821,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2mli.jpg",
                             Name = "BioShock",
                             QvRating = 0.0,
@@ -639,11 +604,6 @@ namespace questvault.Migrations
                         },
                         new
                         {
-                            IgdbId = 233L,
-                            IgdbGenreId = 5L
-                        },
-                        new
-                        {
                             IgdbId = 1009L,
                             IgdbGenreId = 5L
                         },
@@ -651,6 +611,11 @@ namespace questvault.Migrations
                         {
                             IgdbId = 1009L,
                             IgdbGenreId = 31L
+                        },
+                        new
+                        {
+                            IgdbId = 233L,
+                            IgdbGenreId = 5L
                         },
                         new
                         {
@@ -692,14 +657,14 @@ namespace questvault.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GameLogId"));
 
-                    b.Property<long>("GameID")
+                    b.Property<long>("GameId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("GamesLibraryId")
-                        .HasColumnType("int");
+                    b.Property<long?>("GamesLibraryId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("GamesLibraryId1")
-                        .HasColumnType("int");
+                    b.Property<long?>("GamesLibraryId1")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("HoursPlayed")
                         .HasColumnType("int");
@@ -712,7 +677,7 @@ namespace questvault.Migrations
 
                     b.HasKey("GameLogId");
 
-                    b.HasIndex("GameID");
+                    b.HasIndex("GameId");
 
                     b.HasIndex("GamesLibraryId");
 
@@ -855,6 +820,11 @@ namespace questvault.Migrations
                         },
                         new
                         {
+                            IgdbId = 1009L,
+                            IgdbPlatformId = 9L
+                        },
+                        new
+                        {
                             IgdbId = 233L,
                             IgdbPlatformId = 3L
                         },
@@ -872,11 +842,6 @@ namespace questvault.Migrations
                         {
                             IgdbId = 233L,
                             IgdbPlatformId = 11L
-                        },
-                        new
-                        {
-                            IgdbId = 1009L,
-                            IgdbPlatformId = 9L
                         },
                         new
                         {
@@ -907,20 +872,19 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
                 {
-                    b.Property<int>("GamesLibraryId")
+                    b.Property<long>("GamesLibraryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GamesLibraryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GamesLibraryId"));
 
-                    b.Property<string>("UserID")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnOrder(0);
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("GamesLibraryId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("GamesLibrary");
                 });
@@ -1354,7 +1318,7 @@ namespace questvault.Migrations
                 {
                     b.HasOne("questvault.Models.Game", "Game")
                         .WithMany()
-                        .HasForeignKey("GameID")
+                        .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1392,7 +1356,7 @@ namespace questvault.Migrations
                 {
                     b.HasOne("questvault.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

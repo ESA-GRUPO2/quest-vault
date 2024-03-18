@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace questvault.Models
 {
@@ -9,16 +10,16 @@ namespace questvault.Models
         public long GameLogId { get; set; }
 
         [ForeignKey("Game")]
-        public long GameID { get; set; }
+        public long GameId { get; set; }
 
-        [ForeignKey(nameof(GameID))]
+        [ForeignKey(nameof(GameId))]
         public virtual Game? Game { get; set; }
 
+        [AllowNull]
         public int HoursPlayed { get; set; }
-
-        public GameStatus Status { get; set; }
-
+        [AllowNull]
         public OwnageStatus Ownage {  get; set; }
-       
+        [AllowNull]
+        public GameStatus Status { get; set; }
     }
 }

@@ -7,20 +7,20 @@ namespace questvault.Models
     public class GamesLibrary
     {
         [Key]
-        public int GamesLibraryId { get; set; }
+        public long GamesLibraryId { get; set; }
 
-        [Column(Order = 0)]
         [ForeignKey("User")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
-        [AllowNull]
+        [ForeignKey(nameof(UserId))]
+        public virtual User? User { get; set; }
+
         public List<GameLog> GameLogs { get; set; }
 
         [AllowNull]
         public List<GameLog> Top5Games { get; set; }
 
-        [ForeignKey(nameof(UserID))]
-        public virtual User? User { get; set; }
+      
 
         public void AddGame(GameLog gameLog) {
             GameLogs.Add(gameLog);
