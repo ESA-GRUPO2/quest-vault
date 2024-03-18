@@ -68,7 +68,7 @@ jobs:
         run: |
           dotnet tool install --global dotnet-ef
           dotnet tool restore
-          dotnet ef database update -p ${{env.AZURE_WEBAPP_PACKAGE_PATH}} -c ${{ secrets.PRODUCTION_CONNECTION_STRING }}
+          dotnet ef database update -p ${{env.AZURE_WEBAPP_PACKAGE_PATH}}/questvault -c ${{ secrets.PRODUCTION_CONNECTION_STRING }}
         env:
           ASPNETCORE_ENVIRONMENT: Development
           
