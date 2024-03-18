@@ -62,7 +62,7 @@ jobs:
         
       - name: Update database
         run: |
-            dotnet ef database update -p ./questvault/questvault.csproj --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
+            dotnet ef database update -p ./questvault/questvault --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 #           dotnet build ${{env.PROJ_PATH}} 
 #           dotnet ef database update -p ${{env.PROJ_PATH}} 
 # #--connection ${{ secrets.PRODUCTION_CONNECTION_STRING }} 
