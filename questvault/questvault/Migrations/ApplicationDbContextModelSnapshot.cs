@@ -238,21 +238,13 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.Friendship", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
                     b.Property<string>("User1Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("User2Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("id");
-
-                    b.HasIndex("User1Id");
+                    b.HasKey("User1Id", "User2Id");
 
                     b.HasIndex("User2Id");
 
@@ -261,29 +253,21 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.FriendshipRequest", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<DateTime>("FriendshipDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("SenderId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ReceiverId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("SenderId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<DateTime>("FriendshipDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("isAccepted")
                         .HasColumnType("bit");
 
-                    b.HasKey("id");
+                    b.HasKey("SenderId", "ReceiverId");
 
                     b.HasIndex("ReceiverId");
-
-                    b.HasIndex("SenderId");
 
                     b.ToTable("FriendshipRequest");
                 });
@@ -1329,11 +1313,15 @@ namespace questvault.Migrations
                 {
                     b.HasOne("questvault.Models.User", "User1")
                         .WithMany()
-                        .HasForeignKey("User1Id");
+                        .HasForeignKey("User1Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("questvault.Models.User", "User2")
                         .WithMany()
-                        .HasForeignKey("User2Id");
+                        .HasForeignKey("User2Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("User1");
 
@@ -1344,11 +1332,15 @@ namespace questvault.Migrations
                 {
                     b.HasOne("questvault.Models.User", "Receiver")
                         .WithMany()
-                        .HasForeignKey("ReceiverId");
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("questvault.Models.User", "Sender")
                         .WithMany()
-                        .HasForeignKey("SenderId");
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Receiver");
 

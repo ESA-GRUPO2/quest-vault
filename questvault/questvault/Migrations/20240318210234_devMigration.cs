@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace questvault.Migrations
 {
     /// <inheritdoc />
-    public partial class SCG2187 : Migration
+    public partial class devMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -241,6 +241,56 @@ namespace questvault.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Friendship",
+                columns: table => new
+                {
+                    User1Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    User2Id = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Friendship", x => new { x.User1Id, x.User2Id });
+                    table.ForeignKey(
+                        name: "FK_Friendship_AspNetUsers_User1Id",
+                        column: x => x.User1Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Friendship_AspNetUsers_User2Id",
+                        column: x => x.User2Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FriendshipRequest",
+                columns: table => new
+                {
+                    SenderId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ReceiverId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    isAccepted = table.Column<bool>(type: "bit", nullable: false),
+                    FriendshipDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FriendshipRequest", x => new { x.SenderId, x.ReceiverId });
+                    table.ForeignKey(
+                        name: "FK_FriendshipRequest_AspNetUsers_ReceiverId",
+                        column: x => x.ReceiverId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FriendshipRequest_AspNetUsers_SenderId",
+                        column: x => x.SenderId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -588,6 +638,16 @@ namespace questvault.Migrations
                 column: "UserId1");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Friendship_User2Id",
+                table: "Friendship",
+                column: "User2Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FriendshipRequest_ReceiverId",
+                table: "FriendshipRequest",
+                column: "ReceiverId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_GameCompany_IgdbCompanyId",
                 table: "GameCompany",
                 column: "IgdbCompanyId");
@@ -643,6 +703,12 @@ namespace questvault.Migrations
 
             migrationBuilder.DropTable(
                 name: "EmailTokens");
+
+            migrationBuilder.DropTable(
+                name: "Friendship");
+
+            migrationBuilder.DropTable(
+                name: "FriendshipRequest");
 
             migrationBuilder.DropTable(
                 name: "GameCompany");

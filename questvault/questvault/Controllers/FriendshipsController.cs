@@ -18,9 +18,6 @@ namespace questvault.Controllers
         // GET: FriendshipRequests
         public async Task<IActionResult> IndexAsync()
         {
-            //if (id != null) PatientList = _context.Patient.Include(p => p.Doctor).AsNoTracking().Where(p => p.DoctorId == id);
-            //else PatientList = _context.Patient.Include(p => p.Doctor).AsNoTracking().Select(p => p);
-            //context.FriendshipRequest.Include(f => f.Sender).AsNoTracking().Where(f => f.SenderId == signInManager.UserManager.GetUserAsync(this.User).Id.ToString())
             var user = await signInManager.UserManager.GetUserAsync(this.User);
 
             var dbContext = await context.FriendshipRequest.ToListAsync();
@@ -35,18 +32,12 @@ namespace questvault.Controllers
                 }
                 
             }
-            //Console.WriteLine(dbContext);
             return View(dbContextCopy);
         }
-        /*public Task<IActionResult> Index()
-        {
-            return _context.FriendshipRequest != null ?
-             View(await _context.FriendshipRequest.ToListAsync()) :
-             Problem("Entity set 'ApplicationDbContext.FriendRequest'  is null.");
-        }*/
+        
 
         // GET: Friendships/Details/5
-        public async Task<IActionResult> Details(int? id)
+        /*public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -61,10 +52,10 @@ namespace questvault.Controllers
             }
 
             return View(friendship);
-        }
+        }*/
 
         // GET: Friendships/Create
-        public IActionResult Create()
+        /*public IActionResult Create()
         {
             return View();
         }
@@ -172,7 +163,7 @@ namespace questvault.Controllers
         private bool FriendshipExists(int id)
         {
             return context.Friendship.Any(e => e.id == id);
-        }
+        }*/
 
         /// <summary>
         ///     Verifies if a connection between two users already exists and if it doesnt a friend request object is created.
@@ -210,7 +201,6 @@ namespace questvault.Controllers
         ///     Creates a friendship object between the current user and a selected user.
         /// </summary>
         /// <param name="id">The id of the user who recieves the friendship</param>
-
         public async Task<IActionResult> AcceptFriendRequestAsync(string id)
         {
             var receiver = await context.Users.FindAsync(id);
