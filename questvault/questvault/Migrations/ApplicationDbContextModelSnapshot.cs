@@ -672,6 +672,12 @@ namespace questvault.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("rating")
+                        .HasColumnType("int");
+
+                    b.Property<long>("review")
+                        .HasColumnType("bigint");
+
                     b.HasKey("GameLogId");
 
                     b.HasIndex("GameId");

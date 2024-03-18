@@ -50,31 +50,35 @@
                     <div class="d-inline-flex">
                          <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
                             <input type="hidden" name="gameId" value="@Model.IgdbId"/>
-                                <select #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
-                                    <option selected>Add Game</option>
+                                <select required #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
+                                    <option value="" disabled selected hidden>Add Game</option>
                                     <option value="Playing">Playing</option>
                                     <option value="Finished">Finished</option>
                                     <option value="Backlogged">Backlogged</option>
                                     <option value="Wishlist">Wishlist</option>
                            
                                 </select>
-                                <select #status (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2" aria-label="Default select example">
-                                    <option selected>Status</option>
+                                <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example">
+                                    <option value="" disabled selected hidden>Status</option>
                                     <option value="Complete">Complete</option>
                                     <option value="Played">Played</option>
                                     <option value="Retired">Retired</option>
                                     <option value="Shelved">Shelved</option>
                                     <option value="Abandoned">Abandoned</option>
                                 </select>
-                                <button class="btn btn-primary nav-btn-2" type="submit">Submit</button>
+                                <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" style="width:8.5rem" type="submit">Submit</button>
                      </form>
-                            @if (ViewBag.IsGameAddedToLibrary==true)
-                            {
-                                 <form asp-controller="Library" asp-action="RemoveGame" method="post">
-                                    <input type="hidden" name="gameId" value="@Model.IgdbId"/>
-                                    <button class="btn btn-primary nav-btn-2" type="submit">Remove Game</button>
-                                 </form>
-                            }
+@*                      @if (ViewBag.IsGameAddedToLibrary == true)
+                    {
+                        <form asp-controller="Library" asp-action="RemoveGame" method="post">
+                        <input type="hidden" name="gameId" value="@Model.IgdbId"/>
+                        <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove Game</button>
+                        </form>
+                    } *@ 
+                            <form asp-controller="Library" asp-action="RemoveGame" method="post">
+                                <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                                <button class="btn btn-primary nav-btn-2  ms-2 me-2 mb-2" type="submit">Remove Game</button>
+                            </form>
                     </div>
                 </div>
             </div>

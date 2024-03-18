@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using IGDB.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
 using questvault.Services;
 using RestEase;
+using GameStatus = questvault.Models.GameStatus;
 
 namespace questvault.Controllers
 {
@@ -17,16 +19,19 @@ namespace questvault.Controllers
         {
             var user = await signInManager.UserManager.GetUserAsync(User);
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
+
             if (!Enum.TryParse<OwnageStatus>(ownage, out OwnageStatus ownageEnum) ||
                 !Enum.TryParse<GameStatus>(status, out GameStatus statusEnum))
             {
                 // Se a conversão falhar, retorne BadRequest
-                return BadRequest("Invalid ownage or status value.");
+                ViewBag.Error = "Invalid ownage or status value.";
+                return RedirectToAction("Details", "Games", new { id = gameId });
             }
 
             if (user == null || gameId == null)
             {
-                return BadRequest();
+                ViewBag.Error = "Invalid user or game ID.";
+                return RedirectToAction("Details", "Games", new { id = gameId });
             }
 
             var library = await context.GamesLibrary
@@ -71,6 +76,7 @@ namespace questvault.Controllers
         public async Task<IActionResult> RemoveGame(long gameId)
         {
             var user = await signInManager.UserManager.GetUserAsync(User);
+            var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
             if (user == null || gameId <= 0)
             {
@@ -86,33 +92,41 @@ namespace questvault.Controllers
                 return NotFound();
             }
 
-            var gameToRemove = library.GameLogs.FirstOrDefault(g => g.GameId == gameId);
+            var gameToRemove = library.GameLogs.FirstOrDefault(g => g.GameId ==game.IgdbId);
             if (gameToRemove != null)
             {
-                library.GameLogs.Remove(gameToRemove);
+                context.GameLog.Remove(gameToRemove);
                 await context.SaveChangesAsync();
             }
 
-            return View();
+            return RedirectToAction("Details", "Games", new { id = game.IgdbId });
         }
 
-        public async Task<IActionResult> GameDetails(long gameId)
+        [Route("details/{gameid}")]
+        public async Task<IActionResult> details(long gameId)
         {
+            
             // Verifique se o jogo está na biblioteca do utilizador
             var user = await signInManager.UserManager.GetUserAsync(User);
+            var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
             var userLibrary = await context.GamesLibrary
                 .Include(g => g.GameLogs)
                 .FirstOrDefaultAsync(g => g.User == user);
 
+            Console.WriteLine("ENTREI NESTA MERDA");
+
             bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.GameId == gameId);
 
+            Console.WriteLine(isGameAddedToLibrary);
             // Passe a variável para a visualização
             ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
 
             // Obtenha os detalhes do jogo e retorne a visualização
-            var game = await context.Games.FindAsync(gameId);
             return View(game);
         }
+
+   
+
     }
 }

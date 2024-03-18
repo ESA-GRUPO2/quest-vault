@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace questvault.Migrations
 {
     /// <inheritdoc />
-    public partial class SCG2186 : Migration
+    public partial class SCG2178 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -344,6 +344,8 @@ namespace questvault.Migrations
                     HoursPlayed = table.Column<int>(type: "int", nullable: false),
                     Ownage = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
+                    rating = table.Column<int>(type: "int", nullable: false),
+                    review = table.Column<long>(type: "bigint", nullable: false),
                     GamesLibraryId = table.Column<long>(type: "bigint", nullable: true),
                     GamesLibraryId1 = table.Column<long>(type: "bigint", nullable: true)
                 },

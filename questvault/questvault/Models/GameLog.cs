@@ -21,5 +21,12 @@ namespace questvault.Models
         public OwnageStatus Ownage {  get; set; }
         [AllowNull]
         public GameStatus Status { get; set; }
+
+        [AllowNull]
+        public int rating { get; set; }
+
+        [AllowNull]
+        public long review { get; set; }
+
     }
 }
