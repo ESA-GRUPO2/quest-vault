@@ -3,5 +3,4 @@
 
 // Write your JavaScript code.
 
-
-
+document.getElementById("profile-blur").style.filter = "blur(0.5rem)";
