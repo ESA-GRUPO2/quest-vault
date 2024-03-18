@@ -56,7 +56,7 @@ jobs:
         run: |
             dotnet tool install --global dotnet-ef
             dotnet tool restore
-            dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }} --no-build
+            dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 
       - name: dotnet publish
         run: dotnet publish ${{env.PROJ_PATH}} -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
