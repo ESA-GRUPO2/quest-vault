@@ -262,12 +262,65 @@ namespace questvault.Controllers
         }
 
         /// <summary>
+        ///     Makes a list with all the user's friends
+        /// </summary>
+        public async Task<IActionResult> FriendsPageAsync()
+        {
+            var user = await signInManager.UserManager.GetUserAsync(this.User);
+
+            var dbContext = await context.Friendship.ToListAsync();
+            var dbContextCopy = new List<Friendship>();
+            foreach (var a in dbContext)
+            {
+                if (a.User1 == user)
+                {
+                    var friendship = new Friendship
+                    {
+                        User1 = user,
+                    };
+                    var user2 = await context.Users.FindAsync(a.User2Id);
+                    friendship.User2 = user2;
+                    dbContextCopy.Add(friendship);
+                }else if(a.User2 == user)
+                {
+                    var friendship = new Friendship
+                    {
+                        User1 = user,
+                    };
+                    var user2 = await context.Users.FindAsync(a.User1Id);
+                    friendship.User2 = user2;
+                    dbContextCopy.Add(friendship);
+                }
+
+            }
+            //Console.WriteLine(dbContext);
+            return View(dbContextCopy);
+        }
+
+
+        /// <summary>
         ///     Deletes a user from the list of friends
         /// </summary>
         /// <param name="id">The id of the user who recieves the friendship</param>
         public async Task<IActionResult> RemoveFriendAsync(string id)
         {
-            return RedirectToAction(nameof(Index));
+            var sender = await context.Users.FindAsync(id);
+            var receiver = await signInManager.UserManager.GetUserAsync(this.User);
+            if (receiver != null && sender != null)
+            {
+                var friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == sender.Id && fr.ReceiverId == receiver.Id).ToListAsync();
+                if (friendshipRequest.Any())
+                {
+                    context.FriendshipRequest.Remove(friendshipRequest.First());
+                }
+                else
+                {
+                    friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == receiver.Id && fr.ReceiverId == sender.Id).ToListAsync();
+                    context.FriendshipRequest.Remove(friendshipRequest.First());
+                }
+                context.SaveChanges();
+            }
+            return RedirectToAction(nameof(FriendsPage));
         }
     }
 }

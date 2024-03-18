@@ -1,0 +1,39 @@
+﻿@model IEnumerable<questvault.Models.Friendship>
+
+@{
+    ViewData["Title"] = "FriendList";
+}
+
+<h1 class="text-light">@ViewData["Title"]</h1>
+
+<table class="table table-dark table-sm table-profile">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User1.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User2.UserName)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User1.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User2.UserName)
+                </td>
+                <td>
+                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.id">Remove Friend</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
