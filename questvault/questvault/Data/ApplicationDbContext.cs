@@ -25,10 +25,10 @@ namespace questvault.Data
             var gamesList = igdbService.GetPopularGames(10).Result;
 
             var idscomp = gamesList.SelectMany(game =>
-                game.GameCompanies.Select(comp => comp.CompanyId)).Distinct().ToList();
+                game.GameCompanies.Select(comp => comp.IgdbCompanyId)).Distinct().ToList();
 
             var idsplat = gamesList.SelectMany(game =>
-                game.GamePlatforms.Select(p => p.PlatformId)).Distinct().ToList();
+                game.GamePlatforms.Select(p => p.IgdbPlatformId)).Distinct().ToList();
 
             var companies = igdbService.GetCompaniesFromIds(idscomp).Result;
             var platforms = igdbService.GetPlatformsFromIds(idsplat).Result;
@@ -42,6 +42,7 @@ namespace questvault.Data
             builder.Entity<Game>().HasData(gamesList.Select(game => new
             {
                 game.GameId,
+                game.IgdbId,
                 game.Name,
                 game.Summary,
                 game.IgdbRating,
@@ -56,33 +57,35 @@ namespace questvault.Data
             builder.Entity<GameGenre>().HasData(gamesList.SelectMany(game =>
             game.GameGenres.Select(gg => new
             {
-                gg.GameId,
-                gg.GenreId,
+                gg.IgdbId,
+                gg.IgdbGenreId,
             })
                 ).ToArray());
 
             var companyIds = companies.Select(c=> c.CompanyId).ToList();
             builder.Entity<GameCompany>().HasData(gamesList
                 .SelectMany(game => game.GameCompanies
-                    .Where(gg => companyIds.Contains(gg.CompanyId))
+                    .Where(gg => companyIds.Contains(gg.IgdbCompanyId))
                     .Select(gg => new
                     {
-                        gg.GameId,
-                        gg.CompanyId
+                        gg.IgdbId,
+                        gg.IgdbCompanyId,
                     }))
                 .ToArray());
+
+
 
             var platformIds = platforms.Select(p => p.PlatformId).ToList();
             builder.Entity<GamePlatform>().HasData(gamesList
                 .SelectMany(game => game.GamePlatforms
-                    .Where(gg => platformIds.Contains(gg.PlatformId))
+                    .Where(gg => platformIds.Contains(gg.IgdbPlatformId))
                     .Select(gg => new
                     {
-                        gg.GameId,
-                        gg.PlatformId,
+                        gg.IgdbId,
+                        gg.IgdbPlatformId,
                     }))
                 .ToArray());
-
+            Console.WriteLine("BLING BANG BANG BORN");
         }
         public DbSet<Game> Games { get; set; } = default!;
         public DbSet<Genre> Genres { get; set; } = default!;

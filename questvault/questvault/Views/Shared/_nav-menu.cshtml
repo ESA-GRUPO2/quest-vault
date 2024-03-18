@@ -25,18 +25,16 @@
             @if (SignInManager.IsSignedIn(User))
             {
                     <li class="align-self-center">
-                        <form asp-controller="Games" asp-action="SearchForm" method="post">
+                        <form asp-controller="Games" asp-action="Results" method="post">
                         <div class="search-bar d-flex">
-                             <input id="searchTerm" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
-                             <div id="searchResults" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <!-- Resultados da pesquisa aqui -->
-                             </div>
+                                <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
                             <button class="outside-search" type="submit">
                                     <img src="\img\vector\magnifying.svg" class="search-btn" />
                             </button>
                                 
-                        </div>       
-                    </form>
+                        </div>
+                        </form>
+                        <ul id="searchResults" class="list-group dropdown-menu"></ul>
                     </li>
                     <li class="nav-item align-self-center ms-3" style="padding-right: 15rem">
                         <div class="dropdown">
