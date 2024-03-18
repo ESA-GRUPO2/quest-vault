@@ -61,6 +61,7 @@ namespace questvault.Migrations
                 {
                     CompanyId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    IgdbCompanyId = table.Column<long>(type: "bigint", nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -95,6 +96,7 @@ namespace questvault.Migrations
                 {
                     GenreId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    IgdbGenreId = table.Column<long>(type: "bigint", nullable: false),
                     GenreName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -108,6 +110,7 @@ namespace questvault.Migrations
                 {
                     PlatformId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    IgdbPlatformId = table.Column<long>(type: "bigint", nullable: false),
                     PlatformName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -245,14 +248,14 @@ namespace questvault.Migrations
                 columns: table => new
                 {
                     IgdbId = table.Column<long>(type: "bigint", nullable: false),
-                    CompanyId = table.Column<long>(type: "bigint", nullable: false)
+                    IgdbCompanyId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GameCompany", x => new { x.IgdbId, x.CompanyId });
+                    table.PrimaryKey("PK_GameCompany", x => new { x.IgdbId, x.IgdbCompanyId });
                     table.ForeignKey(
-                        name: "FK_GameCompany_Companies_CompanyId",
-                        column: x => x.CompanyId,
+                        name: "FK_GameCompany_Companies_IgdbCompanyId",
+                        column: x => x.IgdbCompanyId,
                         principalTable: "Companies",
                         principalColumn: "CompanyId",
                         onDelete: ReferentialAction.Cascade);
@@ -269,11 +272,11 @@ namespace questvault.Migrations
                 columns: table => new
                 {
                     IgdbId = table.Column<long>(type: "bigint", nullable: false),
-                    GenreId = table.Column<long>(type: "bigint", nullable: false)
+                    IgdbGenreId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GameGenre", x => new { x.IgdbId, x.GenreId });
+                    table.PrimaryKey("PK_GameGenre", x => new { x.IgdbId, x.IgdbGenreId });
                     table.ForeignKey(
                         name: "FK_GameGenre_Games_IgdbId",
                         column: x => x.IgdbId,
@@ -281,8 +284,8 @@ namespace questvault.Migrations
                         principalColumn: "GameId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GameGenre_Genres_GenreId",
-                        column: x => x.GenreId,
+                        name: "FK_GameGenre_Genres_IgdbGenreId",
+                        column: x => x.IgdbGenreId,
                         principalTable: "Genres",
                         principalColumn: "GenreId",
                         onDelete: ReferentialAction.Cascade);
@@ -293,11 +296,11 @@ namespace questvault.Migrations
                 columns: table => new
                 {
                     IgdbId = table.Column<long>(type: "bigint", nullable: false),
-                    PlatformId = table.Column<long>(type: "bigint", nullable: false)
+                    IgdbPlatformId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GamePlatform", x => new { x.IgdbId, x.PlatformId });
+                    table.PrimaryKey("PK_GamePlatform", x => new { x.IgdbId, x.IgdbPlatformId });
                     table.ForeignKey(
                         name: "FK_GamePlatform_Games_IgdbId",
                         column: x => x.IgdbId,
@@ -305,8 +308,8 @@ namespace questvault.Migrations
                         principalColumn: "GameId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GamePlatform_Platforms_PlatformId",
-                        column: x => x.PlatformId,
+                        name: "FK_GamePlatform_Platforms_IgdbPlatformId",
+                        column: x => x.IgdbPlatformId,
                         principalTable: "Platforms",
                         principalColumn: "PlatformId",
                         onDelete: ReferentialAction.Cascade);
@@ -314,19 +317,19 @@ namespace questvault.Migrations
 
             migrationBuilder.InsertData(
                 table: "Companies",
-                columns: new[] { "CompanyId", "CompanyName" },
+                columns: new[] { "CompanyId", "CompanyName", "IgdbCompanyId" },
                 values: new object[,]
                 {
-                    { 1L, "Electronic Arts" },
-                    { 8L, "2K Games" },
-                    { 13L, "Demiurge Studios" },
-                    { 24L, "Sierra Entertainment" },
-                    { 29L, "Rockstar Games" },
-                    { 38L, "Ubisoft Montreal" },
-                    { 50L, "WB Games" },
-                    { 56L, "Valve" },
-                    { 104L, "Ubisoft Entertainment" },
-                    { 126L, "Bethesda Game Studios" }
+                    { 1L, "Electronic Arts", 1L },
+                    { 8L, "2K Games", 8L },
+                    { 13L, "Demiurge Studios", 13L },
+                    { 24L, "Sierra Entertainment", 24L },
+                    { 29L, "Rockstar Games", 29L },
+                    { 38L, "Ubisoft Montreal", 38L },
+                    { 50L, "WB Games", 50L },
+                    { 56L, "Valve", 56L },
+                    { 104L, "Ubisoft Entertainment", 104L },
+                    { 126L, "Bethesda Game Studios", 126L }
                 });
 
             migrationBuilder.InsertData(
@@ -348,54 +351,54 @@ namespace questvault.Migrations
 
             migrationBuilder.InsertData(
                 table: "Genres",
-                columns: new[] { "GenreId", "GenreName" },
+                columns: new[] { "GenreId", "GenreName", "IgdbGenreId" },
                 values: new object[,]
                 {
-                    { 2L, "Point-and-click" },
-                    { 4L, "Fighting" },
-                    { 5L, "Shooter" },
-                    { 7L, "Music" },
-                    { 8L, "Platform" },
-                    { 9L, "Puzzle" },
-                    { 10L, "Racing" },
-                    { 11L, "Real Time Strategy (RTS)" },
-                    { 12L, "Role-playing (RPG)" },
-                    { 13L, "Simulator" },
-                    { 14L, "Sport" },
-                    { 15L, "Strategy" },
-                    { 16L, "Turn-based strategy (TBS)" },
-                    { 24L, "Tactical" },
-                    { 25L, "Hack and slash/Beat 'em up" },
-                    { 26L, "Quiz/Trivia" },
-                    { 30L, "Pinball" },
-                    { 31L, "Adventure" },
-                    { 32L, "Indie" },
-                    { 33L, "Arcade" },
-                    { 34L, "Visual Novel" },
-                    { 35L, "Card & Board Game" },
-                    { 36L, "MOBA" }
+                    { 2L, "Point-and-click", 2L },
+                    { 4L, "Fighting", 4L },
+                    { 5L, "Shooter", 5L },
+                    { 7L, "Music", 7L },
+                    { 8L, "Platform", 8L },
+                    { 9L, "Puzzle", 9L },
+                    { 10L, "Racing", 10L },
+                    { 11L, "Real Time Strategy (RTS)", 11L },
+                    { 12L, "Role-playing (RPG)", 12L },
+                    { 13L, "Simulator", 13L },
+                    { 14L, "Sport", 14L },
+                    { 15L, "Strategy", 15L },
+                    { 16L, "Turn-based strategy (TBS)", 16L },
+                    { 24L, "Tactical", 24L },
+                    { 25L, "Hack and slash/Beat 'em up", 25L },
+                    { 26L, "Quiz/Trivia", 26L },
+                    { 30L, "Pinball", 30L },
+                    { 31L, "Adventure", 31L },
+                    { 32L, "Indie", 32L },
+                    { 33L, "Arcade", 33L },
+                    { 34L, "Visual Novel", 34L },
+                    { 35L, "Card & Board Game", 35L },
+                    { 36L, "MOBA", 36L }
                 });
 
             migrationBuilder.InsertData(
                 table: "Platforms",
-                columns: new[] { "PlatformId", "PlatformName" },
+                columns: new[] { "PlatformId", "IgdbPlatformId", "PlatformName" },
                 values: new object[,]
                 {
-                    { 3L, "Linux" },
-                    { 6L, "PC (Microsoft Windows)" },
-                    { 8L, "PlayStation 2" },
-                    { 9L, "PlayStation 3" },
-                    { 11L, "Xbox" },
-                    { 39L, "iOS" },
-                    { 49L, "Xbox One" },
-                    { 130L, "Nintendo Switch" },
-                    { 167L, "PlayStation 5" },
-                    { 169L, "Xbox Series X|S" }
+                    { 3L, 3L, "Linux" },
+                    { 6L, 6L, "PC (Microsoft Windows)" },
+                    { 8L, 8L, "PlayStation 2" },
+                    { 9L, 9L, "PlayStation 3" },
+                    { 11L, 11L, "Xbox" },
+                    { 39L, 39L, "iOS" },
+                    { 49L, 49L, "Xbox One" },
+                    { 130L, 130L, "Nintendo Switch" },
+                    { 167L, 167L, "PlayStation 5" },
+                    { 169L, 169L, "Xbox Series X|S" }
                 });
 
             migrationBuilder.InsertData(
                 table: "GameCompany",
-                columns: new[] { "CompanyId", "IgdbId" },
+                columns: new[] { "IgdbCompanyId", "IgdbId" },
                 values: new object[,]
                 {
                     { 8L, 20L },
@@ -416,7 +419,7 @@ namespace questvault.Migrations
 
             migrationBuilder.InsertData(
                 table: "GameGenre",
-                columns: new[] { "GenreId", "IgdbId" },
+                columns: new[] { "IgdbGenreId", "IgdbId" },
                 values: new object[,]
                 {
                     { 5L, 20L },
@@ -449,7 +452,7 @@ namespace questvault.Migrations
 
             migrationBuilder.InsertData(
                 table: "GamePlatform",
-                columns: new[] { "IgdbId", "PlatformId" },
+                columns: new[] { "IgdbId", "IgdbPlatformId" },
                 values: new object[,]
                 {
                     { 20L, 6L },
@@ -532,19 +535,19 @@ namespace questvault.Migrations
                 column: "UserId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GameCompany_CompanyId",
+                name: "IX_GameCompany_IgdbCompanyId",
                 table: "GameCompany",
-                column: "CompanyId");
+                column: "IgdbCompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GameGenre_GenreId",
+                name: "IX_GameGenre_IgdbGenreId",
                 table: "GameGenre",
-                column: "GenreId");
+                column: "IgdbGenreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GamePlatform_PlatformId",
+                name: "IX_GamePlatform_IgdbPlatformId",
                 table: "GamePlatform",
-                column: "PlatformId");
+                column: "IgdbPlatformId");
         }
 
         /// <inheritdoc />

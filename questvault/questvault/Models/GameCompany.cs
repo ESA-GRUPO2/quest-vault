@@ -6,7 +6,7 @@ namespace questvault.Models
     /// <summary>
     /// Represents a many-to-many relationship between Game and Company entities.
     /// </summary>
-    [PrimaryKey (nameof(IgdbId), nameof(CompanyId))]
+    [PrimaryKey (nameof(IgdbId), nameof(IgdbCompanyId))]
     public class GameCompany
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace questvault.Models
         /// Gets or sets the ID of the company.
         /// </summary>
         [Column(Order = 1)]
-        public long CompanyId { get; set; }
+        public long IgdbCompanyId { get; set; }
 
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace questvault.Models
         /// <summary>
         /// Gets or sets the navigation property for the company.
         /// </summary>
-        [ForeignKey(nameof(CompanyId))]
+        [ForeignKey(nameof(IgdbCompanyId))]
         public virtual Company? Company { get; set; }
     }
 

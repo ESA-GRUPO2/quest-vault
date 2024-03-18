@@ -9,6 +9,7 @@ namespace questvault.Models
     {
         [Key]
         public long PlatformId { get; set; }
+        public long IgdbPlatformId { get; set; }
         /// <summary>
         /// Gets or sets the name of the gaming platform.
         /// </summary>

@@ -12,7 +12,7 @@ $(document).ready(function () {
                     $('#searchResults').empty();
                     if (data.length > 0) {
                         $.each(data, function (index, game) {
-                            $('#searchResults').append('<li class="list-group-item"><a href="/Games/Details/' + game.gameId + '">' + game.name + '</a></li>');
+                            $('#searchResults').append('<li class="list-group-item"><a href="/Games/Details/' + game.igdbId + '">' + game.name + '</a></li>');
                         });
                         $('#searchResults').show(); // Mostrar a dropdown se houver resultados
                     } else {

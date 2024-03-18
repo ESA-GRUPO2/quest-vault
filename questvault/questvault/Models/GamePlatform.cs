@@ -6,7 +6,7 @@ namespace questvault.Models
     /// <summary>
     /// Represents a many-to-many relationship between Game and Platform entities.
     /// </summary>
-    [PrimaryKey(nameof(IgdbId), nameof(PlatformId))]
+    [PrimaryKey(nameof(IgdbId), nameof(IgdbPlatformId))]
     public class GamePlatform
     {
         /// <summary>
@@ -25,12 +25,12 @@ namespace questvault.Models
         /// Gets or sets the ID of the platform.
         /// </summary>
         [Column(Order = 1)]
-        public long PlatformId { get; set; }
+        public long IgdbPlatformId { get; set; }
 
         /// <summary>
         /// Gets or sets the navigation property for the platform.
         /// </summary>
-        [ForeignKey(nameof(PlatformId))]
+        [ForeignKey(nameof(IgdbPlatformId))]
         public Platform Platform { get; set; }
     }
 

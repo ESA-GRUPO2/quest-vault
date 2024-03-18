@@ -25,7 +25,7 @@ namespace questvault.Services
             string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, cover.image_id, first_release_date, screenshots.image_id, videos.video_id;" +
                 $"where name ~ *\"{searchTerm}\"* & genres != null & rating != null & total_rating_count != null & cover.image_id != null & involved_companies != null & platforms != null & first_release_date != null & screenshots.image_id != null & videos.video_id != null;" +
                 "sort total_rating_count desc;" +
-                "limit 5;";
+                "limit 50;";
             var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
             
             return games.Select(game => BuildGameFromIGDBGame(game));
@@ -159,7 +159,7 @@ namespace questvault.Services
             return new GameGenre
             {
                 IgdbId = (long)igdbGame.Id,
-                GenreId = (long)genreData.Id,
+                IgdbGenreId = (long)genreData.Id,
                 Genre = new Genre
                 {
                     GenreId = (long)genreData.Id,
@@ -180,10 +180,11 @@ namespace questvault.Services
             {
 
                 IgdbId = (long)igdbGame.Id,
-                CompanyId = (long)companyData.Company.Id,
+                IgdbCompanyId = (long)companyData.Company.Id,
                 Company = new Company
                 {
-                    CompanyId = (long)companyData.Company.Id
+                    CompanyId = (long)companyData.Company.Id,
+                    
                 }
             };
         }
@@ -199,7 +200,7 @@ namespace questvault.Services
             return new GamePlatform
             {
                 IgdbId = (long)igdbGame.Id,
-                PlatformId = (long)platformData.Id,
+                IgdbPlatformId = (long)platformData.Id,
                 Platform = new Platform
                 {
                     PlatformId = (long)platformData.Id
@@ -215,6 +216,7 @@ namespace questvault.Services
             return genres.Select(genre => new Models.Genre
             {
                 GenreId = (long)genre.Id,
+                IgdbGenreId = (long)genre.Id,
                 GenreName = genre.Name
             });
         }
@@ -226,6 +228,7 @@ namespace questvault.Services
             return companies.Select(c => new Company
             {
                 CompanyId = (long)(c.Id),
+                IgdbCompanyId = (long)c.Id,
                 CompanyName = c.Name
             });
         }
@@ -238,6 +241,7 @@ namespace questvault.Services
             return companies.Select(c => new Company
             {
                 CompanyId = (long)c.Id,
+                IgdbCompanyId= (long)c.Id,
                 CompanyName = c.Name
             });
         }
@@ -249,6 +253,7 @@ namespace questvault.Services
             return platforms.Select(p => new Platform
             {
                 PlatformId = (long)p.Id,
+                IgdbPlatformId  = (long)p.Id,
                 PlatformName = p.Name
             });
         }
@@ -261,6 +266,7 @@ namespace questvault.Services
             return platforms.Select(p => new Platform
             {
                 PlatformId = (long)p.Id,
+                IgdbPlatformId= (long)p.Id,
                 PlatformName = p.Name
             });
         }

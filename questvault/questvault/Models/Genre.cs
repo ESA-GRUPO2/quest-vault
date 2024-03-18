@@ -9,6 +9,7 @@ namespace questvault.Models
     {
         [Key]
         public long GenreId { get; set; }
+        public long IgdbGenreId { get; set; }
         /// <summary>
         /// Gets or sets the name of the gaming genre.
         /// </summary>

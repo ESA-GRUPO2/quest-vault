@@ -25,10 +25,10 @@ namespace questvault.Data
             var gamesList = igdbService.GetPopularGames(10).Result;
 
             var idscomp = gamesList.SelectMany(game =>
-                game.GameCompanies.Select(comp => comp.CompanyId)).Distinct().ToList();
+                game.GameCompanies.Select(comp => comp.IgdbCompanyId)).Distinct().ToList();
 
             var idsplat = gamesList.SelectMany(game =>
-                game.GamePlatforms.Select(p => p.PlatformId)).Distinct().ToList();
+                game.GamePlatforms.Select(p => p.IgdbPlatformId)).Distinct().ToList();
 
             var companies = igdbService.GetCompaniesFromIds(idscomp).Result;
             var platforms = igdbService.GetPlatformsFromIds(idsplat).Result;
@@ -58,29 +58,31 @@ namespace questvault.Data
             game.GameGenres.Select(gg => new
             {
                 gg.IgdbId,
-                gg.GenreId,
+                gg.IgdbGenreId,
             })
                 ).ToArray());
 
             var companyIds = companies.Select(c=> c.CompanyId).ToList();
             builder.Entity<GameCompany>().HasData(gamesList
                 .SelectMany(game => game.GameCompanies
-                    .Where(gg => companyIds.Contains(gg.CompanyId))
+                    .Where(gg => companyIds.Contains(gg.IgdbCompanyId))
                     .Select(gg => new
                     {
                         gg.IgdbId,
-                        gg.CompanyId,
+                        gg.IgdbCompanyId,
                     }))
                 .ToArray());
+
+
 
             var platformIds = platforms.Select(p => p.PlatformId).ToList();
             builder.Entity<GamePlatform>().HasData(gamesList
                 .SelectMany(game => game.GamePlatforms
-                    .Where(gg => platformIds.Contains(gg.PlatformId))
+                    .Where(gg => platformIds.Contains(gg.IgdbPlatformId))
                     .Select(gg => new
                     {
                         gg.IgdbId,
-                        gg.PlatformId,
+                        gg.IgdbPlatformId,
                     }))
                 .ToArray());
             Console.WriteLine("BLING BANG BANG BORN");
