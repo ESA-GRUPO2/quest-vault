@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240318222842_SCG2-178")]
-    partial class SCG2178
+    [Migration("20240318232534_SCG2-132")]
+    partial class SCG2132
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -708,14 +708,14 @@ namespace questvault.Migrations
                     b.Property<int>("Ownage")
                         .HasColumnType("int");
 
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Review")
+                        .HasColumnType("bigint");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
-
-                    b.Property<int>("rating")
-                        .HasColumnType("int");
-
-                    b.Property<long>("review")
-                        .HasColumnType("bigint");
 
                     b.HasKey("GameLogId");
 

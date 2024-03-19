@@ -165,10 +165,6 @@
     background: #133E7C !important;
 }
 
-.dropdown-item:hover {
-    background-color: #f0f0f0;
-    color: #333;
-}
 
 .selected {
     /*background-color: #f0f0f0;*/ /*Cor de fundo quando selecionado */

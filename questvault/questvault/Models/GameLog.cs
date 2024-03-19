@@ -23,10 +23,10 @@ namespace questvault.Models
         public GameStatus Status { get; set; }
 
         [AllowNull]
-        public int rating { get; set; }
+        public int Rating { get; set; }
 
         [AllowNull]
-        public long review { get; set; }
+        public long Review { get; set; }
 
     }
 }

@@ -102,6 +102,58 @@ namespace questvault.Controllers
             return RedirectToAction("Details", "Games", new { id = game.IgdbId });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddReview(long gameId, long review, int rating)
+        {
+
+            Console.WriteLine("TO CA FILHA DA PUTAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            Console.WriteLine(review);
+            Console.WriteLine(rating);
+            Console.WriteLine("TO CA FILHA DA PUTAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+
+            var user = await signInManager.UserManager.GetUserAsync(User);
+            var game = context.Games.Where(g => g.IgdbId == gameId).First();
+
+            if (user == null)
+            {
+                return BadRequest("User not authenticated.");
+            }
+
+            // Verifique se o jogo está na biblioteca do usuário
+            var userLibrary = await context.GamesLibrary
+                .Include(g => g.GameLogs)
+                .FirstOrDefaultAsync(g => g.User == user && g.GameLogs.Any(gl => gl.GameId == game.IgdbId));
+
+            if (userLibrary == null)
+            {
+                // Se o jogo não estiver na biblioteca do usuário, retorne um BadRequest
+                return BadRequest("Game not found in library.");
+            }
+
+            // Encontre o GameLog correspondente
+            var gameLog = userLibrary.GameLogs.FirstOrDefault(gl => gl.GameId == game.IgdbId);
+
+
+            // Verifique se o GameLog existe e se os status estão preenchidos
+            if (gameLog == null)
+            {
+                // Se o GameLog não existir ou os status não estiverem preenchidos, retorne um BadRequest
+                return BadRequest("Game status not filled.");
+            }
+
+            // Processe a avaliação e a revisão do jogo aqui
+            // Atualize os campos de revisão e avaliação no GameLog
+            gameLog.Review = review;
+            gameLog.Rating = rating;
+
+            // Salve as alterações no banco de dados
+            await context.SaveChangesAsync();
+
+            // Redirecione de volta para a página de detalhes do jogo após a submissão
+            return RedirectToAction("Details", "Games", new { id = game.IgdbId });
+        }
+
         [Route("details/{gameid}")]
         public async Task<IActionResult> details(long gameId)
         {
