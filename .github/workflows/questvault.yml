@@ -30,7 +30,7 @@ jobs:
       run: |
         dotnet tool install --global dotnet-ef
         dotnet tool restore
-        dotnet ef database update -p ./questvault/questvault --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
+        dotnet ef database update -p ./questvault/questvault #--connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
