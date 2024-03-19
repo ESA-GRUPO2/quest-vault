@@ -361,7 +361,7 @@ namespace questvault.Migrations
                         {
                             GameId = 472L,
                             IgdbId = 472L,
-                            IgdbRating = 87.69261829745183,
+                            IgdbRating = 87.692473868886339,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1tnw.jpg",
                             IsReleased = true,
                             Name = "The Elder Scrolls V: Skyrim",
@@ -403,7 +403,7 @@ namespace questvault.Migrations
                         {
                             GameId = 1009L,
                             IgdbId = 1009L,
-                            IgdbRating = 93.377372650897513,
+                            IgdbRating = 93.377210978551503,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
                             IsReleased = true,
                             Name = "The Last of Us",

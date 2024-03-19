@@ -12,13 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240319163436_SCG2-132.Designer.cs
-    [Migration("20240319163436_SCG2-132")]
+    [Migration("20240319195430_SCG2-132")]
     partial class SCG2132
-========
-    [Migration("20240319010242_dev_n")]
-    partial class dev_n
->>>>>>>> dev:questvault/questvault/Migrations/20240319010242_dev_n.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -369,11 +364,7 @@ namespace questvault.Migrations
                         {
                             GameId = 472L,
                             IgdbId = 472L,
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240319163436_SCG2-132.Designer.cs
                             IgdbRating = 87.692473868886339,
-========
-                            IgdbRating = 87.69261829745183,
->>>>>>>> dev:questvault/questvault/Migrations/20240319010242_dev_n.Designer.cs
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1tnw.jpg",
                             IsReleased = true,
                             Name = "The Elder Scrolls V: Skyrim",
@@ -415,11 +406,7 @@ namespace questvault.Migrations
                         {
                             GameId = 1009L,
                             IgdbId = 1009L,
-<<<<<<<< HEAD:questvault/questvault/Migrations/20240319163436_SCG2-132.Designer.cs
                             IgdbRating = 93.377210978551503,
-========
-                            IgdbRating = 93.377372650897513,
->>>>>>>> dev:questvault/questvault/Migrations/20240319010242_dev_n.Designer.cs
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
                             IsReleased = true,
                             Name = "The Last of Us",
