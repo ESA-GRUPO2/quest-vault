@@ -127,7 +127,7 @@
             restore-keys: |
               ${{ runner.os }}-nuget-
         - name: Build with dotnet
-          run: dotnet build ${{env.PROJ_PATH}} -c Release --sc
+          run: dotnet build ${{env.PROJ_PATH}} -c Release
 
         - name: Update database
           run: |
