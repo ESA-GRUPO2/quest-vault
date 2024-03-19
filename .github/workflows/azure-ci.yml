@@ -51,7 +51,12 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Build with dotnet
-        run: dotnet build ${{env.PROJ_PATH}} --configuration Release -o ${{ env.OUTPUT_DIR }}
+        run: |
+          dotnet restore ${{env.PROJ_PATH}}
+          dotnet build ${{env.PROJ_PATH}} --configuration Release -o '${{ env.OUTPUT_DIR }}'
+
+      - name: dotnet publish
+        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o '${{ env.OUTPUT_DIR }}/publish'
 
       - name: Update database
         run: |
@@ -59,34 +64,12 @@ jobs:
             dotnet tool restore
             dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 
-      - name: dotnet publish
-        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o ${{ env.OUTPUT_DIR }}/publish
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: .net-app
-          path: ${{ env.OUTPUT_DIR }}/publish
-          
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: .net-app
       
-          
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ./
+          package: '${{ env.OUTPUT_DIR }}/publish'
   
