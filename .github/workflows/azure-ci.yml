@@ -51,7 +51,9 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: debug where are we
-        run: ls
+        run: |
+            cd ./questvault
+            ls
 
       - name: Build with dotnet
         run: dotnet build ${{env.PROJ_PATH}} --configuration Release -o ${{ env.OUTPUT_DIR }}
@@ -90,5 +92,5 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: ${{ env.PROJ_PATH }}
   
