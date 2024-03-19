@@ -1,4 +1,5 @@
 ﻿@model questvault.Models.Game
+
 @{
     ViewData["Title"] = "Game";
     ViewData["help_Text"] = @"
@@ -61,20 +62,38 @@
                 </div>
                 <div class="game-user-status">
                     <div class="d-inline-flex">
-                        <select #game (change)="onSelected(game.value)" class="select-results col-1 me-2" aria-label="Default select example">
-                            <option selected>Add Game</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <select #status (change)="onSelected(status.value)" class="select-results col-1 ms-2" aria-label="Default select example">
-                            <option selected>Status</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                         <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
+                            <input type="hidden" name="gameId" value="@Model.IgdbId"/>
+                                <select required #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
+                                    <option value="" disabled selected hidden>Add Game</option>
+                                    <option value="Playing">Playing</option>
+                                    <option value="Finished">Finished</option>
+                                    <option value="Backlogged">Backlogged</option>
+                                    <option value="Wishlist">Wishlist</option>
+                           
+                                </select>
+                                <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example">
+                                    <option value="" disabled selected hidden>Status</option>
+                                    <option value="Complete">Complete</option>
+                                    <option value="Played">Played</option>
+                                    <option value="Retired">Retired</option>
+                                    <option value="Shelved">Shelved</option>
+                                    <option value="Abandoned">Abandoned</option>
+                                </select>
+                                <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" style="width:8.5rem" type="submit">Submit</button>
+                     </form>
+@*                      @if (ViewBag.IsGameAddedToLibrary == true)
+                    {
+                        <form asp-controller="Library" asp-action="RemoveGame" method="post">
+                        <input type="hidden" name="gameId" value="@Model.IgdbId"/>
+                        <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove Game</button>
+                        </form>
+                    } *@ 
+                            <form asp-controller="Library" asp-action="RemoveGame" method="post">
+                                <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                                <button class="btn btn-primary nav-btn-2  ms-2 me-2 mb-2" type="submit">Remove Game</button>
+                            </form>
                     </div>
-
                 </div>
             </div>
         </div>

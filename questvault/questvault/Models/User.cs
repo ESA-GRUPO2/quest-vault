@@ -2,7 +2,7 @@
 
 namespace questvault.Models
 {
-  public class User : IdentityUser
+    public class User : IdentityUser
   {
     public bool IsDeactivated { get; set; } = false;
     public bool IsPrivate { get; set; } = false;

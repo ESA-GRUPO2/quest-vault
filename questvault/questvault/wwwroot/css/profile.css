@@ -55,8 +55,34 @@
     text-align: right;
 }
 
-.profile-about{
+.profile-about-private{
     margin-top: 8rem;
+}
+
+.profile-about {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.profile-bio{
+    max-width: 45%;
+    max-height: 30vh;
+}
+
+.profile-bio p{
+    text-align: justify;
+}
+
+.profile-top5{
+    text-align: right;
+    width: 50.7%;
+}
+
+.profile-top5 .game-section-border {
+    text-align: justify;
+    width: auto;
 }
 
 .profile-lock-msg {
@@ -68,4 +94,8 @@
 
 .profile-lock-vector {
     filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
+}
+
+#profile-blur {
+    filter: blur(0.5rem);
 }

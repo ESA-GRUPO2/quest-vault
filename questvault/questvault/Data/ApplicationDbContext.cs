@@ -87,6 +87,39 @@ namespace questvault.Data
                     }))
                 .ToArray());
             Console.WriteLine("BLING BANG BANG BORN");
+
+            //Friendship
+            builder.Entity<Friendship>()
+                .HasKey(f => new { f.User1Id, f.User2Id }); // Define a chave primária composta
+
+            builder.Entity<Friendship>()
+                .HasOne(f => f.User1)
+                .WithMany()
+                .HasForeignKey(f => f.User1Id)
+                .OnDelete(DeleteBehavior.Restrict); // Configura a relação para User1
+
+            builder.Entity<Friendship>()
+                .HasOne(f => f.User2)
+                .WithMany()
+                .HasForeignKey(f => f.User2Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            //FriendRequest
+            builder.Entity<FriendshipRequest>()
+                .HasKey(fr => new { fr.SenderId, fr.ReceiverId }); // Define a chave primária composta
+
+            builder.Entity<FriendshipRequest>()
+                .HasOne(fr => fr.Sender)
+                .WithMany()
+                .HasForeignKey(fr => fr.SenderId)
+                .OnDelete(DeleteBehavior.Restrict); // Configura a relação para User1
+
+            builder.Entity<FriendshipRequest>()
+                .HasOne(fr => fr.Receiver)
+                .WithMany()
+                .HasForeignKey(fr => fr.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);// Configura a relação para User2
         }
         public DbSet<Game> Games { get; set; } = default!;
         public DbSet<Genre> Genres { get; set; } = default!;
@@ -95,6 +128,10 @@ namespace questvault.Data
         public DbSet<GameCompany> GameCompany { get; set; } = default!;
         public DbSet<GameGenre> GameGenre { get; set; } = default!;
         public DbSet<GamePlatform> GamePlatform { get; set; } = default!;
+        public DbSet<GameLog> GameLog { get; set; } = default!;
+        public DbSet<GamesLibrary> GamesLibrary { get; set; } = default!;
+        public DbSet<Friendship> Friendship { get; set; } = default!;
+        public DbSet<FriendshipRequest> FriendshipRequest { get; set; } = default!;
 
     }
 }
