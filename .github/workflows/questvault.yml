@@ -30,7 +30,7 @@ jobs:
       run: |
         dotnet tool install --global dotnet-ef
         dotnet tool restore
-        dotnet ef database update -p ./questvault/questvault --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
+        dotnet ef database update -p ./questvault/questvault --connection Server=tcp:questvaultdbserver.database.windows.net,1433;Initial Catalog=questvault_db;Persist Security Info=False;User ID=questvault;Password=m6L6qb6Q3HYMl66RGl8vUGOFQIPZxOkVs05gz0S8Vx9giXw7OF;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
