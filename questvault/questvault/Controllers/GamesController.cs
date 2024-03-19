@@ -16,6 +16,9 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using MailKit.Search;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using MimeKit.Cryptography;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.CodeAnalysis;
+using Microsoft.IdentityModel.Tokens;
 
 namespace questvault.Controllers
 {
@@ -45,18 +48,97 @@ namespace questvault.Controllers
         /// GET action method for the Index view.
         /// </summary>
         /// <returns>Returns the Index view.</returns>
+        //[HttpGet]
+        //public async Task<IActionResult> Index()
+        //{
+        //    if (_context.Games == null) { return NotFound(); }
+
+        //    var games = await _context.Games.OrderByDescending(
+        //        o => o.IgdbRating)
+
+        //        .ToListAsync();
+        //    var data = new GameViewData
+        //    {
+        //        NumberOfResults = games.Count,
+        //        Games = games,
+        //        Genres = _context.Genres,
+        //        Platforms = _context.Platforms,
+        //    };
+        //    return View(data);
+        //}
+
+        /// <summary>
+        /// Index of the page Games that shows all the games and the filtered ones.
+        /// </summary>
+        /// <param name="releaseStatus">The term to search for the status release.</param>
+        /// <param name="genre">The term to search for genre.</param>
+        /// <param name="releasePlatform">The term to search for platform.</param>
+        /// <returns>A view with the games data</returns>
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string releaseStatus, string genre, string releasePlatform)
         {
-            if (_context.Games == null) { return NotFound(); }
+            // Defina as variáveis de exibição para armazenar os valores selecionados
+            ViewBag.SelectedReleaseStatus = releaseStatus;
+            ViewBag.SelectedGenre = genre;
+            ViewBag.SelectedReleasePlatform = releasePlatform;
+            //ViewBag.SelectedReleaseYear = releaseYear;
+            if (genre == null && releasePlatform == null && releaseStatus == null)
+            {
+                var filteredGames = await _context.Games.OrderByDescending(
+                    o => o.IgdbRating).ToListAsync();
+                var data = new GameViewData
+                {
+                    NumberOfResults = filteredGames.Count,
+                    Games = filteredGames,
+                    Genres = _context.Genres,
+                    Platforms = _context.Platforms.Distinct(),
+                };
+                return View(data);
+            }
+            else
+            {
+                var query = _context.Games.AsQueryable();
 
-            var games = await _context.Games.OrderByDescending(
-                o => o.IgdbRating)
+                if (!string.IsNullOrEmpty(releasePlatform))
+                {
+                    query = query.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
+                }
 
-                .ToListAsync();
-            return View(games);
+                if (!string.IsNullOrEmpty(genre))
+                {
+                    query = query.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
+                }                
+                if (!string.IsNullOrEmpty(releaseStatus))
+                {
+                    var released = (releaseStatus.Equals("released")) ? true : false;
+                    query = query.Where(g => g.IsReleased == released);
+                }
+                //if (releaseYear > 0)
+                //{
+                //    query = query.Where(g => g.ReleaseDate.Value.Year == releaseYear);
+                //}
+
+                var filteredGames = await query.OrderByDescending(g => g.IgdbRating).ToListAsync();
+
+                var data = new GameViewData
+                {
+                    NumberOfResults = filteredGames.Count,
+                    Games = filteredGames,
+                    Genres = _context.Genres,
+                    Platforms = _context.Platforms.Distinct(),
+                };
+                return View(data);
+
+            }
+            // Processar os filtros recebidos e consultar o banco de dados
+
         }
 
+        /// <summary>
+        /// Gets the view Results with the games based on a search term.
+        /// </summary>
+        /// <param name="searchTerm">The term to search for.</param>
+        /// <returns>A view and a collection of games matching the search term sorted by rating.</returns>
         [HttpGet]
         [Route("results")]
         public async Task<IActionResult> Results(string searchTerm)
@@ -64,14 +146,22 @@ namespace questvault.Controllers
             // Se o searchTerm for nulo, retorne NotFound
             if (searchTerm == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
             var results = await _context.Games.Where(e => e.Name.Contains(searchTerm))
                 .OrderByDescending(o => o.IgdbRating)
                 .ToListAsync();
-            return View(results);
+            var data = new GameViewData
+            {
+                SearchTerm = searchTerm,
+                NumberOfResults = results.Count,
+                Games = results,
+                Genres = _context.Genres,
+                Platforms = _context.Platforms,
+            };
+            return View(data);
         }
 
         [HttpPost]
@@ -82,14 +172,14 @@ namespace questvault.Controllers
             // Check if search term is null
             if (searchTerm == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             // Retrieve games from the IGDB service
             var games = await _igdbService.SearchGames(searchTerm);
             if (games == null)
             {
-                return View();
+                return NotFound(); // TODO: TESTAR
             }
 
             // Process each game
@@ -110,7 +200,8 @@ namespace questvault.Controllers
                         Screenshots = game.Screenshots,
                         VideoUrl = game.VideoUrl,
                         QvRating = game.QvRating,
-                        ReleaseDate = game.ReleaseDate
+                        ReleaseDate = game.ReleaseDate,
+                        IsReleased = game.IsReleased,
                     };
 
                     // Add the new game to the database
@@ -125,15 +216,22 @@ namespace questvault.Controllers
                     // Process game platforms
                     await ProcessGamePlatformsAsync(game, newGame);
                 }
+                await _context.SaveChangesAsync();
             }
 
             // Save changes to the database
-            await _context.SaveChangesAsync();
 
-            // Redirecione para a action Results [GET] com o searchTerm como parâmetro
+            // Redirctec to action Results [GET] with searchTerm
             return RedirectToAction("Results", new { searchTerm = searchTerm });
         }
 
+        /// <summary>
+        /// Processes the game companies asynchronously and adds them 
+        /// to the database and creates many to many relationship with game.
+        /// </summary>
+        /// <param name="game">The existing game be processed.</param>
+        /// <param name="newGame">The new game to be added to GameCompany relationship.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         private async Task ProcessGameCompaniesAsync(Models.Game game, Models.Game newGame)
         {
             var companyIds = game.GameCompanies.Select(comp => comp.IgdbCompanyId).Distinct().ToList();
@@ -168,6 +266,11 @@ namespace questvault.Controllers
             }
         }
 
+        /// <summary>
+        /// Processes the game genres and adds the new genres to the database and creates many to many relationship with game.
+        /// </summary>
+        /// <param name="game">The existing game be processed.</param>
+        /// <param name="newGame">The new game to be added to GameGenre relationship.</param>
         private void ProcessGameGenres(Models.Game game, Models.Game newGame)
         {
             foreach (var genre in game.GameGenres)
@@ -188,6 +291,13 @@ namespace questvault.Controllers
             }
         }
 
+        /// <summary>
+        /// Processes the game Platforms asynchronously and adds them 
+        /// to the database and creates many to many relationship with game.
+        /// </summary>
+        /// <param name="game">The existing game be processed.</param>
+        /// <param name="newGame">The new game to be added to GamePlatform relationship.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         private async Task ProcessGamePlatformsAsync(Models.Game game, Models.Game newGame)
         {
             var platformIds = game.GamePlatforms.Select(pla => pla.IgdbPlatformId).Distinct().ToList();
@@ -195,9 +305,11 @@ namespace questvault.Controllers
 
             foreach (var platform in platforms)
             {
-                var existingPlatform = _context.Platforms.FirstOrDefault(c => c.IgdbPlatformId == platform.IgdbPlatformId);
+                var existingPlatform = _context.Platforms.FirstOrDefault(p => p.IgdbPlatformId == platform.IgdbPlatformId);
+                await Console.Out.WriteLineAsync("existing p= " + existingPlatform);
                 if (existingPlatform == null)
                 {
+                    await Console.Out.WriteLineAsync("Doenst have this platform");
                     // Create a new platform object
                     var newPlatform = new Models.Platform
                     {
@@ -219,6 +331,7 @@ namespace questvault.Controllers
 
                 // Add the GamePlatform to the context
                 _context.GamePlatform.Add(gamePlatform);
+                
             }
         }
 
@@ -360,6 +473,11 @@ namespace questvault.Controllers
         //    return RedirectToAction("Index");
         //}
 
+        /// <summary>
+        /// Retrieves details of a game with the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the game.</param>
+        /// <returns>An asynchronous task representing the action result.</returns>
         [HttpGet]
         [Route("details/{id}")]
         public async Task<IActionResult> Details(int? id)
@@ -388,7 +506,11 @@ namespace questvault.Controllers
             return View(game);
         }
 
-
+        /// <summary>
+        /// Gets the games based on a search term.(used in search bar for autocomplete function)
+        /// </summary>
+        /// <param name="searchTerm">The term to search for.</param>
+        /// <returns>Json data with games information.</returns>
         [HttpGet]
         [Route("search")]
         public IActionResult Search(string searchTerm)
@@ -454,8 +576,6 @@ namespace questvault.Controllers
         //        return Json(new { Erro = "Erro interno no servidor" });
         //    }
         //}
-
-
 
     }
 }
