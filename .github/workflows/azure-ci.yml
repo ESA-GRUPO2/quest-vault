@@ -50,11 +50,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: debug where are we
-        run: |
-            cd ./questvault
-            ls
-
       - name: Build with dotnet
         run: dotnet build ${{env.PROJ_PATH}} --configuration Release -o ${{ env.OUTPUT_DIR }}
 
@@ -85,6 +80,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
+
+      - name: debug where are we
+        run: |
+            ls
+            echo '---------------------------'
+            cd ./questvault
+            ls
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
