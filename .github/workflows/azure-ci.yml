@@ -24,6 +24,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: './questvault'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8.0.202'                 # set this to the .NET Core version to use
   PROJ_PATH: './questvault/questvault'
+  OUTPUT_DIR: './out'
 
 on:
   push:
@@ -32,12 +33,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: production
     steps:
       - uses: actions/checkout@v3
 
       - name: Set up .NET Core
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
@@ -49,8 +50,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
+      - name: debug where are we
+        run: ls
+
       - name: Build with dotnet
-        run: dotnet build ${{env.PROJ_PATH}} -c Release --sc
+        run: dotnet build ${{env.PROJ_PATH}} --configuration Release -o ${{ env.OUTPUT_DIR }}
 
       - name: Update database
         run: |
@@ -59,28 +63,26 @@ jobs:
             dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 
       - name: dotnet publish
-        run: dotnet publish ${{env.PROJ_PATH}} -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o ${{ env.OUTPUT_DIR }}/publish
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.AZURE_WEBAPP_NAME }}
-          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          name: .net-app
+          path: ${{ env.OUTPUT_DIR }}/publish
           
   deploy:
-    permissions:
-      contents: none
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Development'
+      name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: ${{ env.AZURE_WEBAPP_NAME }}
+          name: .net-app
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
