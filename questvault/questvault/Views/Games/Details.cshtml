@@ -15,7 +15,7 @@
     <section class="d-flex main-section">
         <img class="game-cover image-fluid" src="@Model.ImageUrl" />
         <div class="container ms-3 mt-4">
-            <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
+                <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
             <h4>Released on @Model.ReleaseDate</h4>
 
 
@@ -68,17 +68,14 @@
                                 </select>
                                 <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" style="width:8.5rem" type="submit">Submit</button>
                      </form>
-@*                      @if (ViewBag.IsGameAddedToLibrary == true)
+                    @if (ViewBag.IsGameAddedToLibrary==true)
                     {
                         <form asp-controller="Library" asp-action="RemoveGame" method="post">
                         <input type="hidden" name="gameId" value="@Model.IgdbId"/>
                         <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove Game</button>
                         </form>
-                    } *@ 
-                            <form asp-controller="Library" asp-action="RemoveGame" method="post">
-                                <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                                <button class="btn btn-primary nav-btn-2  ms-2 me-2 mb-2" type="submit">Remove Game</button>
-                            </form>
+                    } 
+                           
                     </div>
                 </div>
             </div>
@@ -135,10 +132,11 @@
             </div>
         </div>
             <div class="game-review container mt-3">
-                  <form style="height: 100%" asp-controller="Library" asp-action="AddReview" method="post">
+                  <form style="height:100%" asp-controller="Library" asp-action="AddReview" method="post">
                 <input type="hidden" name="gameId" value="@Model.IgdbId"/>
                 <h4>Your Review</h4>
                 <div class="justify-content-end d-flex">
+                    <p name="error" id="error">@ViewBag.Error</p>
                     <div class="rating">
                         <span name="rating" id="rating">0</span>.0
                     </div>
@@ -151,7 +149,7 @@
                     </div>
                         <input hidden id="ratingV" name="ratingV" value="0" />
                 </div>
-                <textarea name="review" id="review" maxlength="255" placeholder="Write your review here (max 255)"></textarea>
+                  <textarea required name="reviewV" id="reviewV" value="" maxlength="255" placeholder="Write your review here (max 255)"></textarea>
                 <div>
                     <button id="submit" class="mt-2 btn-blue-big submit">Submit</button>
                 </div>
@@ -163,6 +161,8 @@
     </div>
 
     <script src="~/js/rating.js"></script>
+    
+  
 }else
 {
     <h1 style="color :red">Please log in to access this page.</h1>

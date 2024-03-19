@@ -2,8 +2,6 @@ const stars = document.querySelectorAll(".star");
 const rating = document.getElementById("rating");
 const ratingV = document.getElementById("ratingV");
 const reviewText = document.getElementById("review");
-const reviewValue = document.getElementById("reviewValue");
-const ratingValue = document.getElementById("ratingValue");
 const submitBtn = document.getElementById("submit");
 const reviewsContainer = document.getElementById("reviews");
 

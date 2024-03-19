@@ -21,8 +21,8 @@ namespace questvault.Controllers
             var user = await signInManager.UserManager.GetUserAsync(User);
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
-            if (!Enum.TryParse<OwnageStatus>(ownage, out OwnageStatus ownageEnum) ||
-                !Enum.TryParse<GameStatus>(status, out GameStatus statusEnum))
+            if (!Enum.TryParse(ownage, out OwnageStatus ownageEnum) ||
+                !Enum.TryParse(status, out GameStatus statusEnum))
             {
                 // Se a conversão falhar, retorne BadRequest
                 ViewBag.Error = "Invalid ownage or status value.";
@@ -104,13 +104,12 @@ namespace questvault.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddReview(long gameId, string review, int ratingV)
+        public async Task<IActionResult> AddReview(long gameId, string reviewV, int ratingV)
         {
             Console.WriteLine("TO CA FILHA DA PUTAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            Console.WriteLine(review);
+            Console.WriteLine(reviewV);
             Console.WriteLine(ratingV);
             Console.WriteLine("TO CA FILHA DA PUTAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
 
             var user = await signInManager.UserManager.GetUserAsync(User);
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
@@ -127,7 +126,7 @@ namespace questvault.Controllers
 
             if (userLibrary == null)
             {
-                // Se o jogo não estiver na biblioteca do usuário, retorne um BadRequest
+                // Adicione a mensagem de erro ao ViewBag
                 return BadRequest("Game not found in library.");
             }
 
@@ -138,13 +137,13 @@ namespace questvault.Controllers
             // Verifique se o GameLog existe e se os status estão preenchidos
             if (gameLog == null)
             {
-                // Se o GameLog não existir ou os status não estiverem preenchidos, retorne um BadRequest
+                // Adicione a mensagem de erro ao ViewBag
                 return BadRequest("Game status not filled.");
             }
 
             // Processe a avaliação e a revisão do jogo aqui
             // Atualize os campos de revisão e avaliação no GameLog
-            gameLog.Review = review;
+            gameLog.Review = reviewV;
             gameLog.Rating = ratingV;
 
             // Salve as alterações no banco de dados
@@ -157,7 +156,12 @@ namespace questvault.Controllers
         [Route("details/{gameid}")]
         public async Task<IActionResult> details(long gameId)
         {
-            
+            Console.WriteLine("ENTREI NESTA MERDA");
+            Console.WriteLine("ENTREI NESTA MERDA");
+            Console.WriteLine("ENTREI NESTA MERDA");
+            Console.WriteLine("ENTREI NESTA MERDA");
+            Console.WriteLine("ENTREI NESTA MERDA");
+
             // Verifique se o jogo está na biblioteca do utilizador
             var user = await signInManager.UserManager.GetUserAsync(User);
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
@@ -166,7 +170,7 @@ namespace questvault.Controllers
                 .Include(g => g.GameLogs)
                 .FirstOrDefaultAsync(g => g.User == user);
 
-            Console.WriteLine("ENTREI NESTA MERDA");
+            
 
             bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.GameId == gameId);
 
@@ -177,8 +181,5 @@ namespace questvault.Controllers
             // Obtenha os detalhes do jogo e retorne a visualização
             return View(game);
         }
-
-   
-
     }
 }
