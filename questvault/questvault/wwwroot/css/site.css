@@ -9,6 +9,7 @@
 @import url(dashboard.css);
 @import url(game.css);
 @import url(profile.css);
+@import url(friends.css);
 
 
 @media (min-width: 768px) {

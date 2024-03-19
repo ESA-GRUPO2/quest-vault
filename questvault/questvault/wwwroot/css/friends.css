@@ -1,0 +1,49 @@
+﻿.friends-page {
+    margin: 0px 71px 0px 71px;
+    color: white;
+}
+
+.friends-page table{
+    width: 100%;
+}
+
+.friends-page tr{
+
+}
+
+.friends-page td {
+    border: solid 1px #d9d9d9;
+    border-radius: 20px;
+    text-align: center;
+    height: 10vh;
+    width: 25rem;
+    
+}
+
+.friends-page td span{
+    text-align: left;
+}
+
+.friends.friends-page td a {
+    text-align: right;
+}
+
+.friends-page #icon-trash {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
+}
+
+.friends-page #icon-accept {
+    filter: invert(54%) sepia(96%) saturate(994%) hue-rotate(138deg) brightness(93%) contrast(92%);
+}
+
+.friends-page #icon-deny {
+    filter: invert(27%) sepia(56%) saturate(4770%) hue-rotate(288deg) brightness(88%) contrast(138%);
+}
+
+.friends-page #icon-accept:active, #icon-accept:hover {
+    filter: invert(15%) sepia(58%) saturate(1914%) hue-rotate(197deg) brightness(94%) contrast(96%);
+}
+
+.friends-page #icon-deny:active, #icon-deny:hover {
+    filter: invert(16%) sepia(71%) saturate(3015%) hue-rotate(273deg) brightness(89%) contrast(100%);
+}

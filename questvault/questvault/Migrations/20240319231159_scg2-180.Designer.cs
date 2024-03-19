@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240319215516_SCG2-136")]
-    partial class SCG2136
+    [Migration("20240319231159_scg2-180")]
+    partial class scg2180
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

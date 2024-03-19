@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace questvault.Migrations
 {
     /// <inheritdoc />
-    public partial class SCG2136 : Migration
+    public partial class scg2180 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
