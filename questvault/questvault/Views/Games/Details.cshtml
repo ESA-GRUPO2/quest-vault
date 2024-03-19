@@ -134,12 +134,10 @@
                         frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
-         
-        <div class="game-review container mt-3">
-            <h4>Your Review</h4>
-                <form id="reviewForm" asp-controller="Library" asp-action="AddReview" method="post">
-                    <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                  <!-- Adicione os campos do formulário para revisão e avaliação aqui -->
+            <div class="game-review container mt-3">
+                  <form style="height: 100%" asp-controller="Library" asp-action="AddReview" method="post">
+                <input type="hidden" name="gameId" value="@Model.IgdbId"/>
+                <h4>Your Review</h4>
                 <div class="justify-content-end d-flex">
                     <div class="rating">
                         <span name="rating" id="rating">0</span>.0
@@ -151,16 +149,18 @@
                         <span class="star" data-value="4">★</span>
                         <span class="star" data-value="5">★</span>
                     </div>
+                        <input hidden id="ratingV" name="ratingV" value="0" />
                 </div>
-                <textarea name ="review" id="review" maxlength="255" placeholder="Write your review here (max 255)"></textarea>
-                <div>            
-                    <button id="submit" type="button" class="mt-2 btn-blue-big submit">Submit</button>
+                <textarea name="review" id="review" maxlength="255" placeholder="Write your review here (max 255)"></textarea>
+                <div>
+                    <button id="submit" class="mt-2 btn-blue-big submit">Submit</button>
                 </div>
-            </form>
-            <div class="reviews" id="reviews"></div>
-        </div>
-    </section>
-</div>
+                <div class="reviews" id="reviews"></div>
+                </form>
+            </div>
+            
+        </section>
+    </div>
 
     <script src="~/js/rating.js"></script>
 }else

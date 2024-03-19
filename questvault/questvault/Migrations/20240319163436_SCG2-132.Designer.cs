@@ -12,7 +12,7 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240318232534_SCG2-132")]
+    [Migration("20240319163436_SCG2-132")]
     partial class SCG2132
     {
         /// <inheritdoc />
@@ -319,7 +319,7 @@ namespace questvault.Migrations
                         {
                             GameId = 1020L,
                             IgdbId = 1020L,
-                            IgdbRating = 89.821145750184655,
+                            IgdbRating = 89.82097825083261,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2lbd.jpg",
                             Name = "Grand Theft Auto V",
                             QvRating = 0.0,
@@ -358,7 +358,7 @@ namespace questvault.Migrations
                         {
                             GameId = 472L,
                             IgdbId = 472L,
-                            IgdbRating = 87.693906628560399,
+                            IgdbRating = 87.692473868886339,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1tnw.jpg",
                             Name = "The Elder Scrolls V: Skyrim",
                             QvRating = 0.0,
@@ -371,7 +371,7 @@ namespace questvault.Migrations
                         {
                             GameId = 71L,
                             IgdbId = 71L,
-                            IgdbRating = 86.778475392348398,
+                            IgdbRating = 86.778367407367497,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1x7d.jpg",
                             Name = "Portal",
                             QvRating = 0.0,
@@ -384,7 +384,7 @@ namespace questvault.Migrations
                         {
                             GameId = 732L,
                             IgdbId = 732L,
-                            IgdbRating = 90.589426824837233,
+                            IgdbRating = 90.588981362868822,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2lb9.jpg",
                             Name = "Grand Theft Auto: San Andreas",
                             QvRating = 0.0,
@@ -397,7 +397,7 @@ namespace questvault.Migrations
                         {
                             GameId = 1009L,
                             IgdbId = 1009L,
-                            IgdbRating = 93.378115284847709,
+                            IgdbRating = 93.377210978551503,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
                             Name = "The Last of Us",
                             QvRating = 0.0,
@@ -423,7 +423,7 @@ namespace questvault.Migrations
                         {
                             GameId = 20L,
                             IgdbId = 20L,
-                            IgdbRating = 86.734430116136821,
+                            IgdbRating = 86.734274201256369,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2mli.jpg",
                             Name = "BioShock",
                             QvRating = 0.0,
@@ -436,7 +436,7 @@ namespace questvault.Migrations
                         {
                             GameId = 127L,
                             IgdbId = 127L,
-                            IgdbRating = 86.909133880884752,
+                            IgdbRating = 86.909013139327826,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1rcf.jpg",
                             Name = "Assassin's Creed II",
                             QvRating = 0.0,
@@ -702,17 +702,17 @@ namespace questvault.Migrations
                     b.Property<long?>("GamesLibraryId1")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("HoursPlayed")
+                    b.Property<int?>("HoursPlayed")
                         .HasColumnType("int");
 
                     b.Property<int>("Ownage")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rating")
+                    b.Property<int?>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<long>("Review")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Review")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

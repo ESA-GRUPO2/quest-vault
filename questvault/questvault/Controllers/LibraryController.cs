@@ -6,6 +6,7 @@ using questvault.Data;
 using questvault.Models;
 using questvault.Services;
 using RestEase;
+using System.Threading.Tasks;
 using GameStatus = questvault.Models.GameStatus;
 
 namespace questvault.Controllers
@@ -103,12 +104,11 @@ namespace questvault.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddReview(long gameId, long review, int rating)
+        public async Task<IActionResult> AddReview(long gameId, string review, int ratingV)
         {
-
             Console.WriteLine("TO CA FILHA DA PUTAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             Console.WriteLine(review);
-            Console.WriteLine(rating);
+            Console.WriteLine(ratingV);
             Console.WriteLine("TO CA FILHA DA PUTAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 
@@ -145,7 +145,7 @@ namespace questvault.Controllers
             // Processe a avaliação e a revisão do jogo aqui
             // Atualize os campos de revisão e avaliação no GameLog
             gameLog.Review = review;
-            gameLog.Rating = rating;
+            gameLog.Rating = ratingV;
 
             // Salve as alterações no banco de dados
             await context.SaveChangesAsync();

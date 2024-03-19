@@ -1,6 +1,9 @@
 const stars = document.querySelectorAll(".star");
 const rating = document.getElementById("rating");
+const ratingV = document.getElementById("ratingV");
 const reviewText = document.getElementById("review");
+const reviewValue = document.getElementById("reviewValue");
+const ratingValue = document.getElementById("ratingValue");
 const submitBtn = document.getElementById("submit");
 const reviewsContainer = document.getElementById("reviews");
 
@@ -8,6 +11,7 @@ stars.forEach((star) => {
 	star.addEventListener("click", () => {
 		const value = parseInt(star.getAttribute("data-value"));
 		rating.innerText = value;
+		ratingV.value = value;
 
 		// Remove all existing classes from stars
 		stars.forEach((s) => s.classList.remove("one",
@@ -23,7 +27,7 @@ stars.forEach((star) => {
 				s.classList.add(getStarColorClass(value));
 			}
 		});
-
+		
 		// Remove "selected" class from all stars
 		stars.forEach((s) => s.classList.remove("selected"));
 		// Add "selected" class to the clicked star
@@ -41,28 +45,15 @@ submitBtn.addEventListener("click", () => {
 		);
 		return;
 	}
-	
 
 	if (userRating > 0) {
 		const reviewElement = document.createElement("div");
+		ratingValue = userRating;
+		reviewValue = review;
 		reviewElement.classList.add("review");
 		reviewElement.innerHTML =
 			`<p><strong>Rating: ${userRating}/5</strong></p><p>${review}</p>`;
 		reviewsContainer.appendChild(reviewElement);
-
-		const gameId = document.getElementById("gameId").value;
-
-		fetch('/Library/AddReview', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				gameId: gameId,
-				review: review,
-				rating: userRating
-			})
-		})
 
 		// Reset styles after submitting
 		reviewText.value = "";
@@ -74,28 +65,6 @@ submitBtn.addEventListener("click", () => {
 			"five",
 			"selected"));
 	}
-});
-
-document.getElementById("submit").addEventListener("click", function () {
-	const formData = new FormData(document.getElementById("reviewForm"));
-
-	fetch('/Library/AddReview', {
-		method: 'POST',
-		body: formData
-	})
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			return response.text();
-		})
-		.then(data => {
-			// Processar a resposta do servidor, se necessário
-			console.log(data);
-		})
-		.catch(error => {
-			console.error('There has been a problem with your fetch operation:', error);
-		});
 });
 
 function getStarColorClass(value) {

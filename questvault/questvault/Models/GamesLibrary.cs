@@ -57,13 +57,8 @@ namespace questvault.Models
         }
 
         public int TotalHoursPlayed()
-        { 
-            int hours = 0;
-            foreach (GameLog gameLog in GameLogs)
-            {
-                hours += gameLog.HoursPlayed;
-            }
-            return hours;
+        {
+            return 0;
         }
 
         public int NumberOfGamesStatus(GameStatus status) 
