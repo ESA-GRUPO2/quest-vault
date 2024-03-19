@@ -88,11 +88,14 @@ jobs:
         with:
           name: ${{ env.AZURE_WEBAPP_NAME }}
 
+      - name: Debug where are we
+        run: ls
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{ env.OUT_PATH }}
+          package: ./
   
