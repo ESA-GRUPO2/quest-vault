@@ -34,7 +34,7 @@ env:
   OUT_PATH: './out/publish'
 
 jobs:
-  Build_UpdateDB_and_Deploy:
+  Build:
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -56,7 +56,7 @@ jobs:
       - name: Build with dotnet
         run: |
           dotnet restore ${{env.PROJ_PATH}}
-          dotnet build ${{env.PROJ_PATH}} --configuration Release
+          dotnet build ${{env.PROJ_PATH}} --configuration Release --sc
 
       - name: Update database
         run: |
@@ -65,12 +65,34 @@ jobs:
             dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 
       - name: dotnet publish
-        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o './myapp'
-      
-      - name: Deploy to Azure Web Appwebapp
+        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o ${{env.OUT_PATH}}
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.AZURE_WEBAPP_NAME }}
+          path: ${{ env.OUT_PATH }}
+
+  Deploy:
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Development'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.AZURE_WEBAPP_NAME }}
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: './myapp'
+          package: ${{ env.OUT_PATH }}
   
