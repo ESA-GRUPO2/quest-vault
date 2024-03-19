@@ -67,6 +67,13 @@ namespace questvault.Controllers
         //    return View(data);
         //}
 
+        /// <summary>
+        /// Index of the page Games that shows all the games and the filtered ones.
+        /// </summary>
+        /// <param name="releaseStatus">The term to search for the status release.</param>
+        /// <param name="genre">The term to search for genre.</param>
+        /// <param name="releasePlatform">The term to search for platform.</param>
+        /// <returns>A view with the games data</returns>
         [HttpGet]
         public async Task<IActionResult> Index(string releaseStatus, string genre, string releasePlatform)
         {
@@ -127,7 +134,11 @@ namespace questvault.Controllers
 
         }
 
-
+        /// <summary>
+        /// Gets the view Results with the games based on a search term.
+        /// </summary>
+        /// <param name="searchTerm">The term to search for.</param>
+        /// <returns>A view and a collection of games matching the search term sorted by rating.</returns>
         [HttpGet]
         [Route("results")]
         public async Task<IActionResult> Results(string searchTerm)
@@ -168,7 +179,7 @@ namespace questvault.Controllers
             var games = await _igdbService.SearchGames(searchTerm);
             if (games == null)
             {
-                return NotFound();
+                return NotFound(); // TODO: TESTAR
             }
 
             // Process each game
@@ -209,10 +220,17 @@ namespace questvault.Controllers
 
             // Save changes to the database
 
-            // Redirecione para a action Results [GET] com o searchTerm como parâmetro
+            // Redirctec to action Results [GET] with searchTerm
             return RedirectToAction("Results", new { searchTerm = searchTerm });
         }
 
+        /// <summary>
+        /// Processes the game companies asynchronously and adds them 
+        /// to the database and creates many to many relationship with game.
+        /// </summary>
+        /// <param name="game">The existing game be processed.</param>
+        /// <param name="newGame">The new game to be added to GameCompany relationship.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         private async Task ProcessGameCompaniesAsync(Models.Game game, Models.Game newGame)
         {
             var companyIds = game.GameCompanies.Select(comp => comp.IgdbCompanyId).Distinct().ToList();
@@ -247,6 +265,11 @@ namespace questvault.Controllers
             }
         }
 
+        /// <summary>
+        /// Processes the game genres and adds the new genres to the database and creates many to many relationship with game.
+        /// </summary>
+        /// <param name="game">The existing game be processed.</param>
+        /// <param name="newGame">The new game to be added to GameGenre relationship.</param>
         private void ProcessGameGenres(Models.Game game, Models.Game newGame)
         {
             foreach (var genre in game.GameGenres)
@@ -267,6 +290,13 @@ namespace questvault.Controllers
             }
         }
 
+        /// <summary>
+        /// Processes the game Platforms asynchronously and adds them 
+        /// to the database and creates many to many relationship with game.
+        /// </summary>
+        /// <param name="game">The existing game be processed.</param>
+        /// <param name="newGame">The new game to be added to GamePlatform relationship.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         private async Task ProcessGamePlatformsAsync(Models.Game game, Models.Game newGame)
         {
             var platformIds = game.GamePlatforms.Select(pla => pla.IgdbPlatformId).Distinct().ToList();
@@ -442,6 +472,11 @@ namespace questvault.Controllers
         //    return RedirectToAction("Index");
         //}
 
+        /// <summary>
+        /// Retrieves details of a game with the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the game.</param>
+        /// <returns>An asynchronous task representing the action result.</returns>
         [HttpGet]
         [Route("details/{id}")]
         public async Task<IActionResult> Details(int? id)
@@ -469,7 +504,11 @@ namespace questvault.Controllers
             return View(game);
         }
 
-
+        /// <summary>
+        /// Gets the games based on a search term.(used in search bar for autocomplete function)
+        /// </summary>
+        /// <param name="searchTerm">The term to search for.</param>
+        /// <returns>Json data with games information.</returns>
         [HttpGet]
         [Route("search")]
         public IActionResult Search(string searchTerm)

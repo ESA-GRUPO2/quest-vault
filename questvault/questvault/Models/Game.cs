@@ -11,7 +11,9 @@ namespace questvault.Models
 
         [Key]
         public long GameId { get; set; }
-
+        /// <summary>
+        /// Gets or sets the IGDB ID of the game.
+        /// </summary>
         public long IgdbId { get; set; }
         /// <summary>
         /// Gets or sets the name of the game.
@@ -29,18 +31,26 @@ namespace questvault.Models
         /// Gets or sets the URL of the game's cover image.
         /// </summary>
         public string? ImageUrl { get; set; }
-
+        /// <summary>
+        /// Gets or sets the Screenshots of the game.
+        /// </summary>
         public string[]? Screenshots { get; set; }
-
+        /// <summary>
+        /// Gets or sets the URL of the game's video trailer.
+        /// </summary>
         public string? VideoUrl { get; set; }
         /// <summary>
         /// Gets or sets the rating of the game for our app.
         /// QV -> QuestVault
         /// </summary>
-        public double QvRating { get; set; } = 0;
-
-        public DateTime? ReleaseDate { get; set; } 
-
+        public int QvRating { get; set; } = 0;
+        /// <summary>
+        /// Gets or sets the Release date.
+        /// </summary>
+        public DateTime? ReleaseDate { get; set; }
+        /// <summary>
+        /// Gets or sets the released status.
+        /// </summary>
         public bool IsReleased { get; set; }
        // public bool IsReleased { get; set; }
 
