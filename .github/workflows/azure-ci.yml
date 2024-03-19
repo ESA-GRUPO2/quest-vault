@@ -56,7 +56,7 @@ jobs:
       - name: Build with dotnet
         run: |
           dotnet restore ${{env.PROJ_PATH}}
-          dotnet build ${{env.PROJ_PATH}} --configuration Release --sc
+          dotnet build ${{env.PROJ_PATH}} --configuration Release 
 
       - name: Update database
         run: |
