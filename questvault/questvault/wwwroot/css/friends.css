@@ -1,1 +1,12 @@
-﻿
+﻿.friends-page {
+    margin: 0px 71px 0px 71px;
+    color: white;
+}
+
+.friends-page table{
+    width: 70rem;
+}
+
+.friends-page tr{
+    width: 40rem;
+}

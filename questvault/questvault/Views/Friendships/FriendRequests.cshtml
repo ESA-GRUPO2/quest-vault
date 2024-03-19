@@ -38,23 +38,23 @@
                     </th>
                 </tr>
             </thead>*@
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sender.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Receiver.UserName)
-                    </td>
-                    <td>
-                        <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="AcceptFriendRequest" asp-route-id="@item.Sender.Id">Accept Request</a>
-                        <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RejectFriendRequest" asp-route-id="@item.Sender.Id">Reject Request</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+            <tbody class="">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sender.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Receiver.UserName)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="AcceptFriendRequest" asp-route-id="@item.Sender.Id">Accept Request</a>
+                            <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RejectFriendRequest" asp-route-id="@item.Sender.Id">Reject Request</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-    </div>
+</div>
