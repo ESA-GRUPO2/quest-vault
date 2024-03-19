@@ -80,19 +80,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-
-      - name: debug where are we
-        run: |
-            ls
-            echo '---------------------------'
-            cd ./questvault
-            ls
-
+      
+          
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{ env.PROJ_PATH }}
+          package: ./
   
