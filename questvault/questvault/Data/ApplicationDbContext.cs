@@ -50,7 +50,8 @@ namespace questvault.Data
                 game.Screenshots,
                 game.VideoUrl,
                 game.QvRating,
-                game.ReleaseDate
+                game.ReleaseDate,
+                game.IsReleased
             }).ToArray());
 
             // Many to many relationships:
