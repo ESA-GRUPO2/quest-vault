@@ -44,7 +44,7 @@ namespace questvault.Controllers
                     Console.Out.WriteLine("ALREADY EXISTS");
                 }
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToRoute(new { controller = "Friendships", action = "FriendsPage" });
         }
 
         /// <summary>
