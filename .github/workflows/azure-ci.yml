@@ -19,19 +19,21 @@
 
 name: Build and deploy
 
-env:
-  AZURE_WEBAPP_NAME: questvault    # set this to the name of your Azure Web App
-  AZURE_WEBAPP_PACKAGE_PATH: './questvault'      # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '8.0.202'                 # set this to the .NET Core version to use
-  PROJ_PATH: './questvault/questvault'
-  OUTPUT_DIR: './out'
-
 on:
   push:
-    branches: [ "production" ]
+    branches: 
+      - "production"
+  pull_request:
+    branches: 
+      - "production"
+
+env:
+  AZURE_WEBAPP_NAME: questvault    # set this to the name of your Azure Web App
+  DOTNET_VERSION: '8.0.202'                 # set this to the .NET Core version to use
+  PROJ_PATH: './questvault/questvault'
 
 jobs:
-  Build_Update_and_Deploy:
+  Build_UpdateDB_and_Deploy:
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -53,10 +55,10 @@ jobs:
       - name: Build with dotnet
         run: |
           dotnet restore ${{env.PROJ_PATH}}
-          dotnet build ${{env.PROJ_PATH}} --configuration Release -o '${{ env.OUTPUT_DIR }}' --sc
+          dotnet build ${{env.PROJ_PATH}} --configuration Release -o '${{ env.PROJ_PATH }}/out'
 
       - name: dotnet publish
-        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o '${{ env.OUTPUT_DIR }}/publish'
+        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o '${{ env.PROJ_PATH }}/out/publish'
 
       - name: Update database
         run: |
@@ -65,11 +67,10 @@ jobs:
             dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 
       
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
+      - name: Deploy to Azure Web Appwebapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: '${{ env.OUTPUT_DIR }}/publish'
+          package: '${{ env.PROJ_PATH }}/out/publish'
   
