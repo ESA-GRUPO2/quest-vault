@@ -15,6 +15,8 @@ namespace questvault.Models
         [ForeignKey(nameof(GameId))]
         public virtual Game? Game { get; set; }
 
+        public long IgdbId { get; set; }
+
         [AllowNull]
         public int? HoursPlayed { get; set; }
         [AllowNull]

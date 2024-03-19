@@ -715,6 +715,9 @@ namespace questvault.Migrations
                     b.Property<int?>("HoursPlayed")
                         .HasColumnType("int");
 
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint");
+
                     b.Property<int>("Ownage")
                         .HasColumnType("int");
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace questvault.Migrations
 {
     /// <inheritdoc />
-    public partial class SCG2132 : Migration
+    public partial class SCG2136 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -392,6 +392,7 @@ namespace questvault.Migrations
                     GameLogId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GameId = table.Column<long>(type: "bigint", nullable: false),
+                    IgdbId = table.Column<long>(type: "bigint", nullable: false),
                     HoursPlayed = table.Column<int>(type: "int", nullable: true),
                     Ownage = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),

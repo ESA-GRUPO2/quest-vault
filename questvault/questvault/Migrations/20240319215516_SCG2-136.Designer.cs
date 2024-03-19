@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240319195430_SCG2-132")]
-    partial class SCG2132
+    [Migration("20240319215516_SCG2-136")]
+    partial class SCG2136
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -717,6 +717,9 @@ namespace questvault.Migrations
 
                     b.Property<int?>("HoursPlayed")
                         .HasColumnType("int");
+
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("Ownage")
                         .HasColumnType("int");

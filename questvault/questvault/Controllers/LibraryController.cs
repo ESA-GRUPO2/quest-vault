@@ -4,6 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
+using IGDB.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using questvault.Data;
+using questvault.Models;
 using questvault.Services;
 using RestEase;
 using System.Threading.Tasks;
@@ -13,10 +19,10 @@ namespace questvault.Controllers
 {
     public class LibraryController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
     {
-      
+
 
         [HttpPost]
-        public async Task<IActionResult> AddUpdateGames(long gameId ,string ownage, string status)
+        public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status)
         {
             var user = await signInManager.UserManager.GetUserAsync(User);
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
@@ -29,7 +35,7 @@ namespace questvault.Controllers
                 return RedirectToAction("Details", "Games", new { id = gameId });
             }
 
-            if (user == null || gameId == null)
+            if (user == null || gameId <= 0)
             {
                 ViewBag.Error = "Invalid user or game ID.";
                 return RedirectToAction("Details", "Games", new { id = gameId });
@@ -49,7 +55,7 @@ namespace questvault.Controllers
                 context.GamesLibrary.Add(library);
             }
 
-            var existingGame = library.GameLogs.FirstOrDefault(g => g.GameId == game.IgdbId);
+            var existingGame = library.GameLogs.FirstOrDefault(g => g.IgdbId == game.IgdbId);
             if (existingGame != null)
             {
                 // Atualizar o jogo existente
@@ -62,6 +68,7 @@ namespace questvault.Controllers
                 existingGame = new GameLog();
 
                 existingGame.Game = game;
+                existingGame.IgdbId = game.IgdbId;
                 existingGame.Status = statusEnum;
                 existingGame.Ownage = ownageEnum;
 
@@ -93,7 +100,7 @@ namespace questvault.Controllers
                 return NotFound();
             }
 
-            var gameToRemove = library.GameLogs.FirstOrDefault(g => g.GameId ==game.IgdbId);
+            var gameToRemove = library.GameLogs.FirstOrDefault(g => g.IgdbId == game.IgdbId);
             if (gameToRemove != null)
             {
                 context.GameLog.Remove(gameToRemove);
@@ -106,7 +113,7 @@ namespace questvault.Controllers
         [HttpPost]
         public async Task<IActionResult> AddReview(long gameId, string reviewV, int ratingV)
         {
-         
+
 
             var user = await signInManager.UserManager.GetUserAsync(User);
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
@@ -119,7 +126,7 @@ namespace questvault.Controllers
             // Verifique se o jogo está na biblioteca do usuário
             var userLibrary = await context.GamesLibrary
                 .Include(g => g.GameLogs)
-                .FirstOrDefaultAsync(g => g.User == user && g.GameLogs.Any(gl => gl.GameId == game.IgdbId));
+                .FirstOrDefaultAsync(g => g.User == user && g.GameLogs.Any(gl => gl.IgdbId == game.IgdbId));
 
             if (userLibrary == null)
             {
@@ -128,7 +135,7 @@ namespace questvault.Controllers
             }
 
             // Encontre o GameLog correspondente
-            var gameLog = userLibrary.GameLogs.FirstOrDefault(gl => gl.GameId == game.IgdbId);
+            var gameLog = userLibrary.GameLogs.FirstOrDefault(gl => gl.IgdbId == game.IgdbId);
 
 
             // Verifique se o GameLog existe e se os status estão preenchidos

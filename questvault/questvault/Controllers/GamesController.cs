@@ -511,7 +511,7 @@ namespace questvault.Controllers
                 .Include(g => g.GameLogs)
                 .FirstOrDefaultAsync(g => g.User == user);
 
-            bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.GameId == id);
+            bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.IgdbId == id);
 
             // Passe a variável para a visualização
             ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
