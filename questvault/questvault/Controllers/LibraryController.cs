@@ -106,10 +106,7 @@ namespace questvault.Controllers
         [HttpPost]
         public async Task<IActionResult> AddReview(long gameId, string reviewV, int ratingV)
         {
-            Console.WriteLine("TO CA FILHA DA PUTAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            Console.WriteLine(reviewV);
-            Console.WriteLine(ratingV);
-            Console.WriteLine("TO CA FILHA DA PUTAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+         
 
             var user = await signInManager.UserManager.GetUserAsync(User);
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
@@ -153,33 +150,6 @@ namespace questvault.Controllers
             return RedirectToAction("Details", "Games", new { id = game.IgdbId });
         }
 
-        [Route("details/{gameid}")]
-        public async Task<IActionResult> details(long gameId)
-        {
-            Console.WriteLine("ENTREI NESTA MERDA");
-            Console.WriteLine("ENTREI NESTA MERDA");
-            Console.WriteLine("ENTREI NESTA MERDA");
-            Console.WriteLine("ENTREI NESTA MERDA");
-            Console.WriteLine("ENTREI NESTA MERDA");
 
-            // Verifique se o jogo está na biblioteca do utilizador
-            var user = await signInManager.UserManager.GetUserAsync(User);
-            var game = context.Games.Where(g => g.IgdbId == gameId).First();
-
-            var userLibrary = await context.GamesLibrary
-                .Include(g => g.GameLogs)
-                .FirstOrDefaultAsync(g => g.User == user);
-
-            
-
-            bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.GameId == gameId);
-
-            Console.WriteLine(isGameAddedToLibrary);
-            // Passe a variável para a visualização
-            ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
-
-            // Obtenha os detalhes do jogo e retorne a visualização
-            return View(game);
-        }
     }
 }

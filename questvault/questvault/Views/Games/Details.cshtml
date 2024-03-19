@@ -132,6 +132,8 @@
             </div>
         </div>
             <div class="game-review container mt-3">
+                @if (ViewBag.IsGameAddedToLibrary == true)
+                {
                   <form style="height:100%" asp-controller="Library" asp-action="AddReview" method="post">
                 <input type="hidden" name="gameId" value="@Model.IgdbId"/>
                 <h4>Your Review</h4>
@@ -155,6 +157,7 @@
                 </div>
                 <div class="reviews" id="reviews"></div>
                 </form>
+                }
             </div>
             
         </section>

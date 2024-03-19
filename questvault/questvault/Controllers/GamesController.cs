@@ -16,6 +16,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using MailKit.Search;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using MimeKit.Cryptography;
+using Microsoft.AspNetCore.Identity;
 
 namespace questvault.Controllers
 {
@@ -28,16 +29,18 @@ namespace questvault.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IServiceIGDB _igdbService;
+        private readonly SignInManager<User> _signInManager;
 
         /// <summary>
         /// Constructor for GamesController.
         /// </summary>
         /// <param name="context">The application's database context.</param>
         /// <param name="igdbService">The IGDB service for game-related operations.</param>
-        public GamesController(ApplicationDbContext context, IServiceIGDB igdbService)
+        public GamesController(ApplicationDbContext context, IServiceIGDB igdbService, SignInManager<User> signInManager)
         {
             _context = context;
             _igdbService = igdbService;
+            _signInManager = signInManager;
         }
 
 
@@ -383,7 +386,18 @@ namespace questvault.Controllers
             {
                 return NotFound();
             }
-            
+
+            var user = await _signInManager.UserManager.GetUserAsync(User);
+
+            var userLibrary = await _context.GamesLibrary
+                .Include(g => g.GameLogs)
+                .FirstOrDefaultAsync(g => g.User == user);
+
+            bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.GameId == id);
+
+            // Passe a variável para a visualização
+            ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
+
 
             return View(game);
         }
