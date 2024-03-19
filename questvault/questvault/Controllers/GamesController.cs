@@ -200,7 +200,8 @@ namespace questvault.Controllers
                         Screenshots = game.Screenshots,
                         VideoUrl = game.VideoUrl,
                         QvRating = game.QvRating,
-                        ReleaseDate = game.ReleaseDate
+                        ReleaseDate = game.ReleaseDate,
+                        IsReleased = game.IsReleased,
                     };
 
                     // Add the new game to the database
