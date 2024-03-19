@@ -65,12 +65,12 @@ jobs:
             dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 
       - name: dotnet publish
-        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o ${{env.OUT_PATH}}
+        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o './myapp'
       
       - name: Deploy to Azure Web Appwebapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: ${{env.OUT_PATH}}
+          package: './myapp'
   
