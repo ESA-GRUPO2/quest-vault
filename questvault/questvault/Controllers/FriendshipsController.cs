@@ -173,7 +173,7 @@ namespace questvault.Controllers
         {
             var receiver = await context.Users.FindAsync(id);
             var sender = await signInManager.UserManager.GetUserAsync(this.User);
-            if (receiver != null && sender != null)
+            if (receiver != null && sender != null && receiver != sender)
             {
                 var existingFriendship = await context.Friendship.Where(f => (f.User1.Id == receiver.Id && f.User2.Id == sender.Id) || (f.User1.Id == sender.Id && f.User2.Id == receiver.Id)).FirstOrDefaultAsync();
                 var existingRequest = await context.FriendshipRequest.Where(fr => (fr.Receiver.Id == receiver.Id && fr.Sender.Id == sender.Id) || (fr.Receiver.Id == sender.Id && fr.Sender.Id == receiver.Id)).FirstOrDefaultAsync();
@@ -256,7 +256,7 @@ namespace questvault.Controllers
         /// </summary>
         public async Task<IActionResult> FriendsPageAsync()
         {
-            Console.Out.WriteLine("Tou aqui boi");
+
             var user = await signInManager.UserManager.GetUserAsync(this.User);
 
             var dbContext = await context.Friendship.ToListAsync();
@@ -281,6 +281,25 @@ namespace questvault.Controllers
                     var user2 = await context.Users.FindAsync(a.User1Id);
                     friendship.User2 = user2;
                     dbContextCopy.Add(friendship);
+                }
+
+            }
+            return View(dbContextCopy);
+        }
+
+        public async Task<IActionResult> FriendRequestsAsync()
+        {
+            var user = await signInManager.UserManager.GetUserAsync(this.User);
+
+            var dbContext = await context.FriendshipRequest.ToListAsync();
+            var dbContextCopy = new List<FriendshipRequest>();
+            foreach (var a in dbContext)
+            {
+                if (a.Receiver == user)
+                {
+                    var sender = await context.Users.FindAsync(a.SenderId);
+                    a.Sender = sender;
+                    dbContextCopy.Add(a);
                 }
 
             }

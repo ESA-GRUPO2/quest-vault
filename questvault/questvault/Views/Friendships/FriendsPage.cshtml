@@ -2,38 +2,63 @@
 
 @{
     ViewData["Title"] = "FriendList";
+    ViewData["help_Text"] = @"
+       In the Friends page you can see the friends you have made in the app!<br/>
+       Check their profiles by clicking in their names and<br/>
+       if you are getting tired of them delete them from your life!";
 }
 
-<h1 class="text-light">@ViewData["Title"]</h1>
+<div class="results-game">
 
-<table class="table table-dark table-sm table-profile">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User1.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User2.UserName)
-            </th>
-            <th>
+    <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
+        <h3>My Friends</h3>
+    </div>
 
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User1.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User2.UserName)
-                </td>
-                <td>
-                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id">Remove Friend</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
+
+    <div>
+        <div class="row justify-content-center">
+            <a asp-controller="Friendships" asp-action="FriendsPage" class="btn btn-blue-big m-2">
+                <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
+                Friends
+            </a>
+            <a asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple m-2">
+                <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Request Icon" />
+                Requests
+            </a>
+        </div>
+        <table class="table table-dark table-sm table-profile">
+            @* 
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User1.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User2.UserName)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>*@
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="">
+                            @Html.DisplayFor(modelItem => item.User1.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User2.UserName)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id">Remove Friend</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+</div>
