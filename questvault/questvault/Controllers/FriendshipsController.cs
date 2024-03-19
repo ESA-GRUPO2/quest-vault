@@ -15,156 +15,6 @@ namespace questvault.Controllers
     public class FriendshipsController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
     {
 
-        // GET: FriendshipRequests
-        public async Task<IActionResult> IndexAsync()
-        {
-            var user = await signInManager.UserManager.GetUserAsync(this.User);
-
-            var dbContext = await context.FriendshipRequest.ToListAsync();
-            var dbContextCopy = new List<FriendshipRequest>();
-            foreach(var a in dbContext)
-            {
-                if(a.Receiver == user)
-                {
-                    var sender = await context.Users.FindAsync(a.SenderId);
-                    a.Sender = sender;
-                    dbContextCopy.Add(a);
-                }
-                
-            }
-            return View(dbContextCopy);
-        }
-        
-
-        // GET: Friendships/Details/5
-        /*public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var friendship = await context.Friendship
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (friendship == null)
-            {
-                return NotFound();
-            }
-
-            return View(friendship);
-        }*/
-
-        // GET: Friendships/Create
-        /*public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Friendships/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id")] Friendship friendship)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Add(friendship);
-                await context.SaveChangesAsync();
-                return RedirectToAction(nameof(IndexAsync));
-            }
-            return View(friendship);
-        }
-
-        // GET: Friendships/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var friendship = await context.Friendship.FindAsync(id);
-            if (friendship == null)
-            {
-                return NotFound();
-            }
-            return View(friendship);
-        }
-
-        // POST: Friendships/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id")] Friendship friendship)
-        {
-            if (id != friendship.id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    context.Update(friendship);
-                    await context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!FriendshipExists(friendship.id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(IndexAsync));
-            }
-            return View(friendship);
-        }
-
-        // GET: Friendships/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var friendship = await context.Friendship
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (friendship == null)
-            {
-                return NotFound();
-            }
-
-            return View(friendship);
-        }
-
-        // POST: Friendships/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var friendship = await context.Friendship.FindAsync(id);
-            if (friendship != null)
-            {
-                context.Friendship.Remove(friendship);
-            }
-
-            await context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool FriendshipExists(int id)
-        {
-            return context.Friendship.Any(e => e.id == id);
-        }*/
-
         /// <summary>
         ///     Verifies if a connection between two users already exists and if it doesnt a friend request object is created.
         /// </summary>
@@ -223,7 +73,7 @@ namespace questvault.Controllers
                 }
                 context.SaveChanges();
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToRoute(new { controller = "Friendships", action = "FriendRequests" });
         }
 
         /// <summary>
@@ -248,12 +98,14 @@ namespace questvault.Controllers
                 }
                 context.SaveChanges();
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToRoute(new { controller = "Friendships", action = "FriendRequests" });
+
         }
 
         /// <summary>
         ///     Makes a list with all the user's friends
         /// </summary>
+        [ActionName("FriendsPage")]
         public async Task<IActionResult> FriendsPageAsync()
         {
 
@@ -284,9 +136,10 @@ namespace questvault.Controllers
                 }
 
             }
-            return View(dbContextCopy);
+            return View("FriendsPage",dbContextCopy);
         }
 
+        // GET: FriendshipRequests
         public async Task<IActionResult> FriendRequestsAsync()
         {
             var user = await signInManager.UserManager.GetUserAsync(this.User);
@@ -329,7 +182,9 @@ namespace questvault.Controllers
                 }
                 context.SaveChanges();
             }
-            return RedirectToAction(nameof(Index));
+
+            return RedirectToRoute(new { controller = "Friendships", action = "FriendsPage" });
+
         }
     }
 }
