@@ -57,15 +57,14 @@ jobs:
           dotnet restore ${{env.PROJ_PATH}}
           dotnet build ${{env.PROJ_PATH}} --configuration Release -o '${{ env.PROJ_PATH }}/out'
 
-      - name: dotnet publish
-        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o '${{ env.PROJ_PATH }}/out/publish'
-
       - name: Update database
         run: |
             dotnet tool install --global dotnet-ef
             dotnet tool restore
             dotnet ef database update -p ${{env.PROJ_PATH}} --connection ${{ secrets.PRODUCTION_CONNECTION_STRING }}
 
+      - name: dotnet publish
+        run: dotnet publish ${{env.PROJ_PATH}} -c Release -o '${{ env.PROJ_PATH }}/out/publish'
       
       - name: Deploy to Azure Web Appwebapp
         uses: azure/webapps-deploy@v2
