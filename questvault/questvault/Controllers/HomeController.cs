@@ -44,10 +44,7 @@ namespace questvault.Controllers
             return View();
         }
 
-        public IActionResult UserLibrary()
-        {
-            return View();
-        }
+       
 
         public async Task<IActionResult> AllUsersTestAsync()
         {

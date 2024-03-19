@@ -14,12 +14,34 @@ using questvault.Services;
 using RestEase;
 using System.Threading.Tasks;
 using GameStatus = questvault.Models.GameStatus;
+using MailKit.Search;
 
 namespace questvault.Controllers
 {
     public class LibraryController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
     {
+        [HttpGet]
+        [Route("UserLibrary")]
+        public async Task<IActionResult> UserLibrary()
+        {
+            var user = await signInManager.UserManager.GetUserAsync(User);
+           
+            var gamesInLibrary = context.GamesLibrary
+                    .Include(gl => gl.GameLogs) // Inclua os GameLogs para evitar carregamento preguiçoso
+                        .ThenInclude(gl => gl.Game) // Inclua os jogos dentro de cada GameLog
+                    .Where(gl => gl.User == user) // Filtre pela biblioteca do usuário atual
+                    .SelectMany(gl => gl.GameLogs.Select(g => g.Game)) // Selecione todos os jogos dentro dos GameLogs
+                    .ToList();
 
+
+            // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
+            var data = new GameViewData
+            {
+                NumberOfResults = gamesInLibrary.Count,
+                Games = gamesInLibrary
+            };
+            return View(data);
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status)
