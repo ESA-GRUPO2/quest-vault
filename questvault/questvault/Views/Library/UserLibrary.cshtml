@@ -1,7 +1,6 @@
-﻿@*
-@model IEnumerable<questvault.Models.Game>
+﻿@model GameViewData
 @using System.Linq
-*@
+
 @{
     ViewData["Title"] = "Library";
     ViewData["help_Text"] = @"
@@ -15,14 +14,14 @@
         </ul>";
 }
 
-@*
+
 @{
     var batchSize = 5; // Defina o tamanho do lote aqui
-    var batches = Model.Select((game, index) => new { Game = game, Index = index })
+    var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
                        .GroupBy(x => x.Index / batchSize)
                        .Select(g => g.Select(x => x.Game));
 }
-*@
+
 
 @*@if (SignInManager.IsSignedIn(User))
 {*@
@@ -31,7 +30,7 @@
 
     <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
             <h3>My Library</h3>
-            <h4 class="justify-content-end ">70 games</h4>
+            <h4 class="justify-content-end ">@Model.NumberOfResults games</h4>
         </div>
 
         <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
@@ -94,18 +93,28 @@
                 
             </div>
             <div class="game-section">
-                @*
+
+            @if (Model.NumberOfResults>0){
                 @foreach (var batch in batches)
                 {
                     <div class="game-row">
                         @foreach (var game in batch)
                         {
-                            <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.GameId">
+                            <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
                                 <img src="@game.ImageUrl">
                             </a>
                         }
                     </div>
-                }*@
+                }
+            }
+            else
+            {
+                <div style="text-align: center; height:100%;padding-top:200px">
+                    <h2>No games Added!</h2>
+                    <h3>Go to Games to add some</h3>
+                </div>
+            }
+           
             </div>
 
         </div>
