@@ -72,6 +72,7 @@
                                     <option value="Wishlist">Wishlist</option>
                            
                                 </select>
+                                @* isto nao devia ser required. se eu adicionar um jogo em wishlist*@
                                 <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example">
                                     <option value="" disabled selected hidden>Status</option>
                                     <option value="Complete">Complete</option>
