@@ -23,24 +23,11 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
 
-    # - uses: azure/login@v1
-    #   with:
-    #     creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    # - uses: azure/sql-action@v2
-    #   with:
-    #     connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-    #     path: './Database.dacpac'
-    #     action: 'Publish'
-
-    # - name: logout
-    #   run: az logout
-
     - name: update db
       run: |
         dotnet tool install --global dotnet-ef
         dotnet tool restore
-        dotnet ef database update -p "${{ env.WORKING_DIRECTORY }}/questvault" --connection ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+        dotnet ef database update -p "${{ env.WORKING_DIRECTORY }}/questvault" --connection ${{ secrets.AZURE_SQL_CONNECTION_STRING }} -v
       env:
         ASPNETCORE_ENVIRONMENT: Development
 
