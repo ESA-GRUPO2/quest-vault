@@ -35,11 +35,12 @@ jobs:
 
     # - name: logout
     #   run: az logout
+
     - name: update db
       run: |
         dotnet tool install --global dotnet-ef
         dotnet tool restore
-        dotnet ef database update -p "${{ env.WORKING_DIRECTORY }}/questvault"
+        dotnet ef database update -p "${{ env.WORKING_DIRECTORY }}/questvault" --connection ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
 
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
