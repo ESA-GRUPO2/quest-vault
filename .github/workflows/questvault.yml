@@ -39,7 +39,7 @@ jobs:
       run: |
         dotnet tool install --global dotnet-ef
         dotnet tool restore
-        dotnet ef database update -p "${{ env.WORKING_DIRECTORY }}"
+        dotnet ef database update -p "${{ env.WORKING_DIRECTORY }}/questvault"
 
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
