@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies if the results from a non existing game search in bd are being presented correctly</description>
+   <name>NonExistingTest</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>78033fe1-e823-4066-94c5-e53097aed403</testCaseGuid>
+</TestCaseEntity>

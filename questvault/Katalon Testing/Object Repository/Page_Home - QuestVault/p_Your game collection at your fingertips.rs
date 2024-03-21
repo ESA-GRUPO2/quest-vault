@@ -6,12 +6,12 @@
    <elementGuidId>89e3fa98-834d-4ef3-bc73-96c2967563aa</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::p[1]</value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>p.fs-1.fw-bolder.home-text-color.home-main-title</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::p[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>p</value>
-      <webElementGuid>1a395896-78a9-41f6-be1b-4fd43d86dbea</webElementGuid>
+      <webElementGuid>480cb694-945b-495f-9516-9a5542a3596b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +37,7 @@
       <name>class</name>
       <type>Main</type>
       <value>fs-1 fw-bolder home-text-color home-main-title</value>
-      <webElementGuid>c39a130a-2820-4512-8ad6-082abb7fd609</webElementGuid>
+      <webElementGuid>eae7c847-acad-4509-a422-eb8aad7da7b6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +45,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Your game collection at your fingertips.</value>
-      <webElementGuid>d02d583e-d00f-464e-9806-9d23962e36fc</webElementGuid>
+      <webElementGuid>90a7170f-7f01-434c-bdbd-05f08921f7a4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +53,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>/html[1]/body[@class=&quot;home-body&quot;]/div[1]/main[@class=&quot;pb-3&quot;]/section[@class=&quot;home-banner-image bg-image-full&quot;]/div[@class=&quot;container h-100 d-flex justify-content-evenly text-center&quot;]/div[@class=&quot;row d-flex justify-content-evenly align-self-center&quot;]/div[@class=&quot;col-8 my-5 d-flex&quot;]/p[@class=&quot;fs-1 fw-bolder home-text-color home-main-title&quot;]</value>
-      <webElementGuid>7561805d-d7cd-43cf-9e79-90329c2483cb</webElementGuid>
+      <webElementGuid>a5af3c95-78d4-4b80-9359-fe2701f8ba1e</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -61,7 +61,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::p[1]</value>
-      <webElementGuid>f0cceb73-b4e5-4eea-aea0-3bbbe65a7907</webElementGuid>
+      <webElementGuid>b166f6fd-f754-42c4-ac51-29e422814434</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -69,7 +69,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::p[5]</value>
-      <webElementGuid>ae95c820-e64d-469d-9890-fdcc01ae82df</webElementGuid>
+      <webElementGuid>788911b8-30d6-4bd7-8882-1e142f76ea06</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,7 +77,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Your game collection at your fingertips.']/parent::*</value>
-      <webElementGuid>8d95b858-8955-4140-aed1-c8f785662062</webElementGuid>
+      <webElementGuid>143d8de4-f3fd-49c8-9b57-fd7d9afd847c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +85,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//p</value>
-      <webElementGuid>bf1698f9-610f-425b-816e-bb74b733919e</webElementGuid>
+      <webElementGuid>39ae90ce-6842-45ca-8582-42c727bd29c9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,6 +93,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//p[(text() = 'Your game collection at your fingertips.' or . = 'Your game collection at your fingertips.')]</value>
-      <webElementGuid>a14ca7df-a822-4015-87b9-83be64182d7d</webElementGuid>
+      <webElementGuid>0d2b7ac0-0426-45fd-8909-825b97826b65</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

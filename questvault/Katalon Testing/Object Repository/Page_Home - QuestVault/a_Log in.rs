@@ -6,12 +6,12 @@
    <elementGuidId>8fbdfacc-233b-4e3c-9e18-cccb26e9d316</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>a.btn.btn-primary.nav-btn</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>029278db-0f9b-4bae-8eea-04252d036eb2</webElementGuid>
+      <webElementGuid>e9b54478-cb63-4cf0-a9ac-ad3f2a3b94cb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +37,7 @@
       <name>class</name>
       <type>Main</type>
       <value>btn btn-primary nav-btn</value>
-      <webElementGuid>f2fd28f7-7299-4fcc-969f-0a7c12d4c692</webElementGuid>
+      <webElementGuid>73c69364-8f2e-4f2b-ab58-ca5e5d45fb14</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +45,7 @@
       <name>href</name>
       <type>Main</type>
       <value>/Identity/Account/Login</value>
-      <webElementGuid>a98300c3-904a-442b-b530-49e781d892ca</webElementGuid>
+      <webElementGuid>2b6c36a6-55ea-4f20-ab66-d926e1dc7184</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -55,7 +55,7 @@
       <value>
                          Log in
                     </value>
-      <webElementGuid>1618cf7e-11a3-4e63-8a76-ccc93e395ce6</webElementGuid>
+      <webElementGuid>22a538ca-fe37-48d3-bda0-b880fa0fe8a3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -63,7 +63,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn&quot;]</value>
-      <webElementGuid>e94e569e-027a-4717-b3bc-81af7a97736d</webElementGuid>
+      <webElementGuid>903bfcb2-d42b-47b2-a01c-398b5ac05bd6</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
-      <webElementGuid>b9deec6e-8189-4b17-9f17-5d9b551fac81</webElementGuid>
+      <webElementGuid>2f4bfb19-97f7-4455-8c7d-210d983c1edc</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -79,7 +79,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::a[2]</value>
-      <webElementGuid>43f0334f-f014-4cbf-89b3-c28180501689</webElementGuid>
+      <webElementGuid>7d46c017-7b41-4103-b0e2-1d3fdc19e022</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -87,7 +87,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Log in']/parent::*</value>
-      <webElementGuid>abbbf926-5d61-4497-8cfa-b2aa9c246d4b</webElementGuid>
+      <webElementGuid>93108346-ed2e-4bf9-bcca-a13150963092</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -95,7 +95,7 @@
       <name>xpath:href</name>
       <type>Main</type>
       <value>//a[contains(@href, '/Identity/Account/Login')]</value>
-      <webElementGuid>f52a9b61-f817-4fc2-9e28-6b076aa725ab</webElementGuid>
+      <webElementGuid>3f65a012-0982-47d8-8d47-c030549a318e</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -103,7 +103,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li/a</value>
-      <webElementGuid>b802befb-9489-4268-b5e2-d224a6ad31f5</webElementGuid>
+      <webElementGuid>68ce46a2-cdfc-4f8a-a674-c0ed1f3ec054</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -115,6 +115,6 @@
                     ' or . = '
                          Log in
                     ')]</value>
-      <webElementGuid>e501b4ef-7c32-4de8-9b41-5d0fc3f97d11</webElementGuid>
+      <webElementGuid>5fe84f0c-055f-498d-b92e-d049f4ce2273</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
