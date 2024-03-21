@@ -143,7 +143,11 @@ namespace questvault.Controllers
             };
             return View(data);
         }
-
+        /// <summary>
+        /// Post (saves in database) Results with the games based on a search term.
+        /// </summary>
+        /// <param name="searchTerm">The term to search for.</param>
+        /// <returns>A view and a collection of games matching the search term sorted by rating.</returns>
         [HttpPost]
         [Route("results")]
         [ValidateAntiForgeryToken]
@@ -328,7 +332,7 @@ namespace questvault.Controllers
         {
             if (id == null || _context.Games == null)
             {
-                return NotFound();
+                return NotFound(); //TODO NOT FOUND
             }
 
             var game = await _context.Games
