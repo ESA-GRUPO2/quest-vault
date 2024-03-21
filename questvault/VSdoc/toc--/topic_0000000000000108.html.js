@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_0000000000000150.html"],['346',"questvault.Migrations Namespace","topic_0000000000000106.html"],['347',"AzureMigration Class","topic_0000000000000107.html"],['348',"Methods","topic_0000000000000107_methods--.html"],['351',"Up Method","topic_0000000000000108.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['320',"questvault.Controllers Namespace","topic_00000000000000F0.html"],['347',"LibraryController Class","topic_0000000000000108.html"]];

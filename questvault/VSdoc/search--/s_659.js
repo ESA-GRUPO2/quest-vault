@@ -1,1 +1,1 @@
-search_result['659']=["topic_0000000000000149.html","IGDBService.GetPlatforms Method",""];
+search_result['659']=["topic_0000000000000153.html","GameGenre Class",""];

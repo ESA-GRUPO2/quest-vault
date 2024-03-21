@@ -1,1 +1,1 @@
-search_result['665']=["topic_000000000000014A_vars--.html","IServiceIGDB Fields",""];
+search_result['665']=["topic_0000000000000154.html","GameGenre.IgdbId Property","Gets or sets the ID of the game."];

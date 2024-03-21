@@ -1,1 +1,1 @@
-search_result['546']=["topic_000000000000010F.html","Company.GameCompany Property","Gets or sets the list of games associated with the company.\r\nRepresents a many-to-many relationship with Games."];
+search_result['546']=["topic_000000000000010F.html","ApplicationDbContext.EmailTokens Property",""];

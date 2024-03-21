@@ -1,1 +1,0 @@
-search_result['587']=["topic_0000000000000129.html","Company.CompanyName Property","Gets or sets the name of the game company."];

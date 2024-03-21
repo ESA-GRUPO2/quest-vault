@@ -1,1 +1,0 @@
-var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['370',"questvault.Migrations Namespace","topic_000000000000011C.html"],['371',"AzureMigration Class","topic_000000000000011D.html"],['372',"Methods","topic_000000000000011D_methods--.html"],['374',"Down Method","topic_000000000000011F.html"]];

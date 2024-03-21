@@ -1,1 +1,1 @@
-search_result['646']=["topic_0000000000000141_vars--.html","EmailSender Fields",""];
+search_result['646']=["topic_000000000000014B.html","Game.GameGenres Property","Gets or sets the list of genres associated with the game.\r\nRepresents a many-to-many relationship with Genres."];

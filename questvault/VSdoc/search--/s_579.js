@@ -1,1 +1,1 @@
-search_result['579']=["topic_0000000000000121.html","GameCompany.Company Property",""];
+search_result['579']=["topic_0000000000000126.html","Company Class","Represents a video game company entity."];

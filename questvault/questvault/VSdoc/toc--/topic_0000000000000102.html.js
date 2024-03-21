@@ -1,1 +1,0 @@
-var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['320',"questvault.Controllers Namespace","topic_00000000000000F0.html"],['337',"HomeController Class","topic_00000000000000FF.html"],['339',"Methods","topic_00000000000000FF_methods--.html"],['344',"Privacy Method","topic_0000000000000102.html"]];

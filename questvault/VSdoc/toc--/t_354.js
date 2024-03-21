@@ -1,1 +1,1 @@
-c['354']=[['355',"CompanyID Property","topic_000000000000010D.html",0],['356',"CompanyName Property","topic_000000000000010E.html",0],['357',"GameCompany Property","topic_000000000000010F.html",0]];
+c['354']=[['355',"Properties","topic_000000000000010E_props--.html",1],['368',"Methods","topic_000000000000010E_methods--.html",1]];

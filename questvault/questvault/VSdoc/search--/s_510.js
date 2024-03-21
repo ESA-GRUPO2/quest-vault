@@ -1,1 +1,0 @@
-search_result['510']=["topic_00000000000000FA.html","GamesController.Index Method","Index of the page Games that shows all the games and the filtered ones."];

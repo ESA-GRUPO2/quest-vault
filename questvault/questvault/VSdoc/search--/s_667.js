@@ -1,1 +1,0 @@
-search_result['667']=["topic_0000000000000156.html","GameGenre.Game Property","Gets or sets the navigation property for the game."];

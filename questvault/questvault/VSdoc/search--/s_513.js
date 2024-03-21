@@ -1,1 +1,0 @@
-search_result['513']=["topic_00000000000000FD.html","GamesController.Details Method","Retrieves details of a game with the specified ID."];

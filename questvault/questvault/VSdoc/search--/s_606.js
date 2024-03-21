@@ -1,1 +1,0 @@
-search_result['606']=["topic_0000000000000132.html","Friendship.User2 Property",""];

@@ -1,1 +1,1 @@
-search_result['493']=["topic_00000000000000F1_events--.html","GamesController Events",""];
+search_result['493']=["topic_00000000000000F1_events--.html","FriendshipsController Events",""];

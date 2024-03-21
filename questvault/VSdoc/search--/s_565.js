@@ -1,1 +1,1 @@
-search_result['565']=["topic_0000000000000118.html","Game.imageUrl Property","Gets or sets the URL of the game\u0027s cover image."];
+search_result['565']=["topic_000000000000011D_vars--.html","AzureMigration Fields",""];

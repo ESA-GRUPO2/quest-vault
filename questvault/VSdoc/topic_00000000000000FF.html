@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>ApplicationDbContext Class</title>
+	<title>HomeController Class</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -38,7 +38,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	  </div>
 	</div>
   	<div id="header-top-container2">
-    <div id="runningHeaderText">SOLUTION-WIDE PROPERTIES Reference</div>
+    <div id="runningHeaderText">questvault Reference</div>
    
     <div id="search-bar-container">
      <form id="search-bar" action="search--.html">
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">ApplicationDbContext Class</h1>
+		<h1 class="title">HomeController Class</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_00000000000000FE.html">questvault.Data</a>
+<a href="topic_00000000000000F0.html">questvault.Controllers</a>
 
 
 
@@ -138,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">Public Class ApplicationDbContext&nbsp;<br />    Inherits <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identitydbcontext-1">IdentityDbContext</a>(Of <a target="_top" href="topic_0000000000000138.html" onclick="this.target='';return true;">User</a>)</pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Class HomeController&nbsp;<br />    Inherits <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller">Controller</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public class ApplicationDbContext : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identitydbcontext-1">IdentityDbContext</a>&lt;<a target="_top" href="topic_0000000000000138.html" onclick="this.target='';return true;">User</a>&gt;</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public class HomeController : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller">Controller</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">public ref class ApplicationDbContext : public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft::aspnetcore::identity::entityframeworkcore::identitydbcontext-1">IdentityDbContext</a>&lt;<a target="_top" href="topic_0000000000000138.html" onclick="this.target='';return true;">User</a>^&gt;^</pre>			
+					<pre xml:space="preserve" class="brush: cpp">public ref class HomeController : public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft::aspnetcore::mvc::controller">Controller</a>^</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -256,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
+					<pre xml:space="preserve" class="brush: js">public class HomeController&nbsp;<br />   extends <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller">Controller</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -286,14 +286,13 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 
 
-
 <div class="section_container">
 	<div class="section_heading">
-		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Properties</a></span>
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Constructors</a></span>
 		<div>&nbsp;</div>
 	</div>
 
-	<div id="PropertiesSection" class="section">	
+	<div id="ConstructorsSection" class="section">	
   <table class="memberListTable">
     <tr>
       <th></th>
@@ -307,122 +306,26 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 
 	
-		<tr class="
-
-
-">
-	<td>
-<img alt="Public property" title="Public property" src="msdn2019/pubproperty.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_0000000000000104.html">Company</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
+			<tr class="
 	
-
+	
+	">
+	  <td>
+    <img alt="Public constructor" title="Public constructor" src="msdn2019/pubmethod.png"></img>
 
 	
-		<tr class="
+	    
+	  </td>
+	  <td>
+	    <a href="topic_0000000000000100.html">HomeController(ILogger&lt;HomeController&gt;, ApplicationDbContext)</a>
 
-
-">
-	<td>
-<img alt="Public property" title="Public property" src="msdn2019/pubproperty.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_0000000000000100.html">EmailTokens</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
+	  </td>
+	  <td>
 	
-
-
 	
-		<tr class="
-
-
-">
-	<td>
-<img alt="Public property" title="Public property" src="msdn2019/pubproperty.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_0000000000000105.html">Games</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
 	
-
-
-	
-		<tr class="
-
-
-">
-	<td>
-<img alt="Public property" title="Public property" src="msdn2019/pubproperty.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_0000000000000102.html">Genres</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
-	
-
-
-	
-		<tr class="
-
-
-">
-	<td>
-<img alt="Public property" title="Public property" src="msdn2019/pubproperty.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_0000000000000103.html">Platform</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
+		</td>
+	</tr>
 	
 
 
@@ -434,6 +337,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	</div>					
 </div>
+
 
 
 
@@ -466,16 +370,181 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 ">
 	<td>
-   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
-
-    
-	  
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
 
 
     
 	</td>
 	<td>
-	<a href="topic_0000000000000101.html">OnModelCreating(ModelBuilder)</a>
+	<a href="topic_0000000000000106.html">AllUsersTestAsync()</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000103.html">Dashboard()</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000107.html">Error()</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000101.html">Index()</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000102.html">Privacy()</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000105.html">PrivateProfile()</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000104.html">PublicProfile()</a>
 
 	</td>
 	<td>
@@ -498,6 +567,12 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	</div>					
 </div>
+
+
+
+
+
+
 
 
 
@@ -597,7 +672,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-	<a href="topic_00000000000000FE.html">questvault.Data Namespace</a><br />
+	<a href="topic_00000000000000F0.html">questvault.Controllers Namespace</a><br />
 
 
 	

@@ -1,1 +1,1 @@
-search_result['498']=["topic_00000000000000F3.html","GamesController.Index Method","GET action method for the Index view."];
+search_result['498']=["topic_00000000000000F3.html","FriendshipsController.AcceptFriendRequestAsync Method","Creates a friendship object between the current user and a selected user."];

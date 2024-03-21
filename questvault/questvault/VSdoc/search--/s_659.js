@@ -1,1 +1,0 @@
-search_result['659']=["topic_0000000000000153.html","GameGenre Class",""];
