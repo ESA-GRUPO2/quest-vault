@@ -1,0 +1,1 @@
+search_result['647']=["topic_000000000000014C.html","Game.GamePlatforms Property","Gets or sets the list of platforms associated with the game.\r\nRepresents a many-to-many relationship with Platforms."];

@@ -1,0 +1,1 @@
+search_result['640']=["topic_0000000000000145.html","Game.ImageUrl Property","Gets or sets the URL of the game\u0027s cover image."];

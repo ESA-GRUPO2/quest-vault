@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['500',"questvault.Services Namespace","topic_0000000000000194.html"],['504',"IGDBService Class","topic_0000000000000197.html"],['506',"Methods","topic_0000000000000197_methods--.html"],['511',"GetPlatformsFromIds Method","topic_000000000000019F.html"]];

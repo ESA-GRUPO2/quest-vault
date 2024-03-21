@@ -1,0 +1,1 @@
+search_result['780']=["topic_000000000000019E.html","IGDBService.GetPlatforms Method",""];
