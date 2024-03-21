@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_The Witcher 3 Wild Hunt - The Beginning trailer</name>
+   <tag></tag>
+   <elementGuidId>8d786647-1e23-4d2b-a654-f5794a124c0b</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>a.ytp-title-link.yt-uix-sessionlink</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='movie_player']/div[3]/div[2]/div/a</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=link[name=&quot;The Witcher 3: Wild Hunt - The Beginning trailer&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>35dbd109-f462-4ee9-881c-59cbed3c1980</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ytp-title-link yt-uix-sessionlink</value>
+      <webElementGuid>ec6628eb-6865-4393-87f8-e528d4d92e19</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>target</name>
+      <type>Main</type>
+      <value>_blank</value>
+      <webElementGuid>84560d57-4f24-4326-98cd-8dec69c8c134</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-sessionlink</name>
+      <type>Main</type>
+      <value>feature=player-title</value>
+      <webElementGuid>a8a9f633-85b0-4dfa-b27c-faca6ba3d1ae</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>0</value>
+      <webElementGuid>03c9c2dd-37d8-45ed-84b8-fb641e13bb70</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>https://www.youtube.com/watch?v=5nLipy-Z4yo</value>
+      <webElementGuid>c9b7aa91-4256-413f-921e-e585ddabc18a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>The Witcher 3: Wild Hunt - The Beginning trailer</value>
+      <webElementGuid>61d65670-ed63-4217-bbdf-9ec23b8685b7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;movie_player&quot;)/div[@class=&quot;ytp-chrome-top ytp-show-cards-title&quot;]/div[@class=&quot;ytp-title&quot;]/div[@class=&quot;ytp-title-text&quot;]/a[@class=&quot;ytp-title-link yt-uix-sessionlink&quot;]</value>
+      <webElementGuid>3e145e6e-787a-49f1-8081-a4efee06b4d8</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/Page_Game - QuestVault/iframe_Screenshots_card-img col-md-2</value>
+      <webElementGuid>029ef525-9a73-43e2-af98-195821bc5437</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='movie_player']/div[3]/div[2]/div/a</value>
+      <webElementGuid>67670cc0-a024-419d-a359-54a799307fd2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'The Witcher 3: Wild Hunt - The Beginning trailer')]</value>
+      <webElementGuid>124bc9b5-3128-4f5b-b0fc-3aefa25900b8</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='IGDBcom'])[2]/preceding::a[3]</value>
+      <webElementGuid>e051ff74-5e0b-4d47-836a-9f007c2b76bd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Pesquisa'])[1]/preceding::a[4]</value>
+      <webElementGuid>df560a91-8c6c-4795-b0f0-7d7397f001f6</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='The Witcher 3: Wild Hunt - The Beginning trailer']/parent::*</value>
+      <webElementGuid>bd3da5a5-c123-44f3-9c14-860771946428</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, 'https://www.youtube.com/watch?v=5nLipy-Z4yo')]</value>
+      <webElementGuid>3d31156a-62ee-414d-8b48-a49fb61facad</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/div/a</value>
+      <webElementGuid>a5fc8a73-435e-4b0a-b7b8-bad8a8e5076d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = 'https://www.youtube.com/watch?v=5nLipy-Z4yo' and (text() = 'The Witcher 3: Wild Hunt - The Beginning trailer' or . = 'The Witcher 3: Wild Hunt - The Beginning trailer')]</value>
+      <webElementGuid>5ebe27ee-f4cd-493d-926d-481576079a21</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

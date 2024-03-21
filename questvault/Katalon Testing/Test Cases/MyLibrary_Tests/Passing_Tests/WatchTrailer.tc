@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that when the trailer link is clicked, the user is redirected to youtube</description>
+   <name>WatchTrailer</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>628a7ea4-02ba-4993-9c34-823657d39b0c</testCaseGuid>
+</TestCaseEntity>

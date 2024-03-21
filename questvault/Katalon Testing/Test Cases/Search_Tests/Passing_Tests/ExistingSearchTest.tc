@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies if the results from a existing game in bd are being presented correctly</description>
+   <name>ExistingSearchTest</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c5e51784-e411-4bd3-b276-a171a8d2594f</testCaseGuid>
+</TestCaseEntity>
