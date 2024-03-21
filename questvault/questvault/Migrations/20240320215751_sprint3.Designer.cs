@@ -12,8 +12,13 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<<< HEAD:questvault/questvault/Migrations/20240320184713_devMigration.Designer.cs
     [Migration("20240320184713_devMigration")]
     partial class devMigration
+========
+    [Migration("20240320215751_sprint3")]
+    partial class sprint3
+>>>>>>>> e18c0042d0f71d27f29e308d22b6069c074750ae:questvault/questvault/Migrations/20240320215751_sprint3.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
