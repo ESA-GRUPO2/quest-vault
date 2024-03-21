@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>img_MyLibrary_nav-vector mb-1</name>
+   <name>img_Teste_icon-deny</name>
    <tag></tag>
-   <elementGuidId>09d2b0cf-7b08-4897-a68d-1ba40eec717b</elementGuidId>
+   <elementGuidId>3a2eac15-6457-4eb5-8a63-7e8be0eb190b</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>img.nav-vector.mb-1</value>
+         <value>#icon-deny</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
+         <value>//img[@id='icon-deny']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=button[name=&quot;Key Icon&quot;i]</value>
+         <value>internal:role=link[name=&quot;Deny Icon&quot;i]</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -29,70 +29,78 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>fdbf8e81-d11b-4985-bb64-6024685ea119</webElementGuid>
+      <webElementGuid>f1542316-ff01-4405-b18e-24fc7ae70699</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>src</name>
+      <name>id</name>
       <type>Main</type>
-      <value>\img\vector\user.svg</value>
-      <webElementGuid>9783924d-2503-476b-8c01-ce8878d91bf7</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>alt</name>
-      <type>Main</type>
-      <value>Key Icon</value>
-      <webElementGuid>5c49aee4-84ff-403f-bad7-a1ab668a65ce</webElementGuid>
+      <value>icon-deny</value>
+      <webElementGuid>100a615e-0e34-400b-af9f-eb35e0170cc9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>nav-vector mb-1</value>
-      <webElementGuid>3839de00-ec04-4144-ba99-c5df7895624e</webElementGuid>
+      <value>nav-vector</value>
+      <webElementGuid>befd96b2-013d-4458-8033-86100b9ac28c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/img/vector/circle-xmark-solid.svg</value>
+      <webElementGuid>997405b4-e62b-49e3-a4e6-9368b9028dd4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>alt</name>
+      <type>Main</type>
+      <value>Deny Icon</value>
+      <webElementGuid>5cfdd85c-cd63-4a78-908e-25a72bc47222</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/button[@class=&quot;btn btn-primary nav-btn show&quot;]/img[@class=&quot;nav-vector mb-1&quot;]</value>
-      <webElementGuid>9efc35d5-0231-4fa1-b41c-0f3355efb1ab</webElementGuid>
+      <value>id(&quot;icon-deny&quot;)</value>
+      <webElementGuid>34b67b17-efe2-4e7f-b3b0-1f86fbf215ff</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>xpath:idRelative</name>
+      <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
-      <webElementGuid>fed0322c-fe3d-4fbe-a7fe-490e41b55315</webElementGuid>
+      <value>//img[@id='icon-deny']</value>
+      <webElementGuid>2a8791e0-6669-47d7-8ffc-be251ec5d70b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:img</name>
       <type>Main</type>
-      <value>(//img[@alt='Key Icon'])[2]</value>
-      <webElementGuid>ccce028c-140b-49bf-b829-edcf71c2342a</webElementGuid>
+      <value>//img[@alt='Deny Icon']</value>
+      <webElementGuid>e792df57-2547-48aa-bba2-bf3e8e62e03e</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li[5]/div/button/img</value>
-      <webElementGuid>79c73c07-4bc5-4f21-ba47-de4e589fc865</webElementGuid>
+      <value>//td/a[2]/img</value>
+      <webElementGuid>cecdc6e8-5349-4f7b-99cb-d94fd2972fa8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//img[@src = '\img\vector\user.svg' and @alt = 'Key Icon']</value>
-      <webElementGuid>e97eba10-98cb-495e-8670-4f7d6cd1f82f</webElementGuid>
+      <value>//img[@id = 'icon-deny' and @src = '/img/vector/circle-xmark-solid.svg' and @alt = 'Deny Icon']</value>
+      <webElementGuid>69fd562b-c363-4dcc-b817-6a005741973c</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

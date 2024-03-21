@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>img_MyLibrary_nav-vector mb-1</name>
+   <name>img_Teste_icon-accept</name>
    <tag></tag>
-   <elementGuidId>09d2b0cf-7b08-4897-a68d-1ba40eec717b</elementGuidId>
+   <elementGuidId>2a2f3dd9-c269-4b2e-807d-df14ba15fa0f</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>img.nav-vector.mb-1</value>
+         <value>#icon-accept</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
+         <value>//img[@id='icon-accept']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=button[name=&quot;Key Icon&quot;i]</value>
+         <value>internal:role=link[name=&quot;Confirm Icon&quot;i]</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -29,70 +29,78 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>fdbf8e81-d11b-4985-bb64-6024685ea119</webElementGuid>
+      <webElementGuid>876ce9d2-f40a-4a98-a59d-343d3a348ca9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>src</name>
+      <name>id</name>
       <type>Main</type>
-      <value>\img\vector\user.svg</value>
-      <webElementGuid>9783924d-2503-476b-8c01-ce8878d91bf7</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>alt</name>
-      <type>Main</type>
-      <value>Key Icon</value>
-      <webElementGuid>5c49aee4-84ff-403f-bad7-a1ab668a65ce</webElementGuid>
+      <value>icon-accept</value>
+      <webElementGuid>a74963f4-d392-462c-85f8-d211bf0df5a6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>nav-vector mb-1</value>
-      <webElementGuid>3839de00-ec04-4144-ba99-c5df7895624e</webElementGuid>
+      <value>nav-vector</value>
+      <webElementGuid>763a3878-33e1-4070-a367-0df1502491f3</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/img/vector/circle-check-solid.svg</value>
+      <webElementGuid>e0c70447-7ebd-4c94-85cc-2ec4a01f33f7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>alt</name>
+      <type>Main</type>
+      <value>Confirm Icon</value>
+      <webElementGuid>6f0f1eb6-d6a9-477a-96cb-97ac5f8a4444</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/button[@class=&quot;btn btn-primary nav-btn show&quot;]/img[@class=&quot;nav-vector mb-1&quot;]</value>
-      <webElementGuid>9efc35d5-0231-4fa1-b41c-0f3355efb1ab</webElementGuid>
+      <value>id(&quot;icon-accept&quot;)</value>
+      <webElementGuid>54308a8b-4f54-41ce-9e25-6349759318f9</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>xpath:idRelative</name>
+      <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
-      <webElementGuid>fed0322c-fe3d-4fbe-a7fe-490e41b55315</webElementGuid>
+      <value>//img[@id='icon-accept']</value>
+      <webElementGuid>7fb845de-54c7-43fe-b416-7f2440252660</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:img</name>
       <type>Main</type>
-      <value>(//img[@alt='Key Icon'])[2]</value>
-      <webElementGuid>ccce028c-140b-49bf-b829-edcf71c2342a</webElementGuid>
+      <value>//img[@alt='Confirm Icon']</value>
+      <webElementGuid>ab18ffc4-a446-4023-8d08-ec527a9aa6dd</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li[5]/div/button/img</value>
-      <webElementGuid>79c73c07-4bc5-4f21-ba47-de4e589fc865</webElementGuid>
+      <value>//td/a/img</value>
+      <webElementGuid>e1fbd4c5-a15c-41f4-a610-edd5bbff5a11</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//img[@src = '\img\vector\user.svg' and @alt = 'Key Icon']</value>
-      <webElementGuid>e97eba10-98cb-495e-8670-4f7d6cd1f82f</webElementGuid>
+      <value>//img[@id = 'icon-accept' and @src = '/img/vector/circle-check-solid.svg' and @alt = 'Confirm Icon']</value>
+      <webElementGuid>cd3cd817-8905-4904-b5a3-27cb97900040</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

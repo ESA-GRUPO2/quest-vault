@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_Log in</name>
+   <name>a_Games_game-button</name>
    <tag></tag>
-   <elementGuidId>8fbdfacc-233b-4e3c-9e18-cccb26e9d316</elementGuidId>
+   <elementGuidId>e5538875-960c-4565-ac8b-18475d2bd015</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>a.btn.btn-primary.nav-btn</value>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Games'])[1]/following::a[5]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=link[name=&quot;Key Icon Log in&quot;i]</value>
+         <value>a:nth-child(5) >> nth=0</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -29,92 +29,86 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>e9b54478-cb63-4cf0-a9ac-ad3f2a3b94cb</webElementGuid>
+      <webElementGuid>d4919537-bab4-4ea0-935a-1500a459a86d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>btn btn-primary nav-btn</value>
-      <webElementGuid>73c69364-8f2e-4f2b-ab58-ca5e5d45fb14</webElementGuid>
+      <value>game-button</value>
+      <webElementGuid>e482a18c-e984-47d7-9b1f-71f318319347</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>href</name>
       <type>Main</type>
-      <value>/Identity/Account/Login</value>
-      <webElementGuid>2b6c36a6-55ea-4f20-ab66-d926e1dc7184</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>text</name>
-      <type>Main</type>
-      <value>
-                         Log in
-                    </value>
-      <webElementGuid>22a538ca-fe37-48d3-bda0-b880fa0fe8a3</webElementGuid>
+      <value>/Games/details/71</value>
+      <webElementGuid>e047af49-6f41-464d-b687-31e0a9a4057e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn&quot;]</value>
-      <webElementGuid>903bfcb2-d42b-47b2-a01c-398b5ac05bd6</webElementGuid>
+      <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;results-game&quot;]/div[@class=&quot;d-flex main-section-result&quot;]/div[@class=&quot;game-section&quot;]/div[@class=&quot;game-row&quot;]/a[@class=&quot;game-button&quot;]</value>
+      <webElementGuid>260882a8-62b0-4559-a927-b65ebba504b8</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>xpath:idRelative</name>
+      <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
-      <webElementGuid>2f4bfb19-97f7-4455-8c7d-210d983c1edc</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Games'])[1]/following::a[5]</value>
+      <webElementGuid>7ee35de2-bc5e-44bc-b608-7bda8518b84d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::a[2]</value>
-      <webElementGuid>7d46c017-7b41-4103-b0e2-1d3fdc19e022</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/following::a[5]</value>
+      <webElementGuid>5fe3eb5d-c68e-4743-a806-1ee6382ebe82</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='Log in']/parent::*</value>
-      <webElementGuid>93108346-ed2e-4bf9-bcca-a13150963092</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::a[35]</value>
+      <webElementGuid>bd418db2-84e1-4d1c-ae45-32b2482250e0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='FAQs'])[1]/preceding::a[36]</value>
+      <webElementGuid>03613cde-225d-49b0-8d8f-9921adee192c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:href</name>
       <type>Main</type>
-      <value>//a[contains(@href, '/Identity/Account/Login')]</value>
-      <webElementGuid>3f65a012-0982-47d8-8d47-c030549a318e</webElementGuid>
+      <value>//a[contains(@href, '/Games/details/71')]</value>
+      <webElementGuid>45c61e22-b72f-4294-afaf-5193bd114458</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li/a</value>
-      <webElementGuid>68ce46a2-cdfc-4f8a-a674-c0ed1f3ec054</webElementGuid>
+      <value>//a[5]</value>
+      <webElementGuid>3935e61f-74ac-437d-a81d-b89505a1c4a5</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = '/Identity/Account/Login' and (text() = '
-                         Log in
-                    ' or . = '
-                         Log in
-                    ')]</value>
-      <webElementGuid>5fe84f0c-055f-498d-b92e-d049f4ce2273</webElementGuid>
+      <value>//a[@href = '/Games/details/71']</value>
+      <webElementGuid>7352486a-3e3b-4551-af22-7fb4882dcc59</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

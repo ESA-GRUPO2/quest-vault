@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>button_Log in</name>
+   <name>h2_Grand Theft Auto V</name>
    <tag></tag>
-   <elementGuidId>ed3cc47f-1b15-4ba0-8bec-a1bd17bfca54</elementGuidId>
+   <elementGuidId>3195ae57-1f60-4965-8509-0ce4b989aaf3</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value></value>
+         <value>h2.game-title.m-auto</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//button[@id='login-e=']</value>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/following::h2[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=button[name=&quot;Log in&quot;s]</value>
+         <value>internal:role=heading[name=&quot;Grand Theft Auto V&quot;i]</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -28,95 +28,79 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>button</value>
-      <webElementGuid>15137575-c537-47a5-b698-37b9cf084e2a</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>id</name>
-      <type>Main</type>
-      <value>login-e=</value>
-      <webElementGuid>a3016247-8363-4a14-939c-e4f46f705282</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>type</name>
-      <type>Main</type>
-      <value>submit</value>
-      <webElementGuid>c322d7d8-d975-4058-a94c-5215f9ffe5a7</webElementGuid>
+      <value>h2</value>
+      <webElementGuid>c11cad5a-d6f0-4aa3-8aef-d7394e3e714b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>btn-login btn-primary submit</value>
-      <webElementGuid>1713af4d-f244-4826-96f0-dd0e1303a6d3</webElementGuid>
+      <value>game-title m-auto</value>
+      <webElementGuid>4e6d3ba6-618f-4888-88c0-e92c2815d6e6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Log in</value>
-      <webElementGuid>49263528-9029-4a1c-aef9-97bd99b2ec1d</webElementGuid>
+      <value>Grand Theft Auto V</value>
+      <webElementGuid>72c6c06b-ea23-41e5-9b88-4eeb46be2b0e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;login-e=&quot;)</value>
-      <webElementGuid>2523e841-5c42-4451-994c-a11f6c59be7c</webElementGuid>
+      <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;game-details&quot;]/section[@class=&quot;d-flex main-section&quot;]/div[@class=&quot;container ms-3 mt-4&quot;]/h2[@class=&quot;game-title m-auto&quot;]</value>
+      <webElementGuid>9b0ebe67-5794-4fbe-8521-ef3758fe098e</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>xpath:attributes</name>
+      <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//button[@id='login-e=']</value>
-      <webElementGuid>3d0f36a2-65d8-43ff-9141-474e028a8ed8</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:idRelative</name>
-      <type>Main</type>
-      <value>//form[@id='account']/button</value>
-      <webElementGuid>c5af9ff0-f134-4d91-b4d9-f8fad1f55103</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/following::h2[1]</value>
+      <webElementGuid>ac2976ed-852d-4cec-9887-9411e25da881</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Log in'])[1]/following::button[1]</value>
-      <webElementGuid>e0fcd4b0-4b09-468e-92cb-9e578fc4e710</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Friends'])[1]/following::h2[1]</value>
+      <webElementGuid>aff3aec5-f2e0-4edf-9fd9-3fc17dafe18d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Register'])[1]/preceding::button[2]</value>
-      <webElementGuid>fc37bfea-c47a-4a3f-ab66-dba6affefba1</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Released on set 17, 2013'])[1]/preceding::h2[1]</value>
+      <webElementGuid>eb7374f9-24a1-4af3-bccb-ca59669bc350</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Grand Theft Auto V']/parent::*</value>
+      <webElementGuid>9044df49-d1ca-4531-929f-9fc849b2d7f5</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//form/button</value>
-      <webElementGuid>b7398233-0c80-43a3-8abb-e5ffaf0a894b</webElementGuid>
+      <value>//h2</value>
+      <webElementGuid>8eacd5ed-d2e1-4e4c-8ab4-c955827f1e68</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//button[@id = 'login-e=' and @type = 'submit' and (text() = 'Log in' or . = 'Log in')]</value>
-      <webElementGuid>1a7eb688-3077-4174-98b2-489e0c2befee</webElementGuid>
+      <value>//h2[(text() = 'Grand Theft Auto V' or . = 'Grand Theft Auto V')]</value>
+      <webElementGuid>69c1263d-61af-4965-a36f-3dedc8771348</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
