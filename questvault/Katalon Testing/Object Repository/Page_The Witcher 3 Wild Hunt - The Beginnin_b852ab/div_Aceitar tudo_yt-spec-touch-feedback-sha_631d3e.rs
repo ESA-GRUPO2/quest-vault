@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_Aceitar tudo_yt-spec-touch-feedback-sha_631d3e</name>
+   <tag></tag>
+   <elementGuidId>8b3f2a63-f4b8-437c-ae3a-05046440e3d1</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='content']/div[2]/div[6]/div/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:label=&quot;Aceitar a utilização de cookies e outros dados para os fins descritos&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>7df3621b-7976-4d16-8e47-caa5b60af465</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>yt-spec-touch-feedback-shape__fill</value>
+      <webElementGuid>6fee0596-89bc-40d9-be75-34dd3cbc990c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;dialog&quot;)/div[@id=&quot;content&quot;]/div[@class=&quot;body style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-buttons style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-button-row style-scope ytd-consent-bump-v2-lightbox&quot;]/ytd-button-renderer[@class=&quot;style-scope ytd-consent-bump-v2-lightbox&quot;]/yt-button-shape[1]/button[@class=&quot;yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m&quot;]/yt-touch-feedback-shape[1]/div[@class=&quot;yt-spec-touch-feedback-shape yt-spec-touch-feedback-shape--touch-response-inverse&quot;]/div[@class=&quot;yt-spec-touch-feedback-shape__fill&quot;]</value>
+      <webElementGuid>57db2294-3f00-4f9e-bee0-bbbd705595c3</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='content']/div[2]/div[6]/div/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
+      <webElementGuid>eb09e908-e686-4496-a81a-958762c2b65e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
+      <webElementGuid>e070e9a0-13f2-42b7-a465-215c8a6ad029</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

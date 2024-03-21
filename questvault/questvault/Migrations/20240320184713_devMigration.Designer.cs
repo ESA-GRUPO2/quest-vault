@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240319231159_scg2-180")]
-    partial class scg2180
+    [Migration("20240320184713_devMigration")]
+    partial class devMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -336,7 +336,7 @@ namespace questvault.Migrations
                         {
                             GameId = 1942L,
                             IgdbId = 1942L,
-                            IgdbRating = 94.145056494292362,
+                            IgdbRating = 94.145665829461763,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg",
                             IsReleased = true,
                             Name = "The Witcher 3: Wild Hunt",
@@ -364,7 +364,7 @@ namespace questvault.Migrations
                         {
                             GameId = 472L,
                             IgdbId = 472L,
-                            IgdbRating = 87.692473868886339,
+                            IgdbRating = 87.692329442678826,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1tnw.jpg",
                             IsReleased = true,
                             Name = "The Elder Scrolls V: Skyrim",
@@ -392,7 +392,7 @@ namespace questvault.Migrations
                         {
                             GameId = 732L,
                             IgdbId = 732L,
-                            IgdbRating = 90.588981362868822,
+                            IgdbRating = 90.588691922163221,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2lb9.jpg",
                             IsReleased = true,
                             Name = "Grand Theft Auto: San Andreas",
@@ -406,7 +406,7 @@ namespace questvault.Migrations
                         {
                             GameId = 1009L,
                             IgdbId = 1009L,
-                            IgdbRating = 93.377210978551503,
+                            IgdbRating = 93.376445042009308,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.jpg",
                             IsReleased = true,
                             Name = "The Last of Us",
@@ -420,7 +420,7 @@ namespace questvault.Migrations
                         {
                             GameId = 233L,
                             IgdbId = 233L,
-                            IgdbRating = 90.659012483195042,
+                            IgdbRating = 90.658945635542821,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1nmw.jpg",
                             IsReleased = true,
                             Name = "Half-Life 2",
@@ -448,7 +448,7 @@ namespace questvault.Migrations
                         {
                             GameId = 127L,
                             IgdbId = 127L,
-                            IgdbRating = 86.909013139327826,
+                            IgdbRating = 86.909118381031959,
                             ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1rcf.jpg",
                             IsReleased = true,
                             Name = "Assassin's Creed II",

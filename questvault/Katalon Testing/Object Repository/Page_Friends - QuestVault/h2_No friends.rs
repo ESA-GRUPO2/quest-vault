@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>p_Your game collection at your fingertips</name>
+   <name>h2_No friends</name>
    <tag></tag>
-   <elementGuidId>89e3fa98-834d-4ef3-bc73-96c2967563aa</elementGuidId>
+   <elementGuidId>66a2263c-6fb5-46f7-a02e-871ee44aefb4</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>p.fs-1.fw-bolder.home-text-color.home-main-title</value>
+         <value>h2.container</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::p[1]</value>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::h2[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:text=&quot;Your game collection at your fingertips.&quot;i</value>
+         <value>internal:role=heading[name=&quot;No friends!&quot;i]</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -28,71 +28,71 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>p</value>
-      <webElementGuid>480cb694-945b-495f-9516-9a5542a3596b</webElementGuid>
+      <value>h2</value>
+      <webElementGuid>c47721ec-345c-4be9-801c-b786571b7286</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>fs-1 fw-bolder home-text-color home-main-title</value>
-      <webElementGuid>eae7c847-acad-4509-a422-eb8aad7da7b6</webElementGuid>
+      <value>container</value>
+      <webElementGuid>ce833654-5c09-4834-8e56-c17c134ec99e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Your game collection at your fingertips.</value>
-      <webElementGuid>90a7170f-7f01-434c-bdbd-05f08921f7a4</webElementGuid>
+      <value>No friends!</value>
+      <webElementGuid>e519b0c3-a9e9-4227-8e8e-000fa6a5a8c6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>/html[1]/body[@class=&quot;home-body&quot;]/div[1]/main[@class=&quot;pb-3&quot;]/section[@class=&quot;home-banner-image bg-image-full&quot;]/div[@class=&quot;container h-100 d-flex justify-content-evenly text-center&quot;]/div[@class=&quot;row d-flex justify-content-evenly align-self-center&quot;]/div[@class=&quot;col-8 my-5 d-flex&quot;]/p[@class=&quot;fs-1 fw-bolder home-text-color home-main-title&quot;]</value>
-      <webElementGuid>a5af3c95-78d4-4b80-9359-fe2701f8ba1e</webElementGuid>
+      <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;friends-page&quot;]/div[@class=&quot;container mt-5&quot;]/h2[@class=&quot;container&quot;]</value>
+      <webElementGuid>ddabcf3c-75fe-485b-8860-e3b4ce2b36c4</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::p[1]</value>
-      <webElementGuid>b166f6fd-f754-42c4-ac51-29e422814434</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::h2[1]</value>
+      <webElementGuid>c9d617e3-a201-4239-abdd-639cb4ab96f2</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::p[5]</value>
-      <webElementGuid>788911b8-30d6-4bd7-8882-1e142f76ea06</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='FAQs'])[1]/preceding::h2[1]</value>
+      <webElementGuid>5afc9177-0299-4697-9db5-9ea19b7ecdb3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='Your game collection at your fingertips.']/parent::*</value>
-      <webElementGuid>143d8de4-f3fd-49c8-9b57-fd7d9afd847c</webElementGuid>
+      <value>//*/text()[normalize-space(.)='No friends!']/parent::*</value>
+      <webElementGuid>7b351a42-883e-47e7-b680-9cf70b526d25</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//p</value>
-      <webElementGuid>39ae90ce-6842-45ca-8582-42c727bd29c9</webElementGuid>
+      <value>//h2</value>
+      <webElementGuid>6db80f70-9415-4cf6-85c5-d71f474891ea</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//p[(text() = 'Your game collection at your fingertips.' or . = 'Your game collection at your fingertips.')]</value>
-      <webElementGuid>0d2b7ac0-0426-45fd-8909-825b97826b65</webElementGuid>
+      <value>//h2[(text() = 'No friends!' or . = 'No friends!')]</value>
+      <webElementGuid>e80f83f9-8c03-43c6-835e-82b40ace4478</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

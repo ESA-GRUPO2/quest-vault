@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that a message is displayed when the user has no friend requests</description>
+   <name>NoRequests</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b2af3b31-8a34-4921-a35d-7203d313f6e5</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that a game is being removed from the library correctly</description>
+   <name>RemoveGame</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>65f68185-b769-455a-ab64-9882b59d6100</testCaseGuid>
+</TestCaseEntity>
