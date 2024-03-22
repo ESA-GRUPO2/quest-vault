@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace questvault.Models
@@ -6,6 +7,7 @@ namespace questvault.Models
     /// <summary>
     /// Represents a video game entity.
     /// </summary>
+    [Index(nameof(IgdbId), IsUnique = true)]
     public class Game
     {
 
@@ -14,6 +16,7 @@ namespace questvault.Models
         /// <summary>
         /// Gets or sets the IGDB ID of the game.
         /// </summary>
+        
         public long IgdbId { get; set; }
         /// <summary>
         /// Gets or sets the name of the game.

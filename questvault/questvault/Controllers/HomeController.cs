@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using questvault.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace questvault.Controllers
 {
@@ -51,6 +52,28 @@ namespace questvault.Controllers
             var dbContext = _context.Users;
             return View(await dbContext.ToListAsync());
         }
+        [HttpGet]
+        [Route("SearchUser/{id}")]
+        public async Task<IActionResult> SearchUser(string? id)
+        {
+            ViewBag.SearchTerm = id;
+            await Console.Out.WriteLineAsync("CONTROLER SEARHC");
+            if (id == null)
+            {
+                await Console.Out.WriteLineAsync("oqqq");
+                return NotFound();
+            }
+
+            var users = _context.Users.Where(u => u.UserName.Contains(id));
+            //if (users.IsNullOrEmpty())
+            //{
+            //    await Console.Out.WriteLineAsync("ai ta null");
+            //    return NotFound();
+            //}
+            ViewBag.NumberResults = users.Count();
+            return View(await users.ToListAsync());
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

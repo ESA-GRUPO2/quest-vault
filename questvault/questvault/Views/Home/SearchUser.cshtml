@@ -1,0 +1,43 @@
+﻿@model IEnumerable<questvault.Models.User>
+
+@{
+    ViewData["Title"] = "Users";
+}
+<form asp-controller="Games" asp-action="Results" method="post">
+
+    <input id="searchInput" autocomplete="off" name="searchTerm" type="text" hidden value="@ViewBag.SearchTerm" />
+        <button type="submit"> Games </button>
+
+
+</form>
+<h2 style="color:white">@ViewData["Title"]</h2>
+
+<h3>@ViewBag.NumberResults results for @ViewBag.SearchTerm</h3>
+<table class="table table-dark table-sm table-profile">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @if (!SignInManager.UserManager.GetUserName(User).Equals(@ViewBag.SearchTerm, StringComparison.OrdinalIgnoreCase))
+                    {
+                        <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Send Friend Request</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -33,11 +33,11 @@ namespace questvaultTest
             {
                 new Game
                 {
-                    IgdbId = 20L,
+                    IgdbId = 99L,
                     IgdbRating = 86.734274201256369,
                     ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2mli.jpg",
                     IsReleased = true,
-                    Name = "BioShock",
+                    Name = "Game 1",
                     QvRating = 0,
                     ReleaseDate = new DateTime(2007, 8, 21),
                     Screenshots = new [] {
@@ -50,11 +50,11 @@ namespace questvaultTest
                 },
                 new Game
                 {
-                    IgdbId = 71L,
+                    IgdbId = 999L,
                     IgdbRating = 86.778367407367497,
                     ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co1x7d.jpg",
                     IsReleased = true,
-                    Name = "Portal",
+                    Name = "GAME 2",
                     QvRating = 0,
                     ReleaseDate = new DateTime(2007, 10, 10),
                     Screenshots = new [] {
@@ -67,6 +67,8 @@ namespace questvaultTest
                 },
                 // Repita para os outros jogos
             };
+            DbContext.Games.AddRange(games);
+            DbContext.SaveChanges();
 
         }
 

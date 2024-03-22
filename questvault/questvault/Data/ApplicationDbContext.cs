@@ -16,7 +16,9 @@ namespace questvault.Data
             base.OnModelCreating(builder);
             builder.Entity<TwoFactorAuthenticationTokens>().HasKey(t => t.UserId);
 
-
+            builder.Entity<Game>()
+                .HasIndex(g => g.IgdbId)
+                .IsUnique();
 
 
             //// Get data from IGDB service
