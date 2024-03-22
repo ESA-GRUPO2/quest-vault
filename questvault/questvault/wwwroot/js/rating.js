@@ -11,6 +11,7 @@ stars.forEach((star) => {
 		rating.innerText = value;
 		ratingV.value = value;
 
+		
 		// Remove all existing classes from stars
 		stars.forEach((s) => s.classList.remove("one",
 			"two",

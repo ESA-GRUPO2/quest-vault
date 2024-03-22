@@ -358,6 +358,15 @@ namespace questvault.Controllers
 
             bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.IgdbId == id);
 
+            var gameLog = userLibrary.GameLogs.FirstOrDefault(g => g.IgdbId == id);
+
+            if (gameLog != null)
+            {
+                ViewBag.Ownage = gameLog.Ownage;
+                ViewBag.Status = gameLog.Status;
+                ViewBag.Review = gameLog.Review;
+                ViewBag.Rating = gameLog.Rating;
+            }
             // Passe a variável para a visualização
             ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
 
