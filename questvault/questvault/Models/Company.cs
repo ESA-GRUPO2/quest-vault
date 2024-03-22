@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace questvault.Models
 
@@ -6,6 +7,7 @@ namespace questvault.Models
     /// <summary>
     /// Represents a video game company entity.
     /// </summary>
+    [Index(nameof(IgdbCompanyId), IsUnique = true)]
     public class Company
     {
         [Key]

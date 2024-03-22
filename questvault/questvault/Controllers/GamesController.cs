@@ -123,6 +123,7 @@ namespace questvault.Controllers
         [Route("results")]
         public async Task<IActionResult> Results(string searchTerm)
         {
+            ViewBag.SearchTerm = searchTerm;
             // Se o searchTerm for nulo, retorne NotFound
             if (searchTerm == null)
             {

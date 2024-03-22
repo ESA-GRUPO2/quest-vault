@@ -17,7 +17,7 @@
 {
     
 <div class="results-game">
-    <h2 style="color:white">Games</h2>
+        <h2 style="color:white">Games</h2> <h2><a asp-controller="Home" asp-action="SearchUser" asp-route-id="@Model.SearchTerm">Users</a></h2>
     <hr class="bar" style="margin-bottom: 25px; width: 100%;">
     <div class="d-flex main-section-result">
         <div class="game-section">
@@ -41,5 +41,6 @@
     </div>
 }else
 {
+    
     <h1 style="color :red">Please log in to access this page.</h1>
 }

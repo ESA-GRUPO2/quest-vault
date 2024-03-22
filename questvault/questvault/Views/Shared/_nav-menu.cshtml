@@ -25,10 +25,15 @@
             @if (SignInManager.IsSignedIn(User))
             {
                     <li id="search" class="align-self-center">
-                        <form asp-controller="Games" asp-action="Results" method="post">
+                        <form asp-controller="Games" asp-action="Results" method="post" id="searchForm" onsubmit="handleSubmit(event)">
                         <div class="search-bar d-flex">
                                 <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
-                            <button class="outside-search" type="submit">
+                            <button class="outside-search" type="submit"
+                                onclick="this.disabled=true;
+                                        console.log('loading, please wait...');
+                                        var loading = document.getElementById('loading');
+                                        loading.style.display='block';
+                                        this.form.submit();">
                                     <img src="\img\vector\magnifying.svg" class="search-btn" />
                             </button>
                                 
@@ -61,7 +66,7 @@
                 </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
-                        <a class="btn btn-primary nav-btn-2" asp-controller="Library" asp-action="UserLibrary">
+                        <a class="btn btn-primary nav-btn-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)">
                         <img src="\img\vector\bookmark.svg" alt="FilePen Icon" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="nav-vector pe-2"> MyLibrary
                     </a>
                 </li>
@@ -105,6 +110,9 @@
                         </ul>
                     </div>
                 </li>
+                    <div id="loading" style="display: none;">
+                        <img src="/img/icons/loading1.gif"/>
+                    </div>
             }
             else
             {

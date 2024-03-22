@@ -26,10 +26,22 @@ namespace questvault.Controllers
         /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
         [HttpGet]
         [Route("UserLibrary")]
-        public async Task<IActionResult> UserLibrary()
+        public async Task<IActionResult> UserLibrary(string id)
         {
-            var user = await signInManager.UserManager.GetUserAsync(User);
-           
+            if (id == null)
+            {
+                ViewBag.Error = "Invalid user or game ID.";
+                return NotFound();
+            }
+
+            var user = context.Users.Where(u => u.NormalizedUserName == id.ToUpper()).First();
+
+            if (user == null)
+            {
+                ViewBag.Error = "Invalid user or game ID.";
+                return NotFound();
+            }
+
             var gamesInLibrary = context.GamesLibrary
                     .Include(gl => gl.GameLogs) // Inclua os GameLogs para evitar carregamento preguiçoso
                         .ThenInclude(gl => gl.Game) // Inclua os jogos dentro de cada GameLog
@@ -55,9 +67,9 @@ namespace questvault.Controllers
         /// <param name="status">The status of the game (e.g., completed, in-progress, etc.).</param>
         /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
         [HttpPost]
-        public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status)
+        public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status, string userId)
         {
-            var user = await signInManager.UserManager.GetUserAsync(User);
+            var user = context.Users.Where(u => u.Id == userId).First();
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
             if (!Enum.TryParse(ownage, out OwnageStatus ownageEnum) ||
