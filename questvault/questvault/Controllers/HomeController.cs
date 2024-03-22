@@ -74,8 +74,6 @@ namespace questvault.Controllers
             return View(await users.ToListAsync());
         }
 
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
