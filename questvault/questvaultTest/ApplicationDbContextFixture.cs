@@ -68,6 +68,48 @@ namespace questvaultTest
                 // Repita para os outros jogos
             };
             DbContext.Games.AddRange(games);
+            DbContext.Users.AddRange(
+                new User
+                {
+                    IsDeactivated = false,
+                    IsPrivate = false,
+                    Clearance = 0,
+                    UserName = "UnitTester1",
+                    NormalizedUserName = "UNITTESTER1",
+                    Email = "unittester1@gmail.com",
+                    NormalizedEmail = "UNITTESTER1@GMAIL.COM",
+                    EmailConfirmed = true,
+                    PasswordHash = null,
+                    SecurityStamp = null,
+                    ConcurrencyStamp = null,
+                    PhoneNumber = null,
+                    PhoneNumberConfirmed = false,
+                    TwoFactorEnabled = false,
+                    LockoutEnd = null,
+                    LockoutEnabled = true,
+                    AccessFailedCount = 0,
+                },
+                new User
+                {
+                    IsDeactivated = false,
+                    IsPrivate = false,
+                    Clearance = 0,
+                    UserName = "UnitTester2",
+                    NormalizedUserName = "UNITTESTER2",
+                    Email = "unittester2@gmail.com",
+                    NormalizedEmail = "UNITTESTER2@GMAIL.COM",
+                    EmailConfirmed = true,
+                    PasswordHash = null,
+                    SecurityStamp = null,
+                    ConcurrencyStamp = null,
+                    PhoneNumber = null,
+                    PhoneNumberConfirmed = false,
+                    TwoFactorEnabled = false,
+                    LockoutEnd = null,
+                    LockoutEnabled = true,
+                    AccessFailedCount = 0,
+                }
+                );
             DbContext.SaveChanges();
 
         }

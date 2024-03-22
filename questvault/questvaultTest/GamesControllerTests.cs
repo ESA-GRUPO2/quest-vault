@@ -133,6 +133,40 @@ namespace questvaultTest
 
         }
         [Fact]
+        public async Task Results_ReturnsGame1()
+        {
+            var context = new Mock<HttpContext>();
+            var contextAccessor = new Mock<IHttpContextAccessor>();
+            contextAccessor.Setup(x => x.HttpContext).Returns(context.Object);
+            var faketaxi = new TestSignInManager(contextAccessor.Object, userConfirmationMock.Object);
+
+            var mockIGDBService = new Mock<IServiceIGDB>();
+
+            var controller = new GamesController(_context, mockIGDBService.Object, faketaxi);
+
+
+
+
+
+            // Chama o método Index() e aguarda a conclusão da tarefa
+            //var result =  controller.Index("released", "", "");
+
+            // Obtém o resultado da tarefa
+            // Chama o método Index() e aguarda a conclusão da tarefa
+            var actionResult = await controller.Results("Game 1");
+
+            // Verifica se o resultado é do tipo ViewResult
+            var viewResult = Assert.IsType<ViewResult>(actionResult);
+
+            // Verifica se o modelo é do tipo GameViewData
+            var model = viewResult.Model as GameViewData;
+            Assert.NotNull(model); // Verifica se o modelo não é nulo
+
+            // Agora você pode fazer outras asserções sobre o modelo
+            Assert.Equal(1, model.NumberOfResults);
+
+        }
+        [Fact]
         public async Task Results_ReturnsAllGames()
         {
             var context = new Mock<HttpContext>();

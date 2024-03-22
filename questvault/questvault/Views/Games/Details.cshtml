@@ -64,6 +64,7 @@
                     <div class="d-inline-flex">
                          <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
                             <input type="hidden" name="gameId" value="@Model.IgdbId"/>
+                            <input type="hidden" name="userId" value="@SignInManager.UserManager.GetUserId(User)"/>
                                 <select required #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
                                     <option value="" disabled selected hidden>Add Game</option>
                                     <option value="Playing">Playing</option>
