@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace questvault.Models
 {
     /// <summary>
     /// Represents a gaming platform entity.
     /// </summary>
+    [Index(nameof(IgdbPlatformId), IsUnique = true)]
     public class Platform
     {
         [Key]
