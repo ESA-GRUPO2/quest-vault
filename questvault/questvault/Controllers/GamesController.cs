@@ -48,29 +48,6 @@ namespace questvault.Controllers
 
 
         /// <summary>
-        /// GET action method for the Index view.
-        /// </summary>
-        /// <returns>Returns the Index view.</returns>
-        //[HttpGet]
-        //public async Task<IActionResult> Index()
-        //{
-        //    if (_context.Games == null) { return NotFound(); }
-
-        //    var games = await _context.Games.OrderByDescending(
-        //        o => o.IgdbRating)
-
-        //        .ToListAsync();
-        //    var data = new GameViewData
-        //    {
-        //        NumberOfResults = games.Count,
-        //        Games = games,
-        //        Genres = _context.Genres,
-        //        Platforms = _context.Platforms,
-        //    };
-        //    return View(data);
-        //}
-
-        /// <summary>
         /// Index of the page Games that shows all the games and the filtered ones.
         /// </summary>
         /// <param name="releaseStatus">The term to search for the status release.</param>
@@ -166,7 +143,11 @@ namespace questvault.Controllers
             };
             return View(data);
         }
-
+        /// <summary>
+        /// Post (saves in database) Results with the games based on a search term.
+        /// </summary>
+        /// <param name="searchTerm">The term to search for.</param>
+        /// <returns>A view and a collection of games matching the search term sorted by rating.</returns>
         [HttpPost]
         [Route("results")]
         [ValidateAntiForgeryToken]
@@ -339,6 +320,87 @@ namespace questvault.Controllers
         }
 
 
+
+        /// <summary>
+        /// Retrieves details of a game with the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the game.</param>
+        /// <returns>An asynchronous task representing the action result.</returns>
+        [HttpGet]
+        [Route("details/{id}")]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Games == null)
+            {
+                return NotFound(); //TODO NOT FOUND
+            }
+
+            var game = await _context.Games
+                .Include(g => g.GameGenres!)
+                    .ThenInclude(gg => gg.Genre)
+                .Include(g => g.GamePlatforms!)
+                    .ThenInclude(gp => gp.Platform)
+                .Include(g => g.GameCompanies!)
+                    .ThenInclude(gc => gc.Company)
+                .FirstOrDefaultAsync(m => m.IgdbId == id);
+
+
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _signInManager.UserManager.GetUserAsync(User);
+
+            var userLibrary = await _context.GamesLibrary
+                .Include(g => g.GameLogs)
+                .FirstOrDefaultAsync(g => g.User == user);
+
+            bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.IgdbId == id);
+
+            var gameLog = userLibrary.GameLogs.FirstOrDefault(g => g.IgdbId == id);
+
+            if (gameLog != null)
+            {
+                ViewBag.Ownage = gameLog.Ownage;
+                ViewBag.Status = gameLog.Status;
+                ViewBag.Review = gameLog.Review;
+                ViewBag.Rating = gameLog.Rating;
+            }
+            // Passe a variável para a visualização
+            ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
+
+
+            return View(game);
+        }
+
+        /// <summary>
+        /// Gets the games based on a search term.(used in search bar for autocomplete function)
+        /// </summary>
+        /// <param name="searchTerm">The term to search for.</param>
+        /// <returns>Json data with games information.</returns>
+        [HttpGet]
+        [Route("search")]
+        public IActionResult Search(string searchTerm)
+        {
+            if (searchTerm == null || _context.Games == null)
+            {
+                return NotFound();
+            }
+
+            var games = _context.Games
+                .Where(g => EF.Functions.Like(g.Name, $"%{searchTerm}%"))
+                .Select(s => new
+                {
+                    s.IgdbId,
+                    s.Name,
+                })
+                .ToList();
+
+
+            return Json(games);
+        }
+
         //[HttpPost]
         //[Route ("results")]
         //[ValidateAntiForgeryToken]
@@ -475,78 +537,6 @@ namespace questvault.Controllers
         //    //return View(allgames);
         //    return RedirectToAction("Index");
         //}
-
-        /// <summary>
-        /// Retrieves details of a game with the specified ID.
-        /// </summary>
-        /// <param name="id">The ID of the game.</param>
-        /// <returns>An asynchronous task representing the action result.</returns>
-        [HttpGet]
-        [Route("details/{id}")]
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Games == null)
-            {
-                return NotFound();
-            }
-
-            var game = await _context.Games
-                .Include(g => g.GameGenres!)
-                    .ThenInclude(gg => gg.Genre)
-                .Include(g => g.GamePlatforms!)
-                    .ThenInclude(gp => gp.Platform)
-                .Include(g => g.GameCompanies!)
-                    .ThenInclude(gc => gc.Company)
-                .FirstOrDefaultAsync(m => m.IgdbId == id);
-
-
-            if (game == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _signInManager.UserManager.GetUserAsync(User);
-
-            var userLibrary = await _context.GamesLibrary
-                .Include(g => g.GameLogs)
-                .FirstOrDefaultAsync(g => g.User == user);
-
-            bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.IgdbId == id);
-
-            // Passe a variável para a visualização
-            ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
-
-
-            return View(game);
-        }
-
-        /// <summary>
-        /// Gets the games based on a search term.(used in search bar for autocomplete function)
-        /// </summary>
-        /// <param name="searchTerm">The term to search for.</param>
-        /// <returns>Json data with games information.</returns>
-        [HttpGet]
-        [Route("search")]
-        public IActionResult Search(string searchTerm)
-        {
-            if (searchTerm == null || _context.Games == null)
-            {
-                return NotFound();
-            }
-
-            var games = _context.Games
-                .Where(g => EF.Functions.Like(g.Name, $"%{searchTerm}%"))
-                .Select(s => new
-                {
-                    s.IgdbId,
-                    s.Name,
-                })
-                .ToList();
-
-
-            return Json(games);
-        }
-
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]

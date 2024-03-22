@@ -1,1 +1,1 @@
-search_result['666']=["topic_000000000000014B.html","IServiceIGDB.SearchGames Method","Searches for games based on a search term."];
+search_result['666']=["topic_0000000000000155.html","GameGenre.IgdbGenreId Property","Gets or sets the ID of the genre."];

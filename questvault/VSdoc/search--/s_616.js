@@ -1,1 +1,1 @@
-search_result['616']=["topic_0000000000000132.html","Platform.PlatformName Property","Gets or sets the name of the gaming platform."];
+search_result['616']=["topic_0000000000000137.html","FriendshipRequest.FriendshipDate Property",""];

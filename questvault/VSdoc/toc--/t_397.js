@@ -1,1 +1,0 @@
-c['397']=[['398',"GamePlatform Property","topic_0000000000000133.html",0],['399',"PlatformID Property","topic_0000000000000131.html",0],['400',"PlatformName Property","topic_0000000000000132.html",0]];

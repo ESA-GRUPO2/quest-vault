@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_0000000000000150.html"],['352',"questvault.Models Namespace","topic_000000000000010B.html"],['379',"GameGenre Class","topic_0000000000000122.html"],['380',"Properties","topic_0000000000000122_props--.html"],['383',"Genre Property","topic_0000000000000126.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['381',"questvault.Models Namespace","topic_0000000000000125.html"],['382',"Company Class","topic_0000000000000126.html"]];

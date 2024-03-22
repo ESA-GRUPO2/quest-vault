@@ -1,1 +1,1 @@
-c['337']=[['338',"Properties","topic_00000000000000FF_props--.html",1],['344',"Methods","topic_00000000000000FF_methods--.html",1]];
+c['337']=[['338',"HomeController Constructor","topic_0000000000000100.html",0],['339',"Methods","topic_00000000000000FF_methods--.html",1]];

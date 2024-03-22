@@ -1,1 +1,1 @@
-search_result['641']=["topic_0000000000000141.html","EmailSender Class",""];
+search_result['641']=["topic_0000000000000146.html","Game.Screenshots Property","Gets or sets the Screenshots of the game."];

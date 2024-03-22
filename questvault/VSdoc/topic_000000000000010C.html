@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>Company Class</title>
+	<title>LibraryController.AddReview Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -38,7 +38,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	  </div>
 	</div>
   	<div id="header-top-container2">
-    <div id="runningHeaderText">SOLUTION-WIDE PROPERTIES Reference</div>
+    <div id="runningHeaderText">questvault Reference</div>
    
     <div id="search-bar-container">
      <form id="search-bar" action="search--.html">
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">Company Class</h1>
+		<h1 class="title">LibraryController.AddReview Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_000000000000010B.html">questvault.Models</a>
+<a href="topic_00000000000000F0.html">questvault.Controllers</a>
 
 
 
@@ -89,7 +89,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Represents a video game company entity.</summary-info>
+        <summary-info>Action method for adding a review for a game.</summary-info>
 
 
 
@@ -139,7 +139,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">Public Class Company</pre>			
+					<pre xml:space="preserve" class="brush: vb">&lt;HttpPost()&gt; _&nbsp;<br />Public Function AddReview( _&nbsp;<br />   ByVal <i>gameId</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">Long</a>, _&nbsp;<br />   ByVal <i>reviewV</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>, _&nbsp;<br />   ByVal <i>ratingV</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">Integer</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +178,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public class Company</pre>			
+					<pre xml:space="preserve" class="brush: csharp">[HttpPost()]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; AddReview(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> <i>gameId</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>reviewV</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a> <i>ratingV</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +218,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">public ref class Company </pre>			
+					<pre xml:space="preserve" class="brush: cpp">[HttpPost()]&nbsp;<br />public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ AddReview(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> <i>gameId</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>reviewV</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a> <i>ratingV</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -257,7 +257,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public class Company</pre>			
+					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -268,6 +268,56 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="gameId" class="parameterList">
+	<dt>
+		<span class="parameter">
+			gameId
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> 
+	</dd>
+</dl>
+<p>
+	The ID of the game for which the review is being added. 
+</p>
+<dl paramName="reviewV" class="parameterList">
+	<dt>
+		<span class="parameter">
+			reviewV
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
+	</dd>
+</dl>
+<p>
+	The review text. 
+</p>
+<dl paramName="ratingV" class="parameterList">
+	<dt>
+		<span class="parameter">
+			ratingV
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a> 
+	</dd>
+</dl>
+<p>
+	The rating given for the game. 
+</p>
+
+<p />
+
+	<h4 class="subHeading">
+		Return Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; 
+		<p>
+		An asynchronous task representing the operation with IActionResult result. 
+	</p>
+	
 
 
 
@@ -288,384 +338,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 
 
-<div class="section_container">
-	<div class="section_heading">
-		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Properties</a></span>
-		<div>&nbsp;</div>
-	</div>
 
-	<div id="PropertiesSection" class="section">	
-  <table class="memberListTable">
-    <tr>
-      <th></th>
-      <th>
-        Name
-      </th>
-      <th>
-        Description
-      </th>
-    </tr>
 
 
-	
-		<tr class="
 
 
-">
-	<td>
-<img alt="Public property" title="Public property" src="msdn2019/pubproperty.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_000000000000010D.html">CompanyID</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
-	
-
-
-	
-		<tr class="
-
-
-">
-	<td>
-<img alt="Public property" title="Public property" src="msdn2019/pubproperty.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_000000000000010E.html">CompanyName</a>
-
-	</td>
-	<td>
-
-Gets or sets the name of the game company.
-
-	</td>
-</tr>
-	
-
-
-	
-		<tr class="
-
-
-">
-	<td>
-<img alt="Public property" title="Public property" src="msdn2019/pubproperty.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_000000000000010F.html">GameCompany</a>
-
-	</td>
-	<td>
-
-Gets or sets the list of games associated with the company.
-Represents a many-to-many relationship with Games.
-
-	</td>
-</tr>
-	
-
-
-  </table>
-
-  <a href="#mainBody">
-    Top
-  </a>
-
-	</div>					
-</div>
-
-
-
-
-
-
-<div class="section_container">
-	<div class="section_heading">
-		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Methods</a></span>
-		<div>&nbsp;</div>
-	</div>
-
-	<div id="MethodsSection" class="section">	
-  <table class="memberListTable">
-    <tr>
-      <th></th>
-      <th>
-        Name
-      </th>
-      <th>
-        Description
-      </th>
-    </tr>
-
-
-
-
-	<tr class="
-inheritedMember 
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals">Equals(Object)</a>
-
-	</td>
-	<td>
-
-
-(inherited from <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object">Object</a>).
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-inheritedMember 
-
-
-">
-	<td>
-   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
-
-    
-	  
-
-
-    
-	</td>
-	<td>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object.finalize">Finalize</a>
-
-	</td>
-	<td>
-
-
-(inherited from <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object">Object</a>).
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-inheritedMember 
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode">GetHashCode</a>
-
-	</td>
-	<td>
-
-
-(inherited from <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object">Object</a>).
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-inheritedMember 
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype">GetType</a>
-
-	</td>
-	<td>
-
-
-(inherited from <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object">Object</a>).
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-inheritedMember 
-
-
-">
-	<td>
-   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
-
-    
-	  
-
-
-    
-	</td>
-	<td>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone">MemberwiseClone</a>
-
-	</td>
-	<td>
-
-
-(inherited from <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object">Object</a>).
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-inheritedMember 
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring">ToString</a>
-
-	</td>
-	<td>
-
-
-(inherited from <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object">Object</a>).
-
-	</td>
-</tr>
-
-
-
-
-
-
-  </table>
-
-  <a href="#mainBody">
-    Top
-  </a>
-
-	</div>					
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-<!-- Classes -->
-
-<!-- Classes End -->
-
-<!-- Standard Modules -->
-
-<!-- Standard Modules End -->
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section_container">
-	<div class="section_heading">
-		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Inheritance Hierarchy</a></span>
-		<div>&nbsp;</div>
-	</div>
-
-<div id="inheritanceHierarchySection" class="section">
-
-<div style="padding-left:0em;"><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.object">System.Object</a>
-</div>
-
-
-
-<div style="padding-left:1em;">questvault.Models.Company</div>
-
-				
-</div>
-</div>
 
 
 
@@ -720,7 +397,6 @@ inheritedMember
 	</div>					
 </div>
 
-
 <div class="section_container">
 	<div class="section_heading">
 		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">See Also</a></span>
@@ -729,10 +405,14 @@ inheritedMember
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-	<a href="topic_000000000000010B.html">questvault.Models Namespace</a><br />
+			<a href="topic_0000000000000108.html">LibraryController Class</a><br />
 
 
-	
+
+<a href="topic_00000000000000F0.html">questvault.Controllers Namespace</a><br />
+
+
+			
 
 		</div>
 	</div>					

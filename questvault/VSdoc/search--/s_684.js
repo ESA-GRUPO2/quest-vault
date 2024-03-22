@@ -1,0 +1,1 @@
+search_result['684']=["topic_0000000000000162.html","GamePlatform Class","Represents a many-to-many relationship between Game and Platform entities."];

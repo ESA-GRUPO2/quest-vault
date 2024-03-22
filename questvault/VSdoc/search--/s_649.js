@@ -1,1 +1,1 @@
-search_result['649']=["topic_0000000000000143_attached_props--.html","IGDBService Attached Properties",""];
+search_result['649']=["topic_000000000000014E.html","GameCompany Class","Represents a many-to-many relationship between Game and Company entities."];

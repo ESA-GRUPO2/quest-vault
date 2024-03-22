@@ -65,7 +65,13 @@
                          <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
                             <input type="hidden" name="gameId" value="@Model.IgdbId"/>
                                 <select required #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
+                                    @if (ViewBag.IsGameAddedToLibrary == true)
+                                    {
+                                        <option value="" disabled selected hidden>@ViewBag.Ownage</option>
+                                    }else
+                                    {
                                     <option value="" disabled selected hidden>Add Game</option>
+                                    }
                                     <option value="Playing">Playing</option>
                                     <option value="Finished">Finished</option>
                                     <option value="Backlogged">Backlogged</option>
@@ -74,7 +80,13 @@
                                 </select>
                                 @* isto nao devia ser required. se eu adicionar um jogo em wishlist*@
                                 <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example">
+                                    @if (ViewBag.IsGameAddedToLibrary == true)
+                                    {
+                                        <option value="" disabled selected hidden>@ViewBag.Status</option>
+                                    }else
+                                    {
                                     <option value="" disabled selected hidden>Status</option>
+                                    }
                                     <option value="Complete">Complete</option>
                                     <option value="Played">Played</option>
                                     <option value="Retired">Retired</option>
@@ -153,20 +165,86 @@
                 <input type="hidden" name="gameId" value="@Model.IgdbId"/>
                 <h4>Your Review</h4>
                 <div class="justify-content-end d-flex">
-                    <p name="error" id="error">@ViewBag.Error</p>
-                    <div class="rating">
-                        <span name="rating" id="rating">0</span>.0
-                    </div>
-                    <div class="stars" id="stars">
-                        <span class="star" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
+                            @switch (ViewBag.Rating)
+                            {
+                                case null:
+                                    <div class="rating">
+                                        <span name="rating" id="rating">0</span>.0
+                                    </div>
+                                    <div class="stars" id="stars">
+                                        <span class="star" data-value="1">★</span>
+                                        <span class="star" data-value="2">★</span>
+                                        <span class="star" data-value="3">★</span>
+                                        <span class="star" data-value="4">★</span>
+                                        <span class="star" data-value="5">★</span>
+                                    </div>
+                                    break;
+                                case 1:
+                                    <div class="rating">
+                                        <span name="rating" id="rating">1</span>.0
+                                    </div>
+                                    <div class="stars" id="stars">
+                                        <span class="star one" data-value="1">★</span>
+                                        <span class="star" data-value="2">★</span>
+                                        <span class="star" data-value="3">★</span>
+                                        <span class="star" data-value="4">★</span>
+                                        <span class="star" data-value="5">★</span>
+                                    </div>
+                                    break;
+                                case 2:
+                                    <div class="rating">
+                                        <span name="rating" id="rating">2</span>.0
+                                    </div>
+                                    <div class="stars" id="stars">
+                                        <span class="star two" data-value="1">★</span>
+                                        <span class="star two" data-value="2">★</span>
+                                        <span class="star" data-value="3">★</span>
+                                        <span class="star" data-value="4">★</span>
+                                        <span class="star" data-value="5">★</span>
+                                    </div>
+                                    break;
+                                case 3:
+                                    <div class="rating">
+                                        <span name="rating" id="rating">3</span>.0
+                                    </div>
+                                    <div class="stars" id="stars">
+                                        <span class="star three" data-value="1">★</span>
+                                        <span class="star three" data-value="2">★</span>
+                                        <span class="star three" data-value="3">★</span>
+                                        <span class="star" data-value="4">★</span>
+                                        <span class="star" data-value="5">★</span>
+                                    </div>
+                                    break;
+                                     case 4:
+                                    <div class="rating">
+                                        <span name="rating" id="rating">4</span>.0
+                                    </div>
+                                    <div class="stars" id="stars">
+                                        <span class="star four" data-value="1">★</span>
+                                        <span class="star four" data-value="2">★</span>
+                                        <span class="star four" data-value="3">★</span>
+                                        <span class="star four" data-value="4">★</span>
+                                        <span class="star" data-value="5">★</span>
+                                    </div>
+                                    break;
+                                     case 5:
+                                    <div class="rating">
+                                        <span name="rating" id="rating">5</span>.0
+                                    </div>
+                                    <div class="stars" id="stars">
+                                        <span class="star five" data-value="1">★</span>
+                                        <span class="star five" data-value="2">★</span>
+                                        <span class="star five" data-value="3">★</span>
+                                        <span class="star five" data-value="4">★</span>
+                                        <span class="star five" data-value="5">★</span>
+                                    </div>
+                                    break;
+
+                            }
+                    
                         <input hidden id="ratingV" name="ratingV" value="0" />
                 </div>
-                  <textarea required name="reviewV" id="reviewV" value="" maxlength="255" placeholder="Write your review here (max 255)"></textarea>
+                        <textarea required name="reviewV" id="reviewV" value="" maxlength="255" placeholder="Write your review here (max 255)">@ViewBag.Review</textarea>
                 <div>
                     <button id="submit" class="mt-2 btn-blue-big submit">Submit</button>
                 </div>
