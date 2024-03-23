@@ -26,18 +26,18 @@
             {
                     <li id="search" class="align-self-center">
                         <form asp-controller="Games" asp-action="Results" method="post" id="searchForm" onsubmit="handleSubmit(event)">
-                        <div class="search-bar d-flex">
+                            <div class="search-bar d-flex">
                                 <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
-                            <button class="outside-search" type="submit"
+                                <button class="outside-search" type="submit"
                                 onclick="this.disabled=true;
-                                        console.log('loading, please wait...');
-                                        var loading = document.getElementById('loading');
-                                        loading.style.display='block';
-                                        this.form.submit();">
-                                    <img src="\img\vector\magnifying.svg" class="search-btn" />
-                            </button>
+                                            console.log('loading, please wait...');
+                                            var loading = document.getElementById('lmask');
+                                            loading.classList.add('d-flex');
+                                            this.form.submit();">
+                                        <img id="search-btn" src="\img\vector\magnifying.svg" class="search-btn" />
+                                </button>
                                 
-                        </div>
+                            </div>
                         </form>
                         <ul id="searchResults" class="list-group dropdown-menu"></ul>
                     </li>
@@ -90,7 +90,7 @@
                                     <a style="color: white !important;
                                          background: #133E7C !important;" href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">Profile</a>
                             </li>
-                            @*REMOVER ISTO v*@
+                            @*REMOVER USERS ABAIXO*@
                             <li> 
                                 <a style="color: white !important;
                                         background: #133E7C !important;" href="/Home/AllUsersTest" class="btn btn-primary dropdown-item">Users</a>
@@ -110,9 +110,7 @@
                         </ul>
                     </div>
                 </li>
-                    <div id="loading" style="display: none;">
-                        <img src="/img/icons/loading1.gif"/>
-                    </div>
+                    
             }
             else
             {

@@ -22,10 +22,10 @@
                 <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
                 Friends
             </a>
-            <a asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple m-2">
+            <button asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple m-2" disabled>
                 <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Request Icon" />
                 Requests
-            </a>
+            </button>
         </div>
         @if (Model.Any())
         {
@@ -36,7 +36,7 @@
                         {
                             <td class="d-flex mt-5 align-items-center justify-content-center">
                                 <img class="user-foto p-3 ms-0 me-4" src="~/img/vector/user.svg" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
-                                <span style="width: 8rem;">@Html.DisplayFor(modelItem => item.Sender.UserName)</span>
+                                <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.Sender.UserName)</span>
                                 <a class="ms-5" asp-controller="Friendships" asp-action="AcceptFriendRequest" asp-route-id="@item.Sender.Id">
                                     <img id="icon-accept" class="nav-vector" src="~/img/vector/circle-check-solid.svg" alt="Confirm Icon" />
                                 </a>

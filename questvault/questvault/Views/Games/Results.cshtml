@@ -17,11 +17,20 @@
 {
     
 <div class="results-game">
-        <h2 style="color:white">Games</h2> <h2><a asp-controller="Home" asp-action="SearchUser" asp-route-id="@Model.SearchTerm">Users</a></h2>
+    <div class="d-flex justify-content-center">
+       <button class="btn btn-blue-big m-2" disabled>
+            <img class="nav-vector pe-1" src="~/img/vector/gamepad.svg" alt="Gamepad Icon" />
+             Games
+        </button>
+        <a asp-controller="Home" asp-action="SearchUser" asp-route-id="@Model.SearchTerm" class="btn btn-purple m-2">
+            <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
+            Users
+        </a>
+    </div>
     <hr class="bar" style="margin-bottom: 25px; width: 100%;">
-    <div class="d-flex main-section-result">
+    <div class="d-flex main-section-result justify-content-center">
         <div class="game-section">
-                <h3>@Model.NumberOfResults results for @Model.SearchTerm</h3> 
+            <h4 class="mb-4">@Model.NumberOfResults results for @Model.SearchTerm</h4> 
             @foreach (var batch in batches)
             {
                 <div class="game-row">
