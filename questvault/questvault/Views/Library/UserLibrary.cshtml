@@ -12,20 +12,11 @@
           <li>Collection</li>
           <li>Status</li>
         </ul>";
-}
-
-
-@{
     var batchSize = 5; // Defina o tamanho do lote aqui
     var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
                        .GroupBy(x => x.Index / batchSize)
                        .Select(g => g.Select(x => x.Game));
 }
-
-
-@*@if (SignInManager.IsSignedIn(User))
-{*@
-
     <div class="results-game">
 
     <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
@@ -44,11 +35,10 @@
 
                 <h5>Order by</h5>
                 <select class="select-results" name="OrderBy" id="order">
-                    <option value="none" selected></option>
+                    <option value="none" selected>Default</option>
                     <option value="1">Alphabetic</option>
                     <option value="2">Year</option>
                     <option value="3">Platform</option>
-                    <option value="4"></option>
                 </select><br>
                 <h5 class="mt-4">Collections</h5>
                 <div class="library-filter-ownage" name="GameOwnage" id="ownage">
@@ -72,21 +62,23 @@
                 <h5 class="mt-4">Status</h5>
                     <div class="library-filter-ownage" name="GameStatus" id="game-status">
                     <button class="btn btn-purple m-2">
+                        <img class="nav-vector pe-1" src="" alt="Completed Icon" />
                         Completed
                     </button>
                     <button class="btn btn-purple m-2">
-                        <img class="nav-vector pe-1" src="~/img/vector/chess-knight-solid.svg" alt="Knight Icon" />
+                        <img class="nav-vector pe-1" src="~/img/vector/chess-knight-solid.svg" alt="Played Icon" />
                         Played
                     </button>
                     <button class="btn btn-purple m-2">
-                        <img class="nav-vector pe-1" src="~/img/vector/bed-solid.svg" alt="Bed Icon" />
+                        <img class="nav-vector pe-1" src="~/img/vector/bed-solid.svg" alt="Retired Icon" />
                         Retired
                     </button>
                     <button class="btn btn-purple m-2">
-                        <img class="nav-vector pe-1" src="~/img/vector/boxes-stacked-solid.svg" alt="Boxes Icon" />
+                        <img class="nav-vector pe-1" src="~/img/vector/boxes-stacked-solid.svg" alt="Shelved Icon" />
                         Shelved
                     </button>
                     <button class="btn btn-purple m-2">
+                        <img class="nav-vector pe-1" src="~/img/vector/abandoned.svg" alt="Abandoned Icon" />
                         Abandoned
                     </button>
                 </div>
@@ -111,20 +103,9 @@
             {
                 <div style="text-align: center; height:100%;padding-top:200px">
                     <h2>No games Added!</h2>
-                    <h3>Go to Games to add some</h3>
+                    <h3>Go to Games or search in the bar at the top of the screen to add some to your library!</h3>
                 </div>
             }
-           
             </div>
-
         </div>
-
-
     </div>
-@*}
-
-else
-{
-    <h1 style="color :red">Please log in to access this page.</h1>
-}
-*@
