@@ -215,3 +215,23 @@ body {
     width:94%;
     margin:auto;
 }
+
+#lmask {
+    display: flex;
+    position: absolute;
+    backdrop-filter:blur(0.4rem);
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 9999;
+}
+
+#lmask img{
+    margin-top: 35vh;
+    width: 15rem;
+    height: 15rem;
+}
