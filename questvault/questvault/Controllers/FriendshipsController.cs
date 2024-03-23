@@ -110,6 +110,10 @@ namespace questvault.Controllers
         {
 
             var user = await signInManager.UserManager.GetUserAsync(this.User);
+            if(user == null)
+            {
+                return NotFound($"Unable to load user with ID '{signInManager.UserManager.GetUserId(User)}'.");
+            }
 
             var dbContext = await context.Friendship.ToListAsync();
             var dbContextCopy = new List<Friendship>();
@@ -143,6 +147,10 @@ namespace questvault.Controllers
         public async Task<IActionResult> FriendRequestsAsync()
         {
             var user = await signInManager.UserManager.GetUserAsync(this.User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{signInManager.UserManager.GetUserId(User)}'.");
+            }
 
             var dbContext = await context.FriendshipRequest.ToListAsync();
             var dbContextCopy = new List<FriendshipRequest>();
