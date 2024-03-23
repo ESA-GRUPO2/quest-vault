@@ -15,6 +15,7 @@ using RestEase;
 using System.Threading.Tasks;
 using GameStatus = questvault.Models.GameStatus;
 using MailKit.Search;
+using Microsoft.AspNetCore.Authorization;
 
 namespace questvault.Controllers
 {
@@ -24,6 +25,7 @@ namespace questvault.Controllers
         /// Action method for displaying the user's library.
         /// </summary>
         /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+        [Authorize]
         [HttpGet]
         [Route("UserLibrary")]
         public async Task<IActionResult> UserLibrary(string id)
@@ -66,6 +68,7 @@ namespace questvault.Controllers
         /// <param name="ownage">The ownage status of the game (e.g., owned, wishlist, etc.).</param>
         /// <param name="status">The status of the game (e.g., completed, in-progress, etc.).</param>
         /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status, string userId)
         {
@@ -130,6 +133,7 @@ namespace questvault.Controllers
         /// </summary>
         /// <param name="gameId">The ID of the game to remove.</param>
         /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> RemoveGame(long gameId)
         {
@@ -167,7 +171,7 @@ namespace questvault.Controllers
         /// <param name="reviewV">The review text.</param>
         /// <param name="ratingV">The rating given for the game.</param>
         /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddReview(long gameId, string reviewV, int ratingV)
         {

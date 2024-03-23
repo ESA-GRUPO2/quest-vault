@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Identity;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.CodeAnalysis;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 
 namespace questvault.Controllers
 {
@@ -54,6 +55,7 @@ namespace questvault.Controllers
         /// <param name="genre">The term to search for genre.</param>
         /// <param name="releasePlatform">The term to search for platform.</param>
         /// <returns>A view with the games data</returns>
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Index(string releaseStatus, string genre, string releasePlatform)
         {
@@ -122,6 +124,7 @@ namespace questvault.Controllers
         /// </summary>
         /// <param name="searchTerm">The term to search for.</param>
         /// <returns>A view and a collection of games matching the search term sorted by rating.</returns>
+        [Authorize]
         [HttpGet]
         [Route("results")]
         public async Task<IActionResult> Results(string searchTerm)
@@ -148,12 +151,13 @@ namespace questvault.Controllers
             };
             return View(data);
         }
-        
+
         /// <summary>
         /// Post (saves in database) Results with the games based on a search term.
         /// </summary>
         /// <param name="searchTerm">The term to search for.</param>
         /// <returns>A view and a collection of games matching the search term sorted by rating.</returns>
+        [Authorize]
         [HttpPost]
         [Route("results")]
         [ValidateAntiForgeryToken]
@@ -320,6 +324,7 @@ namespace questvault.Controllers
         /// </summary>
         /// <param name="id">The ID of the game.</param>
         /// <returns>An asynchronous task representing the action result.</returns>
+        [Authorize]
         [HttpGet]
         [Route("details/{id}")]
         public async Task<IActionResult> Details(int? id)
@@ -373,6 +378,7 @@ namespace questvault.Controllers
         /// </summary>
         /// <param name="searchTerm">The term to search for.</param>
         /// <returns>Json data with games information.</returns>
+        [Authorize]
         [HttpGet]
         [Route("search")]
         public IActionResult Search(string searchTerm)
