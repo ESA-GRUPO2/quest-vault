@@ -31,81 +31,6 @@ namespace questvault.Services
             return games.Select(game => BuildGameFromIGDBGame(game));
         }
 
-        //public async Task<IEnumerable<Game>> GetPopularGames(int limit)
-        //{
-        //    string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, artworks.image_id;" +
-        //        "where name != null & genres != null & rating != null & total_rating_count != null & artworks.image_id != null & involved_companies != null & platforms != null;" +
-        //        "sort total_rating_count desc;" +
-        //        $"limit {limit};";
-
-        //    var popularGames = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
-
-        //    return popularGames.Select(game => new Game
-        //    {
-        //        GameId = (long)game.Id,
-        //        Name = game.Name,
-        //        Summary = game.Summary,
-        //        IgdbRating = (double)game.Rating,
-        //        imageUrl = ImageHelper.GetImageUrl(imageId: game.Artworks.Values.First().ImageId, size: ImageSize.CoverBig, retina: true),
-        //        GameGenres = game.Genres.Values.Select(genre => new GameGenre
-        //        {
-        //            GameId = (long)game.Id,
-        //            GenreId = (long)genre.Id,
-        //            Genre = new Genre
-        //            {
-        //                GenreId = (long)genre.Id,
-        //                GenreName = genre.Name,
-        //                GameGenres = new List<GameGenre>
-        //        {
-        //            new GameGenre
-        //            {
-        //                GameId = (long)game.Id,
-        //                GenreId = (long)genre.Id
-        //            }
-
-        //        }
-        //            }
-
-        //        }).ToList(),
-
-        //        GameCompanies = game.InvolvedCompanies.Values.Select(comp => new GameCompany
-        //        {
-        //            GameId = (long)game.Id,
-        //            CompanyId = (long)comp.Company.Id,
-        //            Company = new Company
-        //            {
-        //                CompanyId = (long)comp.Company.Id,
-        //                GameCompanies = new List<GameCompany>
-        //          {
-        //              new GameCompany
-        //              {
-        //                  GameId = (long)game.Id,
-        //                  CompanyId = (long)comp.Company.Id,
-        //              }
-        //          }
-        //            }
-        //        }).ToList(),
-        //        GamePlatforms = game.Platforms.Values.Select(p => new GamePlatform
-        //        {
-        //            GameId = (long)game.Id,
-        //            PlatformId = (long)p.Id,
-        //            Platform = new Platform
-        //            {
-        //                PlatformId = (long)p.Id,
-        //                GamePlatforms = new List<GamePlatform>
-        //          {
-        //              new GamePlatform
-        //              {
-        //                  GameId = (long)game.Id,
-        //                  PlatformId = (long)p.Id,
-        //              }
-        //          }
-        //            }
-        //        }
-        //        ).ToList(),
-        //    });
-        //}
-
         public async Task<IEnumerable<Game>> GetPopularGames(int limit)
         {
             string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, cover.image_id, first_release_date, screenshots.image_id, videos.video_id;" +
@@ -134,6 +59,7 @@ namespace questvault.Services
                 Name = igdbGame.Name,
                 Summary = igdbGame.Summary,
                 IgdbRating = (igdbGame.Rating.HasValue) ? (double)igdbGame.Rating : 0,
+                TotalRatingCount = (igdbGame.TotalRatingCount.HasValue)? igdbGame.TotalRatingCount : 0,
                 ImageUrl = ImageHelper.GetImageUrl(imageId: igdbGame.Cover.Value.ImageId, size: ImageSize.CoverBig, retina: false),
                 Screenshots = igdbGame.Screenshots.Values.Take(3).Select(s =>
                     ImageHelper.GetImageUrl(imageId: s.ImageId, size: ImageSize.ScreenshotMed, retina: false)
@@ -141,9 +67,6 @@ namespace questvault.Services
                 VideoUrl = "https://www.youtube.com/embed/" + igdbGame.Videos.Values.First().VideoId,
                 ReleaseDate = igdbGame.FirstReleaseDate.Value.Date,
                 IsReleased = (igdbGame.FirstReleaseDate.HasValue && igdbGame.FirstReleaseDate.Value.Date < DateTime.Today) ? true : false,
-                //igdbGame.FirstReleaseDate.Value.ToString("MMMM") + " " + 
-                //    igdbGame.FirstReleaseDate.Value.Day + ", " + 
-                //    igdbGame.FirstReleaseDate.Value.Year,
                 GameGenres = igdbGame.Genres.Values.Select(genre => BuildGameGenreFromIGDBData(igdbGame, genre)).ToList(),
                 GameCompanies = igdbGame.InvolvedCompanies.Values.Select(company => BuildGameCompanyFromIGDBData(igdbGame, company)).ToList(),
                 GamePlatforms = igdbGame.Platforms.Values.Select(platform => BuildGamePlatformFromIGDBData(igdbGame, platform)).ToList()
@@ -246,9 +169,26 @@ namespace questvault.Services
             {
                 CompanyId = (long)c.Id,
                 IgdbCompanyId= (long)c.Id,
-                CompanyName = c.Name
+                CompanyName = c.Name,
+
             });
         }
+
+        public async Task<IEnumerable<Genre>> GetGenresFromIds(List<long> ids)
+        {
+            var endpoint = IGDBClient.Endpoints.Genres;
+            string query = $"fields id, name; where id = ({string.Join(",", ids)});";
+            var genres = await _api.QueryAsync<IGDB.Models.Genre>(endpoint, query);
+            Console.WriteLine(genres);
+            return genres.Select(c => new Genre
+            {
+                GenreId = (long)c.Id,
+                IgdbGenreId = (long)c.Id,
+                GenreName = c.Name,
+
+            });
+        }
+
         public async Task<IEnumerable<Platform>> GetPlatforms()
         {
             var endpoint = IGDBClient.Endpoints.Platforms;
@@ -274,34 +214,6 @@ namespace questvault.Services
                 PlatformName = p.Name
             });
         }
-
-        //public async Task<IEnumerable<Platform>> GetAllPlatforms()
-        //{
-        //    var allPlatforms = new List<Platform>();
-        //    var pageSize = 500; // Tamanho da página, ajuste conforme necessário
-        //    var currentPage = 0;
-        //    var totalPages = 0; // Defina como 1 inicialmente para entrar no loop
-
-        //    while (currentPage <= totalPages)
-        //    {
-        //        var endpoint = IGDBClient.Endpoints.Platforms;
-        //        var queryString = $"fields id,name; limit {pageSize}; offset {currentPage * pageSize};";
-        //        var platforms = await _api.QueryAsync<IGDB.Models.Platform>(endpoint, queryString);
-
-        //        allPlatforms.AddRange(platforms.Select(p => new Platform
-        //        {
-        //            PlatformId = (long)p.Id,
-        //            PlatformName = p.Name
-        //        }));
-
-        //        // Verificar o cabeçalho de resposta para determinar o número total de páginas
-        //        totalPages = (int)Math.Floor((double)allPlatforms.Count() / pageSize); // Implemente essa função de acordo com a resposta real da API
-
-        //        currentPage++;
-        //    }
-
-        //    return allPlatforms;
-        //}
 
     }
 }
