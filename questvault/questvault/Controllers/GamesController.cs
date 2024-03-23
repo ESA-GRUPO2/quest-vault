@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
-//using questvault.Migrations;
 using questvault.Services;
 
 namespace questvault.Controllers
@@ -26,8 +25,6 @@ namespace questvault.Controllers
           SignInManager<User> signInManager
         ) : Controller
   {
-
-
     /// <summary>
     /// Index of the page Games that shows all the games and the filtered ones.
     /// </summary>
@@ -50,7 +47,6 @@ namespace questvault.Controllers
             .OrderByDescending(o => o.IgdbRating)
             .ThenByDescending(o => o.TotalRatingCount)
             .ToListAsync();
-
         var data = new GameViewData
         {
           NumberOfResults = filteredGames.Count,
@@ -152,7 +148,6 @@ namespace questvault.Controllers
         }
       }
     }
-
     /// <summary>
     /// Post (saves in database) Results with the games based on a search term.
     /// </summary>
@@ -164,7 +159,6 @@ namespace questvault.Controllers
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ResultsPost(string searchTerm)
     {
-
       if (searchTerm == null)
       {
         return RedirectToAction("Index");
@@ -483,8 +477,5 @@ namespace questvault.Controllers
         }
       }
     }
-
-
-
   }
 }
