@@ -18,6 +18,8 @@ namespace questvault.Models
         /// </summary>
         
         public long IgdbId { get; set; }
+
+        public int? TotalRatingCount { get; set; }
         /// <summary>
         /// Gets or sets the name of the game.
         /// </summary>

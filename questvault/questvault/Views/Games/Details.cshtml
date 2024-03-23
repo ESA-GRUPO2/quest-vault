@@ -111,8 +111,10 @@
         <div class="container-fluid game-score mt-4">
             <h4>Game Score</h4>
             <div class=" justify-content-end d-inline-flex">
+
                 @* global rating stars *@
                 <div class="global-rating">
+                    <p>IGDB Rating: @Model.IgdbRating/100</p>
                     <span id="global-rating">@Model.QvRating</span>.0
                 </div>
                 <div class="stars" id="global-stars">
@@ -122,6 +124,7 @@
                     <span class="global-star" data-value="4">★</span>
                     <span class="global-star" data-value="5">★</span>
                 </div>
+
             </div>
             <div class="game-platforms container-fluid mt-5">
                 @foreach (var p in Model.GamePlatforms )
