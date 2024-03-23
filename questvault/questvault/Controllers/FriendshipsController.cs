@@ -112,7 +112,7 @@ namespace questvault.Controllers
             var user = await signInManager.UserManager.GetUserAsync(this.User);
             if(user == null)
             {
-                return NotFound($"Unable to load user with ID '{signInManager.UserManager.GetUserId(User)}'.");
+                return Redirect("/Identity/Account/Login");
             }
 
             var dbContext = await context.Friendship.ToListAsync();
@@ -149,7 +149,7 @@ namespace questvault.Controllers
             var user = await signInManager.UserManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{signInManager.UserManager.GetUserId(User)}'.");
+                return Redirect("/Identity/Account/Login");
             }
 
             var dbContext = await context.FriendshipRequest.ToListAsync();
