@@ -148,6 +148,7 @@ namespace questvault.Controllers
             };
             return View(data);
         }
+        
         /// <summary>
         /// Post (saves in database) Results with the games based on a search term.
         /// </summary>
@@ -172,43 +173,78 @@ namespace questvault.Controllers
 
             var companyIds = games.SelectMany(g => g.GameCompanies.Select(c => c.IgdbCompanyId)).Distinct().ToList();
             var platformIds = games.SelectMany(g => g.GamePlatforms.Select(p => p.IgdbPlatformId)).Distinct().ToList();
-
-            var platforms = await _igdbService.GetPlatformsFromIds(platformIds);
-            var companies = await _igdbService.GetCompaniesFromIds(companyIds);
+            var genresIds = games.SelectMany(g => g.GameGenres.Select(gg => gg.IgdbGenreId)).Distinct().ToList();
 
             var existingCompanies = await _context.Companies.Where(c => companyIds.Contains(c.IgdbCompanyId)).ToListAsync();
             var existingPlatforms = await _context.Platforms.Where(p => platformIds.Contains(p.IgdbPlatformId)).ToListAsync();
+            var existingGenres = await    _context.Genres.Where(g => genresIds.Contains(g.IgdbGenreId)).ToListAsync();
 
-            foreach (var company in companies)
+            bool allCompaniesExist = existingCompanies.Count == companyIds.Count;
+            bool allPlatformsExist = existingPlatforms.Count == platformIds.Count;
+            bool allGenresExist = existingGenres.Count == genresIds.Count;
+
+            if (!allCompaniesExist)
             {
-                if (!existingCompanies.Any(c => c.IgdbCompanyId == company.IgdbCompanyId))
+                // Buscar empresas ausentes na API IGDB e adicionar à lista de empresas
+                var missingCompanies = await _igdbService.GetCompaniesFromIds(
+                    companyIds.Except(existingCompanies.Select(c => c.IgdbCompanyId)).ToList());
+                
+                foreach (var company in missingCompanies)
                 {
-                    var newComp = new Models.Company
+                    if (!existingCompanies.Any(c => c.IgdbCompanyId == company.IgdbCompanyId))
                     {
-                        IgdbCompanyId = company.IgdbCompanyId,
-                        CompanyName = company.CompanyName,
-                    };
-                    _context.Companies.Add(newComp);
+                        var newComp = new Models.Company
+                        {
+                            IgdbCompanyId = company.IgdbCompanyId,
+                            CompanyName = company.CompanyName,
+                        };
+                        _context.Companies.Add(newComp);
 
-                    existingCompanies.Add(newComp);
+                        existingCompanies.Add(newComp);
+                    }
                 }
             }
 
-            foreach (var platform in platforms)
+            if(!allPlatformsExist)
             {
-                if (!existingPlatforms.Any(p => p.IgdbPlatformId == platform.IgdbPlatformId))
+                var missingPlatforms = await _igdbService.GetPlatformsFromIds(
+                    platformIds.Except(existingPlatforms.Select(c => c.IgdbPlatformId)).ToList());
+
+                foreach (var platform in missingPlatforms)
                 {
-                    var newPlat = new Models.Platform
+                    if (!existingPlatforms.Any(p => p.IgdbPlatformId == platform.IgdbPlatformId))
                     {
-                        IgdbPlatformId = platform.IgdbPlatformId,
-                        PlatformName = platform.PlatformName,
-                    };
-                    _context.Platforms.Add(newPlat);
-                    existingPlatforms.Add(newPlat);
+                        var newPlat = new Models.Platform
+                        {
+                            IgdbPlatformId = platform.IgdbPlatformId,
+                            PlatformName = platform.PlatformName,
+                        };
+                        _context.Platforms.Add(newPlat);
+                        existingPlatforms.Add(newPlat);
+                    }
                 }
             }
 
+            if (!allGenresExist)
+            {
+                var missingGenres = await _igdbService.GetGenresFromIds(
+                    genresIds.Except(existingGenres.Select(gg => gg.IgdbGenreId)).ToList());
 
+                foreach (var genre in missingGenres)
+                {
+                    if (!existingGenres.Any(g => g.IgdbGenreId == genre.IgdbGenreId))
+                    {
+                        var newGenre = new Models.Genre
+                        {
+                            IgdbGenreId = genre.IgdbGenreId,
+                            GenreName = genre.GenreName
+                        };
+                        _context.Genres.Add(newGenre);
+                        existingGenres.Add(newGenre);
+                    }
+                }
+
+            }
             foreach (var game in games)
             {
                 var existingGame = await _context.Games.FirstOrDefaultAsync(g => g.IgdbId == game.IgdbId);
@@ -234,28 +270,40 @@ namespace questvault.Controllers
 
                     foreach (var company in existingCompanies)
                     {
-                        var existingCompany = existingCompanies.FirstOrDefault(c => c.IgdbCompanyId == company.IgdbCompanyId);
-                        if (existingCompany != null)
+                        var companyBelongsToGame = game.GameCompanies.FirstOrDefault(c => c.IgdbCompanyId == company.IgdbCompanyId);
+                        
+                        if (companyBelongsToGame != null)
                         {
                             _context.GameCompany.Add(new GameCompany
                             {
                                 Game = newGame,
-                                Company = existingCompany
+                                Company = company
                             });
                         }
                     }
 
-                    ProcessGameGenres(game, newGame);
-
-                    foreach (var platform in game.GamePlatforms)
+                    foreach (var genre in existingGenres)
                     {
-                        var existingPlatform = existingPlatforms.FirstOrDefault(p => p.IgdbPlatformId == platform.IgdbPlatformId);
+                        var existingGenre = game.GameGenres.FirstOrDefault(g => g.IgdbGenreId == genre.IgdbGenreId);
+                        if (existingGenre != null)
+                        {
+                            _context.GameGenre.Add(new GameGenre
+                            {
+                                Game = newGame,
+                                Genre = genre
+                            });
+                        }
+                    }
+
+                    foreach (var platform in existingPlatforms)
+                    {
+                        var existingPlatform = game.GamePlatforms.FirstOrDefault(p => p.IgdbPlatformId == platform.IgdbPlatformId);
                         if (existingPlatform != null)
                         {
                             _context.GamePlatform.Add(new GamePlatform
                             {
                                 Game = newGame,
-                                Platform = existingPlatform
+                                Platform = platform
                             });
                         }
                     }

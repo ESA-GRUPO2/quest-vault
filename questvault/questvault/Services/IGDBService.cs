@@ -67,9 +67,6 @@ namespace questvault.Services
                 VideoUrl = "https://www.youtube.com/embed/" + igdbGame.Videos.Values.First().VideoId,
                 ReleaseDate = igdbGame.FirstReleaseDate.Value.Date,
                 IsReleased = (igdbGame.FirstReleaseDate.HasValue && igdbGame.FirstReleaseDate.Value.Date < DateTime.Today) ? true : false,
-                //igdbGame.FirstReleaseDate.Value.ToString("MMMM") + " " + 
-                //    igdbGame.FirstReleaseDate.Value.Day + ", " + 
-                //    igdbGame.FirstReleaseDate.Value.Year,
                 GameGenres = igdbGame.Genres.Values.Select(genre => BuildGameGenreFromIGDBData(igdbGame, genre)).ToList(),
                 GameCompanies = igdbGame.InvolvedCompanies.Values.Select(company => BuildGameCompanyFromIGDBData(igdbGame, company)).ToList(),
                 GamePlatforms = igdbGame.Platforms.Values.Select(platform => BuildGamePlatformFromIGDBData(igdbGame, platform)).ToList()
@@ -176,6 +173,22 @@ namespace questvault.Services
 
             });
         }
+
+        public async Task<IEnumerable<Genre>> GetGenresFromIds(List<long> ids)
+        {
+            var endpoint = IGDBClient.Endpoints.Genres;
+            string query = $"fields id, name; where id = ({string.Join(",", ids)});";
+            var genres = await _api.QueryAsync<IGDB.Models.Genre>(endpoint, query);
+            Console.WriteLine(genres);
+            return genres.Select(c => new Genre
+            {
+                GenreId = (long)c.Id,
+                IgdbGenreId = (long)c.Id,
+                GenreName = c.Name,
+
+            });
+        }
+
         public async Task<IEnumerable<Platform>> GetPlatforms()
         {
             var endpoint = IGDBClient.Endpoints.Platforms;
@@ -201,34 +214,6 @@ namespace questvault.Services
                 PlatformName = p.Name
             });
         }
-
-        //public async Task<IEnumerable<Platform>> GetAllPlatforms()
-        //{
-        //    var allPlatforms = new List<Platform>();
-        //    var pageSize = 500; // Tamanho da página, ajuste conforme necessário
-        //    var currentPage = 0;
-        //    var totalPages = 0; // Defina como 1 inicialmente para entrar no loop
-
-        //    while (currentPage <= totalPages)
-        //    {
-        //        var endpoint = IGDBClient.Endpoints.Platforms;
-        //        var queryString = $"fields id,name; limit {pageSize}; offset {currentPage * pageSize};";
-        //        var platforms = await _api.QueryAsync<IGDB.Models.Platform>(endpoint, queryString);
-
-        //        allPlatforms.AddRange(platforms.Select(p => new Platform
-        //        {
-        //            PlatformId = (long)p.Id,
-        //            PlatformName = p.Name
-        //        }));
-
-        //        // Verificar o cabeçalho de resposta para determinar o número total de páginas
-        //        totalPages = (int)Math.Floor((double)allPlatforms.Count() / pageSize); // Implemente essa função de acordo com a resposta real da API
-
-        //        currentPage++;
-        //    }
-
-        //    return allPlatforms;
-        //}
 
     }
 }

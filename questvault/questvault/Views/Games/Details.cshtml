@@ -112,9 +112,9 @@
             <h4>Game Score</h4>
             <div class=" justify-content-end d-inline-flex">
 
+                <p>IGDB Rating: @(Math.Ceiling(Model.IgdbRating))/100</p>
                 @* global rating stars *@
                 <div class="global-rating">
-                    <p>IGDB Rating: @Model.IgdbRating/100</p>
                     <span id="global-rating">@Model.QvRating</span>.0
                 </div>
                 <div class="stars" id="global-stars">
