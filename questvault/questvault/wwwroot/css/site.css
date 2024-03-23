@@ -89,6 +89,10 @@ body {
     filter: invert(9%) sepia(12%) saturate(7338%) hue-rotate(197deg) brightness(90%) contrast(99%);
 }
 
+.btn-blue-big:disabled img {
+    filter: invert(72%) sepia(14%) saturate(176%) hue-rotate(182deg) brightness(96%) contrast(87%);
+}
+
 .btn-blue-big:active {
     background-color: white;
     color: #091833;

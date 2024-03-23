@@ -22,10 +22,10 @@
                 <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
                 Friends
             </a>
-            <a asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple m-2">
+            <button asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple m-2" disabled>
                 <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Request Icon" />
                 Requests
-            </a>
+            </button>
         </div>
         @if (Model.Any())
         {
