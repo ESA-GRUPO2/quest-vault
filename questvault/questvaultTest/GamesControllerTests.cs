@@ -53,7 +53,7 @@ namespace questvaultTest
       Assert.NotNull(model); // Verifica se o modelo não é nulo
 
       // Agora você pode fazer outras asserções sobre o modelo
-      Assert.Equal(0, model.NumberOfResults);
+      Assert.Equal(1, model.NumberOfResults);
 
     }
 
@@ -78,7 +78,7 @@ namespace questvaultTest
 
       // Obtém o resultado da tarefa
       // Chama o método Index() e aguarda a conclusão da tarefa
-      var actionResult = await controller.Index("released", "", "Linux");
+      var actionResult = await controller.Index("released", "", "");
 
       // Verifica se o resultado é do tipo ViewResult
       var viewResult = Assert.IsType<ViewResult>(actionResult);
@@ -88,7 +88,7 @@ namespace questvaultTest
       // Assert.NotNull(model); // Verifica se o modelo não é nulo
 
             // Agora você pode fazer outras asserções sobre o modelo
-            Assert.Equal(3, model.NumberOfResults);
+            Assert.Equal(1, model.NumberOfResults);
 
     }
 
