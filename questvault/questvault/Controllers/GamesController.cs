@@ -183,7 +183,7 @@ namespace questvault.Controllers
 
                         foreach (var company in missingCompanies)
                         {
-                            var existingCompany = await context.Companies.FirstAsync(g => g.IgdbCompanyId == company.IgdbCompanyId);
+                            var existingCompany = await context.Companies.FirstOrDefaultAsync(g => g.IgdbCompanyId == company.IgdbCompanyId);
                             if (existingCompany == null)
                             {
                                 var newComp = new Models.Company
@@ -202,11 +202,13 @@ namespace questvault.Controllers
                 }
                 catch (Exception ex)
                 {
+                    //await Console.Out.WriteLineAsync(ex.Message);
                     // Rollback da transação em caso de erro
                     await transaction.RollbackAsync();
                     // Tratar ou registrar o erro conforme necessário
                     return RedirectToAction("Error", "Home");
                 }
+
             }
 
             using (var transaction = context.Database.BeginTransaction())
@@ -221,7 +223,7 @@ namespace questvault.Controllers
 
                         foreach (var platform in missingPlatforms)
                         {
-                            var existingPlatform = await context.Platforms.FirstAsync(g => g.IgdbPlatformId == platform.IgdbPlatformId);
+                            var existingPlatform = await context.Platforms.FirstOrDefaultAsync(g => g.IgdbPlatformId == platform.IgdbPlatformId);
                             if (existingPlatform == null)
                             {
                                 var newPlat = new Models.Platform
@@ -241,6 +243,7 @@ namespace questvault.Controllers
                 }
                 catch (Exception ex)
                 {
+                    await Console.Out.WriteLineAsync(ex.Message);
                     // Rollback da transação em caso de erro
                     await transaction.RollbackAsync();
                     // Tratar ou registrar o erro conforme necessário
@@ -260,7 +263,7 @@ namespace questvault.Controllers
 
                         foreach (var genre in missingGenres)
                         {
-                            var existingGenre = await context.Genres.FirstAsync(g => g.IgdbGenreId == genre.IgdbGenreId);
+                            var existingGenre = await context.Genres.FirstOrDefaultAsync(g => g.IgdbGenreId == genre.IgdbGenreId);
                             if (existingGenre == null)
                             {
                                 var newGenre = new Models.Genre
