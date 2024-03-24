@@ -177,14 +177,15 @@ namespace questvault.Controllers
         {
           if (!existingCompanies.Any(c => c.IgdbCompanyId == company.IgdbCompanyId))
           {
-            var newComp = new Models.Company
+            var newComp = new Company
             {
               IgdbCompanyId = company.IgdbCompanyId,
               CompanyName = company.CompanyName,
             };
-            context.Companies.Add(newComp);
+            await context.Companies.AddAsync(newComp);
 
             existingCompanies.Add(newComp);
+            await context.SaveChangesAsync();
           }
         }
       }
@@ -203,8 +204,9 @@ namespace questvault.Controllers
               IgdbPlatformId = platform.IgdbPlatformId,
               PlatformName = platform.PlatformName,
             };
-            context.Platforms.Add(newPlat);
+            await context.Platforms.AddAsync(newPlat);
             existingPlatforms.Add(newPlat);
+            await context.SaveChangesAsync();
           }
         }
       }
@@ -218,13 +220,14 @@ namespace questvault.Controllers
         {
           if (!existingGenres.Any(g => g.IgdbGenreId == genre.IgdbGenreId))
           {
-            var newGenre = new Models.Genre
+            var newGenre = new Genre
             {
               IgdbGenreId = genre.IgdbGenreId,
               GenreName = genre.GenreName
             };
-            context.Genres.Add(newGenre);
+            await context.Genres.AddAsync(newGenre);
             existingGenres.Add(newGenre);
+            await context.SaveChangesAsync();
           }
         }
 
@@ -235,7 +238,7 @@ namespace questvault.Controllers
 
         if (existingGame == null)
         {
-          var newGame = new Models.Game
+          var newGame = new Game
           {
             IgdbId = game.IgdbId,
             Name = game.Name,
@@ -251,7 +254,6 @@ namespace questvault.Controllers
           };
 
           context.Games.Add(newGame);
-
           foreach (var company in existingCompanies)
           {
             var companyBelongsToGame = game.GameCompanies.FirstOrDefault(c => c.IgdbCompanyId == company.IgdbCompanyId);
@@ -291,12 +293,11 @@ namespace questvault.Controllers
               });
             }
           }
+          await context.SaveChangesAsync();
         }
       }
 
-      await context.SaveChangesAsync();
-
-      return RedirectToAction("Results", new { searchTerm = searchTerm });
+      return RedirectToAction("Results", new { searchTerm });
     }
 
     /// <summary>
