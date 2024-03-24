@@ -23,6 +23,11 @@ $(document).ready(function () {
         } else {
             $('#searchResults').empty().hide(); // Limpar e esconder a dropdown se o campo de pesquisa estiver vazio
         }
+
+        // Manipulador de eventos para o evento 'blur' na barra de pesquisa
+        $('#searchInput').on('blur', function () {
+            $('#searchResults').empty().hide(); // Limpar e esconder a dropdown quando a barra de pesquisa perde o foco
+        });
     });
 
     $('#searchInput').on('keydown', function (e) {
