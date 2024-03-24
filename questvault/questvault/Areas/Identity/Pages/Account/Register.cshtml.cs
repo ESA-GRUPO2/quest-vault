@@ -87,7 +87,14 @@ namespace questvault.Areas.Identity.Pages.Account
       public string UserName { get; set; }
     }
 
+        public async Task<IActionResult> OnGetAsync(string returnUrl)
+        {
+            returnUrl ??= Url.Content("~/");
 
+            if (HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToPage(returnUrl);
+            else return Page();
+        }
     public async Task<IActionResult> OnPostAsync(string returnUrl = null)
     {
       returnUrl ??= Url.Content("~/");

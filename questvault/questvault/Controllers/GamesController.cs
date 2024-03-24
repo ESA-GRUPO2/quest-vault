@@ -176,29 +176,28 @@ namespace questvault.Controllers
 
                     // Commit da transação se tudo correr bem
                     if (!allCompaniesExist)
-            {
-
-                var missingCompanies = await igdbService.GetCompaniesFromIds(
-                    companyIds.Except(existingCompanies.Select(c => c.IgdbCompanyId)).ToList());
-
-                foreach (var company in missingCompanies)
-                {
-                    if (!existingCompanies.Any(c => c.IgdbCompanyId == company.IgdbCompanyId) ||
-                         context.Companies.FirstAsync(c => c.IgdbCompanyId == company.IgdbCompanyId) == null
-                                )
                     {
-                        var newComp = new Models.Company
-                        {
-                            IgdbCompanyId = company.IgdbCompanyId,
-                            CompanyName = company.CompanyName,
-                        };
-                        await context.Companies.AddAsync(newComp);
 
-                        existingCompanies.Add(newComp);
-                        await context.SaveChangesAsync();
+                        var missingCompanies = await igdbService.GetCompaniesFromIds(
+                            companyIds.Except(existingCompanies.Select(c => c.IgdbCompanyId)).ToList());
+
+                        foreach (var company in missingCompanies)
+                        {
+                            var existingCompany = await context.Companies.FirstAsync(g => g.IgdbCompanyId == company.IgdbCompanyId);
+                            if (existingCompany == null)
+                            {
+                                var newComp = new Models.Company
+                                {
+                                    IgdbCompanyId = company.IgdbCompanyId,
+                                    CompanyName = company.CompanyName,
+                                };
+                                await context.Companies.AddAsync(newComp);
+
+                                existingCompanies.Add(newComp);
+                                await context.SaveChangesAsync();
+                            }
+                        }
                     }
-                }
-            }
                     await transaction.CommitAsync();
                 }
                 catch (Exception ex)
@@ -216,27 +215,26 @@ namespace questvault.Controllers
                 {
                     // Seu código de busca e inserção aqui...
                     if (!allPlatformsExist)
-            {
-                var missingPlatforms = await igdbService.GetPlatformsFromIds(
-                    platformIds.Except(existingPlatforms.Select(c => c.IgdbPlatformId)).ToList());
-
-                foreach (var platform in missingPlatforms)
-                {
-                    if (!existingPlatforms.Any(p => p.IgdbPlatformId == platform.IgdbPlatformId)
-                            ||
-                         context.Platforms.FirstAsync(c => c.IgdbPlatformId == platform.IgdbPlatformId) == null)
                     {
-                        var newPlat = new Models.Platform
+                        var missingPlatforms = await igdbService.GetPlatformsFromIds(
+                            platformIds.Except(existingPlatforms.Select(c => c.IgdbPlatformId)).ToList());
+
+                        foreach (var platform in missingPlatforms)
                         {
-                            IgdbPlatformId = platform.IgdbPlatformId,
-                            PlatformName = platform.PlatformName,
-                        };
-                        await context.Platforms.AddAsync(newPlat);
-                        existingPlatforms.Add(newPlat);
-                        await context.SaveChangesAsync();
+                            var existingPlatform = await context.Platforms.FirstAsync(g => g.IgdbPlatformId == platform.IgdbPlatformId);
+                            if (existingPlatform == null)
+                            {
+                                var newPlat = new Models.Platform
+                                {
+                                    IgdbPlatformId = platform.IgdbPlatformId,
+                                    PlatformName = platform.PlatformName,
+                                };
+                                await context.Platforms.AddAsync(newPlat);
+                                existingPlatforms.Add(newPlat);
+                                await context.SaveChangesAsync();
+                            }
+                        }
                     }
-                }
-            }
 
                     // Commit da transação se tudo correr bem
                     await transaction.CommitAsync();
@@ -256,28 +254,27 @@ namespace questvault.Controllers
                 {
                     // Seu código de busca e inserção aqui...
                     if (!allGenresExist)
-            {
-                var missingGenres = await igdbService.GetGenresFromIds(
-                    genresIds.Except(existingGenres.Select(gg => gg.IgdbGenreId)).ToList());
-
-                foreach (var genre in missingGenres)
-                {
-                    if (!existingGenres.Any(g => g.IgdbGenreId == genre.IgdbGenreId) ||
-                         context.Genres.FirstAsync(c => c.IgdbGenreId == genre.IgdbGenreId) == null
-                                )
                     {
-                        var newGenre = new Models.Genre
-                        {
-                            IgdbGenreId = genre.IgdbGenreId,
-                            GenreName = genre.GenreName
-                        };
-                        await context.Genres.AddAsync(newGenre);
-                        existingGenres.Add(newGenre);
-                        await context.SaveChangesAsync();
-                    }
-                }
+                        var missingGenres = await igdbService.GetGenresFromIds(
+                            genresIds.Except(existingGenres.Select(gg => gg.IgdbGenreId)).ToList());
 
-            }
+                        foreach (var genre in missingGenres)
+                        {
+                            var existingGenre = await context.Genres.FirstAsync(g => g.IgdbGenreId == genre.IgdbGenreId);
+                            if (existingGenre == null)
+                            {
+                                var newGenre = new Models.Genre
+                                {
+                                    IgdbGenreId = genre.IgdbGenreId,
+                                    GenreName = genre.GenreName
+                                };
+                                await context.Genres.AddAsync(newGenre);
+                                existingGenres.Add(newGenre);
+                                await context.SaveChangesAsync();
+                            }
+                        }
+
+                    }
 
                     // Commit da transação se tudo correr bem
                     await transaction.CommitAsync();
