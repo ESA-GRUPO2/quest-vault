@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240323152643_search_fixes")]
-    partial class search_fixes
+    [Migration("20240324162338_sprint3final")]
+    partial class sprint3final
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
