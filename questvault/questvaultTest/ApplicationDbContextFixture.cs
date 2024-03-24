@@ -25,7 +25,7 @@ namespace questvaultTest
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseSqlite(connection)
                 .Options;
-            DbContext = new ApplicationDbContext(options, igdbService);
+            DbContext = new ApplicationDbContext(options);
 
             DbContext.Database.EnsureCreated();
 
@@ -36,7 +36,7 @@ namespace questvaultTest
                     IgdbId = 99L,
                     IgdbRating = 86.734274201256369,
                     ImageUrl = "//images.igdb.com/igdb/image/upload/t_cover_big/co2mli.jpg",
-                    IsReleased = true,
+                    IsReleased = false,
                     Name = "Game 1",
                     QvRating = 0,
                     ReleaseDate = new DateTime(2007, 8, 21),

@@ -24,9 +24,12 @@ $(document).ready(function () {
             $('#searchResults').empty().hide(); // Limpar e esconder a dropdown se o campo de pesquisa estiver vazio
         }
 
-        // Manipulador de eventos para o evento 'blur' na barra de pesquisa
-        $('#searchInput').on('blur', function () {
-            $('#searchResults').empty().hide(); // Limpar e esconder a dropdown quando a barra de pesquisa perde o foco
+        // Manipulador de eventos para o evento 'click' em qualquer lugar do documento
+        $(document).on('click', function (e) {
+            // Verifica se o clique não foi dentro da lista de resultados de pesquisa ou dentro da barra de pesquisa
+            if (!$(e.target).closest('#searchResults').length && !$(e.target).is('#searchInput')) {
+                $('#searchResults').empty().hide(); // Limpar e esconder a dropdown se o clique foi fora desses elementos
+            }
         });
     });
 
