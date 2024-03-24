@@ -87,8 +87,8 @@ namespace questvaultTest
       var model = viewResult.Model as GameViewData;
       // Assert.NotNull(model); // Verifica se o modelo não é nulo
 
-      // Agora você pode fazer outras asserções sobre o modelo
-      // Assert.Equal(3, model.NumberOfResults);
+            // Agora você pode fazer outras asserções sobre o modelo
+            Assert.Equal(3, model.NumberOfResults);
 
     }
 
