@@ -1,1 +1,1 @@
-search_result['670']=["topic_000000000000014F.html","IServiceIGDB.GetPlatforms Method","Gets a collection of platforms."];
+search_result['670']=["topic_0000000000000158_attached_props--.html","GameLog Attached Properties",""];

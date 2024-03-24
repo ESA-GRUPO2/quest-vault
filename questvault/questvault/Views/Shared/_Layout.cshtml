@@ -19,18 +19,27 @@
 </head>
 <body>
     <partial name ="_nav-menu"/>
-    <div>
+
+    <div id="main-body">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
+    <div id='lmask' class="justify-content-center" style="display: none;">
+        <img src="~/img/icons/loading1.gif" />
+    </div>
+
     <partial name="_footer"/>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/searchbar.js" asp-append-version="true"></script>
     <script src="~/js/rating.js" asp-append-version="true"></script>
     <script src="~/js/filterform.js" asp-append-version="true"></script>
+    <script src="~/js/disableSearchForm.js" asp-append-version="true"></script>
+    <script src="~/js/enableSearchForm.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
      @await RenderSectionAsync("Scripts", required: false)
 </body>

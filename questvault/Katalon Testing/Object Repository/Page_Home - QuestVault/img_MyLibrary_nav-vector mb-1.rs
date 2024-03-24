@@ -6,12 +6,12 @@
    <elementGuidId>09d2b0cf-7b08-4897-a68d-1ba40eec717b</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>img.nav-vector.mb-1</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>c4151edc-feaa-4eef-b27f-a3ee3a423d8e</webElementGuid>
+      <webElementGuid>fdbf8e81-d11b-4985-bb64-6024685ea119</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -37,7 +37,7 @@
       <name>src</name>
       <type>Main</type>
       <value>\img\vector\user.svg</value>
-      <webElementGuid>dd9ed913-52f6-49f7-98c3-8155e3396b84</webElementGuid>
+      <webElementGuid>9783924d-2503-476b-8c01-ce8878d91bf7</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +45,7 @@
       <name>alt</name>
       <type>Main</type>
       <value>Key Icon</value>
-      <webElementGuid>1665b8b2-70ed-4e2e-ab62-60f45ecc2b87</webElementGuid>
+      <webElementGuid>5c49aee4-84ff-403f-bad7-a1ab668a65ce</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +53,7 @@
       <name>class</name>
       <type>Main</type>
       <value>nav-vector mb-1</value>
-      <webElementGuid>be2d24c4-b251-421f-9c10-84bfaa38e363</webElementGuid>
+      <webElementGuid>3839de00-ec04-4144-ba99-c5df7895624e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +61,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/button[@class=&quot;btn btn-primary nav-btn show&quot;]/img[@class=&quot;nav-vector mb-1&quot;]</value>
-      <webElementGuid>ca90d380-3f95-4003-b626-a89e15962fbe</webElementGuid>
+      <webElementGuid>9efc35d5-0231-4fa1-b41c-0f3355efb1ab</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -69,7 +69,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
-      <webElementGuid>a5b7be6e-b246-4235-90f0-f366601b7d83</webElementGuid>
+      <webElementGuid>fed0322c-fe3d-4fbe-a7fe-490e41b55315</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,7 +77,7 @@
       <name>xpath:img</name>
       <type>Main</type>
       <value>(//img[@alt='Key Icon'])[2]</value>
-      <webElementGuid>819b9b3f-7522-4b7c-91a3-6fe64f4511fb</webElementGuid>
+      <webElementGuid>ccce028c-140b-49bf-b829-edcf71c2342a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +85,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li[5]/div/button/img</value>
-      <webElementGuid>d2e29293-3c2c-4c01-a599-b28ce66af0b0</webElementGuid>
+      <webElementGuid>79c73c07-4bc5-4f21-ba47-de4e589fc865</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,6 +93,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//img[@src = '\img\vector\user.svg' and @alt = 'Key Icon']</value>
-      <webElementGuid>642a8fd9-01de-458f-b86d-1de84fe47da5</webElementGuid>
+      <webElementGuid>e97eba10-98cb-495e-8670-4f7d6cd1f82f</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

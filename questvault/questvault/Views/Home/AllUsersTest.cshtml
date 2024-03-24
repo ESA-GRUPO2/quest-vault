@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<questvault.Models.User>
 
 @{
-    ViewData["Title"] = "Friends Test";
+    ViewData["Title"] = "Users";
 }
 
-<h1 class="text-light">@ViewData["Title"]</h1>
+<h1 class="container text-light">@ViewData["Title"]</h1>
 
-<table class="table table-dark table-sm table-profile">
+<table class="table table-dark table-sm table-profile container">
         <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
                 </th>
                 <th>
 
@@ -28,14 +25,9 @@
                         @Html.DisplayFor(modelItem => item.UserName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                    <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Send Friend Request</a>
+                        <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Add Friend</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-
-<a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="FriendsPage">See Friendships</a>

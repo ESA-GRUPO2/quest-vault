@@ -1,1 +1,1 @@
-search_result['645']=["topic_0000000000000141_props--.html","EmailSender Properties",""];
+search_result['645']=["topic_000000000000014A.html","Game.IsReleased Property","Gets or sets the released status."];

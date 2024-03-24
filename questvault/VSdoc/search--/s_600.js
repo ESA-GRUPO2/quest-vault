@@ -1,1 +1,1 @@
-search_result['600']=["topic_000000000000012C.html","Genre Class","Represents a gaming genre entity."];
+search_result['600']=["topic_000000000000012E_methods--.html","Friendship Methods",""];

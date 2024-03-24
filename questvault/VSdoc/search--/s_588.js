@@ -1,1 +1,1 @@
-search_result['588']=["topic_0000000000000125.html","GameGenre.Game Property",""];
+search_result['588']=["topic_000000000000012A.html","Company.GameCompanies Property","Gets or sets the list of games associated with the company.\r\nRepresents a many-to-many relationship with Games."];

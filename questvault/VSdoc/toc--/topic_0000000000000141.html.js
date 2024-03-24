@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_0000000000000150.html"],['416',"questvault.Services Namespace","topic_0000000000000140.html"],['417',"EmailSender Class","topic_0000000000000141.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['381',"questvault.Models Namespace","topic_0000000000000125.html"],['412',"Game Class","topic_000000000000013F.html"],['413',"Properties","topic_000000000000013F_props--.html"],['418',"IgdbId Property","topic_0000000000000141.html"]];

@@ -1,1 +1,1 @@
-search_result['639']=["topic_000000000000013F.html","User.DowngradeClearance Method",""];
+search_result['639']=["topic_0000000000000144.html","Game.IgdbRating Property","Gets or sets the rating of the game from IGDB."];

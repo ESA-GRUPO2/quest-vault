@@ -12,8 +12,12 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+
     [Migration("20240320215751_sprint3")]
+    
+
     partial class sprint3
+
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

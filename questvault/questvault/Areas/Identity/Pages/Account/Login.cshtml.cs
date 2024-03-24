@@ -128,6 +128,7 @@ namespace questvault.Areas.Identity.Pages.Account
         if (result.Succeeded)
         {
           logger.LogInformation("User logged in.");
+                    //login
           return LocalRedirect(returnUrl);
         }
         if (result.RequiresTwoFactor)

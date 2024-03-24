@@ -119,6 +119,7 @@
     margin-left: 1rem;
     margin-right: 1rem;
     width: 35rem;
+    height: 25rem;
 }
 
 #searchResults .list-group-item {
@@ -158,6 +159,7 @@
 
 .dropdown-menu {
     background: #133E7C !important;
+    overflow: auto !important;
 }
 
 .dropdown-item {

@@ -25,14 +25,19 @@
             @if (SignInManager.IsSignedIn(User))
             {
                     <li id="search" class="align-self-center">
-                        <form asp-controller="Games" asp-action="Results" method="post">
-                        <div class="search-bar d-flex">
+                        <form asp-controller="Games" asp-action="Results" method="post" id="searchForm" onsubmit="handleSubmit(event)">
+                            <div class="search-bar d-flex">
                                 <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
-                            <button class="outside-search" type="submit">
-                                    <img src="\img\vector\magnifying.svg" class="search-btn" />
-                            </button>
+                                <button class="outside-search" type="submit"
+                                onclick="this.disabled=true;
+                                            console.log('loading, please wait...');
+                                            var loading = document.getElementById('lmask');
+                                            loading.classList.add('d-flex');
+                                            this.form.submit();">
+                                        <img id="search-btn" src="\img\vector\magnifying.svg" class="search-btn" />
+                                </button>
                                 
-                        </div>
+                            </div>
                         </form>
                         <ul id="searchResults" class="list-group dropdown-menu"></ul>
                     </li>
@@ -61,7 +66,7 @@
                 </li>
 
                 <li class="nav-item ms-3 d-flex align-self-center">
-                        <a class="btn btn-primary nav-btn-2" asp-controller="Library" asp-action="UserLibrary">
+                        <a class="btn btn-primary nav-btn-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)">
                         <img src="\img\vector\bookmark.svg" alt="FilePen Icon" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="nav-vector pe-2"> MyLibrary
                     </a>
                 </li>
@@ -85,10 +90,10 @@
                                     <a style="color: white !important;
                                          background: #133E7C !important;" href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">Profile</a>
                             </li>
-                            @*REMOVER ISTO v*@
+                            @*REMOVER USERS ABAIXO*@
                             <li> 
                                 <a style="color: white !important;
-                                        background: #133E7C !important;" href="/Home/AllUsersTest" class="btn btn-primary dropdown-item">allUsers</a>
+                                        background: #133E7C !important;" href="/Home/AllUsersTest" class="btn btn-primary dropdown-item">Users</a>
                             </li>
                                 <li>
                                     <a style="color: white !important;
@@ -105,6 +110,7 @@
                         </ul>
                     </div>
                 </li>
+                    
             }
             else
             {

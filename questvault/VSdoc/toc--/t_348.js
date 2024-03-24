@@ -1,1 +1,1 @@
-c['348']=[['349',"BuildTargetModel Method","topic_000000000000010A.html",0],['350',"Down Method","topic_0000000000000109.html",0],['351',"Up Method","topic_0000000000000108.html",0]];
+c['348']=[['349',"AddReview Method","topic_000000000000010C.html",0],['350',"AddUpdateGames Method","topic_000000000000010A.html",0],['351',"RemoveGame Method","topic_000000000000010B.html",0],['352',"UserLibrary Method","topic_0000000000000109.html",0]];

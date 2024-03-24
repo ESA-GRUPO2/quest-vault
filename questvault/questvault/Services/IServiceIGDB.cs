@@ -42,5 +42,7 @@ namespace questvault.Services
         /// <param name="ids">The list of platform IDs.</param>
         /// <returns>The list of platforms corresponding to the provided IDs.</returns>
         Task<IEnumerable<Platform>> GetPlatformsFromIds(List<long> ids);
+
+        Task<IEnumerable<Genre>> GetGenresFromIds(List<long> ids);
     }
 }

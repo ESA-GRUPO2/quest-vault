@@ -1,1 +1,1 @@
-search_result['536']=["topic_000000000000010A.html","AzureMigration.BuildTargetModel Method",""];
+search_result['536']=["topic_000000000000010A.html","LibraryController.AddUpdateGames Method","Action method for adding or updating games."];

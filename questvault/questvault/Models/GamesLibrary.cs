@@ -6,72 +6,34 @@ namespace questvault.Models
 {
     public class GamesLibrary
     {
+        /// <summary>
+        /// Gets or sets the primary key for the games library.
+        /// </summary>
         [Key]
         public long GamesLibraryId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the foreign key for the associated user.
+        /// </summary>
         [ForeignKey("User")]
         public string UserId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the navigation property for the associated user.
+        /// </summary>
         [ForeignKey(nameof(UserId))]
         public virtual User? User { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of game logs associated with this games library.
+        /// </summary>
         public List<GameLog> GameLogs { get; set; }
 
+        /// <summary>
+        /// Gets or sets the top 5 games list associated with this games library (nullable).
+        /// </summary>
         [AllowNull]
         public List<GameLog> Top5Games { get; set; }
 
-      
-
-        public void AddGame(GameLog gameLog) {
-            GameLogs.Add(gameLog);
-        }
-
-        public void UpdateGame(long gameId, GameLog gameLog) { }
-
-        public void RemoveGame(int gameId) {
-            foreach (GameLog gameLog in GameLogs)
-            {
-                if (gameLog.Game.GameId == gameId)
-                {
-                    GameLogs.Remove(gameLog);
-                }
-            }
-        }
-
-        public String MostPlayedGenre()
-        {
-            Dictionary<string, int> genre = new Dictionary<string, int>();
-
-            return "";
-        }
-
-        public void AddTop5Games(GameLog gameLog)
-
-        {
-            Top5Games.Add(gameLog);
-        }
-
-        public void RemoveTop5Games(int gameId)
-        {
-            Top5Games.RemoveAt(gameId);
-        }
-
-        public int TotalHoursPlayed()
-        {
-            return 0;
-        }
-
-        public int NumberOfGamesStatus(GameStatus status) 
-        {
-            int nStatus = 0;
-            foreach (GameLog gameLog in GameLogs)
-            {
-                if (gameLog.Status.Equals(status))
-                {
-                    nStatus++;
-                }
-            }
-            return nStatus;
-        }
     }
 }

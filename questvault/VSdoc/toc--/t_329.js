@@ -1,1 +1,1 @@
-c['329']=[['330',"Dashboard Method","topic_00000000000000FC.html",0],['331',"Error Method","topic_00000000000000FD.html",0],['332',"GameDetails Method","topic_00000000000000FB.html",0],['333',"GameResults Method","topic_00000000000000FA.html",0],['334',"Index Method","topic_00000000000000F8.html",0],['335',"Privacy Method","topic_00000000000000F9.html",0]];
+c['329']=[['330',"GamesController Constructor","topic_00000000000000F9.html",0],['331',"Methods","topic_00000000000000F8_methods--.html",1]];

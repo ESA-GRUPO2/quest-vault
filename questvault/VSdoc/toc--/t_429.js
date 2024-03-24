@@ -1,1 +1,1 @@
-c['429']=[['430',"GetCompanies Method","topic_000000000000014E.html",0],['431',"GetGenres Method","topic_000000000000014D.html",0],['432',"GetPlatforms Method","topic_000000000000014F.html",0],['433',"GetPopularGames Method","topic_000000000000014C.html",0],['434',"SearchGames Method","topic_000000000000014B.html",0]];
+c['429']=[['430',"Company Property","topic_0000000000000152.html",0],['431',"Game Property","topic_0000000000000151.html",0],['432',"IgdbCompanyId Property","topic_0000000000000150.html",0],['433',"IgdbId Property","topic_000000000000014F.html",0]];

@@ -15,17 +15,35 @@ using RestEase;
 using System.Threading.Tasks;
 using GameStatus = questvault.Models.GameStatus;
 using MailKit.Search;
+using Microsoft.AspNetCore.Authorization;
 
 namespace questvault.Controllers
 {
     public class LibraryController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
     {
+        /// <summary>
+        /// Action method for displaying the user's library.
+        /// </summary>
+        /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+        [Authorize]
         [HttpGet]
         [Route("UserLibrary")]
-        public async Task<IActionResult> UserLibrary()
+        public async Task<IActionResult> UserLibrary(string id)
         {
-            var user = await signInManager.UserManager.GetUserAsync(User);
-           
+            if (id == null)
+            {
+                ViewBag.Error = "Invalid user or game ID.";
+                return NotFound();
+            }
+
+            var user = context.Users.Where(u => u.NormalizedUserName == id.ToUpper()).First();
+
+            if (user == null)
+            {
+                ViewBag.Error = "Invalid user or game ID.";
+                return NotFound();
+            }
+
             var gamesInLibrary = context.GamesLibrary
                     .Include(gl => gl.GameLogs) // Inclua os GameLogs para evitar carregamento preguiçoso
                         .ThenInclude(gl => gl.Game) // Inclua os jogos dentro de cada GameLog
@@ -43,10 +61,18 @@ namespace questvault.Controllers
             return View(data);
         }
 
+        /// <summary>
+        /// Action method for adding or updating games.
+        /// </summary>
+        /// <param name="gameId">The ID of the game to add or update.</param>
+        /// <param name="ownage">The ownage status of the game (e.g., owned, wishlist, etc.).</param>
+        /// <param name="status">The status of the game (e.g., completed, in-progress, etc.).</param>
+        /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status)
+        public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status, string userId)
         {
-            var user = await signInManager.UserManager.GetUserAsync(User);
+            var user = context.Users.Where(u => u.Id == userId).First();
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
             if (!Enum.TryParse(ownage, out OwnageStatus ownageEnum) ||
@@ -102,6 +128,12 @@ namespace questvault.Controllers
             return RedirectToAction("Details", "Games", new { id = game.IgdbId });
         }
 
+        /// <summary>
+        /// Action method for removing a game.
+        /// </summary>
+        /// <param name="gameId">The ID of the game to remove.</param>
+        /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> RemoveGame(long gameId)
         {
@@ -132,11 +164,17 @@ namespace questvault.Controllers
             return RedirectToAction("Details", "Games", new { id = game.IgdbId });
         }
 
+        /// <summary>
+        /// Action method for adding a review for a game.
+        /// </summary>
+        /// <param name="gameId">The ID of the game for which the review is being added.</param>
+        /// <param name="reviewV">The review text.</param>
+        /// <param name="ratingV">The rating given for the game.</param>
+        /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddReview(long gameId, string reviewV, int ratingV)
         {
-
-
             var user = await signInManager.UserManager.GetUserAsync(User);
             var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
@@ -178,7 +216,5 @@ namespace questvault.Controllers
             // Redirecione de volta para a página de detalhes do jogo após a submissão
             return RedirectToAction("Details", "Games", new { id = game.IgdbId });
         }
-
-
     }
 }

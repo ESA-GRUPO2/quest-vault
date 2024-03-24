@@ -1,0 +1,1 @@
+search_result['716']=["topic_0000000000000178.html","GameViewData.Platforms Property",""];
