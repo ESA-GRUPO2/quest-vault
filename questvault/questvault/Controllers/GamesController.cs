@@ -8,6 +8,7 @@ using questvault.Data;
 using questvault.Models;
 //using questvault.Migrations;
 using questvault.Services;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace questvault.Controllers
 {
@@ -182,7 +183,9 @@ namespace questvault.Controllers
 
                 foreach (var company in missingCompanies)
                 {
-                    if (!existingCompanies.Any(c => c.IgdbCompanyId == company.IgdbCompanyId))
+                    if (!existingCompanies.Any(c => c.IgdbCompanyId == company.IgdbCompanyId) ||
+                         context.Companies.FirstAsync(c => c.IgdbCompanyId == company.IgdbCompanyId) == null
+                                )
                     {
                         var newComp = new Models.Company
                         {
@@ -219,7 +222,9 @@ namespace questvault.Controllers
 
                 foreach (var platform in missingPlatforms)
                 {
-                    if (!existingPlatforms.Any(p => p.IgdbPlatformId == platform.IgdbPlatformId))
+                    if (!existingPlatforms.Any(p => p.IgdbPlatformId == platform.IgdbPlatformId)
+                            ||
+                         context.Platforms.FirstAsync(c => c.IgdbPlatformId == platform.IgdbPlatformId) == null)
                     {
                         var newPlat = new Models.Platform
                         {
@@ -257,7 +262,9 @@ namespace questvault.Controllers
 
                 foreach (var genre in missingGenres)
                 {
-                    if (!existingGenres.Any(g => g.IgdbGenreId == genre.IgdbGenreId))
+                    if (!existingGenres.Any(g => g.IgdbGenreId == genre.IgdbGenreId) ||
+                         context.Genres.FirstAsync(c => c.IgdbGenreId == genre.IgdbGenreId) == null
+                                )
                     {
                         var newGenre = new Models.Genre
                         {
