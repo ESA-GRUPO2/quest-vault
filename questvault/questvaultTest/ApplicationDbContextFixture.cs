@@ -1,35 +1,28 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using questvault.Data;
-using questvault.Services;
 using questvault.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using questvault.Services;
 
 namespace questvaultTest
 {
-    public class ApplicationDbContextFixture : IDisposable
+  public class ApplicationDbContextFixture : IDisposable
+  {
+    public ApplicationDbContext DbContext { get; private set; }
+    private IServiceIGDB igdbService;
+    public ApplicationDbContextFixture()
     {
-        public ApplicationDbContext DbContext { get; private set; }
-        private IServiceIGDB igdbService;
-        public ApplicationDbContextFixture()
-        {
-            igdbService = new IGDBService("uzhx4rrftyohllg1mrpy3ajo7090q5", "7rvcth933kxra92ddery5qn3jxwap7");
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseSqlite(connection)
-                .Options;
-            DbContext = new ApplicationDbContext(options);
+      igdbService = new IGDBService("uzhx4rrftyohllg1mrpy3ajo7090q5", "7rvcth933kxra92ddery5qn3jxwap7");
+      var connection = new SqliteConnection("DataSource=:memory:");
+      connection.Open();
+      var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+          .UseSqlite(connection)
+          .Options;
+      DbContext = new ApplicationDbContext(options);
 
-            DbContext.Database.EnsureCreated();
+      DbContext.Database.EnsureCreated();
 
-            var games = new List<Game>
+      var games = new List<Game>
             {
                 new Game
                 {
@@ -67,56 +60,56 @@ namespace questvaultTest
                 },
                 // Repita para os outros jogos
             };
-            DbContext.Games.AddRange(games);
-            DbContext.Users.AddRange(
-                new User
-                {
-                    IsDeactivated = false,
-                    IsPrivate = false,
-                    Clearance = 0,
-                    UserName = "UnitTester1",
-                    NormalizedUserName = "UNITTESTER1",
-                    Email = "unittester1@gmail.com",
-                    NormalizedEmail = "UNITTESTER1@GMAIL.COM",
-                    EmailConfirmed = true,
-                    PasswordHash = null,
-                    SecurityStamp = null,
-                    ConcurrencyStamp = null,
-                    PhoneNumber = null,
-                    PhoneNumberConfirmed = false,
-                    TwoFactorEnabled = false,
-                    LockoutEnd = null,
-                    LockoutEnabled = true,
-                    AccessFailedCount = 0,
-                },
-                new User
-                {
-                    IsDeactivated = false,
-                    IsPrivate = false,
-                    Clearance = 0,
-                    UserName = "UnitTester2",
-                    NormalizedUserName = "UNITTESTER2",
-                    Email = "unittester2@gmail.com",
-                    NormalizedEmail = "UNITTESTER2@GMAIL.COM",
-                    EmailConfirmed = true,
-                    PasswordHash = null,
-                    SecurityStamp = null,
-                    ConcurrencyStamp = null,
-                    PhoneNumber = null,
-                    PhoneNumberConfirmed = false,
-                    TwoFactorEnabled = false,
-                    LockoutEnd = null,
-                    LockoutEnabled = true,
-                    AccessFailedCount = 0,
-                }
-                );
-            DbContext.SaveChanges();
+      DbContext.Games.AddRange(games);
+      DbContext.Users.AddRange(
+          new User
+          {
+            IsDeactivated = false,
+            IsPrivate = false,
+            Clearance = 0,
+            UserName = "UnitTester1",
+            NormalizedUserName = "UNITTESTER1",
+            Email = "unittester1@gmail.com",
+            NormalizedEmail = "UNITTESTER1@GMAIL.COM",
+            EmailConfirmed = true,
+            PasswordHash = null,
+            SecurityStamp = null,
+            ConcurrencyStamp = null,
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnd = null,
+            LockoutEnabled = true,
+            AccessFailedCount = 0,
+          },
+          new User
+          {
+            IsDeactivated = false,
+            IsPrivate = false,
+            Clearance = 0,
+            UserName = "UnitTester2",
+            NormalizedUserName = "UNITTESTER2",
+            Email = "unittester2@gmail.com",
+            NormalizedEmail = "UNITTESTER2@GMAIL.COM",
+            EmailConfirmed = true,
+            PasswordHash = null,
+            SecurityStamp = null,
+            ConcurrencyStamp = null,
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnd = null,
+            LockoutEnabled = true,
+            AccessFailedCount = 0,
+          }
+          );
+      DbContext.SaveChanges();
 
-        }
-
-
-
-
-        public void Dispose() => DbContext.Dispose();
     }
+
+
+
+
+    public void Dispose() => DbContext.Dispose();
+  }
 }
