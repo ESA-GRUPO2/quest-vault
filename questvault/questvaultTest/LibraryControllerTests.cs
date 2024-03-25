@@ -45,5 +45,6 @@ namespace questvaultTest
             Assert.NotNull(model);
             Assert.Equal(0, model.NumberOfResults);
         }
+
     }
 }
