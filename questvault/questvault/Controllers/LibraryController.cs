@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +32,6 @@ namespace questvault.Controllers
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();
       }
-
       var gamesInLibrary = context.GamesLibrary
               .Include(gl => gl.GameLogs) // Inclua os GameLogs para evitar carregamento preguiçoso
                   .ThenInclude(gl => gl.Game) // Inclua os jogos dentro de cada GameLog
@@ -85,7 +84,7 @@ namespace questvault.Controllers
         library = new GamesLibrary
         {
           User = user,
-          GameLogs = new List<GameLog>()
+          GameLogs = []
         };
         context.GamesLibrary.Add(library);
       }
@@ -100,12 +99,13 @@ namespace questvault.Controllers
       else
       {
         // Adicionar novo jogo à biblioteca do utilizador
-        existingGame = new GameLog();
-
-        existingGame.Game = game;
-        existingGame.IgdbId = game.IgdbId;
-        existingGame.Status = statusEnum;
-        existingGame.Ownage = ownageEnum;
+        existingGame = new GameLog
+        {
+          Game = game,
+          IgdbId = game.IgdbId,
+          Status = statusEnum,
+          Ownage = ownageEnum
+        };
 
         library.GameLogs.Add(existingGame);
       }

@@ -323,7 +323,6 @@ namespace questvault.Controllers
             ReleaseDate = game.ReleaseDate,
             IsReleased = game.IsReleased,
           };
-
           context.Games.Add(newGame);
           foreach (var company in existingCompanies)
           {
@@ -409,7 +408,7 @@ namespace questvault.Controllers
 
       bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.IgdbId == id);
 
-      var gameLog = userLibrary != null ? userLibrary.GameLogs.FirstOrDefault(g => g.IgdbId == id) : null;
+      var gameLog = userLibrary?.GameLogs.FirstOrDefault(g => g.IgdbId == id);
 
       if (gameLog != null)
       {
