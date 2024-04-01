@@ -14,18 +14,6 @@
 <h3 class="text-light title">@ViewData["Title"]</h3>
 <hr class="bar">
 <partial style="width:90%" name="_StatusMessage" for="StatusMessage" />
-<!--<div class="row">
-    <div class="col-md-6">
-        <form id="profile-form" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
-                <label asp-for="Username" class="form-label"></label>
-            </div>
-            <button id="update-profile-button" type="submit" class=" btn btn-lg btn-primary">Se</button>
-        </form>
-    </div>
-</div>-->
 <div class="container-fluid">
     <div class="row align-items-baseline row-spacing">
         <div class="row">
@@ -39,71 +27,61 @@
             <button style="margin:auto" class="btn-primary btn-purple">Change Avatar</button>
         </div>
        
-
-        <div class="col-4">
-            <form id="change-username-form" method="post" asp-page-handler="UserName">
-                <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label text-light">Email</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
-                    <div class="col-sm-8">
-                        <input asp-for="Input.NewUserName" type="text" class="form-control-login" id="inputName" placeholder="@User.Identity?.Name">
-                        <div style="height:1px">
-                            <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+        <form id="change-profile-form" method="post" asp-page-handler="Profile">
+            <div class="row">
+                <div class="col-4">
+                    @* <form id="change-username-form" method="post" asp-page-handler="UserName"> *@
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label text-light">Email</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="inputCountry" class="col-sm-4 col-form-label text-light">Country</label>
-                    <div class="col-sm-8">
-                        <select class="form-control-login">
-                            <option selected>Portugal(PT)</option>
-                            <option value="1">fill1</option>
-                            <option value="2">fill2</option>
-                            <option value="3">fill3</option>
-                        </select>
-                    </div>
-                </div>
-                <button style="float: right; margin-right: 15%" type="submit" class="btn-blue">Save Changes</button>
-            </form>
-        </div>
-
-        <div class="col-4">
-            <form id="change-password-form" method="post" asp-page-handler="Password">
-                <div class="row mb-3">
-                    <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
-                    <div class="col-sm-8">
-                        <input asp-for="Input.OldPassword" type="password" class="form-control-login" autocomplete="current-password" aria-required="true" placeholder="Insert current password" />
-                        <div style="height:1px">
-                            <span asp-validation-for="Input.OldPassword" class="text-danger-login-2"></span>
+                    <div class="row mb-3">
+                        <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Input.NewUserName" type="text" class="form-control-login" autocomplete="off" id="inputName" placeholder="@User.Identity?.Name">
+                            <div style="height:1px">
+                                <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+                            </div>
                         </div>
                     </div>
+                    @* </form> *@
                 </div>
-                <div class="row mb-3">
-                    <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
-                    <div class="col-sm-8">
-                        <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
-                        <div style="height:1px">
-                            <span asp-validation-for="Input.NewPassword" class="text-danger-login-2"></span>
+                <div class="col-4">
+                    @* <form id="change-password-form" method="post" asp-page-handler="Password"> *@
+                    <div class="row mb-3">
+                        <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Input.OldPassword" type="password" class="form-control-login" autocomplete="off"  aria-required="true" placeholder="Insert current password" />
+                            <div style="height:1px">
+                                <span asp-validation-for="Input.OldPassword" class="text-danger-login-2"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <label asp-for="Input.ConfirmPassword" class="col-sm-4 col-form-label text-light">Confirm new password</label>
-                    <div class="col-sm-8">
-                        <input asp-for="Input.ConfirmPassword" class="form-control-login" autocomplete="new-password" aria-required="true" placeholder="Confirm new password">
-                        <div style="height:1px">
-                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger-login-2"></span>
+                    <div class="row mb-3">
+                        <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
+                            <div style="height:1px">
+                                <span asp-validation-for="Input.NewPassword" class="text-danger-login-2"></span>
+                            </div>
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label asp-for="Input.ConfirmPassword" class="col-sm-4 col-form-label text-light">Confirm new password</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Input.ConfirmPassword" class="form-control-login" autocomplete="new-password" aria-required="true" placeholder="Confirm new password">
+                            <div style="height:1px">
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger-login-2"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @* </form> *@
+                    <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue">Save Changes</button>
                 </div>
-                <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue">Change password</button>
-            </form>
-        </div>
+            </div>
+        </form>
         <div class="col-2">
             <form>
                 <div class="form-check form-switch row">
