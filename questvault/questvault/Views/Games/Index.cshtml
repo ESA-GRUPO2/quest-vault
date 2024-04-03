@@ -42,35 +42,26 @@
                     <h4 style="color: white; margin-bottom:50px">Filters</h4>
                     @if (ViewBag.SelectedReleaseStatus == "released")
                     {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" checked/>
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" />
-                            Unreleased
-                        </label>
+                        <input type="radio" class="btn-check" id="btn-released" name="releaseStatus" value="released" checked />
+                        <label class="btn" for="btn-released">Released</label>
+
+                        <input type="radio" class="btn-check" id="btn-unreleased" name="releaseStatus" value="unreleased" />
+                        <label class="btn" for="btn-unreleased">Unreleased</label>
                     }
                     else if (ViewBag.SelectedReleaseStatus == "unreleased")
                     {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" />
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" checked />
-                            Unreleased
-                        </label>
+                        <input type="radio" class="btn-check" id="btn-released" name="releaseStatus" value="released" />
+                        <label class="btn" for="btn-released">Released</label>
+
+                        <input type="radio" class="btn-check" id="btn-unreleased" name="releaseStatus" value="unreleased" checked/>
+                        <label class="btn" for="btn-unreleased">Unreleased</label>
                     }else
                     {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" />
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" />
-                            Unreleased
-                        </label>
+                        <input type="radio" class="btn-check" id="btn-released" name="releaseStatus" value="released" />
+                        <label class="btn" for="btn-released">Released</label>
+
+                        <input type="radio" class="btn-check" id="btn-unreleased" name="releaseStatus" value="unreleased" />
+                        <label class="btn" for="btn-unreleased">Unreleased</label>
                     }
                     <select class="search_select_box select-results" name="releasePlatform" id="releasePlatform">
                         <option value="" selected disabled hidden>Platforms</option>
