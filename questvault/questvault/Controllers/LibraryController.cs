@@ -148,7 +148,7 @@ namespace questvault.Controllers
       var gameToRemove = library.GameLogs.FirstOrDefault(g => g.IgdbId == game.IgdbId);
       if (gameToRemove != null)
       {
-        if (library.Top5Games != null && library.Top5Games.Contains(game)) library.Top5Games.Remove(game);
+        if (library.Top5Games != null && library.Top5Games.Contains(gameToRemove)) library.Top5Games.Remove(gameToRemove);
         context.GameLog.Remove(gameToRemove);
         await context.SaveChangesAsync();
       }
@@ -221,11 +221,11 @@ namespace questvault.Controllers
       var user = await signInManager.UserManager.GetUserAsync(User);
       if (user == null) return BadRequest();
 
-      var library = await context.GamesLibrary.Include(l => l.Top5Games)
+      var library = await context.GamesLibrary.Include(l => l.Top5Games).Include(l => l.GameLogs).ThenInclude(gl => gl.Game)
         .FirstOrDefaultAsync(l => l.UserId == user.Id);
       if (library == null) return BadRequest();
 
-      var game = await context.Games.FirstOrDefaultAsync(g => g.IgdbId == gameId);
+      var game = library.GameLogs.FirstOrDefault(g => g.IgdbId == gameId);
       if (game == null) return BadRequest();
 
       library.Top5Games ??= [];
@@ -235,14 +235,15 @@ namespace questvault.Controllers
         TempData["StatusMessage"] = "You can only add 5 games to the top 5 list. Remove one if you would like to add another.";
         return RedirectToAction("Details", "Games", new { id = gameId });
       }
+      if (game.Game == null) await Console.Out.WriteLineAsync("game is null");
       if (library.Top5Games.Contains(game))
       {
-        TempData["StatusMessage"] = $"{game.Name} is already in your top 5 list.";
+        TempData["StatusMessage"] = $"{game.Game.Name} is already in your top 5 list.";
         return RedirectToAction("Details", "Games", new { id = gameId });
       }
       library.Top5Games.Add(game);
       await context.SaveChangesAsync();
-      TempData["StatusMessage"] = $"{game.Name} was added to your top 5 list.";
+      TempData["StatusMessage"] = $"{game.Game.Name} was added to your top 5 list.";
       return RedirectToAction("Details", "Games", new { id = gameId });
     }
 
@@ -256,24 +257,26 @@ namespace questvault.Controllers
       var user = await signInManager.UserManager.GetUserAsync(User);
       if (user == null) return BadRequest();
 
-      var library = await context.GamesLibrary.Include(l => l.Top5Games)
+      var library = await context.GamesLibrary.Include(l => l.Top5Games).ThenInclude(gl => gl.Game)
           .FirstOrDefaultAsync(l => l.UserId == user.Id);
       if (library == null) return BadRequest();
 
-      var game = await context.Games.FirstOrDefaultAsync(g => g.IgdbId == gameId);
+      var game = library.Top5Games.FirstOrDefault(g => g.IgdbId == gameId);
       if (game == null) return BadRequest();
 
       library.Top5Games ??= [];
 
+      if (game.Game == null) await Console.Out.WriteLineAsync("game is null");
+
       if (!library.Top5Games.Contains(game))
       {
-        TempData["StatusMessage"] = $"{game.Name} is not in your top 5 list.";
+        TempData["StatusMessage"] = $"{game.Game.Name} is not in your top 5 list.";
         return RedirectToAction("Details", "Games", new { id = gameId });
       }
 
       library.Top5Games.Remove(game);
       await context.SaveChangesAsync();
-      TempData["StatusMessage"] = $"{game.Name} was removed from your top 5 list.";
+      TempData["StatusMessage"] = $"{game.Game.Name} was removed from your top 5 list.";
       return RedirectToAction("Details", "Games", new { id = gameId });
     }
   }

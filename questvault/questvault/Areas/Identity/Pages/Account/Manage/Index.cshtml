@@ -9,7 +9,7 @@
        in the main section you can change your Usarname,Country and password.<br/>
        On the right side theres a section for 2 Factor Authentication, <br/>
        Privacy setting and Disabiling your account if thats what you want!";
-  var top5 = ViewData["Top5"] as List<Game>;
+  var top5 = ViewData["Top5"] as List<GameLog>;
 }
 
 <h3 class="text-light title">@ViewData["Title"]</h3>
@@ -139,10 +139,10 @@
           <button class="game-button-sm"><img src="/img/gta.png"></button> *@
           @if (top5 != null && top5.Count > 0)
           {
-            @foreach (var game in top5)
+            @foreach (var gl in top5)
             {
-              <a class="game-button-sm" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
-                <img src="@game.ImageUrl" alt="@game.Name">
+              <a class="game-button-sm" asp-controller="Games" asp-action="Details" asp-route-id="@gl.IgdbId">
+                <img src="@gl.Game.ImageUrl" alt="@gl.Game.Name">
               </a>
             }
           }

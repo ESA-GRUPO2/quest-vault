@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
 
 namespace questvault.Models
 {
@@ -32,8 +31,7 @@ namespace questvault.Models
     /// <summary>
     /// Gets or sets the top 5 games list associated with this games library (nullable).
     /// </summary>
-    [AllowNull]
-    public List<Game> Top5Games { get; set; }
+    public List<GameLog> Top5Games { get; set; }
 
   }
 }

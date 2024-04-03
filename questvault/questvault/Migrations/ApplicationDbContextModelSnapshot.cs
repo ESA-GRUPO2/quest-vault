@@ -174,7 +174,7 @@ namespace questvault.Migrations
                     b.HasIndex("IgdbCompanyId")
                         .IsUnique();
 
-                    b.ToTable("Companies");
+                    b.ToTable("Companies", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.Friendship", b =>
@@ -189,7 +189,7 @@ namespace questvault.Migrations
 
                     b.HasIndex("User2Id");
 
-                    b.ToTable("Friendship");
+                    b.ToTable("Friendship", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.FriendshipRequest", b =>
@@ -210,7 +210,7 @@ namespace questvault.Migrations
 
                     b.HasIndex("ReceiverId");
 
-                    b.ToTable("FriendshipRequest");
+                    b.ToTable("FriendshipRequest", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.Game", b =>
@@ -220,9 +220,6 @@ namespace questvault.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GameId"));
-
-                    b.Property<long?>("GamesLibraryId")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("IgdbId")
                         .HasColumnType("bigint");
@@ -259,12 +256,10 @@ namespace questvault.Migrations
 
                     b.HasKey("GameId");
 
-                    b.HasIndex("GamesLibraryId");
-
                     b.HasIndex("IgdbId")
                         .IsUnique();
 
-                    b.ToTable("Games");
+                    b.ToTable("Games", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.GameCompany", b =>
@@ -281,7 +276,7 @@ namespace questvault.Migrations
 
                     b.HasIndex("IgdbCompanyId");
 
-                    b.ToTable("GameCompany");
+                    b.ToTable("GameCompany", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.GameGenre", b =>
@@ -298,7 +293,7 @@ namespace questvault.Migrations
 
                     b.HasIndex("IgdbGenreId");
 
-                    b.ToTable("GameGenre");
+                    b.ToTable("GameGenre", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.GameLog", b =>
@@ -313,6 +308,9 @@ namespace questvault.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<long?>("GamesLibraryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("GamesLibraryId1")
                         .HasColumnType("bigint");
 
                     b.Property<int?>("HoursPlayed")
@@ -339,7 +337,9 @@ namespace questvault.Migrations
 
                     b.HasIndex("GamesLibraryId");
 
-                    b.ToTable("GameLog");
+                    b.HasIndex("GamesLibraryId1");
+
+                    b.ToTable("GameLog", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>
@@ -356,7 +356,7 @@ namespace questvault.Migrations
 
                     b.HasIndex("IgdbPlatformId");
 
-                    b.ToTable("GamePlatform");
+                    b.ToTable("GamePlatform", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
@@ -375,7 +375,7 @@ namespace questvault.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("GamesLibrary");
+                    b.ToTable("GamesLibrary", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.Genre", b =>
@@ -394,7 +394,7 @@ namespace questvault.Migrations
 
                     b.HasKey("GenreId");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Genres", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.Platform", b =>
@@ -417,7 +417,7 @@ namespace questvault.Migrations
                     b.HasIndex("IgdbPlatformId")
                         .IsUnique();
 
-                    b.ToTable("Platforms");
+                    b.ToTable("Platforms", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
@@ -438,7 +438,7 @@ namespace questvault.Migrations
 
                     b.HasIndex("UserId1");
 
-                    b.ToTable("EmailTokens");
+                    b.ToTable("EmailTokens", (string)null);
                 });
 
             modelBuilder.Entity("questvault.Models.User", b =>
@@ -604,13 +604,6 @@ namespace questvault.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("questvault.Models.Game", b =>
-                {
-                    b.HasOne("questvault.Models.GamesLibrary", null)
-                        .WithMany("Top5Games")
-                        .HasForeignKey("GamesLibraryId");
-                });
-
             modelBuilder.Entity("questvault.Models.GameCompany", b =>
                 {
                     b.HasOne("questvault.Models.Company", "Company")
@@ -660,6 +653,10 @@ namespace questvault.Migrations
                     b.HasOne("questvault.Models.GamesLibrary", null)
                         .WithMany("GameLogs")
                         .HasForeignKey("GamesLibraryId");
+
+                    b.HasOne("questvault.Models.GamesLibrary", null)
+                        .WithMany("Top5Games")
+                        .HasForeignKey("GamesLibraryId1");
 
                     b.Navigation("Game");
                 });
