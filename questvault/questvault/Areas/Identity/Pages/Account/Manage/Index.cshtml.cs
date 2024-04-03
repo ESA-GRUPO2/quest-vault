@@ -5,6 +5,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using questvault.Data;
 using questvault.Models;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,7 +15,9 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
   public class IndexModel(
         UserManager<User> userManager,
         SignInManager<User> signInManager,
-        ILogger<IndexModel> logger) : PageModel
+        ILogger<IndexModel> logger,
+        ApplicationDbContext context
+    ) : PageModel
   {
 
     /// <summary>
@@ -91,7 +95,8 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       Username = userName;
       Email = email;
       Is2faEnabled = is2faEnabled;
-
+      var library = await context.GamesLibrary.Include(l => l.Top5Games).FirstOrDefaultAsync(l => l.UserId == user.Id);
+      ViewData["Top5"] = library.Top5Games;
     }
 
     public async Task<IActionResult> OnGetAsync()

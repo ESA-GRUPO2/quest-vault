@@ -429,7 +429,7 @@ namespace questvault.Controllers
       ViewBag.IsGameTop5 =
         userLibrary != null &&
         userLibrary.Top5Games != null &&
-        userLibrary.Top5Games.Any(gl => gl.Game?.GameId == game.GameId);
+        userLibrary.Top5Games.Any(g => g.IgdbId == id);
       return View(game);
     }
 

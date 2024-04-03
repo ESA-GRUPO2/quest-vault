@@ -13,7 +13,7 @@
 {
   @if(ViewData["StatusMessage"] != null)
   {
-    <partial style="width:90%" name="_StatusMessage" for="@ViewData["StatusMessage"]" />
+    <partial style="width:90%" name="_StatusMessage" for="@ViewData["StatusMessage"]"/>
   }
   <div class="game-details">
     <section class="d-flex main-section">
@@ -120,7 +120,7 @@
                 }else{
                   <form asp-controller="Library" asp-action="AddToTop5" method="post">
                     <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                    <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" type="submit">Add To Top5</button>
+                    <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" type="submit">Add to Top5</button>
                   </form>
                 }
               }

@@ -137,6 +137,7 @@ namespace questvault.Controllers
 
       var library = await context.GamesLibrary
           .Include(g => g.GameLogs)
+          .Include(g => g.Top5Games)
           .FirstOrDefaultAsync(g => g.User == user);
 
       if (library == null)
@@ -147,6 +148,7 @@ namespace questvault.Controllers
       var gameToRemove = library.GameLogs.FirstOrDefault(g => g.IgdbId == game.IgdbId);
       if (gameToRemove != null)
       {
+        if (library.Top5Games != null && library.Top5Games.Contains(game)) library.Top5Games.Remove(game);
         context.GameLog.Remove(gameToRemove);
         await context.SaveChangesAsync();
       }
@@ -207,28 +209,72 @@ namespace questvault.Controllers
       return RedirectToAction("Details", "Games", new { id = game.IgdbId });
     }
 
+    /// <summary>
+    /// Adds a game to the user's top 5 list.
+    /// </summary>
+    /// <param name="gameId">The ID of the game to add to the top 5 list.</param>
+    /// <returns>An asynchronous task that represents the operation and returns an IActionResult.</returns>
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> AddToTop5(long gameId)
     {
       var user = await signInManager.UserManager.GetUserAsync(User);
       if (user == null) return BadRequest();
-      var library = await context.GamesLibrary.Include(l => l.GameLogs)
+
+      var library = await context.GamesLibrary.Include(l => l.Top5Games)
         .FirstOrDefaultAsync(l => l.UserId == user.Id);
       if (library == null) return BadRequest();
 
-      var gameLog = library.GameLogs.FirstOrDefault(gl => gl.IgdbId == gameId);
-      if (gameLog == null) return BadRequest();
+      var game = await context.Games.FirstOrDefaultAsync(g => g.IgdbId == gameId);
+      if (game == null) return BadRequest();
+
       library.Top5Games ??= [];
+
       if (library.Top5Games.Count >= 5)
       {
         TempData["StatusMessage"] = "You can only add 5 games to the top 5 list. Remove one if you would like to add another.";
-        return RedirectToAction("Details", "Games", new { id = gameLog.IgdbId });
+        return RedirectToAction("Details", "Games", new { id = gameId });
       }
-      library.Top5Games.Add(gameLog);
-      TempData["StatusMessage"] = $"{gameLog.Game?.Name} was added to your top 5.";
-      Console.WriteLine("library: " + library.Top5Games.Count);
-      return RedirectToAction("Details", "Games", new { id = gameLog.IgdbId });
+      if (library.Top5Games.Contains(game))
+      {
+        TempData["StatusMessage"] = $"{game.Name} is already in your top 5 list.";
+        return RedirectToAction("Details", "Games", new { id = gameId });
+      }
+      library.Top5Games.Add(game);
+      await context.SaveChangesAsync();
+      TempData["StatusMessage"] = $"{game.Name} was added to your top 5 list.";
+      return RedirectToAction("Details", "Games", new { id = gameId });
+    }
+
+    /// <summary>
+    /// Removes a game from the user's top 5 list.
+    /// </summary>
+    /// <param name="gameId">The ID of the game to remove from the top 5 list.</param>
+    /// <returns>An asynchronous task that represents the operation and returns an IActionResult.</returns>
+    public async Task<IActionResult> RemoveFromTop5(long gameId)
+    {
+      var user = await signInManager.UserManager.GetUserAsync(User);
+      if (user == null) return BadRequest();
+
+      var library = await context.GamesLibrary.Include(l => l.Top5Games)
+          .FirstOrDefaultAsync(l => l.UserId == user.Id);
+      if (library == null) return BadRequest();
+
+      var game = await context.Games.FirstOrDefaultAsync(g => g.IgdbId == gameId);
+      if (game == null) return BadRequest();
+
+      library.Top5Games ??= [];
+
+      if (!library.Top5Games.Contains(game))
+      {
+        TempData["StatusMessage"] = $"{game.Name} is not in your top 5 list.";
+        return RedirectToAction("Details", "Games", new { id = gameId });
+      }
+
+      library.Top5Games.Remove(game);
+      await context.SaveChangesAsync();
+      TempData["StatusMessage"] = $"{game.Name} was removed from your top 5 list.";
+      return RedirectToAction("Details", "Games", new { id = gameId });
     }
   }
 }
