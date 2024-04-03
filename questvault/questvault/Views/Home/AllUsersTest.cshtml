@@ -25,6 +25,15 @@
                         @Html.DisplayFor(modelItem => item.UserName)
                     </td>
                     <td>
+                        <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Disable User</a>
+                    </td>
+                <td>
+                    <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@item.Id">Give admin</a>
+                </td>
+                    <td>
+                        <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@item.Id">Give moderator</a>
+                    </td>
+                    <td>
                         <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Add Friend</a>
                     </td>
                 </tr>
