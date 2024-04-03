@@ -5,19 +5,20 @@ using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
 using GameStatus = questvault.Models.GameStatus;
-
+using questvault.Utils;
 namespace questvault.Controllers
 {
   public class LibraryController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
   {
-    /// <summary>
-    /// Action method for displaying the user's library.
-    /// </summary>
-    /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
-    [Authorize]
+        private readonly int _pageSize = 20;
+        /// <summary>
+        /// Action method for displaying the user's library.
+        /// </summary>
+        /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+        [Authorize]
     [HttpGet]
     [Route("UserLibrary")]
-    public async Task<IActionResult> UserLibrary(string id)
+    public async Task<IActionResult> UserLibrary(string id, int? pageNumber)
     {
       if (id == null)
       {
@@ -38,14 +39,15 @@ namespace questvault.Controllers
               .ThenInclude(gl => gl.Game) // Inclua os jogos dentro de cada GameLog
               .Where(gl => gl.User == user) // Filtre pela biblioteca do usuário atual
               .SelectMany(gl => gl.GameLogs.Select(g => g.Game)) // Selecione todos os jogos dentro dos GameLogs
-              .ToList();
+              ;
 
 
       // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
+      var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary.AsNoTracking(), pageNumber ?? 1, _pageSize);
       var data = new GameViewData
       {
-        NumberOfResults = gamesInLibrary.Count,
-        Games = gamesInLibrary
+        NumberOfResults = list.Count,
+        Games = list
       };
       return View(data);
     }

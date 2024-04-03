@@ -1,5 +1,6 @@
-﻿@model GameViewData
-@using System.Linq
+﻿@using System.Linq
+@using questvault.Utils
+@model GameViewData
 @{
     ViewData["Title"] = "Results";
     ViewData["help_Text"] = @"
@@ -27,6 +28,9 @@
     .Distinct()
     .OrderByDescending(y => y)
     .ToList();
+
+    var prevDisabled = !Model.Games.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Games.HasNextPage ? "disabled" : "";
 
 }
 @if (SignInManager.IsSignedIn(User))
@@ -126,6 +130,25 @@
                             }
                         </div>
                     }
+                    @* Butoes paginas *@
+                    <div style="margin: auto;">
+                        <a  asp-action="Index"
+                            asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
+                            asp-route-genre="@ViewBag.SelectedGenre"
+                            asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
+                            asp-route-pageNumber="@(Model.Games.PageIndex-1)"
+                               class="btn btn-primary nav-btn-2 @prevDisabled">
+                        Previous
+                        </a>
+                        <a asp-action="Index"
+                           asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
+                           asp-route-genre="@ViewBag.SelectedGenre"
+                           asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
+                           asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
+                               class="btn btn-primary nav-btn-2 @nextDisabled">
+                            Next
+                        </a>
+                    </div>
                 </div>
             }
 
