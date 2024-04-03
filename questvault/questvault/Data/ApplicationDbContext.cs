@@ -13,87 +13,18 @@ namespace questvault.Data
       base.OnModelCreating(builder);
       builder.Entity<TwoFactorAuthenticationTokens>().HasKey(t => t.UserId);
 
-            builder.Entity<Game>()
-                .HasIndex(g => g.IgdbId)
-                .IsUnique();
+      builder.Entity<Game>()
+          .HasIndex(g => g.IgdbId)
+          .IsUnique();
 
-            builder.Entity<Platform>()
-                .HasIndex(g => g.IgdbPlatformId)
-                .IsUnique();
-
-
-            builder.Entity<Company>()
-                .HasIndex(g => g.IgdbCompanyId)
-                .IsUnique();
-
-            ////// Get data from IGDB service
-            //var genres = igdbService.GetGenres().Result;
-
-            //var gamesList = igdbService.GetPopularGames(10).Result;
-
-            //var idscomp = gamesList.SelectMany(game =>
-            //    game.GameCompanies.Select(comp => comp.IgdbCompanyId)).Distinct().ToList();
-
-            //var idsplat = gamesList.SelectMany(game =>
-            //    game.GamePlatforms.Select(p => p.IgdbPlatformId)).Distinct().ToList();
-
-            //var companies = igdbService.GetCompaniesFromIds(idscomp).Result;
-            //var platforms = igdbService.GetPlatformsFromIds(idsplat).Result;
-
-            //// Adds the data
-            //builder.Entity<Genre>().HasData(genres);
-            //builder.Entity<Company>().HasData(companies);
-            //builder.Entity<Platform>().HasData(platforms);
+      builder.Entity<Platform>()
+          .HasIndex(g => g.IgdbPlatformId)
+          .IsUnique();
 
 
-            //builder.Entity<Game>().HasData(gamesList.Select(game => new
-            //{
-            //    game.GameId,
-            //    game.IgdbId,
-            //    game.Name,
-            //    game.Summary,
-            //    game.IgdbRating,
-            //    game.ImageUrl,
-            //    game.Screenshots,
-            //    game.VideoUrl,
-            //    game.QvRating,
-            //    game.ReleaseDate,
-            //    game.IsReleased
-            //}).ToArray());
-
-            //// Many to many relationships:
-            //builder.Entity<GameGenre>().HasData(gamesList.SelectMany(game =>
-            //game.GameGenres.Select(gg => new
-            //{
-            //    gg.IgdbId,
-            //    gg.IgdbGenreId,
-            //})
-            //    ).ToArray());
-
-            //var companyIds = companies.Select(c => c.CompanyId).ToList();
-            //builder.Entity<GameCompany>().HasData(gamesList
-            //    .SelectMany(game => game.GameCompanies
-            //        .Where(gg => companyIds.Contains(gg.IgdbCompanyId))
-            //        .Select(gg => new
-            //        {
-            //            gg.IgdbId,
-            //            gg.IgdbCompanyId,
-            //        }))
-            //    .ToArray());
-
-
-
-            //var platformIds = platforms.Select(p => p.PlatformId).ToList();
-            //builder.Entity<GamePlatform>().HasData(gamesList
-            //    .SelectMany(game => game.GamePlatforms
-            //        .Where(gg => platformIds.Contains(gg.IgdbPlatformId))
-            //        .Select(gg => new
-            //        {
-            //            gg.IgdbId,
-            //            gg.IgdbPlatformId,
-            //        }))
-            //    .ToArray());
-            Console.WriteLine("BLING BANG BANG BORN");
+      builder.Entity<Company>()
+          .HasIndex(g => g.IgdbCompanyId)
+          .IsUnique();
 
       //Friendship
       builder.Entity<Friendship>()
