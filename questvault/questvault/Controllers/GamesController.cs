@@ -415,7 +415,7 @@ namespace questvault.Controllers
 
       bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.IgdbId == id);
 
-      var gameLog = userLibrary != null ? userLibrary.GameLogs.FirstOrDefault(g => g.IgdbId == id) : null;
+      var gameLog = userLibrary?.GameLogs.FirstOrDefault(g => g.IgdbId == id);
 
       if (gameLog != null)
       {
@@ -426,8 +426,10 @@ namespace questvault.Controllers
       }
       // Passe a variável para a visualização
       ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
-
-
+      ViewBag.IsGameTop5 =
+        userLibrary != null &&
+        userLibrary.Top5Games != null &&
+        userLibrary.Top5Games.Any(gl => gl.Game?.GameId == game.GameId);
       return View(game);
     }
 
@@ -464,7 +466,7 @@ namespace questvault.Controllers
     /// </summary>
     /// <param name="game">The existing game be processed.</param>
     /// <param name="newGame">The new game to be added to GameGenre relationship.</param>
-    private void ProcessGameGenres(Models.Game game, Models.Game newGame)
+    private void ProcessGameGenres(Game game, Game newGame)
     {
       foreach (var genre in game.GameGenres)
       {
@@ -483,8 +485,5 @@ namespace questvault.Controllers
         }
       }
     }
-
-
-
   }
 }

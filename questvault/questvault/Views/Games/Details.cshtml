@@ -1,138 +1,158 @@
 ﻿@model questvault.Models.Game
 
 @{
-    ViewData["Title"] = "Game";
-    ViewData["help_Text"] = @"
+  ViewData["Title"] = "Game";
+  ViewData["help_Text"] = @"
       This page allows you to see some details about the game,<br/>
       You can add the game to your library, give it a progression<br/>
       label and a review so your friends know what you think about it.";
+  ViewData["StatusMessage"] = TempData["StatusMessage"];
+  Console.WriteLine("statusMessage: "+ViewData["StatusMessage"]);
 }
 @if (SignInManager.IsSignedIn(User))
 {
-    
-<div class="game-details">
-
+  @if(ViewData["StatusMessage"] != null)
+  {
+    <partial style="width:90%" name="_StatusMessage" for="@ViewData["StatusMessage"]" />
+  }
+  <div class="game-details">
     <section class="d-flex main-section">
-        <img class="game-cover image-fluid" src="@Model.ImageUrl" />
-        <div class="container ms-3 mt-4">
-            <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
-            @* <h4>Released on @Model.ReleaseDate</h4> *@
-                @if (Model.ReleaseDate.HasValue)
-                {
-                    <h4>
-                        @if (Model.ReleaseDate.Value < DateTime.Today)
-                        {
-                            <text>Released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
-                        }
-                        else
-                        {
-                            <text>To be released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
-                        }
-                    </h4>
-                }else
-                {
-                    <text>To be decided.</text>
-                }
-            <h5>
-                By 
-                @foreach (var c in Model.GameCompanies)
-                {
-                    <text>@c.Company.CompanyName</text>
-                    @if (c != Model.GameCompanies.Last())
-                    {
-                        <text>, </text>
-                    }
-                }
-            </h5>
+      <img class="game-cover image-fluid" src="@Model.ImageUrl" />
+      <div class="container ms-3 mt-4">
+        <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
+        @* <h4>Released on @Model.ReleaseDate</h4> *@
+        @if (Model.ReleaseDate.HasValue)
+        {
+          <h4>
+            @if (Model.ReleaseDate.Value < DateTime.Today)
+            {
+              <text>Released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
+            }
+            else
+            {
+              <text>To be released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
+            }
+          </h4>
+        }
+        else
+        {
+          <text>To be decided.</text>
+        }
+        <h5>
+          By
+          @foreach (var c in Model.GameCompanies)
+          {
+            <text>@c.Company.CompanyName</text>
+            @if (c != Model.GameCompanies.Last())
+            {
+              <text>, </text>
+            }
+          }
+        </h5>
 
-            <div class="ps-0">
-                <div class="game-filters d-inline-flex mt-3">
-                    @foreach (var gen in Model.GameGenres)
-                    {
-                        <div class="me-3 text-decoration-underline">
-                            @if (gen != null)
-                            {
-                                @gen.Genre.GenreName
-                            }else
-                            {
-                                <text>Genre Not found</text>
-                            }
-                        </div>
-                    }
-                </div>
-                <div class="game-user-status">
-                    <div class="d-inline-flex">
-                         <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
-                            <input type="hidden" name="gameId" value="@Model.IgdbId"/>
-                            <input type="hidden" name="userId" value="@SignInManager.UserManager.GetUserId(User)"/>
-                                <select required #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
-                                    @if (ViewBag.IsGameAddedToLibrary == true)
-                                    {
-                                        <option value="" disabled selected hidden>@ViewBag.Ownage</option>
-                                    }else
-                                    {
-                                    <option value="" disabled selected hidden>Add Game</option>
-                                    }
-                                    <option value="Playing">Playing</option>
-                                    <option value="Finished">Finished</option>
-                                    <option value="Backlogged">Backlogged</option>
-                                    <option value="Wishlist">Wishlist</option>
-                           
-                                </select>
-                                @* isto nao devia ser required. se eu adicionar um jogo em wishlist*@
-                                <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example">
-                                    @if (ViewBag.IsGameAddedToLibrary == true)
-                                    {
-                                        <option value="" disabled selected hidden>@ViewBag.Status</option>
-                                    }else
-                                    {
-                                    <option value="" disabled selected hidden>Status</option>
-                                    }
-                                    <option value="Complete">Complete</option>
-                                    <option value="Played">Played</option>
-                                    <option value="Retired">Retired</option>
-                                    <option value="Shelved">Shelved</option>
-                                    <option value="Abandoned">Abandoned</option>
-                                </select>
-                                <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" style="width:8.5rem" type="submit">Submit</button>
-                     </form>
-                    @if (ViewBag.IsGameAddedToLibrary==true)
-                    {
-                        <form asp-controller="Library" asp-action="RemoveGame" method="post">
-                        <input type="hidden" name="gameId" value="@Model.IgdbId"/>
-                        <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove Game</button>
-                        </form>
-                    } 
-                           
-                    </div>
-                </div>
+        <div class="ps-0">
+          <div class="game-filters d-inline-flex mt-3">
+            @foreach (var gen in Model.GameGenres)
+            {
+              <div class="me-3 text-decoration-underline">
+                @if (gen != null)
+                {
+                  @gen.Genre.GenreName
+                }
+                else
+                {
+                  <text>Genre Not found</text>
+                }
+              </div>
+            }
+          </div>
+          <div class="game-user-status">
+            <div class="d-inline-flex">
+              <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
+                <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                <input type="hidden" name="userId" value="@SignInManager.UserManager.GetUserId(User)" />
+                <select required #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
+                  @if (ViewBag.IsGameAddedToLibrary == true)
+                  {
+                    <option value="" disabled selected hidden>@ViewBag.Ownage</option>
+                  }
+                  else
+                  {
+                    <option value="" disabled selected hidden>Add Game</option>
+                  }
+                  <option value="Playing">Playing</option>
+                  <option value="Finished">Finished</option>
+                  <option value="Backlogged">Backlogged</option>
+                  <option value="Wishlist">Wishlist</option>
+
+                </select>
+                @* isto nao devia ser required. se eu adicionar um jogo em wishlist*@
+                <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example">
+                  @if (ViewBag.IsGameAddedToLibrary)
+                  {
+                    <option value="" disabled selected hidden>@ViewBag.Status</option>
+                  }
+                  else
+                  {
+                    <option value="" disabled selected hidden>Status</option>
+                  }
+                  <option value="Complete">Complete</option>
+                  <option value="Played">Played</option>
+                  <option value="Retired">Retired</option>
+                  <option value="Shelved">Shelved</option>
+                  <option value="Abandoned">Abandoned</option>
+                </select>
+                <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" style="width:8.5rem" type="submit">Submit</button>
+              </form>
+              
+              @if (ViewBag.IsGameAddedToLibrary)
+              {
+                <form asp-controller="Library" asp-action="RemoveGame" method="post">
+                  <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                  <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove Game</button>
+                </form>
+                @if (ViewBag.IsGameTop5)
+                {
+                  <form asp-controller="Library" asp-action="RemoveFromTop5" method="post">
+                    <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                    <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove from Top5</button>
+                  </form>
+                }else{
+                  <form asp-controller="Library" asp-action="AddToTop5" method="post">
+                    <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                    <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" type="submit">Add To Top5</button>
+                  </form>
+                }
+              }
             </div>
+          </div>
         </div>
-        <div class="container-fluid game-score mt-4">
-            <h4>Game Score</h4>
-            <div class=" justify-content-end d-inline-flex">
+      </div>
+      <div class="container-fluid game-score mt-4">
+        <h4>Game Score</h4>
+        <div class=" justify-content-end d-inline-flex">
 
-                <p>IGDB Rating: @(Math.Ceiling(Model.IgdbRating))/100</p>
-                @* global rating stars *@
-                <div class="global-rating">
-                    <span id="global-rating">@Model.QvRating</span>.0
-                </div>
-                <div class="stars" id="global-stars">
-                    <span class="global-star" data-value="1">★</span>
-                    <span class="global-star" data-value="2">★</span>
-                    <span class="global-star" data-value="3">★</span>
-                    <span class="global-star" data-value="4">★</span>
-                    <span class="global-star" data-value="5">★</span>
-                </div>
+          <p>IGDB Rating: @(Math.Ceiling(Model.IgdbRating))/100</p>
+          @* global rating stars *@
+          <div class="global-rating">
+            <span id="global-rating">@Model.QvRating</span>.0
+          </div>
+          <div class="stars" id="global-stars">
+            <span class="global-star" data-value="1">★</span>
+            <span class="global-star" data-value="2">★</span>
+            <span class="global-star" data-value="3">★</span>
+            <span class="global-star" data-value="4">★</span>
+            <span class="global-star" data-value="5">★</span>
+          </div>
 
-            </div>
-            <div class="game-platforms container-fluid mt-5">
-                @foreach (var p in Model.GamePlatforms )
-                {
-                    <p>@p.Platform.PlatformName</p>
-                }
-            </div>
         </div>
+        <div class="game-platforms container-fluid mt-5">
+          @foreach (var p in Model.GamePlatforms)
+          {
+            <p>@p.Platform.PlatformName</p>
+          }
+        </div>
+      </div>
 
     </section>
 
@@ -140,130 +160,130 @@
 
     <section class="d-flex main-section">
 
-        <div class="container-fluid justify-content-between mt-3">
-            <div class="game-about align-top mb-5">
-                <h4 class="align-content-start">Summary</h4>
-                <p class="text-break text-wrap">@Model.Summary</p>
-            </div>
-            <div class="game-captures align-bottom">
-                <h4>Screenshots</h4>
-
-                <div class="card-group">
-                    @for (int i = 0; i < Model.Screenshots.Length; i++)
-                    {
-                        <div class="card me-2">
-                            <img src="@Model.Screenshots[i]" class="card-img col-md-2" alt="...">
-                        </div>
-                    }
-                </div>
-                <iframe class="card-img col-md-2"
-                        width="280"
-                        height="318" src="@Model.VideoUrl"
-                        frameborder="0" allowfullscreen></iframe>
-            </div>
+      <div class="container-fluid justify-content-between mt-3">
+        <div class="game-about align-top mb-5">
+          <h4 class="align-content-start">Summary</h4>
+          <p class="text-break text-wrap">@Model.Summary</p>
         </div>
-            <div class="game-review container mt-3">
-                @if (ViewBag.IsGameAddedToLibrary == true)
-                {
-                  <form style="height:100%" asp-controller="Library" asp-action="AddReview" method="post">
-                <input type="hidden" name="gameId" value="@Model.IgdbId"/>
-                <h4>Your Review</h4>
-                <div class="justify-content-end d-flex">
-                            @switch (ViewBag.Rating)
-                            {
-                                case null:
-                                    <div class="rating">
-                                        <span name="rating" id="rating">0</span>.0
-                                    </div>
-                                    <div class="stars" id="stars">
-                                        <span class="star" data-value="1">★</span>
-                                        <span class="star" data-value="2">★</span>
-                                        <span class="star" data-value="3">★</span>
-                                        <span class="star" data-value="4">★</span>
-                                        <span class="star" data-value="5">★</span>
-                                    </div>
-                                    break;
-                                case 1:
-                                    <div class="rating">
-                                        <span name="rating" id="rating">1</span>.0
-                                    </div>
-                                    <div class="stars" id="stars">
-                                        <span class="star one" data-value="1">★</span>
-                                        <span class="star" data-value="2">★</span>
-                                        <span class="star" data-value="3">★</span>
-                                        <span class="star" data-value="4">★</span>
-                                        <span class="star" data-value="5">★</span>
-                                    </div>
-                                    break;
-                                case 2:
-                                    <div class="rating">
-                                        <span name="rating" id="rating">2</span>.0
-                                    </div>
-                                    <div class="stars" id="stars">
-                                        <span class="star two" data-value="1">★</span>
-                                        <span class="star two" data-value="2">★</span>
-                                        <span class="star" data-value="3">★</span>
-                                        <span class="star" data-value="4">★</span>
-                                        <span class="star" data-value="5">★</span>
-                                    </div>
-                                    break;
-                                case 3:
-                                    <div class="rating">
-                                        <span name="rating" id="rating">3</span>.0
-                                    </div>
-                                    <div class="stars" id="stars">
-                                        <span class="star three" data-value="1">★</span>
-                                        <span class="star three" data-value="2">★</span>
-                                        <span class="star three" data-value="3">★</span>
-                                        <span class="star" data-value="4">★</span>
-                                        <span class="star" data-value="5">★</span>
-                                    </div>
-                                    break;
-                                     case 4:
-                                    <div class="rating">
-                                        <span name="rating" id="rating">4</span>.0
-                                    </div>
-                                    <div class="stars" id="stars">
-                                        <span class="star four" data-value="1">★</span>
-                                        <span class="star four" data-value="2">★</span>
-                                        <span class="star four" data-value="3">★</span>
-                                        <span class="star four" data-value="4">★</span>
-                                        <span class="star" data-value="5">★</span>
-                                    </div>
-                                    break;
-                                     case 5:
-                                    <div class="rating">
-                                        <span name="rating" id="rating">5</span>.0
-                                    </div>
-                                    <div class="stars" id="stars">
-                                        <span class="star five" data-value="1">★</span>
-                                        <span class="star five" data-value="2">★</span>
-                                        <span class="star five" data-value="3">★</span>
-                                        <span class="star five" data-value="4">★</span>
-                                        <span class="star five" data-value="5">★</span>
-                                    </div>
-                                    break;
+        <div class="game-captures align-bottom">
+          <h4>Screenshots</h4>
 
-                            }
-                    
-                        <input hidden id="ratingV" name="ratingV" value="0" />
-                </div>
-                        <textarea required name="reviewV" id="reviewV" value="" maxlength="255" placeholder="Write your review here (max 255)">@ViewBag.Review</textarea>
-                <div>
-                    <button id="submit" class="mt-2 btn-blue-big submit">Submit</button>
-                </div>
-                <div class="reviews" id="reviews"></div>
-                </form>
-                }
+          <div class="card-group">
+            @for (int i = 0; i < Model.Screenshots.Length; i++)
+            {
+              <div class="card me-2">
+                <img src="@Model.Screenshots[i]" class="card-img col-md-2" alt="...">
+              </div>
+            }
+          </div>
+          <iframe class="card-img col-md-2"
+                  width="280"
+                  height="318" src="@Model.VideoUrl"
+                  frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="game-review container mt-3">
+        @if (ViewBag.IsGameAddedToLibrary == true)
+        {
+          <form style="height:100%" asp-controller="Library" asp-action="AddReview" method="post">
+            <input type="hidden" name="gameId" value="@Model.IgdbId" />
+            <h4>Your Review</h4>
+            <div class="justify-content-end d-flex">
+              @switch (ViewBag.Rating)
+              {
+                case null:
+                  <div class="rating">
+                    <span name="rating" id="rating">0</span>.0
+                  </div>
+                  <div class="stars" id="stars">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                  </div>
+                  break;
+                case 1:
+                  <div class="rating">
+                    <span name="rating" id="rating">1</span>.0
+                  </div>
+                  <div class="stars" id="stars">
+                    <span class="star one" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                  </div>
+                  break;
+                case 2:
+                  <div class="rating">
+                    <span name="rating" id="rating">2</span>.0
+                  </div>
+                  <div class="stars" id="stars">
+                    <span class="star two" data-value="1">★</span>
+                    <span class="star two" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                  </div>
+                  break;
+                case 3:
+                  <div class="rating">
+                    <span name="rating" id="rating">3</span>.0
+                  </div>
+                  <div class="stars" id="stars">
+                    <span class="star three" data-value="1">★</span>
+                    <span class="star three" data-value="2">★</span>
+                    <span class="star three" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                  </div>
+                  break;
+                case 4:
+                  <div class="rating">
+                    <span name="rating" id="rating">4</span>.0
+                  </div>
+                  <div class="stars" id="stars">
+                    <span class="star four" data-value="1">★</span>
+                    <span class="star four" data-value="2">★</span>
+                    <span class="star four" data-value="3">★</span>
+                    <span class="star four" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                  </div>
+                  break;
+                case 5:
+                  <div class="rating">
+                    <span name="rating" id="rating">5</span>.0
+                  </div>
+                  <div class="stars" id="stars">
+                    <span class="star five" data-value="1">★</span>
+                    <span class="star five" data-value="2">★</span>
+                    <span class="star five" data-value="3">★</span>
+                    <span class="star five" data-value="4">★</span>
+                    <span class="star five" data-value="5">★</span>
+                  </div>
+                  break;
+              }
+
+              <input hidden id="ratingV" name="ratingV" value="0" />
             </div>
-            
-        </section>
-    </div>
+            <textarea required name="reviewV" id="reviewV" value="" maxlength="255" placeholder="Write your review here (max 255)">@ViewBag.Review</textarea>
+            <div>
+              <button id="submit" class="mt-2 btn-blue-big submit">Submit</button>
+            </div>
+            <div class="reviews" id="reviews"></div>
+          </form>
+        }
+      </div>
 
-    <script src="~/js/rating.js"></script>
-    
-  
-}else
+    </section>
+  </div>
+
+  <script src="~/js/rating.js"></script>
+
+
+}
+else
 {
-    <h1 style="color :red">Please log in to access this page.</h1>
+  <h1 style="color :red">Please log in to access this page.</h1>
 }
