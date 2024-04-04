@@ -117,7 +117,8 @@ namespace questvault.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
-                return LocalRedirect(returnUrl);
+                //return LocalRedirect(returnUrl);
+                return RedirectToAction("UserLibrary", "Library", new { id = _signInManager.UserManager.GetUserName(User)});
             }
             if (result.IsLockedOut)
             {
