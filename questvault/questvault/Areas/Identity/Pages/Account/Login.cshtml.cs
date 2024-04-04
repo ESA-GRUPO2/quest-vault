@@ -128,8 +128,12 @@ namespace questvault.Areas.Identity.Pages.Account
         if (result.Succeeded)
         {
           logger.LogInformation("User logged in.");
-                    //login
-          return LocalRedirect(returnUrl);
+          //login
+          var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateTime.Now };
+          context.LogginInstances.Add(logginInstance);
+          await context.SaveChangesAsync();
+          Console.Out.WriteLine("uma merda qualquer");
+          return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
         }
         if (result.RequiresTwoFactor)
         {
