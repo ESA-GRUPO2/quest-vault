@@ -1,0 +1,26 @@
+﻿@model GameLog
+@{
+  TempData["_GR-ShowDeleteButton"] ??= false;
+}
+
+@if(Model!=null)
+{
+  <div class="dash-card">
+    <div> @* USER *@
+      <a style="display:block;height:100%;width:100%;text-decoration:none" asp-controller="" asp-action="ShowProfile" asp-route-id="@Model.User.Id"/> @*  @todo correct this redirect *@
+      <button class="btn btn-primary" type="button" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
+        <img src="\img\vector\user.svg" alt="@Model.User.UserName" class="nav-vector mb-1" style="height: 1.8rem; border-radius: 50%;">
+      </button>
+      <p class="dash-card-title">@Model.User.UserName</p>
+    </div>
+    <div> @* REVIEW *@
+      <p class="dash-card-title">@Model.Rating/5</p>
+      <p>@Model.Review</p>
+      @if (true)
+      {
+        //@coelho  I think  ⬇ this ⬇  should be red or a more 'dangerous' color. Luis :)
+        <a class="btn btn-primary" asp-controller="" asp-action="DeleteReview" asp-route-id="@Model.GameLogId">Remove</a> // @todo correct this redirect
+      }
+    </div>
+  </div> 
+}

@@ -107,7 +107,9 @@ namespace questvault.Controllers
           Game = game,
           IgdbId = game.IgdbId,
           Status = statusEnum,
-          Ownage = ownageEnum
+          Ownage = ownageEnum,
+          UserId = user.Id,
+          User = user
         };
 
         library.GameLogs.Add(existingGame);

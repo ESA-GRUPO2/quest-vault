@@ -385,11 +385,11 @@ namespace questvault.Controllers
     [Authorize]
     [HttpGet]
     [Route("details/{id}")]
-    public async Task<IActionResult> Details(int? id)
+    public async Task<IActionResult> Details(int id)
     {
-      if (id == null || context.Games == null)
+      if (context.Games == null)
       {
-        return NotFound(); //TODO NOT FOUND
+        return NotFound();
       }
 
       var game = await context.Games
@@ -400,7 +400,6 @@ namespace questvault.Controllers
           .Include(g => g.GameCompanies!)
               .ThenInclude(gc => gc.Company)
           .FirstOrDefaultAsync(m => m.IgdbId == id);
-
 
       if (game == null)
       {
@@ -424,13 +423,28 @@ namespace questvault.Controllers
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
       }
-      // Passe a variável para a visualização
+
       ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
+
       ViewBag.IsGameTop5 =
         userLibrary != null &&
         userLibrary.Top5Games != null &&
         userLibrary.Top5Games.Any(g => g.IgdbId == id);
+
+      ViewBag.Reviews = GetReviews(id, userLibrary);
+      await Console.Out.WriteLineAsync("Reviews:");
+      foreach (var review in ViewBag.Reviews)
+        await Console.Out.WriteLineAsync($"game: {review.Game.Name}, user: {review.User.UserName}, rating: {review.Rating}, review: {review.Review}");
       return View(game);
+    }
+
+
+    private List<GameLog> GetReviews(int? gameId, GamesLibrary currentUserLibrary)
+    {
+      if (gameId == null || currentUserLibrary == null) return [];
+      return [.. context.GameLog
+        .Include(gl => gl.Game).Include(gl => gl.User)
+        .Where(gl => gl.IgdbId == gameId && gl.Rating != null && !currentUserLibrary.GameLogs.Contains(gl))];
     }
 
     /// <summary>
