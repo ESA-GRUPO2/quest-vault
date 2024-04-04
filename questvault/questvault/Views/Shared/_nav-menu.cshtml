@@ -78,19 +78,18 @@
                         </button>
                             <ul class="dropdown-menu" style="right:0; left:auto; background: #133E7C !important;">
                                 <li>
-                                    <p class="dropdown-item" style="color: white !important;
-                                         background: #133E7C !important;">@User.Identity?.Name</p>
+                                    <a class="dropdown-item" href=" @Url.Action("PublicProfile", "User", new { id = SignInManager.UserManager.GetUserId(User) })" style="color: white !important;
+                                         background: #133E7C !important;" >@User.Identity?.Name</a>
                                 </li>
                             <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a style="color: white !important;
-                                         background: #133E7C !important;" href="/Home/Dashboard" class="btn btn-primary dropdown-item">Dashboard</a>
-                                </li>
+                            <li>
+                                <a style="color: white !important;
+                                        background: #133E7C !important;" href="/Home/Dashboard" class="btn btn-primary dropdown-item">Dashboard</a>
+                            </li>
                             <li>
                                     <a style="color: white !important;
-                                         background: #133E7C !important;" href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">Profile</a>
-                            </li>
-                            @*REMOVER USERS ABAIXO*@
+                                         background: #133E7C !important;" href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">My Account</a>
+                            </li>  
                             <li> 
                                 <a style="color: white !important;
                                         background: #133E7C !important;" href="/Home/AllUsersTest" class="btn btn-primary dropdown-item">Users</a>
