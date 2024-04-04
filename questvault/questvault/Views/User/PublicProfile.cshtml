@@ -1,4 +1,6 @@
-﻿@{
+﻿@model questvault.Models.User
+
+@{
     ViewData["Title"] = "Profile";
     ViewData["help_Text"] = @"
        This is a private user profile. <br/>
@@ -16,8 +18,8 @@
 
             <div class="d-flex row ms-3 align-items-center">
                 <div class="profile-details d-inline-flex mb-4">
-                    <h4 class="profile-username">Username</h4>
-                    <button class="btn btn-blue-big ms-3">
+                    <h4 class="profile-username">@Model.UserName</h4>
+                    <button class="btn nav-btn-2 ms-3">
                         <img class="nav-vector pe-1" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
                         Add Friend
                     </button>
