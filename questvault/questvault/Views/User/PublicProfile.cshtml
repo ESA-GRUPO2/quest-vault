@@ -1,11 +1,11 @@
-﻿@model questvault.Models.User
+﻿@model questvault.Models.FriendsViewData
 
 @{
     ViewData["Title"] = "Profile";
     ViewData["help_Text"] = @"
-       This is a private user profile. <br/>
-       In this page you can't see much beacause the user hid himself in a cave!<br/>
-       If you wanna try your luck send him a friend request (if he ever comes outside, he will see it)!";
+       This is a public user profile. <br/>
+       In this page you can see the profile of user with all the information avaliable <br/>
+       You can send a friend request so you can stay conected (if he ever comes outside, he will see it)!";
 }
 <body class="profile">
 
@@ -18,11 +18,18 @@
 
             <div class="d-flex row ms-3 align-items-center">
                 <div class="profile-details d-inline-flex mb-4">
-                    <h4 class="profile-username">@Model.UserName</h4>
-                    <button class="btn nav-btn-2 ms-3">
-                        <img class="nav-vector pe-1" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
-                        Add Friend
-                    </button>
+                    <h4 class="profile-username">@Model.user.UserName</h4>
+                    @if (User.Identity.Name != Model.user.UserName)
+                    {
+                        if (!Model.friends)
+                        {
+                            <a asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none" class="btn-primary nav-btn-2 ms-3">
+                                <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
+                                Add Friend
+                            </a>
+                        }
+                    }
+
                 </div>
                 <div class="profile-connects row container-fluid">
                     <img class="img-size-sm" src="~/img/external/Steam_Logo.png" alt="Steam Logo" />
@@ -30,25 +37,19 @@
             </div>
 
             <div class="profile-stats container-fluid justify-content-end">
-                <h4 class="profile-hours">200 hours playing</h4>
-                <h5 class="profile-games-played">50 games played</h5>
-                <h5 class="profile-games-backed">20 games backlogged</h5>
+                <h4 style="color: white" class="profile-hours">200 hours played</h4>
+                <h5 style="color: white" class="profile-games-played">50 games in library</h5>
+                <h6 style="color: white" class="profile-games-backed">25 Playing</h6>
+                <h6 style="color: white" class="profile-games-backed">5 Finished</h6>
+                <h6 style="color: white" class="profile-games-backed">10 Backlogged</h6>
+                <h6 style="color: white" class="profile-games-backed">10 Wishlist</h6>
             </div>
         </div>
     </section>
     <section class="profile-about ">
         <div class="d-flex justify-content-between">
             <div class="profile-bio">
-                <h4 class="text-light pb-4">Bio</h4>
-                <p class="game-section-border p-4 text-break text-wrap">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus tincidunt lacinia metus, in ornare velit. Integer vitae maximus nisl, non aliquam turpis. 
-                In hac habitasse platea dictumst. Proin in posuere lacus, aliquam eleifend elit. 
-                Suspendisse mi ante, aliquet vel elementum nec, malesuada non sapien. 
-                Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed nisl cursus, volutpat mauris in, maximus lectus. 
-                Fusce viverra erat ac mauris mattis, commodo rhoncus nunc dictum. 
-                Maecenas volutpat vulputate vestibulum. Nulla porta non est in faucibus. Ut eu urna ante. 
-                Suspendisse aliquet viverra justo, id lacinia sapien dictum sit amet.</p>
+               
             </div>
             <div class="profile-top5">
                 <h4 class="text-light pb-4">Username's Top 5</h4>
