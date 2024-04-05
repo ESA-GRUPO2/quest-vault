@@ -19,10 +19,11 @@
     margin-top: 35px;
     width: 25%;
 }
+
 .select-results {
     background-color: #133E7C;
-    font-size: 120%;
-    font-weight: 300;
+    font-size: 100%;
+    font-weight: 500;
     border: 3px #711C91;
     border-radius: 5px;
     padding: 6px;
@@ -62,4 +63,9 @@
 .clear-results {
     display: block;
     margin-top: 10px;
+}
+
+.form-switch-release .form-switch input:checked{
+    background-color: #0ABDC6;
+
 }
