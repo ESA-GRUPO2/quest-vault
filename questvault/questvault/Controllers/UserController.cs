@@ -13,7 +13,7 @@ namespace questvault.Controllers
             _context = context;
         }
 
-        // Ação para exibir o perfil do usuário
+        // Ação para exibir o perfil do utilizador
         public async Task<IActionResult> PublicProfile(string id)
         {
             if (id == null)
@@ -30,5 +30,8 @@ namespace questvault.Controllers
 
             return View(user);
         }
+
+
+       
     }
 }
