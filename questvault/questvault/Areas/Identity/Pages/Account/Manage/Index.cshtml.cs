@@ -192,7 +192,6 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAvatarAsync()
         {
-            await Console.Out.WriteLineAsync("999999999999999999999999999999999999999999999999999999999999");
             string filename = UploadFile(ProfilePhoto);
 
             var user = await userManager.GetUserAsync(User);
@@ -204,7 +203,6 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             var userToUpdate = await context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
             if (userToUpdate != null)
             {
-                await Console.Out.WriteLineAsync("dei uptade!");
                 userToUpdate.ProfilePhotoPath = filename;
                 await context.SaveChangesAsync();
             }
@@ -214,14 +212,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
         private string UploadFile(IFormFile ProfilePhoto)
         {
-            Console.WriteLine("entrei no upload!!!!!!!!!!!!!!!!!!!!!!");
             string fileName = null;
             if (ProfilePhoto == null) {
-                Console.WriteLine("epa isto ta null zeze!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             }
             if (ProfilePhoto != null)
             {
-                Console.WriteLine("999999999TOU A DAR UPLOAD");
                 string uploadDir = Path.Combine(webHostEnvironment.WebRootPath, "img/usr_profile");
                 fileName = Guid.NewGuid().ToString() +  "_" + ProfilePhoto.FileName;
                 string filePath = Path.Combine(uploadDir, fileName);
