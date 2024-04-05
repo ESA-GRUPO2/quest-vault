@@ -11,7 +11,7 @@ namespace questvault.Controllers
         // Ação para exibir o perfil do usuário
         public async Task<IActionResult> Profile(string name1, string id2)
         {
-            bool friends = false;
+            bool friendss = false;
 
             if (id2 == null || name1 == null)
             {
@@ -37,22 +37,25 @@ namespace questvault.Controllers
                 if(friendship.User1==user1 && friendship.User2 == user2 ||
                     friendship.User1 == user2 && friendship.User2 == user1)
                 {
-                    friends = true;
+                    friendss = true;
                 }
             }
 
             if (user1 == user2)
             {
-                return RedirectToAction("PublicProfile", "User", new { id = id2 });
+                return RedirectToAction("PublicProfile", "User", new { id = id2, friends = friendss});
             }
 
-            if (user2.IsPrivate && !friends)
+            if (user2.IsPrivate && !friendss)
             {
-                return RedirectToAction("PrivateProfile", "User", new { id = id2 , friends});
+                return RedirectToAction("PrivateProfile", "User", new { id = id2 , friends = friendss});
             }
             else
             {
-                return RedirectToAction("PublicProfile", "User", new { id = id2 });
+                Console.WriteLine(friendss);
+                Console.WriteLine(friendss);
+                Console.WriteLine(friendss);
+                return RedirectToAction("PublicProfile", "User", new { id = id2, friends = friendss });
             }
         }
 
