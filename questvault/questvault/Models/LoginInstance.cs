@@ -8,7 +8,7 @@ namespace questvault.Models
         [Key]
         public long Id { get; set; }
         public string UserId { get; set; }
-        public DateTime LoginDate { get; set; }
+        public string LoginDate { get; set; }
 
         // Propriedade de navegação
         [ForeignKey(nameof(UserId))]

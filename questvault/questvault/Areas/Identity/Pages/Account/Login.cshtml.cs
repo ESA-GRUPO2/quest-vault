@@ -129,7 +129,7 @@ namespace questvault.Areas.Identity.Pages.Account
         {
           logger.LogInformation("User logged in.");
           //login
-          var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateTime.Now };
+          var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now).ToString() };
           context.LogginInstances.Add(logginInstance);
           await context.SaveChangesAsync();
           Console.Out.WriteLine("uma merda qualquer");

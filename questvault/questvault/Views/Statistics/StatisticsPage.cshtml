@@ -1,8 +1,52 @@
-﻿@{
+﻿@model Statistics
+@{
     ViewData["Title"] = "Statistics";
     ViewData["help_Text"] = @"In the Statistics page you can see the numbers behind the app!";
 }
 
-<div>
-    <h1 class="friends-page">Registered Accounts: @Model</h1>
+ <div>
+  <h1 class="friends-page">Registered Accounts: @Model.registeredUsersCount</h1>
 </div>
+
+<div style="width:60rem; height:60rem">
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: @Html.Raw(Json.Serialize(Model.dateList)),
+      datasets: [{
+        label: 'Daily Loggins',
+        data: @Html.Raw(Json.Serialize(Model.dateCountList)),
+        backgroundColor: [
+          'rgb(152, 0, 141, 1)',
+        ],
+        borderColor: [
+          'rgb(152, 0, 141, 1)',
+        ],
+        borderWidth: 1,
+        tension: 0.1
+      }]
+    },
+     options: {
+       scales: {
+         y: {
+           beginAtZero: true,
+           ticks: {
+            color: 'white',
+          }
+         },
+        x: {
+          ticks: {
+            color: 'white',
+          }
+        }
+       }
+     }
+  });
+</script>

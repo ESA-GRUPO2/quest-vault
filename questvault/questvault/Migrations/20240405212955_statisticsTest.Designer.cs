@@ -12,15 +12,15 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240314003739_AzureMigration")]
-    partial class AzureMigration
+    [Migration("20240405212955_statisticsTest")]
+    partial class statisticsTest
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -160,133 +160,290 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.Company", b =>
                 {
-                    b.Property<int>("CompanyID")
+                    b.Property<long>("CompanyId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CompanyID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CompanyId"));
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CompanyID");
+                    b.Property<long>("IgdbCompanyId")
+                        .HasColumnType("bigint");
 
-                    b.ToTable("Company");
+                    b.HasKey("CompanyId");
+
+                    b.HasIndex("IgdbCompanyId")
+                        .IsUnique();
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("questvault.Models.Friendship", b =>
+                {
+                    b.Property<string>("User1Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("User2Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("User1Id", "User2Id");
+
+                    b.HasIndex("User2Id");
+
+                    b.ToTable("Friendship");
+                });
+
+            modelBuilder.Entity("questvault.Models.FriendshipRequest", b =>
+                {
+                    b.Property<string>("SenderId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ReceiverId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("FriendshipDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isAccepted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("SenderId", "ReceiverId");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.ToTable("FriendshipRequest");
                 });
 
             modelBuilder.Entity("questvault.Models.Game", b =>
                 {
-                    b.Property<int>("GameID")
+                    b.Property<long>("GameId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GameID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GameId"));
+
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint");
 
                     b.Property<double>("IgdbRating")
                         .HasColumnType("float");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("QvRating")
-                        .HasColumnType("float");
+                    b.Property<bool>("IsReleased")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("QvRating")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Screenshots")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Summary")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("imageUrl")
-                        .IsRequired()
+                    b.Property<int?>("TotalRatingCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("VideoUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("GameID");
+                    b.HasKey("GameId");
+
+                    b.HasIndex("IgdbId")
+                        .IsUnique();
 
                     b.ToTable("Games");
                 });
 
             modelBuilder.Entity("questvault.Models.GameCompany", b =>
                 {
-                    b.Property<int>("GameID")
-                        .HasColumnType("int")
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
-                    b.Property<int>("CompanyID")
-                        .HasColumnType("int")
+                    b.Property<long>("IgdbCompanyId")
+                        .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GameID", "CompanyID");
+                    b.HasKey("IgdbId", "IgdbCompanyId");
 
-                    b.HasIndex("CompanyID");
+                    b.HasIndex("IgdbCompanyId");
 
                     b.ToTable("GameCompany");
                 });
 
             modelBuilder.Entity("questvault.Models.GameGenre", b =>
                 {
-                    b.Property<int>("GamesID")
-                        .HasColumnType("int")
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
-                    b.Property<int>("GenresID")
-                        .HasColumnType("int")
+                    b.Property<long>("IgdbGenreId")
+                        .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GamesID", "GenresID");
+                    b.HasKey("IgdbId", "IgdbGenreId");
 
-                    b.HasIndex("GenresID");
+                    b.HasIndex("IgdbGenreId");
 
                     b.ToTable("GameGenre");
                 });
 
+            modelBuilder.Entity("questvault.Models.GameLog", b =>
+                {
+                    b.Property<long>("GameLogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GameLogId"));
+
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("GamesLibraryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("GamesLibraryId1")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("HoursPlayed")
+                        .HasColumnType("int");
+
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Ownage")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Review")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("GameLogId");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("GamesLibraryId");
+
+                    b.HasIndex("GamesLibraryId1");
+
+                    b.ToTable("GameLog");
+                });
+
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>
                 {
-                    b.Property<int>("GameID")
-                        .HasColumnType("int")
+                    b.Property<long>("IgdbId")
+                        .HasColumnType("bigint")
                         .HasColumnOrder(0);
 
-                    b.Property<int>("PlatformID")
-                        .HasColumnType("int")
+                    b.Property<long>("IgdbPlatformId")
+                        .HasColumnType("bigint")
                         .HasColumnOrder(1);
 
-                    b.HasKey("GameID", "PlatformID");
+                    b.HasKey("IgdbId", "IgdbPlatformId");
 
-                    b.HasIndex("PlatformID");
+                    b.HasIndex("IgdbPlatformId");
 
                     b.ToTable("GamePlatform");
                 });
 
+            modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
+                {
+                    b.Property<long>("GamesLibraryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GamesLibraryId"));
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("GamesLibraryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GamesLibrary");
+                });
+
             modelBuilder.Entity("questvault.Models.Genre", b =>
                 {
-                    b.Property<int>("GenreID")
+                    b.Property<long>("GenreId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenreID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("GenreId"));
 
                     b.Property<string>("GenreName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("GenreID");
+                    b.Property<long>("IgdbGenreId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("GenreId");
 
                     b.ToTable("Genres");
                 });
 
+            modelBuilder.Entity("questvault.Models.LoginInstance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("LoginDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("LogginInstances");
+                });
+
             modelBuilder.Entity("questvault.Models.Platform", b =>
                 {
-                    b.Property<int>("PlatformID")
+                    b.Property<long>("PlatformId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlatformID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("PlatformId"));
+
+                    b.Property<long>("IgdbPlatformId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("PlatformName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PlatformID");
+                    b.HasKey("PlatformId");
 
-                    b.ToTable("Platform");
+                    b.HasIndex("IgdbPlatformId")
+                        .IsUnique();
+
+                    b.ToTable("Platforms");
                 });
 
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
@@ -435,17 +592,55 @@ namespace questvault.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("questvault.Models.Friendship", b =>
+                {
+                    b.HasOne("questvault.Models.User", "User1")
+                        .WithMany()
+                        .HasForeignKey("User1Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.User", "User2")
+                        .WithMany()
+                        .HasForeignKey("User2Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User1");
+
+                    b.Navigation("User2");
+                });
+
+            modelBuilder.Entity("questvault.Models.FriendshipRequest", b =>
+                {
+                    b.HasOne("questvault.Models.User", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
+                });
+
             modelBuilder.Entity("questvault.Models.GameCompany", b =>
                 {
                     b.HasOne("questvault.Models.Company", "Company")
-                        .WithMany("GameCompany")
-                        .HasForeignKey("CompanyID")
+                        .WithMany("GameCompanies")
+                        .HasForeignKey("IgdbCompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("questvault.Models.Game", "Game")
-                        .WithMany("GameCompany")
-                        .HasForeignKey("GameID")
+                        .WithMany("GameCompanies")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -456,15 +651,15 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.GameGenre", b =>
                 {
-                    b.HasOne("questvault.Models.Game", "Game")
-                        .WithMany("GamesGenres")
-                        .HasForeignKey("GamesID")
+                    b.HasOne("questvault.Models.Genre", "Genre")
+                        .WithMany("GameGenres")
+                        .HasForeignKey("IgdbGenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("questvault.Models.Genre", "Genre")
-                        .WithMany("GamesGenres")
-                        .HasForeignKey("GenresID")
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany("GameGenres")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -473,23 +668,64 @@ namespace questvault.Migrations
                     b.Navigation("Genre");
                 });
 
+            modelBuilder.Entity("questvault.Models.GameLog", b =>
+                {
+                    b.HasOne("questvault.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("questvault.Models.GamesLibrary", null)
+                        .WithMany("GameLogs")
+                        .HasForeignKey("GamesLibraryId");
+
+                    b.HasOne("questvault.Models.GamesLibrary", null)
+                        .WithMany("Top5Games")
+                        .HasForeignKey("GamesLibraryId1");
+
+                    b.Navigation("Game");
+                });
+
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>
                 {
                     b.HasOne("questvault.Models.Game", "Game")
-                        .WithMany("GamePlatform")
-                        .HasForeignKey("GameID")
+                        .WithMany("GamePlatforms")
+                        .HasForeignKey("IgdbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("questvault.Models.Platform", "Platform")
-                        .WithMany("GamePlatform")
-                        .HasForeignKey("PlatformID")
+                        .WithMany("GamePlatforms")
+                        .HasForeignKey("IgdbPlatformId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Game");
 
                     b.Navigation("Platform");
+                });
+
+            modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
+                {
+                    b.HasOne("questvault.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("questvault.Models.LoginInstance", b =>
+                {
+                    b.HasOne("questvault.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("questvault.Models.TwoFactorAuthenticationTokens", b =>
@@ -505,26 +741,33 @@ namespace questvault.Migrations
 
             modelBuilder.Entity("questvault.Models.Company", b =>
                 {
-                    b.Navigation("GameCompany");
+                    b.Navigation("GameCompanies");
                 });
 
             modelBuilder.Entity("questvault.Models.Game", b =>
                 {
-                    b.Navigation("GameCompany");
+                    b.Navigation("GameCompanies");
 
-                    b.Navigation("GamePlatform");
+                    b.Navigation("GameGenres");
 
-                    b.Navigation("GamesGenres");
+                    b.Navigation("GamePlatforms");
+                });
+
+            modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
+                {
+                    b.Navigation("GameLogs");
+
+                    b.Navigation("Top5Games");
                 });
 
             modelBuilder.Entity("questvault.Models.Genre", b =>
                 {
-                    b.Navigation("GamesGenres");
+                    b.Navigation("GameGenres");
                 });
 
             modelBuilder.Entity("questvault.Models.Platform", b =>
                 {
-                    b.Navigation("GamePlatform");
+                    b.Navigation("GamePlatforms");
                 });
 #pragma warning restore 612, 618
         }

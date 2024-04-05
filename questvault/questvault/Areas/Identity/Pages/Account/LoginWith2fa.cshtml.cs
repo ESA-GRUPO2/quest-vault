@@ -99,6 +99,9 @@ namespace questvault.Areas.Identity.Pages.Account
         await signInManager.SignInAsync(user, Input.RememberMachine, "2FA");
         logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.Id);
         //adicionar aquio
+        var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now).ToString() };
+        context.LogginInstances.Add(logginInstance);
+        await context.SaveChangesAsync();
         return LocalRedirect(returnUrl);
 
       }

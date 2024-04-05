@@ -405,8 +405,9 @@ namespace questvault.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<DateTime>("LoginDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("LoginDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
