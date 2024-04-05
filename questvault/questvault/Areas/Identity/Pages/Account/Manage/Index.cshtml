@@ -9,7 +9,6 @@
        in the main section you can change your Usarname,Country and password.<br/>
        On the right side theres a section for 2 Factor Authentication, <br/>
        Privacy setting and Disabiling your account if thats what you want!";
-  var top5 = ViewData["Top5"] as List<GameLog>;
 }
 
 <h3 class="text-light title">@ViewData["Title"]</h3>
@@ -129,29 +128,7 @@
 
   <div class="row row-spacing">
     <div class="col-8">
-      <h4 class="text-light">My Top 5</h4>
-      <div class="game-section-border">
-        <div class="game-row">
-          @* <button class="game-button-sm"><img src="/img/gta.png"></button>
-          <button class="game-button-sm"><img src="/img/granturismo.png"></button>
-          <button class="game-button-sm"><img src="/img/gta.png"></button>
-          <button class="game-button-sm"><img src="/img/granturismo.png"></button>
-          <button class="game-button-sm"><img src="/img/gta.png"></button> *@
-          @if (top5 != null && top5.Count > 0)
-          {
-            @foreach (var gl in top5)
-            {
-              <a class="game-button-sm" asp-controller="Games" asp-action="Details" asp-route-id="@gl.IgdbId">
-                <img src="@gl.Game.ImageUrl" alt="@gl.Game.Name">
-              </a>
-            }
-          }
-          else
-          {
-            <p class="text-light">There are no games in your Top 5</p>
-          }
-        </div>
-      </div>
+      <partial name="_Top5" for="@ViewData["Top5"] as List<GameLog>" />
     </div>
     <div class="col-4">
       <h4 style="float:right" class="text-light">Connections</h4>

@@ -5,7 +5,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+using questvault.Controllers;
 using questvault.Data;
 using questvault.Models;
 using System.ComponentModel.DataAnnotations;
@@ -95,11 +95,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       Username = userName;
       Email = email;
       Is2faEnabled = is2faEnabled;
-      var library = await context.GamesLibrary.
-        Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
-        FirstOrDefaultAsync(l => l.UserId == user.Id);
-      ViewData["Top5"] = null;
-      if (library != null) { ViewData["Top5"] = library.Top5Games; }
+      ViewData["Top5"] = await LibraryController.GetTop5(user.Id, context);
     }
 
     public async Task<IActionResult> OnGetAsync()
