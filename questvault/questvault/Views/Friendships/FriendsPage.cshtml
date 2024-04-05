@@ -39,7 +39,8 @@
                                 <img class="user-foto p-3 ms-0 me-4" src="~/img/vector/user.svg" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
                                  <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.User2.UserName)</span> 
                                 </a>
-                                <a class="ms-5" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id">
+                                <a class="ms-5" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id" 
+                                    onclick="return confirm('Are you sure you to remove @item.User2.UserName from your friends?')">
                                     <img id="icon-trash" class="nav-vector" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
                                 </a>
                             </td>
