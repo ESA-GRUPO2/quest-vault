@@ -4,18 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
-using GameStatus = questvault.Models.GameStatus;
 using questvault.Utils;
+using GameStatus = questvault.Models.GameStatus;
 namespace questvault.Controllers
 {
   public class LibraryController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
   {
-        private readonly int _pageSize = 20;
-        /// <summary>
-        /// Action method for displaying the user's library.
-        /// </summary>
-        /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
-        [Authorize]
+    private readonly int _pageSize = 20;
+    /// <summary>
+    /// Action method for displaying the user's library.
+    /// </summary>
+    /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
+    [Authorize]
     [HttpGet]
     [Route("UserLibrary")]
     public async Task<IActionResult> UserLibrary(string id, int? pageNumber)
@@ -280,6 +280,14 @@ namespace questvault.Controllers
       await context.SaveChangesAsync();
       TempData["StatusMessage"] = $"{game.Game.Name} was removed from your top 5 list.";
       return RedirectToAction("Details", "Games", new { id = gameId });
+    }
+
+    public static async Task<List<GameLog>> GetTop5(string userId, ApplicationDbContext context)
+    {
+      var library = await context.GamesLibrary.
+        Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
+        FirstOrDefaultAsync(l => l.UserId == userId);
+      return library == null ? [] : library.Top5Games;
     }
   }
 }
