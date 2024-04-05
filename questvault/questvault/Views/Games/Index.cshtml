@@ -43,39 +43,44 @@
         <div class="d-flex main-section-result">
             <div class="filter-section">
                 <form id="filterForm" asp-controller="Games" asp-action="Index" method="get">
-                    <h4 style="color: white; margin-bottom:50px">Filters</h4>
+                    <h4 style="color: white; margin-bottom:5vh">Filters</h4>
+                    <div class="mb-4 form-switch-release">
                     @if (ViewBag.SelectedReleaseStatus == "released")
                     {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" checked/>
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" />
-                            Unreleased
-                        </label>
+                        <div class="form-check form-switch">
+                                <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" checked />
+                            <label class="form-check-label" for="btn-released">Released</label>
+                        </div>
+
+                        <div class="form-check form-switch">
+                                <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" />
+                            <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+                        </div>
                     }
                     else if (ViewBag.SelectedReleaseStatus == "unreleased")
                     {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" />
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" checked />
-                            Unreleased
-                        </label>
-                    }else
+                        <div class="form-check form-switch">
+                                <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" />
+                            <label class="form-check-label" for="btn-released">Released</label>
+                        </div>
+
+                        <div class="form-check form-switch">
+                                <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" checked />
+                            <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+                        </div>
+                    } else
                     {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" />
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" />
-                            Unreleased
-                        </label>
+                        <div class="form-check form-switch">
+                                <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" />
+                            <label class="form-check-label" for="btn-released">Released</label>
+                        </div>
+
+                        <div class="form-check form-switch">
+                                <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" />
+                            <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+                        </div>
                     }
+                    </div>
                     <select class="search_select_box select-results" name="releasePlatform" id="releasePlatform">
                         <option value="" selected disabled hidden>Platforms</option>
                         @foreach (var item in Model.Platforms)
@@ -90,7 +95,7 @@
                             }
                         }
                     </select><br>
-                    <select class="select-results" name="genre" id="genre">
+                    <select class="select-results mb-5" name="genre" id="genre">
                         <option value="" selected disabled hidden>Genres</option>
                         @foreach (var item in Model.Genres)
                         {
