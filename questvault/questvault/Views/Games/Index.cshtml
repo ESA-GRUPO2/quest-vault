@@ -81,8 +81,8 @@
                         </div>
                     }
                     </div>
-                    <select class="search_select_box select-results" name="releasePlatform" id="releasePlatform">
-                        <option value="" selected disabled hidden>Platforms</option>
+                    <select class="selectpicker select-results" data-live-search="true" name="releasePlatform" id="releasePlatform" placeholder="Platforms">
+                        @* <option value="" selected disabled hidden>Platforms</option> *@
                         @foreach (var item in Model.Platforms)
                         {
                             if (item.PlatformName == ViewBag.SelectedReleasePlatform)
@@ -95,8 +95,8 @@
                             }
                         }
                     </select><br>
-                    <select class="select-results mb-5" name="genre" id="genre">
-                        <option value="" selected disabled hidden>Genres</option>
+                    <select class="selectpicker select-results mb-5" data-live-search="true" name="genre" id="genre" placeholder="Genres">
+                        @* <option value="" selected disabled hidden>Genres</option> *@
                         @foreach (var item in Model.Genres)
                         {
                             if (item.GenreName == ViewBag.SelectedGenre)

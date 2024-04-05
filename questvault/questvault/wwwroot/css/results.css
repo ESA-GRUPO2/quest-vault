@@ -32,6 +32,11 @@
     color: #D9D9D9;
 }
 
+.select-results button{
+    background: none !important;
+    border: none;
+}
+
 .game-row {
     display: flex;
     justify-content: space-between;
