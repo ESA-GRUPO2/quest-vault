@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
-using questvault.ViewModel;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 

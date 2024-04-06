@@ -244,3 +244,21 @@ body {
     text-decoration: none;
     visibility:hidden;
 }
+
+/* Estilo da modal */
+.modal-content {
+  background-color: #133e7c !important;  /* Cor de fundo da modal */
+}
+
+/* Estilo do texto dentro da modal */
+.modal-title {
+  color: white; /* Cor do texto do título */
+}
+
+.modal-body {
+  color: white; /* Cor do texto do corpo da modal */
+}
+
+.modal-footer {
+  background-color: #133e7c; /* Cor de fundo do rodapé da modal */
+}
