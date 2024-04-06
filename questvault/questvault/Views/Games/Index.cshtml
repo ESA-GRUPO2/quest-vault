@@ -81,7 +81,7 @@
                         </div>
                     }
                     </div>
-                    <select class="selectpicker select-results" data-live-search="true" name="releasePlatform" id="releasePlatform" placeholder="Platforms">
+                    <select class="selectpicker select-results" name="releasePlatform" id="releasePlatform" placeholder="Platforms">
                         @* <option value="" selected disabled hidden>Platforms</option> *@
                         @foreach (var item in Model.Platforms)
                         {
@@ -95,7 +95,7 @@
                             }
                         }
                     </select><br>
-                    <select class="selectpicker select-results mb-5" data-live-search="true" name="genre" id="genre" placeholder="Genres">
+                    <select class="selectpicker select-results mb-5" name="genre" id="genre" placeholder="Genres">
                         @* <option value="" selected disabled hidden>Genres</option> *@
                         @foreach (var item in Model.Genres)
                         {
