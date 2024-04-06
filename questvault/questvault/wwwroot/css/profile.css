@@ -67,11 +67,6 @@
     margin-right: 5rem;
 }
 
-.profile-bio{
-    max-width: 45%;
-    max-height: 30vh;
-}
-
 .profile-bio p{
     text-align: justify;
 }

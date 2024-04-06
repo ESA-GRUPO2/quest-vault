@@ -167,9 +167,6 @@
     margin: 0;
 }
 
-.review-user-publish{
-
-}
 
 
 /*GAME REVIEW PARCIAL*/
@@ -178,11 +175,28 @@
 .review-card {
   border: 2px solid white;
   border-radius: 15px;
-  width: 92.5%;
-  height: 200px;
+  width: 45.5%;
   float: left;
   margin-top: 20px;
-  margin-left: 48px;
-  text-align: center;
-  color: white;
+  margin-bottom: 10%;
+  text-align: left;
+  overflow: hidden; /* Para evitar que o conteúdo se sobreponha */
+  display: flex;
 }
+
+.review-user{
+  width: 20%;
+}
+
+.review-rating{
+  width: 20%;
+}
+
+.review-text{
+  width: 80%;
+}
+
+.review-delete{
+  width: 80%;
+}
+

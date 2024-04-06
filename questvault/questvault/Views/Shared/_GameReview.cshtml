@@ -2,27 +2,25 @@
 @{
   TempData["_GR-ShowDeleteButton"] ??= false;
 }
-
-@if(Model!=null)
+@if (Model != null)
 {
   <div class="review-card">
-    <div> @* USER *@
+    <div class="review-user"> @* USER *@
       <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { name1 = User.Identity.Name, id2 = Model.User.Id})">
         <img class="user-foto p-3 ms-0 me-4" src="~/img/vector/user.svg" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
         <span style="min-width: 8rem;">@Model.User.UserName</span>
       </a>
     </div>
-    <div>
-       <p class="dash-card-title">@Model.Rating/5</p>
-    </div>
-    <div> @* REVIEW *@
+    <div class="review-text"> @* REVIEW *@
       <p>@Model.Review</p>
     </div>
-    <div>
+    <div class="review-rating">
+      <p class="dash-card-title">@Model.Rating/5</p>
+    </div>
+    <div class="review-delete">
       @if (true)
       {
-        //@coelho  I think  ⬇ this ⬇  should be red or a more 'dangerous' color. Luis :)
-        <a class="btn btn-primary" asp-controller="" asp-action="DeleteReview" asp-route-id="@Model.GameLogId">Remove</a> // @todo correct this redirect
+        <a class="btn btn-primary nav-btn-2" asp-controller="" asp-action="DeleteReview" asp-route-id="@Model.GameLogId">Remove</a>
       }
     </div>
   </div> 
