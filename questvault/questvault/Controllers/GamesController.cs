@@ -444,7 +444,7 @@ namespace questvault.Controllers
       if (gameId == null || currentUserLibrary == null) return [];
       return [.. context.GameLog
         .Include(gl => gl.Game).Include(gl => gl.User)
-        .Where(gl => gl.IgdbId == gameId && gl.Rating != null && !currentUserLibrary.GameLogs.Contains(gl))];
+        .Where(gl => gl.IgdbId == gameId && gl.Rating != null)];
     }
 
     /// <summary>
