@@ -5,12 +5,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 namespace questvault.Areas.Identity.Pages.Account.Manage
 {
@@ -212,12 +210,13 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
         private string UploadFile(IFormFile ProfilePhoto)
         {
             string fileName = null;
-            if (ProfilePhoto == null) {
+            if (ProfilePhoto == null)
+            {
             }
             if (ProfilePhoto != null)
             {
                 string uploadDir = Path.Combine(webHostEnvironment.WebRootPath, "img/usr_profile");
-                fileName = Guid.NewGuid().ToString() +  "_" + ProfilePhoto.FileName;
+                fileName = Guid.NewGuid().ToString() + "_" + ProfilePhoto.FileName;
                 string filePath = Path.Combine(uploadDir, fileName);
 
                 using (var filestream = new FileStream(filePath, FileMode.Create))
