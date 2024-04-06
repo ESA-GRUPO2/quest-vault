@@ -45,41 +45,42 @@
                 <form id="filterForm" asp-controller="Games" asp-action="Index" method="get">
                     <h4 style="color: white; margin-bottom:5vh">Filters</h4>
                     <div class="mb-4 form-switch-release">
-                    @if (ViewBag.SelectedReleaseStatus == "released")
-                    {
-                        <div class="form-check form-switch">
+                        @if (ViewBag.SelectedReleaseStatus == "released")
+                        {
+                            <div class="form-check form-switch">
                                 <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" checked />
-                            <label class="form-check-label" for="btn-released">Released</label>
-                        </div>
+                                <label class="form-check-label" for="btn-released">Released</label>
+                            </div>
 
-                        <div class="form-check form-switch">
+                            <div class="form-check form-switch">
                                 <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" />
-                            <label class="form-check-label" for="btn-unreleased">Unreleased</label>
-                        </div>
-                    }
-                    else if (ViewBag.SelectedReleaseStatus == "unreleased")
-                    {
-                        <div class="form-check form-switch">
+                                <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+                            </div>
+                        }
+                        else if (ViewBag.SelectedReleaseStatus == "unreleased")
+                        {
+                            <div class="form-check form-switch">
                                 <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" />
-                            <label class="form-check-label" for="btn-released">Released</label>
-                        </div>
+                                <label class="form-check-label" for="btn-released">Released</label>
+                            </div>
 
-                        <div class="form-check form-switch">
+                            <div class="form-check form-switch">
                                 <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" checked />
-                            <label class="form-check-label" for="btn-unreleased">Unreleased</label>
-                        </div>
-                    } else
-                    {
-                        <div class="form-check form-switch">
+                                <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-check form-switch">
                                 <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" />
-                            <label class="form-check-label" for="btn-released">Released</label>
-                        </div>
+                                <label class="form-check-label" for="btn-released">Released</label>
+                            </div>
 
-                        <div class="form-check form-switch">
+                            <div class="form-check form-switch">
                                 <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" />
-                            <label class="form-check-label" for="btn-unreleased">Unreleased</label>
-                        </div>
-                    }
+                                <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+                            </div>
+                        }
                     </div>
                     <select class="selectpicker select-results" name="releasePlatform" id="releasePlatform" placeholder="Platforms">
                         @* <option value="" selected disabled hidden>Platforms</option> *@
@@ -91,7 +92,7 @@
                             }
                             else
                             {
-                                <option value="@item.PlatformName" >@item.PlatformName</option>
+                                <option value="@item.PlatformName">@item.PlatformName</option>
                             }
                         }
                     </select><br>
@@ -102,7 +103,8 @@
                             if (item.GenreName == ViewBag.SelectedGenre)
                             {
                                 <option value="@item.GenreName" selected>@item.GenreName</option>
-                            }else
+                            }
+                            else
                             {
                                 <option value="@item.GenreName">@item.GenreName</option>
                             }
@@ -111,7 +113,7 @@
                     </select><br>
                     <button class="btn btn-primary nav-btn-2" type="submit">Apply Filters</button>
                     @* <button class="btn btn-primary nav-btn" type="button" onclick="clearForm()">Clear Filters</button> *@
-                    <a class="btn btn-primary nav-btn" href="/Games" >Clear Filters</a>
+                    <a class="btn btn-primary nav-btn" href="/Games">Clear Filters</a>
                 </form>
             </div>
             @if (Model.NumberOfResults == 0)
@@ -137,20 +139,20 @@
                     }
                     @* Butoes paginas *@
                     <div style="margin: auto;">
-                        <a  asp-action="Index"
-                            asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
-                            asp-route-genre="@ViewBag.SelectedGenre"
-                            asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
-                            asp-route-pageNumber="@(Model.Games.PageIndex-1)"
-                               class="btn btn-primary nav-btn-2 @prevDisabled">
-                        Previous
+                        <a asp-action="Index"
+                           asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
+                           asp-route-genre="@ViewBag.SelectedGenre"
+                           asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
+                           asp-route-pageNumber="@(Model.Games.PageIndex-1)"
+                           class="btn btn-primary nav-btn-2 @prevDisabled">
+                            Previous
                         </a>
                         <a asp-action="Index"
                            asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
                            asp-route-genre="@ViewBag.SelectedGenre"
                            asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
                            asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
-                               class="btn btn-primary nav-btn-2 @nextDisabled">
+                           class="btn btn-primary nav-btn-2 @nextDisabled">
                             Next
                         </a>
                     </div>
