@@ -21,11 +21,34 @@
           <h4 class="profile-username">@Model.user.UserName</h4>
           @if (User.Identity.Name != Model.user.UserName)
           {
-            if (!Model.friends)
+            if (Model.RequestSent)
             {
-              <a asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none" class="btn-primary nav-btn-2 ms-3">
+              <h5 style="color:white; text-align: center">A request has been sent!</h5>
+            }
+            else if (Model.RequestRecieved)
+            {
+              <a asp-controller="User" asp-action="AcceptFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-3">
+                <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
+                Accept Request
+              </a>
+              <a asp-controller="User" asp-action="RejectFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-3">
+                <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/circle-xmark-solid.svg" alt="Deny Icon" />
+                Deny Request
+              </a>
+            }
+            else if (!Model.friends)
+            {
+              <a asp-controller="User" asp-action="SendFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none" class="btn-primary nav-btn-2 ms-3">
                 <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
                 Add Friend
+              </a>
+            }
+            else if (Model.friends)
+            {
+              <a asp-controller="User" asp-action="RemoveFriend" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-3"
+                onclick="return confirm('Are you sure you to remove @Model.user.UserName from your friends?')">
+                <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
+                Remove Friend
               </a>
             }
           }

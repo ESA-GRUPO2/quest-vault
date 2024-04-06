@@ -5,5 +5,9 @@
         public User user;
 
         public bool friends;
+
+        public bool RequestSent;
+
+        public bool RequestRecieved;
     }
 }

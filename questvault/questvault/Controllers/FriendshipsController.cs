@@ -9,14 +9,15 @@ namespace questvault.Controllers
   public class FriendshipsController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
   {
 
-    /// <summary>
-    ///     Verifies if a connection between two users already exists and if it doesnt a friend request object is created.
-    /// </summary>
-    /// <param name="id">The id of the user who recieves the friend request</param>
-    public async Task<IActionResult> SendFriendRequestAsync(string id)
+    public static async Task SendFriendRequestAsync(string senderId, string receiverId, ApplicationDbContext context)
     {
-      var receiver = await context.Users.FindAsync(id);
-      var sender = await signInManager.UserManager.GetUserAsync(this.User);
+
+      if (senderId == null || receiverId == null || context == null)
+      {
+        return;
+      }
+      var receiver = await context.Users.FindAsync(receiverId);
+      var sender = await context.Users.FindAsync(senderId);
       if (receiver != null && sender != null && receiver != sender)
       {
         var existingFriendship = await context.Friendship.Where(f => (f.User1.Id == receiver.Id && f.User2.Id == sender.Id) || (f.User1.Id == sender.Id && f.User2.Id == receiver.Id)).FirstOrDefaultAsync();
@@ -33,22 +34,27 @@ namespace questvault.Controllers
           context.FriendshipRequest.Add(friendshipRequest);
           await context.SaveChangesAsync();
         }
-        else
-        {
-          Console.Out.WriteLine("ALREADY EXISTS");
-        }
       }
+    }
+    /// <summary>
+    ///     Verifies if a connection between two users already exists and if it doesnt a friend request object is created.
+    /// </summary>
+    /// <param name="id">The id of the user who recieves the friend request</param>
+    public async Task<IActionResult> SendFriendRequestAsync(string id)
+    {
+      await SendFriendRequestAsync(signInManager.UserManager.GetUserId(User), id, context);
+
       return RedirectToRoute(new { controller = "Friendships", action = "FriendsPage" });
     }
 
-    /// <summary>
-    ///     Creates a friendship object between the current user and a selected user.
-    /// </summary>
-    /// <param name="id">The id of the user who recieves the friendship</param>
-    public async Task<IActionResult> AcceptFriendRequestAsync(string id)
+    public static async Task AcceptFriendRequestAsync(string senderId, string receiverId, ApplicationDbContext context)
     {
-      var receiver = await context.Users.FindAsync(id);
-      var sender = await signInManager.UserManager.GetUserAsync(this.User);
+      if(senderId==null || receiverId == null|| context==null)
+      {
+        return;
+      }
+      var receiver = await context.Users.FindAsync(receiverId);
+      var sender = await context.Users.FindAsync(senderId);
       var friendship = new Friendship { };
       if (receiver != null && sender != null)
       {
@@ -67,17 +73,26 @@ namespace questvault.Controllers
         }
         context.SaveChanges();
       }
+    }
+    /// <summary>
+    ///     Creates a friendship object between the current user and a selected user.
+    /// </summary>
+    /// <param name="id">The id of the user who recieves the friendship</param>
+    public async Task<IActionResult> AcceptFriendRequestAsync(string id)
+    {
+      await AcceptFriendRequestAsync(signInManager.UserManager.GetUserId(User),id, context);
+      
       return RedirectToRoute(new { controller = "Friendships", action = "FriendRequests" });
     }
 
-    /// <summary>
-    ///     Deletes a specific object of the type friendRequest
-    /// </summary>
-    /// <param name="id">The id of the user who sent the friend request</param>
-    public async Task<IActionResult> RejectFriendRequestAsync(string id)
+    public static async Task RejectFriendRequestAsync(string senderId, string receiverId, ApplicationDbContext context)
     {
-      var sender = await context.Users.FindAsync(id);
-      var receiver = await signInManager.UserManager.GetUserAsync(this.User);
+      if (senderId == null || receiverId == null || context == null)
+      {
+        return;
+      }
+      var receiver = await context.Users.FindAsync(receiverId);
+      var sender = await context.Users.FindAsync(senderId);
       if (receiver != null && sender != null)
       {
         var friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == sender.Id && fr.ReceiverId == receiver.Id).ToListAsync();
@@ -92,6 +107,16 @@ namespace questvault.Controllers
         }
         context.SaveChanges();
       }
+    }
+
+    /// <summary>
+    ///     Deletes a specific object of the type friendRequest
+    /// </summary>
+    /// <param name="id">The id of the user who sent the friend request</param>
+    public async Task<IActionResult> RejectFriendRequestAsync(string id)
+    {
+      await RejectFriendRequestAsync(signInManager.UserManager.GetUserId(User), id, context);
+
       return RedirectToRoute(new { controller = "Friendships", action = "FriendRequests" });
 
     }
@@ -162,15 +187,15 @@ namespace questvault.Controllers
       return View(dbContextCopy);
     }
 
-
-    /// <summary>
-    ///     Deletes a user from the list of friends
-    /// </summary>
-    /// <param name="id">The id of the other user</param>
-    public async Task<IActionResult> RemoveFriendAsync(string id)
+    public static async Task RemoveFriendAsync(string senderId, string receiverId, ApplicationDbContext context)
     {
-      var user1 = await signInManager.UserManager.GetUserAsync(this.User);
-      var user2 = await context.Users.FindAsync(id);
+      if (senderId == null || receiverId == null || context == null)
+      {
+        return;
+      }
+      var user2 = await context.Users.FindAsync(receiverId);
+      var user1 = await context.Users.FindAsync(senderId);
+
       if (user1 != null && user2 != null)
       {
         var friendship = await context.Friendship.Where(f => f.User1Id == user1.Id && f.User2Id == user2.Id).ToListAsync();
@@ -185,9 +210,17 @@ namespace questvault.Controllers
         }
         context.SaveChanges();
       }
+    }
+
+    /// <summary>
+    ///     Deletes a user from the list of friends
+    /// </summary>
+    /// <param name="id">The id of the other user</param>
+    public async Task<IActionResult> RemoveFriendAsync(string id)
+    {
+      await RemoveFriendAsync(signInManager.UserManager.GetUserId(User), id, context);
 
       return RedirectToRoute(new { controller = "Friendships", action = "FriendsPage" });
-
     }
   }
 }
