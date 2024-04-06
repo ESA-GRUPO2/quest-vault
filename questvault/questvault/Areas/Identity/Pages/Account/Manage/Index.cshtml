@@ -1,15 +1,21 @@
 ﻿@page
 @model IndexModel
 @{
-  ViewData["Title"] = "My Account";
-  ViewData["ActivePage"] = ManageNavPages.Index;
-  ViewData["help_Text"] = @"
+    ViewData["Title"] = "My Account";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+    ViewData["help_Text"] = @"
        This is your #MyAccount page! <br/>
        In this page you can personalize your profile however you want, <br/>
        in the main section you can change your Usarname,Country and password.<br/>
        On the right side theres a section for 2 Factor Authentication, <br/>
        Privacy setting and Disabiling your account if thats what you want!";
+    var top5 = ViewData["Top5"] as List<GameLog>;
 }
+
+@{
+    var userAvatar = ViewData["UserAvatar"] as string;
+}
+
 
 <h3 class="text-light title">@ViewData["Title"]</h3>
 <hr class="bar">
@@ -20,12 +26,47 @@
       <h4 style="padding-left:18rem; margin-bottom: 2rem; width:30%" class="text-light d-flex">Account Details</h4>
       <div asp-validation-summary="ModelOnly" class="error-box d-flex" role="alert"></div>
     </div>
-    <div class="col-2 d-block justify-content-center">
+
+        <div class="col-2 d-block justify-content-center">
       <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
-        <img style="height:80px;width:80px;margin-left: 13%;margin-top: 13%; background-size: cover;border-radius: 50%;" src="\img\vector\user.svg" alt="User">
+                @if (!string.IsNullOrEmpty(userAvatar))
+                {
+                    <img style="height:125px;width:130px; background-size: cover;border-radius: 50%;" src="~/img/usr_profile/@userAvatar" alt="User">
+                } else
+                {
+                    <img style="height:80px;width:80px;margin-left: 13%;margin-top: 13%; background-size: cover;border-radius: 50%;" src="~/img/usr_profile/user.svg" alt="User">
+                }
+            </div>
+      <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#avatarModal">Change Avatar</button>
+            @*Modal form start*@
+    <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="avatarModalLabel">Change Avatar</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <button style="margin:auto" class="btn-primary btn-purple">Change Avatar</button>
+      <form id="avatarForm" method="post" enctype="multipart/form-data" asp-page-handler="Avatar">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="avatarInput">Select Avatar:</label>
+            <input asp-for="ProfilePhoto" type="file" class="form-control-file" id="avatarInput" name="ProfilePhoto" accept="image/png, image/jpeg" required>
+            <small class="form-text text-muted">Max file size: 5MB</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
+            @*modal form end*@
+    </div>
+
 
 
     <div class="col-4">
@@ -95,14 +136,14 @@
     <div class="col-2">
       <form>
         <div class="form-check form-switch row">
-          @if (Model.Is2faEnabled)
-          {
-            <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
-          }
-          else
-          {
-            <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
-          }
+                    @if (Model.Is2faEnabled)
+                    {
+                <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
+                    }
+                    else
+                    {
+                <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
+                    }
         </div>
         <div class="form-check form-switch row">
           <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
@@ -144,5 +185,5 @@
 </div>
 
 @section Scripts {
-  <partial name="_ValidationScriptsPartial" />
+      <partial name="_ValidationScriptsPartial" />
 }

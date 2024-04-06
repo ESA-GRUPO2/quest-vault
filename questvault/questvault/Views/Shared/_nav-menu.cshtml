@@ -2,7 +2,9 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    
+    var user = await UserManager.GetUserAsync(User);
+
+    var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "user.svg";
 }
 
 <nav class="navbar navbar-dark fixed-top navbar-expand-lg nav-main nav-bg">
@@ -74,7 +76,7 @@
                 <li class="nav-item ms-3 d-flex align-self-center">
                     <div class="dropdown" style="position:relative">
                             <button class="btn btn-primary nav-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
-                                <img src="\img\vector\user.svg" alt="Key Icon" class="nav-vector mb-1" style="height: 1.8rem; border-radius: 50%;">
+                                <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="nav-vector mb-1" style="height: 1.8rem; border-radius: 50%;">
                         </button>
                             <ul class="dropdown-menu" style="right:0; left:auto; background: #133E7C !important;">
                                 <li>

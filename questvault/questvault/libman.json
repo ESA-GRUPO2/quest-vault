@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "popper.js@2.11.8",
+      "destination": "wwwroot/popper.js/",
+      "files": [
+        "umd/popper.min.js",
+        "umd/popper.min.js.map",
+        "umd/popper.js.map",
+        "umd/popper.js"
+      ]
+    },
+    {
+      "library": "bootstrap-select@1.14.0-beta3",
+      "destination": "wwwroot/lib/bootstrap-select/"
+    }
+  ]
+}

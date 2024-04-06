@@ -37,7 +37,7 @@ namespace questvaultTest
             var controller = new LibraryController(_context, _fakeSignInManager);
 
             // Act
-            var actionResult = await controller.UserLibrary("UNITTESTER1");
+            var actionResult = await controller.UserLibrary("UNITTESTER1", 1);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(actionResult);
