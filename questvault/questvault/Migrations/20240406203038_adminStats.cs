@@ -11,10 +11,6 @@ namespace questvault.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "ProfilePhotoPath",
-                table: "AspNetUsers");
-
             migrationBuilder.CreateTable(
                 name: "AccessInstances",
                 columns: table => new
@@ -62,12 +58,6 @@ namespace questvault.Migrations
 
             migrationBuilder.DropTable(
                 name: "LogginInstances");
-
-            migrationBuilder.AddColumn<string>(
-                name: "ProfilePhotoPath",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: true);
         }
     }
 }

@@ -99,9 +99,9 @@
                                         background: #133E7C !important;" href="/Friendships/FriendsPage" class="btn btn-primary dropdown-item">Friends</a>
                                 </li>
                               @{
-                                 var user = await SignInManager.UserManager.GetUserAsync(this.User);
+                                 var user1 = await SignInManager.UserManager.GetUserAsync(this.User);
                                }
-                              @if (user?.Clearance > 0)
+                              @if (user1?.Clearance > 0)
                               {
                                 <li>
                                   <a style="color: white !important;

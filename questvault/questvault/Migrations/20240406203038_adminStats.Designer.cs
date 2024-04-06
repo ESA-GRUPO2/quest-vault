@@ -12,7 +12,7 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240406191618_adminStats")]
+    [Migration("20240406203038_adminStats")]
     partial class adminStats
     {
         /// <inheritdoc />
@@ -532,6 +532,9 @@ namespace questvault.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ProfilePhotoPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
