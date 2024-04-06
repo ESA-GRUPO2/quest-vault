@@ -1,0 +1,69 @@
+﻿@model questvault.Models.FriendsViewData
+
+@{
+  ViewData["Title"] = "Profile";
+  ViewData["help_Text"] = @"
+       This is a private user profile. <br/>
+       In this page you can't see much beacause the user hid himself in a cave!<br/>
+       If you wanna try your luck send him a friend request (if he ever comes outside, he will see it)!";
+}
+<body class="profile">
+
+  <section class="profile-banner d-flex align-items-center">
+
+    <div class="container-fluid d-flex align-items-center justify-content-center mt-3">
+      <div class="profile-avatar d-flex align-items-center ">
+        <img class="user-foto p-4" src="~/img/vector/user.svg" />
+      </div>
+
+      <div class="d-flex row ms-3 align-items-center">
+        <div class="profile-details d-inline-flex mb-4">
+          <h4 class="profile-username">@Model.user.UserName</h4>
+
+          @if (Model.RequestSent)
+          {
+          <h5 style="color:white; text-align: center">A request has been sent!</h5>
+          }
+          else if (Model.RequestRecieved)
+          {
+          <a asp-controller="User" asp-action="AcceptFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-3">
+            <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
+            Accept Request
+          </a>
+          <a asp-controller="User" asp-action="RejectFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-3">
+            <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/circle-xmark-solid.svg" alt="Deny Icon" />
+            Deny Request
+          </a>
+          }
+          else
+          {
+            <a asp-controller="User" asp-action="SendFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none" class="btn-primary nav-btn-2 ms-3">
+              <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
+              Add Friend
+            </a>
+          }
+
+        </div>
+        <div class="profile-connects row container-fluid">
+          <img class="img-size-sm" src="~/img/external/Steam_Logo.png" alt="Steam Logo" />
+        </div>
+      </div>
+
+
+      <div id="profile-blur" class="profile-stats container-fluid justify-content-end">
+        <h4 style="color: white" class="profile-hours">200 hours played</h4>
+        <h5 style="color: white" class="profile-games-played">50 games in library</h5>
+        <h6 style="color: white" class="profile-games-backed">25 Playing</h6>
+        <h6 style="color: white" class="profile-games-backed">5 Finished</h6>
+        <h6 style="color: white" class="profile-games-backed">10 Backlogged</h6>
+        <h6 style="color: white" class="profile-games-backed">10 Wishlist</h6>
+      </div>
+    </div>
+  </section>
+  <section class="profile-about-private d-flex align-items-center">
+    <div class="profile-lock-msg container d-inline-flex justify-content-center align-items-center">
+      <img class="profile-lock-vector img-size-sm me-4" src="~/img/vector/lock-solid.svg" />
+      <h5 style="color: white">This is a private account.</h5>
+    </div>
+  </section>
+</body>

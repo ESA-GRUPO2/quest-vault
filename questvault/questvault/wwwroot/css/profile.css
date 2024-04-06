@@ -31,6 +31,8 @@
 .profile-username{
     margin-right: 1rem;
     padding-top: 0.8vh;
+    color: white;
+
 }
 
 .profile-connects{
@@ -41,10 +43,9 @@
     text-align: right;
 }
 
-
 .profile-hours {
     text-align: right;
-    margin-bottom: 4vh;
+    margin-bottom: 3vh;
 }
 
 .profile-games-played {
@@ -99,3 +100,4 @@
 #profile-blur {
     filter: blur(0.5rem);
 }
+

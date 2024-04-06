@@ -37,25 +37,9 @@ namespace questvault.Controllers
         {
             return View();
         }
-
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
-
-        public IActionResult PublicProfile()
-        {
-            return View();
-        }
-
-        public IActionResult PrivateProfile()
-        {
-            return View();
-        }
-
        
 
-        public async Task<IActionResult> AllUsersTestAsync()
+        public async Task<IActionResult> AllUsersAsync()
         {
             var dbContext = _context.Users;
             return View(await dbContext.ToListAsync());
@@ -65,10 +49,8 @@ namespace questvault.Controllers
         public async Task<IActionResult> SearchUser(string? id)
         {
             ViewBag.SearchTerm = id;
-            await Console.Out.WriteLineAsync("CONTROLER SEARHC");
             if (id == null)
             {
-                await Console.Out.WriteLineAsync("oqqq");
                 return NotFound();
             }
 

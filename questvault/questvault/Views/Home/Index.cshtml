@@ -6,71 +6,7 @@
        more information about your friend and what game they are playing!";
 }
 
-<body class="home-body">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        ViewData["Title"] = "Dashboard";
-        <div class="container-fluid">
-            <br />
-            <div class="col-8" style="float:left">
-                <h2 style="color:white; margin-left:38px">My Feed</h2>
-                <hr class="bar" style="margin-bottom: 0px;" />
-                <div class="row" style="margin-bottom: 180px">
-                    <div class="dash-card">
-                        <p class="dash-text">Jogo X ~ Foi atualizado recentemente </p>
-                        <button class="game-button-sm" style="margin-top:12px; width: 120px; height: 170px; float:right;">
-                            <img src="/img/gta.png">
-                        </button>
-                    </div>
-                    <div class="dash-card">
-                        <p class="dash-text">Jogo X ~ Foi atualizado recentemente </p>
-                        <button class="game-button-sm" style="margin-top:12px; width: 120px; height: 170px; float:right;">
-                            <img src="/img/granturismo.png">
-                        </button>
-                    </div>
-                    <div class="dash-card">
-                        <p class="dash-text">Jogo X ~ Foi atualizado recentemente </p>
-                        <button class="game-button-sm" style="margin-top:12px; width: 120px; height: 170px; float:right;">
-                            <img src="/img/granturismo.png">
-                        </button>
-                    </div>
-                    <div class="dash-card">
-                        <p class="dash-text">Jogo X ~ Foi atualizado recentemente </p>
-                        <button class="game-button-sm" style="margin-top:12px; width: 120px; height: 170px; float:right;">
-                            <img src="/img/granturismo.png">
-                        </button>
-                    </div>
-                    <div class="dash-card">
-                        <p class="dash-text">Jogo X ~ Foi atualizado recentemente </p>
-                        <button class="game-button-sm" style="margin-top:12px; width: 120px; height: 170px; float:right;">
-                            <img src="/img/granturismo.png">
-                        </button>
-                    </div>
-                    <div class="dash-card">
-                        <p class="dash-text">Jogo X ~ Foi atualizado recentemente </p>
-                        <button class="game-button-sm" style="margin-top:12px; width: 120px; height: 170px; float:right;">
-                            <img src="/img/granturismo.png">
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-3" style="float:right">
-                <div class="row stats-dash">
-                    <div class="stats-dash-text">
-                        <h2 style="color:white; margin-right: 40px;">0 hours playing</h2>
-                        <p style="color:white; margin-right: 40px;">0 games</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-    }else
-    {
-        
+<body class="home-body"> 
     <!-- Banner -->
     <section class="home-banner-image bg-image-full">
         <div class="container h-100 d-flex justify-content-evenly text-center">
