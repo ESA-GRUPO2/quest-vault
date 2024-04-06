@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
+using questvault.Utils;
 using GameStatus = questvault.Models.GameStatus;
-
 namespace questvault.Controllers
 {
   public class LibraryController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
   {
+    private readonly int _pageSize = 20;
     /// <summary>
     /// Action method for displaying the user's library.
     /// </summary>
@@ -17,7 +18,7 @@ namespace questvault.Controllers
     [Authorize]
     [HttpGet]
     [Route("UserLibrary")]
-    public async Task<IActionResult> UserLibrary(string id)
+    public async Task<IActionResult> UserLibrary(string id, int? pageNumber)
     {
       if (id == null)
       {
@@ -38,14 +39,15 @@ namespace questvault.Controllers
               .ThenInclude(gl => gl.Game) // Inclua os jogos dentro de cada GameLog
               .Where(gl => gl.User == user) // Filtre pela biblioteca do usuário atual
               .SelectMany(gl => gl.GameLogs.Select(g => g.Game)) // Selecione todos os jogos dentro dos GameLogs
-              .ToList();
+              ;
 
 
       // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
+      var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary.AsNoTracking(), pageNumber ?? 1, _pageSize);
       var data = new GameViewData
       {
-        NumberOfResults = gamesInLibrary.Count,
-        Games = gamesInLibrary
+        NumberOfResults = list.Count,
+        Games = list
       };
       return View(data);
     }
@@ -280,6 +282,14 @@ namespace questvault.Controllers
       await context.SaveChangesAsync();
       TempData["StatusMessage"] = $"{game.Game.Name} was removed from your top 5 list.";
       return RedirectToAction("Details", "Games", new { id = gameId });
+    }
+
+    public static async Task<List<GameLog>> GetTop5(string userId, ApplicationDbContext context)
+    {
+      var library = await context.GamesLibrary.
+        Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
+        FirstOrDefaultAsync(l => l.UserId == userId);
+      return library == null ? [] : library.Top5Games;
     }
   }
 }

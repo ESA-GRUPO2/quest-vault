@@ -235,3 +235,12 @@ body {
     width: 12rem;
     height: 12rem;
 }
+
+.disabled {
+    color: gray;
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+    text-decoration: none;
+    visibility:hidden;
+}

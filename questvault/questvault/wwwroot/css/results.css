@@ -1,65 +1,87 @@
 ﻿.results-game {
-    margin: 0px 71px 0px 71px;
-    color: white;
+  margin: 0px 71px 0px 71px;
+  color: white;
 }
+
 .main-section-result {
-    margin-left: 35px;
-    margin-right: 35px;
-    flex-wrap: wrap;
+  margin-left: 35px;
+  margin-right: 35px;
+  flex-wrap: wrap;
 }
-
-
 
 .game-section {
-    width: 75%;
-    padding-bottom:100px;
+  width: 75%;
+  padding-bottom: 100px;
 }
 
 .filter-section {
-    margin-top: 35px;
-    width: 25%;
+  margin-top: 35px;
+  width: 25%;
 }
+
 .select-results {
-    background-color: #133E7C;
-    font-size: 120%;
-    font-weight: 300;
-    border: 3px #711C91;
-    border-radius: 5px;
-    padding: 6px;
-    margin-bottom: 16px;
-    width: 250px;
-    color: #D9D9D9;
+  background-color: #133E7C;
+  font-size: 100%;
+  font-weight: 500;
+  border: 3px #711C91;
+  border-radius: 5px;
+  padding: 6px;
+  margin-bottom: 16px;
+  width: 250px;
+  color: #D9D9D9;
+}
+
+.select-results button {
+  background: none !important;
+  border: none;
+}
+
+.bootstrap-select .no-results {
+  background: #1a3d7b !important;
+  color: white !important;
+}
+
+.form-control {
+  color: white !important;
+  background-color: #0b1832 !important;
+}
+
+.filter-option-inner-inner{
+    color: white;
 }
 
 .game-row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .game-button {
-    width: 220px; /* Para distribuir igualmente os botões com alguma margem */
-    height: 280px;
-    padding: 0;
-    border: 2px solid white;
-    background: black;
-    margin-right: 3%;
-    margin-bottom: 3%;
+  width: 220px; /* Para distribuir igualmente os botões com alguma margem */
+  height: 280px;
+  padding: 0;
+  border: 2px solid white;
+  background: black;
+  margin-right: 3%;
+  margin-bottom: 3%;
 }
 
-.game-button:last-child {
+  .game-button:last-child {
     margin-right: 0;
-}
+  }
 
-.game-button img {
+  .game-button img {
     width: 100%; /* Definindo a largura máxima da imagem como 100% do botão */
     height: 100%; /* Definindo a altura máxima da imagem como 100% do botão */
     display: block;
-       
-}
+  }
 
 .clear-results {
-    display: block;
-    margin-top: 10px;
+  display: block;
+  margin-top: 10px;
+}
+
+.form-switch-release .form-switch input:checked {
+  background-color: #0ABDC6;
 }
