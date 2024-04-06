@@ -43,10 +43,9 @@
     text-align: right;
 }
 
-
 .profile-hours {
     text-align: right;
-    margin-bottom: 4vh;
+    margin-bottom: 3vh;
 }
 
 .profile-games-played {
@@ -101,3 +100,4 @@
 #profile-blur {
     filter: blur(0.5rem);
 }
+

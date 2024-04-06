@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using questvault.Controllers;
 using questvault.Data;
 using questvault.Models;
 using System.ComponentModel.DataAnnotations;
