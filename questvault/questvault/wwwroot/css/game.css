@@ -170,3 +170,19 @@
 .review-user-publish{
 
 }
+
+
+/*GAME REVIEW PARCIAL*/
+
+
+.review-card {
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 92.5%;
+  height: 200px;
+  float: left;
+  margin-top: 20px;
+  margin-left: 48px;
+  text-align: center;
+  color: white;
+}

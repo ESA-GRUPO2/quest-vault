@@ -5,17 +5,20 @@
 
 @if(Model!=null)
 {
-  <div class="dash-card">
+  <div class="review-card">
     <div> @* USER *@
-      <a style="display:block;height:100%;width:100%;text-decoration:none" asp-controller="" asp-action="ShowProfile" asp-route-id="@Model.User.Id"/> @*  @todo correct this redirect *@
-      <button class="btn btn-primary" type="button" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
-        <img src="\img\vector\user.svg" alt="@Model.User.UserName" class="nav-vector mb-1" style="height: 1.8rem; border-radius: 50%;">
-      </button>
-      <p class="dash-card-title">@Model.User.UserName</p>
+      <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { name1 = User.Identity.Name, id2 = Model.User.Id})">
+        <img class="user-foto p-3 ms-0 me-4" src="~/img/vector/user.svg" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
+        <span style="min-width: 8rem;">@Model.User.UserName</span>
+      </a>
+    </div>
+    <div>
+       <p class="dash-card-title">@Model.Rating/5</p>
     </div>
     <div> @* REVIEW *@
-      <p class="dash-card-title">@Model.Rating/5</p>
       <p>@Model.Review</p>
+    </div>
+    <div>
       @if (true)
       {
         //@coelho  I think  ⬇ this ⬇  should be red or a more 'dangerous' color. Luis :)
