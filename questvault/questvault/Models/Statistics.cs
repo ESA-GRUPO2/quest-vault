@@ -6,7 +6,12 @@ namespace questvault.Models
     public class Statistics
     {
       public int registeredUsersCount { get; set; }
-      public List<string> dateList { get; set; }
-      public List<int> dateCountList { get; set; }
+      public double gameRatingAverage { get; set; }
+      public List<string> LoginDateList { get; set; }
+      public List<int> LoginDateCountList { get; set; }
+
+      public List<string> AccessDateList { get; set; }
+      public List<int> AccessDateCountList { get; set; }
+
     }
 }

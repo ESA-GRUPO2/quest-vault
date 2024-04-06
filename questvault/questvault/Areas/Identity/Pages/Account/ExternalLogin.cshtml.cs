@@ -122,7 +122,7 @@ namespace questvault.Areas.Identity.Pages.Account
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
                 var user = await _signInManager.UserManager.GetUserAsync(this.User);
-                var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now).ToString() };
+                var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now) };
                 _context.LogginInstances.Add(logginInstance);
                 await _context.SaveChangesAsync();
                 return LocalRedirect(returnUrl);

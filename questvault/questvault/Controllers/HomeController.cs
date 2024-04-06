@@ -19,9 +19,12 @@ namespace questvault.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            return View();
+          var accessInstance = new AccessInstance() { AccessDate = DateOnly.FromDateTime(DateTime.Now) };
+          _context.AccessInstances.Add(accessInstance);
+          await _context.SaveChangesAsync();
+          return View();
         }
 
         //public IActionResult Error()

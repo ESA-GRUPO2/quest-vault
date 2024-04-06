@@ -155,6 +155,22 @@ namespace questvault.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("questvault.Models.AccessInstance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateOnly>("AccessDate")
+                        .HasColumnType("date");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AccessInstances");
+                });
+
             modelBuilder.Entity("questvault.Models.Company", b =>
                 {
                     b.Property<long>("CompanyId")
@@ -405,9 +421,8 @@ namespace questvault.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("LoginDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateOnly>("LoginDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("UserId")
                         .IsRequired()

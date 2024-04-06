@@ -24,7 +24,7 @@ namespace questvaultTest
         {
             var controller = new HomeController(null, _context);
 
-            var result = controller.Index();
+            var result = controller.IndexAsync();
 
             var viewResult = Assert.IsType<ViewResult>(result);
         }
