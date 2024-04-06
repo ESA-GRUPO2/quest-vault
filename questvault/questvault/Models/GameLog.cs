@@ -36,12 +36,6 @@ namespace questvault.Models
         public int? HoursPlayed { get; set; }
 
         /// <summary>
-        /// Gets or sets the ownage status for the game (nullable).
-        /// </summary>
-        [AllowNull]
-        public OwnageStatus Ownage {  get; set; }
-
-        /// <summary>
         /// Gets or sets the status of the game (nullable).
         /// </summary>
         [AllowNull]

@@ -67,7 +67,7 @@
           </div>
           <div class="game-user-status">
             <div class="d-inline-flex">
-              @if (ViewBag.IsGameAddedToLibrary == true)
+              @if (ViewBag.IsGameAddedToLibrary != true)
               {
                 <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#gamelogModal">Add Game</button>
               }
@@ -80,56 +80,68 @@
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="gamelogModalLabel">Modal title</h1>
+                      <h1 class="modal-title fs-5" id="gamelogModalLabel">Game Log</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                      <div class="modal-body">
+                    @if (ViewBag.IsGameAddedToLibrary)
+                    {
+                      @if (ViewBag.IsGameTop5)
+                      {
+                        <form asp-controller="Library" asp-action="RemoveFromTop5" method="post">
+                          <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                          <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove from Top5</button>
+                        </form>
+                      }
+                      else
+                      {
+                        <form asp-controller="Library" asp-action="AddToTop5" method="post">
+                          <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                          <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" type="submit">Add to Top5</button>
+                        </form>
+                      }
+                    }
+                    <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
+                        <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                        <input type="hidden" name="userId" value="@SignInManager.UserManager.GetUserId(User)" />
+                        @* <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example"> *@
+                        <select #status required class="selectpicker" name="status" id="gameStatus" placeholder="Game Status">
+                          @if (ViewBag.IsGameAddedToLibrary == true)
+                          {
+                            <option value="@ViewBag.Status" disabled selected>@ViewBag.Status</option>
+                          }
+                          <option value="Playing" data-subtext="Playing the game" >Playing</option>
+                          <option value="Complete" data-subtext="Beat your main objective">Complete</option>
+                          <option value="Retired" data-subtext="Finished with game that lacks an ending" >Retired</option>
+                          <option value="Backlogged" data-subtext="Unfinished but may pick up later" >Backlogged</option>
+                          <option value="Abandoned" data-subtext="Unfinished and staying that way" >Abandoned</option>
+                          <option value="Wishlist" data-subtext="Don't have the game" >Wishlist</option>
+                        </select>
 
 
-                      <!-- Dropdown Button -->
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                          Selecione uma opção
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <!-- Adicione suas opções de dropdown aqui, se necessário -->
-                        </ul>
+
+
+
+                        <button class="btn-primary btn-purple" style="width:8.5rem" type="submit">Save</button>
+                     
+                    </form>
+                      
+                    @if (ViewBag.IsGameAddedToLibrary)
+                    {
+                      <form asp-controller="Library" asp-action="RemoveGame" method="post">
+                        <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                        <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove GameLog</button>
+                      </form>
+
+                    }
                       </div>
-
-                      <!-- Modal -->
-                      <div class="modal fade" data-bs-backdrop="static"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Opções do Dropdown</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <ul class="list-group">
-                                <li class="list-group-item">Opção 1</li>
-                                <li class="list-group-item">Opção 2</li>
-                                <li class="list-group-item">Opção 3</li>
-                                <!-- Adicione mais opções conforme necessário -->
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-
-
-
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save</button>
-                    </div>
                   </div>
                 </div>
               </div>
 
 
-              @*               <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
+              @*
+            <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
             <input type="hidden" name="gameId" value="@Model.IgdbId" />
             <input type="hidden" name="userId" value="@SignInManager.UserManager.GetUserId(User)" />
             <select required #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
@@ -167,27 +179,7 @@
             </form>
             *@
 
-              @if (ViewBag.IsGameAddedToLibrary)
-              {
-                <form asp-controller="Library" asp-action="RemoveGame" method="post">
-                  <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                  <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove Game</button>
-                </form>
-                @if (ViewBag.IsGameTop5)
-                {
-                  <form asp-controller="Library" asp-action="RemoveFromTop5" method="post">
-                    <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                    <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove from Top5</button>
-                  </form>
-                }
-                else
-                {
-                  <form asp-controller="Library" asp-action="AddToTop5" method="post">
-                    <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                    <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" type="submit">Add to Top5</button>
-                  </form>
-                }
-              }
+ 
             </div>
           </div>
         </div>

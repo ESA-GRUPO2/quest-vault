@@ -421,7 +421,6 @@ namespace questvault.Controllers
 
             if (gameLog != null)
             {
-                ViewBag.Ownage = gameLog.Ownage;
                 ViewBag.Status = gameLog.Status;
                 ViewBag.Review = gameLog.Review;
                 ViewBag.Rating = gameLog.Rating;
