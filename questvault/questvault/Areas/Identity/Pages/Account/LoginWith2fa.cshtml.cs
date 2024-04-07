@@ -86,6 +86,11 @@ namespace questvault.Areas.Identity.Pages.Account
       {
         return RedirectToPage("./Login");
       }
+      if (user.LockoutEnabled)
+      {
+        logger.LogWarning("User account locked out.");
+        return RedirectToPage("./Lockout");
+      }
       var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
 
       var result = await context.EmailTokens.FirstOrDefaultAsync(t => t.UserId == user.Id);

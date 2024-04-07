@@ -200,6 +200,37 @@ namespace questvault.Controllers
       return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
     }
 
+    public static async Task RemoveReview(long gameLogId, ApplicationDbContext context)
+    {
+        // Atualize a classificação (se necessário)
+        var gameLog = await context.GameLog.FirstOrDefaultAsync(g => g.GameLogId == gameLogId);
+        if (gameLog != null)
+        {
+          gameLog.Rating = null; // Defina a classificação como 0 (ou qualquer outro valor apropriado)
+          gameLog.Review = null;
+        }
+
+        // Salve as alterações no banco de dados
+        await context.SaveChangesAsync();
+    }
+
+    public async Task<IActionResult> RemoveReview(long id)
+    {
+      if (id == 0)
+      {
+        return NotFound(); // Retorna NotFound se o ID do usuário não for fornecido
+      }
+
+      var gameLog = await context.GameLog.FirstOrDefaultAsync(g => g.GameLogId == id);
+      if (gameLog == null) {
+        return NotFound();
+      }
+
+      await RemoveReview(id, context);
+
+      // Redirecione para alguma página após a conclusão
+      return RedirectToAction("Details", "Games", new { id = gameLog.IgdbId });
+    }
   }
 
 }
