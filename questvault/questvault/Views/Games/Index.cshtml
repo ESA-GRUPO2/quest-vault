@@ -52,11 +52,11 @@
     <div class="d-flex main-section-result">
       <div class="filter-section">
         <form id="filterForm" asp-controller="Games" asp-action="Index" method="get">
-          <h4 style="color: white; margin-bottom:5vh">Filters</h4>
-          <div class="mb-4 form-switch-release">
+          <h4 style="color: white; margin-bottom:5vh; text-decoration: underline;">Filters</h4>
+          <div class="mb-5 form-switch-release">
             @if (ViewBag.SelectedReleaseStatus == "released")
             {
-              <div class="form-check form-switch">
+              <div class="form-check form-switch mb-2">
                 <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" checked />
                 <label class="form-check-label" for="btn-released">Released</label>
               </div>
@@ -68,7 +68,7 @@
             }
             else if (ViewBag.SelectedReleaseStatus == "unreleased")
             {
-              <div class="form-check form-switch">
+              <div class="form-check form-switch mb-2">
                 <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" />
                 <label class="form-check-label" for="btn-released">Released</label>
               </div>
@@ -80,7 +80,7 @@
             }
             else
             {
-              <div class="form-check form-switch">
+              <div class="form-check form-switch mb-2">
                 <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" />
                 <label class="form-check-label" for="btn-released">Released</label>
               </div>
