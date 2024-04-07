@@ -126,6 +126,11 @@ namespace questvault.Areas.Identity.Pages.Account
         {
           return RedirectToPage("./DeactivatedAccount", new { ReturnUrl = returnUrl, UserId = user.Id });
         }
+        if (user.LockoutEnabled)
+        {
+          logger.LogWarning("User account locked out.");
+          return RedirectToPage("./Lockout");
+        }
         var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
         {
@@ -147,12 +152,6 @@ namespace questvault.Areas.Identity.Pages.Account
           else context.Add(twoFactorAuthenticator);
           await context.SaveChangesAsync();
           return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, Input.RememberMe });
-        }
-        if (result.IsLockedOut)
-        {
-          user.LockoutEnabled = false;
-          logger.LogWarning("User account locked out.");
-          return RedirectToPage("./Lockout");
         }
         else
         {
