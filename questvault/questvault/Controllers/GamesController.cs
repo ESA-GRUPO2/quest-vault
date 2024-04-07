@@ -15,7 +15,6 @@ namespace questvault.Controllers
 {
   /// <summary>
   /// Controller for managing games.
-  /// Note: This controller is a work in progress (WIP) and may undergo significant changes.
   /// </summary>
   /// <remarks>
   /// Constructor for GamesController.
@@ -422,7 +421,7 @@ namespace questvault.Controllers
 
       if (gameLog != null)
       {
-        ViewBag.Ownage = gameLog.Ownage;
+        
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
@@ -441,6 +440,7 @@ namespace questvault.Controllers
         await Console.Out.WriteLineAsync($"game: {review.Game.Name}, user: {review.User.UserName}, rating: {review.Rating}, review: {review.Review}");
       return View(game);
     }
+           
 
 
     private List<GameLog> GetReviews(int? gameId, GamesLibrary currentUserLibrary)
