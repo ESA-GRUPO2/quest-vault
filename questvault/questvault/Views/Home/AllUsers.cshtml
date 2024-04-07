@@ -29,24 +29,24 @@
         <td>
           @if (item.Clearance < 2 && !item.LockoutEnabled)
           {
-            <a class="btn btn-primary btn-remove" asp-controller="" asp-action="" asp-route-id="@item.Id">Lockout User</a>
+            <a class="btn btn-primary btn-remove" asp-controller="Backoffice" asp-action="LockoutUserAll" asp-route-id="@item.Id">Lockout User</a>
           }
           @if(item.LockoutEnabled){
-            <a class="btn btn-primary nav-btn-2" asp-controller="" asp-action="" asp-route-id="@item.Id">Remove Lockout</a>
+            <a class="btn btn-primary nav-btn-2" style="width: 12.5rem" asp-controller="Backoffice" asp-action="RemoveLockoutUserAll" asp-route-id="@item.Id">Remove Lockout</a>
           }
         </td>
         <td>
-          @if (item.Clearance != 2)
+          @if (item.Clearance != 2 && !item.LockoutEnabled)
           {
             <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdminAll" asp-route-id="@item.Id">Give admin</a>
           }
         </td>
         <td>
-          @if (item.Clearance == 0)
+          @if (item.Clearance == 0 && !item.LockoutEnabled)
           {
             <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModeratorAll" asp-route-id="@item.Id">Give moderator</a>
           }
-          @if (item.Clearance == 1)
+          @if (item.Clearance == 1 && !item.LockoutEnabled)
           {
             <a class="btn btn-primary nav-btn-2" asp-controller="Backoffice" asp-action="RemovePermissionsAll" asp-route-id="@item.Id">Remove Mod</a>
           }
