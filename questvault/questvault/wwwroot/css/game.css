@@ -31,16 +31,17 @@
     margin-top: 5vh;
 }
 
+
 .game-user-status .select-results {
-    background-color: #133E7C;
-    font-size: 110%;
-    font-weight: 500;
-    border: 3px #711C91;
-    border-radius: 5px;
-    padding: 6px;
-    margin-bottom: 16px;
-    width: 10rem;
-    color: #D9D9D9;
+  background-color: #133E7C;
+  font-size: 110%;
+  font-weight: 500;
+  border: 3px #711C91;
+  border-radius: 5px;
+  padding: 6px;
+  margin-bottom: 16px;
+  width: 10rem;
+  color: #D9D9D9;
 }
 
 .game-score{

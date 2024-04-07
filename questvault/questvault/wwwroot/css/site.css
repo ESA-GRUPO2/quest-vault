@@ -248,7 +248,8 @@ body {
 
 /* Estilo da modal */
 .modal-content {
-  background-color: #133e7c !important;  /* Cor de fundo da modal */
+  background-color: #133e7c !important; /* Cor de fundo da modal */
+  border: solid 10px rgb( 9, 24, 51, 1.3);
 }
 
 /* Estilo do texto dentro da modal */
