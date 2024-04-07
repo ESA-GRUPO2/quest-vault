@@ -9,7 +9,7 @@
 <table class="table table-dark table-sm table-profile container">
   <thead>
     <tr>
-      <th>
+      <th style="text-align: left">
         @Html.DisplayNameFor(model => model.UserName)
       </th>
       <th></th>
@@ -22,8 +22,7 @@
     @foreach (var item in Model)
     {
       <tr style="height: 53px">
-        <td>
-          @* <a style="color:white" href="@Url.Action("PublicProfile", "User", new { id = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a> *@
+        <td style="text-align: left">
           <a style="color:white" href="@Url.Action("Profile", "User", new {name1 =User.Identity.Name, id2 = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a>
         </td>
         <td>
