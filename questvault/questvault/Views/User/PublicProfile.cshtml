@@ -25,7 +25,7 @@
           {
             if (Model.RequestSent)
             {
-              <h5 style="color:white; text-align: center">A request has been sent!</h5>
+              <h5 style="color:white; text-align: center; width:50%">A request has been sent!</h5>
             }
             else if (Model.RequestRecieved)
             {
@@ -58,23 +58,28 @@
           {
             @if (Model.user.Clearance < 2 && !Model.user.LockoutEnabled)
             {
-              <a class="btn btn-primary btn-remove ms-3" asp-controller="" asp-action="" asp-route-id="@Model.user.Id">Lockout User</a>
+              <a onclick="return confirm('Are you sure you want to Lockout @Model.user.UserName?')"
+                 class="btn btn-primary btn-remove ms-3" asp-controller="" asp-action="" asp-route-id="@Model.user.Id">Lockout User</a>
             }
             @if (Model.user.LockoutEnabled)
             {
-              <a class="btn btn-primary nav-btn-2" asp-controller="" asp-action="" asp-route-id="@Model.user.Id">Remove Lockout</a>
+              <a onclick="return confirm('Are you sure you want to remove @Model.user.UserName's Lockout?')"
+                 class="btn btn-primary nav-btn-2 ms-3"  asp-controller="" asp-action="" asp-route-id="@Model.user.Id">Remove Lockout</a>
             }
             @if (Model.user.Clearance != 2)
             {
-              <a class="btn btn-primary nav-btn ms-3" asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@Model.user.Id">Give admin</a>
+              <a onclick="return confirm('Are you sure you make @Model.user.UserName an Administrator?')"
+                 class="btn btn-primary nav-btn ms-3 btn-profile"  asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@Model.user.Id">Make Admin</a>
             }
             @if (Model.user.Clearance == 0)
             {
-              <a class="btn btn-primary nav-btn ms-3" asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@Model.user.Id">Give moderator</a>
+              <a onclick="return confirm('Are you sure you make @Model.user.UserName a Moderator?')"
+                 class="btn btn-primary nav-btn ms-3 btn-profile"  asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@Model.user.Id">Make Mod</a>
             }
             @if (Model.user.Clearance == 1)
             {
-              <a class="btn btn-primary nav-btn-2 ms-3" asp-controller="Backoffice" asp-action="RemovePermissions" asp-route-id="@Model.user.Id">Remove Mod</a>
+              <a onclick="return confirm('Are you sure you remove @Model.user.UserName from being a Moderator?')"
+                 class="btn btn-primary nav-btn-2 ms-3 " asp-controller="Backoffice" asp-action="RemovePermissions" asp-route-id="@Model.user.Id">Remove Mod</a>
             }
           }
 
@@ -88,6 +93,10 @@
           else if (Model.user.Clearance == 2)
           {
             <h6 style="text-decoration:underline" class="profile-username">Administrator</h6>
+          }
+          else
+          {
+            <h6 style="visibility: hidden" class="profile-username">.</h6>
           }
         </div>
         <div class="profile-connects row container-fluid">
