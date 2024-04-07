@@ -43,9 +43,11 @@
 @if (SignInManager.IsSignedIn(User))
 {
 
-  <div class="results-game">
-    <h2 style="color:white">Games</h2>
-    <hr class="bar" style="margin-bottom: 25px; width: 100%;">
+  <div class="main-section">
+    <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+      <h3 style="color:white">Games</h3>
+    </div>
+    <hr class="bar">
 
     <div class="d-flex main-section-result">
       <div class="filter-section">
@@ -184,7 +186,7 @@
                      asp-route-pageNumber="@i">@i</a>
                 </li>
               }
-              @if(currentPage <= Model.Games.TotalPages - 3)
+              @if (currentPage <= Model.Games.TotalPages - 3)
               {
                 <li class="page-item disabled">
                   <span class="page-link">...</span>

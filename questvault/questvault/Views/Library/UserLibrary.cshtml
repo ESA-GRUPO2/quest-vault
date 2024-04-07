@@ -34,9 +34,9 @@
 @*@if (SignInManager.IsSignedIn(User))
 {*@
 
-<div class="results-game">
+<div class="main-section">
 
-  <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
+  <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
     <h3>My Library</h3>
     <h4 class="justify-content-end ">@ViewBag.NumberOfResults @(ViewBag.NumberOfResults == 1 ? "game" : "games")</h4>
   </div>

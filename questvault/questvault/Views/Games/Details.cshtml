@@ -21,7 +21,7 @@
     <section class="d-flex main-section">
       <img class="game-cover image-fluid" src="@Model.ImageUrl" />
       <div class="container ms-3 mt-4">
-        <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
+        <h3 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h3>
         @* <h4>Released on @Model.ReleaseDate</h4> *@
         @if (Model.ReleaseDate.HasValue)
         {
