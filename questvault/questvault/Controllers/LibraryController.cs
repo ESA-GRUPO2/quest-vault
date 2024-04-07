@@ -56,21 +56,19 @@ namespace questvault.Controllers
     /// Action method for adding or updating games.
     /// </summary>
     /// <param name="gameId">The ID of the game to add or update.</param>
-    /// <param name="ownage">The ownage status of the game (e.g., owned, wishlist, etc.).</param>
     /// <param name="status">The status of the game (e.g., completed, in-progress, etc.).</param>
     /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status, string userId)
+    public async Task<IActionResult> AddUpdateGames(long gameId, string status, string userId)
     {
       var user = context.Users.Where(u => u.Id == userId).First();
       var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
-      if (!Enum.TryParse(ownage, out OwnageStatus ownageEnum) ||
-          !Enum.TryParse(status, out GameStatus statusEnum))
+      if (!Enum.TryParse(status, out GameStatus statusEnum))
       {
         // Se a conversão falhar, retorne BadRequest
-        ViewBag.Error = "Invalid ownage or status value.";
+        ViewBag.Error = "Invalid status value.";
         return RedirectToAction("Details", "Games", new { id = gameId });
       }
 
@@ -99,7 +97,6 @@ namespace questvault.Controllers
       {
         // Atualizar o jogo existente
         existingGame.Status = statusEnum;
-        existingGame.Ownage = ownageEnum;
       }
       else
       {
@@ -109,7 +106,6 @@ namespace questvault.Controllers
           Game = game,
           IgdbId = game.IgdbId,
           Status = statusEnum,
-          Ownage = ownageEnum,
           UserId = user.Id,
           User = user
         };
@@ -118,7 +114,7 @@ namespace questvault.Controllers
       }
 
       await context.SaveChangesAsync();
-
+      TempData["StatusMessage"] = $"{existingGame.Game.Name} log status updated to {statusEnum}.";
       return RedirectToAction("Details", "Games", new { id = game.IgdbId });
     }
 
@@ -156,7 +152,7 @@ namespace questvault.Controllers
         context.GameLog.Remove(gameToRemove);
         await context.SaveChangesAsync();
       }
-
+      TempData["StatusMessage"] = $"{gameToRemove.Game.Name} log was removed from your library.";
       return RedirectToAction("Details", "Games", new { id = game.IgdbId });
     }
 
@@ -210,6 +206,7 @@ namespace questvault.Controllers
       await context.SaveChangesAsync();
 
       // Redirecione de volta para a página de detalhes do jogo após a submissão
+      TempData["StatusMessage"] = $"{gameLog.Game.Name} review and rating updated.";
       return RedirectToAction("Details", "Games", new { id = game.IgdbId });
     }
 

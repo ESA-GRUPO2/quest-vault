@@ -422,7 +422,7 @@ namespace questvault.Controllers
 
       if (gameLog != null)
       {
-        ViewBag.Ownage = gameLog.Ownage;
+        
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
@@ -441,6 +441,7 @@ namespace questvault.Controllers
         await Console.Out.WriteLineAsync($"game: {review.Game.Name}, user: {review.User.UserName}, rating: {review.Rating}, review: {review.Review}");
       return View(game);
     }
+           
 
 
     private List<GameLog> GetReviews(int? gameId, GamesLibrary currentUserLibrary)
