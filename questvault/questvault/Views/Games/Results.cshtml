@@ -16,6 +16,12 @@
 
   var prevDisabled = !Model.Games.HasPreviousPage ? "disabled" : "";
   var nextDisabled = !Model.Games.HasNextPage ? "disabled" : "";
+
+  int currentPage = Model.Games.PageIndex;
+  int totalPages = Model.Games.TotalPages;
+  int maxVisiblePages = 5; // Number of pages to show around the current page
+  int startPage = Math.Max(1, currentPage - maxVisiblePages / 2);
+  int endPage = Math.Min(startPage + maxVisiblePages - 1, totalPages);
 }
 @if (SignInManager.IsSignedIn(User))
 {
@@ -47,21 +53,61 @@
             }
           </div>
         }
-        @* Page System *@
-        <div style="margin: auto;">
-          <a asp-action="Results"
-             asp-route-searchTerm="@Model.SearchTerm"
-             asp-route-pageNumber="@(Model.Games.PageIndex-1)"
-             class="btn btn-primary nav-btn-2 @prevDisabled">
-            Previous
-          </a>
-          <a asp-action="Results"
-             asp-route-searchTerm="@Model.SearchTerm"
-             asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
-             class="btn btn-primary nav-btn-2 @nextDisabled">
-            Next
-          </a>
-        </div>
+        @* New Page System *@
+        <nav aria-label="Page navigation games">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a asp-action="Results"
+                 asp-route-searchTerm="@Model.SearchTerm"
+                 asp-route-pageNumber="@(Model.Games.PageIndex-1)"
+                 class="page-link @prevDisabled" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+
+            @if (startPage > 2 || currentPage > 3)
+            {
+              <li class="page-item">
+                <a class="page-link @(1 == currentPage ? "active" : "")" asp-action="Results"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-pageNumber="1">1</a>
+              </li>
+              <li class="page-item disabled">
+                <span class="page-link">...</span>
+              </li>
+
+            }
+
+            @for (int i = startPage; i <= endPage; i++)
+            {
+
+              <li class="page-item">
+                <a class="page-link @(i == currentPage ? "active" : "")" asp-action="Results"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-pageNumber="@i">@i</a>
+              </li>
+            }
+            @if (currentPage <= Model.Games.TotalPages - 3)
+            {
+              <li class="page-item disabled">
+                <span class="page-link">...</span>
+              </li>
+              <li class="page-item">
+                <a asp-action="Results"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-pageNumber="@(Model.Games.TotalPages)">@Model.Games.TotalPages</a>
+              </li>
+            }
+            <li class="page-item">
+              <a asp-action="Results"
+                 asp-route-searchTerm="@Model.SearchTerm"
+                 asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
+                 class="page-link @nextDisabled" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
     </div>
