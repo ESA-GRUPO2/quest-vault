@@ -167,6 +167,52 @@
     margin: 0;
 }
 
-.review-user-publish{
 
+
+/*GAME REVIEW PARCIAL*/
+
+
+.review-card {
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 45.5%;
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 10%;
+  text-align: left;
+  overflow: hidden; /* Para evitar que o conteúdo se sobreponha */
+  display: flex;
 }
+
+.review-user{
+  width: 20%;
+}
+
+.review-rating{
+  width: 20%;
+}
+
+.review-text{
+  width: 80%;
+}
+
+.review-delete{
+  width: 80%;
+}
+
+.btn-remove {
+  background: #ea0c00;
+  color: #ffffff;
+  border-radius: 24px;
+  width: 7.5rem;
+  height: 2.75rem;
+  padding: 6px;
+  border: none;
+  text-align: center;
+  font-weight: bolder;
+  line-height: 30px;
+}
+
+  .btn-remove:hover {
+    background: #591414;
+  }

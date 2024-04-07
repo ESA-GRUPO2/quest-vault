@@ -134,7 +134,6 @@ namespace questvault.Areas.Identity.Pages.Account
           var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now) };
           context.LogginInstances.Add(logginInstance);
           await context.SaveChangesAsync();
-          Console.Out.WriteLine("uma merda qualquer");
           return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
         }
         if (result.RequiresTwoFactor)

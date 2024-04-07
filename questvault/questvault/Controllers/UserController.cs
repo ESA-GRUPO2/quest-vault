@@ -10,7 +10,7 @@ namespace questvault.Controllers
   public class UserController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
   {
 
-    // Ação para exibir o perfil do usuário
+    [HttpGet]
     public async Task<IActionResult> Profile(string name1, string id2)
     {
       bool friends = false;
@@ -56,7 +56,7 @@ namespace questvault.Controllers
 
       if (user1 == user2)
       {
-        return RedirectToAction("PublicProfile", "User", new { id = id2});
+        return RedirectToAction("PublicProfile", "User", new { id = id2 });
       }
 
       if (user2.IsPrivate && !friends && user1.Clearance == 0)
