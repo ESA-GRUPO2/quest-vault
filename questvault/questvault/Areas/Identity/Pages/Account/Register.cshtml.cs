@@ -95,6 +95,7 @@ namespace questvault.Areas.Identity.Pages.Account
                 return RedirectToPage(returnUrl);
             else return Page();
         }
+
     public async Task<IActionResult> OnPostAsync(string returnUrl = null)
     {
       returnUrl ??= Url.Content("~/");

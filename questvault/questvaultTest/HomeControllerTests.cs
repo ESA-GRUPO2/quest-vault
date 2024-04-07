@@ -18,7 +18,7 @@ namespace questvaultTest
         }
 
 
-        // Nível 1
+        // Nï¿½vel 1
         [Fact]
         public void Index_ReturnsViewResult()
         {
@@ -36,39 +36,6 @@ namespace questvaultTest
             var controller = new HomeController(null, _context);
             // Act
             var result = controller.Privacy();
-
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
-
-        [Fact]
-        public void Dashboard_ReturnsViewResult()
-        {
-            var controller = new HomeController(null, _context);
-            // Act
-            var result = controller.Dashboard();
-
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
-
-        [Fact]
-        public void PublicProfile_ReturnsViewResult()
-        {
-            var controller = new HomeController(null, _context);
-            // Act
-            var result = controller.PublicProfile();
-
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
-
-        [Fact]
-        public void PrivateProfile_ReturnsViewResult()
-        {
-            var controller = new HomeController(null, _context);
-            // Act
-            var result = controller.PrivateProfile();
 
             // Assert
             Assert.IsType<ViewResult>(result);

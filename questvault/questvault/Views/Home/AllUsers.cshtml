@@ -12,24 +12,23 @@
                 <th>
                     @Html.DisplayNameFor(model => model.UserName)
                 </th>
-                <th>
-
-                </th>
-            </tr>
+                    <th></th><th></th><th></th><th></th>
+                </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
+                    @* <a style="color:white" href="@Url.Action("PublicProfile", "User", new { id = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a> *@
+                    <a style="color:white" href="@Url.Action("Profile", "User", new {name1 =User.Identity.Name, id2 = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a> 
                     </td>
                     <td>
                         <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Disable User</a>
                     </td>
-                <td>
-                    <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@item.Id">Give admin</a>
-                </td>
+                    <td>
+                        <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@item.Id">Give admin</a>
+                    </td>
                     <td>
                         <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@item.Id">Give moderator</a>
                     </td>

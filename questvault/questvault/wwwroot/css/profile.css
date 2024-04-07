@@ -43,10 +43,9 @@
     text-align: right;
 }
 
-
 .profile-hours {
     text-align: right;
-    margin-bottom: 4vh;
+    margin-bottom: 3vh;
 }
 
 .profile-games-played {
@@ -66,11 +65,6 @@
     margin-bottom: 4rem;
     margin-left: 5rem;
     margin-right: 5rem;
-}
-
-.profile-bio{
-    max-width: 45%;
-    max-height: 30vh;
 }
 
 .profile-bio p{
@@ -101,3 +95,4 @@
 #profile-blur {
     filter: blur(0.5rem);
 }
+
