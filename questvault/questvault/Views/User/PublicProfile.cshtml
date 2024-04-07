@@ -60,12 +60,15 @@
       </div>
 
       <div class="profile-stats container-fluid justify-content-end">
-        <h4 style="color: white" class="profile-hours">200 hours played</h4>
-        <h5 style="color: white" class="profile-games-played">50 games in library</h5>
-        <h6 style="color: white" class="profile-games-backed">25 Playing</h6>
-        <h6 style="color: white" class="profile-games-backed">5 Finished</h6>
-        <h6 style="color: white" class="profile-games-backed">10 Backlogged</h6>
-        <h6 style="color: white" class="profile-games-backed">10 Wishlist</h6>
+        @* <h4 style="color: white" class="profile-hours">Rating average: @Model.RatingAverage</h4> *@
+        <h4 style="color: white" class="profile-games-played">@Model.nJogosTotal games in library</h4>
+
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosPlaying Playing</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosComplete Complete</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosRetired Retired</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosBacklogged Backlogged</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosAbandoned Abandoned</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosWishlist Whishlisted</h6>
       </div>
     </div>
   </section>

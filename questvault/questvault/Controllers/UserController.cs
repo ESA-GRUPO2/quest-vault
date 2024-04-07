@@ -25,7 +25,7 @@ namespace questvault.Controllers
       var friendships = await context.Friendship.ToListAsync();
       var user2 = await context.Users.FirstOrDefaultAsync(u => u.Id == id2);
       var user1 = await context.Users.FirstOrDefaultAsync(u => u.UserName == name1);
-      var requests = await context.FriendshipRequest.ToListAsync(); 
+      var requests = await context.FriendshipRequest.ToListAsync();
 
       if (user1 == null || user2 == null)
       {
@@ -76,13 +76,27 @@ namespace questvault.Controllers
         return NotFound();
       }
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
+      var userGameLogs = context.GamesLibrary
+        .Include(gl => gl.GameLogs)
+        .ThenInclude(gl => gl.Game)
+        .Where(gl => gl.User == user)
+        .SelectMany(gl => gl.GameLogs)
+        .ToList();
+      //foreach ( var game in gamesInLibrary ) { Console.Out.WriteLine(game); }
 
       var friendsViewData = new FriendsViewData
       {
         user = user,
         friends = friends,
         RequestSent = send,
-        RequestRecieved = received
+        RequestRecieved = received,
+        nJogosTotal = userGameLogs.Count(),
+        nJogosPlaying = userGameLogs.Where(gl => gl.Status == GameStatus.Playing).Count(),
+        nJogosComplete = userGameLogs.Where(gl => gl.Status == GameStatus.Complete).Count(),
+        nJogosRetired = userGameLogs.Where(gl => gl.Status == GameStatus.Retired).Count(),
+        nJogosBacklogged = userGameLogs.Where(gl => gl.Status == GameStatus.Backlogged).Count(),
+        nJogosAbandoned = userGameLogs.Where(gl => gl.Status == GameStatus.Abandoned).Count(),
+        nJogosWishlist = userGameLogs.Where(gl => gl.Status == GameStatus.Wishlist).Count()
       };
 
       ViewData["Top5"] = await LibraryController.GetTop5(id, context);
