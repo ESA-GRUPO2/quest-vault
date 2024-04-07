@@ -15,7 +15,6 @@ namespace questvault.Controllers
 {
   /// <summary>
   /// Controller for managing games.
-  /// Note: This controller is a work in progress (WIP) and may undergo significant changes.
   /// </summary>
   /// <remarks>
   /// Constructor for GamesController.
