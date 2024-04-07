@@ -200,3 +200,19 @@
   width: 80%;
 }
 
+.btn-remove {
+  background: #ea0c00;
+  color: #ffffff;
+  border-radius: 24px;
+  width: 7.5rem;
+  height: 2.75rem;
+  padding: 6px;
+  border: none;
+  text-align: center;
+  font-weight: bolder;
+  line-height: 30px;
+}
+
+  .btn-remove:hover {
+    background: #591414;
+  }
