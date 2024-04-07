@@ -7,6 +7,7 @@
        In this page you can see the profile of user with all the information avaliable <br/>
        You can send a friend request so you can stay conected (if he ever comes outside, he will see it)!";
 }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body class="profile">
 
   <section class="profile-banner d-flex align-items-center">
@@ -75,6 +76,9 @@
   <section class="profile-about ">
     <div class="d-flex justify-content-between">
       <div class="profile-bio">
+        <div>
+          <canvas style="width:40rem; height:20rem" id="averageRatingChart"></canvas>
+        </div>
       </div>
       <div class="profile-top5">
         <partial name="_Top5" for="@ViewData["Top5"] as List<GameLog>" />
@@ -82,3 +86,26 @@
     </div>
   </section>
 </body>
+
+<script>
+  const ctx = document.getElementById('averageRatingChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
+      datasets: [{
+        label: 'Ratings',
+        data: [0, 2, 2, 6, 4],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
