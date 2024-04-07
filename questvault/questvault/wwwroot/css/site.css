@@ -263,3 +263,21 @@ body {
 .modal-footer {
   background-color: #133e7c; /* Cor de fundo do rodapé da modal */
 }
+
+.pagination {
+  --bs-pagination-color: #fff;
+  --bs-pagination-bg: #98008d;
+  --bs-pagination-border-color: #98008d;
+  --bs-pagination-hover-color: #ffffff;
+  --bs-pagination-hover-bg: #711c91;
+  --bs-pagination-hover-border-color: #711c91;
+  --bs-pagination-focus-color: #4d4d4d;
+  --bs-pagination-focus-bg: #711c91;
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  --bs-pagination-active-color: #000000;
+  --bs-pagination-active-bg: #0abdc6;
+  --bs-pagination-active-border-color: #0abdc6;
+  --bs-pagination-disabled-color: rgb(136 153 171 / 75%);
+  --bs-pagination-disabled-bg: #711c91bd;
+  --bs-pagination-disabled-border-color: #711c91;
+}
