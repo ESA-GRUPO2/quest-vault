@@ -8,71 +8,72 @@
 }
 
 <nav class="navbar navbar-dark fixed-top navbar-expand-lg nav-main nav-bg">
-    <div class="container-fluid">
+  <div class="container-fluid">
+    @if (SignInManager.IsSignedIn(User))
+    {
+      <a class="nav-logo2" asp-controller="Home" asp-action="Index">
+        <img src="\img\logo_icon.png" alt="QuestVault Logo" class="img-fluid">
+      </a>
+    }
+    else
+    {
+      <a class="nav-logo" asp-controller="Home" asp-action="Index">
+        <img src="\img\logo_questvault.png" alt="QuestVault Logo" class="img-fluid">
+      </a>
+    }
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto me-1 mb-lg-0">
         @if (SignInManager.IsSignedIn(User))
         {
-            <a class="nav-logo2" asp-controller="Home" asp-action="Index">
-                <img src="\img\logo_icon.png" alt="QuestVault Logo" class="img-fluid">
-            </a>
-        } else {
-            <a class="nav-logo" asp-controller="Home" asp-action="Index">
-                <img src="\img\logo_questvault.png" alt="QuestVault Logo" class="img-fluid">
-            </a>
-        }
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto me-1 mb-lg-0">
-            @if (SignInManager.IsSignedIn(User))
-            {
-                    <li id="search" class="align-self-center">
-                        <form asp-controller="Games" asp-action="Results" method="post" id="searchForm" onsubmit="handleSubmit(event)">
-                            <div class="search-bar d-flex">
-                                <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
-                                <button class="outside-search" type="submit"
-                                onclick="this.disabled=true;
+          <li id="search" class="align-self-center">
+            <form asp-controller="Games" asp-action="Results" method="post" id="searchForm" onsubmit="handleSubmit(event)">
+              <div class="search-bar d-flex">
+                <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
+                <button class="outside-search" type="submit"
+                        onclick="this.disabled=true;
                                             console.log('loading, please wait...');
                                             var loading = document.getElementById('lmask');
                                             loading.classList.add('d-flex');
                                             this.form.submit();">
-                                        <img id="search-btn" src="\img\vector\magnifying.svg" class="search-btn" />
-                                </button>
-                                
-                            </div>
-                        </form>
-                        <ul id="searchResults" class="list-group dropdown-menu"></ul>
-                    </li>
-                    <li class="nav-item align-self-center ms-3" style="padding-right: 15rem">
-                        <div class="dropdown">
-                            <button class="btn btn-primary nav-btn" type="button" id="helpDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%; height: 40px; width: 40px;">
-                                <img src="\img\vector\help.svg" alt="Help Icon" class="nav-vector" style="padding-bottom: 4px; height: 1.8rem;" />
-                            </button>
-                            <ul class="dropdown-menu" style="background: #133E7C !important;" aria-labelledby="helpDropdown">
-                                <li>
-                                    <div class="dropdown-item" style="color: white !important;
+                  <img id="search-btn" src="\img\vector\magnifying.svg" class="search-btn" />
+                </button>
+
+              </div>
+            </form>
+            <ul id="searchResults" class="list-group dropdown-menu"></ul>
+          </li>
+          <li class="nav-item align-self-center ms-3" style="padding-right: 15rem">
+            <div class="dropdown">
+              <button class="btn btn-primary nav-btn" type="button" id="helpDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%; height: 40px; width: 40px;">
+                <img src="\img\vector\help.svg" alt="Help Icon" class="nav-vector" style="padding-bottom: 4px; height: 1.8rem;" />
+              </button>
+              <ul class="dropdown-menu" style="background: #133E7C !important;" aria-labelledby="helpDropdown">
+                <li>
+                  <div class="dropdown-item" style="color: white !important;
                                          background: #133E7C !important;">
-                                        @Html.Raw(@ViewData["help_Text"])
-                                    </div>
-                                </li>
-                                
-                                    <!-- Adicione mais itens de menu conforme necessário -->
-                                </ul>
-                        </div>
-                    </li>
-
-                <li class="nav-item ms-3 d-flex align-self-center">
-                        <a class="btn btn-primary nav-btn" asp-controller="Games" asp-action="Index">
-                        <img src="\img\vector\gamepad.svg" alt="Key Icon" class="nav-vector pe-2"> Games
-                    </a>
+                    @Html.Raw(@ViewData["help_Text"])
+                  </div>
                 </li>
 
-                <li class="nav-item ms-3 d-flex align-self-center">
-                        <a class="btn btn-primary nav-btn-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)">
-                        <img src="\img\vector\bookmark.svg" alt="FilePen Icon" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="nav-vector pe-2"> MyLibrary
-                    </a>
-                </li>
+                <!-- Adicione mais itens de menu conforme necessário -->
+              </ul>
+            </div>
+          </li>
 
+          <li class="nav-item ms-3 d-flex align-self-center">
+            <a class="btn btn-primary nav-btn" asp-controller="Games" asp-action="Index">
+              <img src="\img\vector\gamepad.svg" alt="Key Icon" class="nav-vector pe-2"> Games
+            </a>
+          </li>
+
+          <li class="nav-item ms-3 d-flex align-self-center">
+            <a class="btn btn-primary nav-btn-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)">
+              <img src="\img\vector\bookmark.svg" alt="FilePen Icon" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="nav-vector pe-2"> MyLibrary
+            </a>
+          </li>
                 <li class="nav-item ms-3 d-flex align-self-center">
                     <div class="dropdown" style="position:relative">
                             <button class="btn btn-primary nav-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
@@ -95,43 +96,43 @@
                                 <li>
                                     <a style="color: white !important;
                                         background: #133E7C !important;" href="/Friendships/FriendsPage" class="btn btn-primary dropdown-item">Friends</a>
-                                </li>
-                            <li>
-                                <form class ="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                                        <button style="color: white !important;
+                </li>
+                <li>
+                  <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
+                    <button style="color: white !important;
                                          background: #133E7C !important;" type="submit" class="btn btn-primary dropdown-item">
-                                            Logout
-                                        </button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
+                      Logout
+                    </button>
+                  </form>
                 </li>
-                    
-            }
-            else
-            {
-                <li class="nav-item ms-3 d-flex align-self-center">
-                    <a class="btn btn-primary nav-btn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                        <img src="\img\vector\faKey.svg" alt="Key Icon" class="nav-vector pe-2"> Log in
-                    </a>
-                </li>
-                <li class="nav-item ms-3 d-flex align-self-center">
-                    <a class="btn btn-primary nav-btn-2" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                        <img src="\img\vector\faFilePen.svg" alt="FilePen Icon" class="nav-vector pe-2"> Register
-                    </a>
-                </li>
-            }
+              </ul>
+            </div>
+          </li>
 
-           @*  <li class="nav-item ms-3 d-flex align-self-center">
-                <select #lang (change)="onSelected(lang.value)" class="form-result nav-form-select" style="background-color:transparent">
-                        <option selected style="right:0; left:auto; background: #133E7C !important;" value="en" data-content="<img src='/img/lang/en.png'></img> en">
-                             en
-                        </option>
-                        <option value="pt" style="right:0; left:auto; background: #133E7C !important;">pt</option>
-                </select>
-            </li> *@
-            </ul>
-        </div>
+        }
+        else
+        {
+          <li class="nav-item ms-3 d-flex align-self-center">
+            <a class="btn btn-primary nav-btn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
+              <img src="\img\vector\faKey.svg" alt="Key Icon" class="nav-vector pe-2"> Log in
+            </a>
+          </li>
+          <li class="nav-item ms-3 d-flex align-self-center">
+            <a class="btn btn-primary nav-btn-2" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
+              <img src="\img\vector\faFilePen.svg" alt="FilePen Icon" class="nav-vector pe-2"> Register
+            </a>
+          </li>
+        }
+
+        @*  <li class="nav-item ms-3 d-flex align-self-center">
+        <select #lang (change)="onSelected(lang.value)" class="form-result nav-form-select" style="background-color:transparent">
+        <option selected style="right:0; left:auto; background: #133E7C !important;" value="en" data-content="<img src='/img/lang/en.png'></img> en">
+        en
+        </option>
+        <option value="pt" style="right:0; left:auto; background: #133E7C !important;">pt</option>
+        </select>
+        </li> *@
+      </ul>
     </div>
+  </div>
 </nav>

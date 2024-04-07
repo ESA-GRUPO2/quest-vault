@@ -1,4 +1,5 @@
 ﻿@model questvault.Models.Game
+@inject SignInManager<User> signinManager
 
 @{
   ViewData["Title"] = "Game";
@@ -7,6 +8,8 @@
       You can add the game to your library, give it a progression<br/>
       label and a review so your friends know what you think about it.";
   ViewData["StatusMessage"] = TempData["StatusMessage"];
+  var reviews = ViewBag.Reviews;
+  TempData["_GR-ShowDeleteButton"] = (await SignInManager.UserManager.GetUserAsync(User)).Clearance > 0; // This is necessary for showing the delete button in _GameReviews
 }
 @if (SignInManager.IsSignedIn(User))
 {
@@ -274,8 +277,21 @@
           </form>
         }
       </div>
-
     </section>
+  </div>
+  <div style="width:90%; margin: auto; margin-bottom:10%">
+    <hr class="game-bar">
+    <h2 style="color:white">Reviews</h2>
+    @if (reviews != null && reviews.Count > 0)
+    {
+      foreach (GameLog review in reviews)
+      {
+        <partial style="width:90%; margin: auto" name="_GameReview" for="@review" />
+      }
+    } else
+    {
+      <h4 style="color: white">There are no reviews yet.</h4>
+    }
   </div>
 
   <script src="~/js/rating.js"></script>
