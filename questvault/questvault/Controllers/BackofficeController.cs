@@ -128,6 +128,109 @@ namespace questvault.Controllers
       return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
     }
 
+    public static async Task LockoutUser(string id, ApplicationDbContext context)
+    {
+      if (id == null)
+      {
+        return; // Retorna NotFound se o ID do usuário não for fornecido
+      }
+
+      // Encontre o usuário pelo ID
+      var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+      if (user == null)
+      {
+        return; // Retorna NotFound se o usuário não for encontrado
+      }
+
+      user.LockoutEnabled = true;
+
+      // Salve as alterações no banco de dados
+      await context.SaveChangesAsync();
+    }
+
+    public static async Task RemoveLockoutUser(string id, ApplicationDbContext context)
+    {
+      if (id == null)
+      {
+        return; // Retorna NotFound se o ID do usuário não for fornecido
+      }
+
+      // Encontre o usuário pelo ID
+      var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+      if (user == null)
+      {
+        return; // Retorna NotFound se o usuário não for encontrado
+      }
+
+      user.LockoutEnabled = false;
+
+      // Salve as alterações no banco de dados
+      await context.SaveChangesAsync();
+    }
+
+    public async Task<IActionResult> LockoutUserAll(string id)
+    {
+      await LockoutUser(id, context);
+      // Redirecione para alguma página após a conclusão
+      return RedirectToAction("AllUsers", "Home");
+    }
+
+    public async Task<IActionResult> LockoutUser(string id)
+    {
+      await LockoutUser(id, context);
+
+      // Redirecione para alguma página após a conclusão
+      return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
+    }
+
+    public async Task<IActionResult> RemoveLockoutUserAll(string id)
+    {
+      await RemoveLockoutUser(id, context);
+      // Redirecione para alguma página após a conclusão
+      return RedirectToAction("AllUsers", "Home");
+    }
+
+    public async Task<IActionResult> RemoveLockoutUser(string id)
+    {
+      await RemoveLockoutUser(id, context);
+
+      // Redirecione para alguma página após a conclusão
+      return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
+    }
+
+    public static async Task RemoveReview(long gameLogId, ApplicationDbContext context)
+    {
+        // Atualize a classificação (se necessário)
+        var gameLog = await context.GameLog.FirstOrDefaultAsync(g => g.GameLogId == gameLogId);
+        if (gameLog != null)
+        {
+          gameLog.Rating = null; // Defina a classificação como 0 (ou qualquer outro valor apropriado)
+          gameLog.Review = null;
+        }
+
+        // Salve as alterações no banco de dados
+        await context.SaveChangesAsync();
+    }
+
+    public async Task<IActionResult> RemoveReview(long id)
+    {
+      if (id == 0)
+      {
+        return NotFound(); // Retorna NotFound se o ID do usuário não for fornecido
+      }
+
+      var gameLog = await context.GameLog.FirstOrDefaultAsync(g => g.GameLogId == id);
+      if (gameLog == null) {
+        return NotFound();
+      }
+
+      await RemoveReview(id, context);
+
+      // Redirecione para alguma página após a conclusão
+      return RedirectToAction("Details", "Games", new { id = gameLog.IgdbId });
+    }
   }
 
 }

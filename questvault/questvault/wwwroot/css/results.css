@@ -118,3 +118,11 @@
     .btn-games-inverted:hover img, .btn-games-inverted:active img {
       filter: invert(9%) sepia(12%) saturate(7338%) hue-rotate(197deg) brightness(90%) contrast(99%) !important;
     }
+
+.user-results {
+  border: solid 1px #d9d9d9;
+  border-radius: 20px;
+  text-align: center;
+  height: 10vh;
+  width: 25rem;
+}
