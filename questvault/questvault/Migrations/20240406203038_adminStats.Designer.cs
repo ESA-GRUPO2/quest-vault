@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using questvault.Data;
 
@@ -11,9 +12,11 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240406203038_adminStats")]
+    partial class adminStats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -335,6 +338,9 @@ namespace questvault.Migrations
                     b.Property<long>("IgdbId")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("Ownage")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Rating")
                         .HasColumnType("int");
 
@@ -344,9 +350,6 @@ namespace questvault.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("GameLogId");
 
                     b.HasIndex("GameId");
@@ -354,8 +357,6 @@ namespace questvault.Migrations
                     b.HasIndex("GamesLibraryId");
 
                     b.HasIndex("GamesLibraryId1");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("GameLog");
                 });
@@ -701,13 +702,7 @@ namespace questvault.Migrations
                         .WithMany("Top5Games")
                         .HasForeignKey("GamesLibraryId1");
 
-                    b.HasOne("questvault.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Game");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>

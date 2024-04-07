@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
 using questvault.Utils;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using GameStatus = questvault.Models.GameStatus;
 namespace questvault.Controllers
 {
@@ -20,7 +21,7 @@ namespace questvault.Controllers
     [Route("UserLibrary")]
     public async Task<IActionResult> UserLibrary(string id, int? pageNumber, string? collection)
     {
-      await Console.Out.WriteLineAsync("9999999999999999999 " + collection + " 11111111111111111");
+      
       if (id == null)
       {
         ViewBag.Error = "Invalid user or game ID.";
@@ -44,6 +45,7 @@ namespace questvault.Controllers
         .SelectMany(gl => gl.GameLogs.Select(g => g.Game))
         ;
 
+        ViewBag.NumberOfResults = gamesInLibraryWithoutCollection.Count();
         // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
         var listWithoutCollection = await PaginatedList<Game>.CreateAsync(gamesInLibraryWithoutCollection.AsNoTracking(), pageNumber ?? 1, _pageSize);
         var dataWithoutCollection = new GameViewData
@@ -61,6 +63,7 @@ namespace questvault.Controllers
         // Se a conversão falhar, retorne BadRequest
         ViewBag.Error = "Invalid status value.";
         ViewBag.Collection = "";
+        ViewBag.NumberOfResults = "error";
         return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
       }
 
@@ -77,7 +80,7 @@ namespace questvault.Controllers
         .Where(gl => gl.User == user)
             .SelectMany(gl => gl.GameLogs.Where(g => g.Status == statusEnum)
             .Select(g => g.Game));
-
+      ViewBag.NumberOfResults = gamesInLibrary1.Count();
 
       // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
       var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary1.AsNoTracking(), pageNumber ?? 1, _pageSize);

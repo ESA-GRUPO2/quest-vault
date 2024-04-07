@@ -8,6 +8,7 @@
        You can send a friend request so you can stay conected (if he ever comes outside, he will see it)!";
   var user = await UserManager.GetUserAsync(User);
 }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body class="profile">
 
   <section class="profile-banner d-flex align-items-center">
@@ -107,18 +108,24 @@
       </div>
 
       <div class="profile-stats container-fluid justify-content-end">
-        <h4 style="color: white" class="profile-hours">200 hours played</h4>
-        <h5 style="color: white" class="profile-games-played">50 games in library</h5>
-        <h6 style="color: white" class="profile-games-backed">25 Playing</h6>
-        <h6 style="color: white" class="profile-games-backed">5 Finished</h6>
-        <h6 style="color: white" class="profile-games-backed">10 Backlogged</h6>
-        <h6 style="color: white" class="profile-games-backed">10 Wishlist</h6>
+        @* <h4 style="color: white" class="profile-hours">Rating average: @Model.RatingAverage</h4> *@
+        <h4 style="color: white" class="profile-games-played">@Model.nJogosTotal games in library</h4>
+
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosPlaying Playing</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosComplete Complete</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosRetired Retired</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosBacklogged Backlogged</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosAbandoned Abandoned</h6>
+        <h6 style="color: white" class="profile-games-backed">@Model.nJogosWishlist Whishlisted</h6>
       </div>
     </div>
   </section>
   <section class="profile-about ">
     <div class="d-flex justify-content-between">
       <div class="profile-bio">
+        <div>
+          <canvas style="width:40rem; height:20rem" id="averageRatingChart"></canvas>
+        </div>
       </div>
       <div class="profile-top5">
         <partial name="_Top5" for="@ViewData["Top5"] as List<GameLog>" />
@@ -126,3 +133,49 @@
     </div>
   </section>
 </body>
+
+<script>
+  const ctx = document.getElementById('averageRatingChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
+      datasets: [{
+        label: 'Ratings',
+        data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.ratingCountList)),
+        backgroundColor: ['rgba(152, 0, 141,0.2)'],
+        borderColor: ['rgba(152, 0, 141,1)'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: 'white'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)' // Ajusta para uma cor branca mais sutil para a grade
+          }
+        },
+        x: {
+          ticks: {
+            color: 'white'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)' // Mesma cor sutil para o eixo X
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white' // Ajusta a cor da legenda para branco
+          }
+        }
+      }
+    }
+  });
+</script>
