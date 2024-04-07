@@ -18,8 +18,9 @@ namespace questvault.Controllers
     [Authorize]
     [HttpGet]
     [Route("UserLibrary")]
-    public async Task<IActionResult> UserLibrary(string id, int? pageNumber)
+    public async Task<IActionResult> UserLibrary(string id, int? pageNumber, string? collection)
     {
+      await Console.Out.WriteLineAsync("9999999999999999999 " + collection + " 11111111111111111");
       if (id == null)
       {
         ViewBag.Error = "Invalid user or game ID.";
@@ -34,21 +35,58 @@ namespace questvault.Controllers
         return NotFound();
       }
 
-      var gamesInLibrary = context.GamesLibrary
-              .Include(gl => gl.GameLogs) // Inclua os GameLogs para evitar carregamento preguiçoso
-              .ThenInclude(gl => gl.Game) // Inclua os jogos dentro de cada GameLog
-              .Where(gl => gl.User == user) // Filtre pela biblioteca do usuário atual
-              .SelectMany(gl => gl.GameLogs.Select(g => g.Game)) // Selecione todos os jogos dentro dos GameLogs
-              ;
+      if (String.IsNullOrEmpty(collection))
+      {
+        var gamesInLibraryWithoutCollection = context.GamesLibrary
+        .Include(gl => gl.GameLogs)
+        .ThenInclude(gl => gl.Game)
+        .Where(gl => gl.User == user)
+        .SelectMany(gl => gl.GameLogs.Select(g => g.Game))
+        ;
+
+        // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
+        var listWithoutCollection = await PaginatedList<Game>.CreateAsync(gamesInLibraryWithoutCollection.AsNoTracking(), pageNumber ?? 1, _pageSize);
+        var dataWithoutCollection = new GameViewData
+        {
+          NumberOfResults = listWithoutCollection.Count,
+          Games = listWithoutCollection
+        };
+        ViewBag.Collection = collection;
+        return View(dataWithoutCollection);
+      }
+
+
+      if (!Enum.TryParse(collection, out GameStatus statusEnum))
+      {
+        // Se a conversão falhar, retorne BadRequest
+        ViewBag.Error = "Invalid status value.";
+        ViewBag.Collection = "";
+        return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
+      }
+
+      //var gamesInLibrary = context.GamesLibrary
+      //        .Include(gl => gl.GameLogs) 
+      //        .ThenInclude(gl => gl.Game) 
+      //        .Where(gl => gl.User == user)
+      //            .SelectMany(gl => gl.GameLogs.Where(g => g.Status == statusEnum)
+      //            .Select(g => g.Game));
+
+      var gamesInLibrary1 = context.GamesLibrary
+        .Include(gl => gl.GameLogs)
+        .ThenInclude(gl => gl.Game)
+        .Where(gl => gl.User == user)
+            .SelectMany(gl => gl.GameLogs.Where(g => g.Status == statusEnum)
+            .Select(g => g.Game));
 
 
       // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
-      var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary.AsNoTracking(), pageNumber ?? 1, _pageSize);
+      var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary1.AsNoTracking(), pageNumber ?? 1, _pageSize);
       var data = new GameViewData
       {
         NumberOfResults = list.Count,
         Games = list
       };
+      ViewBag.Collection = collection;
       return View(data);
     }
 
