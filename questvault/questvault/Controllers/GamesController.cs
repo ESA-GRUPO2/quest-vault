@@ -115,13 +115,16 @@ namespace questvault.Controllers
       // Se o searchTerm for nulo, retorne NotFound
       if (searchTerm == null)
       {
-        return RedirectToAction("Index");
+                await Console.Out.WriteLineAsync("searchTerm is null");
+                
+                return RedirectToAction("Index");
       }
 
       // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
       var query = context.Games.Where(e => e.Name.Contains(searchTerm))
           .OrderByDescending(o => o.IgdbRating)
           .ThenByDescending(o => o.TotalRatingCount);
+      ViewBag.NumberOfResults = query.Count();
       var list = await PaginatedList<Game>.CreateAsync(query.AsNoTracking(), pageNumber ?? 1, _pageSize);
       var data = new GameViewData
       {
