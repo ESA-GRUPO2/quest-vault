@@ -82,7 +82,23 @@ namespace questvault.Controllers
         .Where(gl => gl.User == user)
         .SelectMany(gl => gl.GameLogs)
         .ToList();
-      //foreach ( var game in gamesInLibrary ) { Console.Out.WriteLine(game); }
+
+      var ratingCount = context.GameLog?
+          .Where(gl => gl.Rating.HasValue)
+          .Where(gl => gl.User == user)
+          .GroupBy(gl => gl.Rating.Value)
+          .Select(group => new { Rating = group.Key, Count = group.Count() }) // Seleciona a chave de agrupamento (Rating) e a contagem
+          .ToList();
+
+      var allRatingsCount = Enumerable.Range(1, 5) // Gera uma sequência de 1 a 5
+          .Select(rating => new 
+          {
+            Rating = rating,
+            Count = ratingCount.FirstOrDefault(rc => rc.Rating == rating)?.Count ?? 0
+          }) // Obtém a contagem do rating específico, se não encontrado, usa 0
+          .OrderBy(r => r.Rating) // Garante a ordem pelo rating
+          .Select(r => r.Count) // Seleciona apenas a contagem
+          .ToList();
 
       var friendsViewData = new FriendsViewData
       {
@@ -96,7 +112,8 @@ namespace questvault.Controllers
         nJogosRetired = userGameLogs.Where(gl => gl.Status == GameStatus.Retired).Count(),
         nJogosBacklogged = userGameLogs.Where(gl => gl.Status == GameStatus.Backlogged).Count(),
         nJogosAbandoned = userGameLogs.Where(gl => gl.Status == GameStatus.Abandoned).Count(),
-        nJogosWishlist = userGameLogs.Where(gl => gl.Status == GameStatus.Wishlist).Count()
+        nJogosWishlist = userGameLogs.Where(gl => gl.Status == GameStatus.Wishlist).Count(),
+        ratingCountList = allRatingsCount
       };
 
       ViewData["Top5"] = await LibraryController.GetTop5(id, context);

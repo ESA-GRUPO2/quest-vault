@@ -96,14 +96,37 @@
       labels: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
       datasets: [{
         label: 'Ratings',
-        data: [0, 2, 2, 6, 4],
-        borderWidth: 0
+        data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.ratingCountList)),
+        backgroundColor: ['rgba(152, 0, 141,0.2)'],
+        borderColor: ['rgba(152, 0, 141,1)'],
+        borderWidth: 1
       }]
     },
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks: {
+            color: 'white'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)' // Ajusta para uma cor branca mais sutil para a grade
+          }
+        },
+        x: {
+          ticks: {
+            color: 'white'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)' // Mesma cor sutil para o eixo X
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white' // Ajusta a cor da legenda para branco
+          }
         }
       }
     }

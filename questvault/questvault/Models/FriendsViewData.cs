@@ -25,5 +25,7 @@
       public int nJogosWishlist;
 
       public double RatingAverage;
+
+      public List<int> ratingCountList;
     }
 }
