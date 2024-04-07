@@ -6,6 +6,7 @@
        This is a public user profile. <br/>
        In this page you can see the profile of user with all the information avaliable <br/>
        You can send a friend request so you can stay conected (if he ever comes outside, he will see it)!";
+  var user = await UserManager.GetUserAsync(User);
 }
 <body class="profile">
 
@@ -19,11 +20,12 @@
       <div class="d-flex row ms-3 align-items-center">
         <div class="profile-details d-inline-flex mb-4">
           <h4 style="color: white" class="profile-username">@Model.user.UserName</h4>
+          
           @if (User.Identity.Name != Model.user.UserName)
           {
             if (Model.RequestSent)
             {
-              <h5 style="color:white; text-align: center">A request has been sent!</h5>
+              <h5 style="color:white; text-align: center; width:10rem">A request has been sent!</h5>
             }
             else if (Model.RequestRecieved)
             {
@@ -52,7 +54,50 @@
               </a>
             }
           }
+          @if (user.Clearance == 2 && User.Identity.Name != Model.user.UserName)
+          {
+            @if (Model.user.Clearance < 2 && !Model.user.LockoutEnabled)
+            {
+              <a onclick="return confirm('Are you sure you want to Lockout @Model.user.UserName?')"
+                 class="btn btn-primary btn-remove ms-3" asp-controller="" asp-action="" asp-route-id="@Model.user.Id">Lockout User</a>
+            }
+            @if (Model.user.LockoutEnabled)
+            {
+              <a onclick="return confirm('Are you sure you want to remove @Model.user.UserName's Lockout?')"
+                 class="btn btn-primary nav-btn-2 ms-3"  asp-controller="" asp-action="" asp-route-id="@Model.user.Id">Remove Lockout</a>
+            }
+            @if (Model.user.Clearance != 2)
+            {
+              <a onclick="return confirm('Are you sure you make @Model.user.UserName an Administrator?')"
+                 class="btn btn-primary nav-btn ms-3 btn-profile"  asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@Model.user.Id">Make Admin</a>
+            }
+            @if (Model.user.Clearance == 0)
+            {
+              <a onclick="return confirm('Are you sure you make @Model.user.UserName a Moderator?')"
+                 class="btn btn-primary nav-btn ms-3 btn-profile"  asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@Model.user.Id">Make Mod</a>
+            }
+            @if (Model.user.Clearance == 1)
+            {
+              <a onclick="return confirm('Are you sure you remove @Model.user.UserName from being a Moderator?')"
+                 class="btn btn-primary nav-btn-2 ms-3 " asp-controller="Backoffice" asp-action="RemovePermissions" asp-route-id="@Model.user.Id">Remove Mod</a>
+            }
+          }
 
+         
+        </div>
+        <div class="row container-fluid">
+          @if (Model.user.Clearance == 1)
+          {
+            <h6 style="text-decoration:underline" class="profile-username">Moderator</h6>
+          }
+          else if (Model.user.Clearance == 2)
+          {
+            <h6 style="text-decoration:underline" class="profile-username">Administrator</h6>
+          }
+          else
+          {
+            <h6 style="visibility: hidden" class="profile-username">.</h6>
+          }
         </div>
         <div class="profile-connects row container-fluid">
           <img class="img-size-sm" src="~/img/external/Steam_Logo.png" alt="Steam Logo" />

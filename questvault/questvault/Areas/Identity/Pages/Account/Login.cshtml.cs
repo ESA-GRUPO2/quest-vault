@@ -150,7 +150,6 @@ namespace questvault.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    user.LockoutEnabled = false;
                     logger.LogWarning("User account locked out.");
                     return RedirectToPage("./Lockout");
                 }

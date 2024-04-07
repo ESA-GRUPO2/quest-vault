@@ -1,41 +1,57 @@
 ﻿@model IEnumerable<questvault.Models.User>
 
 @{
-    ViewData["Title"] = "Users";
+  ViewData["Title"] = "Users";
 }
 
 <h1 class="container text-light">@ViewData["Title"]</h1>
 
 <table class="table table-dark table-sm table-profile container">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </th>
-                    <th></th><th></th><th></th><th></th>
-                </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                    @* <a style="color:white" href="@Url.Action("PublicProfile", "User", new { id = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a> *@
-                    <a style="color:white" href="@Url.Action("Profile", "User", new {name1 =User.Identity.Name, id2 = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a> 
-                    </td>
-                    <td>
-                        <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Disable User</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@item.Id">Give admin</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@item.Id">Give moderator</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary nav-btn" asp-controller="Friendships" asp-action="SendFriendRequest" asp-route-id="@item.Id">Add Friend</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+  <thead>
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.UserName)
+      </th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr style="height: 53px">
+        <td>
+          @* <a style="color:white" href="@Url.Action("PublicProfile", "User", new { id = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a> *@
+          <a style="color:white" href="@Url.Action("Profile", "User", new {name1 =User.Identity.Name, id2 = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a>
+        </td>
+        <td>
+          @if (item.Clearance < 2 && !item.LockoutEnabled)
+          {
+            <a class="btn btn-primary btn-remove" asp-controller="" asp-action="" asp-route-id="@item.Id">Lockout User</a>
+          }
+          @if(item.LockoutEnabled){
+            <a class="btn btn-primary nav-btn-2" asp-controller="" asp-action="" asp-route-id="@item.Id">Remove Lockout</a>
+          }
+        </td>
+        <td>
+          @if (item.Clearance != 2)
+          {
+            <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdminAll" asp-route-id="@item.Id">Give admin</a>
+          }
+        </td>
+        <td>
+          @if (item.Clearance == 0)
+          {
+            <a class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModeratorAll" asp-route-id="@item.Id">Give moderator</a>
+          }
+          @if (item.Clearance == 1)
+          {
+            <a class="btn btn-primary nav-btn-2" asp-controller="Backoffice" asp-action="RemovePermissionsAll" asp-route-id="@item.Id">Remove Mod</a>
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
