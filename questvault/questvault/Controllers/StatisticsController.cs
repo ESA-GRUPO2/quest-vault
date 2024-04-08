@@ -19,6 +19,10 @@ namespace questvault.Controllers
         {
           return Redirect("/Identity/Account/Login");
         }
+        if (user.Clearance < 1)
+        {
+          return Redirect("/Identity/Account/Login");
+        }
         var registeredAccounts = await context.Users.ToListAsync();
         var allGameLogsRating = await context.GameLog.Select(gl => gl.Rating).ToListAsync();
         if(!allGameLogsRating.Any()) { allGameLogsRating.Add(0); }
