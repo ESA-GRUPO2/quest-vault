@@ -25,21 +25,24 @@
         <label class="btn btn-purple" style="height: fit-content; pointer-events: none;">
           @Model.gameRatingAverage
         </label>
-        <h4 class="mt-2 ms-4"> Average Rating</h4>
+        <h4 class="mt-2 ms-4"> Average Game Rating</h4>
       </div>
     </div>
     <div class="main-container d-flex justify-content-between mt-5">
       @* div onde está o chart dos logins*@
-      <div style="width:50rem; height:auto;">
+      <div class="ms-3" style="width:40rem; height:auto;">
         <label>Daily Logins</label>
         <canvas id="dailyLoginChart"></canvas>
       </div>
 
       @*div onde está o chart top game genre*@
-      <div></div>
+      <div class="ms-2 me-2">
+        <label>Top Genres</label>
+        <canvas id="topGenresChart"></canvas>
+      </div>
 
       @* div onde está o chart dos acessos*@
-      <div style="width:50rem; height:auto;">
+      <div style="width:40rem; height:auto;">
         <label>Daily Access</label>
         <canvas id="dailyAccessChart"></canvas>
       </div>
@@ -99,7 +102,36 @@
   });
 
   //Chart do top game genre
-
+  var ctx3 = document.getElementById('topGenresChart').getContext('2d');
+  var myChart = new Chart(ctx3, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Red',
+        'Blue',
+        'Yellow'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [300, 50, 100],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white' // Ajusta a cor da legenda para branco
+          }
+        }
+      }
+    }
+  });
 
   //Chart dos acessos
   var ctx2 = document.getElementById('dailyAccessChart').getContext('2d');
