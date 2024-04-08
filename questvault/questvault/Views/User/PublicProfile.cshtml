@@ -19,7 +19,7 @@
         <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="user-foto @(userAvatar == "user.svg" ? "p-4" : "")">
       </div>
 
-      <div class="d-flex row ms-3 align-items-center">
+      <div class="d-flex row ms-3 align-items-center col-7">
         <div class="profile-details d-inline-flex mb-4">
           <h4 style="color: white" class="profile-username">@Model.user.UserName</h4>
           
@@ -56,6 +56,12 @@
               </a>
             }
           }
+
+          <a asp-controller="Library" asp-action="UserLibrary" asp-route-id="@Model.user.UserName" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-3">
+            <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/bookmark.svg" alt="Bookmark Icon" />
+            @Model.user.UserName's Library
+          </a>
+
           @if (user.Clearance == 2 && User.Identity.Name != Model.user.UserName)
           {
             @if (Model.user.Clearance < 2 && !Model.user.LockoutEnabled)
@@ -108,7 +114,7 @@
         </div>
       </div>
 
-      <div class="profile-stats container-fluid justify-content-end">
+      <div class="profile-stats container justify-content-end col">
         @* <h4 style="color: white" class="profile-hours">Rating average: @Model.RatingAverage</h4> *@
         <h4 style="color: white" class="profile-games-played">@Model.nJogosTotal games in library</h4>
 

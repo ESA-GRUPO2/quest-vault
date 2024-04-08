@@ -5,27 +5,34 @@
 }
 @if (Model != null)
 {
-  <div class="review-card">
-    <div class="review-user"> @* USER *@
-      <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new {  id = Model.User.Id})">
-        <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="user-foto @(userAvatar == "user.svg" ? "p-3 ms-0 me-4" : "")" style=" height: 4rem; width: 4rem; @(userAvatar != "user.svg" ? "background: #0ABDC6;" : "") ">
-
+  <div class="review-card row">
+    <div class="review-user col-2">
+      @* USER *@
+      <a class="d-flex justify-content-center" style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { id = Model.User.Id})">
+        <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="user-foto p-3 ms-0" style=" height: 4rem; width: 4rem; @(userAvatar != "user.svg" ? "background: #0ABDC6;" : "") ">
         @* <img class="user-foto p-3 ms-0 me-4" src="@Model.User.ProfilePhotoPath." style="background: #0ABDC6; height: 4rem; width: 4rem;" /> *@
-        <span style="min-width: 8rem;">@Model.User.UserName</span>
       </a>
+      <div class="review-username d-flex align-items-center justify-content-center">
+        <span>@Model.User.UserName</span>
+      </div>
     </div>
-    <div class="review-text"> @* REVIEW *@
-      <p style="color: white">@Model.Review</p>
+    <div class="review-text d-flex align-items-baseline col">
+      @* REVIEW *@
+      <p style="color: white; font-weight: 300 !important;">
+        <span style="font-weight: 500 !important;">Rating: @Model.Rating/5</span>
+        <br />
+        @Model.Review</p>
     </div>
-    <div class="review-rating">
-      <p style="color: white">@Model.Rating/5</p>
-    </div>
-    <div class="review-delete">
-      @if (object.Equals(TempData["_GR-ShowDeleteButton"], true))
-      {
+    @if (object.Equals(TempData["_GR-ShowDeleteButton"], true))
+    {
+      <div class="review-delete d-flex align-items-center col-1">
+
         <a onclick="return confirm('Are you sure you want to remove @Model.User.UserName's Review?')"
-           class="btn btn-primary btn-remove" asp-controller="Backoffice" asp-action="RemoveReview" asp-route-id="@Model.GameLogId">Remove</a>
-      }
-    </div>
-  </div> 
+           class="btn btn-primary btn-remove d-flex align-items-center" asp-controller="Backoffice" asp-action="RemoveReview" asp-route-id="@Model.GameLogId">
+          <img id="icon-trash" class="nav-vector" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
+         </a>
+
+      </div>
+    }
+  </div>
 }
