@@ -39,14 +39,25 @@ body {
     background-color: #091833;
 }
 
+.main-section {
+  margin: 0px 5rem 2rem 5rem;
+  color: white;
+}
+
+.main-section-title {
+  max-width: 100%;
+}
+
 .bar {
-    background: #711C91;
-    margin-right: auto;
-    margin-left: auto;
-    width: 94%;
-    height: 10px;
-    opacity: 1;
-    border-top: none;
+  background: #711C91;
+  margin-right: auto;
+  margin-left: auto;
+  width: 94%;
+  height: 10px;
+  opacity: 1;
+  border-top: none;
+  margin-bottom: 5vh;
+  width: 100%;
 }
 
 .title {
@@ -144,10 +155,6 @@ body {
 
 .btn-purple img {
     filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
-}
-
-.row-spacing {
-    margin: 85px 100px 50px 100px;
 }
 
 .img-size-sm {
