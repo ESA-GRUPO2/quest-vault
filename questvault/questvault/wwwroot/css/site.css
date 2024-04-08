@@ -53,6 +53,10 @@ body {
   color: white;
 }
 
+.main-container {
+  max-width: 100%;
+}
+
 .bar {
   background: #711C91;
   margin-right: auto;
