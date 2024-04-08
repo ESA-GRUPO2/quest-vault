@@ -2,6 +2,7 @@
 
 @{
   ViewData["Title"] = "Users";
+  ViewData["N"] = @ViewBag.NumberResults - 1;
 }
 
 <div class="results-game">
@@ -23,7 +24,15 @@
   <hr class="bar" style="margin-bottom: 25px; width: 100%;">
   <div class="d-flex main-section-result justify-content-center">
     <div class="game-section">
-      <h4 class="mb-4">@ViewBag.NumberResults results for @ViewBag.SearchTerm</h4>
+      @if (User.Identity.Name.Contains(@ViewBag.SearchTerm))
+      {
+        <h4 class="main-section-title mb-4">@ViewData["N"] results for @ViewBag.SearchTerm</h4>
+      }
+      else
+      {
+        <h4 class="mb-4 main-section-title">@ViewBag.NumberResults results for @ViewBag.SearchTerm</h4>
+      }
+ 
       @if (Model.Any())
       {
         <table class="table d-flex table-dark table-sm table-profile">

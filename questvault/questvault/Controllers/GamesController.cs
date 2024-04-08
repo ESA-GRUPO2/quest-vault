@@ -448,7 +448,7 @@ namespace questvault.Controllers
 
     private List<GameLog> GetReviews(int? gameId, GamesLibrary currentUserLibrary)
     {
-      if (gameId == null || currentUserLibrary == null) return [];
+      if (gameId == null) return [];
       return [.. context.GameLog
         .Include(gl => gl.Game).Include(gl => gl.User)
         .Where(gl => gl.IgdbId == gameId && gl.Rating != null)];
