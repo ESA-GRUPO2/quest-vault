@@ -43,12 +43,12 @@
 
   <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
 
+
   <div class="d-flex main-section-result">
     <div class="filter-section">
-
       <h5 class="mt-4">Collections</h5>
       <div class="library-filter-ownage" name="GameStatus" id="game-status">
-        <a class="btn @(ViewBag.Collection == null ? "btn-blue-big" : "btn-purple") m-2" style="width: 83%;" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="">
+        <a class="btn @(ViewBag.Collection == null ? "btn-blue-xl" : "btn-purple-xl") m-2 btn-test2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="">
           <img class="nav-vector pe-1" src="~/img/vector/layer-group-solid.svg" alt="Layer Group Icon" />
           All Games
         </a>
@@ -162,18 +162,6 @@
           <h3>Go to Games to add some</h3>
         </div>
       }
-
-
     </div>
-
   </div>
-
-
 </div>
-@*}
-
-else
-{
-    <h1 style="color :red">Please log in to access this page.</h1>
-}
-*@
