@@ -27,13 +27,29 @@ namespace questvault.Controllers
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();
       }
-
+      var userLogged = await signInManager.UserManager.GetUserAsync(this.User);
       var user = await context.Users.Where(u => u.NormalizedUserName == id.ToUpper()).FirstAsync();
 
-      if (user == null)
+      if (user == null || userLogged == null)
       {
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();
+      }
+      bool friends = false;
+      var friendships = await context.Friendship.ToListAsync();
+      foreach (var friendship in friendships)
+      {
+        if ((friendship.User1 == userLogged && friendship.User2 == user) ||
+            (friendship.User1 == user && friendship.User2 == userLogged))
+        {
+          friends = true;
+          break;
+        }
+      }
+
+      if (user.IsPrivate && !friends && userLogged.Clearance == 0)
+      {
+        return RedirectToAction("PrivateProfile", "User", new { user.Id });
       }
 
       if (String.IsNullOrEmpty(collection))

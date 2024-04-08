@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
@@ -10,7 +11,7 @@ namespace questvault.Controllers
 {
   public class UserController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
   {
-
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> Profile(string id)
     {
@@ -18,6 +19,7 @@ namespace questvault.Controllers
       return RedirectToAction("PublicProfile", "User", new { id = id });
     }
 
+    [Authorize]
     public async Task<IActionResult> PublicProfile(string id)
     {
       
@@ -45,7 +47,8 @@ namespace questvault.Controllers
       ViewData["Top5"] = await LibraryController.GetTop5(id, context);
       return View(verifiedProfileData);
     }
-
+    
+    [Authorize]
     public async Task<IActionResult> PrivateProfile(string id)
     {
 
