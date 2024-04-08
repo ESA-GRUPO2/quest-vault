@@ -12,6 +12,8 @@
           <li>Collection</li>
           <li>Status</li>
         </ul>";
+  var user = await UserManager.GetUserAsync(User);
+  
 }
 
 
@@ -37,6 +39,15 @@
 <div class="main-section">
 
   <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+  @* Arranjar forma de conseguir o id do user da biblioteca 
+    @if (user.Id != )
+    {
+      <h3>'s Library</h3>
+    }
+    else
+    {
+      <h3>MyLibrary</h3>
+    } *@
     <h3>MyLibrary</h3>
     <h4 class="justify-content-end ">@ViewBag.NumberOfResults @(ViewBag.NumberOfResults == 1 ? "game" : "games")</h4>
   </div>
