@@ -29,46 +29,45 @@
         <div asp-validation-summary="ModelOnly" class="error-box d-flex" role="alert"></div>
       </div>
 
-      <div class="col-2 d-block justify-content-center">
-        <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
-          @if (!string.IsNullOrEmpty(userAvatar))
-          {
-            <img style="height:125px;width:130px; background-size: cover;border-radius: 50%;" src="~/img/usr_profile/@userAvatar" alt="User">
-          }
-          else
-          {
-            <img style="height:80px;width:80px;margin-left: 13%;margin-top: 13%; background-size: cover;border-radius: 50%;" src="~/img/usr_profile/user.svg" alt="User">
-          }
-        </div>
-        <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#avatarModal">Change Avatar</button>
-        @*Modal form start*@
-        <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="avatarModalLabel">Change Avatar</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <form id="avatarForm" method="post" enctype="multipart/form-data" asp-page-handler="Avatar">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label for="avatarInput">Select Avatar:</label>
-                    <input asp-for="ProfilePhoto" type="file" class="form-control-file" id="avatarInput" name="ProfilePhoto" accept="image/png, image/jpeg" required>
-                    <small class="form-text text-muted">Max file size: 5MB</small>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-              </form>
+        <div class="col-2 d-block justify-content-center">
+      <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
+                @if (!string.IsNullOrEmpty(userAvatar))
+                {
+                    <img style="height:125px;width:130px; background-size: cover;border-radius: 50%; margin: -6px;" src="~/img/usr_profile/@userAvatar" alt="User">
+                } else
+                {
+                    <img style="height:80px;width:80px;margin-left: 13%;margin-top: 13%; background-size: cover;border-radius: 50%;" src="~/img/usr_profile/user.svg" alt="User">
+                }
             </div>
+      <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#avatarModal">Change Avatar</button>
+            @*Modal form start*@
+    <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="avatarModalLabel">Change Avatar</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="avatarForm" method="post" enctype="multipart/form-data" asp-page-handler="Avatar">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="avatarInput">Select Avatar:</label>
+            <input asp-for="ProfilePhoto" type="file" class="form-control-file" id="avatarInput" name="ProfilePhoto" accept="image/png, image/jpeg" required>
+            <small class="form-text text-muted">Max file size: 5MB</small>
           </div>
         </div>
-        @*modal form end*@
-      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+            @*modal form end*@
+    </div>
 
       <div class="col-4">
         <form id="change-username-form" method="post" asp-page-handler="UserName">
