@@ -4,9 +4,9 @@
   ViewData["Title"] = "Account";
   ViewData["ActivePage"] = ManageNavPages.Index;
   ViewData["help_Text"] = @"
-       This is your #MyAccount page! <br/>
+       This is your MyAccount page! <br/>
        In this page you can personalize your profile however you want, <br/>
-       in the main section you can change your Usarname,Country and password.<br/>
+       in the main section you can change your Usarname and password.<br/>
        On the right side theres a section for 2 Factor Authentication, <br/>
        Privacy setting and Disabiling your account if thats what you want!";
   var top5 = ViewData["Top5"] as List<GameLog>;
@@ -69,90 +69,85 @@
             @*modal form end*@
     </div>
 
-      <div class="col-4">
-        <form id="change-username-form" method="post" asp-page-handler="UserName">
-          <div class="row mb-3">
-            <label class="col-sm-4 col-form-label text-light">Email</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
-            <div class="col-sm-8">
-              <input asp-for="Input.NewUserName" type="text" class="form-control-login" id="inputName" placeholder="@User.Identity?.Name">
-              <div style="height:1px">
-                <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+   @*  <div class="col-4"> *@
+      <div class="col-8">
+        <form id="change-profile-form" method="post" asp-page-handler="Profile">
+          <div class="row">
+            <div class="col-6">
+              @* <form id="change-username-form" method="post" asp-page-handler="UserName"> *@
+              <div class="row mb-3">
+                <label class="col-sm-4 col-form-label text-light">Email</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
+                </div>
               </div>
+              <div class="row mb-3">
+                <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
+                <div class="col-sm-8">
+                  <input asp-for="Input.NewUserName" type="text" class="form-control-login" autocomplete="off" id="inputName" placeholder="@User.Identity?.Name">
+                  <div style="height:1px">
+                    <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+                  </div>
+                </div>
+              </div>
+              @* </form> *@
+            </div>
+            <div class="col-6">
+              @* <form id="change-password-form" method="post" asp-page-handler="Password"> *@
+              <div class="row mb-3">
+                <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
+                <div class="col-sm-8">
+                  <input asp-for="Input.OldPassword" type="password" class="form-control-login" autocomplete="off" aria-required="true" placeholder="Insert current password" />
+                  <div style="height:1px">
+                    <span asp-validation-for="Input.OldPassword" class="text-danger-login-2"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
+                <div class="col-sm-8">
+                  <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
+                  <div style="height:1px">
+                    <span asp-validation-for="Input.NewPassword" class="text-danger-login-2"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label asp-for="Input.ConfirmPassword" class="col-sm-4 col-form-label text-light">Confirm new password</label>
+                <div class="col-sm-8">
+                  <input asp-for="Input.ConfirmPassword" class="form-control-login" autocomplete="new-password" aria-required="true" placeholder="Confirm new password">
+                  <div style="height:1px">
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger-login-2"></span>
+                  </div>
+                </div>
+              </div>
+              @* </form> *@
+              <button style="float: right; margin-right: 6rem; margin-top: -1.5rem" type="submit" class="btn-blue">Save Changes</button>
             </div>
           </div>
-          <div class="row mb-3">
-            <label for="inputCountry" class="col-sm-4 col-form-label text-light">Country</label>
-            <div class="col-sm-8">
-              <select class="form-control-login">
-                <option selected>Portugal(PT)</option>
-                <option value="1">fill1</option>
-                <option value="2">fill2</option>
-                <option value="3">fill3</option>
-              </select>
-            </div>
-          </div>
-          <button style="float: right; margin-right: 15%" type="submit" class="btn-blue">Save Changes</button>
         </form>
-      </div>
 
-      <div class="col-4">
-        <form id="change-password-form" method="post" asp-page-handler="Password">
-          <div class="row mb-3">
-            <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
-            <div class="col-sm-8">
-              <input asp-for="Input.OldPassword" type="password" class="form-control-login" autocomplete="current-password" aria-required="true" placeholder="Insert current password" />
-              <div style="height:1px">
-                <span asp-validation-for="Input.OldPassword" class="text-danger-login-2"></span>
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
-            <div class="col-sm-8">
-              <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
-              <div style="height:1px">
-                <span asp-validation-for="Input.NewPassword" class="text-danger-login-2"></span>
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label asp-for="Input.ConfirmPassword" class="col-sm-4 col-form-label text-light">Confirm new password</label>
-            <div class="col-sm-8">
-              <input asp-for="Input.ConfirmPassword" class="form-control-login" autocomplete="new-password" aria-required="true" placeholder="Confirm new password">
-              <div style="height:1px">
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger-login-2"></span>
-              </div>
-            </div>
-          </div>
-          <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue">Change password</button>
-        </form>
       </div>
-      <div class="col-2 ps-3">
-        <form>
-          <div class="form-check form-switch row">
-            @if (Model.Is2faEnabled)
-            {
-              <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
-            }
-            else
-            {
-              <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
-            }
-          </div>
-          <div class="form-check form-switch row">
-            <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
-          </div>
-          <div class="form-check form-switch row mb-3">
-            <a asp-page="./DeactivateAccount" style="float: left; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
-          </div>
-        </form>
-      </div>
+        <div class="col-2">
+          <form>
+            <div class="form-check form-switch row">
+              @if (Model.Is2faEnabled)
+              {
+                <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
+              }
+              else
+              {
+                <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
+              }
+            </div>
+            <div class="form-check form-switch row">
+              <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
+            </div>
+            <div class="form-check form-switch row mb-3">
+              <a asp-page="./DeactivateAccount" style="float: left; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
+            </div>
+          </form>
+        </div>
     </div>
 
     <div class="row container-fluid mt-4">
