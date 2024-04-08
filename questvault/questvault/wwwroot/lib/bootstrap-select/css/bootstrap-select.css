@@ -324,9 +324,11 @@ select.selectpicker {
 .bootstrap-select .dropdown-menu li a span.text {
   display: inline-block;
 }
-.bootstrap-select .dropdown-menu li small {
-  padding-left: 0.5em;
-}
+  .bootstrap-select .dropdown-menu li small {
+    padding-left: 0.5em;
+    color: white !important;
+  }
+
 .bootstrap-select .dropdown-menu .notify {
   position: absolute;
   bottom: 5px;

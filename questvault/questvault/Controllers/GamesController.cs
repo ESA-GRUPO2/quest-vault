@@ -424,7 +424,7 @@ namespace questvault.Controllers
 
       if (gameLog != null)
       {
-        
+        ViewBag.GamelogId = gameLog.GameLogId;
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;

@@ -17,6 +17,28 @@
   {
     <partial style="width:90%" name="_StatusMessage" for="@ViewData["StatusMessage"]" />
   }
+  <style>
+    .select-results {
+      padding-top: 3px !important;
+      margin-bottom: 0px !important;
+      padding-left: 0px !important;
+    }
+
+    .select-results button {
+      border: solid 1px white !important;
+      width: 93% !important;
+    }
+
+    data-subtext {
+      color: white !important;
+    }
+
+    .text-muted {
+      color: white !important;
+      font-weight: 300 !important;
+    }
+  </style>
+
   <div class="game-details">
     <section class="d-flex main-section">
       <img class="game-cover image-fluid" src="@Model.ImageUrl" />
@@ -84,108 +106,62 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h1 class="modal-title fs-5" id="gamelogModalLabel">Game Log</h1>
-                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
-                      
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                     </div>
-                      <div class="modal-body">
-                    @if (ViewBag.IsGameAddedToLibrary)
-                    {
-                      @if (ViewBag.IsGameTop5)
+                    <div class="modal-body">
+
+                      @if (ViewBag.IsGameAddedToLibrary)
                       {
-                        <form asp-controller="Library" asp-action="RemoveFromTop5" method="post">
-                          <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                          <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove from Top5</button>
-                        </form>
+                        <div class="mb-4 d-flex justify-content-center">
+                          @if (ViewBag.IsGameTop5)
+                          {
+                            <form asp-controller="Library" class="popup-button" asp-action="RemoveFromTop5" method="post">
+                              <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                              <button class="btn btn-primary btn-blue-big ms-2 me-2 btn-profile" style="width: 12.5rem" type="submit">Remove from Top5</button>
+                            </form>
+                          }
+                          else
+                          {
+                            <form asp-controller="Library" class="popup-button" asp-action="AddToTop5" method="post">
+                              <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                              <button class="btn btn-primary btn-blue-big ms-2 me-2 btn-profile" style="width: 12.5rem" type="submit">Add to Top5</button>
+                            </form>
+                          }
+                          <form asp-controller="Library" class="popup-button" asp-action="RemoveGame" method="post">
+                            <input type="hidden" name="gameId" value="@Model.IgdbId" />
+                            <button class="btn btn-primary btn-remove  ms-2 me-2" style="width: 12.5rem" type="submit">Delete Game Log</button>
+                          </form>
+                        </div>
                       }
-                      else
-                      {
-                        <form asp-controller="Library" asp-action="AddToTop5" method="post">
+
+                      <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
+                        <div class="d-flex align-items-start justify-content-center">
                           <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                          <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" type="submit">Add to Top5</button>
-                        </form>
-                      }
-                    }
-                    <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
-                        <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                        <input type="hidden" name="userId" value="@SignInManager.UserManager.GetUserId(User)" />
-                        @* <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example"> *@
+                          <input type="hidden" name="userId" value="@SignInManager.UserManager.GetUserId(User)" />
+                          @* <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example"> *@
                           <select #status required class="selectpicker select-results" name="status" id="gameStatus" placeholder="Game Status">
-                         
+
                             @if (ViewBag.IsGameAddedToLibrary == true)
                             {
                               <option value="@ViewBag.Status" disabled selected>@ViewBag.Status</option>
                             }
-                            <option value="Playing" data-subtext="Playing the game" >Playing</option>
+                            <option value="Playing" data-subtext="Playing the game">Playing</option>
                             <option value="Complete" data-subtext="Beat your main objective">Complete</option>
-                            <option value="Retired" data-subtext="Finished with game that lacks an ending" >Retired</option>
-                            <option value="Backlogged" data-subtext="Unfinished but may pick up later" >Backlogged</option>
-                            <option value="Abandoned" data-subtext="Unfinished and staying that way" >Abandoned</option>
-                            <option value="Wishlist" data-subtext="Don't have the game" >Wishlist</option>
-                         </select>
-                        
-
-
-
-
-                        <button class="btn-primary btn-purple ms-5" style="width:8.5rem" type="submit">Save</button>
-                        
-                     
-                    </form>
-                      
-                    @if (ViewBag.IsGameAddedToLibrary)
-                    {
-                      <form asp-controller="Library" asp-action="RemoveGame" method="post">
-                        <input type="hidden" name="gameId" value="@Model.IgdbId" />
-                        <button class="btn btn-primary nav-btn-2  ms-2 me-2" type="submit">Remove GameLog</button>
+                            <option value="Retired" data-subtext="Finished with game that lacks an ending">Retired</option>
+                            <option value="Backlogged" data-subtext="Unfinished but may pick up later">Backlogged</option>
+                            <option value="Abandoned" data-subtext="Unfinished and staying that way">Abandoned</option>
+                            <option value="Wishlist" data-subtext="Don't have the game">Wishlist</option>
+                          </select>
+                          <button class="btn-primary btn-purple" style="width:8.5rem; margin-left: 3.8rem;" type="submit">Save</button>
+                        </div>
                       </form>
 
-                    }
-                      </div>
+
+                    </div>
                   </div>
                 </div>
               </div>
-
-
-              @*
-            <form asp-controller="Library" asp-action="AddUpdateGames" method="post">
-            <input type="hidden" name="gameId" value="@Model.IgdbId" />
-            <input type="hidden" name="userId" value="@SignInManager.UserManager.GetUserId(User)" />
-            <select required #game (change)="onSelected(game.value)" name="ownage" class="select-results col-1 me-2" aria-label="Default select example">
-            @if (ViewBag.IsGameAddedToLibrary == true)
-            {
-            <option value="" disabled selected hidden>@ViewBag.Ownage</option>
-            }
-            else
-            {
-            <option value="" disabled selected hidden>Add Game</option>
-            }
-            <option value="Playing">Playing</option>
-            <option value="Finished">Finished</option>
-            <option value="Backlogged">Backlogged</option>
-            <option value="Wishlist">Wishlist</option>
-
-            </select>
-
-            <select #status required (change)="onSelected(status.value)" name="status" class="select-results col-1 ms-2 me-2" aria-label="Default select example">
-            @if (ViewBag.IsGameAddedToLibrary)
-            {
-            <option value="" disabled selected hidden>@ViewBag.Status</option>
-            }
-            else
-            {
-            <option value="" disabled selected hidden>Status</option>
-            }
-            <option value="Complete">Complete</option>
-            <option value="Played">Played</option>
-            <option value="Retired">Retired</option>
-            <option value="Shelved">Shelved</option>
-            <option value="Abandoned">Abandoned</option>
-            </select>
-            <button class="btn btn-primary btn-blue-big ms-2 me-2 mb-2" style="width:8.5rem" type="submit">Submit</button>
-            </form>
-            *@
-
- 
             </div>
           </div>
         </div>
@@ -343,7 +319,13 @@
             </div>
             <textarea required name="reviewV" id="reviewV" value="" maxlength="255" placeholder="Write your review here (max 255)">@ViewBag.Review</textarea>
             <div>
+              @if(ViewBag.Review!=null){
+                <a style="margin-right: 1rem" onclick="return confirm('Are you sure you want to remove Review?')"
+                   class="btn btn-primary btn-remove" asp-controller="Backoffice" asp-action="RemoveReview" asp-route-id="@ViewBag.GamelogId">Delete</a>
+              }
+            
               <button id="submit" class="mt-2 btn-blue-big submit">Submit</button>
+             
             </div>
             <div class="reviews" id="reviews"></div>
           </form>
@@ -360,7 +342,8 @@
       {
         <partial style="width:90%; margin: auto" name="_GameReview" for="@review" />
       }
-    } else
+    }
+    else
     {
       <h4 style="color: white">There are no reviews yet.</h4>
     }

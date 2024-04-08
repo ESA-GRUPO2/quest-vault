@@ -168,11 +168,11 @@
     margin: 0;
 }
 
-
+.popup-button {
+  display: inline-block;
+}
 
 /*GAME REVIEW PARCIAL*/
-
-
 .review-card {
   border: 2px solid white;
   border-radius: 15px;
@@ -202,7 +202,7 @@
 }
 
 .btn-remove {
-  background: #ea0c00;
+  background: #cc3d3d;
   color: #ffffff;
   border-radius: 24px;
   width: 7.5rem;

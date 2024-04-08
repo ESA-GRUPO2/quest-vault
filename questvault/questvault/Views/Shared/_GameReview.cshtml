@@ -20,7 +20,8 @@
     <div class="review-delete">
       @if (object.Equals(TempData["_GR-ShowDeleteButton"], true))
       {
-        <a class="btn btn-primary btn-remove" asp-controller="Backoffice" asp-action="RemoveReview" asp-route-id="@Model.GameLogId">Remove</a>
+        <a onclick="return confirm('Are you sure you want to remove @Model.User.UserName's Review?')"
+           class="btn btn-primary btn-remove" asp-controller="Backoffice" asp-action="RemoveReview" asp-route-id="@Model.GameLogId">Remove</a>
       }
     </div>
   </div> 
