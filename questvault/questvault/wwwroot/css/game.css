@@ -187,11 +187,10 @@
 .review-card {
   border: 2px solid white;
   border-radius: 15px;
-  width: 48%;
+  width: 100%;
   float: left;
   margin: 2rem 2rem 2rem 2rem;
-  padding: 1.5rem;
-  text-align: left;
+  padding: 1.5rem 1.5rem 1.5rem 0;
   overflow: hidden; /* Para evitar que o conteúdo se sobreponha */
   display: flex;
 }
@@ -201,26 +200,21 @@
 }
 
 .review-user{
-  margin-left: 1rem;
   margin-top: 0.5rem;
-  width: 20%;
 }
 
-.review-rating {
-  width: 100%;
+.review-username {
   margin-top: 1rem;
 }
 
-.review-text{
-  width: 90%;
+.review-text {
   font-weight: 200 !important;
   text-align: justify;
+  margin-right: 0.5rem;
 }
 
-.review-delete{
-  width: 20%;
-  margin-left: 2rem;
-  margin-right: 1rem;
+.review-delete {
+
 }
 
 .btn-remove {
@@ -229,13 +223,17 @@
   border-radius: 24px;
   width: 7.5rem;
   height: 2.75rem;
-  padding: 6px;
+  padding: 10px;
   border: none;
   text-align: center;
   font-weight: bolder;
-  line-height: 30px;
 }
 
   .btn-remove:hover {
     background: #591414;
+  }
+
+  .btn-remove img {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
+    padding: 1px;
   }
