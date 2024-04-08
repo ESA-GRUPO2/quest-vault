@@ -1,31 +1,33 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "My Account";
-    ViewData["ActivePage"] = ManageNavPages.Index;
-    ViewData["help_Text"] = @"
+  ViewData["Title"] = "My Account";
+  ViewData["ActivePage"] = ManageNavPages.Index;
+  ViewData["help_Text"] = @"
        This is your #MyAccount page! <br/>
        In this page you can personalize your profile however you want, <br/>
        in the main section you can change your Usarname,Country and password.<br/>
        On the right side theres a section for 2 Factor Authentication, <br/>
        Privacy setting and Disabiling your account if thats what you want!";
-    var top5 = ViewData["Top5"] as List<GameLog>;
+  var top5 = ViewData["Top5"] as List<GameLog>;
 }
 
 @{
-    var userAvatar = ViewData["UserAvatar"] as string;
+  var userAvatar = ViewData["UserAvatar"] as string;
 }
 
-
-<h3 class="text-light title">@ViewData["Title"]</h3>
-<hr class="bar">
-<partial style="width:90%" name="_StatusMessage" for="StatusMessage" />
-<div class="container-fluid">
-  <div class="row align-items-baseline row-spacing">
-    <div class="row">
-      <h4 style="padding-left:18rem; margin-bottom: 2rem; width:30%" class="text-light d-flex">Account Details</h4>
-      <div asp-validation-summary="ModelOnly" class="error-box d-flex" role="alert"></div>
-    </div>
+<div class="main-section">
+  <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+    <h3>@ViewData["Title"]</h3>
+  </div>
+  <hr class="bar">
+  <partial style="width:90%" name="_StatusMessage" for="StatusMessage" />
+  <div class="container-fluid m-0">
+    <div class="row align-items-baseline ps-4">
+      <div class="row">
+        <h4 style="padding-left: 16rem; margin-bottom: 2rem;" class="text-light d-flex">Account Details</h4>
+        <div asp-validation-summary="ModelOnly" class="error-box d-flex" role="alert"></div>
+      </div>
 
         <div class="col-2 d-block justify-content-center">
       <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
@@ -67,123 +69,121 @@
             @*modal form end*@
     </div>
 
-
-
-    <div class="col-4">
-      <form id="change-username-form" method="post" asp-page-handler="UserName">
-        <div class="row mb-3">
-          <label class="col-sm-4 col-form-label text-light">Email</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
-          <div class="col-sm-8">
-            <input asp-for="Input.NewUserName" type="text" class="form-control-login" id="inputName" placeholder="@User.Identity?.Name">
-            <div style="height:1px">
-              <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+      <div class="col-4">
+        <form id="change-username-form" method="post" asp-page-handler="UserName">
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label text-light">Email</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
             </div>
           </div>
-        </div>
-        <div class="row mb-3">
-          <label for="inputCountry" class="col-sm-4 col-form-label text-light">Country</label>
-          <div class="col-sm-8">
-            <select class="form-control-login">
-              <option selected>Portugal(PT)</option>
-              <option value="1">fill1</option>
-              <option value="2">fill2</option>
-              <option value="3">fill3</option>
-            </select>
+          <div class="row mb-3">
+            <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
+            <div class="col-sm-8">
+              <input asp-for="Input.NewUserName" type="text" class="form-control-login" id="inputName" placeholder="@User.Identity?.Name">
+              <div style="height:1px">
+                <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+              </div>
+            </div>
           </div>
-        </div>
-        <button style="float: right; margin-right: 15%" type="submit" class="btn-blue">Save Changes</button>
-      </form>
+          <div class="row mb-3">
+            <label for="inputCountry" class="col-sm-4 col-form-label text-light">Country</label>
+            <div class="col-sm-8">
+              <select class="form-control-login">
+                <option selected>Portugal(PT)</option>
+                <option value="1">fill1</option>
+                <option value="2">fill2</option>
+                <option value="3">fill3</option>
+              </select>
+            </div>
+          </div>
+          <button style="float: right; margin-right: 15%" type="submit" class="btn-blue">Save Changes</button>
+        </form>
+      </div>
+
+      <div class="col-4">
+        <form id="change-password-form" method="post" asp-page-handler="Password">
+          <div class="row mb-3">
+            <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
+            <div class="col-sm-8">
+              <input asp-for="Input.OldPassword" type="password" class="form-control-login" autocomplete="current-password" aria-required="true" placeholder="Insert current password" />
+              <div style="height:1px">
+                <span asp-validation-for="Input.OldPassword" class="text-danger-login-2"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
+            <div class="col-sm-8">
+              <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
+              <div style="height:1px">
+                <span asp-validation-for="Input.NewPassword" class="text-danger-login-2"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label asp-for="Input.ConfirmPassword" class="col-sm-4 col-form-label text-light">Confirm new password</label>
+            <div class="col-sm-8">
+              <input asp-for="Input.ConfirmPassword" class="form-control-login" autocomplete="new-password" aria-required="true" placeholder="Confirm new password">
+              <div style="height:1px">
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger-login-2"></span>
+              </div>
+            </div>
+          </div>
+          <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue">Change password</button>
+        </form>
+      </div>
+      <div class="col-2 ps-3">
+        <form>
+          <div class="form-check form-switch row">
+            @if (Model.Is2faEnabled)
+            {
+              <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
+            }
+            else
+            {
+              <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
+            }
+          </div>
+          <div class="form-check form-switch row">
+            <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
+          </div>
+          <div class="form-check form-switch row mb-3">
+            <a asp-page="./DeactivateAccount" style="float: left; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <div class="col-4">
-      <form id="change-password-form" method="post" asp-page-handler="Password">
-        <div class="row mb-3">
-          <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
-          <div class="col-sm-8">
-            <input asp-for="Input.OldPassword" type="password" class="form-control-login" autocomplete="current-password" aria-required="true" placeholder="Insert current password" />
-            <div style="height:1px">
-              <span asp-validation-for="Input.OldPassword" class="text-danger-login-2"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
-          <div class="col-sm-8">
-            <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
-            <div style="height:1px">
-              <span asp-validation-for="Input.NewPassword" class="text-danger-login-2"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label asp-for="Input.ConfirmPassword" class="col-sm-4 col-form-label text-light">Confirm new password</label>
-          <div class="col-sm-8">
-            <input asp-for="Input.ConfirmPassword" class="form-control-login" autocomplete="new-password" aria-required="true" placeholder="Confirm new password">
-            <div style="height:1px">
-              <span asp-validation-for="Input.ConfirmPassword" class="text-danger-login-2"></span>
-            </div>
-          </div>
-        </div>
-        <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue">Change password</button>
-      </form>
+    <div class="row container-fluid mt-4">
+      <div class="col-8">
+        <partial name="_Top5" for="@ViewData["Top5"] as List<GameLog>" />
+      </div>
+      <div class="col-4">
+        <h4 style="float:right" class="text-light mb-4">Connections</h4>
+        <table class="table table-sm table-borderless table-profile">
+          <tr>
+            <th><img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam" /></th>
+            <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Steam</button></th>
+          </tr>
+          <tr>
+            <th><img class="img-size-sm" src="/img/external/Epic_Games_logo.png" alt="Epic" /></th>
+            <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Epic</button></th>
+          </tr>
+          <tr>
+            <th><img class="img-size-sm" src="/img/external/xbox-logo.png" alt="Xbox" /></th>
+            <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Xbox</button></th>
+          </tr>
+          <tr>
+            <th><img style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="img-size-sm" style src="/img/vector/file-csv-solid.svg" alt="CSV" /></th>
+            <th style="width: 185px;"><button style="width:170px; margin-bottom: 90px " class="btn-blue">Import .csv file</button></th>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div class="col-2">
-      <form>
-        <div class="form-check form-switch row">
-                    @if (Model.Is2faEnabled)
-                    {
-                <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
-                    }
-                    else
-                    {
-                <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
-                    }
-        </div>
-        <div class="form-check form-switch row">
-          <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
-        </div>
-        <div class="form-check form-switch row mb-3">
-          <a asp-page="./DeactivateAccount" style="float: left; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
-        </div>
-      </form>
-    </div>
+
   </div>
-
-  <div class="row row-spacing">
-    <div class="col-8">
-      <partial name="_Top5" for="@ViewData["Top5"] as List<GameLog>" />
-    </div>
-    <div class="col-4">
-      <h4 style="float:right" class="text-light">Connections</h4>
-      <table class="table table-sm table-borderless table-profile">
-        <tr>
-          <th><img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam" /></th>
-          <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Steam</button></th>
-        </tr>
-        <tr>
-          <th><img class="img-size-sm" src="/img/external/Epic_Games_logo.png" alt="Epic" /></th>
-          <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Epic</button></th>
-        </tr>
-        <tr>
-          <th><img class="img-size-sm" src="/img/external/xbox-logo.png" alt="Xbox" /></th>
-          <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Xbox</button></th>
-        </tr>
-        <tr>
-          <th><img style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="img-size-sm" style src="/img/vector/file-csv-solid.svg" alt="CSV" /></th>
-          <th style="width: 185px;"><button style="width:170px; margin-bottom: 90px " class="btn-blue">Import .csv file</button></th>
-        </tr>
-      </table>
-    </div>
-  </div>
-
 </div>
-
 @section Scripts {
-      <partial name="_ValidationScriptsPartial" />
+  <partial name="_ValidationScriptsPartial" />
 }
