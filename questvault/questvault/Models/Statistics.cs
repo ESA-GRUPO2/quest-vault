@@ -9,9 +9,9 @@ namespace questvault.Models
       public double gameRatingAverage { get; set; }
       public List<string> LoginDateList { get; set; }
       public List<int> LoginDateCountList { get; set; }
-
       public List<string> AccessDateList { get; set; }
       public List<int> AccessDateCountList { get; set; }
-
+      public List<string> GenreNames { get; set; }
+      public List<int> GenreCount {  get; set; } 
     }
 }
