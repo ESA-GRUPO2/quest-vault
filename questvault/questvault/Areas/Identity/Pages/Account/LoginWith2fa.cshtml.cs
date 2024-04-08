@@ -86,6 +86,11 @@ namespace questvault.Areas.Identity.Pages.Account
       {
         return RedirectToPage("./Login");
       }
+      if (user.LockoutEnabled)
+      {
+        logger.LogWarning("User account locked out.");
+        return RedirectToPage("./Lockout");
+      }
       var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
 
       var result = await context.EmailTokens.FirstOrDefaultAsync(t => t.UserId == user.Id);
@@ -98,6 +103,10 @@ namespace questvault.Areas.Identity.Pages.Account
       {
         await signInManager.SignInAsync(user, Input.RememberMachine, "2FA");
         logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.Id);
+        //adicionar aquio
+        var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now) };
+        context.LogginInstances.Add(logginInstance);
+        await context.SaveChangesAsync();
         return LocalRedirect(returnUrl);
 
       }

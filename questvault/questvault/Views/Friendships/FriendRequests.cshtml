@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<questvault.Models.FriendshipRequest>
 
 @{
-    ViewData["Title"] = "Friends";
-    ViewData["help_Text"] = @"
+  ViewData["Title"] = "Friends";
+  ViewData["help_Text"] = @"
        In the Friends page you can see the friends you have made in the app!<br/>
        Check their profiles by clicking in their names and<br/>
        if you are getting tired of them delete them from your life!";
@@ -10,48 +10,52 @@
 
 <div class="friends-page">
 
-    <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
-        <h3>My Friends</h3>
-    </div>
+  <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
+    <h3>My Friends</h3>
+  </div>
 
-    <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
+  <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <a asp-controller="Friendships" asp-action="FriendsPage" class="btn btn-blue-big m-2">
-                <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
-                Friends
-            </a>
-            <button asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple m-2" disabled>
-                <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Request Icon" />
-                Requests
-            </button>
-        </div>
-        @if (Model.Any())
-        {
-            <table class="table d-flex table-dark table-sm table-profile">
-                <tbody class="container d-inline-flex">
-                    <tr class="row d-flex justify-content-between align-items-center">
-                        @foreach (var item in Model)
-                        {
-                            <td class="d-flex mt-5 align-items-center justify-content-center">
-                                <img class="user-foto p-3 ms-0 me-4" src="~/img/vector/user.svg" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
-                                <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.Sender.UserName)</span>
-                                <a class="ms-5" asp-controller="Friendships" asp-action="AcceptFriendRequest" asp-route-id="@item.Sender.Id">
-                                    <img id="icon-accept" class="nav-vector" src="~/img/vector/circle-check-solid.svg" alt="Confirm Icon" />
-                                </a>
-                                <a class="ms-3" asp-controller="Friendships" asp-action="RejectFriendRequest" asp-route-id="@item.Sender.Id">
-                                    <img id="icon-deny" class="nav-vector" src="~/img/vector/circle-xmark-solid.svg" alt="Deny Icon" />
-                                </a>
-                            </td>
-                        }
-                    </tr>
-                </tbody>
-            </table>
-        } else
-        {
-            <h2 class="container" style="text-align: center; margin-top: 20vh;">No friend requests available!</h2>
-        }
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <a asp-controller="Friendships" asp-action="FriendsPage" class="btn btn-purple btn-users-inverted align-items-center m-2">
+        <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
+        Friends
+      </a>
+      <button asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-blue-big btn-search-disabled m-2">
+        <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Request Icon" />
+        Requests
+      </button>
     </div>
+    @if (Model.Any())
+    {
+      <table class="table d-flex table-dark table-sm table-profile">
+        <tbody class="container d-inline-flex">
+          <tr class="row d-flex justify-content-between align-items-center">
+            @foreach (var item in Model)
+            {
+              var userAvatar = (item.Sender != null && item.Sender.ProfilePhotoPath != null) ? item.Sender.ProfilePhotoPath : "user.svg";
+              <td class="d-flex mt-5 align-items-center justify-content-center">
+                <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { id = item.Sender.Id})">
+                  <img class="user-foto ms-0 me-4 @(userAvatar == "user.svg" ? "p-3 ":"")" src="~/img/usr_profile/@userAvatar" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
+                  <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.Sender.UserName)</span>
+                </a>
+                <a class="ms-5" asp-controller="Friendships" asp-action="AcceptFriendRequest" asp-route-id="@item.Sender.Id">
+                  <img id="icon-accept" class="nav-vector" src="~/img/vector/circle-check-solid.svg" alt="Confirm Icon" />
+                </a>
+                <a class="ms-3" asp-controller="Friendships" asp-action="RejectFriendRequest" asp-route-id="@item.Sender.Id">
+                  <img id="icon-deny" class="nav-vector" src="~/img/vector/circle-xmark-solid.svg" alt="Deny Icon" />
+                </a>
+              </td>
+            }
+          </tr>
+        </tbody>
+      </table>
+    }
+    else
+    {
+      <h2 class="container" style="text-align: center; margin-top: 20vh;">No friend requests available!</h2>
+    }
+  </div>
 
 </div>

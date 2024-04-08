@@ -117,6 +117,10 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+            if(user.LockoutEnabled)
+            {
+              return RedirectToPage("./Lockout");
+             }
 
             var userId = await _userManager.GetUserIdAsync(user);
             var info = await _signInManager.GetExternalLoginInfoAsync(userId);
