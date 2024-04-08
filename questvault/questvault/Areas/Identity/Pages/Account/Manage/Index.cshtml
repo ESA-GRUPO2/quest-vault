@@ -15,18 +15,33 @@
 @{
   var userAvatar = ViewData["UserAvatar"] as string;
 }
-
+<style>
+  #username::placeholder{
+    opacity:0.6;
+  }
+</style>
 <div class="main-section">
   <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
-    <h3>@ViewData["Title"]</h3>
+    @if (ViewData["Privacy"].Equals(true))
+    {
+      <h3>Private @ViewData["Title"]</h3>
+    }
+    else
+    {
+      <h3>Public @ViewData["Title"]</h3>
+    }
   </div>
   <hr class="bar">
   <partial style="width:90%" name="_StatusMessage" for="StatusMessage" />
   <div class="container-fluid m-0">
     <div class="row align-items-baseline ps-4">
       <div class="row">
+       <div class="col-10">
         <h4 style="padding-left: 16rem; margin-bottom: 2rem;" class="text-light d-flex">Account Details</h4>
         <div asp-validation-summary="ModelOnly" class="error-box d-flex" role="alert"></div>
+      </div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+        </div>
       </div>
 
         <div class="col-2 d-block justify-content-center">
@@ -84,7 +99,7 @@
               <div class="row mb-3">
                 <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
                 <div class="col-sm-8">
-                  <input asp-for="Input.NewUserName" type="text" class="form-control-login" autocomplete="off" id="inputName" placeholder="@User.Identity?.Name">
+                  <input asp-for="Input.NewUserName" type="text" id="username" class="form-control-login" autocomplete="off" id="inputName" placeholder="@User.Identity?.Name">
                   <div style="height:1px">
                     <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
                   </div>
@@ -128,21 +143,24 @@
         </form>
 
       </div>
+
         <div class="col-2">
+       
           <form>
-            <div class="form-check form-switch row">
-              @if (Model.Is2faEnabled)
-              {
-                <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
-              }
-              else
-              {
-                <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
-              }
-            </div>
             <div class="form-check form-switch row">
               <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
             </div>
+          <div class="form-check form-switch row">
+
+            @if (Model.Is2faEnabled)
+            {
+              <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
+            }
+            else
+            {
+              <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
+            }
+          </div>
             <div class="form-check form-switch row mb-3">
               <a asp-page="./DeactivateAccount" style="float: left; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
             </div>
@@ -151,27 +169,15 @@
     </div>
 
     <div class="row container-fluid mt-4">
-      <div class="col-8">
+      <div style="margin-bottom: 8rem;" class="col-9">
         <partial name="_Top5" for="@ViewData["Top5"] as List<GameLog>" />
       </div>
-      <div class="col-4">
-        <h4 style="float:right" class="text-light mb-4">Connections</h4>
+      <div class="col-3">
+        <h4 style="float:right; margin-right: 2.3rem;" class="text-light mb-4">Connections</h4>
         <table class="table table-sm table-borderless table-profile">
           <tr>
             <th><img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam" /></th>
             <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Steam</button></th>
-          </tr>
-          <tr>
-            <th><img class="img-size-sm" src="/img/external/Epic_Games_logo.png" alt="Epic" /></th>
-            <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Epic</button></th>
-          </tr>
-          <tr>
-            <th><img class="img-size-sm" src="/img/external/xbox-logo.png" alt="Xbox" /></th>
-            <th style="width: 185px;"><button style="width:170px" class="btn-blue">Connect to Xbox</button></th>
-          </tr>
-          <tr>
-            <th><img style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="img-size-sm" style src="/img/vector/file-csv-solid.svg" alt="CSV" /></th>
-            <th style="width: 185px;"><button style="width:170px; margin-bottom: 90px " class="btn-blue">Import .csv file</button></th>
           </tr>
         </table>
       </div>

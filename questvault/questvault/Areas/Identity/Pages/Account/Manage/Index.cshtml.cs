@@ -118,6 +118,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
       await LoadAsync(user);
       ViewData["UserAvatar"] = user.ProfilePhotoPath;
+      ViewData["Privacy"] = user.IsPrivate;
       return Page();
     }
     public async Task<IActionResult> OnPostAsync()
