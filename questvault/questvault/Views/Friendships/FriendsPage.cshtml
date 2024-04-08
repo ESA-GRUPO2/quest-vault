@@ -1,59 +1,62 @@
 ﻿@model IEnumerable<questvault.Models.Friendship>
 
 @{
-    ViewData["Title"] = "Friends";
-    ViewData["help_Text"] = @"
+  ViewData["Title"] = "Friends";
+  ViewData["help_Text"] = @"
        In the Friends page you can see the friends you have made in the app!<br/>
        Check their profiles by clicking in their names and<br/>
        if you are getting tired of them delete them from your life!";
+
 }
 
 <div class="friends-page">
 
-    <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
-        <h3>My Friends</h3>
-    </div>
+  <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
+    <h3>My Friends</h3>
+  </div>
 
-    <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
+  <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
       <button asp-controller="Friendships" asp-action="FriendsPage" class="btn btn-blue-big btn-search-disabled m-2">
-                <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
-                Friends
-            </button>
-        <a asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple btn-users-inverted align-items-center m-2">
-                <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Request Icon" />
-                Requests
-            </a>
-        </div>
-        @if (Model.Any())
-        {
-            <table class="table d-flex table-dark table-sm table-profile">
-                <tbody class="container d-inline-flex">
-                    <tr class="row d-flex justify-content-between align-items-center">
-                        @foreach (var item in Model)
-                        {
-                            <td class="d-flex mt-5 me-4 align-items-center justify-content-center">
-
-                                <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { name1 = User.Identity.Name, id2 = item.User2.Id})">
-                                <img class="user-foto p-3 ms-0 me-4" src="~/img/vector/user.svg" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
-                                 <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.User2.UserName)</span> 
-                                </a>
-                                <a class="ms-5" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id" 
-                                    onclick="return confirm('Are you sure you to remove @item.User2.UserName from your friends?')">
-                                    <img id="icon-trash" class="nav-vector" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
-                                </a>
-                            </td>
-                        }
-                    </tr>
-                </tbody>
-            </table>
-        } else
-        {
-            <h2 class="container" style="text-align: center; margin-top: 20vh;">No friends!</h2>
-        }
-
+        <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
+        Friends
+      </button>
+      <a asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple btn-users-inverted align-items-center m-2">
+        <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Request Icon" />
+        Requests
+      </a>
     </div>
-    
+    @if (Model.Any())
+    {
+      <table class="table d-flex table-dark table-sm table-profile">
+        <tbody class="container d-inline-flex">
+          <tr class="row d-flex justify-content-between align-items-center">
+            @foreach (var item in Model)
+            {
+              var userAvatar = (item.User2 != null && item.User2.ProfilePhotoPath != null) ? item.User2.ProfilePhotoPath : "user.svg";
+              <td class="d-flex mt-5 me-4 align-items-center justify-content-center">
+
+                <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { id = item.User2.Id})">
+                  <img class="user-foto ms-0 me-4 @(userAvatar == "user.svg" ? "p-3":"")" src="~/img/usr_profile/@userAvatar" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
+                  <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.User2.UserName)</span>
+                </a>
+                <a class="ms-5" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id"
+                   onclick="return confirm('Are you sure you to remove @item.User2.UserName from your friends?')">
+                  <img id="icon-trash" class="nav-vector" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
+                </a>
+              </td>
+            }
+          </tr>
+        </tbody>
+      </table>
+    }
+    else
+    {
+      <h2 class="container" style="text-align: center; margin-top: 20vh;">No friends!</h2>
+    }
+
+  </div>
+
 </div>

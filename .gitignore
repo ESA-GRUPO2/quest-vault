@@ -399,5 +399,5 @@ FodyWeavers.xsd
 
 appsettings.json
 
-wwwroot/img/usr_profile/
-!wwwroot/img/usr_profile/user.svg
+./questvault/questvault/wwwroot/img/usr_profile/
+!./questvault/questvault/wwwroot/img/usr_profile/user.svg

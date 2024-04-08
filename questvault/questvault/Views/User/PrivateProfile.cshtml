@@ -6,6 +6,7 @@
        This is a private user profile. <br/>
        In this page you can't see much beacause the user hid himself in a cave!<br/>
        If you wanna try your luck send him a friend request (if he ever comes outside, he will see it)!";
+  var userAvatar = (Model.user != null && Model.user.ProfilePhotoPath != null) ? Model.user.ProfilePhotoPath : "user.svg";
 }
 <body class="profile">
 
@@ -13,7 +14,7 @@
 
     <div class="container-fluid d-flex align-items-center justify-content-center mt-3">
       <div class="profile-avatar d-flex align-items-center ">
-        <img class="user-foto p-4" src="~/img/vector/user.svg" />
+        <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="user-foto @(userAvatar == "user.svg" ? "p-4" : "")">
       </div>
 
       <div class="d-flex row ms-3 align-items-center">
@@ -51,12 +52,12 @@
 
 
       <div id="profile-blur" class="profile-stats container-fluid justify-content-end">
-        <h4 style="color: white" class="profile-hours">200 hours played</h4>
-        <h5 style="color: white" class="profile-games-played">50 games in library</h5>
-        <h6 style="color: white" class="profile-games-backed">25 Playing</h6>
-        <h6 style="color: white" class="profile-games-backed">5 Finished</h6>
-        <h6 style="color: white" class="profile-games-backed">10 Backlogged</h6>
-        <h6 style="color: white" class="profile-games-backed">10 Wishlist</h6>
+        <h4 style="color: white" class="profile-hours">Playing games forever</h4>
+        <h5 style="color: white" class="profile-games-played">Too many games to count</h5>
+        <h6 style="color: white" class="profile-games-backed">Juggling games like a pro</h6>
+        <h6 style="color: white" class="profile-games-backed">Beating games in my sleep</h6>
+        <h6 style="color: white" class="profile-games-backed">Games on games on games</h6>
+        <h6 style="color: white" class="profile-games-backed">Wishlist longer than a novel</h6>
       </div>
     </div>
   </section>
