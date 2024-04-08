@@ -40,14 +40,14 @@
   </style>
 
   <div class="game-details">
-    <section class="d-flex main-section">
+    <section class="d-flex">
       <img class="game-cover image-fluid" src="@Model.ImageUrl" />
       <div class="container ms-3 mt-4">
         <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
         @* <h4>Released on @Model.ReleaseDate</h4> *@
         @if (Model.ReleaseDate.HasValue)
         {
-          <h4>
+          <h4 class="game-date">
             @if (Model.ReleaseDate.Value < DateTime.Today)
             {
               <text>Released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
@@ -62,7 +62,7 @@
         {
           <text>To be decided.</text>
         }
-        <h5>
+        <h5 class="game-company">
           By
           @foreach (var c in Model.GameCompanies)
           {
@@ -196,7 +196,7 @@
 
     <hr class="game-bar">
 
-    <section class="d-flex main-section">
+    <section class="d-flex">
 
       <div class="container-fluid justify-content-between mt-3">
         <div class="game-about align-top mb-5">
@@ -214,7 +214,7 @@
               </div>
             }
           </div>
-          <iframe class="card-img col-md-2"
+          <iframe class="card-img col-md-2 mt-4"
                   width="280"
                   height="318" src="@Model.VideoUrl"
                   frameborder="0" allowfullscreen></iframe>

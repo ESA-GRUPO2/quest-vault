@@ -1,27 +1,36 @@
 ﻿@model Statistics
 @{
-    ViewData["Title"] = "Statistics";
-    ViewData["help_Text"] = @"In the Statistics page you can see the numbers behind the app!";
+  ViewData["Title"] = "Statistics";
+  ViewData["help_Text"] = @"In the Statistics page you can see the numbers behind the app!";
 }
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
- <div>
-  <h1 class="friends-page">Registered Accounts: @Model.registeredUsersCount</h1>
-  <h1 class="friends-page">Average Rating: @Model.gameRatingAverage</h1>
-</div>
+<div class="main-section">
 
-<div style = "display: flex">
-  @* div onde está o chart dos logins*@
-  <div style="width:50rem; height:50rem; margin-left: 5rem">
-    <canvas id="dailyLoginChart"></canvas>
+  <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+    <h3 style="color:white">App Stats</h3>
   </div>
 
-  @* div onde está o chart dos acessos*@
-  <div style="width:50rem; height:50rem; margin-left: 5rem">
-    <canvas id="dailyAccessChart"></canvas>
+  <hr class="bar">
+
+  <div class="container-fluid">
+    <div class="d-flex">
+      <h4 class="">Registered Accounts: @Model.registeredUsersCount</h4>
+      <h4 class="">Average Rating: @Model.gameRatingAverage</h4>
+    </div>
+    <div style="display: flex">
+      @* div onde está o chart dos logins*@
+      <div style="width:50rem; height:50rem; margin-left: 5rem">
+        <canvas id="dailyLoginChart"></canvas>
+      </div>
+
+      @* div onde está o chart dos acessos*@
+      <div style="width:50rem; height:50rem; margin-left: 5rem">
+        <canvas id="dailyAccessChart"></canvas>
+      </div>
+    </div>
   </div>
 </div>
-
 
 
 <script>
@@ -44,21 +53,21 @@
         tension: 0.1
       }]
     },
-     options: {
-       scales: {
-         y: {
-           beginAtZero: true,
-           ticks: {
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
             color: 'white',
           }
-         },
+        },
         x: {
           ticks: {
             color: 'white',
           }
         }
-       }
-     }
+      }
+    }
   });
 
   //Chart dos acessos

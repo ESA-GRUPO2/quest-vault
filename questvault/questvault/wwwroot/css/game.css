@@ -1,16 +1,23 @@
 ﻿.game-details {
     margin: 0px 71px 0px 71px;
     color: white;
-    margin-bottom: 12vh;
+    margin-bottom: 3vh;
 }
 
 .game-title {
 }
 
+.game-date {
+  font-weight: 300 !important;
+}
+
+.game.company {
+  font-weight: 300 !important;
+}
+
 .game-bar {
     background: #711C91;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 4vh auto 2vh auto;
     width: 100%;
     height: 10px;
     opacity: 1;
@@ -62,6 +69,10 @@
     font-size: 110%;
     text-align: justify;
 }
+
+  .game-about p {
+    font-weight: 300 !important;
+  }
 
 .game-captures{
     width: auto;
