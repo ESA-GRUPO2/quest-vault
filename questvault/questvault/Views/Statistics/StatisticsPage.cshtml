@@ -37,7 +37,7 @@
 
       @*div onde está o chart top game genre*@
       <div class="ms-2 me-2">
-        <label>Top Genres</label>
+        <label>Top 5 Genres</label>
         <canvas id="topGenresChart"></canvas>
       </div>
 
@@ -46,6 +46,7 @@
         <label>Daily Access</label>
         <canvas id="dailyAccessChart"></canvas>
       </div>
+
     </div>
   </div>
 </div>
@@ -106,18 +107,15 @@
   var myChart = new Chart(ctx3, {
     type: 'doughnut',
     data: {
-      labels: [
-        'Red',
-        'Blue',
-        'Yellow'
-      ],
+      labels: @Html.Raw(Json.Serialize(Model.GenreNames)),
       datasets: [{
-        label: 'My First Dataset',
-        data: [300, 50, 100],
+        data: @Html.Raw(Json.Serialize(Model.GenreCount)),
         backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
+          'rgba(152, 0, 141, 0.9)',
+          'rgba(0, 255, 127, 0.9)',
+          'rgb(255, 0, 0, 0.5)',
+          'rgb(10, 189, 198, 0.9)',
+          'rgb(255, 69, 0, 0.9)',
         ],
         hoverOffset: 4
       }]
@@ -125,8 +123,12 @@
     options: {
       plugins: {
         legend: {
+          position: 'right',
           labels: {
-            color: 'white' // Ajusta a cor da legenda para branco
+            color: 'white',
+            font: {
+              size: 12
+            }
           }
         }
       }
