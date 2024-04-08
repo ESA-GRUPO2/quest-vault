@@ -1,8 +1,10 @@
-﻿@model GameViewData
-@using System.Linq
+﻿@using System.Linq
+@using questvault.Utils
+
+@model GameViewData
 @{
-    ViewData["Title"] = "Results";
-    ViewData["help_Text"] = @"
+  ViewData["Title"] = "Results";
+  ViewData["help_Text"] = @"
        In the Games page you can find a selection of games,<br/>
        this being the most popular or if you searched a especific<br/>
        name the games matching what you search will show in here!<br/>
@@ -17,125 +19,208 @@
 }
 
 @{
-    var batchSize = 5; // Defina o tamanho do lote aqui
-    var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
-                       .GroupBy(x => x.Index / batchSize)
-                       .Select(g => g.Select(x => x.Game));
-    var years = Model.Games
-    .Where(g => g.ReleaseDate.HasValue)
-    .Select(g => g.ReleaseDate.Value.Year)
-    .Distinct()
-    .OrderByDescending(y => y)
-    .ToList();
+  var batchSize = 5; // Defina o tamanho do lote aqui
+  var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
+                     .GroupBy(x => x.Index / batchSize)
+                     .Select(g => g.Select(x => x.Game));
+  var years = Model.Games
+  .Where(g => g.ReleaseDate.HasValue)
+  .Select(g => g.ReleaseDate.Value.Year)
+  .Distinct()
+  .OrderByDescending(y => y)
+  .ToList();
+
+  var prevDisabled = !Model.Games.HasPreviousPage ? "disabled" : "";
+  var nextDisabled = !Model.Games.HasNextPage ? "disabled" : "";
+
+  int currentPage = Model.Games.PageIndex;
+  int totalPages = Model.Games.TotalPages;
+  int maxVisiblePages = 5; // Number of pages to show around the current page
+  int startPage = Math.Max(1, currentPage - maxVisiblePages / 2);
+  int endPage = Math.Min(startPage + maxVisiblePages - 1, totalPages);
 
 }
 @if (SignInManager.IsSignedIn(User))
 {
 
-    <div class="results-game">
-        <h2 style="color:white">Games</h2>
-        <hr class="bar" style="margin-bottom: 25px; width: 100%;">
+  <div class="main-section">
+    <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+      <h3 style="color:white">Games</h3>
+    </div>
+    <hr class="bar">
 
-        <div class="d-flex main-section-result">
-            <div class="filter-section">
-                <form id="filterForm" asp-controller="Games" asp-action="Index" method="get">
-                    <h4 style="color: white; margin-bottom:50px">Filters</h4>
-                    @if (ViewBag.SelectedReleaseStatus == "released")
-                    {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" checked/>
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" />
-                            Unreleased
-                        </label>
-                    }
-                    else if (ViewBag.SelectedReleaseStatus == "unreleased")
-                    {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" />
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" checked />
-                            Unreleased
-                        </label>
-                    }else
-                    {
-                        <label>
-                            <input type="radio" name="releaseStatus" value="released" />
-                            Released
-                        </label>
-                        <label>
-                            <input type="radio" name="releaseStatus" value="unreleased" />
-                            Unreleased
-                        </label>
-                    }
-                    <select class="search_select_box select-results" name="releasePlatform" id="releasePlatform">
-                        <option value="" selected disabled hidden>Platforms</option>
-                        @foreach (var item in Model.Platforms)
-                        {
-                            if (item.PlatformName == ViewBag.SelectedReleasePlatform)
-                            {
-                                <option value="@item.PlatformName" selected>@item.PlatformName</option>
-                            }
-                            else
-                            {
-                                <option value="@item.PlatformName" >@item.PlatformName</option>
-                            }
-                        }
-                    </select><br>
-                    <select class="select-results" name="genre" id="genre">
-                        <option value="" selected disabled hidden>Genres</option>
-                        @foreach (var item in Model.Genres)
-                        {
-                            if (item.GenreName == ViewBag.SelectedGenre)
-                            {
-                                <option value="@item.GenreName" selected>@item.GenreName</option>
-                            }else
-                            {
-                                <option value="@item.GenreName">@item.GenreName</option>
-                            }
-
-                        }
-                    </select><br>
-                    <button class="btn btn-primary nav-btn-2" type="submit">Apply Filters</button>
-                    @* <button class="btn btn-primary nav-btn" type="button" onclick="clearForm()">Clear Filters</button> *@
-                    <a class="btn btn-primary nav-btn" href="/Games" >Clear Filters</a>
-                </form>
-            </div>
-            @if (Model.NumberOfResults == 0)
+    <div class="d-flex main-section-result">
+      <div class="filter-section">
+        <form id="filterForm" asp-controller="Games" asp-action="Index" method="get">
+          <h4 style="color: white; margin-bottom:5vh; text-decoration: underline;">Filters</h4>
+          <div class="mb-5 form-switch-release">
+            @if (ViewBag.SelectedReleaseStatus == "released")
             {
-                <h2>
-                    No Results...
-                </h2>
+              <div class="form-check form-switch mb-2">
+                <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" checked />
+                <label class="form-check-label" for="btn-released">Released</label>
+              </div>
+
+              <div class="form-check form-switch">
+                <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" />
+                <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+              </div>
+            }
+            else if (ViewBag.SelectedReleaseStatus == "unreleased")
+            {
+              <div class="form-check form-switch mb-2">
+                <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" />
+                <label class="form-check-label" for="btn-released">Released</label>
+              </div>
+
+              <div class="form-check form-switch">
+                <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" checked />
+                <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+              </div>
             }
             else
             {
-                <div class="game-section">
+              <div class="form-check form-switch mb-2">
+                <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" />
+                <label class="form-check-label" for="btn-released">Released</label>
+              </div>
 
-                    @foreach (var batch in batches)
-                    {
-                        <div class="game-row">
-                            @foreach (var game in batch)
-                            {
-                                <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
-                                    <img src="@game.ImageUrl">
-                                </a>
-                            }
-                        </div>
-                    }
-                </div>
+              <div class="form-check form-switch">
+                <input type="radio" class="form-check-input" id="btn-unreleased" name="releaseStatus" value="unreleased" />
+                <label class="form-check-label" for="btn-unreleased">Unreleased</label>
+              </div>
             }
+          </div>
+          <select class="selectpicker select-results" name="releasePlatform" id="releasePlatform" placeholder="Platforms">
+            @* <option value="" selected disabled hidden>Platforms</option> *@
+            @foreach (var item in Model.Platforms)
+            {
+              if (item.PlatformName == ViewBag.SelectedReleasePlatform)
+              {
+                <option value="@item.PlatformName" selected>@item.PlatformName</option>
+              }
+              else
+              {
+                <option value="@item.PlatformName">@item.PlatformName</option>
+              }
+            }
+          </select><br>
+          <select class="selectpicker select-results mb-5" name="genre" id="genre" placeholder="Genres">
+            @* <option value="" selected disabled hidden>Genres</option> *@
+            @foreach (var item in Model.Genres)
+            {
+              if (item.GenreName == ViewBag.SelectedGenre)
+              {
+                <option value="@item.GenreName" selected>@item.GenreName</option>
+              }
+              else
+              {
+                <option value="@item.GenreName">@item.GenreName</option>
+              }
 
+            }
+          </select><br>
+          <button class="btn btn-primary nav-btn-2" type="submit">Apply Filters</button>
+          @* <button class="btn btn-primary nav-btn" type="button" onclick="clearForm()">Clear Filters</button> *@
+          <a class="btn btn-primary nav-btn" href="/Games">Clear Filters</a>
+        </form>
+      </div>
+      @if (Model.NumberOfResults == 0)
+      {
+        <h2>
+          No Results...
+        </h2>
+      }
+      else
+      {
+        <div class="game-section">
+
+          @foreach (var batch in batches)
+          {
+            <div class="game-row">
+              @foreach (var game in batch)
+              {
+                <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
+                  <img src="@game.ImageUrl">
+                </a>
+              }
+            </div>
+          }
+          @* New Page System *@
+          <nav aria-label="Page navigation games">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a asp-action="Index"
+                   asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
+                   asp-route-genre="@ViewBag.SelectedGenre"
+                   asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
+                   asp-route-pageNumber="@(Model.Games.PageIndex-1)"
+                   class="page-link @prevDisabled" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+
+              @if (startPage > 2 || currentPage > 3)
+              {
+                <li class="page-item">
+                  <a class="page-link @(1 == currentPage ? "active" : "")" asp-action="Index"
+                     asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
+                     asp-route-genre="@ViewBag.SelectedGenre"
+                     asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
+                     asp-route-pageNumber="1">1</a>
+                </li>
+                <li class="page-item disabled">
+                  <span class="page-link">...</span>
+                </li>
+
+              }
+
+              @for (int i = startPage; i <= endPage; i++)
+              {
+
+                <li class="page-item">
+                  <a class="page-link @(i == currentPage ? "active" : "")" asp-action="Index"
+                     asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
+                     asp-route-genre="@ViewBag.SelectedGenre"
+                     asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
+                     asp-route-pageNumber="@i">@i</a>
+                </li>
+              }
+              @if (currentPage <= Model.Games.TotalPages - 3)
+              {
+                <li class="page-item disabled">
+                  <span class="page-link">...</span>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" asp-action="Index"
+                     asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
+                     asp-route-genre="@ViewBag.SelectedGenre"
+                     asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
+                     asp-route-pageNumber="@(Model.Games.TotalPages)">@Model.Games.TotalPages</a>
+                </li>
+              }
+              <li class="page-item">
+                <a asp-action="Index"
+                   asp-route-releasePlatform="@ViewBag.SelectedReleasePlatform"
+                   asp-route-genre="@ViewBag.SelectedGenre"
+                   asp-route-releaseStatus="@ViewBag.SelectedReleaseStatus"
+                   asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
+                   class="page-link @nextDisabled" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-
-
+      }
 
     </div>
+
+
+
+  </div>
 }
 else
 {
-    <h1 style="color :red">Please log in to access this page.</h1>
+  <h1 style="color :red">Please log in to access this page.</h1>
 }

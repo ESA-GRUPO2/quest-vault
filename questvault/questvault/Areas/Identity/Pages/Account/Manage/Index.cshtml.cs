@@ -5,6 +5,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using questvault.Controllers;
+using questvault.Data;
 using Microsoft.IdentityModel.Tokens;
 using questvault.Models;
 using System.ComponentModel.DataAnnotations;
@@ -14,7 +17,10 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
   public class IndexModel(
         UserManager<User> userManager,
         SignInManager<User> signInManager,
-        ILogger<IndexModel> logger) : PageModel
+        ILogger<IndexModel> logger,
+        ApplicationDbContext context,
+        IWebHostEnvironment webHostEnvironment
+    ) : PageModel
   {
 
     /// <summary>
@@ -53,6 +59,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
     ///     directly from your code. This API may change or be removed in future releases.
     /// </summary>
+    /// 
+
+    [Display(Name = "avatar")]
+    public IFormFile ProfilePhoto { get; set; }
+
     public class InputModel
     {
       /// <summary>
@@ -90,7 +101,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       Username = userName;
       Email = email;
       Is2faEnabled = is2faEnabled;
-
+      var library = await context.GamesLibrary.
+        Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
+        FirstOrDefaultAsync(l => l.UserId == user.Id);
+      ViewData["Top5"] = null;
+      if (library != null) { ViewData["Top5"] = library.Top5Games; }
     }
 
     public async Task<IActionResult> OnGetAsync()
@@ -102,6 +117,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       }
 
       await LoadAsync(user);
+      ViewData["UserAvatar"] = user.ProfilePhotoPath;
       return Page();
     }
     public async Task<IActionResult> OnPostAsync()
@@ -141,5 +157,46 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       await LoadAsync(user);
       return Page();
     }
+
+    public async Task<IActionResult> OnPostAvatarAsync()
+    {
+      string filename = UploadFile(ProfilePhoto);
+
+      var user = await userManager.GetUserAsync(User);
+      if (user == null)
+      {
+        return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+      }
+
+      var userToUpdate = await context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+      if (userToUpdate != null)
+      {
+        userToUpdate.ProfilePhotoPath = filename;
+        await context.SaveChangesAsync();
+      }
+
+      return RedirectToPage();
+    }
+
+    private string UploadFile(IFormFile ProfilePhoto)
+    {
+      string fileName = null;
+      if (ProfilePhoto == null)
+      {
+      }
+      if (ProfilePhoto != null)
+      {
+        string uploadDir = Path.Combine(webHostEnvironment.WebRootPath, "img/usr_profile");
+        fileName = Guid.NewGuid().ToString() + "_" + ProfilePhoto.FileName;
+        string filePath = Path.Combine(uploadDir, fileName);
+
+        using (var filestream = new FileStream(filePath, FileMode.Create))
+        {
+          ProfilePhoto.CopyTo(filestream);
+        }
+      }
+      return fileName;
+    }
+
   }
 }

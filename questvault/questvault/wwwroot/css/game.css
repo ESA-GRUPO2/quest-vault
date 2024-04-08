@@ -1,16 +1,23 @@
 ﻿.game-details {
     margin: 0px 71px 0px 71px;
     color: white;
-    margin-bottom: 12vh;
+    margin-bottom: 3vh;
 }
 
 .game-title {
 }
 
+.game-date {
+  font-weight: 300 !important;
+}
+
+.game.company {
+  font-weight: 300 !important;
+}
+
 .game-bar {
     background: #711C91;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 4vh auto 2vh auto;
     width: 100%;
     height: 10px;
     opacity: 1;
@@ -61,6 +68,10 @@
     font-size: 110%;
     text-align: justify;
 }
+
+  .game-about p {
+    font-weight: 300 !important;
+  }
 
 .game-captures{
     width: auto;
@@ -167,6 +178,52 @@
     margin: 0;
 }
 
-.review-user-publish{
 
+
+/*GAME REVIEW PARCIAL*/
+
+
+.review-card {
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 45.5%;
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 10%;
+  text-align: left;
+  overflow: hidden; /* Para evitar que o conteúdo se sobreponha */
+  display: flex;
 }
+
+.review-user{
+  width: 20%;
+}
+
+.review-rating{
+  width: 20%;
+}
+
+.review-text{
+  width: 80%;
+}
+
+.review-delete{
+  width: 80%;
+}
+
+.btn-remove {
+  background: #ea0c00;
+  color: #ffffff;
+  border-radius: 24px;
+  width: 7.5rem;
+  height: 2.75rem;
+  padding: 6px;
+  border: none;
+  text-align: center;
+  font-weight: bolder;
+  line-height: 30px;
+}
+
+  .btn-remove:hover {
+    background: #591414;
+  }

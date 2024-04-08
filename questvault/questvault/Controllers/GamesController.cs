@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MailKit.Search;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
@@ -7,12 +8,13 @@ using questvault.Data;
 using questvault.Models;
 //using questvault.Migrations;
 using questvault.Services;
+using questvault.Utils;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace questvault.Controllers
 {
   /// <summary>
   /// Controller for managing games.
-  /// Note: This controller is a work in progress (WIP) and may undergo significant changes.
   /// </summary>
   /// <remarks>
   /// Constructor for GamesController.
@@ -26,7 +28,7 @@ namespace questvault.Controllers
           SignInManager<User> signInManager
         ) : Controller
   {
-
+    private readonly int _pageSize = 20;
 
     /// <summary>
     /// Index of the page Games that shows all the games and the filtered ones.
@@ -37,7 +39,7 @@ namespace questvault.Controllers
     /// <returns>A view with the games data</returns>
     [Authorize]
     [HttpGet]
-    public async Task<IActionResult> Index(string releaseStatus, string genre, string releasePlatform)
+    public async Task<IActionResult> Index(int? pageNumber, string releaseStatus, string genre, string releasePlatform)
     {
       // Defina as variáveis de exibição para armazenar os valores selecionados
       ViewBag.SelectedReleaseStatus = releaseStatus;
@@ -46,15 +48,15 @@ namespace questvault.Controllers
       //ViewBag.SelectedReleaseYear = releaseYear;
       if (genre == null && releasePlatform == null && releaseStatus == null)
       {
-        var filteredGames = await context.Games
+        var filteredGames = context.Games
             .OrderByDescending(o => o.IgdbRating)
-            .ThenByDescending(o => o.TotalRatingCount)
-            .ToListAsync();
+            .ThenByDescending(o => o.TotalRatingCount);
 
+        var list = await PaginatedList<Game>.CreateAsync(filteredGames.AsNoTracking(), pageNumber ?? 1, _pageSize);
         var data = new GameViewData
         {
-          NumberOfResults = filteredGames.Count,
-          Games = filteredGames,
+          NumberOfResults = list.Count,
+          Games = list,
           Genres = context.Genres,
           Platforms = context.Platforms.Distinct(),
         };
@@ -83,13 +85,13 @@ namespace questvault.Controllers
         //    query = query.Where(g => g.ReleaseDate.Value.Year == releaseYear);
         //}
 
-        var filteredGames = await query.OrderByDescending(g => g.IgdbRating).ToListAsync();
-
+        //var filteredGames = await query.OrderByDescending(g => g.IgdbRating).ToListAsync();
+        var list = await PaginatedList<Game>.CreateAsync(query.AsNoTracking().OrderByDescending(g => g.IgdbRating), pageNumber ?? 1, _pageSize);
         var data = new GameViewData
         {
-          NumberOfResults = filteredGames.Count,
-          Games = filteredGames,
-          Genres = context.Genres,
+          NumberOfResults = list.Count,
+          Games = list,
+          Genres = context.Genres.Distinct(),
           Platforms = context.Platforms.Distinct(),
         };
         return View(data);
@@ -107,25 +109,28 @@ namespace questvault.Controllers
     [Authorize]
     [HttpGet]
     [Route("results")]
-    public async Task<IActionResult> Results(string searchTerm)
+    public async Task<IActionResult> Results(string searchTerm, int? pageNumber)
     {
       ViewBag.SearchTerm = searchTerm;
       // Se o searchTerm for nulo, retorne NotFound
       if (searchTerm == null)
       {
-        return RedirectToAction("Index");
+                await Console.Out.WriteLineAsync("searchTerm is null");
+                
+                return RedirectToAction("Index");
       }
 
       // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
-      var results = await context.Games.Where(e => e.Name.Contains(searchTerm))
+      var query = context.Games.Where(e => e.Name.Contains(searchTerm))
           .OrderByDescending(o => o.IgdbRating)
-          .ThenByDescending(o => o.TotalRatingCount)
-          .ToListAsync();
+          .ThenByDescending(o => o.TotalRatingCount);
+      ViewBag.NumberOfResults = query.Count();
+      var list = await PaginatedList<Game>.CreateAsync(query.AsNoTracking(), pageNumber ?? 1, _pageSize);
       var data = new GameViewData
       {
         SearchTerm = searchTerm,
-        NumberOfResults = results.Count,
-        Games = results,
+        NumberOfResults = list.Count,
+        Games = list,
         Genres = context.Genres,
         Platforms = context.Platforms,
       };
@@ -377,6 +382,7 @@ namespace questvault.Controllers
       return RedirectToAction("Results", new { searchTerm });
     }
 
+
     /// <summary>
     /// Retrieves details of a game with the specified ID.
     /// </summary>
@@ -385,11 +391,11 @@ namespace questvault.Controllers
     [Authorize]
     [HttpGet]
     [Route("details/{id}")]
-    public async Task<IActionResult> Details(int? id)
+    public async Task<IActionResult> Details(int id)
     {
-      if (id == null || context.Games == null)
+      if (context.Games == null)
       {
-        return NotFound(); //TODO NOT FOUND
+        return NotFound();
       }
 
       var game = await context.Games
@@ -400,7 +406,6 @@ namespace questvault.Controllers
           .Include(g => g.GameCompanies!)
               .ThenInclude(gc => gc.Company)
           .FirstOrDefaultAsync(m => m.IgdbId == id);
-
 
       if (game == null)
       {
@@ -415,20 +420,38 @@ namespace questvault.Controllers
 
       bool isGameAddedToLibrary = userLibrary != null && userLibrary.GameLogs.Any(g => g.IgdbId == id);
 
-      var gameLog = userLibrary != null ? userLibrary.GameLogs.FirstOrDefault(g => g.IgdbId == id) : null;
+      var gameLog = userLibrary?.GameLogs.FirstOrDefault(g => g.IgdbId == id);
 
       if (gameLog != null)
       {
-        ViewBag.Ownage = gameLog.Ownage;
+        
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
       }
-      // Passe a variável para a visualização
+
       ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
 
+      ViewBag.IsGameTop5 =
+        userLibrary != null &&
+        userLibrary.Top5Games != null &&
+        userLibrary.Top5Games.Any(g => g.IgdbId == id);
 
+      ViewBag.Reviews = GetReviews(id, userLibrary);
+      await Console.Out.WriteLineAsync("Reviews:");
+      foreach (var review in ViewBag.Reviews)
+        await Console.Out.WriteLineAsync($"game: {review.Game.Name}, user: {review.User.UserName}, rating: {review.Rating}, review: {review.Review}");
       return View(game);
+    }
+           
+
+
+    private List<GameLog> GetReviews(int? gameId, GamesLibrary currentUserLibrary)
+    {
+      if (gameId == null || currentUserLibrary == null) return [];
+      return [.. context.GameLog
+        .Include(gl => gl.Game).Include(gl => gl.User)
+        .Where(gl => gl.IgdbId == gameId && gl.Rating != null)];
     }
 
     /// <summary>
@@ -464,7 +487,7 @@ namespace questvault.Controllers
     /// </summary>
     /// <param name="game">The existing game be processed.</param>
     /// <param name="newGame">The new game to be added to GameGenre relationship.</param>
-    private void ProcessGameGenres(Models.Game game, Models.Game newGame)
+    private void ProcessGameGenres(Game game, Game newGame)
     {
       foreach (var genre in game.GameGenres)
       {
@@ -483,8 +506,5 @@ namespace questvault.Controllers
         }
       }
     }
-
-
-
   }
 }

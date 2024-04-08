@@ -18,25 +18,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using questvault.Models;
+using questvault.Data;
 
 namespace questvault.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ExternalLoginModel : PageModel
     {
-        private readonly SignInManager<User> _signInManager;
-        private readonly UserManager<User> _userManager;
-        private readonly IUserStore<User> _userStore;
-        private readonly IUserEmailStore<User> _emailStore;
-        private readonly IEmailSender _emailSender;
-        private readonly ILogger<ExternalLoginModel> _logger;
+      private readonly SignInManager<User> _signInManager;
+      private readonly UserManager<User> _userManager;
+      private readonly IUserStore<User> _userStore;
+      private readonly IUserEmailStore<User> _emailStore;
+      private readonly IEmailSender _emailSender;
+      private readonly ILogger<ExternalLoginModel> _logger;
+      private readonly ApplicationDbContext _context;
 
-        public ExternalLoginModel(
+    public ExternalLoginModel(
             SignInManager<User> signInManager,
             UserManager<User> userManager,
             IUserStore<User> userStore,
             ILogger<ExternalLoginModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext context)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -44,13 +47,14 @@ namespace questvault.Areas.Identity.Pages.Account
             _emailStore = GetEmailStore();
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        [BindProperty]
+  /// <summary>
+  ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+  ///     directly from your code. This API may change or be removed in future releases.
+  /// </summary>
+  [BindProperty]
         public InputModel Input { get; set; }
 
         /// <summary>
@@ -117,7 +121,12 @@ namespace questvault.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
+                var user = await _signInManager.UserManager.GetUserAsync(this.User);
+                var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now) };
+                _context.LogginInstances.Add(logginInstance);
+                await _context.SaveChangesAsync();
                 return LocalRedirect(returnUrl);
+                return RedirectToAction("UserLibrary", "Library", new { id = _signInManager.UserManager.GetUserName(User)});
             }
             if (result.IsLockedOut)
             {

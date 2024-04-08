@@ -1,0 +1,108 @@
+﻿@model Statistics
+@{
+  ViewData["Title"] = "Statistics";
+  ViewData["help_Text"] = @"In the Statistics page you can see the numbers behind the app!";
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="main-section">
+
+  <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+    <h3 style="color:white">App Stats</h3>
+  </div>
+
+  <hr class="bar">
+
+  <div class="container-fluid">
+    <div class="d-flex">
+      <h4 class="">Registered Accounts: @Model.registeredUsersCount</h4>
+      <h4 class="">Average Rating: @Model.gameRatingAverage</h4>
+    </div>
+    <div style="display: flex">
+      @* div onde está o chart dos logins*@
+      <div style="width:50rem; height:50rem; margin-left: 5rem">
+        <canvas id="dailyLoginChart"></canvas>
+      </div>
+
+      @* div onde está o chart dos acessos*@
+      <div style="width:50rem; height:50rem; margin-left: 5rem">
+        <canvas id="dailyAccessChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  //Chart dos logins
+  var ctx = document.getElementById('dailyLoginChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: @Html.Raw(Json.Serialize(Model.LoginDateList)),
+      datasets: [{
+        label: 'Daily Loggins',
+        data: @Html.Raw(Json.Serialize(Model.LoginDateCountList)),
+        backgroundColor: [
+          'rgb(152, 0, 141, 1)',
+        ],
+        borderColor: [
+          'rgb(152, 0, 141, 1)',
+        ],
+        borderWidth: 1,
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: 'white',
+          }
+        },
+        x: {
+          ticks: {
+            color: 'white',
+          }
+        }
+      }
+    }
+  });
+
+  //Chart dos acessos
+  var ctx2 = document.getElementById('dailyAccessChart').getContext('2d');
+  var myChart = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: @Html.Raw(Json.Serialize(Model.AccessDateList)),
+      datasets: [{
+        label: 'Daily Access',
+        data: @Html.Raw(Json.Serialize(Model.AccessDateCountList)),
+        backgroundColor: [
+          'rgb(152, 0, 141, 1)',
+        ],
+        borderColor: [
+          'rgb(152, 0, 141, 1)',
+        ],
+        borderWidth: 1,
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: 'white',
+          }
+        },
+        x: {
+          ticks: {
+            color: 'white',
+          }
+        }
+      }
+    }
+  });
+</script>

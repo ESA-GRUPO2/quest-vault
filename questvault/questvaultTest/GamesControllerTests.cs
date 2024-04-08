@@ -39,7 +39,7 @@ namespace questvaultTest
 
 
 
-            var actionResult = await controller.Index("unreleased", "", "");
+            var actionResult = await controller.Index(1, "unreleased", "", "");
 
 
             var viewResult = Assert.IsType<ViewResult>(actionResult);
@@ -70,7 +70,7 @@ namespace questvaultTest
 
 
 
-            var actionResult = await controller.Index("released", "", "");
+            var actionResult = await controller.Index(1, "released", "", "");
 
 
             var viewResult = Assert.IsType<ViewResult>(actionResult);
@@ -99,7 +99,7 @@ namespace questvaultTest
 
 
 
-            var actionResult = await controller.Results("Game 1");
+            var actionResult = await controller.Results("Game 1", 1);
 
 
             var viewResult = Assert.IsType<ViewResult>(actionResult);
@@ -126,7 +126,7 @@ namespace questvaultTest
 
 
 
-            var actionResult = await controller.Results("");
+            var actionResult = await controller.Results("", 1);
 
             var viewResult = Assert.IsType<ViewResult>(actionResult);
 

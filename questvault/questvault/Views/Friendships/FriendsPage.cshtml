@@ -18,11 +18,11 @@
 
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <button asp-controller="Friendships" asp-action="FriendsPage" class="btn btn-blue-big m-2" disabled>
+      <button asp-controller="Friendships" asp-action="FriendsPage" class="btn btn-blue-big btn-search-disabled m-2">
                 <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
                 Friends
             </button>
-            <a asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple m-2">
+        <a asp-controller="Friendships" asp-action="FriendRequests" class="btn btn-purple btn-users-inverted align-items-center m-2">
                 <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Request Icon" />
                 Requests
             </a>
@@ -35,9 +35,13 @@
                         @foreach (var item in Model)
                         {
                             <td class="d-flex mt-5 me-4 align-items-center justify-content-center">
+
+                                <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { name1 = User.Identity.Name, id2 = item.User2.Id})">
                                 <img class="user-foto p-3 ms-0 me-4" src="~/img/vector/user.svg" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
-                                <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.User2.UserName)</span>
-                                <a class="ms-5" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id">
+                                 <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.User2.UserName)</span> 
+                                </a>
+                                <a class="ms-5" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id" 
+                                    onclick="return confirm('Are you sure you to remove @item.User2.UserName from your friends?')">
                                     <img id="icon-trash" class="nav-vector" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
                                 </a>
                             </td>
