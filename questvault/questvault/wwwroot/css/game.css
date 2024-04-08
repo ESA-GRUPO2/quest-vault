@@ -187,29 +187,40 @@
 .review-card {
   border: 2px solid white;
   border-radius: 15px;
-  width: 45.5%;
+  width: 48%;
   float: left;
-  margin-top: 20px;
-  margin-bottom: 10%;
+  margin: 2rem 2rem 2rem 2rem;
+  padding: 1.5rem;
   text-align: left;
   overflow: hidden; /* Para evitar que o conteúdo se sobreponha */
   display: flex;
 }
 
+.review-card p{
+  margin-bottom: 0 !important;
+}
+
 .review-user{
+  margin-left: 1rem;
+  margin-top: 0.5rem;
   width: 20%;
 }
 
-.review-rating{
-  width: 20%;
+.review-rating {
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .review-text{
-  width: 80%;
+  width: 90%;
+  font-weight: 200 !important;
+  text-align: justify;
 }
 
 .review-delete{
-  width: 80%;
+  width: 20%;
+  margin-left: 2rem;
+  margin-right: 1rem;
 }
 
 .btn-remove {

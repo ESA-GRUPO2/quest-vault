@@ -4,58 +4,66 @@
   ViewData["Title"] = "Users";
 }
 
-<h1 class="container text-light">@ViewData["Title"]</h1>
+<div class="main-section">
 
-<table class="table table-dark table-sm table-profile container">
-  <thead>
-    <tr>
-      <th style="text-align: left">
-        @Html.DisplayNameFor(model => model.UserName)
-      </th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var item in Model)
-    {
-      <tr style="height: 53px">
-        <td style="text-align: left">
-          <a style="color:white" href="@Url.Action("Profile", "User", new {name1 =User.Identity.Name, id2 = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a>
-        </td>
-        <td>
-          @if (item.Clearance < 2 && !item.LockoutEnabled)
-          {
-            <a class="btn btn-primary btn-remove" onclick="return confirm('Are you sure you want to Lockout @item.UserName?')" 
-            asp-controller="Backoffice" asp-action="LockoutUserAll" asp-route-id="@item.Id">Lockout User</a>
-          }
-          @if(item.LockoutEnabled){
-            <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')" 
-            class="btn btn-primary nav-btn-2" style="width: 12.5rem" asp-controller="Backoffice" asp-action="RemoveLockoutUserAll" asp-route-id="@item.Id">Remove Lockout</a>
-          }
-        </td>
-        <td>
-          @if (item.Clearance != 2 && !item.LockoutEnabled)
-          {
-            <a onclick ="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
-               class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdminAll" asp-route-id="@item.Id">Give admin</a>
-          }
-        </td>
-        <td>
-          @if (item.Clearance == 0 && !item.LockoutEnabled)
-          {
-            <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
-               class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModeratorAll" asp-route-id="@item.Id">Give moderator</a>
-          }
-          @if (item.Clearance == 1 && !item.LockoutEnabled)
-          {
-            <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
-               class="btn btn-primary nav-btn-2" asp-controller="Backoffice" asp-action="RemovePermissionsAll" asp-route-id="@item.Id">Remove Mod</a>
-          }
-        </td>
+  <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+    <h3 style="color:white">Users</h3>
+  </div>
+
+  <hr class="bar">
+
+  <table class="table table-dark table-sm table-profile container">
+    <thead>
+      <tr>
+        <th style="text-align: left">
+          @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    }
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      @foreach (var item in Model)
+      {
+        <tr style="height: 53px">
+          <td style="text-align: left">
+            <a style="color:white" href="@Url.Action("Profile", "User", new {name1 =User.Identity.Name, id2 = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a>
+          </td>
+          <td>
+            @if (item.Clearance < 2 && !item.LockoutEnabled)
+            {
+              <a class="btn btn-primary btn-remove" onclick="return confirm('Are you sure you want to Lockout @item.UserName?')"
+                 asp-controller="Backoffice" asp-action="LockoutUserAll" asp-route-id="@item.Id">Lockout User</a>
+            }
+            @if (item.LockoutEnabled)
+            {
+              <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
+                 class="btn btn-primary nav-btn-2" style="width: 12.5rem" asp-controller="Backoffice" asp-action="RemoveLockoutUserAll" asp-route-id="@item.Id">Remove Lockout</a>
+            }
+          </td>
+          <td>
+            @if (item.Clearance != 2 && !item.LockoutEnabled)
+            {
+              <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
+                 class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdminAll" asp-route-id="@item.Id">Give admin</a>
+            }
+          </td>
+          <td>
+            @if (item.Clearance == 0 && !item.LockoutEnabled)
+            {
+              <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
+                 class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModeratorAll" asp-route-id="@item.Id">Give moderator</a>
+            }
+            @if (item.Clearance == 1 && !item.LockoutEnabled)
+            {
+              <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
+                 class="btn btn-primary nav-btn-2" asp-controller="Backoffice" asp-action="RemovePermissionsAll" asp-route-id="@item.Id">Remove Mod</a>
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
