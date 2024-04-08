@@ -14,3 +14,7 @@ $(document).ready(function () {
         }
     });
 });
+
+document.getElementById("avatarInput").onchange = function () {
+  document.getElementById("fileName").innerText = this.files[0].name;
+};

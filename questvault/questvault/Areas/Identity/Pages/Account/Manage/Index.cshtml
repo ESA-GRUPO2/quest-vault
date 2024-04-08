@@ -16,8 +16,8 @@
   var userAvatar = ViewData["UserAvatar"] as string;
 }
 <style>
-  #username::placeholder{
-    opacity:0.6;
+  #username::placeholder {
+    opacity: 0.6;
   }
 </style>
 <div class="main-section">
@@ -36,55 +36,55 @@
   <div class="container-fluid m-0">
     <div class="row align-items-baseline ps-4">
       <div class="row">
-       <div class="col-10">
-        <h4 style="padding-left: 16rem; margin-bottom: 2rem;" class="text-light d-flex">Account Details</h4>
-        <div asp-validation-summary="ModelOnly" class="error-box d-flex" role="alert"></div>
-      </div>
+        <div class="col-10">
+          <h4 style="padding-left: 16rem; margin-bottom: 2rem;" class="text-light d-flex">Account Details</h4>
+          <div asp-validation-summary="ModelOnly" class="error-box d-flex" role="alert"></div>
+        </div>
         <div class="col-2 d-flex align-items-center justify-content-center">
         </div>
       </div>
 
-        <div class="col-2 d-block justify-content-center">
-      <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
-                @if (!string.IsNullOrEmpty(userAvatar))
-                {
-                    <img style="height:125px;width:130px; background-size: cover;border-radius: 50%; margin: -6px;" src="~/img/usr_profile/@userAvatar" alt="User">
-                } else
-                {
-                    <img style="height:80px;width:80px;margin-left: 13%;margin-top: 13%; background-size: cover;border-radius: 50%;" src="~/img/usr_profile/user.svg" alt="User">
-                }
+      <div class="col-2 d-block justify-content-center">
+        <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
+          @if (!string.IsNullOrEmpty(userAvatar))
+          {
+            <img style="height:125px;width:130px; background-size: cover;border-radius: 50%; margin: -6px;" src="~/img/usr_profile/@userAvatar" alt="User">
+          }
+          else
+          {
+            <img style="height:80px;width:80px;margin-left: 13%;margin-top: 13%; background-size: cover;border-radius: 50%;" src="~/img/usr_profile/user.svg" alt="User">
+          }
+        </div>
+        <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#avatarModal">Change Avatar</button>
+        @*Modal form start*@
+        <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="avatarModalLabel">Change Avatar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form id="avatarForm" method="post" enctype="multipart/form-data" asp-page-handler="Avatar">
+                <div class="modal-body">
+                  <div class="form-group">
+                      <label for="avatarInput" class="custom-file-upload btn-purple" style="margin: auto">Select File</label>
+                      <div id="fileName">No file chosen</div>
+                      <input asp-for="ProfilePhoto" type="file" class="form-control-file" id="avatarInput" name="ProfilePhoto" accept="image/png, image/jpeg" required>
+                   <small class="form-text text-muted" style="color: white !important">Max file size: 5MB</small>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  @* <button type="button" class="btn btn-secondary btn-purple" data-bs-dismiss="modal">Close</button> *@
+                  <button type="submit" class="btn btn-blue btn-profile" style="margin-bottom:0px">Save changes</button>
+                </div>
+              </form>
             </div>
-      <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#avatarModal">Change Avatar</button>
-            @*Modal form start*@
-    <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="avatarModalLabel">Change Avatar</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form id="avatarForm" method="post" enctype="multipart/form-data" asp-page-handler="Avatar">
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="avatarInput">Select Avatar:</label>
-            <input asp-for="ProfilePhoto" type="file" class="form-control-file" id="avatarInput" name="ProfilePhoto" accept="image/png, image/jpeg" required>
-            <small class="form-text text-muted">Max file size: 5MB</small>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-            @*modal form end*@
-    </div>
+        @*modal form end*@
+      </div>
 
-   @*  <div class="col-4"> *@
+      @*  <div class="col-4"> *@
       <div class="col-8">
         <form id="change-profile-form" method="post" asp-page-handler="Profile">
           <div class="row">
@@ -144,12 +144,12 @@
 
       </div>
 
-        <div class="col-2">
-       
-          <form>
-            <div class="form-check form-switch row">
-              <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
-            </div>
+      <div class="col-2">
+
+        <form>
+          <div class="form-check form-switch row">
+            <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
+          </div>
           <div class="form-check form-switch row">
 
             @if (Model.Is2faEnabled)
@@ -161,11 +161,11 @@
               <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
             }
           </div>
-            <div class="form-check form-switch row mb-3">
-              <a asp-page="./DeactivateAccount" style="float: left; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
-            </div>
-          </form>
-        </div>
+          <div class="form-check form-switch row mb-3">
+            <a asp-page="./DeactivateAccount" style="float: left; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
+          </div>
+        </form>
+      </div>
     </div>
 
     <div class="row container-fluid mt-4">
@@ -188,3 +188,14 @@
 @section Scripts {
   <partial name="_ValidationScriptsPartial" />
 }
+
+<style>
+  .custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  #avatarInput {
+    display: none;
+  }
+</style>  
