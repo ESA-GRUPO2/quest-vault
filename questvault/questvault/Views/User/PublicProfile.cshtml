@@ -7,7 +7,7 @@
        In this page you can see the profile of user with all the information avaliable <br/>
        You can send a friend request so you can stay conected (if he ever comes outside, he will see it)!";
   var user = await UserManager.GetUserAsync(User);
-  var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "user.svg";
+  var userAvatar = (Model.user != null && Model.user.ProfilePhotoPath != null) ? Model.user.ProfilePhotoPath : "user.svg";
 }
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body class="profile">
