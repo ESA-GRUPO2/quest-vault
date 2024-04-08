@@ -7,7 +7,7 @@
        In this page you can see the profile of user with all the information avaliable <br/>
        You can send a friend request so you can stay conected (if he ever comes outside, he will see it)!";
   var user = await UserManager.GetUserAsync(User);
-  var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "user.svg";
+  var userAvatar = (Model.user != null && Model.user.ProfilePhotoPath != null) ? Model.user.ProfilePhotoPath : "user.svg";
 }
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body class="profile">
@@ -51,7 +51,7 @@
             {
               <a asp-controller="User" asp-action="RemoveFriend" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-3"
                 onclick="return confirm('Are you sure you to remove @Model.user.UserName from your friends?')">
-                <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
+                <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/heart-crack-solid.svg" alt="Heart crack Icon" />
                 Remove Friend
               </a>
             }

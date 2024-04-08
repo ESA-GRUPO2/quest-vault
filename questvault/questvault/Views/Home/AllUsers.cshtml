@@ -29,7 +29,7 @@
       {
         <tr style="height: 53px">
           <td style="text-align: left">
-            <a style="color:white" href="@Url.Action("Profile", "User", new {name1 =User.Identity.Name, id2 = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a>
+            <a style="color:white" href="@Url.Action("Profile", "User", new {id = item.Id})"> @Html.DisplayFor(modelItem => item.UserName) </a>
           </td>
           <td>
             @if (item.Clearance < 2 && !item.LockoutEnabled)
