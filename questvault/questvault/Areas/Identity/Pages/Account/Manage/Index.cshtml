@@ -4,9 +4,9 @@
   ViewData["Title"] = "My Account";
   ViewData["ActivePage"] = ManageNavPages.Index;
   ViewData["help_Text"] = @"
-       This is your #MyAccount page! <br/>
+       This is your MyAccount page! <br/>
        In this page you can personalize your profile however you want, <br/>
-       in the main section you can change your Usarname,Country and password.<br/>
+       in the main section you can change your Usarname and password.<br/>
        On the right side theres a section for 2 Factor Authentication, <br/>
        Privacy setting and Disabiling your account if thats what you want!";
   var top5 = ViewData["Top5"] as List<GameLog>;
@@ -70,10 +70,10 @@
     </div>
 
    @*  <div class="col-4"> *@
-      <div class="col-4">
+      <div class="col-8">
         <form id="change-profile-form" method="post" asp-page-handler="Profile">
           <div class="row">
-            <div class="col-4">
+            <div class="col-6">
               @* <form id="change-username-form" method="post" asp-page-handler="UserName"> *@
               <div class="row mb-3">
                 <label class="col-sm-4 col-form-label text-light">Email</label>
@@ -92,7 +92,7 @@
               </div>
               @* </form> *@
             </div>
-            <div class="col-4">
+            <div class="col-6">
               @* <form id="change-password-form" method="post" asp-page-handler="Password"> *@
               <div class="row mb-3">
                 <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
@@ -122,7 +122,7 @@
                 </div>
               </div>
               @* </form> *@
-              <button style="float: right; margin-right: 15%; margin-top: -1.5rem" type="submit" class="btn-blue">Save Changes</button>
+              <button style="float: right; margin-right: 6rem; margin-top: -1.5rem" type="submit" class="btn-blue">Save Changes</button>
             </div>
           </div>
         </form>
@@ -154,7 +154,7 @@
       <div class="col-8">
         <partial name="_Top5" for="@ViewData["Top5"] as List<GameLog>" />
       </div>
-      @* <div class="col-4"> *@
+      <div class="col-4">
         <h4 style="float:right" class="text-light mb-4">Connections</h4>
         <table class="table table-sm table-borderless table-profile">
           <tr>
