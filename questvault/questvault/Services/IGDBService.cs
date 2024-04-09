@@ -22,7 +22,7 @@ namespace questvault.Services
         query += $" \"{g}\",";
       }
       query = query.TrimEnd(',') + ") &genres != null & cover.image_id != null & involved_companies != null & platforms != null & screenshots.image_id != null & videos.video_id != null & first_release_date != null; " +
-          "sort total_rating_count desc; limit 50;";
+          "sort total_rating_count desc; limit 80;";
       var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
       return games
         .Where(g => g != null &&

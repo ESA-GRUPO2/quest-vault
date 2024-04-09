@@ -303,7 +303,7 @@ namespace questvault.Controllers
     }
 
     [Authorize]
-    [HttpGet]
+    [HttpPost]
     [Route("ImportLibrary")]
     public async Task<IActionResult> ImportLibrary(string steamId)
     {
@@ -526,6 +526,8 @@ namespace questvault.Controllers
 
       var user = await signInManager.UserManager.GetUserAsync(User);
       if( user == null ) return BadRequest();
+      user.SteamID = steamId;
+      await SaveChangesAsync(context);
       var library = await context.GamesLibrary.Include(l=>l.GameLogs).FirstOrDefaultAsync(l => l.User == user);
       if( library == null )
       {
@@ -534,22 +536,24 @@ namespace questvault.Controllers
         await SaveChangesAsync(context);
       }
       library.GameLogs ??= [];
-      await Console.Out.WriteLineAsync("FinalGamelogs: " + finalGameLogs.Count);
       foreach( GameLog gl in finalGameLogs )
       {
-        var game = await context.Games.FirstOrDefaultAsync(g=> g.IgdbId == gl.IgdbId);
         var existingGL = library.GameLogs.FirstOrDefault(g => g.IgdbId == gl.IgdbId);
         if( existingGL != null )
         {
           existingGL.Status = gl.Status;
-          await SaveChangesAsync(context);
         }
-        gl.Game = game;
-        library.GameLogs.Add(gl);
+        else
+        {
+          var game = await context.Games.FirstOrDefaultAsync(g=> g.IgdbId == gl.IgdbId);
+          if( game != null )
+          {
+            gl.Game = game;
+            library.GameLogs.Add(gl);
+          }
+        }
         await SaveChangesAsync(context);
-        await Console.Out.WriteLineAsync("library: " + library.GameLogs.Count);
       }
-      await Console.Out.WriteLineAsync("library: " + library.GameLogs.Count);
       return RedirectToAction("UserLibrary", "Library", new { id = signInManager.UserManager.GetUserName(User) });
     }
 

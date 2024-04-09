@@ -56,7 +56,7 @@ namespace questvault.Services
     public async Task<List<GameLog>> GetGamesFromIGDB(List<GameInfo> jsonGames)
     {
       int index = 0;
-      int batchSize = 50; //the safe ammount that we can search in IGDB at once is 80
+      int batchSize = 80; //the safe ammount that we can search in IGDB at once is 80
       List<GameLog> gameLogs = [];
       while( index < jsonGames.Count )
       {
