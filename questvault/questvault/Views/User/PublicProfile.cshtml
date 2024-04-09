@@ -28,11 +28,11 @@
             <h4 style="color: white" class="profile-username">@Model.user.UserName</h4>
             @if (Model.user.Clearance == 1)
             {
-              <h6 style="text-decoration:underline" class="profile-role">Moderator</h6>
+              <h6 class="profile-role">Moderator</h6>
             }
             else if (Model.user.Clearance == 2)
             {
-              <h6 style="text-decoration:underline" class="profile-role">Administrator</h6>
+              <h6 class="profile-role">Administrator</h6>
             }
             else
             {

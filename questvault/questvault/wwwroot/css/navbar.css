@@ -50,6 +50,10 @@
     height: 1.5rem;
 }
 
+.nav-btn .nav-vector {
+  filter: invert(10%) sepia(13%) saturate(4570%) hue-rotate(187deg) brightness(95%) contrast(102%);
+}
+
 .nav-btn:hover .nav-vector {
     filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
 }

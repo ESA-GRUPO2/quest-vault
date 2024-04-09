@@ -80,6 +80,9 @@ body {
   background-color: #0abdc6;
   margin-left: 10%;
 }
+  .user-foto img {
+    filter: invert(10%) sepia(13%) saturate(4570%) hue-rotate(187deg) brightness(95%) contrast(102%);
+  }
 
 .btn-blue {
   background-color: #0ABDC6;
