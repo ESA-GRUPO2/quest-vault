@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-  var user = await UserManager.GetUserAsync(User);
+  var user = await SignInManager.UserManager.GetUserAsync(User);
 
   var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "user.svg";
 }

@@ -88,6 +88,43 @@
           Wishlist
         </a>
       </div>
+      <form id="filterForm" asp-controller="Library" asp-action="UserLibrary" method="get">
+        <input type="hidden" name="id" value="@ViewBag.UserLibraryId">
+        <input type="hidden" name="collection" value="@ViewBag.Collection">
+        <select class="selectpicker select-results" name="releasePlatform" id="releasePlatform" placeholder="Platforms">
+          @* <option value="" selected disabled hidden>Platforms</option> *@
+          @foreach (var item in Model.Platforms)
+          {
+            if (item.PlatformName == ViewBag.SelectedReleasePlatform)
+            {
+              <option value="@item.PlatformName" selected>@item.PlatformName</option>
+            }
+            else
+            {
+              <option value="@item.PlatformName">@item.PlatformName</option>
+            }
+          }
+        </select><br>
+        <select class="selectpicker select-results mb-5" name="genre" id="genre" placeholder="Genres">
+          @* <option value="" selected disabled hidden>Genres</option> *@
+          @foreach (var item in Model.Genres)
+          {
+            if (item.GenreName == ViewBag.SelectedGenre)
+            {
+              <option value="@item.GenreName" selected>@item.GenreName</option>
+            }
+            else
+            {
+              <option value="@item.GenreName">@item.GenreName</option>
+            }
+
+          }
+        </select><br>
+        <button class="btn btn-primary nav-btn-2" type="submit">Apply Filters</button>
+        @* <button class="btn btn-primary nav-btn" type="button" onclick="clearForm()">Clear Filters</button> *@
+        <a class="btn btn-primary nav-btn" href="/Library/UserLibrary?id=@ViewBag.UserLibraryId">Clear Filters</a>
+      </form>
+
 
     </div>
     <div class="game-section">

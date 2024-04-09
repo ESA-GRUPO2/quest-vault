@@ -7,16 +7,15 @@
       This page allows you to see some details about the game,<br/>
       You can add the game to your library, give it a progression<br/>
       label and a review so your friends know what you think about it.";
-  ViewData["StatusMessage"] = (TempData["StatusMessage"] != null) ? TempData["StatusMessage"] : null;
+  ViewData["StatusMessage"] = (TempData["StatusMessage"]);
   var reviews = ViewBag.Reviews;
   TempData["_GR-ShowDeleteButton"] = (await SignInManager.UserManager.GetUserAsync(User)).Clearance > 0; // This is necessary for showing the delete button in _GameReviews
 }
 @if (SignInManager.IsSignedIn(User))
 {
-  @if (ViewData["StatusMessage"] != null)
-  {
+
     <partial style="width:90%" name="_StatusMessage" for="@ViewData["StatusMessage"]" />
-  }
+
   <style>
     .select-results {
       padding-top: 3px !important;

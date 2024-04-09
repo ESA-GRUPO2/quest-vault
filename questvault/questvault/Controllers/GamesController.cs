@@ -442,7 +442,7 @@ namespace questvault.Controllers
       ViewBag.Reviews = GetReviews(id, userLibrary);
       await Console.Out.WriteLineAsync("Reviews:");
       foreach (var review in ViewBag.Reviews)
-        await Console.Out.WriteLineAsync($"game: {review.Game.Name}, user: {review.User.UserName}, rating: {review.Rating}, review: {review.Review}");
+        await Console.Out.WriteLineAsync($"game: {review.Game.Name}, user: {review.User}, rating: {review.Rating}, review: {review.Review}");
       return View(game);
     }
            
