@@ -49,14 +49,14 @@
     </div>
     <hr class="bar">
 
-    <div class="d-flex main-section-result">
+    <div class="d-flex main-section-result justify-content-between">
       <div class="filter-section">
         <form id="filterForm" asp-controller="Games" asp-action="Index" method="get">
           <h4 style="color: white; margin-bottom:5vh; text-decoration: underline;">Filters</h4>
           <div class="mb-5 form-switch-release">
             @if (ViewBag.SelectedReleaseStatus == "released")
             {
-              <div class="form-check form-switch mb-2">
+              <div class="form-check form-switch">
                 <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" checked />
                 <label class="form-check-label" for="btn-released">Released</label>
               </div>
@@ -137,7 +137,7 @@
 
           @foreach (var batch in batches)
           {
-            <div class="game-row">
+            <div class="d-flex justify-content-around">
               @foreach (var game in batch)
               {
                 <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">

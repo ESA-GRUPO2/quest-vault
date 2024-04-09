@@ -13,13 +13,30 @@
   <section class="profile-banner d-flex align-items-center">
 
     <div class="container-fluid d-flex align-items-center justify-content-center mt-3">
-      <div class="profile-avatar d-flex align-items-center ">
-        <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="user-foto @(userAvatar == "user.svg" ? "p-4" : "")">
+
+      @* Avatar *@
+      <div class="d-flex align-items-center justify-content-center user-foto profile-avatar col-2">
+        <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="@(userAvatar == "user.svg" ? "p-4" : "")">
       </div>
 
-      <div class="d-flex row ms-3 align-items-center">
+      <div class="d-flex row ms-3 align-items-center col-7">
         <div class="profile-details d-inline-flex mb-4">
-          <h4 class="profile-username">@Model.user.UserName</h4>
+          <div class="col-auto">
+            @* Username *@
+            <h4 style="color: white" class="profile-username">@Model.user.UserName</h4>
+            @if (Model.user.Clearance == 1)
+            {
+              <h6 class="profile-role">Moderator</h6>
+            }
+            else if (Model.user.Clearance == 2)
+            {
+              <h6 class="profile-role">Administrator</h6>
+            }
+            else
+            {
+              <h6 style="visibility: hidden" class="profile-role">.</h6>
+            }
+          </div>
 
           @if (Model.RequestSent)
           {
