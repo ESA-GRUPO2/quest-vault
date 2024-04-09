@@ -76,6 +76,6 @@ namespace questvault.Models
     /// </summary>
     public List<GameCompany>? GameCompanies { get; set; }
 
-    public string SteamUrl { get; set; }
+    public string? SteamUrl { get; set; }
   }
 }

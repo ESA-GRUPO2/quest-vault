@@ -13,6 +13,32 @@ namespace questvault.Services
 
     private readonly IGDBClient _api = new(igdbClientId, igdbClientSecret);
 
+    public async Task<IEnumerable<Game>> SearchGamesSteam(List<string> gameNames)
+    {
+      string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, cover.image_id, first_release_date, screenshots.image_id, videos.video_id, status;" +
+          $"where";
+      foreach( string g in gameNames )
+      {
+        query += $" name ~ \"{g}\" |";
+      }
+      query = query.TrimEnd('|') + "&genres != null & cover.image_id != null & involved_companies != null & platforms != null & screenshots.image_id != null & videos.video_id != null & first_release_date != null; " +
+          "sort total_rating_count desc; limit 50;";
+      var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
+      return games
+        .Where(g => g != null &&
+                    g.FirstReleaseDate != null &&
+                    g.Name != null &&
+                    g.Rating != null &&
+                    g.TotalRatingCount != null &&
+                    g.Cover != null &&
+                    g.Screenshots != null &&
+                    g.Genres != null &&
+                    g.InvolvedCompanies != null &&
+                    g.Platforms != null
+              )
+        .Select(g => BuildGameFromIGDBGame(g, GetSteamUrl(g.Id).Result));
+    }
+
     public async Task<IEnumerable<Game>> SearchGames(string searchTerm)
     {
 
@@ -32,9 +58,9 @@ namespace questvault.Services
           "sort total_rating_count desc;" +
           $"limit {limit};";
 
-      var popularGames = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
+      IGDB.Models.Game[] popularGames = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
 
-      return popularGames.Select(BuildGameFromIGDBGame);
+      return popularGames.Select(g => BuildGameFromIGDBGame(g, GetSteamUrl(g.Id).Result));
     }
 
     /// <summary>
@@ -44,8 +70,15 @@ namespace questvault.Services
     /// <returns>The constructed Game object.</returns>
     private static Game BuildGameFromIGDBGame(IGDB.Models.Game igdbGame, string steamUrl)
     {
-      //Console.WriteLine(igdbGame.Rating.HasValue ? "O rating não é nulo" : "O rating é nulo");
-
+      string? url;
+      try
+      {
+        url = "https://www.youtube.com/embed/" + igdbGame.Videos.Values.First().VideoId;
+      }
+      catch( NullReferenceException )
+      {
+        url = null;
+      }
       var game = new Game
       {
         GameId = (long)igdbGame.Id,
@@ -58,7 +91,7 @@ namespace questvault.Services
         Screenshots = igdbGame.Screenshots.Values.Take(3).Select(s =>
             ImageHelper.GetImageUrl(imageId: s.ImageId, size: ImageSize.ScreenshotMed, retina: false)
           ).ToArray(),
-        VideoUrl = "https://www.youtube.com/embed/" + igdbGame.Videos.Values.First().VideoId,
+        VideoUrl =  url,
         ReleaseDate = igdbGame.FirstReleaseDate.Value.Date,
         IsReleased = igdbGame.FirstReleaseDate.HasValue && igdbGame.FirstReleaseDate.Value.Date < DateTime.Today,
         GameGenres = igdbGame.Genres.Values.Select(genre => BuildGameGenreFromIGDBData(igdbGame, genre)).ToList(),
@@ -80,11 +113,11 @@ namespace questvault.Services
     {
       return new GameGenre
       {
-        IgdbId = (long)igdbGame.Id,
-        IgdbGenreId = (long)genreData.Id,
+        IgdbId = (long) igdbGame.Id,
+        IgdbGenreId = (long) genreData.Id,
         Genre = new Genre
         {
-          GenreId = (long)genreData.Id,
+          GenreId = (long) genreData.Id,
           GenreName = genreData.Name
         }
       };
@@ -101,11 +134,11 @@ namespace questvault.Services
       return new GameCompany
       {
 
-        IgdbId = (long)igdbGame.Id,
-        IgdbCompanyId = (long)companyData.Company.Id,
+        IgdbId = (long) igdbGame.Id,
+        IgdbCompanyId = (long) companyData.Company.Id,
         Company = new Company
         {
-          CompanyId = (long)companyData.Company.Id,
+          CompanyId = (long) companyData.Company.Id,
 
         }
       };
@@ -121,11 +154,11 @@ namespace questvault.Services
     {
       return new GamePlatform
       {
-        IgdbId = (long)igdbGame.Id,
-        IgdbPlatformId = (long)platformData.Id,
+        IgdbId = (long) igdbGame.Id,
+        IgdbPlatformId = (long) platformData.Id,
         Platform = new Platform
         {
-          PlatformId = (long)platformData.Id
+          PlatformId = (long) platformData.Id
         }
       };
     }
@@ -136,8 +169,8 @@ namespace questvault.Services
       Console.WriteLine(genres);
       return genres.Select(genre => new Genre
       {
-        GenreId = (long)genre.Id,
-        IgdbGenreId = (long)genre.Id,
+        GenreId = (long) genre.Id,
+        IgdbGenreId = (long) genre.Id,
         GenreName = genre.Name
       });
     }
@@ -148,8 +181,8 @@ namespace questvault.Services
       Console.WriteLine(companies);
       return companies.Select(c => new Company
       {
-        CompanyId = (long)c.Id,
-        IgdbCompanyId = (long)c.Id,
+        CompanyId = (long) c.Id,
+        IgdbCompanyId = (long) c.Id,
         CompanyName = c.Name
       });
     }
@@ -161,8 +194,8 @@ namespace questvault.Services
       Console.WriteLine(companies);
       return companies.Select(c => new Company
       {
-        CompanyId = (long)c.Id,
-        IgdbCompanyId = (long)c.Id,
+        CompanyId = (long) c.Id,
+        IgdbCompanyId = (long) c.Id,
         CompanyName = c.Name,
 
       });
@@ -175,8 +208,8 @@ namespace questvault.Services
       Console.WriteLine(genres);
       return genres.Select(c => new Genre
       {
-        GenreId = (long)c.Id,
-        IgdbGenreId = (long)c.Id,
+        GenreId = (long) c.Id,
+        IgdbGenreId = (long) c.Id,
         GenreName = c.Name,
 
       });
@@ -188,8 +221,8 @@ namespace questvault.Services
       Console.WriteLine(platforms);
       return platforms.Select(p => new Platform
       {
-        PlatformId = (long)p.Id,
-        IgdbPlatformId = (long)p.Id,
+        PlatformId = (long) p.Id,
+        IgdbPlatformId = (long) p.Id,
         PlatformName = p.Name
       });
     }
@@ -201,8 +234,8 @@ namespace questvault.Services
       Console.WriteLine(platforms);
       return platforms.Select(p => new Platform
       {
-        PlatformId = (long)p.Id,
-        IgdbPlatformId = (long)p.Id,
+        PlatformId = (long) p.Id,
+        IgdbPlatformId = (long) p.Id,
         PlatformName = p.Name
       });
     }
@@ -214,7 +247,7 @@ namespace questvault.Services
     /// <returns>The Steam URL for the game.</returns>
     private async Task<string> GetSteamUrl(long? igdbGameId)
     {
-      if (igdbGameId == null) return string.Empty;
+      if( igdbGameId == null ) return string.Empty;
       var query = $"fields url; where game = {igdbGameId} & category = 13;";
       var result = await _api.QueryAsync<IGDB.Models.Website>(IGDBClient.Endpoints.Websites, query);
       var url = result.Select(r => r.Url).FirstOrDefault();

@@ -4,11 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
+using questvault.Services;
 using questvault.Utils;
 using GameStatus = questvault.Models.GameStatus;
+
 namespace questvault.Controllers
 {
-  public class LibraryController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
+  public class LibraryController(
+        ApplicationDbContext context,
+        SignInManager<User> signInManager,
+        SteamAPI steamAPI,
+        IServiceIGDB igdbService
+    ) : Controller
   {
     private readonly int _pageSize = 20;
     /// <summary>
@@ -20,15 +27,15 @@ namespace questvault.Controllers
     [Route("UserLibrary")]
     public async Task<IActionResult> UserLibrary(string id, int? pageNumber)
     {
-      if (id == null)
+
+      if( id == null )
       {
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();
       }
+      var user = context.Users.Where(u => id.ToUpper().Equals(u.NormalizedUserName)).FirstOrDefault();
 
-      var user = await context.Users.Where(u => u.NormalizedUserName == id.ToUpper()).FirstAsync();
-
-      if (user == null)
+      if( user == null )
       {
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();
@@ -66,15 +73,14 @@ namespace questvault.Controllers
       var user = context.Users.Where(u => u.Id == userId).First();
       var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
-      if (!Enum.TryParse(ownage, out OwnageStatus ownageEnum) ||
-          !Enum.TryParse(status, out GameStatus statusEnum))
+      if( !Enum.TryParse(ownage, out OwnageStatus ownageEnum) ||
+          !Enum.TryParse(status, out GameStatus statusEnum) )
       {
-        // Se a conversão falhar, retorne BadRequest
         ViewBag.Error = "Invalid ownage or status value.";
         return RedirectToAction("Details", "Games", new { id = gameId });
       }
 
-      if (user == null || gameId <= 0)
+      if( user == null || gameId <= 0 )
       {
         ViewBag.Error = "Invalid user or game ID.";
         return RedirectToAction("Details", "Games", new { id = gameId });
@@ -84,7 +90,7 @@ namespace questvault.Controllers
           .Include(g => g.GameLogs)
           .FirstOrDefaultAsync(g => g.User == user);
 
-      if (library == null)
+      if( library == null )
       {
         library = new GamesLibrary
         {
@@ -95,7 +101,7 @@ namespace questvault.Controllers
       }
 
       var existingGame = library.GameLogs.FirstOrDefault(g => g.IgdbId == game.IgdbId);
-      if (existingGame != null)
+      if( existingGame != null )
       {
         // Atualizar o jogo existente
         existingGame.Status = statusEnum;
@@ -132,7 +138,7 @@ namespace questvault.Controllers
       var user = await signInManager.UserManager.GetUserAsync(User);
       var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
-      if (user == null || gameId <= 0)
+      if( user == null || gameId <= 0 )
       {
         return BadRequest();
       }
@@ -142,15 +148,15 @@ namespace questvault.Controllers
           .Include(g => g.Top5Games)
           .FirstOrDefaultAsync(g => g.User == user);
 
-      if (library == null)
+      if( library == null )
       {
         return NotFound();
       }
 
       var gameToRemove = library.GameLogs.FirstOrDefault(g => g.IgdbId == game.IgdbId);
-      if (gameToRemove != null)
+      if( gameToRemove != null )
       {
-        if (library.Top5Games != null && library.Top5Games.Contains(gameToRemove)) library.Top5Games.Remove(gameToRemove);
+        if( library.Top5Games != null && library.Top5Games.Contains(gameToRemove) ) library.Top5Games.Remove(gameToRemove);
         context.GameLog.Remove(gameToRemove);
         await context.SaveChangesAsync();
       }
@@ -172,7 +178,7 @@ namespace questvault.Controllers
       var user = await signInManager.UserManager.GetUserAsync(User);
       var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
-      if (user == null)
+      if( user == null )
       {
         return BadRequest("User not authenticated.");
       }
@@ -182,7 +188,7 @@ namespace questvault.Controllers
           .Include(g => g.GameLogs)
           .FirstOrDefaultAsync(g => g.User == user && g.GameLogs.Any(gl => gl.IgdbId == game.IgdbId));
 
-      if (userLibrary == null)
+      if( userLibrary == null )
       {
         // Adicione a mensagem de erro ao ViewBag
         return BadRequest("Game not found in library.");
@@ -193,7 +199,7 @@ namespace questvault.Controllers
 
 
       // Verifique se o GameLog existe e se os status estão preenchidos
-      if (gameLog == null)
+      if( gameLog == null )
       {
         // Adicione a mensagem de erro ao ViewBag
         return BadRequest("Game status not filled.");
@@ -221,24 +227,24 @@ namespace questvault.Controllers
     public async Task<IActionResult> AddToTop5(long gameId)
     {
       var user = await signInManager.UserManager.GetUserAsync(User);
-      if (user == null) return BadRequest();
+      if( user == null ) return BadRequest();
 
       var library = await context.GamesLibrary.Include(l => l.Top5Games).Include(l => l.GameLogs).ThenInclude(gl => gl.Game)
         .FirstOrDefaultAsync(l => l.UserId == user.Id);
-      if (library == null) return BadRequest();
+      if( library == null ) return BadRequest();
 
       var game = library.GameLogs.FirstOrDefault(g => g.IgdbId == gameId);
-      if (game == null) return BadRequest();
+      if( game == null ) return BadRequest();
 
       library.Top5Games ??= [];
 
-      if (library.Top5Games.Count >= 5)
+      if( library.Top5Games.Count >= 5 )
       {
         TempData["StatusMessage"] = "You can only add 5 games to the top 5 list. Remove one if you would like to add another.";
         return RedirectToAction("Details", "Games", new { id = gameId });
       }
-      if (game.Game == null) await Console.Out.WriteLineAsync("game is null");
-      if (library.Top5Games.Contains(game))
+      if( game.Game == null ) await Console.Out.WriteLineAsync("game is null");
+      if( library.Top5Games.Contains(game) )
       {
         TempData["StatusMessage"] = $"{game.Game.Name} is already in your top 5 list.";
         return RedirectToAction("Details", "Games", new { id = gameId });
@@ -257,20 +263,20 @@ namespace questvault.Controllers
     public async Task<IActionResult> RemoveFromTop5(long gameId)
     {
       var user = await signInManager.UserManager.GetUserAsync(User);
-      if (user == null) return BadRequest();
+      if( user == null ) return BadRequest();
 
       var library = await context.GamesLibrary.Include(l => l.Top5Games).ThenInclude(gl => gl.Game)
           .FirstOrDefaultAsync(l => l.UserId == user.Id);
-      if (library == null) return BadRequest();
+      if( library == null ) return BadRequest();
 
       var game = library.Top5Games.FirstOrDefault(g => g.IgdbId == gameId);
-      if (game == null) return BadRequest();
+      if( game == null ) return BadRequest();
 
       library.Top5Games ??= [];
 
-      if (game.Game == null) await Console.Out.WriteLineAsync("game is null");
+      if( game.Game == null ) await Console.Out.WriteLineAsync("game is null");
 
-      if (!library.Top5Games.Contains(game))
+      if( !library.Top5Games.Contains(game) )
       {
         TempData["StatusMessage"] = $"{game.Game.Name} is not in your top 5 list.";
         return RedirectToAction("Details", "Games", new { id = gameId });
@@ -282,12 +288,290 @@ namespace questvault.Controllers
       return RedirectToAction("Details", "Games", new { id = gameId });
     }
 
+    /// <summary>
+    /// Retrieves the top 5 game logs for the specified user.
+    /// </summary>
+    /// <param name="userId">The ID of the user for whom to retrieve the game logs.</param>
+    /// <param name="context">The application database context.</param>
+    /// <returns>A list of the top 5 game logs for the specified user.</returns>
     public static async Task<List<GameLog>> GetTop5(string userId, ApplicationDbContext context)
     {
       var library = await context.GamesLibrary.
         Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
         FirstOrDefaultAsync(l => l.UserId == userId);
       return library == null ? [] : library.Top5Games;
+    }
+
+    [Authorize]
+    [HttpGet]
+    [Route("ImportLibrary")]
+    public async Task<IActionResult> ImportLibrary(string steamId)
+    {
+      List<SteamAPI.GameInfo> gamesInfoInSteamLibrary = [];
+      List<GameLog> finalGameLogs = [];
+      foreach( SteamAPI.GameInfo gameInfo in await steamAPI.GetUserLibrary(steamId) )
+      {
+        Game? game = await context.Games.FirstOrDefaultAsync(g => g.Name != null && g.Name.Equals(gameInfo.Name));
+        if( game != null )
+        {
+          finalGameLogs.Add(new()
+          {
+            Game = game,
+            GameId = game.GameId,
+            IgdbId = game.IgdbId,
+            HoursPlayed = gameInfo?.Playtime ?? 0,
+            Ownage = gameInfo?.Playtime > 0 ? OwnageStatus.Playing : OwnageStatus.Backlogged,
+            Status = GameStatus.Shelved
+          });
+        }
+        else gamesInfoInSteamLibrary.Add(gameInfo);
+      }
+
+      finalGameLogs.AddRange(await steamAPI.GetGamesFromIGDB(gamesInfoInSteamLibrary));
+
+      // udpating/adding games in db
+      {
+        var games = finalGameLogs.Select(g => g.Game).Where(g => g != null).Cast<Game>();
+
+        var companyIds = games.SelectMany (g => g.GameCompanies != null ? g.GameCompanies.Where(c=>c!=null).Select(c => c.IgdbCompanyId) : []).Distinct().ToList();
+        var platformIds = games.SelectMany(g => g.GamePlatforms!=null ? g.GamePlatforms.Select(p => p.IgdbPlatformId) : []).Distinct().ToList();
+        var genresIds = games.SelectMany(g => g.GameGenres!=null ? g.GameGenres.Select(gg => gg.IgdbGenreId) : []).Distinct().ToList();
+
+        var existingCompanies = await context.Companies.Where(c => companyIds.Contains(c.IgdbCompanyId)).ToListAsync();
+        var existingPlatforms = await context.Platforms.Where(p => platformIds.Contains(p.IgdbPlatformId)).ToListAsync();
+        var existingGenres = await context.Genres.Where(g => genresIds.Contains(g.IgdbGenreId)).ToListAsync();
+
+        bool allCompaniesExist = existingCompanies.Count == companyIds.Count;
+        bool allPlatformsExist = existingPlatforms.Count == platformIds.Count;
+        bool allGenresExist = existingGenres.Count == genresIds.Count;
+
+        using( var transaction = context.Database.BeginTransaction() )
+        {
+          try
+          {
+            if( !allCompaniesExist )
+            {
+
+              var missingCompanies = await igdbService.GetCompaniesFromIds(
+                  companyIds.Except(existingCompanies.Select(c => c.IgdbCompanyId)).ToList());
+
+              foreach( var company in missingCompanies )
+              {
+                var existingCompany = await context.Companies.FirstOrDefaultAsync(g => g.IgdbCompanyId == company.IgdbCompanyId);
+                if( existingCompany == null )
+                {
+                  var newComp = new Models.Company
+                  {
+                    IgdbCompanyId = company.IgdbCompanyId,
+                    CompanyName = company.CompanyName,
+                  };
+                  await context.Companies.AddAsync(newComp);
+
+                  existingCompanies.Add(newComp);
+                  await SaveChangesAsync(context);
+                }
+              }
+            }
+            await transaction.CommitAsync();
+          }
+          catch( Exception ex )
+          {
+            await transaction.RollbackAsync();
+            return RedirectToAction("Error", "Home");
+          }
+
+        }
+
+        using( var transaction = context.Database.BeginTransaction() )
+        {
+          try
+          {
+            if( !allPlatformsExist )
+            {
+              var missingPlatforms = await igdbService.GetPlatformsFromIds(
+                  platformIds.Except(existingPlatforms.Select(c => c.IgdbPlatformId)).ToList());
+
+              foreach( var platform in missingPlatforms )
+              {
+                var existingPlatform = await context.Platforms.FirstOrDefaultAsync(g => g.IgdbPlatformId == platform.IgdbPlatformId);
+                if( existingPlatform == null )
+                {
+                  var newPlat = new Models.Platform
+                  {
+                    IgdbPlatformId = platform.IgdbPlatformId,
+                    PlatformName = platform.PlatformName,
+                  };
+                  await context.Platforms.AddAsync(newPlat);
+                  existingPlatforms.Add(newPlat);
+                  await SaveChangesAsync(context);
+                }
+              }
+            }
+
+            // Commit da transação se tudo correr bem
+            await transaction.CommitAsync();
+          }
+          catch( Exception ex )
+          {
+            await Console.Out.WriteLineAsync(ex.Message);
+            // Rollback da transação em caso de erro
+            await transaction.RollbackAsync();
+            // Tratar ou registrar o erro conforme necessário
+            return RedirectToAction("Error", "Home");
+          }
+        }
+
+        using( var transaction = context.Database.BeginTransaction() )
+        {
+          try
+          {
+            if( !allGenresExist )
+            {
+              var missingGenres = await igdbService.GetGenresFromIds(
+                  genresIds.Except(existingGenres.Select(gg => gg.IgdbGenreId)).ToList());
+
+              foreach( var genre in missingGenres )
+              {
+                var existingGenre = await context.Genres.FirstOrDefaultAsync(g => g.IgdbGenreId == genre.IgdbGenreId);
+                if( existingGenre == null )
+                {
+                  var newGenre = new Genre
+                  {
+                    IgdbGenreId = genre.IgdbGenreId,
+                    GenreName = genre.GenreName
+                  };
+                  await context.Genres.AddAsync(newGenre);
+                  existingGenres.Add(newGenre);
+                  await SaveChangesAsync(context);
+                }
+              }
+
+            }
+            await transaction.CommitAsync();
+          }
+          catch( Exception ex )
+          {
+            await transaction.RollbackAsync();
+            return RedirectToAction("Error", "Home");
+          }
+        }
+
+        foreach( var game in games )
+        {
+          var existingGame = await context.Games.FirstOrDefaultAsync(g => g.IgdbId == game.IgdbId);
+
+          if( existingGame == null )
+          {
+            var newGame = new Game
+            {
+              IgdbId = game.IgdbId,
+              Name = game.Name,
+              Summary = game.Summary,
+              IgdbRating = game.IgdbRating,
+              TotalRatingCount = game.TotalRatingCount,
+              ImageUrl = game.ImageUrl,
+              Screenshots = game.Screenshots,
+              VideoUrl = game.VideoUrl,
+              QvRating = game.QvRating,
+              ReleaseDate = game.ReleaseDate,
+              IsReleased = game.IsReleased,
+            };
+
+            context.Games.Add(newGame);
+            foreach( var company in existingCompanies )
+            {
+              var companyBelongsToGame = game.GameCompanies.FirstOrDefault(c => c.IgdbCompanyId == company.IgdbCompanyId);
+
+              if( companyBelongsToGame != null )
+              {
+                context.GameCompany.Add(new GameCompany
+                {
+                  Game = newGame,
+                  Company = company
+                });
+              }
+            }
+
+            foreach( var genre in existingGenres )
+            {
+              var existingGenre = game.GameGenres.FirstOrDefault(g => g.IgdbGenreId == genre.IgdbGenreId);
+              if( existingGenre != null )
+              {
+                context.GameGenre.Add(new GameGenre
+                {
+                  Game = newGame,
+                  Genre = genre
+                });
+              }
+            }
+
+            foreach( var platform in existingPlatforms )
+            {
+              var existingPlatform = game.GamePlatforms.FirstOrDefault(p => p.IgdbPlatformId == platform.IgdbPlatformId);
+              if( existingPlatform != null )
+              {
+                context.GamePlatform.Add(new GamePlatform
+                {
+                  Game = newGame,
+                  Platform = platform
+                });
+              }
+            }
+            await SaveChangesAsync(context);
+          }
+        }
+
+        await SaveChangesAsync(context);
+      }
+
+      var user = await signInManager.UserManager.GetUserAsync(User);
+      if( user == null ) return BadRequest();
+      var library = await context.GamesLibrary.Include(l=>l.GameLogs).FirstOrDefaultAsync(l => l.User == user);
+      if( library == null )
+      {
+        library = new() { User = user, GameLogs = [], Top5Games = [] };
+        context.GamesLibrary.Add(library);
+        await SaveChangesAsync(context);
+      }
+      library.GameLogs ??= [];
+      await Console.Out.WriteLineAsync("FinalGamelogs: " + finalGameLogs.Count);
+      foreach( GameLog gl in finalGameLogs )
+      {
+        var game = await context.Games.FirstOrDefaultAsync(g=> g.IgdbId == gl.IgdbId);
+        var existingGL = library.GameLogs.FirstOrDefault(g => g.IgdbId == gl.IgdbId);
+        if( existingGL != null )
+        {
+          existingGL.Status = gl.Status;
+          await SaveChangesAsync(context);
+        }
+        gl.Game = game;
+        library.GameLogs.Add(gl);
+        await SaveChangesAsync(context);
+        await Console.Out.WriteLineAsync("library: " + library.GameLogs.Count);
+      }
+      await Console.Out.WriteLineAsync("library: " + library.GameLogs.Count);
+      return RedirectToAction("UserLibrary", "Library", new { id = signInManager.UserManager.GetUserName(User) });
+    }
+
+    private static async Task<int> SaveChangesAsync(ApplicationDbContext context)
+    {
+      try
+      {
+        return await context.SaveChangesAsync();
+      }
+      catch( Exception e )
+      {
+        if( e is DbUpdateConcurrencyException || e is DbUpdateException )
+        {
+          await Console.Out.WriteLineAsync("Data already in the db");
+          return 0;
+        }
+        else
+        {
+          await Console.Out.WriteLineAsync($"Unexpected exception: {e.Message}");
+          return -1;
+        }
+      }
     }
   }
 }

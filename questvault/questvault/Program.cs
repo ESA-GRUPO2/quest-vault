@@ -44,7 +44,6 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton(i => new SteamAPI(configuration["SteamAPI:API_KEY"]));
 
 // Emailing Service
 builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
@@ -65,11 +64,16 @@ builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
     )
 );
 
+builder.Services.AddSingleton(i => new SteamAPI(configuration["SteamAPI:API_KEY"],
+  new IGDBService(
+    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
+    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
+)));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if( app.Environment.IsDevelopment() )
 {
   app.UseMigrationsEndPoint();
 }

@@ -1,9 +1,10 @@
 ﻿@using System.Linq
 @using questvault.Utils
 @model GameViewData
+
 @{
-    ViewData["Title"] = "Library";
-    ViewData["help_Text"] = @"
+  ViewData["Title"] = "Library";
+  ViewData["help_Text"] = @"
        In the Library page you can find the games you stored,<br/>
        whether you are playing them or just saving for later.<br/>
        You can go further and filter them by: <br/>
@@ -16,131 +17,118 @@
 
 
 @{
-    var prevDisabled = !Model.Games.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.Games.HasNextPage ? "disabled" : "";
-    var batchSize = 5; // Defina o tamanho do lote aqui
-    var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
-                       .GroupBy(x => x.Index / batchSize)
-                       .Select(g => g.Select(x => x.Game));
+  var prevDisabled = !Model.Games.HasPreviousPage ? "disabled" : "";
+  var nextDisabled = !Model.Games.HasNextPage ? "disabled" : "";
+  var batchSize = 5; // Defina o tamanho do lote aqui
+  var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
+                     .GroupBy(x => x.Index / batchSize)
+                     .Select(g => g.Select(x => x.Game));
 }
 
-
-@*@if (SignInManager.IsSignedIn(User))
-{*@
 
 <div class="results-game">
 
-    <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
-        <h3>My Library</h3>
-        <h4 class="justify-content-end ">@Model.NumberOfResults games</h4>
-    </div>
+  <div class="container d-flex justify-content-between align-items-end m-0" style="max-width: 100%">
+    <h3>My Library</h3>
+    <h4 class="justify-content-end ">@Model.NumberOfResults games</h4>
+  </div>
 
-    <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
+  <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
 
-    <div class="d-flex main-section-result">
-        <div class="filter-section">
-            <div class="d-flex">
-                <h4 style="margin-bottom:4vh; text-decoration: underline">Filters</h4>
-                <a class="clear-results align-items-center" href="" style="color:white; font-size: 100%; margin-top:0.5rem; margin-left: 13rem;">Clear Filters</a>
-            </div>
+  <div class="d-flex main-section-result">
+    <div class="filter-section">
+      <div class="d-flex">
+        <h4 style="margin-bottom:4vh; text-decoration: underline">Filters</h4>
+        <a class="clear-results align-items-center" href="" style="color:white; font-size: 100%; margin-top:0.5rem; margin-left: 13rem;">Clear Filters</a>
+      </div>
 
-            <h5>Order by</h5>
-            <select class="select-results" name="OrderBy" id="order">
-                <option value="none" selected></option>
-                <option value="1">Alphabetic</option>
-                <option value="2">Year</option>
-                <option value="3">Platform</option>
-                <option value="4"></option>
-            </select><br>
-            <h5 class="mt-4">Collections</h5>
-            <div class="library-filter-ownage" name="GameOwnage" id="ownage">
-                <button class="btn btn-blue-big m-2">
-                    <img class="nav-vector pe-1" src="~/img/vector/play-solid.svg" alt="Play Icon" />
-                    Playing
-                </button>
-                <button class="btn btn-blue-big m-2">
-                    <img class="nav-vector pe-1" src="~/img/vector/check-solid.svg" alt="Check Icon" />
-                    Finished
-                </button>
-                <button class="btn btn-blue-big m-2">
-                    <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Clipboard Icon" />
-                    Backlogged
-                </button>
-                <button class="btn btn-blue-big m-2">
-                    <img class="nav-vector pe-1" src="~/img/vector/star-solid.svg" alt="Star Icon" />
-                    Whishlist
-                </button>
-            </div>
-            <h5 class="mt-4">Status</h5>
-            <div class="library-filter-ownage" name="GameStatus" id="game-status">
-                <button class="btn btn-purple m-2">
-                    Completed
-                </button>
-                <button class="btn btn-purple m-2">
-                    <img class="nav-vector pe-1" src="~/img/vector/chess-knight-solid.svg" alt="Knight Icon" />
-                    Played
-                </button>
-                <button class="btn btn-purple m-2">
-                    <img class="nav-vector pe-1" src="~/img/vector/bed-solid.svg" alt="Bed Icon" />
-                    Retired
-                </button>
-                <button class="btn btn-purple m-2">
-                    <img class="nav-vector pe-1" src="~/img/vector/boxes-stacked-solid.svg" alt="Boxes Icon" />
-                    Shelved
-                </button>
-                <button class="btn btn-purple m-2">
-                    Abandoned
-                </button>
-            </div>
-
-        </div>
-        <div class="game-section">
-
-            @if (Model.NumberOfResults > 0)
-            {
-                @foreach (var batch in batches)
-                {
-                    <div class="game-row">
-                        @foreach (var game in batch)
-                        {
-                            <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
-                                <img src="@game.ImageUrl">
-                            </a>
-                        }
-                    </div>
-                }
-            }
-            else
-            {
-                <div style="text-align: center; height:100%;padding-top:200px">
-                    <h2>No games Added!</h2>
-                    <h3>Go to Games to add some</h3>
-                </div>
-            }
-            <div style="margin: auto;">
-                <a asp-action="UserLibrary"
-                   asp-route-id="@SignInManager.UserManager.GetUserName(User)"
-                   asp-route-pageNumber="@(Model.Games.PageIndex-1)"
-                   class="btn btn-primary nav-btn-2 @prevDisabled">
-                    Previous
-                </a>
-                <a asp-action="UserLibrary"
-                   asp-route-id="@SignInManager.UserManager.GetUserName(User)"
-                   asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
-                   class="btn btn-primary nav-btn-2 @nextDisabled">
-                    Next
-                </a>
-            </div>
-        </div>
+      <h5>Order by</h5>
+      <select class="select-results" name="OrderBy" id="order">
+        <option value="none" selected></option>
+        <option value="1">Alphabetic</option>
+        <option value="2">Year</option>
+        <option value="3">Platform</option>
+        <option value="4"></option>
+      </select><br>
+      <h5 class="mt-4">Collections</h5>
+      <div class="library-filter-ownage" name="GameOwnage" id="ownage">
+        <button class="btn btn-blue-big m-2">
+          <img class="nav-vector pe-1" src="~/img/vector/play-solid.svg" alt="Play Icon" />
+          Playing
+        </button>
+        <button class="btn btn-blue-big m-2">
+          <img class="nav-vector pe-1" src="~/img/vector/check-solid.svg" alt="Check Icon" />
+          Finished
+        </button>
+        <button class="btn btn-blue-big m-2">
+          <img class="nav-vector pe-1" src="~/img/vector/clipboard-list-solid.svg" alt="Clipboard Icon" />
+          Backlogged
+        </button>
+        <button class="btn btn-blue-big m-2">
+          <img class="nav-vector pe-1" src="~/img/vector/star-solid.svg" alt="Star Icon" />
+          Whishlist
+        </button>
+      </div>
+      <h5 class="mt-4">Status</h5>
+      <div class="library-filter-ownage" name="GameStatus" id="game-status">
+        <button class="btn btn-purple m-2">
+          Completed
+        </button>
+        <button class="btn btn-purple m-2">
+          <img class="nav-vector pe-1" src="~/img/vector/chess-knight-solid.svg" alt="Knight Icon" />
+          Played
+        </button>
+        <button class="btn btn-purple m-2">
+          <img class="nav-vector pe-1" src="~/img/vector/bed-solid.svg" alt="Bed Icon" />
+          Retired
+        </button>
+        <button class="btn btn-purple m-2">
+          <img class="nav-vector pe-1" src="~/img/vector/boxes-stacked-solid.svg" alt="Boxes Icon" />
+          Shelved
+        </button>
+        <button class="btn btn-purple m-2">
+          Abandoned
+        </button>
+      </div>
 
     </div>
+    <div class="game-section">
 
-
+      @if (Model.NumberOfResults > 0)
+      {
+        @foreach (var batch in batches)
+        {
+          <div class="game-row">
+            @foreach (var game in batch)
+            {
+              <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
+                <img src="@game.ImageUrl">
+              </a>
+            }
+          </div>
+        }
+      }
+      else
+      {
+        <div style="text-align: center; height:100%;padding-top:200px">
+          <h2>No games Added!</h2>
+          <h3>Go to Games to add some</h3>
+        </div>
+      }
+      <div style="margin: auto;">
+        <a asp-action="UserLibrary"
+           asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+           asp-route-pageNumber="@(Model.Games.PageIndex-1)"
+           class="btn btn-primary nav-btn-2 @prevDisabled">
+          Previous
+        </a>
+        <a asp-action="UserLibrary"
+           asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+           asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
+           class="btn btn-primary nav-btn-2 @nextDisabled">
+          Next
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
-@*}
-
-else
-{
-    <h1 style="color :red">Please log in to access this page.</h1>
-}
-*@
