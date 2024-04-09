@@ -16,26 +16,26 @@ namespace questvaultTest
       userConfirmationMock = new Mock<IUserConfirmation<User>>(MockBehavior.Strict);
     }
 
-    //[Fact]
-    //public async Task UserLibrary_ReturnsZeroGames_WhenUserHasNoGamesInLibrary()
-    //{
-    //    var context = new Mock<HttpContext>();
-    //    var contextAccessor = new Mock<IHttpContextAccessor>();
-    //    contextAccessor.Setup(x => x.HttpContext).Returns(context.Object);
-    //    var _fakeSignInManager = new TestSignInManager(contextAccessor.Object, userConfirmationMock.Object);
+    [Fact]
+    public async Task UserLibrary_ReturnsZeroGames_WhenUserHasNoGamesInLibrary()
+    {
+      //var context = new Mock<HttpContext>();
+      //var contextAccessor = new Mock<IHttpContextAccessor>();
+      //contextAccessor.Setup(x => x.HttpContext).Returns(context.Object);
+      //var _fakeSignInManager = new TestSignInManager(contextAccessor.Object, userConfirmationMock.Object);
 
-    //    // Arrange
-    //    var controller = new LibraryController(_context, _fakeSignInManager);
+      //// Arrange
+      //var controller = new LibraryController(_context, _fakeSignInManager);
 
-    //    // Act
-    //    var actionResult = await controller.UserLibrary("UNITTESTER1", 1);
+      //// Act
+      //var actionResult = await controller.UserLibrary("UNITTESTER1", 1, "");
 
-    //    // Assert
-    //    var viewResult = Assert.IsType<ViewResult>(actionResult);
-    //    var model = viewResult.Model as GameViewData;
-    //    Assert.NotNull(model);
-    //    Assert.Equal(0, model.NumberOfResults);
-    //}
+      //// Assert
+      //var viewResult = Assert.IsType<ViewResult>(actionResult);
+      //var model = viewResult.Model as GameViewData;
+      //Assert.NotNull(model);
+      //Assert.Equal(0, model.NumberOfResults);
+    }
 
   }
 }

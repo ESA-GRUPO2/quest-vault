@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using questvault.Data;
 
@@ -11,9 +12,11 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240406193728_removedOwnageStatus")]
+    partial class removedOwnageStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,22 +158,6 @@ namespace questvault.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("questvault.Models.AccessInstance", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateOnly>("AccessDate")
-                        .HasColumnType("date");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AccessInstances");
-                });
-
             modelBuilder.Entity("questvault.Models.Company", b =>
                 {
                     b.Property<long>("CompanyId")
@@ -261,9 +248,6 @@ namespace questvault.Migrations
                     b.Property<string>("Screenshots")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SteamUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");
 
@@ -347,9 +331,6 @@ namespace questvault.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("GameLogId");
 
                     b.HasIndex("GameId");
@@ -357,8 +338,6 @@ namespace questvault.Migrations
                     b.HasIndex("GamesLibraryId");
 
                     b.HasIndex("GamesLibraryId1");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("GameLog");
                 });
@@ -416,28 +395,6 @@ namespace questvault.Migrations
                     b.HasKey("GenreId");
 
                     b.ToTable("Genres");
-                });
-
-            modelBuilder.Entity("questvault.Models.LoginInstance", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateOnly>("LoginDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("LogginInstances");
                 });
 
             modelBuilder.Entity("questvault.Models.Platform", b =>
@@ -539,9 +496,6 @@ namespace questvault.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SteamID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -707,13 +661,7 @@ namespace questvault.Migrations
                         .WithMany("Top5Games")
                         .HasForeignKey("GamesLibraryId1");
 
-                    b.HasOne("questvault.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Game");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("questvault.Models.GamePlatform", b =>
@@ -736,17 +684,6 @@ namespace questvault.Migrations
                 });
 
             modelBuilder.Entity("questvault.Models.GamesLibrary", b =>
-                {
-                    b.HasOne("questvault.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("questvault.Models.LoginInstance", b =>
                 {
                     b.HasOne("questvault.Models.User", "User")
                         .WithMany()

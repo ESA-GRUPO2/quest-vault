@@ -1,16 +1,23 @@
 ﻿.game-details {
     margin: 0px 71px 0px 71px;
     color: white;
-    margin-bottom: 12vh;
+    margin-bottom: 3vh;
 }
 
 .game-title {
 }
 
+.game-date {
+  font-weight: 300 !important;
+}
+
+.game.company {
+  font-weight: 300 !important;
+}
+
 .game-bar {
     background: #711C91;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 4vh auto 2vh auto;
     width: 100%;
     height: 10px;
     opacity: 1;
@@ -31,16 +38,17 @@
     margin-top: 5vh;
 }
 
+
 .game-user-status .select-results {
-    background-color: #133E7C;
-    font-size: 110%;
-    font-weight: 500;
-    border: 3px #711C91;
-    border-radius: 5px;
-    padding: 6px;
-    margin-bottom: 16px;
-    width: 10rem;
-    color: #D9D9D9;
+  background-color: #133E7C;
+  font-size: 110%;
+  font-weight: 500;
+  border: 3px #711C91;
+  border-radius: 5px;
+  padding: 6px;
+  margin-bottom: 16px;
+  width: 10rem;
+  color: #D9D9D9;
 }
 
 .game-score{
@@ -61,6 +69,10 @@
     font-size: 110%;
     text-align: justify;
 }
+
+  .game-about p {
+    font-weight: 300 !important;
+  }
 
 .game-captures{
     width: auto;
@@ -167,6 +179,61 @@
     margin: 0;
 }
 
-.review-user-publish{
+.popup-button {
+  display: inline-block;
+}
+
+/*GAME REVIEW PARCIAL*/
+.review-card {
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 100%;
+  float: left;
+  margin: 2rem 2rem 2rem 2rem;
+  padding: 1.5rem 1.5rem 1.5rem 0;
+  overflow: hidden; /* Para evitar que o conteúdo se sobreponha */
+  display: flex;
+}
+
+.review-card p{
+  margin-bottom: 0 !important;
+}
+
+.review-user{
+  margin-top: 0.5rem;
+}
+
+.review-username {
+  margin-top: 1rem;
+}
+
+.review-text {
+  font-weight: 200 !important;
+  text-align: justify;
+  margin-right: 0.5rem;
+}
+
+.review-delete {
 
 }
+
+.btn-remove {
+  background: #cc3d3d;
+  color: #ffffff;
+  border-radius: 24px;
+  width: auto;
+  height: 2.75rem;
+  padding: 10px;
+  border: none;
+  text-align: center;
+  font-weight: bolder;
+}
+
+  .btn-remove:hover {
+    background: #591414;
+  }
+
+  .btn-remove img {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
+    padding: 1px;
+  }

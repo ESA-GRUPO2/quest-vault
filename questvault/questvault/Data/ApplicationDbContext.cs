@@ -67,6 +67,9 @@ namespace questvault.Data
     public DbSet<GamesLibrary> GamesLibrary { get; set; } = default!;
     public DbSet<Friendship> Friendship { get; set; } = default!;
     public DbSet<FriendshipRequest> FriendshipRequest { get; set; } = default!;
+    public DbSet<LoginInstance> LogginInstances { get; set; } = default!;
+    public DbSet<AccessInstance> AccessInstances { get; set; } = default!;
+
 
   }
 }

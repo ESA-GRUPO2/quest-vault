@@ -110,58 +110,57 @@ namespace questvault.Areas.Identity.Pages.Account
 
             ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            if (ModelState.IsValid)
-            {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var user = await context.Users.FirstOrDefaultAsync(u => u.Email.Equals(Input.EmailUserName));
-                user ??= await context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(Input.EmailUserName));
-                if (user == null)
-                {
-                    Console.WriteLine("in: " + Input.EmailUserName);
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
-                }
-                if (user.IsDeactivated)
-                {
-                    return RedirectToPage("./DeactivatedAccount", new { ReturnUrl = returnUrl, UserId = user.Id });
-                }
-                var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    logger.LogInformation("User logged in.");
-                    //login
-                    //return LocalRedirect(returnUrl);
-                    
-                    
-                    return RedirectToAction("UserLibrary", "Library", new { id = user.UserName }); //After login is successful redirect to user library
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    //send email
-                    TwoFactorAuthenticationTokens twoFactorAuthenticator = new() { UserId = user.Id, User = user };
-                    await emailStore.SetEmailAsync(twoFactorAuthenticator.User, user.Email, CancellationToken.None);
-                    await emailSender.SendEmailAsync(user.Email, "Login Code", $"Your code to login is:\n\t" + twoFactorAuthenticator.Token);
-                    //registar token na db 
-                    if (context.EmailTokens.Any(t => t.UserId == user.Id)) context.Update(twoFactorAuthenticator);
-                    else context.Add(twoFactorAuthenticator);
-                    await context.SaveChangesAsync();
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, Input.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    user.LockoutEnabled = false;
-                    logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
-                }
-            }
-            // If we got this far, something failed, redisplay form
-            return Page();
+      if (ModelState.IsValid)
+      {
+        // This doesn't count login failures towards account lockout
+        // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+        var user = await context.Users.FirstOrDefaultAsync(u => u.Email.Equals(Input.EmailUserName));
+        user ??= await context.Users.FirstOrDefaultAsync(u => u.UserName.Equals(Input.EmailUserName));
+        if (user == null)
+        {
+          Console.WriteLine("in: " + Input.EmailUserName);
+          ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+          return Page();
         }
+        if (user.IsDeactivated)
+        {
+          return RedirectToPage("./DeactivatedAccount", new { ReturnUrl = returnUrl, UserId = user.Id });
+        }
+        if (user.LockoutEnabled)
+        {
+          logger.LogWarning("User account locked out.");
+          return RedirectToPage("./Lockout");
+        }
+        var result = await signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+        if (result.Succeeded)
+        {
+          logger.LogInformation("User logged in.");
+          //login
+          var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now) };
+          context.LogginInstances.Add(logginInstance);
+          await context.SaveChangesAsync();
+          return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
+        }
+        if (result.RequiresTwoFactor)
+        {
+          //send email
+          TwoFactorAuthenticationTokens twoFactorAuthenticator = new() { UserId = user.Id, User = user };
+          await emailStore.SetEmailAsync(twoFactorAuthenticator.User, user.Email, CancellationToken.None);
+          await emailSender.SendEmailAsync(user.Email, "Login Code", $"Your code to login is:\n\t" + twoFactorAuthenticator.Token);
+          //registar token na db 
+          if (context.EmailTokens.Any(t => t.UserId == user.Id)) context.Update(twoFactorAuthenticator);
+          else context.Add(twoFactorAuthenticator);
+          await context.SaveChangesAsync();
+          return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, Input.RememberMe });
+        }
+        else
+        {
+          ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+          return Page();
+        }
+      }
+      // If we got this far, something failed, redisplay form
+      return Page();
     }
+  }
 }

@@ -34,10 +34,10 @@
                 <input id="searchInput" autocomplete="off" name="searchTerm" type="text" class="search-bar-text" placeholder="Search for games and users" />
                 <button class="outside-search" type="submit"
                         onclick="this.disabled=true;
-                                  console.log('loading, please wait...');
-                                  var loading = document.getElementById('lmask');
-                                  loading.classList.add('d-flex');
-                                  this.form.submit();">
+                                            console.log('loading, please wait...');
+                                            var loading = document.getElementById('lmask');
+                                            loading.classList.add('d-flex');
+                                            this.form.submit();">
                   <img id="search-btn" src="\img\vector\magnifying.svg" class="search-btn" />
                 </button>
 
@@ -72,11 +72,10 @@
               <img src="\img\vector\bookmark.svg" alt="FilePen Icon" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" class="nav-vector pe-2"> MyLibrary
             </a>
           </li>
-
           <li class="nav-item ms-3 d-flex align-self-center">
             <div class="dropdown" style="position:relative">
               <button class="btn btn-primary nav-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
-                <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="nav-vector mb-1" style="height: 1.8rem; border-radius: 50%;">
+                <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="nav-vector mb-1" style="@(userAvatar != "user.svg" ? "border-radius: 50%; height: 3.1rem; width: 3.1rem; margin: -6px" : "")">
               </button>
               <ul class="dropdown-menu" style="right:0; left:auto; background: #133E7C !important;">
                 <li>
@@ -86,19 +85,33 @@
                 <li><hr class="dropdown-divider"></li>
                 <li>
                   <a style="color: white !important;
-                                         background: #133E7C !important;" href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">My Account</a>
+                                         background: #133E7C !important;" href="/Identity/Account/Manage/Index" class="btn btn-primary dropdown-item">Account</a>
                 </li>
-                <li>
-                  <a style="color: white !important;
+                @if (user.Clearance == 2)
+                {
+                  <li>
+                    <a style="color: white !important;
                                         background: #133E7C !important;" href="/Home/AllUsers" class="btn btn-primary dropdown-item">Users</a>
-                </li>
+                  </li>
+                }
+
                 <li>
                   <a style="color: white !important;
                                         background: #133E7C !important;" href="/Friendships/FriendsPage" class="btn btn-primary dropdown-item">Friends</a>
-                </li>
-                <li>
-                  <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                    <button style="color: white !important;
+                                </li>
+                              @{
+                                 var user1 = await SignInManager.UserManager.GetUserAsync(this.User);
+                               }
+                              @if (user1?.Clearance > 0)
+                              {
+                                <li>
+                                  <a style="color: white !important;
+                                                  background: #133E7C !important;" href="/Statistics/StatisticsPage" class="btn btn-primary dropdown-item">Statistics</a>
+                                </li>
+                              }
+                            <li>
+                                <form class ="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
+                                        <button style="color: white !important;
                                          background: #133E7C !important;" type="submit" class="btn btn-primary dropdown-item">
                       Logout
                     </button>

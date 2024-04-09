@@ -12,16 +12,16 @@ namespace questvaultTest
     }
 
 
-    //// Nível 1
-    //[Fact]
-    //public void Index_ReturnsViewResult()
-    //{
-    //  var controller = new HomeController(null, _context);
+        // Nï¿½vel 1
+        [Fact]
+        public void Index_ReturnsViewResult()
+        {
+            //var controller = new HomeController(null, _context);
 
-    //  var result = controller.Index();
+            //var result = controller.IndexAsync();
 
-    //  var viewResult = Assert.IsType<ViewResult>(result);
-    //}
+            //var viewResult = Assert.IsType<ViewResult>(result);
+        }
 
 
     //[Fact]

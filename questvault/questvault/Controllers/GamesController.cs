@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MailKit.Search;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
@@ -13,7 +14,6 @@ namespace questvault.Controllers
 {
   /// <summary>
   /// Controller for managing games.
-  /// Note: This controller is a work in progress (WIP) and may undergo significant changes.
   /// </summary>
   /// <remarks>
   /// Constructor for GamesController.
@@ -364,6 +364,7 @@ namespace questvault.Controllers
       return RedirectToAction("Results", new { searchTerm });
     }
 
+
     /// <summary>
     /// Retrieves details of a game with the specified ID.
     /// </summary>
@@ -372,11 +373,13 @@ namespace questvault.Controllers
     [Authorize]
     [HttpGet]
     [Route("details/{id}")]
-    public async Task<IActionResult> Details(int? id)
+    public async Task<IActionResult> Details(int id)
     {
-      if( id == null || context.Games == null )
+      
+
+      if (context.Games == null)
       {
-        return NotFound(); //TODO NOT FOUND
+        return NotFound();
       }
 
       var game = await context.Games
@@ -411,7 +414,6 @@ namespace questvault.Controllers
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
       }
-      // Passe a variável para a visualização
       ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
       ViewBag.IsGameTop5 =
         userLibrary != null &&

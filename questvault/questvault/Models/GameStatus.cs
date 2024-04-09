@@ -3,9 +3,10 @@
     public enum GameStatus
     {
         Complete,
-        Played,
+        Playing,
         Retired,
-        Shelved,
-        Abandoned
+        Backlogged,
+        Abandoned,
+        Wishlist
     }
 }

@@ -6,6 +6,7 @@ using questvault.Data;
 using questvault.Models;
 using questvault.Services;
 using questvault.Utils;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using GameStatus = questvault.Models.GameStatus;
 
 namespace questvault.Controllers
@@ -18,6 +19,7 @@ namespace questvault.Controllers
     ) : Controller
   {
     private readonly int _pageSize = 20;
+
     /// <summary>
     /// Action method for displaying the user's library.
     /// </summary>
@@ -25,7 +27,7 @@ namespace questvault.Controllers
     [Authorize]
     [HttpGet]
     [Route("UserLibrary")]
-    public async Task<IActionResult> UserLibrary(string id, int? pageNumber)
+    public async Task<IActionResult> UserLibrary(string id, int? pageNumber, string? collection, string? releasePlatform, string? genre)
     {
 
       if( id == null )
@@ -33,29 +35,114 @@ namespace questvault.Controllers
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();
       }
-      var user = context.Users.Where(u => id.ToUpper().Equals(u.NormalizedUserName)).FirstOrDefault();
+      var userLogged = await signInManager.UserManager.GetUserAsync(this.User);
+      var user = await context.Users.Where(u => u.NormalizedUserName == id.ToUpper()).FirstAsync();
 
-      if( user == null )
+      if (user == null || userLogged == null)
       {
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();
       }
+      bool friends = false;
+      var friendships = await context.Friendship.ToListAsync();
+      foreach (var friendship in friendships)
+      {
+        if ((friendship.User1 == userLogged && friendship.User2 == user) ||
+            (friendship.User1 == user && friendship.User2 == userLogged))
+        {
+          friends = true;
+          break;
+        }
+      }
 
-      var gamesInLibrary = context.GamesLibrary
-              .Include(gl => gl.GameLogs) // Inclua os GameLogs para evitar carregamento preguiçoso
-              .ThenInclude(gl => gl.Game) // Inclua os jogos dentro de cada GameLog
-              .Where(gl => gl.User == user) // Filtre pela biblioteca do usuário atual
-              .SelectMany(gl => gl.GameLogs.Select(g => g.Game)) // Selecione todos os jogos dentro dos GameLogs
-              ;
+      if (user.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != user)
+      {
+        return RedirectToAction("PrivateProfile", "User", new { user.Id });
+      }
+
+      ViewBag.Collection = collection;
+      ViewBag.SelectedGenre = genre;
+      ViewBag.SelectedReleasePlatform = releasePlatform;
+      ViewBag.UserLibraryId = user.UserName;
+
+      if (String.IsNullOrEmpty(collection))
+      {
+     
+        var gamesInLibraryWithoutCollection = context.GamesLibrary
+        .Include(gl => gl.GameLogs)
+        .ThenInclude(gl => gl.Game)
+        .Where(gl => gl.User == user)
+        .SelectMany(gl => gl.GameLogs.Select(g => g.Game))
+        ;
+
+        if (!string.IsNullOrEmpty(releasePlatform))
+        {
 
 
-      // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
-      var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary.AsNoTracking(), pageNumber ?? 1, _pageSize);
+          gamesInLibraryWithoutCollection = gamesInLibraryWithoutCollection.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
+        }
+
+        if (!string.IsNullOrEmpty(genre))
+        {
+
+          gamesInLibraryWithoutCollection = gamesInLibraryWithoutCollection.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
+        }
+
+        ViewBag.NumberOfResults = gamesInLibraryWithoutCollection.Count();
+        // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
+        var listWithoutCollection = await PaginatedList<Game>.CreateAsync(gamesInLibraryWithoutCollection.AsNoTracking(), pageNumber ?? 1, _pageSize);
+        var dataWithoutCollection = new GameViewData
+        {
+          NumberOfResults = gamesInLibraryWithoutCollection.Count(),
+        Games = listWithoutCollection,
+          Genres = context.Genres.Distinct(),
+          Platforms = context.Platforms.Distinct(),
+        };
+        return View(dataWithoutCollection);
+      }
+
+
+      if (!Enum.TryParse(collection, out GameStatus statusEnum))
+      {
+        // Se a conversão falhar, retorne BadRequest
+        ViewBag.Error = "Invalid status value.";
+        ViewBag.Collection = "";
+        ViewBag.NumberOfResults = "error";
+        return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
+      }
+
+      var gamesInLibrary1 = context.GamesLibrary
+        .Include(gl => gl.GameLogs)
+        .ThenInclude(gl => gl.Game)
+        .Where(gl => gl.User == user)
+            .SelectMany(gl => gl.GameLogs.Where(g => g.Status == statusEnum)
+            .Select(g => g.Game));
+
+      if (!string.IsNullOrEmpty(releasePlatform))
+      {
+                
+                
+                gamesInLibrary1 = gamesInLibrary1.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
+      }
+
+      if (!string.IsNullOrEmpty(genre))
+      {
+                
+                gamesInLibrary1 = gamesInLibrary1.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
+      }
+
+      ViewBag.NumberOfResults = gamesInLibrary1.Count();
+
+   
+      var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary1.AsNoTracking(), pageNumber ?? 1, _pageSize);
       var data = new GameViewData
       {
-        NumberOfResults = list.Count,
-        Games = list
+        NumberOfResults = gamesInLibrary1.Count(), // arranjar iste
+        Games = list,
+        Genres = context.Genres.Distinct(),
+        Platforms = context.Platforms.Distinct(),
       };
+
       return View(data);
     }
 
@@ -63,20 +150,19 @@ namespace questvault.Controllers
     /// Action method for adding or updating games.
     /// </summary>
     /// <param name="gameId">The ID of the game to add or update.</param>
-    /// <param name="ownage">The ownage status of the game (e.g., owned, wishlist, etc.).</param>
     /// <param name="status">The status of the game (e.g., completed, in-progress, etc.).</param>
     /// <returns>An asynchronous task representing the operation with IActionResult result.</returns>
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> AddUpdateGames(long gameId, string ownage, string status, string userId)
+    public async Task<IActionResult> AddUpdateGames(long gameId, string status, string userId)
     {
       var user = context.Users.Where(u => u.Id == userId).First();
       var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
-      if( !Enum.TryParse(ownage, out OwnageStatus ownageEnum) ||
-          !Enum.TryParse(status, out GameStatus statusEnum) )
+      if (!Enum.TryParse(status, out GameStatus statusEnum))
       {
-        ViewBag.Error = "Invalid ownage or status value.";
+        // Se a conversão falhar, retorne BadRequest
+        ViewBag.Error = "Invalid status value.";
         return RedirectToAction("Details", "Games", new { id = gameId });
       }
 
@@ -105,7 +191,6 @@ namespace questvault.Controllers
       {
         // Atualizar o jogo existente
         existingGame.Status = statusEnum;
-        existingGame.Ownage = ownageEnum;
       }
       else
       {
@@ -115,14 +200,15 @@ namespace questvault.Controllers
           Game = game,
           IgdbId = game.IgdbId,
           Status = statusEnum,
-          Ownage = ownageEnum
+          UserId = user.Id,
+          User = user
         };
 
         library.GameLogs.Add(existingGame);
       }
 
       await context.SaveChangesAsync();
-
+      TempData["StatusMessage"] = $"{existingGame.Game.Name} log status updated to {statusEnum}.";
       return RedirectToAction("Details", "Games", new { id = game.IgdbId });
     }
 
@@ -160,7 +246,7 @@ namespace questvault.Controllers
         context.GameLog.Remove(gameToRemove);
         await context.SaveChangesAsync();
       }
-
+      TempData["StatusMessage"] = $"{gameToRemove.Game.Name} log was removed from your library.";
       return RedirectToAction("Details", "Games", new { id = game.IgdbId });
     }
 
@@ -214,6 +300,7 @@ namespace questvault.Controllers
       await context.SaveChangesAsync();
 
       // Redirecione de volta para a página de detalhes do jogo após a submissão
+      TempData["StatusMessage"] = $"{gameLog.Game.Name} review and rating updated.";
       return RedirectToAction("Details", "Games", new { id = game.IgdbId });
     }
 

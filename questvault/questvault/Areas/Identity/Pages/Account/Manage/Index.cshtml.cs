@@ -7,18 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
+using Microsoft.IdentityModel.Tokens;
 using questvault.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace questvault.Areas.Identity.Pages.Account.Manage
 {
   public class IndexModel(
-          UserManager<User> userManager,
-          SignInManager<User> signInManager,
-          ILogger<IndexModel> logger,
-          ApplicationDbContext context,
-          IWebHostEnvironment webHostEnvironment
-      ) : PageModel
+        UserManager<User> userManager,
+        SignInManager<User> signInManager,
+        ILogger<IndexModel> logger,
+        ApplicationDbContext context,
+        IWebHostEnvironment webHostEnvironment
+    ) : PageModel
   {
 
     /// <summary>
@@ -79,13 +80,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       [Display(Name = "password")]
       public string OldPassword { get; set; }
 
-      [Required]
       [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
       [DataType(DataType.Password)]
       [Display(Name = "new password")]
       public string NewPassword { get; set; }
 
-      [Required]
       [DataType(DataType.Password)]
       [Display(Name = "Confirm new password")]
       [Compare("NewPassword", ErrorMessage = "The passwords do not match.")]
@@ -116,73 +115,46 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
       await LoadAsync(user);
       ViewData["UserAvatar"] = user.ProfilePhotoPath;
+      ViewData["Privacy"] = user.IsPrivate;
       return Page();
     }
-
-    public async Task<IActionResult> OnPostUserNameAsync()
+    public async Task<IActionResult> OnPostProfileAsync()
     {
       var user = await userManager.GetUserAsync(User);
-      if( user == null ) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
-      if( string.IsNullOrEmpty(Input.NewUserName) )
+      if (user == null) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+      ViewData["Privacy"] = user.IsPrivate;
+      foreach (var item in ModelState) await Console.Out.WriteLineAsync($"item: {item}");
+      if (!ModelState.IsValid)
       {
-        ModelState.AddModelError(string.Empty, "User name cannot be empty");
-        await LoadAsync(user);
+        ModelState.AddModelError(string.Empty, "Input your current password");
         return Page();
       }
-
-      var userName = user.UserName;
-      if( Input.NewUserName.Equals(userName) )
+      if (!Input.NewUserName.IsNullOrEmpty())
       {
-        ModelState.AddModelError(string.Empty, "Can't change to same username");
-        await LoadAsync(user);
-        return Page();
-      }
-
-      if( !Input.NewUserName.Equals(userName) )
-      {
-        var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
-        if( !setUserNameResult.Succeeded )
+        if (Input.NewUserName.Equals(user.UserName)) ModelState.AddModelError(string.Empty, "Can't change to same username");
+        else
         {
-          ModelState.AddModelError(string.Empty, "This username is already taken");
-          await LoadAsync(user);
-          return Page();
+          var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
+          if (!setUserNameResult.Succeeded) ModelState.AddModelError(string.Empty, "This username is already taken");
+          else
+          {
+            StatusMessage = "Your username has been updated. ";
+          }
         }
+      }
+      if (!Input.NewPassword.IsNullOrEmpty() && !Input.ConfirmPassword.IsNullOrEmpty())
+      {
+        var changePasswordResult = await userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
+        if (!changePasswordResult.Succeeded)
+        {
+          foreach (var error in changePasswordResult.Errors) ModelState.AddModelError(string.Empty, error.Description);
+        }
+        else if (StatusMessage == null) StatusMessage = "Your password has been changed. "; else StatusMessage += "| Your password has been updated. ";
       }
 
       await signInManager.RefreshSignInAsync(user);
-      StatusMessage = "Your username has been updated";
-      return RedirectToPage();
-    }
-
-    public async Task<IActionResult> OnPostPasswordAsync()
-    {
-      if( !ModelState.IsValid )
-      {
-        ModelState.AddModelError(string.Empty, "Fields cannot be empty");
-        return Page();
-      }
-
-      var user = await userManager.GetUserAsync(User);
-      if( user == null )
-      {
-        return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
-      }
-
-      var changePasswordResult = await userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
-      if( !changePasswordResult.Succeeded )
-      {
-        foreach( var error in changePasswordResult.Errors )
-        {
-          ModelState.AddModelError(string.Empty, error.Description);
-        }
-        return Page();
-      }
-
-      await signInManager.RefreshSignInAsync(user);
-      logger.LogInformation("User changed their password successfully.");
-      StatusMessage = "Your password has been changed.";
-
-      return RedirectToPage();
+      await LoadAsync(user);
+      return Page();
     }
 
     public async Task<IActionResult> OnPostAvatarAsync()
