@@ -393,6 +393,8 @@ namespace questvault.Controllers
     [Route("details/{id}")]
     public async Task<IActionResult> Details(int id)
     {
+      
+
       if (context.Games == null)
       {
         return NotFound();

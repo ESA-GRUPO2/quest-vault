@@ -121,10 +121,11 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       ViewData["Privacy"] = user.IsPrivate;
       return Page();
     }
-    public async Task<IActionResult> OnPostAsync()
+    public async Task<IActionResult> OnPostProfileAsync()
     {
       var user = await userManager.GetUserAsync(User);
       if (user == null) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+      ViewData["Privacy"] = user.IsPrivate;
       foreach (var item in ModelState) await Console.Out.WriteLineAsync($"item: {item}");
       if (!ModelState.IsValid)
       {
