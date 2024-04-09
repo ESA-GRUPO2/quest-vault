@@ -3,7 +3,7 @@
   TempData["_GR-ShowDeleteButton"] ??= false;
   var userAvatar = (Model.User != null && Model.User.ProfilePhotoPath != null) ? Model.User.ProfilePhotoPath : "user.svg";
 }
-@if (Model != null)
+@if (Model != null && Model.User != null)
 {
   <div class="review-card row">
     <div class="review-user col-2">
