@@ -6,7 +6,6 @@ using questvault.Data;
 using questvault.Models;
 using questvault.Services;
 using questvault.Utils;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using GameStatus = questvault.Models.GameStatus;
 
 namespace questvault.Controllers
@@ -38,24 +37,24 @@ namespace questvault.Controllers
       var userLogged = await signInManager.UserManager.GetUserAsync(this.User);
       var user = await context.Users.Where(u => u.NormalizedUserName == id.ToUpper()).FirstAsync();
 
-      if (user == null || userLogged == null)
+      if( user == null || userLogged == null )
       {
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();
       }
       bool friends = false;
       var friendships = await context.Friendship.ToListAsync();
-      foreach (var friendship in friendships)
+      foreach( var friendship in friendships )
       {
-        if ((friendship.User1 == userLogged && friendship.User2 == user) ||
-            (friendship.User1 == user && friendship.User2 == userLogged))
+        if( ( friendship.User1 == userLogged && friendship.User2 == user ) ||
+            ( friendship.User1 == user && friendship.User2 == userLogged ) )
         {
           friends = true;
           break;
         }
       }
 
-      if (user.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != user)
+      if( user.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != user )
       {
         return RedirectToAction("PrivateProfile", "User", new { user.Id });
       }
@@ -65,9 +64,9 @@ namespace questvault.Controllers
       ViewBag.SelectedReleasePlatform = releasePlatform;
       ViewBag.UserLibraryId = user.UserName;
 
-      if (String.IsNullOrEmpty(collection))
+      if( String.IsNullOrEmpty(collection) )
       {
-     
+
         var gamesInLibraryWithoutCollection = context.GamesLibrary
         .Include(gl => gl.GameLogs)
         .ThenInclude(gl => gl.Game)
@@ -75,14 +74,14 @@ namespace questvault.Controllers
         .SelectMany(gl => gl.GameLogs.Select(g => g.Game))
         ;
 
-        if (!string.IsNullOrEmpty(releasePlatform))
+        if( !string.IsNullOrEmpty(releasePlatform) )
         {
 
 
           gamesInLibraryWithoutCollection = gamesInLibraryWithoutCollection.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
         }
 
-        if (!string.IsNullOrEmpty(genre))
+        if( !string.IsNullOrEmpty(genre) )
         {
 
           gamesInLibraryWithoutCollection = gamesInLibraryWithoutCollection.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
@@ -94,7 +93,7 @@ namespace questvault.Controllers
         var dataWithoutCollection = new GameViewData
         {
           NumberOfResults = gamesInLibraryWithoutCollection.Count(),
-        Games = listWithoutCollection,
+          Games = listWithoutCollection,
           Genres = context.Genres.Distinct(),
           Platforms = context.Platforms.Distinct(),
         };
@@ -102,7 +101,7 @@ namespace questvault.Controllers
       }
 
 
-      if (!Enum.TryParse(collection, out GameStatus statusEnum))
+      if( !Enum.TryParse(collection, out GameStatus statusEnum) )
       {
         // Se a conversão falhar, retorne BadRequest
         ViewBag.Error = "Invalid status value.";
@@ -118,22 +117,22 @@ namespace questvault.Controllers
             .SelectMany(gl => gl.GameLogs.Where(g => g.Status == statusEnum)
             .Select(g => g.Game));
 
-      if (!string.IsNullOrEmpty(releasePlatform))
+      if( !string.IsNullOrEmpty(releasePlatform) )
       {
-                
-                
-                gamesInLibrary1 = gamesInLibrary1.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
+
+
+        gamesInLibrary1 = gamesInLibrary1.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
       }
 
-      if (!string.IsNullOrEmpty(genre))
+      if( !string.IsNullOrEmpty(genre) )
       {
-                
-                gamesInLibrary1 = gamesInLibrary1.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
+
+        gamesInLibrary1 = gamesInLibrary1.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
       }
 
       ViewBag.NumberOfResults = gamesInLibrary1.Count();
 
-   
+
       var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary1.AsNoTracking(), pageNumber ?? 1, _pageSize);
       var data = new GameViewData
       {
@@ -159,7 +158,7 @@ namespace questvault.Controllers
       var user = context.Users.Where(u => u.Id == userId).First();
       var game = context.Games.Where(g => g.IgdbId == gameId).First();
 
-      if (!Enum.TryParse(status, out GameStatus statusEnum))
+      if( !Enum.TryParse(status, out GameStatus statusEnum) )
       {
         // Se a conversão falhar, retorne BadRequest
         ViewBag.Error = "Invalid status value.";
@@ -407,8 +406,7 @@ namespace questvault.Controllers
             GameId = game.GameId,
             IgdbId = game.IgdbId,
             HoursPlayed = gameInfo?.Playtime ?? 0,
-            Ownage = gameInfo?.Playtime > 0 ? OwnageStatus.Playing : OwnageStatus.Backlogged,
-            Status = GameStatus.Shelved
+            Status = gameInfo?.Playtime > 0 ? GameStatus.Playing : GameStatus.Backlogged
           });
         }
         else gamesInfoInSteamLibrary.Add(gameInfo);

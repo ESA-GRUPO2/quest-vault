@@ -74,8 +74,7 @@ namespace questvault.Services
             Game = g,
             IgdbId = g.IgdbId,
             HoursPlayed = current?.Playtime ?? 0,
-            Ownage = current?.Playtime>0 ? OwnageStatus.Playing : OwnageStatus.Backlogged,
-            Status = GameStatus.Shelved
+            Status = current?.Playtime>0 ? GameStatus.Playing : GameStatus.Backlogged
           };
           gameLogs.Add(gl);
         }

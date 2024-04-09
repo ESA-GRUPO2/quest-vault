@@ -12,16 +12,16 @@ namespace questvaultTest
     }
 
 
-        // N�vel 1
-        [Fact]
-        public void Index_ReturnsViewResult()
-        {
-            //var controller = new HomeController(null, _context);
+    // N�vel 1
+    [Fact]
+    public void Index_ReturnsViewResult()
+    {
+      //var controller = new HomeController(null, _context);
 
-            //var result = controller.IndexAsync();
+      //var result = controller.IndexAsync();
 
-            //var viewResult = Assert.IsType<ViewResult>(result);
-        }
+      //var viewResult = Assert.IsType<ViewResult>(result);
+    }
 
 
     //[Fact]
@@ -30,9 +30,8 @@ namespace questvaultTest
     //  var controller = new HomeController(null, _context);
     //  // Act
     //  var result = controller.Privacy();
-
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
-    }
+    //    // Assert
+    //    Assert.IsType<ViewResult>(result);
+    //}
+  }
 }

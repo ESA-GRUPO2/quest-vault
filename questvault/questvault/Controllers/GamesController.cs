@@ -1,5 +1,4 @@
-﻿using MailKit.Search;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
@@ -375,9 +374,9 @@ namespace questvault.Controllers
     [Route("details/{id}")]
     public async Task<IActionResult> Details(int id)
     {
-      
 
-      if (context.Games == null)
+
+      if( context.Games == null )
       {
         return NotFound();
       }
@@ -409,7 +408,6 @@ namespace questvault.Controllers
 
       if( gameLog != null )
       {
-        ViewBag.Ownage = gameLog.Ownage;
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
