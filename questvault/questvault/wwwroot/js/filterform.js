@@ -4,7 +4,7 @@ function clearForm() {
 
 // selectpicker for select in forms
 
-$('.select-results').selectpicker({
+$('.selectpicker.select-results').selectpicker({
   dropupAuto: false,
   liveSearch: true,
   size: 7,
