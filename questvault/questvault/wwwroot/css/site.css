@@ -244,3 +244,22 @@ body {
     text-decoration: none;
     visibility:hidden;
 }
+
+.input-purple {
+  background: #98008D;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 10px;
+  height: 2rem;
+  padding: 6px;
+  border: none;
+  margin-bottom:0.5rem
+}
+
+.btn-profile:hover {
+  outline: solid #0ABDC6 !important;
+}
+
+.btn-profile:hover {
+  outline: solid #0ABDC6 !important;
+}
