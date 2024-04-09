@@ -31,10 +31,10 @@
   color: #D9D9D9;
 }
 
-.select-results button {
-  background: none !important;
-  border: none;
-}
+  .select-results button {
+    background: none !important;
+    border: none;
+  }
 
 .bootstrap-select .no-results {
   background: #1a3d7b !important;
@@ -46,8 +46,8 @@
   background-color: #0b1832 !important;
 }
 
-.filter-option-inner-inner{
-    color: white;
+.filter-option-inner-inner {
+  color: white;
 }
 
 .game-row {
@@ -85,3 +85,36 @@
 .form-switch-release .form-switch input:checked {
   background-color: #0ABDC6;
 }
+
+.btn-search-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.btn-users-inverted {
+  background: none !important;
+  outline: solid #98008D !important;
+}
+
+  .btn-users-inverted:hover, .btn-users-inverted:active {
+    background-color: #98008D !important;
+  }
+
+.btn-games-inverted {
+  background: none !important;
+  outline: solid #0ABDC6 !important;
+  color: white !important;
+}
+
+  .btn-games-inverted img {
+    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%) !important;
+  }
+
+  .btn-games-inverted:hover, .btn-games-inverted:active {
+    background-color: #0ABDC6 !important;
+    color: #091833 !important;
+  }
+
+    .btn-games-inverted:hover img, .btn-games-inverted:active img {
+      filter: invert(9%) sepia(12%) saturate(7338%) hue-rotate(197deg) brightness(90%) contrast(99%) !important;
+    }

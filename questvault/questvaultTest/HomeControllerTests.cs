@@ -31,9 +31,8 @@ namespace questvaultTest
     //  // Act
     //  var result = controller.Privacy();
 
-    //  // Assert
-    //  Assert.IsType<ViewResult>(result);
-    //}
-
-  }
+            // Assert
+            Assert.IsType<ViewResult>(result);
+        }
+    }
 }
