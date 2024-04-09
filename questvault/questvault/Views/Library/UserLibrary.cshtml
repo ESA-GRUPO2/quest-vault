@@ -52,10 +52,10 @@
     <h4 class="justify-content-end ">@ViewBag.NumberOfResults @(ViewBag.NumberOfResults == 1 ? "game" : "games")</h4>
   </div>
 
-  <hr class="bar" style="margin-bottom: 2vh; width: 100%;">
+  <hr class="bar">
 
 
-  <div class="d-flex main-section-result">
+  <div class="d-flex main-section-result justify-content-between">
     <div class="filter-section">
       <h5 class="mt-4">Collections</h5>
       <div class="library-filter-ownage" name="GameStatus" id="game-status">
@@ -96,7 +96,7 @@
       {
         @foreach (var batch in batches)
         {
-          <div class="game-row">
+          <div class="d-flex justify-content-start">
             @foreach (var game in batch)
             {
               <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">

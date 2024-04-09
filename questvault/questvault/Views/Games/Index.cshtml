@@ -137,7 +137,7 @@
 
           @foreach (var batch in batches)
           {
-            <div class="d-flex justify-content-around">
+            <div class="d-flex justify-content-start">
               @foreach (var game in batch)
               {
                 <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
