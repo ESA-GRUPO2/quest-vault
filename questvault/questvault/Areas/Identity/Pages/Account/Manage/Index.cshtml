@@ -22,14 +22,7 @@
 </style>
 <div class="main-section">
   <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
-    @if (ViewData["Privacy"].Equals(true))
-    {
-      <h3>Private @ViewData["Title"]</h3>
-    }
-    else
-    {
-      <h3>Public @ViewData["Title"]</h3>
-    }
+      <h3>@ViewData["Title"]</h3>
   </div>
   <hr class="bar">
   <partial style="width:90%" name="_StatusMessage" for="StatusMessage" />
@@ -45,14 +38,14 @@
       </div>
 
       <div class="col-2 d-block justify-content-center">
-        <div style="margin-bottom: 2rem" class="user-foto justify-content-center">
+        <div style="margin-bottom: 2rem;" class="d-flex align-items-center justify-content-center user-foto">
           @if (!string.IsNullOrEmpty(userAvatar))
           {
-            <img style="height:125px;width:130px; background-size: cover;border-radius: 50%; margin: -6px;" src="~/img/usr_profile/@userAvatar" alt="User">
+            <img style="height:125px;width:130px; background-size: cover; margin: -6px;" src="~/img/usr_profile/@userAvatar" alt="User">
           }
           else
           {
-            <img style="height:80px;width:80px;margin-left: 13%;margin-top: 13%; background-size: cover;border-radius: 50%;" src="~/img/usr_profile/user.svg" alt="User">
+            <img style="height:60px;width:60px; background-size: cover;" src="~/img/usr_profile/user.svg" alt="User">
           }
         </div>
         <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#avatarModal">Change Avatar</button>
@@ -87,7 +80,7 @@
       @*  <div class="col-4"> *@
       <div class="col-8">
         <form id="change-profile-form" method="post" asp-page-handler="Profile">
-          <div class="row">
+          <div class="row mt-0">
             <div class="col-6">
               @* <form id="change-username-form" method="post" asp-page-handler="UserName"> *@
               <div class="row mb-3">
@@ -148,21 +141,23 @@
 
         <form>
           <div class="form-check form-switch row">
-            <button asp-page="./TooglePrivacy" style=" margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Change Privacy</button>
+            <button asp-page="./TooglePrivacy" style=" margin-bottom: 30px" class="btn-blue-big submit">
+              Change Privacy
+            </button>
           </div>
           <div class="form-check form-switch row">
 
             @if (Model.Is2faEnabled)
             {
-              <button asp-page="./Disable2fa" style="margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
+              <button asp-page="./Disable2fa" style="margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
             }
             else
             {
-              <button asp-page="./Enable2fa" style="margin-right: 15%; margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
+              <button asp-page="./Enable2fa" style=" margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
             }
           </div>
           <div class="form-check form-switch row mb-3">
-            <a asp-page="./DeactivateAccount" style="float: left; margin-right: 15%; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
+            <a asp-page="./DeactivateAccount" style="float: left; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
           </div>
         </form>
       </div>
@@ -173,7 +168,7 @@
         <partial name="_Top5" for="@ViewData["Top5"] as List<GameLog>" />
       </div>
       <div class="col-3">
-        <h4 style="float:right; margin-right: 2.3rem;" class="text-light mb-4">Connections</h4>
+        <h4 style="text-align:right;" class="text-light mb-4">Connections</h4>
         <table class="table table-sm table-borderless table-profile">
           <tr>
             <th><img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam" /></th>
