@@ -11,7 +11,7 @@
   var reviews = ViewBag.Reviews;
   TempData["_GR-ShowDeleteButton"] = (await SignInManager.UserManager.GetUserAsync(User)).Clearance > 0; // This is necessary for showing the delete button in _GameReviews
 }
-@if (SignInManager.IsSignedIn(User))
+@if( SignInManager.IsSignedIn(User) )
 {
 
     <partial style="width:90%" name="_StatusMessage" for="@ViewData["StatusMessage"]" />
@@ -44,10 +44,10 @@
       <div class="container ms-3 mt-4">
         <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
         @* <h4>Released on @Model.ReleaseDate</h4> *@
-        @if (Model.ReleaseDate.HasValue)
+        @if( Model.ReleaseDate.HasValue )
         {
           <h4>
-            @if (Model.ReleaseDate.Value < DateTime.Today)
+            @if( Model.ReleaseDate.Value < DateTime.Today )
             {
               <text>Released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
             }
@@ -63,10 +63,10 @@
         }
         <h5>
           By
-          @foreach (var c in Model.GameCompanies)
+          @foreach( var c in Model.GameCompanies )
           {
             <text>@c.Company.CompanyName</text>
-            @if (c != Model.GameCompanies.Last())
+            @if( c != Model.GameCompanies.Last() )
             {
               <text>, </text>
             }
@@ -75,10 +75,10 @@
 
         <div class="ps-0">
           <div class="game-filters d-inline-flex mt-3">
-            @foreach (var gen in Model.GameGenres)
+            @foreach( var gen in Model.GameGenres )
             {
               <div class="me-3 text-decoration-underline">
-                @if (gen != null)
+                @if( gen != null )
                 {
                   @gen.Genre.GenreName
                 }
@@ -182,7 +182,7 @@
 
         </div>
         <div class="game-platforms container-fluid mt-5">
-          @foreach (var p in Model.GamePlatforms)
+          @foreach( var p in Model.GamePlatforms )
           {
             <p>@p.Platform.PlatformName</p>
           }
@@ -204,27 +204,30 @@
           <h4>Screenshots</h4>
 
           <div class="card-group">
-            @for (int i = 0; i < Model.Screenshots.Length; i++)
+            @for( int i = 0; i < Model.Screenshots.Length; i++ )
             {
               <div class="card me-2">
                 <img src="@Model.Screenshots[i]" class="card-img col-md-2" alt="...">
               </div>
             }
           </div>
-          <iframe class="card-img col-md-2"
-                  width="280"
-                  height="318" src="@Model.VideoUrl"
-                  frameborder="0" allowfullscreen></iframe>
+          @if( Model.VideoUrl != null )
+          {
+            <iframe class="card-img col-md-2"
+                    width="280"
+                    height="318" src="@Model.VideoUrl"
+                    frameborder="0" allowfullscreen></iframe>
+          }
         </div>
       </div>
       <div class="game-review container mt-3">
-        @if (ViewBag.IsGameAddedToLibrary == true)
+        @if( ViewBag.IsGameAddedToLibrary == true )
         {
           <form style="height:100%" asp-controller="Library" asp-action="AddReview" method="post">
             <input type="hidden" name="gameId" value="@Model.IgdbId" />
             <h4>Your Review</h4>
             <div class="justify-content-end d-flex">
-              @switch (ViewBag.Rating)
+              @switch( ViewBag.Rating )
               {
                 case null:
                   <div class="rating">

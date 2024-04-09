@@ -125,7 +125,11 @@
 
         </div>
         <div class="profile-connects row container-fluid">
-          <img class="img-size-sm" src="~/img/external/Steam_Logo.png" alt="Steam Logo" />
+          @if(Model.user.SteamID != null){
+            <a href="https://steamcommunity.com/profiles/@Model.user.SteamID" target="_blank" rel="noopener noreferrer">
+              <img class="img-size-sm" src="~/img/external/Steam_Logo.png" alt="Steam Logo" />
+            </a>
+          }
         </div>
       </div>
 

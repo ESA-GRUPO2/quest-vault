@@ -12,9 +12,9 @@ var configuration = builder.Configuration;
 builder.Services.AddAuthentication()
     .AddGoogle(options =>
     {
-        IConfigurationSection googleAuthNSection = configuration.GetSection("Authentication:Google");
-        options.ClientId = googleAuthNSection["ClientId"];
-        options.ClientSecret = googleAuthNSection["ClientSecret"];
+      IConfigurationSection googleAuthNSection = configuration.GetSection("Authentication:Google");
+      options.ClientId = googleAuthNSection["ClientId"];
+      options.ClientSecret = googleAuthNSection["ClientSecret"];
     });
 
 
@@ -31,18 +31,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
   .AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders()
-  
+
 ;
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Identity/Account/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+  options.LoginPath = "/Identity/Account/Login";
+  options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddControllersWithViews();
+
 
 // Emailing Service
 builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
@@ -63,19 +64,24 @@ builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
     )
 );
 
+builder.Services.AddSingleton(i => new SteamAPI(configuration["SteamAPI:API_KEY"],
+  new IGDBService(
+    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
+    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
+)));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if( app.Environment.IsDevelopment() )
 {
-    app.UseMigrationsEndPoint();
+  app.UseMigrationsEndPoint();
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+  app.UseExceptionHandler("/Home/Error");
+  // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+  app.UseHsts();
 }
 
 

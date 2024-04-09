@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using questvault.Controllers;
 using questvault.Data;
 using Microsoft.IdentityModel.Tokens;
 using questvault.Models;
@@ -102,16 +101,14 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       Email = email;
       Is2faEnabled = is2faEnabled;
       var library = await context.GamesLibrary.
-        Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
-        FirstOrDefaultAsync(l => l.UserId == user.Id);
-      ViewData["Top5"] = null;
-      if (library != null) { ViewData["Top5"] = library.Top5Games; }
+              Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
+              FirstOrDefaultAsync(l => l.UserId == user.Id);
     }
 
     public async Task<IActionResult> OnGetAsync()
     {
       var user = await userManager.GetUserAsync(User);
-      if (user == null)
+      if( user == null )
       {
         return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
       }
@@ -165,13 +162,13 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       string filename = UploadFile(ProfilePhoto);
 
       var user = await userManager.GetUserAsync(User);
-      if (user == null)
+      if( user == null )
       {
         return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
       }
 
       var userToUpdate = await context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
-      if (userToUpdate != null)
+      if( userToUpdate != null )
       {
         userToUpdate.ProfilePhotoPath = filename;
         await context.SaveChangesAsync();
@@ -183,22 +180,21 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     private string UploadFile(IFormFile ProfilePhoto)
     {
       string fileName = null;
-      if (ProfilePhoto == null)
+      if( ProfilePhoto == null )
       {
       }
-      if (ProfilePhoto != null)
+      if( ProfilePhoto != null )
       {
         string uploadDir = Path.Combine(webHostEnvironment.WebRootPath, "img/usr_profile");
         fileName = Guid.NewGuid().ToString() + "_" + ProfilePhoto.FileName;
         string filePath = Path.Combine(uploadDir, fileName);
 
-        using (var filestream = new FileStream(filePath, FileMode.Create))
+        using( var filestream = new FileStream(filePath, FileMode.Create) )
         {
           ProfilePhoto.CopyTo(filestream);
         }
       }
       return fileName;
     }
-
   }
 }
