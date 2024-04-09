@@ -16,12 +16,12 @@ namespace questvault.Services
     public async Task<IEnumerable<Game>> SearchGamesSteam(List<string> gameNames)
     {
       string query = "fields id, name, genres.name, involved_companies.company, platforms.name, rating, total_rating_count, summary, cover.image_id, first_release_date, screenshots.image_id, videos.video_id, status;" +
-          $"where";
+          $"where name =(";
       foreach( string g in gameNames )
       {
-        query += $" name ~ \"{g}\" |";
+        query += $" \"{g}\",";
       }
-      query = query.TrimEnd('|') + "&genres != null & cover.image_id != null & involved_companies != null & platforms != null & screenshots.image_id != null & videos.video_id != null & first_release_date != null; " +
+      query = query.TrimEnd(',') + ") &genres != null & cover.image_id != null & involved_companies != null & platforms != null & screenshots.image_id != null & videos.video_id != null & first_release_date != null; " +
           "sort total_rating_count desc; limit 50;";
       var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
       return games

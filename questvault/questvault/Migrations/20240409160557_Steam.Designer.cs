@@ -12,8 +12,8 @@ using questvault.Data;
 namespace questvault.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240408175335_steamUrl-allowNull")]
-    partial class steamUrlallowNull
+    [Migration("20240409160557_Steam")]
+    partial class Steam
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -502,6 +502,9 @@ namespace questvault.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SteamID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")

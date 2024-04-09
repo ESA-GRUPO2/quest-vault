@@ -10,14 +10,12 @@ namespace questvault.Services
 
     public async Task<List<GameInfo>> GetUserLibrary(string steamId)
     {
-      string url = $"http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/" +
+      string url = $"https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/" +
         $"?key={steamApiKey}" +
         $"&steamid={steamId}" +
         "&include_appinfo=true" +
-        "&include_played_free_games=true" +
         "&include_free_sub=true" +
-        "&skip_unvetted_apps=true" +
-        "&include_extended_appinfo=true";
+        "&skip_unvetted_apps=true";
 
       HttpResponseMessage response = await client.GetAsync(url);
 

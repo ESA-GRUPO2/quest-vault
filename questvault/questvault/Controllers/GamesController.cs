@@ -111,13 +111,11 @@ namespace questvault.Controllers
     public async Task<IActionResult> Results(string searchTerm, int? pageNumber)
     {
       ViewBag.SearchTerm = searchTerm;
-      // Se o searchTerm for nulo, retorne NotFound
       if( searchTerm == null )
       {
         return RedirectToAction("Index");
       }
 
-      // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
       var query = context.Games.Where(e => e.Name.Contains(searchTerm))
           .OrderByDescending(o => o.IgdbRating)
           .ThenByDescending(o => o.TotalRatingCount);
