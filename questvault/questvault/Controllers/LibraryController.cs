@@ -12,6 +12,7 @@ namespace questvault.Controllers
   public class LibraryController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
   {
     private readonly int _pageSize = 20;
+
     /// <summary>
     /// Action method for displaying the user's library.
     /// </summary>
@@ -19,9 +20,9 @@ namespace questvault.Controllers
     [Authorize]
     [HttpGet]
     [Route("UserLibrary")]
-    public async Task<IActionResult> UserLibrary(string id, int? pageNumber, string? collection)
+    public async Task<IActionResult> UserLibrary(string id, int? pageNumber, string? collection, string? releasePlatform, string? genre)
     {
-      
+
       if (id == null)
       {
         ViewBag.Error = "Invalid user or game ID.";
@@ -47,13 +48,19 @@ namespace questvault.Controllers
         }
       }
 
-      if (user.IsPrivate && !friends && userLogged.Clearance == 0)
+      if (user.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != user)
       {
         return RedirectToAction("PrivateProfile", "User", new { user.Id });
       }
 
+      ViewBag.Collection = collection;
+      ViewBag.SelectedGenre = genre;
+      ViewBag.SelectedReleasePlatform = releasePlatform;
+      ViewBag.UserLibraryId = user.UserName;
+
       if (String.IsNullOrEmpty(collection))
       {
+     
         var gamesInLibraryWithoutCollection = context.GamesLibrary
         .Include(gl => gl.GameLogs)
         .ThenInclude(gl => gl.Game)
@@ -61,15 +68,29 @@ namespace questvault.Controllers
         .SelectMany(gl => gl.GameLogs.Select(g => g.Game))
         ;
 
+        if (!string.IsNullOrEmpty(releasePlatform))
+        {
+
+
+          gamesInLibraryWithoutCollection = gamesInLibraryWithoutCollection.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
+        }
+
+        if (!string.IsNullOrEmpty(genre))
+        {
+
+          gamesInLibraryWithoutCollection = gamesInLibraryWithoutCollection.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
+        }
+
         ViewBag.NumberOfResults = gamesInLibraryWithoutCollection.Count();
         // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
         var listWithoutCollection = await PaginatedList<Game>.CreateAsync(gamesInLibraryWithoutCollection.AsNoTracking(), pageNumber ?? 1, _pageSize);
         var dataWithoutCollection = new GameViewData
         {
-          NumberOfResults = listWithoutCollection.Count,
-          Games = listWithoutCollection
+          NumberOfResults = gamesInLibraryWithoutCollection.Count(),
+        Games = listWithoutCollection,
+          Genres = context.Genres.Distinct(),
+          Platforms = context.Platforms.Distinct(),
         };
-        ViewBag.Collection = collection;
         return View(dataWithoutCollection);
       }
 
@@ -83,29 +104,38 @@ namespace questvault.Controllers
         return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
       }
 
-      //var gamesInLibrary = context.GamesLibrary
-      //        .Include(gl => gl.GameLogs) 
-      //        .ThenInclude(gl => gl.Game) 
-      //        .Where(gl => gl.User == user)
-      //            .SelectMany(gl => gl.GameLogs.Where(g => g.Status == statusEnum)
-      //            .Select(g => g.Game));
-
       var gamesInLibrary1 = context.GamesLibrary
         .Include(gl => gl.GameLogs)
         .ThenInclude(gl => gl.Game)
         .Where(gl => gl.User == user)
             .SelectMany(gl => gl.GameLogs.Where(g => g.Status == statusEnum)
             .Select(g => g.Game));
+
+      if (!string.IsNullOrEmpty(releasePlatform))
+      {
+                
+                
+                gamesInLibrary1 = gamesInLibrary1.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
+      }
+
+      if (!string.IsNullOrEmpty(genre))
+      {
+                
+                gamesInLibrary1 = gamesInLibrary1.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
+      }
+
       ViewBag.NumberOfResults = gamesInLibrary1.Count();
 
-      // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
+   
       var list = await PaginatedList<Game>.CreateAsync(gamesInLibrary1.AsNoTracking(), pageNumber ?? 1, _pageSize);
       var data = new GameViewData
       {
-        NumberOfResults = list.Count,
-        Games = list
+        NumberOfResults = gamesInLibrary1.Count(), // arranjar iste
+        Games = list,
+        Genres = context.Genres.Distinct(),
+        Platforms = context.Platforms.Distinct(),
       };
-      ViewBag.Collection = collection;
+
       return View(data);
     }
 
