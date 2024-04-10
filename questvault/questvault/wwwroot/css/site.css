@@ -231,7 +231,7 @@ body {
 
 .game-section-border {
   width: 80%;
-  padding: 26px 12px 4px 30px;
+  padding: 0.5rem;
   border: 5px solid #711C91;
   border-radius: 27px;
 }

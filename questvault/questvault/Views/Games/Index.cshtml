@@ -125,15 +125,16 @@
           <a class="btn btn-primary nav-btn" href="/Games">Clear Filters</a>
         </form>
       </div>
-      @if (Model.NumberOfResults == 0)
-      {
-        <h2>
-          No Results...
-        </h2>
-      }
-      else
-      {
-        <div class="game-section">
+      <div class="game-section">
+        @if (Model.NumberOfResults == 0)
+        {
+          <div style="text-align: center; height:100%;padding-top:200px">
+            <h2>No games found matching your criteria!</h2>
+            <h3>Try again.</h3>
+          </div>
+        }
+        else
+        {
 
           @foreach (var batch in batches)
           {
@@ -211,13 +212,10 @@
               </li>
             </ul>
           </nav>
-        </div>
-      }
 
+        }
+      </div>
     </div>
-
-
-
   </div>
 }
 else
