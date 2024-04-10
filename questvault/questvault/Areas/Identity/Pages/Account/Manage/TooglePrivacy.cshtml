@@ -1,0 +1,40 @@
+﻿@page
+@using questvault.Models
+@model TogglePrivacyModel
+@{
+  ViewData["Title"] = "Change Privacy";
+  ViewData["help_Text"] = @"
+      This page allows you to Change your Profile Privacy!<br/>
+      'Now you see me, now you don't!'";
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+<body class="login-body">
+  <div style="margin-top:300px" class="main-section-2fa">
+    <h3 class="h3-2fa">Change account Privacy</h3>
+    <div>
+      <p class="p-forgotp" style="margin-top:20px">Are you sure you want to change the Privacy of your account?</p>
+      <div class="2fa-buttons">
+        <div class="action_btn">
+          <form method="post">
+            @if (Model.IsUserPrivateAsync().Result.Equals(false))
+            {
+              <button class="btn-2fa btn-primary submit" type="submit">
+                Change to Private
+              </button>
+            }
+            else
+            {
+              <button class="btn-2fa btn-primary submit" type="submit">
+                Change to Public
+              </button>
+            }
+
+          </form>
+
+          <a href="/Identity/Account/Manage/Index" class="btn btn-danger btn-danger-2fa">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -2,31 +2,19 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+// avatar size limit
+$(document).ready(function () {
+    $('#avatarForm').submit(function (e) {
+        var fileSize = $('#avatarInput')[0].files[0].size; // Get file size
+        var maxSize = 5 * 1024 * 1024; // 5MB in bytes
 
-const codes = document.querySelectorAll('.code-2fa')
-
-codes[0].focus()
-
-codes.forEach((code, idx) => {
-    code.addEventListener('keydown', (e) => {
-        if (e.key >= 0 && e.key <= 9) {
-            codes[idx].value = ''
-            setTimeout(() => codes[idx + 1].focus(), 10)
-            document.getElementById("code-input").value = codes[idx].value().toString();
-            console.log(codes[0].ToString);
-        } else if (e.key === 'Backspace') {
-            setTimeout(() => codes[idx - 1].focus(), 10)
+        if (fileSize > maxSize) {
+            alert('File size exceeds the maximum limit of 5MB.');
+            e.preventDefault(); // Prevent form submission
         }
-        
-    })
-    code.addEventListener("paste", (e) => {
-        const data = e.clipboardData.getData("text");
-        const value = data.split("");
-        
-        if (value.length === codes.length) {
-            codes.forEach((code, idx) => (code.value=value[idx]));
-        }
-    })
-})
+    });
+});
 
-
+document.getElementById("avatarInput").onchange = function () {
+  document.getElementById("fileName").innerText = this.files[0].name;
+};

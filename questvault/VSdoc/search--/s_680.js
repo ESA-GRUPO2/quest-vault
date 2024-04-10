@@ -1,0 +1,1 @@
+search_result['680']=["topic_000000000000015E.html","GameLog.Ownage Property","Gets or sets the ownage status for the game (nullable)."];

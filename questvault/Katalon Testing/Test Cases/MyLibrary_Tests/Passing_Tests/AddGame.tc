@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies if a game is being added to the library correctly</description>
+   <name>AddGame</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>113810df-6606-4e64-a4e5-8c9e2e2cbd25</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that a message is displayed when the user has no friends</description>
+   <name>NoFriends</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>baa6f53f-5f69-424b-b202-fd7a9781c977</testCaseGuid>
+</TestCaseEntity>

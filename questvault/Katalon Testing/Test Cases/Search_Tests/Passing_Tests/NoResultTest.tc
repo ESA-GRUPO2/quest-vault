@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies if the result from a complex search is being presented correctly</description>
+   <name>NoResultTest</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>997f64c4-3cf6-41cd-96fb-80fc4f340ecd</testCaseGuid>
+</TestCaseEntity>

@@ -1,9 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    ViewData["help_Text"] = @"
+       In this page you can see the last notifications on your profile!<br/>
+       Some information about you account and yous stats and some<br/>
+       more information about your friend and what game they are playing!";
 }
 
-<body class="home-body">
-
+<body class="home-body"> 
     <!-- Banner -->
     <section class="home-banner-image bg-image-full">
         <div class="container h-100 d-flex justify-content-evenly text-center">
@@ -33,7 +36,6 @@
         </div>
 
         <div class="row pt-1 mb-3 d-flex justify-content-evenly">
-
             <!--IGDB Card-->
             <div class="col-sm-6 d-flex justify-content-evenly">
                 <div class="card home-card">
@@ -49,7 +51,6 @@
                     </div>
                 </div>
             </div>
-
             <!--Library Card-->
             <div class="col-sm-6 d-flex justify-content-evenly">
                 <div class="card home-card">
@@ -66,7 +67,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row py-4 mb-3 d-flex justify-content-evenly">
 
             <!--APIs Card-->
@@ -103,4 +103,5 @@
         </div>
 
     </section>
+    }
 </body>

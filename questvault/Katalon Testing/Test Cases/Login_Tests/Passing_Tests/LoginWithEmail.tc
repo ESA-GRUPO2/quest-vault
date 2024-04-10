@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verify if the login with email is done correctly</description>
+   <name>LoginWithEmail</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>aac37717-5c12-420e-9956-e711989dfdc5</testCaseGuid>
+</TestCaseEntity>

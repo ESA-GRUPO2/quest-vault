@@ -1,0 +1,126 @@
+﻿@model GameViewData
+@using System.Linq
+@using questvault.Utils
+@{
+  ViewData["Title"] = "Results";
+  ViewData["help_Text"] = @"
+       In the Results page you can find a selection of games,<br/>
+       that you searched a especificly!<br/>";
+}
+
+@{
+  var batchSize = 5; // Defina o tamanho do lote aqui
+  var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
+                     .GroupBy(x => x.Index / batchSize)
+                     .Select(g => g.Select(x => x.Game));
+
+  var prevDisabled = !Model.Games.HasPreviousPage ? "disabled" : "";
+  var nextDisabled = !Model.Games.HasNextPage ? "disabled" : "";
+
+  int currentPage = Model.Games.PageIndex;
+  int totalPages = Model.Games.TotalPages;
+  int maxVisiblePages = 5; // Number of pages to show around the current page
+  int startPage = Math.Max(1, currentPage - maxVisiblePages / 2);
+  int endPage = Math.Min(startPage + maxVisiblePages - 1, totalPages);
+}
+@if (SignInManager.IsSignedIn(User))
+{
+
+  <div class="main-section">
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-blue-big btn-search-disabled m-2">
+        <img class="nav-vector pe-1" src="~/img/vector/gamepad.svg" alt="Gamepad Icon" />
+        Games
+      </button>
+      <a asp-controller="Home" asp-action="SearchUser" asp-route-id="@Model.SearchTerm" class="btn btn-purple btn-users-inverted align-items-center m-2">
+        <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
+        Users
+      </a>
+    </div>
+    <hr class="bar" style="margin-bottom: 25px; width: 100%;">
+    <div class="d-flex main-section-result justify-content-center">
+      <div class="game-section">
+        <h4 class="mb-4">@ViewBag.NumberOfResults results for @Model.SearchTerm</h4>
+        @* Showing Games *@
+        @foreach (var batch in batches)
+        {
+          <div class="d-flex justify-content-start">
+            @foreach (var game in batch)
+            {
+              <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
+                <img src="@game.ImageUrl">
+              </a>
+            }
+          </div>
+        }
+        @if (Model.NumberOfResults > 0)
+        {
+          @* New Page System *@
+          <nav aria-label="Page navigation games">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a asp-action="Results"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-pageNumber="@(Model.Games.PageIndex-1)"
+                   class="page-link @prevDisabled" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+
+              @if (startPage > 2 || currentPage > 3)
+              {
+                <li class="page-item">
+                  <a class="page-link @(1 == currentPage ? "active" : "")" asp-action="Results"
+                     asp-route-searchTerm="@Model.SearchTerm"
+                     asp-route-pageNumber="1">1</a>
+                </li>
+                <li class="page-item disabled">
+                  <span class="page-link">...</span>
+                </li>
+
+              }
+
+              @for (int i = startPage; i <= endPage; i++)
+              {
+
+                <li class="page-item">
+                  <a class="page-link @(i == currentPage ? "active" : "")" asp-action="Results"
+                     asp-route-searchTerm="@Model.SearchTerm"
+                     asp-route-pageNumber="@i">@i</a>
+                </li>
+              }
+              @if (currentPage <= Model.Games.TotalPages - 3)
+              {
+                <li class="page-item disabled">
+                  <span class="page-link">...</span>
+                </li>
+                <li class="page-item">
+                  <a asp-action="Results"
+                     asp-route-searchTerm="@Model.SearchTerm"
+                     asp-route-pageNumber="@(Model.Games.TotalPages)">@Model.Games.TotalPages</a>
+                </li>
+              }
+              <li class="page-item">
+                <a asp-action="Results"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
+                   class="page-link @nextDisabled" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+        }
+      </div>
+
+    </div>
+
+
+  </div>
+}
+else
+{
+
+  <h1 style="color :red">Please log in to access this page.</h1>
+}

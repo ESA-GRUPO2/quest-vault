@@ -77,7 +77,8 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
             if (hasPassword)
             {
-                return RedirectToPage("./ChangePassword");
+                return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
+
             }
 
             return Page();
@@ -109,7 +110,8 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your password has been set.";
 
-            return RedirectToPage();
+            return RedirectToAction("UserLibrary", "Library", new { id = user.UserName });
+
         }
     }
 }

@@ -1,0 +1,215 @@
+﻿@using System.Linq
+@using questvault.Utils
+@model GameViewData
+
+@{
+  ViewData["Title"] = "Library";
+  ViewData["help_Text"] = @"
+       In the Library page you can find the games you stored,<br/>
+       whether you are playing them or just saving for later.<br/>
+       You can go further and filter them by: <br/>
+       <ul>
+          <li>Order</li>
+          <li>Collection</li>
+          <li>Status</li>
+        </ul>";
+  var user = await UserManager.GetUserAsync(User);
+  
+}
+
+
+@{
+  var prevDisabled = !Model.Games.HasPreviousPage ? "disabled" : "";
+  var nextDisabled = !Model.Games.HasNextPage ? "disabled" : "";
+  var batchSize = 5; // Defina o tamanho do lote aqui
+  var batches = Model.Games.Select((game, index) => new { Game = game, Index = index })
+                     .GroupBy(x => x.Index / batchSize)
+                     .Select(g => g.Select(x => x.Game));
+
+  int currentPage = Model.Games.PageIndex;
+  int totalPages = Model.Games.TotalPages;
+  int maxVisiblePages = 5; // Number of pages to show around the current page
+  int startPage = Math.Max(1, currentPage - maxVisiblePages / 2);
+  int endPage = Math.Min(startPage + maxVisiblePages - 1, totalPages);
+}
+
+
+@*@if (SignInManager.IsSignedIn(User))
+{*@
+
+<div class="main-section">
+
+  <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+
+    @if (user.UserName != ViewBag.UserLibraryId)
+    {
+      <h3>@ViewBag.UserLibraryId's Library</h3>
+    }
+    else
+    {
+      <h3>MyLibrary</h3>
+    }
+    <h4 class="justify-content-end ">@ViewBag.NumberOfResults @(ViewBag.NumberOfResults == 1 ? "game" : "games")</h4>
+  </div>
+
+  <hr class="bar">
+
+
+  <div class="d-flex main-section-result justify-content-between">
+    <div class="filter-section mt-0">
+      <h5 class="mt-4" style="text-decoration: underline;">Collections</h5>
+      <div class="library-filter-ownage" name="GameStatus" id="game-status">
+        <a class="btn @(ViewBag.Collection == null ? "btn-blue-xl" : "btn-purple-xl") m-2 btn-test2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="">
+          <img class="nav-vector pe-1" src="~/img/vector/layer-group-solid.svg" alt="Layer Group Icon" />
+          All Games
+        </a>
+        <a class="btn @(ViewBag.Collection == "Complete" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Complete" name="collection" value="Complete">
+          <img class="nav-vector pe-1" src="~/img/vector/check-solid.svg" alt="Check Icon" />
+          Completed
+        </a>
+        <a class="btn @(ViewBag.Collection == "Playing" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Playing" name="collection" value="Playing">
+          <img class="nav-vector pe-1" src="~/img/vector/play-solid.svg" alt="Play Icon" />
+          Playing
+        </a>
+        <a class="btn @(ViewBag.Collection == "Retired" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Retired">
+          <img class="nav-vector pe-1" src="~/img/vector/bed-solid.svg" alt="Bed Icon" />
+          Retired
+        </a>
+        <a class="btn @(ViewBag.Collection == "Backlogged" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Backlogged">
+          <img class="nav-vector pe-1" src="~/img/vector/boxes-stacked-solid.svg" alt="Boxes Icon" />
+          Backlogged
+        </a>
+        <a class="btn @(ViewBag.Collection == "Abandoned" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Abandoned">
+          <img class="nav-vector pe-1" src="~/img/vector/heart-crack-solid.svg" alt="Heart Crack Icon" />
+          Abandoned
+        </a>
+        <a class="btn @(ViewBag.Collection == "Wishlist" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Wishlist">
+          <img class="nav-vector pe-1" src="~/img/vector/gift-solid.svg" alt="Gift Icon" />
+          Wishlist
+        </a>
+      </div>
+      <form id="filterForm" class="mt-4" asp-controller="Library" asp-action="UserLibrary" method="get">
+        <input type="hidden" name="id" value="@ViewBag.UserLibraryId">
+        <input type="hidden" name="collection" value="@ViewBag.Collection">
+        <select class="selectpicker select-results" name="releasePlatform" id="releasePlatform" placeholder="Platforms">
+          @* <option value="" selected disabled hidden>Platforms</option> *@
+          @foreach (var item in Model.Platforms)
+          {
+            if (item.PlatformName == ViewBag.SelectedReleasePlatform)
+            {
+              <option value="@item.PlatformName" selected>@item.PlatformName</option>
+            }
+            else
+            {
+              <option value="@item.PlatformName">@item.PlatformName</option>
+            }
+          }
+        </select><br>
+        <select class="selectpicker select-results mb-5" name="genre" id="genre" placeholder="Genres">
+          @* <option value="" selected disabled hidden>Genres</option> *@
+          @foreach (var item in Model.Genres)
+          {
+            if (item.GenreName == ViewBag.SelectedGenre)
+            {
+              <option value="@item.GenreName" selected>@item.GenreName</option>
+            }
+            else
+            {
+              <option value="@item.GenreName">@item.GenreName</option>
+            }
+
+          }
+        </select><br>
+        <button class="btn btn-primary nav-btn-2" type="submit">Apply Filters</button>
+        @* <button class="btn btn-primary nav-btn" type="button" onclick="clearForm()">Clear Filters</button> *@
+        <a class="btn btn-primary nav-btn" href="/UserLibrary?id=@ViewBag.UserLibraryId&collection=&releasePlatform=&genre=">Clear Filters</a>
+      </form>
+
+
+    </div>
+    <div class="game-section">
+
+      @if (Model.NumberOfResults > 0)
+      {
+        @foreach (var batch in batches)
+        {
+          <div class="d-flex justify-content-start">
+            @foreach (var game in batch)
+            {
+              <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
+                <img src="@game.ImageUrl">
+              </a>
+            }
+          </div>
+        }
+        @* New Page System *@
+        <nav aria-label="Page navigation games">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a asp-action="UserLibrary"
+                 asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                 asp-route-collection="@ViewBag.Collection"
+                 asp-route-pageNumber="@(Model.Games.PageIndex-1)"
+                 class="page-link @prevDisabled" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+
+            @if (startPage > 2 || currentPage > 3)
+            {
+              <li class="page-item">
+                <a class="page-link @(1 == currentPage ? "active" : "")" asp-action="UserLibrary"
+                   asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                   asp-route-collection="@ViewBag.Collection"
+                   asp-route-pageNumber="1">1</a>
+              </li>
+              <li class="page-item disabled">
+                <span class="page-link">...</span>
+              </li>
+
+            }
+
+            @for (int i = startPage; i <= endPage; i++)
+            {
+
+              <li class="page-item">
+                <a class="page-link @(i == currentPage ? "active" : "")" asp-action="UserLibrary"
+                   asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                   asp-route-collection="@ViewBag.Collection"
+                   asp-route-pageNumber="@i">@i</a>
+              </li>
+            }
+            @if (currentPage <= Model.Games.TotalPages - 3)
+            {
+              <li class="page-item disabled">
+                <span class="page-link">...</span>
+              </li>
+              <li class="page-item">
+                <a class="page-link" asp-action="UserLibrary"
+                   asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                   asp-route-collection="@ViewBag.Collection"
+                   asp-route-pageNumber="@(Model.Games.TotalPages)">@Model.Games.TotalPages</a>
+              </li>
+            }
+            <li class="page-item">
+              <a asp-action="UserLibrary"
+                 asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                 asp-route-collection="@ViewBag.Collection"
+                 asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
+                 class="page-link @nextDisabled" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      }
+      else
+      {
+        <div style="text-align: center; height:100%;padding-top:200px">
+          <h2>No games Added!</h2>
+          <h3>Go to Games to add some</h3>
+        </div>
+      }
+    </div>
+  </div>
+</div>

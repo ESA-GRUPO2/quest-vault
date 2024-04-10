@@ -398,3 +398,6 @@ FodyWeavers.xsd
 *.sln.iml
 
 appsettings.json
+
+./questvault/questvault/wwwroot/img/usr_profile/
+!./questvault/questvault/wwwroot/img/usr_profile/user.svg

@@ -87,12 +87,14 @@ namespace questvault.Areas.Identity.Pages.Account
       public string UserName { get; set; }
     }
 
+        public async Task<IActionResult> OnGetAsync(string returnUrl)
+        {
+            returnUrl ??= Url.Content("~/");
 
-    public async Task OnGetAsync(string returnUrl = null)
-    {
-      ReturnUrl = returnUrl;
-      ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-    }
+            if (HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToPage(returnUrl);
+            else return Page();
+        }
 
     public async Task<IActionResult> OnPostAsync(string returnUrl = null)
     {
@@ -101,9 +103,17 @@ namespace questvault.Areas.Identity.Pages.Account
       
       if (ModelState.IsValid)
       {
+        var userExists = await _emailStore.FindByEmailAsync(Input.Email, CancellationToken.None);
+        userExists??= await _emailStore.FindByNameAsync(Input.UserName, CancellationToken.None);
+        if (userExists != null) {
+            ModelState.AddModelError(string.Empty, "A account with this email/username already exists");
+            return Page();
+        }
+
         var user = CreateUser(); 
         user.UserName = Input.UserName;
-        await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+        user.Email = Input.Email;
+        await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
         await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
         var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -113,11 +123,12 @@ namespace questvault.Areas.Identity.Pages.Account
 
           var userId = await _userManager.GetUserIdAsync(user);
           var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+          var isLockedOut = await _userManager.SetLockoutEnabledAsync(user, false);
           code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
           var callbackUrl = Url.Page(
               "/Account/ConfirmEmail",
               pageHandler: null,
-              values: new { area = "Identity", userId, code, returnUrl },
+              values: new { area = "Identity", userId, code, isLockedOut, returnUrl },
               protocol: Request.Scheme);
 
           await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",

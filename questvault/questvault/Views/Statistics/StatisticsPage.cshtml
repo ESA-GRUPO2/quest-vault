@@ -1,0 +1,186 @@
+﻿@model Statistics
+@{
+  ViewData["Title"] = "Statistics";
+  ViewData["help_Text"] = @"In the Statistics page you can see the numbers behind the app!";
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="main-section">
+
+  <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+    <h3 style="color:white">App Stats</h3>
+  </div>
+
+  <hr class="bar">
+
+  <div class="container-fluid">
+    <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+      <div class="d-inline-flex align-items-center">
+        <h4 class="mt-2">Registered Accounts </h4>
+        <label class="btn btn-blue-big ms-4" style="height: fit-content; pointer-events: none;">
+          @Model.registeredUsersCount
+        </label>
+      </div>
+      <div class="d-inline-flex align-items-center">
+        <label class="btn btn-purple" style="height: fit-content; pointer-events: none;">
+          @Model.gameRatingAverage
+        </label>
+        <h4 class="mt-2 ms-4"> Average Game Rating</h4>
+      </div>
+    </div>
+    <div class="main-container d-flex justify-content-between mt-5">
+      @* div onde está o chart dos logins*@
+      <div class="ms-3" style="width:35rem; height:auto;">
+        <label>Daily Logins</label>
+        <canvas id="dailyLoginChart"></canvas>
+      </div>
+
+      @*div onde está o chart top game genre*@
+      <div class="ms-2 me-2" style="width: 30rem; height: auto;">
+        <label>Top 5 Genres</label>
+        <canvas id="topGenresChart"></canvas>
+      </div>
+
+      @* div onde está o chart dos acessos*@
+      <div style="width:35rem; height:auto;">
+        <label>Daily Access</label>
+        <canvas id="dailyAccessChart"></canvas>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+  //Chart dos logins
+  var ctx = document.getElementById('dailyLoginChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: @Html.Raw(Json.Serialize(Model.LoginDateList)),
+      datasets: [{
+        label: 'Daily Logins',
+        data: @Html.Raw(Json.Serialize(Model.LoginDateCountList)),
+        backgroundColor: [
+          'rgb(10, 189, 198, 1)',
+        ],
+        borderColor: [
+          'rgb(10, 189, 198, 1)',
+        ],
+        borderWidth: 1,
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: 'white',
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)' // Ajusta para uma cor branca mais subtil para a grade
+          }
+        },
+        x: {
+          ticks: {
+            color: 'white',
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)' // Ajusta para uma cor branca mais subtil para a grade
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white' // Ajusta a cor da legenda para branco
+          }
+        }
+      }
+    }
+  });
+
+  //Chart do top game genre
+  var ctx3 = document.getElementById('topGenresChart').getContext('2d');
+  var myChart = new Chart(ctx3, {
+    type: 'doughnut',
+    data: {
+      labels: @Html.Raw(Json.Serialize(Model.GenreNames)),
+      datasets: [{
+        data: @Html.Raw(Json.Serialize(Model.GenreCount)),
+        backgroundColor: [
+          'rgba(152, 0, 141, 0.9)',
+          'rgba(0, 255, 127, 0.9)',
+          'rgb(255, 0, 0, 0.5)',
+          'rgb(10, 189, 198, 0.9)',
+          'rgb(255, 69, 0, 0.9)',
+        ],
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: {
+            color: 'white',
+            font: {
+              size: 14
+            }
+          }
+        }
+      }
+    }
+  });
+
+  //Chart dos acessos
+  var ctx2 = document.getElementById('dailyAccessChart').getContext('2d');
+  var myChart = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: @Html.Raw(Json.Serialize(Model.AccessDateList)),
+      datasets: [{
+        label: 'Daily Access',
+        data: @Html.Raw(Json.Serialize(Model.AccessDateCountList)),
+        backgroundColor: [
+          'rgb(152, 0, 141, 1)',
+        ],
+        borderColor: [
+          'rgb(152, 0, 141, 1)',
+        ],
+        borderWidth: 1,
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: 'white',
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)' // Mesma cor sutil para o eixo Y
+          }
+        },
+        x: {
+          ticks: {
+            color: 'white',
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)' // Mesma cor sutil para o eixo X
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white' // Ajusta a cor da legenda para branco
+          }
+        }
+      }
+    }
+  });
+</script>

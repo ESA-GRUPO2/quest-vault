@@ -17,6 +17,11 @@ builder.Services.AddAuthentication()
       options.ClientSecret = googleAuthNSection["ClientSecret"];
     });
 
+
+
+
+
+
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
   ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -26,11 +31,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
   .AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders()
+
 ;
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+  options.LoginPath = "/Identity/Account/Login";
+  options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+});
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddControllersWithViews();
+
 
 // Emailing Service
 builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
@@ -43,10 +56,24 @@ builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
   )
 );
 
+//IGDB Service
+builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
+    new IGDBService(
+        i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
+        i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
+    )
+);
+
+builder.Services.AddSingleton(i => new SteamAPI(configuration["SteamAPI:API_KEY"],
+  new IGDBService(
+    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
+    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
+)));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if( app.Environment.IsDevelopment() )
 {
   app.UseMigrationsEndPoint();
 }
@@ -67,8 +94,8 @@ app.MapControllerRoute(
 
 app.MapRazorPages();
 
-app.UseAuthentication();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 

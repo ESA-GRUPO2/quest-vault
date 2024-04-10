@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies if that a review is writen without a problem</description>
+   <name>WriteReview</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>067f2561-115b-4ca4-b27e-8a418751210c</testCaseGuid>
+</TestCaseEntity>

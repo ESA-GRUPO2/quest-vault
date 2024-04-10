@@ -1,0 +1,1 @@
+search_result['676']=["topic_000000000000015A.html","GameLog.GameId Property","Gets or sets the foreign key for the associated game."];

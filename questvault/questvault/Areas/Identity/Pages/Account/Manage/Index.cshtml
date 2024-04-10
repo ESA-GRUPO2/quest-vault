@@ -1,25 +1,239 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Profile";
-    ViewData["ActivePage"] = ManageNavPages.Index;
+  ViewData["Title"] = "Account";
+  ViewData["ActivePage"] = ManageNavPages.Index;
+  ViewData["help_Text"] = @"
+       This is your MyAccount page! <br/>
+       In this page you can personalize your profile however you want, <br/>
+       in the main section you can change your Usarname and password.<br/>
+       On the right side theres a section for 2 Factor Authentication, <br/>
+       Privacy setting and Disabiling your account if thats what you want!";
 }
 
-<h3 class="text-light">@ViewData["Title"]</h3>
-<partial name="_StatusMessage" for="StatusMessage" />
-<div class="row">
-    <div class="col-md-6">
-        <form id="profile-form" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
-                <label asp-for="Username" class="form-label"></label>
+@{
+  var userAvatar = ViewData["UserAvatar"] as string;
+}
+<style>
+  #username::placeholder {
+    opacity: 0.6;
+  }
+</style>
+<div class="main-section">
+  <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
+    <h3>@ViewData["Title"]</h3>
+  </div>
+  <hr class="bar">
+  <partial style="width:90%" name="_StatusMessage" for="StatusMessage" />
+  <div class="container-fluid mt-4">
+    <div class="row align-items-start ps-4">
+      <div class="row">
+        <div class="col-10">
+          <h4 style="padding-left: 16rem; margin-bottom: 2rem;" class="text-light d-flex">Account Details</h4>
+          <div asp-validation-summary="ModelOnly" class="error-box d-flex" role="alert"></div>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+        </div>
+      </div>
+
+      <div class="col-2 d-block justify-content-center">
+        <div style="margin-bottom: 2rem;" class="d-flex align-items-center justify-content-center user-foto">
+          @if (!string.IsNullOrEmpty(userAvatar))
+          {
+            <img style="height:125px;width:130px; background-size: cover; margin: -6px;" src="~/img/usr_profile/@userAvatar" alt="User">
+          }
+          else
+          {
+            <img style="height:60px;width:60px; background-size: cover; border-radius: 0 !important" src="~/img/usr_profile/user.svg" alt="User">
+          }
+        </div>
+        <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#avatarModal">Change Avatar</button>
+        @*Modal form start*@
+        <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="avatarModalLabel">Change Avatar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form id="avatarForm" method="post" enctype="multipart/form-data" asp-page-handler="Avatar">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="avatarInput" class="custom-file-upload btn-purple" style="margin: auto">Select File</label>
+                    <div id="fileName">No file chosen</div>
+                    <input asp-for="ProfilePhoto" type="file" class="form-control-file" id="avatarInput" name="ProfilePhoto" accept="image/png, image/jpeg" required>
+                    <small class="form-text text-muted" style="color: white !important">Max file size: 5MB</small>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  @* <button type="button" class="btn btn-secondary btn-purple" data-bs-dismiss="modal">Close</button> *@
+                  <button type="submit" class="btn btn-blue btn-profile" style="margin-bottom:0px">Save changes</button>
+                </div>
+              </form>
             </div>
-            <button id="update-profile-button" type="submit" class=" btn btn-lg btn-primary">Save</button>
-        </form>
-    </div>
-</div>
+          </div>
+        </div>
+        @*modal form end*@
+      </div>
 
+      @*  <div class="col-4"> *@
+      <div class="col-8">
+        <form id="change-profile-form" method="post" asp-page-handler="Profile">
+          <div class="row mt-0">
+            <div class="col-6">
+              @* <form id="change-username-form" method="post" asp-page-handler="UserName"> *@
+              <div class="row mb-3">
+                <label class="col-sm-4 col-form-label text-light">Email</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control-login" disabled placeholder=@Model.Email>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
+                <div class="col-sm-8">
+                  <input asp-for="Input.NewUserName" type="text" id="username" class="form-control-login" autocomplete="off" id="inputName" placeholder="@User.Identity?.Name">
+                  <div style="height:1px">
+                    <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
+                  </div>
+                </div>
+              </div>
+              @* </form> *@
+            </div>
+            <div class="col-6">
+              @* <form id="change-password-form" method="post" asp-page-handler="Password"> *@
+              <div class="row mb-3">
+                <label asp-for="Input.OldPassword" class="col-sm-4 col-form-label text-light">Current password</label>
+                <div class="col-sm-8">
+                  <input asp-for="Input.OldPassword" type="password" class="form-control-login" autocomplete="off" aria-required="true" placeholder="Insert current password" />
+                  <div style="height:1px">
+                    <span asp-validation-for="Input.OldPassword" class="text-danger-login-2"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label asp-for="Input.NewPassword" class=" col-sm-4 col-form-label text-light">New password</label>
+                <div class="col-sm-8">
+                  <input asp-for="Input.NewPassword" autocomplete="new-password" aria-required="true" type="password" class="form-control-login" placeholder="Insert new password">
+                  <div style="height:1px">
+                    <span asp-validation-for="Input.NewPassword" class="text-danger-login-2"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label asp-for="Input.ConfirmPassword" class="col-sm-4 col-form-label text-light">Confirm new password</label>
+                <div class="col-sm-8">
+                  <input asp-for="Input.ConfirmPassword" class="form-control-login" autocomplete="new-password" aria-required="true" placeholder="Confirm new password">
+                  <div style="height:1px">
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger-login-2"></span>
+                  </div>
+                </div>
+              </div>
+              @* </form> *@
+              <button style="float: right; margin-right: 6rem; margin-top: -1.5rem" type="submit" class="btn-blue">Save Changes</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="col-2">
+
+        <form>
+          <div class="form-check form-switch row">
+            <button asp-page="./TooglePrivacy" style=" margin-bottom: 35px" class="btn-blue-big submit">
+              Change Privacy
+            </button>
+          </div>
+          <div class="form-check form-switch row">
+
+            @if (Model.Is2faEnabled)
+            {
+              <button asp-page="./Disable2fa" style="margin-bottom: 35px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
+            }
+            else
+            {
+              <button asp-page="./Enable2fa" style=" margin-bottom: 35px" class="btn-blue-big submit">Enable 2FA</button>
+            }
+          </div>
+          <div class="form-check form-switch row mb-3">
+            <a asp-page="./DeactivateAccount" style="float: left; margin-bottom: 35px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row row-spacing justify-content-end mt-5">
+      <div class="col-4 me-5">
+          <h4 style="text-align:right" class="text-light">Connections</h4>
+          <table class="table table-sm table-borderless table-profile mt-4">
+            <tr>
+              <th><img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam" /></th>
+              <th style="width: 185px; padding-right: 0;"><button style="width:170px" class="btn-blue" data-bs-toggle="modal" data-bs-target="#steamModal">Connect to Steam</button></th>
+            </tr>
+          </table>
+
+        @* Modal Para a steam *@
+        <div class="modal fade" id="steamModal" tabindex="-1" role="dialog" aria-labelledby="steamModalLabel" aria-hidden="true" style="color:white">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #133e7c;">
+              <div class="modal-header">
+                <h5 class="modal-title" id="avatarModalLabel">Connect to Steam</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form id="steamForm" method="post" asp-controller="Library" asp-action="ImportLibrary">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-4">
+                        <label for="steamIDInput" style="margin-top: 0.2rem">Insert Steam Id:</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" class="input-purple" placeholder="Steam Id" id="steamId" name="steamId" required>
+                      </div>
+                    </div>
+                    <small class="form-text text-muted" style="color:white !important">
+                      If you don't know your id you need to log into Steam, click your username in the top-right and
+                      select ‘Account details’ from the dropdown. Your 17 digit SteamID will appear near the top of this screen, right
+                      below your Steam username.
+                    </small>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="col-7">
+                    <p style="color: red !important">This will take a while depending on the size of your steam library.</p>
+                  </div>
+                  <div class="col-4">
+                    <button type="submit" class="btn btn-blue btn-profile" style="margin-bottom: 0px"
+                            onclick="this.disabled=true;
+                            console.log('loading, please wait...');
+                            var loading = document.getElementById('lmask');
+                            loading.classList.add('d-flex');
+                            this.form.submit();">
+                      Import Library
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        @* fim do modal *@
+      </div>
+    </div>
+
+  </div>
+</div>
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+  <partial name="_ValidationScriptsPartial" />
 }
+
+<style>
+  .custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  #avatarInput {
+    display: none;
+  }
+</style>  

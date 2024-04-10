@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_The UserName must be at least 4 and at_b89db9</name>
+   <tag></tag>
+   <elementGuidId>403c7357-675d-4d1b-bd95-76c8366cef24</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[@id='username-error']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#username-error</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;The UserName must be at least 4 and at max 25 characters long.&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>85fe1a76-94aa-4cc2-b5cb-3a6958c12ebe</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>username-error</value>
+      <webElementGuid>f3d96661-6c8b-4c64-92ef-5c63b14ea31b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>The UserName must be at least 4 and at max 25 characters long.</value>
+      <webElementGuid>e3f2e901-e7f5-46f2-a2d6-25eb2b9f407e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;username-error&quot;)</value>
+      <webElementGuid>f3d2f4d9-ec9e-4927-affb-d1db30eeea99</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//span[@id='username-error']</value>
+      <webElementGuid>90e7a72c-044e-4361-a95d-cf7a3ef686cb</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//form[@id='registerForm']/div[2]/div/div/p/span/span</value>
+      <webElementGuid>86652194-5086-4963-b30e-3709855ac04d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[1]/following::span[3]</value>
+      <webElementGuid>31f37f07-9790-4787-bb9c-2da0150d9f54</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign up'])[2]/preceding::span[3]</value>
+      <webElementGuid>a8474cc0-bdbc-474d-8586-c0d1f7bc7724</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign in'])[1]/preceding::span[3]</value>
+      <webElementGuid>0b6744b9-a24f-41e1-83c2-14c8c80fdf28</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='The UserName must be at least 4 and at max 25 characters long.']/parent::*</value>
+      <webElementGuid>57a4b2db-41e5-473c-843b-aefcbabe1805</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//span/span</value>
+      <webElementGuid>017c3134-ec55-432e-87ad-ec7ee46c2dc9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[@id = 'username-error' and (text() = 'The UserName must be at least 4 and at max 25 characters long.' or . = 'The UserName must be at least 4 and at max 25 characters long.')]</value>
+      <webElementGuid>3d2f5568-6712-4992-acbe-3021e24b229b</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
