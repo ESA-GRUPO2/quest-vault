@@ -181,10 +181,11 @@
           </div>
 
         </div>
-        <div class="game-platforms container-fluid mt-5">
+        <div class="game-platforms container mt-3 align-items-end">
           @foreach( var p in Model.GamePlatforms )
           {
-            <p>@p.Platform.PlatformName</p>
+            <span>@p.Platform.PlatformName</span>
+            <br />
           }
         </div>
       </div>
