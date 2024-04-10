@@ -1,59 +1,65 @@
 ﻿/*-------------------------------------------------- NAVBAR -----------------------------------------------*/
 
 .nav-main {
-    padding: 2rem;
-    height: 6rem;
-    width: 100%;
-    position: fixed;
+  padding: 2rem;
+  height: 6rem;
+  width: 100%;
+  position: fixed;
 }
 
 .nav-bg {
-    background: fixed;
-    background-color: #091833;
+  background: fixed;
+  background-color: #091833;
 }
 
 .nav-logo {
-    width: 7rem;
+  width: 7rem;
 }
 
 .nav-logo2 {
-    width: 3rem;
+  width: 3rem;
 }
 
 .nav-link {
-    color: #ffffff
+  color: #ffffff
 }
 
 .nav-menu {
-    align-items: end;
+  align-items: end;
 }
 
 .nav-btn {
-    background: #0abdc6;
-    color: #091833;
-    border-radius: 24px;
-    width: 8.5rem;
-    height: 2.75rem;
-    padding: 6px;
-    border: none;
-    text-align: center;
-    font-weight: bolder;
-    line-height: 30px;
+  background: #0abdc6;
+  color: #091833;
+  border-radius: 24px;
+  width: 8.5rem;
+  height: 2.75rem;
+  padding: 6px;
+  border: none;
+  text-align: center;
+  font-weight: bolder;
+  line-height: 30px;
 }
 
-.nav-btn:hover {
+  .nav-btn:hover, .nav-btn:active, .nav-btn:focus {
     background: #133E7C;
     color: #ffffff;
-}
+  }
 
 .nav-vector {
-    height: 1.5rem;
+  height: 1.5rem;
 }
 
 
-.nav-btn:hover .nav-vector {
-    filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
+.nav-btn:hover .nav-vector, .nav-btn:active .nav-vector, .nav-btn:focus .nav-vector {
+  filter: invert(97%) sepia(0%) saturate(13%) hue-rotate(278deg) brightness(103%) contrast(105%);
 }
+
+.nav-avatar {
+}
+
+  .nav-avatar:hover, .nav-avatar:active {
+  }
 
 .nav-btn-2 {
   background: #98008D;
@@ -68,108 +74,108 @@
   line-height: 30px;
 }
 
-.nav-btn-2:hover {
+  .nav-btn-2:hover, .nav-btn-2:active, .nav-btn-2:focus {
     background: #711C91;
-}
+  }
 
 .nav-form-select {
-    width: fit-content;
-    background-color: #091833;
-    color: #ffffff;
-    border: none;
-    text-align: center;
-    height: 100%;
+  width: fit-content;
+  background-color: #091833;
+  color: #ffffff;
+  border: none;
+  text-align: center;
+  height: 100%;
 }
 
 .form-select {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
 }
 
 .search-bar {
-    background-color: #133E7C;
-    border-radius: 20px;
-    width: 600px;
-    height: 2.75rem;
+  background-color: #133E7C;
+  border-radius: 20px;
+  width: 600px;
+  height: 2.75rem;
 }
 
 .search-bar-text {
-    float: left;
-    background-color: transparent;
-    padding-left: 20px;
-    font-size: 18px;
-    color: #ffffff;
-    border: none;
-    width: 94%;
-    height: 100%;
+  float: left;
+  background-color: transparent;
+  padding-left: 20px;
+  font-size: 18px;
+  color: #ffffff;
+  border: none;
+  width: 94%;
+  height: 100%;
 }
 
-.search-bar-text:focus {
+  .search-bar-text:focus {
     outline: none;
-}
+  }
 
-.search-bar-text::placeholder {
+  .search-bar-text::placeholder {
     color: #d9d9d9;
-}
+  }
 
 #searchInput.active #searchResults li {
-    display: inherit;
+  display: inherit;
 }
 
 #searchResults {
-    display: none;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    width: 35rem;
-    height: 25rem;
+  display: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 35rem;
+  height: 25rem;
 }
 
-#searchResults .list-group-item {
+  #searchResults .list-group-item {
     background-color: transparent;
     border: none;
-}
+  }
 
-#searchResults .list-group-item a {
-    text-decoration: none;
-    color: white;
-}
+    #searchResults .list-group-item a {
+      text-decoration: none;
+      color: white;
+    }
 
-#searchResults .list-group-item:hover, #searchResults .list-group-item:active {
-    background-color: #091833;
-}
+    #searchResults .list-group-item:hover, #searchResults .list-group-item:active {
+      background-color: #091833;
+    }
 
 .search-btn {
-    width: 25px;
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    opacity: 0.7;
+  width: 25px;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0.7;
 }
 
-.search-btn:hover {
+  .search-btn:hover {
     opacity: 1;
-}
+  }
 
 .outside-search {
-    background: transparent;
-    border: none !important;
-    padding: 0;
-    margin: 0;
-    width: 25px;
+  background: transparent;
+  border: none !important;
+  padding: 0;
+  margin: 0;
+  width: 25px;
 }
 
 .dropdown-menu {
-    background: #133E7C !important;
-    overflow: auto !important;
+  background: #133E7C !important;
+  overflow: auto !important;
 }
 
 .dropdown-item {
-    color: white !important;
-    background: #133E7C !important;
+  color: white !important;
+  background: #133E7C !important;
 }
 
 
 .selected {
-    /*background-color: #f0f0f0;*/ /*Cor de fundo quando selecionado */
-    color: #333; /* Cor do texto quando selecionado */
+  /*background-color: #f0f0f0;*/ /*Cor de fundo quando selecionado */
+  color: #333; /* Cor do texto quando selecionado */
 }
