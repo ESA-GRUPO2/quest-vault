@@ -57,8 +57,8 @@
 
 
   <div class="d-flex main-section-result justify-content-between">
-    <div class="filter-section">
-      <h5 class="mt-4">Collections</h5>
+    <div class="filter-section mt-0">
+      <h5 class="mt-4" style="text-decoration: underline;">Collections</h5>
       <div class="library-filter-ownage" name="GameStatus" id="game-status">
         <a class="btn @(ViewBag.Collection == null ? "btn-blue-xl" : "btn-purple-xl") m-2 btn-test2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="">
           <img class="nav-vector pe-1" src="~/img/vector/layer-group-solid.svg" alt="Layer Group Icon" />
@@ -89,7 +89,7 @@
           Wishlist
         </a>
       </div>
-      <form id="filterForm" asp-controller="Library" asp-action="UserLibrary" method="get">
+      <form id="filterForm" class="mt-4" asp-controller="Library" asp-action="UserLibrary" method="get">
         <input type="hidden" name="id" value="@ViewBag.UserLibraryId">
         <input type="hidden" name="collection" value="@ViewBag.Collection">
         <select class="selectpicker select-results" name="releasePlatform" id="releasePlatform" placeholder="Platforms">
