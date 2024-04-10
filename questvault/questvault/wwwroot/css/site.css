@@ -1529,8 +1529,8 @@ body {
 }
 
 .game-button {
-  width: 20%; /* Para distribuir igualmente os botões com alguma margem */
-  height: 20%;
+  width: 13rem; /* Para distribuir igualmente os botões com alguma margem */
+  height: 18rem;
   padding: 0;
   border: 2px solid white;
   background: black;
