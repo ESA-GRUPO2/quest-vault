@@ -81,7 +81,7 @@ body {
   margin-left: 10%;
 }
   .user-foto img {
-    filter: invert(10%) sepia(13%) saturate(4570%) hue-rotate(187deg) brightness(95%) contrast(102%);
+    border-radius: 50%;
   }
 
 .btn-blue {

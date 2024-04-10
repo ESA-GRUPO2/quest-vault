@@ -21,12 +21,12 @@
 </style>
 <div class="main-section">
   <div class="main-section-title container d-flex justify-content-between align-items-end m-0">
-      <h3>@ViewData["Title"]</h3>
+    <h3>@ViewData["Title"]</h3>
   </div>
   <hr class="bar">
   <partial style="width:90%" name="_StatusMessage" for="StatusMessage" />
-  <div class="container-fluid m-0">
-    <div class="row align-items-baseline ps-4">
+  <div class="container-fluid mt-4">
+    <div class="row align-items-start ps-4">
       <div class="row">
         <div class="col-10">
           <h4 style="padding-left: 16rem; margin-bottom: 2rem;" class="text-light d-flex">Account Details</h4>
@@ -59,10 +59,10 @@
               <form id="avatarForm" method="post" enctype="multipart/form-data" asp-page-handler="Avatar">
                 <div class="modal-body">
                   <div class="form-group">
-                      <label for="avatarInput" class="custom-file-upload btn-purple" style="margin: auto">Select File</label>
-                      <div id="fileName">No file chosen</div>
-                      <input asp-for="ProfilePhoto" type="file" class="form-control-file" id="avatarInput" name="ProfilePhoto" accept="image/png, image/jpeg" required>
-                   <small class="form-text text-muted" style="color: white !important">Max file size: 5MB</small>
+                    <label for="avatarInput" class="custom-file-upload btn-purple" style="margin: auto">Select File</label>
+                    <div id="fileName">No file chosen</div>
+                    <input asp-for="ProfilePhoto" type="file" class="form-control-file" id="avatarInput" name="ProfilePhoto" accept="image/png, image/jpeg" required>
+                    <small class="form-text text-muted" style="color: white !important">Max file size: 5MB</small>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -140,7 +140,7 @@
 
         <form>
           <div class="form-check form-switch row">
-            <button asp-page="./TooglePrivacy" style=" margin-bottom: 30px" class="btn-blue-big submit">
+            <button asp-page="./TooglePrivacy" style=" margin-bottom: 35px" class="btn-blue-big submit">
               Change Privacy
             </button>
           </div>
@@ -148,77 +148,78 @@
 
             @if (Model.Is2faEnabled)
             {
-              <button asp-page="./Disable2fa" style="margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
+              <button asp-page="./Disable2fa" style="margin-bottom: 35px;text-decoration: none;" class="btn-purple submit">Disable 2FA</button>
             }
             else
             {
-              <button asp-page="./Enable2fa" style=" margin-bottom: 30px" class="btn-blue-big submit">Enable 2FA</button>
+              <button asp-page="./Enable2fa" style=" margin-bottom: 35px" class="btn-blue-big submit">Enable 2FA</button>
             }
           </div>
           <div class="form-check form-switch row mb-3">
-            <a asp-page="./DeactivateAccount" style="float: left; margin-bottom: 30px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
+            <a asp-page="./DeactivateAccount" style="float: left; margin-bottom: 35px;text-decoration: none;" class="btn-purple submit">Deactivate Account</a>
           </div>
         </form>
       </div>
     </div>
 
-  <div class="row row-spacing" style="float: right; margin-bottom: 8rem">
-    <div class="col-4">
-      <h4 style="float:right" class="text-light">Connections</h4>
-      <table class="table table-sm table-borderless table-profile">
-        <tr>
-          <th><img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam" /></th>
-          <th style="width: 185px;"><button style="width:170px" class="btn-blue" data-bs-toggle="modal" data-bs-target="#steamModal">Connect to Steam</button></th>
-        </tr>
-      </table>
-      @* Modal Para a steam *@
-      <div class="modal fade" id="steamModal" tabindex="-1" role="dialog" aria-labelledby="steamModalLabel" aria-hidden="true" style="color:white">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content" style="background-color: #133e7c;">
-            <div class="modal-header">
-              <h5 class="modal-title" id="avatarModalLabel">Connect to Steam</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="steamForm" method="post" asp-controller="Library" asp-action="ImportLibrary">
-              <div class="modal-body">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-4">
-                      <label for="steamIDInput" style="margin-top: 0.2rem">Insert Steam Id:</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" class="input-purple" placeholder="Steam Id" id="steamId" name="steamId" required>
-                    </div>
-                  </div>
-                  <small class="form-text text-muted" style="color:white !important">
-                    If you don't know your id you need to log into Steam, click your username in the top-right and
-                    select ‘Account details’ from the dropdown. Your 17 digit SteamID will appear near the top of this screen, right
-                    below your Steam username.
-                  </small>
-                </div>
+    <div class="row row-spacing justify-content-end mt-5">
+      <div class="col-4 me-5">
+          <h4 style="text-align:right" class="text-light">Connections</h4>
+          <table class="table table-sm table-borderless table-profile mt-4">
+            <tr>
+              <th><img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam" /></th>
+              <th style="width: 185px; padding-right: 0;"><button style="width:170px" class="btn-blue" data-bs-toggle="modal" data-bs-target="#steamModal">Connect to Steam</button></th>
+            </tr>
+          </table>
+
+        @* Modal Para a steam *@
+        <div class="modal fade" id="steamModal" tabindex="-1" role="dialog" aria-labelledby="steamModalLabel" aria-hidden="true" style="color:white">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #133e7c;">
+              <div class="modal-header">
+                <h5 class="modal-title" id="avatarModalLabel">Connect to Steam</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-footer">
-                <div class="col-7">
-                  <p style="color: red !important">This will take a while depending on the size of your steam library.</p>
+              <form id="steamForm" method="post" asp-controller="Library" asp-action="ImportLibrary">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-4">
+                        <label for="steamIDInput" style="margin-top: 0.2rem">Insert Steam Id:</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" class="input-purple" placeholder="Steam Id" id="steamId" name="steamId" required>
+                      </div>
+                    </div>
+                    <small class="form-text text-muted" style="color:white !important">
+                      If you don't know your id you need to log into Steam, click your username in the top-right and
+                      select ‘Account details’ from the dropdown. Your 17 digit SteamID will appear near the top of this screen, right
+                      below your Steam username.
+                    </small>
+                  </div>
                 </div>
-                <div class="col-4">
-                  <button type="submit" class="btn btn-blue btn-profile" style="margin-bottom: 0px" 
-                    onclick="this.disabled=true;
+                <div class="modal-footer">
+                  <div class="col-7">
+                    <p style="color: red !important">This will take a while depending on the size of your steam library.</p>
+                  </div>
+                  <div class="col-4">
+                    <button type="submit" class="btn btn-blue btn-profile" style="margin-bottom: 0px"
+                            onclick="this.disabled=true;
                             console.log('loading, please wait...');
                             var loading = document.getElementById('lmask');
                             loading.classList.add('d-flex');
                             this.form.submit();">
-                    Import Library
-                  </button>
+                      Import Library
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
+        @* fim do modal *@
       </div>
-      @* fim do modal *@
     </div>
-  </div>
 
   </div>
 </div>
