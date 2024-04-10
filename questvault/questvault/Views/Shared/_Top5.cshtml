@@ -1,12 +1,12 @@
 ﻿@model List<GameLog>
 <h4 class="text-light mb-4">My Top 5</h4>
 <div class="game-section-border">
-  <div class="game-row">
+  <div class="d-flex align-items-center justify-content-center">
     @if (Model != null && Model.Count > 0)
     {
       @foreach (GameLog gl in Model)
       {
-        <a class="game-button-sm" asp-controller="Games" asp-action="Details" asp-route-id="@gl.IgdbId">
+        <a class="game-button-sm" style="margin-top: 2%; margin-bottom: 2%;" asp-controller="Games" asp-action="Details" asp-route-id="@gl.IgdbId">
           <img src="@gl.Game.ImageUrl" alt="@gl.Game.Name">
         </a>
       }
