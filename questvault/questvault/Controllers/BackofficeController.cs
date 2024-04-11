@@ -13,7 +13,7 @@ namespace questvault.Controllers
 
   public class BackofficeController(ApplicationDbContext context, IServiceIGDB igdbService, SignInManager<User> signInManager) : Controller
   {
-    private readonly UserController userController;
+    
 
     public async Task<IActionResult> GiveModeratorAll(string id)
     {
