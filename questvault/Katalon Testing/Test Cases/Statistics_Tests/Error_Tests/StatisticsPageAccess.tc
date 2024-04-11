@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that normal users cant access the statistics page</description>
+   <name>StatisticsPageAccess</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>59c14617-0767-4ecb-b2dc-b4db17e99d6b</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_TESTE1</name>
+   <tag></tag>
+   <elementGuidId>9550e41c-27ce-4c14-a890-567c07be1a57</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>tr:nth-of-type(9) > td > a</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='main-body']/main/div/table/tbody/tr[9]/td/a</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>eb1df842-0ebe-45ea-9ae5-8beca1486cb9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/User/Profile/2080e9e3-a35b-4520-9137-8d82da6f5311</value>
+      <webElementGuid>291525c4-48c5-48b5-b9bd-eff9bc91c350</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> TESTE1 </value>
+      <webElementGuid>96610e99-03d3-42a2-badb-b168b0197ab1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/table[@class=&quot;table table-dark table-sm table-profile container&quot;]/tbody[1]/tr[9]/td[1]/a[1]</value>
+      <webElementGuid>460a6d33-9fb7-4469-8a94-e0a542df7a6f</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/table/tbody/tr[9]/td/a</value>
+      <webElementGuid>663903c6-a6d4-4546-936d-cd1299cc56ff</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'TESTE1')]</value>
+      <webElementGuid>8ddf7d94-3ee7-4584-8c56-4db52bed9199</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Give moderator'])[7]/following::a[1]</value>
+      <webElementGuid>d026b432-da28-4965-8c28-289f830a03a4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Give admin'])[7]/following::a[2]</value>
+      <webElementGuid>faac21ca-e6d5-4142-9c15-275516625ba1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Lockout User'])[8]/preceding::a[1]</value>
+      <webElementGuid>0682d8d2-e1b7-4601-b49d-678b15882b5f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Give admin'])[8]/preceding::a[2]</value>
+      <webElementGuid>3f929d8e-379b-447a-a468-1beb4d0ebf49</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='TESTE1']/parent::*</value>
+      <webElementGuid>54e5b693-f080-4e48-a0d3-f9159dea1ff8</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, '/User/Profile/2080e9e3-a35b-4520-9137-8d82da6f5311')]</value>
+      <webElementGuid>02bb570c-edbf-47ec-9dd4-fbfc68401fad</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//tr[9]/td/a</value>
+      <webElementGuid>f7c46850-8919-4b91-be2c-7b13414e97a1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '/User/Profile/2080e9e3-a35b-4520-9137-8d82da6f5311' and (text() = ' TESTE1 ' or . = ' TESTE1 ')]</value>
+      <webElementGuid>21a4c956-275c-4ae4-8a41-f06d32322a98</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

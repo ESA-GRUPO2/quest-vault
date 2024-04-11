@@ -5,8 +5,9 @@
    <tag></tag>
    <UUID>d917b2b3-8bc1-4cbe-8a3d-a1f2b7f9d491</UUID>
    <createdVersion>9.3.1</createdVersion>
-   <freeLicense>false</freeLicense>
+   <freeLicense>true</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
+   <modifiedVersion>9.3.1</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
    <projectFileLocation>C:\Users\Tiago Batista\Desktop\LEI\ESA\Projeto\Código\questvault\Katalon Testing\Katalon Testing.prj</projectFileLocation>
    <sourceContent>
