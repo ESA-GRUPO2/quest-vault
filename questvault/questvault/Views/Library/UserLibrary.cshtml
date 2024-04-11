@@ -59,31 +59,31 @@
     <div class="filter-section mt-0">
       <h5 class="mt-4" style="text-decoration: underline;">Collections</h5>
       <div class="library-filter-ownage" name="GameStatus" id="game-status">
-        <a class="btn @(ViewBag.Collection == null ? "btn-blue-xl" : "btn-purple-xl") m-2 btn-test2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="">
+        <a class="btn @(ViewBag.Collection == null ? "btn-blue-xl" : "btn-purple-xl") m-2 btn-test2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@ViewBag.UserLibraryId" asp-route-collection="">
           <img class="nav-vector pe-1" src="~/img/vector/layer-group-solid.svg" alt="Layer Group Icon" />
           All Games
         </a>
-        <a class="btn @(ViewBag.Collection == "Complete" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Complete" name="collection" value="Complete">
+        <a class="btn @(ViewBag.Collection == "Complete" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@ViewBag.UserLibraryId" asp-route-collection="Complete" name="collection" value="Complete">
           <img class="nav-vector pe-1" src="~/img/vector/check-solid.svg" alt="Check Icon" />
           Completed
         </a>
-        <a class="btn @(ViewBag.Collection == "Playing" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Playing" name="collection" value="Playing">
+        <a class="btn @(ViewBag.Collection == "Playing" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@ViewBag.UserLibraryId" asp-route-collection="Playing" name="collection" value="Playing">
           <img class="nav-vector pe-1" src="~/img/vector/play-solid.svg" alt="Play Icon" />
           Playing
         </a>
-        <a class="btn @(ViewBag.Collection == "Retired" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Retired">
+        <a class="btn @(ViewBag.Collection == "Retired" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@ViewBag.UserLibraryId" asp-route-collection="Retired">
           <img class="nav-vector pe-1" src="~/img/vector/bed-solid.svg" alt="Bed Icon" />
           Retired
         </a>
-        <a class="btn @(ViewBag.Collection == "Backlogged" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Backlogged">
+        <a class="btn @(ViewBag.Collection == "Backlogged" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@ViewBag.UserLibraryId" asp-route-collection="Backlogged">
           <img class="nav-vector pe-1" src="~/img/vector/boxes-stacked-solid.svg" alt="Boxes Icon" />
           Backlogged
         </a>
-        <a class="btn @(ViewBag.Collection == "Abandoned" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Abandoned">
+        <a class="btn @(ViewBag.Collection == "Abandoned" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@ViewBag.UserLibraryId" asp-route-collection="Abandoned">
           <img class="nav-vector pe-1" src="~/img/vector/heart-crack-solid.svg" alt="Heart Crack Icon" />
           Abandoned
         </a>
-        <a class="btn @(ViewBag.Collection == "Wishlist" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@SignInManager.UserManager.GetUserName(User)" asp-route-collection="Wishlist">
+        <a class="btn @(ViewBag.Collection == "Wishlist" ? "btn-blue-big" : "btn-purple") m-2" asp-controller="Library" asp-action="UserLibrary" asp-route-id="@ViewBag.UserLibraryId" asp-route-collection="Wishlist">
           <img class="nav-vector pe-1" src="~/img/vector/gift-solid.svg" alt="Gift Icon" />
           Wishlist
         </a>

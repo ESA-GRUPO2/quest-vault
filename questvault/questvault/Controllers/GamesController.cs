@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using questvault.Data;
 using questvault.Models;
 //using questvault.Migrations;
@@ -395,6 +396,14 @@ namespace questvault.Controllers
       {
         return NotFound();
       }
+      if (String.IsNullOrEmpty(game.SteamUrl))
+      {
+        game.SteamUrl = await igdbService.GetSteamUrl(game.IgdbId);
+        await SaveChangesAsync(context);
+
+      }
+
+
 
       var user = await signInManager.UserManager.GetUserAsync(User);
 
