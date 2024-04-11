@@ -396,6 +396,8 @@ namespace questvault.Controllers
         return NotFound();
       }
 
+      game.SteamUrl = await igdbService.GetSteamUrl(game.IgdbId);
+      await SaveChangesAsync(context);
       var user = await signInManager.UserManager.GetUserAsync(User);
 
       var userLibrary = await context.GamesLibrary
