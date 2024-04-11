@@ -1087,6 +1087,10 @@ hr {
     font-weight: bolder;
   }
 
+    .select-admin button:hover, .select-admin button:active, .select-admin button:focus {
+      background: #591414 !important;
+    }
+
   .select-admin .dropdown-menu, .select-admin a {
     background: #cc3d3d !important;
   }
