@@ -1413,9 +1413,10 @@ hr {
 .review-card {
   border: 2px solid white;
   border-radius: 15px;
-  width: 100%;
+  width: 50rem;
+  height: 12rem;
   float: left;
-  margin: 2rem 2rem 2rem 2rem;
+  margin: 0 2rem 2rem 2rem;
   padding: 1.5rem 1.5rem 1.5rem 0;
   overflow: hidden; /* Para evitar que o conteúdo se sobreponha */
   display: flex;

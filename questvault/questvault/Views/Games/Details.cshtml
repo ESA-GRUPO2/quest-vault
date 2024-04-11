@@ -335,7 +335,7 @@
     </section>
   </div>
 
-  <div class="game-details main-section" style="margin-bottom: 15vh;">
+  <div class="game-details main-section" style="margin-bottom: 38rem !important;">
     <hr class="bar">
 
     <section class="container-fluid">
@@ -343,16 +343,12 @@
         <h4 style="color:white">Reviews</h4>
       </div>
 
-      <div class="d-flex justify-content-evenly">
-        @if (reviews == null)
-        {
-          Console.WriteLine("ESTA MERDA TA A NULO CARALHO");
-        }
+      <div class="flex-row justify-content-start mt-5">
         @if (reviews != null && reviews.Count > 0)
         {
           foreach (GameLog review in reviews)
           {
-            <partial style="width:90%; margin: auto" name="_GameReview" for="@review" />
+            <partial name="_GameReview" for="@review" />
           }
         }
         else
