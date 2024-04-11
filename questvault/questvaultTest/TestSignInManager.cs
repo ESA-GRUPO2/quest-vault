@@ -23,7 +23,7 @@ namespace questvaultTest
     public class TestSignInManager : SignInManager<User>
     {
         public TestSignInManager(IHttpContextAccessor contextAccessor, IUserConfirmation<User> userConfirmation)
-    : base(new FakeUserManager(),
+    : base(new FakeSignInManager(),
           contextAccessor,
           new Mock<IUserClaimsPrincipalFactory<User>>().Object,
           new Mock<IOptions<IdentityOptions>>().Object,
