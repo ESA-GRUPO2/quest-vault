@@ -97,6 +97,18 @@
                   <img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam">
                 </a>
               }
+              @* teste *@
+              @if (ViewBag.IsProcessing)
+              {
+                <div class="spinner-border text-primary" role="status"></div>
+                  <p>carregando...</p>
+              }
+              else
+              {
+                <p>carregado!</p>
+              }
+
+
 
               @if (ViewBag.IsGameAddedToLibrary != true)
               {
