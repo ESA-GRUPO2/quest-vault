@@ -29,7 +29,7 @@ namespace questvault.Controllers
 
 
       // Redirecione para alguma página após a conclusão
-      return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
+      return RedirectToAction("Profile", "User", new {  id });
     }
 
     public static async Task GiveModerator(string id, ApplicationDbContext context)
@@ -89,7 +89,7 @@ namespace questvault.Controllers
       await GiveAdmin(id, context);
 
       // Redirecione para alguma página após a conclusão
-      return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
+      return RedirectToAction("Profile", "User", new {  id });
     }
 
     public static async Task RemovePermissions(string id, ApplicationDbContext context)
@@ -125,7 +125,7 @@ namespace questvault.Controllers
       await RemovePermissions(id, context);
 
       // Redirecione para alguma página após a conclusão
-      return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
+      return RedirectToAction("Profile", "User", new { id });
     }
 
     public static async Task LockoutUser(string id, ApplicationDbContext context)
@@ -182,7 +182,7 @@ namespace questvault.Controllers
       await LockoutUser(id, context);
 
       // Redirecione para alguma página após a conclusão
-      return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
+      return RedirectToAction("Profile", "User", new { id });
     }
 
     public async Task<IActionResult> RemoveLockoutUserAll(string id)
@@ -197,7 +197,7 @@ namespace questvault.Controllers
       await RemoveLockoutUser(id, context);
 
       // Redirecione para alguma página após a conclusão
-      return RedirectToAction("Profile", "User", new { name1 = signInManager.UserManager.GetUserName(User), id2 = id });
+      return RedirectToAction("Profile", "User", new { id });
     }
 
     public static async Task RemoveReview(long gameLogId, ApplicationDbContext context)

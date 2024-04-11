@@ -344,6 +344,10 @@
       </div>
 
       <div class="d-flex justify-content-evenly">
+        @if (reviews == null)
+        {
+          Console.WriteLine("ESTA MERDA TA A NULO CARALHO");
+        }
         @if (reviews != null && reviews.Count > 0)
         {
           foreach (GameLog review in reviews)

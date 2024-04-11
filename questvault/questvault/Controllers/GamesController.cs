@@ -417,6 +417,9 @@ namespace questvault.Controllers
         userLibrary != null &&
         userLibrary.Top5Games != null &&
         userLibrary.Top5Games.Any(g => g.IgdbId == id);
+
+
+
       return View(game);
     }
 

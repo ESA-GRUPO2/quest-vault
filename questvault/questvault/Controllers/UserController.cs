@@ -15,7 +15,6 @@ namespace questvault.Controllers
     [HttpGet]
     public async Task<IActionResult> Profile(string id)
     {
-
       return RedirectToAction("PublicProfile", "User", new { id = id });
     }
 
