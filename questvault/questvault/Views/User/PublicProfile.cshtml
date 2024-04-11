@@ -68,7 +68,7 @@
             else if (Model.friends)
             {
               <a asp-controller="User" asp-action="RemoveFriend" asp-route-id="@Model.user.Id" style="text-decoration: none;" class="btn-primary nav-btn-2 ms-1"
-                onclick="return confirm('Are you sure you to remove @Model.user.UserName from your friends?')">
+                 onclick="return confirm('Are you sure you to remove @Model.user.UserName from your friends?')">
                 <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/heart-crack-solid.svg" alt="Heart crack Icon" />
                 Remove Friend
               </a>
@@ -84,48 +84,65 @@
           @* Admin Actions *@
           @if (user.Clearance == 2 && User.Identity.Name != Model.user.UserName)
           {
-            <select class="selectpicker select-admin ms-3" data-live-search="false" placeholder="Admin Actions">
-
+            <div class="dropdown select-admin ms-3">
+              <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Admin Actions
+              </button>
+              <ul class="dropdown-menu">
                 @if (Model.user.Clearance < 2 && !Model.user.LockoutEnabled)
                 {
-                  <option onclick="return confirm('Are you sure you want to Lockout @Model.user.UserName?')"
-                      asp-controller="Backoffice" asp-action="LockoutUser" asp-route-id="@Model.user.Id">Lockout User</option>
+                  <li>
+                    <a class="dropdown-item" onclick="return confirm('Are you sure you want to Lockout @Model.user.UserName?')"
+                            asp-controller="Backoffice" asp-action="LockoutUser" asp-route-id="@Model.user.Id">
+                      Lockout User
+                    </a>
+                  </li>
+
                 }
                 @if (Model.user.LockoutEnabled)
                 {
-                  <option onclick="return confirm('Are you sure you want to remove @Model.user.UserName's Lockout?')"
-                      asp-controller="Backoffice" asp-action="RemoveLockoutUser" asp-route-id="@Model.user.Id">Remove Lockout</option>
+                  <a class="dropdown-item" onclick="return confirm('Are you sure you want to remove @Model.user.UserName's Lockout?')"
+                          asp-controller="Backoffice" asp-action="RemoveLockoutUser" asp-route-id="@Model.user.Id">
+                    Remove Lockout
+                  </a>
                 }
                 else
                 {
                   @if (Model.user.Clearance != 2)
                   {
-                    <option onclick="return confirm('Are you sure you make @Model.user.UserName an Administrator?')"
-                        asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@Model.user.Id">Make Admin</option>
+                    <a class="dropdown-item" onclick="return confirm('Are you sure you make @Model.user.UserName an Administrator?')"
+                            asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@Model.user.Id">
+                      Make Admin
+                    </a>
                   }
                   @if (Model.user.Clearance == 0)
                   {
-                    <option onclick="return confirm('Are you sure you make @Model.user.UserName a Moderator?')"
-                        asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@Model.user.Id">Make Mod</option>
+                    <a class="dropdown-item" onclick="return confirm('Are you sure you make @Model.user.UserName a Moderator?')"
+                            asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@Model.user.Id">
+                      Make Mod
+                    </a>
                   }
                   @if (Model.user.Clearance == 1)
                   {
-                    <option onclick="return confirm('Are you sure you remove @Model.user.UserName from being a Moderator?')"
-                        asp-controller="Backoffice" asp-action="RemovePermissions" asp-route-id="@Model.user.Id">Remove Mod</option>
+                    <a class="dropdown-item" onclick="return confirm('Are you sure you remove @Model.user.UserName from being a Moderator?')"
+                            asp-controller="Backoffice" asp-action="RemovePermissions" asp-route-id="@Model.user.Id">
+                      Remove Mod
+                    </a>
                   }
-              }
-            </select>
-            
-            
+                }
+              </ul>
+            </div>
+
+
           }
 
-         
-        </div>
-        <div class="row container-fluid">
 
         </div>
+        <div class="row container-fluid">
+        </div>
         <div class="profile-connects row container-fluid">
-          @if(Model.user.SteamID != null){
+          @if (Model.user.SteamID != null)
+          {
             <a href="https://steamcommunity.com/profiles/@Model.user.SteamID" target="_blank" rel="noopener noreferrer">
               <img class="img-size-sm" src="~/img/external/Steam_Logo.png" alt="Steam Logo" />
             </a>
