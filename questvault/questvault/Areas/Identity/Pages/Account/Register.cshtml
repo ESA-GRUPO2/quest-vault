@@ -19,7 +19,7 @@
       <div class="row-login">
         <div class="col-sm-5-login">
 
-            <input type="text" class="form-control-login" id="username" placeholder="Username" asp-for="Input.UserName" autocomplete="username" aria-required="true">
+            <input type="text" class="form-control-login" id="username" placeholder="Username" asp-for="Input.UserName" autocomplete="username" aria-required="true" maxlength="32">
                     <div class="danger-login">
                         <p><span asp-validation-for="Input.UserName" class="text-danger-login"></span></p>
                     </div>
