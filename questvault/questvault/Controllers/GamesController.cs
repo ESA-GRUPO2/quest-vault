@@ -403,8 +403,6 @@ namespace questvault.Controllers
 
       }
 
-
-
       var user = await signInManager.UserManager.GetUserAsync(User);
 
       var userLibrary = await context.GamesLibrary
