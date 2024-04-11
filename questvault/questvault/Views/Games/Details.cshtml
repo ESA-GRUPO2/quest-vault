@@ -91,6 +91,13 @@
           </div>
           <div class="game-user-status">
             <div class="d-inline-flex">
+              @if(Model.SteamUrl != null && Model.SteamUrl != "")
+              {
+                <a href="@Model.SteamUrl" target="_blank" style="padding-right: 1rem">
+                  <img class="img-size-sm" src="/img/external/Steam_Logo.png" alt="Steam">
+                </a>
+              }
+
               @if (ViewBag.IsGameAddedToLibrary != true)
               {
                 <button type="button" style="margin:auto" class="btn-primary btn-purple" data-bs-toggle="modal" data-bs-target="#gamelogModal">Add Game</button>
