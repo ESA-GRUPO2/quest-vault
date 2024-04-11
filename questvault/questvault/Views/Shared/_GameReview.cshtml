@@ -6,7 +6,7 @@
 @if (Model != null && Model.User != null)
 {
   <div class="review-card row">
-    <div class="review-user col-2">
+    <div class="review-user col-3">
       @* USER *@
       <a class="d-flex justify-content-center" style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { id = Model.User.Id})">
         <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="user-foto ms-0 @(userAvatar == "user.svg" ? "p-3" : "")" style=" height: 4rem; width: 4rem; @(userAvatar != "user.svg" ? "background: #0ABDC6;" : "") ">
