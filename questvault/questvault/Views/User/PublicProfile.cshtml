@@ -49,18 +49,18 @@
             }
             else if (Model.RequestRecieved)
             {
-              <a asp-controller="User" asp-action="AcceptFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none;" class="btn-primary nav-btn-2 ms-1">
+              <a asp-controller="User" asp-action="AcceptFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-1">
                 <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
                 Accept Request
               </a>
-              <a asp-controller="User" asp-action="RejectFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none;" class="btn-primary nav-btn-2 ms-1">
+              <a asp-controller="User" asp-action="RejectFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-1">
                 <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/circle-xmark-solid.svg" alt="Deny Icon" />
                 Deny Request
               </a>
             }
             else if (!Model.friends)
             {
-              <a asp-controller="User" asp-action="SendFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none" class="btn-primary nav-btn ms-1">
+              <a asp-controller="User" asp-action="SendFriendRequest" asp-route-id="@Model.user.Id" style="text-decoration: none" class="btn-primary nav-btn ms-1 btn-profile">
                 <img class="nav-vector pe-1" style=":hover,:active{ background-color: #091833 !important;}" src="~/img/vector/plus-solid.svg" alt="Plus Icon" />
                 Add Friend
               </a>
@@ -97,13 +97,12 @@
                       Lockout User
                     </a>
                   </li>
-
                 }
                 @if (Model.user.LockoutEnabled)
                 {
                   <a class="dropdown-item" onclick="return confirm('Are you sure you want to remove @Model.user.UserName's Lockout?')"
                           asp-controller="Backoffice" asp-action="RemoveLockoutUser" asp-route-id="@Model.user.Id">
-                    Remove Lockout
+                    Unlock User
                   </a>
                 }
                 else
