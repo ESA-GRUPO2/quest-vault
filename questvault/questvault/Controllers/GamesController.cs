@@ -120,6 +120,7 @@ namespace questvault.Controllers
           .OrderByDescending(o => o.IgdbRating)
           .ThenByDescending(o => o.TotalRatingCount);
       var list = await PaginatedList<Game>.CreateAsync(query.AsNoTracking(), pageNumber ?? 1, _pageSize);
+      ViewBag.NumberOfResults = query.Count();
       var data = new GameViewData
       {
         SearchTerm = searchTerm,
