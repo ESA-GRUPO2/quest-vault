@@ -10,7 +10,7 @@ env:
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: questvault
-
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,7 +28,7 @@ jobs:
 
     - name: Build
       env: 
-        configuration: ${{ env.CONFIGURATION }} /p:ConnectionStrings:ProductionConnection= "${{ env.AZURE_SQL_CONNECTION_STRING }}"
+        configuration: ${{ env.CONFIGURATION }} /p:ConnectionStrings:ProductionConnection= "${{ secrets.AZURE_SQL_CONNECTION_STRING }}"
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.configuration }} --no-restore -v d
 
     - name: Test
