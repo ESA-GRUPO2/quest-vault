@@ -7,7 +7,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: questvault
   AZURE_WEBAPP_PACKAGE_PATH: questvault/published
-  CONFIGURATION: Release
+  CONFIGURATION: "Release /p:ProductionConnection= \"${{ env.AZURE_SQL_CONNECTION_STRING }}\""
   DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: questvault
 
@@ -23,16 +23,6 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
 
-    - name: update db
-      run: |
-        dotnet tool install --global dotnet-ef
-        dotnet tool restore
-        dotnet user-secrets set --project "${{ env.WORKING_DIRECTORY }}/questvault" ConnectionStrings:ProductionConnection "${{ secrets.AZURE_SQL_CONNECTION_STRING }}/questvault"
-        dotnet ef database update -p "${{ env.WORKING_DIRECTORY }}/questvault" --connection ${{ secrets.AZURE_SQL_CONNECTION_STRING }} -v
-      env:
-        ASPNETCORE_ENVIRONMENT: Development
-
-
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
 
@@ -41,6 +31,15 @@ jobs:
 
     - name: Test
       run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
+
+    - name: update db
+      run: |
+        dotnet tool install --global dotnet-ef
+        dotnet tool restore
+        dotnet ef database update -p "${{ env.WORKING_DIRECTORY }}/questvault" --connection ${{ secrets.AZURE_SQL_CONNECTION_STRING }} -v --no-build
+      env:
+        ASPNETCORE_ENVIRONMENT: Development
+
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
 
