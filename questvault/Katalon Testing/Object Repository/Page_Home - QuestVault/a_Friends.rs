@@ -6,6 +6,10 @@
    <elementGuidId>4c82c89a-d94b-4e82-b113-5d5f9638b9e1</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>BASIC</key>
+         <value>//*[@href = '/Friendships/FriendsPage' and (text() = 'Friends' or . = 'Friends')]</value>
+      </entry>
+      <entry>
          <key>CSS</key>
          <value>li:nth-of-type(6) > a.btn.btn-primary.dropdown-item</value>
       </entry>
@@ -14,7 +18,7 @@
          <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[6]/a</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>f3590e2c-237d-47cf-a9ed-188926ebf225</webElementGuid>
+      <webElementGuid>1ba3dedd-d36b-4df9-aae3-ebe00be16c73</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -37,7 +41,7 @@
       <name>href</name>
       <type>Main</type>
       <value>/Friendships/FriendsPage</value>
-      <webElementGuid>a0e3d3d1-56ce-428d-909b-ae3551c46845</webElementGuid>
+      <webElementGuid>3022b633-1c88-43e0-86c4-8b029b71e937</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>class</name>
       <type>Main</type>
       <value>btn btn-primary dropdown-item</value>
-      <webElementGuid>91814c6a-2c72-44ad-b3dd-0ed541230c1e</webElementGuid>
+      <webElementGuid>b4181152-9932-48ff-9bcf-98befb6c1f22</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -53,7 +57,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Friends</value>
-      <webElementGuid>cf39f7cb-b444-4125-96d6-a8c19dab157b</webElementGuid>
+      <webElementGuid>778e1d61-eaa1-4621-9a6e-8a5fbe24329b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +65,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[6]/a[@class=&quot;btn btn-primary dropdown-item&quot;]</value>
-      <webElementGuid>8b19b874-664a-4900-9523-d073dd5d3417</webElementGuid>
+      <webElementGuid>6e3271c0-300f-4543-a34e-4810922199f7</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -69,7 +73,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[6]/a</value>
-      <webElementGuid>cea38179-3f9b-4fec-b3c7-db64184e30b3</webElementGuid>
+      <webElementGuid>eac8ab6e-2759-425e-b7f9-f6c13b1b30a7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,7 +81,7 @@
       <name>xpath:link</name>
       <type>Main</type>
       <value>//a[contains(text(),'Friends')]</value>
-      <webElementGuid>c2f8b2a4-a23c-49de-a0c1-d84adb27c821</webElementGuid>
+      <webElementGuid>1e8a2579-c04c-46d8-8604-034d9f5a3b89</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +89,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='allUsers'])[1]/following::a[1]</value>
-      <webElementGuid>40efa383-3450-497b-b433-505eee9fbe56</webElementGuid>
+      <webElementGuid>bdcec2cb-0e4d-4de6-8b68-53555d1d6d4c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,7 +97,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Profile'])[1]/following::a[2]</value>
-      <webElementGuid>1347bfb5-6d3b-4cd5-8e66-eb03b8c922ba</webElementGuid>
+      <webElementGuid>4d48c5a2-22c1-412d-91c6-099a903bcf04</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -101,7 +105,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/preceding::a[1]</value>
-      <webElementGuid>1be77e7a-6eba-4029-8c82-39a7fb9192fe</webElementGuid>
+      <webElementGuid>ec1e1d80-8089-434a-a27e-a26407745550</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -109,7 +113,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::a[1]</value>
-      <webElementGuid>9441762d-4e6e-48bd-bc1b-807be4206923</webElementGuid>
+      <webElementGuid>5e750c25-5a99-440b-a4d9-18c65ff9dc33</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,7 +121,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Friends']/parent::*</value>
-      <webElementGuid>0ff506e6-5517-486b-a331-db26f5f8aaba</webElementGuid>
+      <webElementGuid>8f8a990a-94bc-41ea-91a0-255a9e76d07a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -125,7 +129,7 @@
       <name>xpath:href</name>
       <type>Main</type>
       <value>//a[contains(@href, '/Friendships/FriendsPage')]</value>
-      <webElementGuid>74d3700e-9529-4766-9fcd-ddc0b0c6099f</webElementGuid>
+      <webElementGuid>a507afb8-a7b6-48f8-b03e-a95223c95fa8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -133,7 +137,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li[6]/a</value>
-      <webElementGuid>49bee90d-f782-4929-8622-714018144ce0</webElementGuid>
+      <webElementGuid>2ca65afb-ded7-4937-91c7-a091ffab6de9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -141,6 +145,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//a[@href = '/Friendships/FriendsPage' and (text() = 'Friends' or . = 'Friends')]</value>
-      <webElementGuid>677d6f72-c16f-4fa2-afab-9ae11fa33d42</webElementGuid>
+      <webElementGuid>200db3a2-b683-44d9-9658-a72a20b47d63</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
