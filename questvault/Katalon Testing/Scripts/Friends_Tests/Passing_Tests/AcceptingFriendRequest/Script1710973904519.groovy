@@ -23,7 +23,7 @@ WebUI.navigateToUrl('https://localhost:7074/')
 
 WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_Log in_nav-vector pe-2'))
+WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Log in'))
 
 WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tBatista')
 
@@ -33,7 +33,7 @@ WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
 WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_MyLibrary_nav-vector mb-1'))
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Friends'))
+WebUI.click(findTestObject('Page_Home - QuestVault/a_Friends'))
 
 WebUI.verifyElementText(findTestObject('Object Repository/Page_Friends - QuestVault/h2_No friends'), 'No friends!')
 
@@ -43,7 +43,7 @@ WebUI.click(findTestObject('Object Repository/Page_Friends - QuestVault/img_Test
 
 WebUI.click(findTestObject('Object Repository/Page_Friends - QuestVault/a_Friends'))
 
-WebUI.verifyElementText(findTestObject('Object Repository/Page_Friends - QuestVault/span_Teste'), 'Teste')
+WebUI.verifyElementText(findTestObject('Object Repository/Page_Friends - QuestVault/span_Teste'), 'coelho')
 
 WebUI.closeBrowser()
 
