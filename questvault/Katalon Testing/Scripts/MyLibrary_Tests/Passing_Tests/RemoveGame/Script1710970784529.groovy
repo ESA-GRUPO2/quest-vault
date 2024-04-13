@@ -35,11 +35,13 @@ WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_MyLibrary
 
 WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img'))
 
-WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/button_Remove Game'))
+WebUI.click(findTestObject('Page_Game - QuestVault/button_Edit GameLog'))
+
+WebUI.click(findTestObject('Object Repository/button_Delete Game Log'))
 
 WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/a_MyLibrary'))
 
-WebUI.verifyElementText(findTestObject('Object Repository/Page_Library - QuestVault/h2_No games Added'), 'No games Added!')
+WebUI.verifyElementText(findTestObject('Object Repository/h4_0 games'), '0 games')
 
 WebUI.closeBrowser()
 

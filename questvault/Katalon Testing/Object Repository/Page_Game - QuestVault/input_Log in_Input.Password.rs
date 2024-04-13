@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_Username_Input.NewUserName</name>
+   <name>input_Log in_Input.Password</name>
    <tag></tag>
-   <elementGuidId>744bcf0c-0cda-40e5-946a-5d7bd6ffc392</elementGuidId>
+   <elementGuidId>da445fbf-8f23-45d6-8aff-1adc4192ad91</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value>//*[@id = 'inputName' and @placeholder = 'Tiago' and @name = 'Input.NewUserName']</value>
-      </entry>
-      <entry>
          <key>CSS</key>
-         <value>#inputName</value>
+         <value>#Password</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//input[@id='inputName']</value>
+         <value>//input[@id='Password']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>BASIC</selectorMethod>
-   <smartLocatorCollection>
-      <entry>
-         <key>SMART_LOCATOR</key>
-         <value>internal:attr=[placeholder=&quot;Tiago&quot;s]</value>
-      </entry>
-   </smartLocatorCollection>
+   <selectorMethod>XPATH</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
@@ -33,15 +23,15 @@
       <name>tag</name>
       <type>Main</type>
       <value>input</value>
-      <webElementGuid>8d569aa1-de78-4968-a16b-3f48e389dc80</webElementGuid>
+      <webElementGuid>9ff78fd6-f31f-4d73-957a-33fa0469e57b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>false</isSelected>
+      <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>type</name>
       <type>Main</type>
-      <value>text</value>
-      <webElementGuid>02953be4-33d5-4627-b39e-ad61f84bed2b</webElementGuid>
+      <value>password</value>
+      <webElementGuid>b833af27-4a0d-418e-ac88-8fd8dd3833e6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,23 +39,39 @@
       <name>class</name>
       <type>Main</type>
       <value>form-control-login</value>
-      <webElementGuid>1f0d1cc3-1fd5-4ffd-ac0f-6d8265b45d51</webElementGuid>
+      <webElementGuid>7d1c78e0-e668-4839-814d-6d371ee88d3d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>id</name>
       <type>Main</type>
-      <value>inputName</value>
-      <webElementGuid>c7271e0b-3b7b-4aca-9526-132f3eac97ff</webElementGuid>
+      <value>Password</value>
+      <webElementGuid>53474bc9-cd4c-4487-ab8f-d832e742edb2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>placeholder</name>
       <type>Main</type>
-      <value>Tiago</value>
-      <webElementGuid>cc48a34d-3cbd-4464-b8e1-8ad222d177a9</webElementGuid>
+      <value>Password</value>
+      <webElementGuid>1a520321-12af-4416-8ca6-658c7ab2d729</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>autocomplete</name>
+      <type>Main</type>
+      <value>current-password</value>
+      <webElementGuid>35e0a496-d9c9-4458-83b8-1262534f9f92</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-required</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>68bf002d-3d1e-4fec-a03d-8448d0fe5c0a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,78 +79,62 @@
       <name>data-val</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>b0fdde5a-f478-42dc-8372-62da9bbd55f0</webElementGuid>
+      <webElementGuid>343249fb-e9ab-42bc-8b92-dabeaf03c970</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>data-val-length</name>
+      <name>data-val-required</name>
       <type>Main</type>
-      <value>This user name already exits.</value>
-      <webElementGuid>e3b128ae-9bed-4184-b241-095ca9c77265</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>data-val-length-max</name>
-      <type>Main</type>
-      <value>100</value>
-      <webElementGuid>76682a4a-b68e-46a8-8881-5541074166fb</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>maxlength</name>
-      <type>Main</type>
-      <value>100</value>
-      <webElementGuid>b0951f6d-6a4e-4b02-a564-17288da8571e</webElementGuid>
+      <value>The Password field is required.</value>
+      <webElementGuid>87e6da82-0fef-4f29-9a85-6ec21770b211</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>name</name>
       <type>Main</type>
-      <value>Input.NewUserName</value>
-      <webElementGuid>1d68e75b-3d95-458e-9573-b3b69fea460e</webElementGuid>
+      <value>Input.Password</value>
+      <webElementGuid>867b2062-a38a-4dfe-9f45-48ec33b2935d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;inputName&quot;)</value>
-      <webElementGuid>043d4416-48f3-4362-a396-1c5754b0572b</webElementGuid>
+      <value>id(&quot;Password&quot;)</value>
+      <webElementGuid>de247863-4966-4c1e-9b0b-df8720df697a</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//input[@id='inputName']</value>
-      <webElementGuid>71b6eff3-3229-40fb-b009-bb3f1bf69c1d</webElementGuid>
+      <value>//input[@id='Password']</value>
+      <webElementGuid>6790ec52-2078-4e92-a5c0-e5bdf1e8357c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//form[@id='change-username-form']/div[2]/div/input</value>
-      <webElementGuid>c35c485f-1906-49b7-aeff-061c8d84603d</webElementGuid>
+      <value>//form[@id='account']/div[2]/input</value>
+      <webElementGuid>494994ff-6b80-4d8d-b23e-595481fc614b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//div[2]/div/input</value>
-      <webElementGuid>2d71c34f-0fa1-4155-93fb-4b117ce5cf2f</webElementGuid>
+      <value>//div[2]/input</value>
+      <webElementGuid>f586b298-56e0-412a-a202-1a333b933759</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//input[@type = 'text' and @id = 'inputName' and @placeholder = 'Tiago' and @name = 'Input.NewUserName']</value>
-      <webElementGuid>cf35338a-6186-4b34-a23c-faf0f3067929</webElementGuid>
+      <value>//input[@type = 'password' and @id = 'Password' and @placeholder = 'Password' and @name = 'Input.Password']</value>
+      <webElementGuid>642d74b5-a23b-4e0f-a3f9-3a52b3f22eb1</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

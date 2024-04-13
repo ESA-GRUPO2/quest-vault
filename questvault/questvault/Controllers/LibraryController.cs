@@ -411,7 +411,8 @@ namespace questvault.Controllers
             GameId = game.GameId,
             IgdbId = game.IgdbId,
             HoursPlayed = gameInfo?.Playtime ?? 0,
-            Status = gameInfo?.Playtime > 0 ? GameStatus.Playing : GameStatus.Backlogged
+            Status = gameInfo?.Playtime > 0 ? GameStatus.Playing : GameStatus.Backlogged,
+            UserId = signInManager.UserManager.GetUserId(User)
           });
         }
         else gamesInfoInSteamLibrary.Add(gameInfo);
