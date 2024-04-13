@@ -24,7 +24,9 @@ jobs:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
 
     - name: Set User-Secrets
-      run: dotnet user-secrets set ConnectionStrings:ProductionConnection ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+      run: |
+        dotnet user-secrets init
+        dotnet user-secrets set -p ${{ env.WORKING_DIRECTORY }} ConnectionStrings:ProductionConnection ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
 
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
