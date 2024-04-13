@@ -1,1 +1,1 @@
-search_result['656']=["topic_0000000000000150.html","GameCompany.IgdbCompanyId Property","Gets or sets the ID of the company."];
+search_result['656']=["topic_0000000000000169.html","LibraryController.AddUpdateGames Method","Action method for adding or updating games."];

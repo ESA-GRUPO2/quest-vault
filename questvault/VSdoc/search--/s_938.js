@@ -1,0 +1,1 @@
+search_result['938']=["topic_000000000000020B.html","GamePlatform.Game Property","Gets or sets the navigation property for the game."];

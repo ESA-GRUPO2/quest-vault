@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>IServiceIGDB Interface</title>
+	<title>sprint3final Class</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">IServiceIGDB Interface</h1>
+		<h1 class="title">sprint3final Class</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000194.html">questvault.Services</a>
+<a href="topic_0000000000000197.html">questvault.Migrations</a>
 
 
 
@@ -89,7 +89,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Service for interacting with the IGDB API.</summary-info>
 
 
 
@@ -139,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">Public Interface IServiceIGDB</pre>			
+					<pre xml:space="preserve" class="brush: vb">&lt;DbContext(typeof(ApplicationDbContext))&gt; _&nbsp;<br />&lt;Migration(&quot;20240324162338_sprint3final&quot;)&gt; _&nbsp;<br />Public Class sprint3final&nbsp;<br />    Inherits <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration">Migration</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public interface IServiceIGDB</pre>			
+					<pre xml:space="preserve" class="brush: csharp">[DbContext(typeof(ApplicationDbContext))]&nbsp;<br />[Migration(&quot;20240324162338_sprint3final&quot;)]&nbsp;<br />public class sprint3final : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration">Migration</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">public interface class IServiceIGDB</pre>			
+					<pre xml:space="preserve" class="brush: cpp">[DbContext(typeof(ApplicationDbContext))]&nbsp;<br />[Migration(&quot;20240324162338_sprint3final&quot;)]&nbsp;<br />public ref class sprint3final : public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft::entityframeworkcore::migrations::migration">Migration</a>^</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -257,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public interface IServiceIGDB</pre>			
+					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   DbContext(typeof(ApplicationDbContext))&nbsp;<br />   Migration(&quot;20240324162338_sprint3final&quot;)&nbsp;<br />class sprint3final&nbsp;<br />   extends <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration">Migration</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -320,41 +319,16 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 ">
 	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
+
+    
+	  
 
 
     
 	</td>
 	<td>
-	<a href="topic_00000000000001A4.html">GetCompanies()</a>
-
-	</td>
-	<td>
-
-Gets a collection of companies.
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_00000000000001A5.html">GetCompaniesFromIds(List&lt;Int64&gt;)</a>
+	<a href="topic_00000000000001A3.html">BuildTargetModel(ModelBuilder)</a>
 
 	</td>
 	<td>
@@ -376,18 +350,21 @@ Gets a collection of companies.
 
 ">
 	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
+
+    
+	  
 
 
     
 	</td>
 	<td>
-	<a href="topic_00000000000001A3.html">GetGenres()</a>
+	<a href="topic_00000000000001A2.html">Down(MigrationBuilder)</a>
 
 	</td>
 	<td>
 
-Gets a collection of genres.
+
 
 	</td>
 </tr>
@@ -404,102 +381,21 @@ Gets a collection of genres.
 
 ">
 	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
+
+    
+	  
 
 
     
 	</td>
 	<td>
-	<a href="topic_00000000000001A6.html">GetPlatforms()</a>
+	<a href="topic_00000000000001A1.html">Up(MigrationBuilder)</a>
 
 	</td>
 	<td>
 
-Gets a collection of platforms.
 
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_00000000000001A7.html">GetPlatformsFromIds(List&lt;Int64&gt;)</a>
-
-	</td>
-	<td>
-
-Retrieves platforms from their IDs.
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_00000000000001A2.html">GetPopularGames(int)</a>
-
-	</td>
-	<td>
-
-Gets a collection of popular games based on a specified limit.
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_00000000000001A1.html">SearchGames(string)</a>
-
-	</td>
-	<td>
-
-Searches for games based on a search term.
 
 	</td>
 </tr>
@@ -517,10 +413,6 @@ Searches for games based on a search term.
 
 	</div>					
 </div>
-
-
-
-
 
 
 
@@ -613,6 +505,7 @@ Searches for games based on a search term.
 	</div>					
 </div>
 
+
 <div class="section_container">
 	<div class="section_heading">
 		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">See Also</a></span>
@@ -621,7 +514,7 @@ Searches for games based on a search term.
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-	<a href="topic_0000000000000194.html">questvault.Services Namespace</a><br />
+	<a href="topic_0000000000000197.html">questvault.Migrations Namespace</a><br />
 
 
 	

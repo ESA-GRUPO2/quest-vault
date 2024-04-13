@@ -1,1 +1,1 @@
-search_result['592']=["topic_000000000000012B_methods--.html","ErrorViewModel Methods",""];
+search_result['592']=["topic_0000000000000146.html","BackofficeController.RemoveReview (Int64) Method","Removes the review from a game log identified by its ID."];

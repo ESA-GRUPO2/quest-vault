@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>img_MyLibrary_nav-vector mb-1_1</name>
+   <tag></tag>
+   <elementGuidId>a95a288e-6dbe-48e0-ae9a-1923e4c15be5</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>img.nav-vector.mb-1</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>2b2d3f5f-486d-4e8b-8b0b-307f3dd1d448</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/img/usr_profile/cd6d589c-8a70-4dea-8dc2-a4ef9f4cbaec_pa.jpg</value>
+      <webElementGuid>ca19b8c9-d3c3-4bed-b417-41f8c8ca1c13</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>alt</name>
+      <type>Main</type>
+      <value>Key Icon</value>
+      <webElementGuid>da1d26ce-1b0a-4de5-ab9d-10fb10215c0b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>nav-vector mb-1</value>
+      <webElementGuid>2420a51a-9beb-42dd-bd0c-d3388db4b198</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/button[@class=&quot;btn btn-primary nav-btn show&quot;]/img[@class=&quot;nav-vector mb-1&quot;]</value>
+      <webElementGuid>868f88ee-1ad6-4bcd-93cb-2f22b1af6c00</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
+      <webElementGuid>05ef0431-5046-4a83-83ff-200811166eae</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:img</name>
+      <type>Main</type>
+      <value>(//img[@alt='Key Icon'])[2]</value>
+      <webElementGuid>218a78ed-fb16-455a-b248-801f99aebe3a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[5]/div/button/img</value>
+      <webElementGuid>fab640f6-ef06-40f4-b337-8d0ffe4dd030</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//img[@src = '/img/usr_profile/cd6d589c-8a70-4dea-8dc2-a4ef9f4cbaec_pa.jpg' and @alt = 'Key Icon']</value>
+      <webElementGuid>4de90c4c-93db-4ed2-8306-dcfe34df4e69</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

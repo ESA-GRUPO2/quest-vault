@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['500',"questvault.Services Namespace","topic_0000000000000194.html"],['514',"IServiceIGDB Interface","topic_00000000000001A0.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['532',"questvault.Migrations Namespace","topic_0000000000000197.html"],['563',"sprint3final Class","topic_00000000000001A0.html"]];

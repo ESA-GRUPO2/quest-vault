@@ -1,1 +1,1 @@
-search_result['579']=["topic_0000000000000126.html","Company Class","Represents a video game company entity."];
+search_result['579']=["topic_000000000000013E_overloads--.html","BackofficeController.RemovePermissions Method","Removes all permissions from a user identified by their ID."];

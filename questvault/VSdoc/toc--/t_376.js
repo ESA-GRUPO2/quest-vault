@@ -1,1 +1,1 @@
-c['376']=[['377',"Methods","topic_0000000000000121_methods--.html",1]];
+c['376']=[['377',"OnGetAsync Method","topic_000000000000009D.html",0],['378',"OnPostAsync Method","topic_000000000000009E.html",0]];

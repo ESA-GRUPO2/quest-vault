@@ -1,0 +1,1 @@
+search_result['926']=["topic_0000000000000204.html","GameLog.Status Property","Gets or sets the status of the game (nullable)."];

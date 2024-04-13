@@ -1,1 +1,1 @@
-search_result['612']=["topic_0000000000000133_vars--.html","FriendshipRequest Fields",""];
+search_result['612']=["topic_000000000000014E.html","FriendshipsController.FriendsPageAsync Method","Makes a list with all the user\u0027s friends"];

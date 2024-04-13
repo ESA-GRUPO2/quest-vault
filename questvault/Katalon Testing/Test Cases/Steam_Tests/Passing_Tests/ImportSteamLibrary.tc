@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that th steam library is imported correctly</description>
+   <name>ImportSteamLibrary</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b2d1f2f5-cadb-4052-8176-d4c1ad1c2012</testCaseGuid>
+</TestCaseEntity>

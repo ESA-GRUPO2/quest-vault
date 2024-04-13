@@ -1,1 +1,1 @@
-search_result['233']=["topic_000000000000007B_vars--.html","ShowRecoveryCodesModel Fields",""];
+search_result['233']=["topic_000000000000008C_methods--.html","ResetAuthenticatorModel Methods",""];

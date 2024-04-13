@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_TESTE1</name>
+   <tag></tag>
+   <elementGuidId>9550e41c-27ce-4c14-a890-567c07be1a57</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>tr:nth-of-type(9) > td > a</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='main-body']/main/div/table/tbody/tr[9]/td/a</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>9f5348ea-f226-4c8f-9a90-2c47fe526f2e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/User/Profile/2080e9e3-a35b-4520-9137-8d82da6f5311</value>
+      <webElementGuid>69550476-aeec-4621-a45e-d3073b444e48</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> TESTE1 </value>
+      <webElementGuid>a2aa6cb4-1fa8-43e1-adfe-00bba5c49c10</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/table[@class=&quot;table table-dark table-sm table-profile container mb-4&quot;]/tbody[1]/tr[9]/td[1]/a[1]</value>
+      <webElementGuid>536f6263-2afc-492c-b275-3d45b070faef</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/table/tbody/tr[9]/td/a</value>
+      <webElementGuid>a5116b23-7900-4a1a-acc0-28787525366a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'TESTE1')]</value>
+      <webElementGuid>82e7ba99-33ff-4a17-bb66-c4d43230e871</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Make Mod'])[7]/following::a[1]</value>
+      <webElementGuid>b102d6af-17d3-43c2-81a5-78dcdb2135c5</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Make Admin'])[7]/following::a[2]</value>
+      <webElementGuid>e4c1404a-2d7a-4a06-813d-92ae9dba9c96</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Lockout User'])[8]/preceding::a[1]</value>
+      <webElementGuid>1b3f813a-8eb9-40b9-b662-7978337ffae3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Make Admin'])[8]/preceding::a[2]</value>
+      <webElementGuid>cc2c56e6-cfa8-4ac9-afe6-633f469b630f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='TESTE1']/parent::*</value>
+      <webElementGuid>96cc9e6c-c5b5-48e1-ac31-a4e33ca23420</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, '/User/Profile/2080e9e3-a35b-4520-9137-8d82da6f5311')]</value>
+      <webElementGuid>55fc2ec4-82cd-4594-b3ec-e24d41cb37fe</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//tr[9]/td/a</value>
+      <webElementGuid>4d84e4a0-a8e7-4047-a8cd-481e2ba62963</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '/User/Profile/2080e9e3-a35b-4520-9137-8d82da6f5311' and (text() = ' TESTE1 ' or . = ' TESTE1 ')]</value>
+      <webElementGuid>3e7c04e5-bc4a-403f-b012-13d0b0704766</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

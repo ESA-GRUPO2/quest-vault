@@ -1,1 +1,1 @@
-c['75']=[['76',"RememberMachine Property","topic_00000000000000C0.html",0],['77',"TwoFactorCode Property","topic_00000000000000BF.html",0]];
+c['75']=[['76',"InputModel Class","topic_00000000000000EA.html",1],['81',"Properties","topic_00000000000000E4_props--.html",1],['86',"Methods","topic_00000000000000E4_methods--.html",1],['89',"Fields","topic_00000000000000E4_vars--.html",1]];

@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['513',"questvault.Data Namespace","topic_0000000000000186.html"],['514',"ApplicationDbContext Class","topic_0000000000000187.html"],['530',"Methods","topic_0000000000000187_methods--.html"]];

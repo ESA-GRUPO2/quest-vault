@@ -1,1 +1,1 @@
-c['353']=[['354',"ApplicationDbContext Class","topic_000000000000010E.html",1]];
+c['353']=[['354',"_logger Field","topic_0000000000000089.html",0],['355',"_userManager Field","topic_0000000000000088.html",0]];

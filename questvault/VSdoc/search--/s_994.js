@@ -1,0 +1,1 @@
+search_result['994']=["topic_0000000000000230.html","Statistics Class","Represents statistical data."];

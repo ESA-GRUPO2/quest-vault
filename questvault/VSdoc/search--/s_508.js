@@ -1,1 +1,1 @@
-search_result['508']=["topic_00000000000000F8_vars--.html","GamesController Fields",""];
+search_result['508']=["topic_000000000000011B.html","RegisterConfirmationModel.DisplayConfirmAccountLink Property","This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used\r\n    directly from your code. This API may change or be removed in future releases."];

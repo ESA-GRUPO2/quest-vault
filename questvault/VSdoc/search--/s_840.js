@@ -1,0 +1,1 @@
+search_result['840']=["topic_00000000000001CC.html","FriendshipRequest.isAccepted Property","Gets or sets a value indicating whether the friendship request is accepted."];

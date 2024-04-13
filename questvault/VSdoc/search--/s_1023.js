@@ -1,0 +1,1 @@
+search_result['1023']=["topic_000000000000023E.html","User.IsDeactivated Property","Gets or sets a value indicating whether the user is deactivated."];

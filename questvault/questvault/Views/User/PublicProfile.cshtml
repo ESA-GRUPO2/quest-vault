@@ -67,7 +67,7 @@
             }
             else if (Model.friends)
             {
-              <a asp-controller="User" asp-action="RemoveFriend" asp-route-id="@Model.user.Id" style="text-decoration: none;" class="btn-primary nav-btn-2 ms-1"
+              <a asp-controller="User" asp-action="RemoveFriend" asp-route-id="@Model.user.Id" style="text-decoration: none; width: 12.5rem;" class="btn-primary nav-btn-2 ms-1"
                  onclick="return confirm('Are you sure you to remove @Model.user.UserName from your friends?')">
                 <img class="nav-vector pe-1" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(139deg) brightness(108%) contrast(101%);" src="~/img/vector/heart-crack-solid.svg" alt="Heart crack Icon" />
                 Remove Friend
@@ -82,7 +82,7 @@
           </a>
 
           @* Admin Actions *@
-          @if (user.Clearance == 2 && User.Identity.Name != Model.user.UserName)
+          @if (user.Clearance == 2 && Model.user.Clearance < 2 && User.Identity.Name != Model.user.UserName)
           {
             <div class="dropdown select-admin ms-3">
               <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

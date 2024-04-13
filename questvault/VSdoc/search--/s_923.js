@@ -1,0 +1,1 @@
+search_result['923']=["topic_0000000000000201.html","GameLog.Game Property","Gets or sets the navigation property for the associated game."];

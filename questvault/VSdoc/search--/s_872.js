@@ -1,0 +1,1 @@
+search_result['872']=["topic_00000000000001E2.html","ratingCountList Field","Gets or sets the list of rating counts."];

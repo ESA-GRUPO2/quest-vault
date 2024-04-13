@@ -1,1 +1,1 @@
-search_result['618']=["topic_0000000000000139.html","FriendshipRequest.Receiver Property",""];
+search_result['618']=["topic_0000000000000152.html","GamesController Class","Controller for managing games."];

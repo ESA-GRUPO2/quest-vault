@@ -1,1 +1,1 @@
-search_result['570']=["topic_0000000000000121_attached_props--.html","sprint3 Attached Properties",""];
+search_result['570']=["topic_0000000000000139.html","BackofficeController.GiveAdmin (String, ApplicationDbContext) Method","Grants administrator permissions to a user identified by their ID."];

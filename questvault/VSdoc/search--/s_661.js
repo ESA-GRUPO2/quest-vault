@@ -1,1 +1,1 @@
-search_result['661']=["topic_0000000000000153_events--.html","GameGenre Events",""];
+search_result['661']=["topic_000000000000016E.html","LibraryController.GetTop5 Method","Retrieves the top 5 game logs for the specified user."];

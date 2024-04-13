@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_tBatista</name>
+   <tag></tag>
+   <elementGuidId>7eb94115-1fb6-4c86-b3ec-3cfa6136cede</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>a > span</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='main-body']/main/div/div[2]/table/tbody/tr/td/a/span</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>9d44be11-ac78-4ece-984f-68b7355126d9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>tBatista</value>
+      <webElementGuid>53ea66db-30c0-41c6-80a6-b847cfd65b4d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;friends-page&quot;]/div[@class=&quot;container mt-5&quot;]/table[@class=&quot;table d-flex table-dark table-sm table-profile&quot;]/tbody[@class=&quot;container d-inline-flex&quot;]/tr[@class=&quot;row d-flex justify-content-between align-items-center&quot;]/td[@class=&quot;d-flex mt-5 me-4 align-items-center justify-content-center&quot;]/a[1]/span[1]</value>
+      <webElementGuid>e6b87eb1-2671-45df-a98b-f9780a6fc995</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/div[2]/table/tbody/tr/td/a/span</value>
+      <webElementGuid>a6fd1bcd-d8df-4846-82db-c8e2a9bc7109</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='coelho'])[1]/preceding::span[1]</value>
+      <webElementGuid>71902640-4807-4341-a6c2-2c5cece080c4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='LispEnjoyer'])[1]/preceding::span[2]</value>
+      <webElementGuid>87f7d092-aff3-48ac-86bc-a6de8d300bae</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='tBatista']/parent::*</value>
+      <webElementGuid>85ad42d6-62a0-46b2-b2b1-fa0bef25ea3f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//a/span</value>
+      <webElementGuid>087ffbbb-0ac5-4615-87fd-b33c07b467c1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'tBatista' or . = 'tBatista')]</value>
+      <webElementGuid>1a0877f6-aadd-457b-9131-1097b576f122</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
