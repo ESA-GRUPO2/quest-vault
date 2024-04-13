@@ -44,7 +44,7 @@
         @* Showing Games *@
         @foreach (var batch in batches)
         {
-          <div class="game-row">
+          <div class="d-flex justify-content-start">
             @foreach (var game in batch)
             {
               <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
@@ -95,7 +95,7 @@
                   <span class="page-link">...</span>
                 </li>
                 <li class="page-item">
-                  <a asp-action="Results"
+                  <a class="page-link asp-action="Results"
                      asp-route-searchTerm="@Model.SearchTerm"
                      asp-route-pageNumber="@(Model.Games.TotalPages)">@Model.Games.TotalPages</a>
                 </li>

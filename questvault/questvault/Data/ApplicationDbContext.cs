@@ -5,7 +5,7 @@ using questvault.Models;
 
 namespace questvault.Data
 {
-  public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options /*, IServiceIGDB igdbService*/) : IdentityDbContext<User>(options)
+  public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<User>(options)
   {
     public DbSet<TwoFactorAuthenticationTokens> EmailTokens { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
@@ -26,15 +26,14 @@ namespace questvault.Data
           .HasIndex(g => g.IgdbCompanyId)
           .IsUnique();
 
-      //Friendship
       builder.Entity<Friendship>()
-          .HasKey(f => new { f.User1Id, f.User2Id }); // Define a chave primária composta
+          .HasKey(f => new { f.User1Id, f.User2Id });
 
       builder.Entity<Friendship>()
           .HasOne(f => f.User1)
           .WithMany()
           .HasForeignKey(f => f.User1Id)
-          .OnDelete(DeleteBehavior.Restrict); // Configura a relação para User1
+          .OnDelete(DeleteBehavior.Restrict);
 
       builder.Entity<Friendship>()
           .HasOne(f => f.User2)
@@ -42,22 +41,20 @@ namespace questvault.Data
           .HasForeignKey(f => f.User2Id)
           .OnDelete(DeleteBehavior.Restrict);
 
-
-      //FriendRequest
       builder.Entity<FriendshipRequest>()
-          .HasKey(fr => new { fr.SenderId, fr.ReceiverId }); // Define a chave primária composta
+          .HasKey(fr => new { fr.SenderId, fr.ReceiverId });
 
       builder.Entity<FriendshipRequest>()
           .HasOne(fr => fr.Sender)
           .WithMany()
           .HasForeignKey(fr => fr.SenderId)
-          .OnDelete(DeleteBehavior.Restrict); // Configura a relação para User1
+          .OnDelete(DeleteBehavior.Restrict);
 
       builder.Entity<FriendshipRequest>()
           .HasOne(fr => fr.Receiver)
           .WithMany()
           .HasForeignKey(fr => fr.ReceiverId)
-          .OnDelete(DeleteBehavior.Restrict);// Configura a relação para User2
+          .OnDelete(DeleteBehavior.Restrict);
     }
     public DbSet<Game> Games { get; set; } = default!;
     public DbSet<Genre> Genres { get; set; } = default!;

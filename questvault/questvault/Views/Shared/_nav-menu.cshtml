@@ -11,7 +11,7 @@
   <div class="container-fluid">
     @if (SignInManager.IsSignedIn(User))
     {
-      <a class="nav-logo2" asp-controller="Home" asp-action="Index">
+      <a class="nav-logo2" href="/UserLibrary?id=@SignInManager.UserManager.GetUserName(User)&collection=&releasePlatform=&genre=">
         <img src="\img\logo_icon.png" alt="QuestVault Logo" class="img-fluid">
       </a>
     }
@@ -57,8 +57,6 @@
                     @Html.Raw(@ViewData["help_Text"])
                   </div>
                 </li>
-
-                <!-- Adicione mais itens de menu conforme necessário -->
               </ul>
             </div>
           </li>
@@ -77,7 +75,7 @@
           <li class="nav-item ms-3 d-flex align-self-center">
             <div class="dropdown" style="position:relative">
               <button class="btn btn-primary nav-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
-                <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="nav-vector mb-1" style="@(userAvatar != "user.svg" ? "border-radius: 50%; height: 3.1rem; width: 3.1rem; margin: -6px" : "")">
+                <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="@(userAvatar=="user.svg" ? "nav-vector mb-1" : "mb-1")" style="@(userAvatar != "user.svg" ? "border-radius: 50%; height: 3.1rem; width: 3.1rem; margin: -6px;" : "filter: invert(8%) sepia(21%) saturate(4513%) hue-rotate(198deg) brightness(89%) contrast(99%);")">
               </button>
               <ul class="dropdown-menu" style="right:0; left:auto; background: #133E7C !important;">
                 <li>
@@ -100,20 +98,20 @@
                 <li>
                   <a style="color: white !important;
                                         background: #133E7C !important;" href="/Friendships/FriendsPage" class="btn btn-primary dropdown-item">Friends</a>
-                                </li>
-                              @{
-                                 var user1 = await SignInManager.UserManager.GetUserAsync(this.User);
-                               }
-                              @if (user1?.Clearance > 0)
-                              {
-                                <li>
-                                  <a style="color: white !important;
+                </li>
+                @{
+                  var user1 = await SignInManager.UserManager.GetUserAsync(this.User);
+                }
+                @if (user1?.Clearance > 0)
+                {
+                  <li>
+                    <a style="color: white !important;
                                                   background: #133E7C !important;" href="/Statistics/StatisticsPage" class="btn btn-primary dropdown-item">Statistics</a>
-                                </li>
-                              }
-                            <li>
-                                <form class ="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
-                                        <button style="color: white !important;
+                  </li>
+                }
+                <li>
+                  <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Context.Request.Headers["Refer"].ToString()">
+                    <button style="color: white !important;
                                          background: #133E7C !important;" type="submit" class="btn btn-primary dropdown-item">
                       Logout
                     </button>

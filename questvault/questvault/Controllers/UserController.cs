@@ -15,7 +15,6 @@ namespace questvault.Controllers
     [HttpGet]
     public async Task<IActionResult> Profile(string id)
     {
-
       return RedirectToAction("PublicProfile", "User", new { id = id });
     }
 
@@ -115,7 +114,7 @@ namespace questvault.Controllers
         Friends = friends,
         Send = send,
         Received = received,
-        CanViewProfile = !(userProfile.IsPrivate && !friends && userLogged.Clearance == 0),
+        CanViewProfile = !(userProfile.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != userProfile),
         Friendships = friendships,
         FriendshipsRequests = requests,
         UserLogged = userLogged,

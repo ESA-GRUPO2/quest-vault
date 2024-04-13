@@ -49,14 +49,14 @@
     </div>
     <hr class="bar">
 
-    <div class="d-flex main-section-result">
+    <div class="d-flex main-section-result justify-content-between">
       <div class="filter-section">
         <form id="filterForm" asp-controller="Games" asp-action="Index" method="get">
           <h4 style="color: white; margin-bottom:5vh; text-decoration: underline;">Filters</h4>
           <div class="mb-5 form-switch-release">
             @if (ViewBag.SelectedReleaseStatus == "released")
             {
-              <div class="form-check form-switch mb-2">
+              <div class="form-check form-switch">
                 <input type="radio" class="form-check-input" id="btn-released" name="releaseStatus" value="released" checked />
                 <label class="form-check-label" for="btn-released">Released</label>
               </div>
@@ -125,19 +125,20 @@
           <a class="btn btn-primary nav-btn" href="/Games">Clear Filters</a>
         </form>
       </div>
-      @if (Model.NumberOfResults == 0)
-      {
-        <h2>
-          No Results...
-        </h2>
-      }
-      else
-      {
-        <div class="game-section">
+      <div class="game-section">
+        @if (Model.NumberOfResults == 0)
+        {
+          <div style="text-align: center; height:100%;padding-top:200px">
+            <h2>No games found matching your criteria!</h2>
+            <h3>Try again.</h3>
+          </div>
+        }
+        else
+        {
 
           @foreach (var batch in batches)
           {
-            <div class="game-row">
+            <div class="d-flex justify-content-start">
               @foreach (var game in batch)
               {
                 <a class="game-button" asp-controller="Games" asp-action="Details" asp-route-id="@game.IgdbId">
@@ -211,13 +212,10 @@
               </li>
             </ul>
           </nav>
-        </div>
-      }
 
+        }
+      </div>
     </div>
-
-
-
   </div>
 }
 else

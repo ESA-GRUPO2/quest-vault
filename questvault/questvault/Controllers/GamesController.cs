@@ -1,15 +1,14 @@
-﻿using MailKit.Search;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using questvault.Data;
 using questvault.Models;
 //using questvault.Migrations;
 using questvault.Services;
 using questvault.Utils;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace questvault.Controllers
 {
@@ -46,7 +45,7 @@ namespace questvault.Controllers
       ViewBag.SelectedGenre = genre;
       ViewBag.SelectedReleasePlatform = releasePlatform;
       //ViewBag.SelectedReleaseYear = releaseYear;
-      if (genre == null && releasePlatform == null && releaseStatus == null)
+      if( genre == null && releasePlatform == null && releaseStatus == null )
       {
         var filteredGames = context.Games
             .OrderByDescending(o => o.IgdbRating)
@@ -66,16 +65,16 @@ namespace questvault.Controllers
       {
         var query = context.Games.AsQueryable();
 
-        if (!string.IsNullOrEmpty(releasePlatform))
+        if( !string.IsNullOrEmpty(releasePlatform) )
         {
           query = query.Where(g => g.GamePlatforms.Any(gp => gp.Platform.PlatformName.Equals(releasePlatform)));
         }
 
-        if (!string.IsNullOrEmpty(genre))
+        if( !string.IsNullOrEmpty(genre) )
         {
           query = query.Where(g => g.GameGenres.Any(gg => gg.Genre.GenreName.Equals(genre)));
         }
-        if (!string.IsNullOrEmpty(releaseStatus))
+        if( !string.IsNullOrEmpty(releaseStatus) )
         {
           var released = (releaseStatus.Equals("released")) ? true : false;
           query = query.Where(g => g.IsReleased == released);
@@ -112,20 +111,16 @@ namespace questvault.Controllers
     public async Task<IActionResult> Results(string searchTerm, int? pageNumber)
     {
       ViewBag.SearchTerm = searchTerm;
-      // Se o searchTerm for nulo, retorne NotFound
-      if (searchTerm == null)
+      if( searchTerm == null )
       {
-                await Console.Out.WriteLineAsync("searchTerm is null");
-                
-                return RedirectToAction("Index");
+        return RedirectToAction("Index");
       }
 
-      // Realize a pesquisa na base de dados pelo searchTerm e retorne os resultados para a view
       var query = context.Games.Where(e => e.Name.Contains(searchTerm))
           .OrderByDescending(o => o.IgdbRating)
           .ThenByDescending(o => o.TotalRatingCount);
-      ViewBag.NumberOfResults = query.Count();
       var list = await PaginatedList<Game>.CreateAsync(query.AsNoTracking(), pageNumber ?? 1, _pageSize);
+      ViewBag.NumberOfResults = query.Count();
       var data = new GameViewData
       {
         SearchTerm = searchTerm,
@@ -143,9 +138,9 @@ namespace questvault.Controllers
       {
         return await context.SaveChangesAsync();
       }
-      catch (Exception e)
+      catch( Exception e )
       {
-        if (e is DbUpdateConcurrencyException || e is DbUpdateException)
+        if( e is DbUpdateConcurrencyException || e is DbUpdateException )
         {
           await Console.Out.WriteLineAsync("Data already in the db");
           return 0;
@@ -170,13 +165,13 @@ namespace questvault.Controllers
     public async Task<IActionResult> ResultsPost(string searchTerm)
     {
 
-      if (searchTerm == null)
+      if( searchTerm == null )
       {
         return RedirectToAction("Index");
       }
 
       var games = await igdbService.SearchGames(searchTerm);
-      if (games == null)
+      if( games == null )
       {
         return NotFound();
       }
@@ -192,23 +187,20 @@ namespace questvault.Controllers
       bool allCompaniesExist = existingCompanies.Count == companyIds.Count;
       bool allPlatformsExist = existingPlatforms.Count == platformIds.Count;
       bool allGenresExist = existingGenres.Count == genresIds.Count;
-      using (var transaction = context.Database.BeginTransaction())
+      using( var transaction = context.Database.BeginTransaction() )
       {
         try
         {
-          // Seu código de busca e inserção aqui...
-
-          // Commit da transação se tudo correr bem
-          if (!allCompaniesExist)
+          if( !allCompaniesExist )
           {
 
             var missingCompanies = await igdbService.GetCompaniesFromIds(
                 companyIds.Except(existingCompanies.Select(c => c.IgdbCompanyId)).ToList());
 
-            foreach (var company in missingCompanies)
+            foreach( var company in missingCompanies )
             {
               var existingCompany = await context.Companies.FirstOrDefaultAsync(g => g.IgdbCompanyId == company.IgdbCompanyId);
-              if (existingCompany == null)
+              if( existingCompany == null )
               {
                 var newComp = new Models.Company
                 {
@@ -224,31 +216,27 @@ namespace questvault.Controllers
           }
           await transaction.CommitAsync();
         }
-        catch (Exception ex)
+        catch( Exception ex )
         {
-          //await Console.Out.WriteLineAsync(ex.Message);
-          // Rollback da transação em caso de erro
           await transaction.RollbackAsync();
-          // Tratar ou registrar o erro conforme necessário
           return RedirectToAction("Error", "Home");
         }
 
       }
 
-      using (var transaction = context.Database.BeginTransaction())
+      using( var transaction = context.Database.BeginTransaction() )
       {
         try
         {
-          // Seu código de busca e inserção aqui...
-          if (!allPlatformsExist)
+          if( !allPlatformsExist )
           {
             var missingPlatforms = await igdbService.GetPlatformsFromIds(
                 platformIds.Except(existingPlatforms.Select(c => c.IgdbPlatformId)).ToList());
 
-            foreach (var platform in missingPlatforms)
+            foreach( var platform in missingPlatforms )
             {
               var existingPlatform = await context.Platforms.FirstOrDefaultAsync(g => g.IgdbPlatformId == platform.IgdbPlatformId);
-              if (existingPlatform == null)
+              if( existingPlatform == null )
               {
                 var newPlat = new Models.Platform
                 {
@@ -265,7 +253,7 @@ namespace questvault.Controllers
           // Commit da transação se tudo correr bem
           await transaction.CommitAsync();
         }
-        catch (Exception ex)
+        catch( Exception ex )
         {
           await Console.Out.WriteLineAsync(ex.Message);
           // Rollback da transação em caso de erro
@@ -275,20 +263,19 @@ namespace questvault.Controllers
         }
       }
 
-      using (var transaction = context.Database.BeginTransaction())
+      using( var transaction = context.Database.BeginTransaction() )
       {
         try
         {
-          // Seu código de busca e inserção aqui...
-          if (!allGenresExist)
+          if( !allGenresExist )
           {
             var missingGenres = await igdbService.GetGenresFromIds(
                 genresIds.Except(existingGenres.Select(gg => gg.IgdbGenreId)).ToList());
 
-            foreach (var genre in missingGenres)
+            foreach( var genre in missingGenres )
             {
               var existingGenre = await context.Genres.FirstOrDefaultAsync(g => g.IgdbGenreId == genre.IgdbGenreId);
-              if (existingGenre == null)
+              if( existingGenre == null )
               {
                 var newGenre = new Models.Genre
                 {
@@ -302,25 +289,21 @@ namespace questvault.Controllers
             }
 
           }
-
-          // Commit da transação se tudo correr bem
           await transaction.CommitAsync();
         }
-        catch (Exception ex)
+        catch( Exception ex )
         {
-          // Rollback da transação em caso de erro
           await transaction.RollbackAsync();
-          // Tratar ou registrar o erro conforme necessário
           return RedirectToAction("Error", "Home");
         }
       }
-      foreach (var game in games)
+      foreach( var game in games )
       {
         var existingGame = await context.Games.FirstOrDefaultAsync(g => g.IgdbId == game.IgdbId);
 
-        if (existingGame == null)
+        if( existingGame == null )
         {
-          var newGame = new Models.Game
+          var newGame = new Game
           {
             IgdbId = game.IgdbId,
             Name = game.Name,
@@ -336,11 +319,11 @@ namespace questvault.Controllers
           };
 
           context.Games.Add(newGame);
-          foreach (var company in existingCompanies)
+          foreach( var company in existingCompanies )
           {
             var companyBelongsToGame = game.GameCompanies.FirstOrDefault(c => c.IgdbCompanyId == company.IgdbCompanyId);
 
-            if (companyBelongsToGame != null)
+            if( companyBelongsToGame != null )
             {
               context.GameCompany.Add(new GameCompany
               {
@@ -350,10 +333,10 @@ namespace questvault.Controllers
             }
           }
 
-          foreach (var genre in existingGenres)
+          foreach( var genre in existingGenres )
           {
             var existingGenre = game.GameGenres.FirstOrDefault(g => g.IgdbGenreId == genre.IgdbGenreId);
-            if (existingGenre != null)
+            if( existingGenre != null )
             {
               context.GameGenre.Add(new GameGenre
               {
@@ -363,10 +346,10 @@ namespace questvault.Controllers
             }
           }
 
-          foreach (var platform in existingPlatforms)
+          foreach( var platform in existingPlatforms )
           {
             var existingPlatform = game.GamePlatforms.FirstOrDefault(p => p.IgdbPlatformId == platform.IgdbPlatformId);
-            if (existingPlatform != null)
+            if( existingPlatform != null )
             {
               context.GamePlatform.Add(new GamePlatform
               {
@@ -393,9 +376,9 @@ namespace questvault.Controllers
     [Route("details/{id}")]
     public async Task<IActionResult> Details(int id)
     {
-      
 
-      if (context.Games == null)
+
+      if( context.Games == null )
       {
         return NotFound();
       }
@@ -409,9 +392,16 @@ namespace questvault.Controllers
               .ThenInclude(gc => gc.Company)
           .FirstOrDefaultAsync(m => m.IgdbId == id);
 
-      if (game == null)
+
+      if( game == null )
       {
         return NotFound();
+      }
+      if (String.IsNullOrEmpty(game.SteamUrl))
+      {
+        game.SteamUrl = await igdbService.GetSteamUrl(game.IgdbId);
+        await SaveChangesAsync(context);
+
       }
 
       var user = await signInManager.UserManager.GetUserAsync(User);
@@ -424,29 +414,22 @@ namespace questvault.Controllers
 
       var gameLog = userLibrary?.GameLogs.FirstOrDefault(g => g.IgdbId == id);
 
-      if (gameLog != null)
+      if( gameLog != null )
       {
-        ViewBag.GamelogId = gameLog.GameLogId;
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
       }
-
       ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
-
       ViewBag.IsGameTop5 =
         userLibrary != null &&
         userLibrary.Top5Games != null &&
         userLibrary.Top5Games.Any(g => g.IgdbId == id);
 
       ViewBag.Reviews = GetReviews(id, userLibrary);
-      await Console.Out.WriteLineAsync("Reviews:");
-      foreach (var review in ViewBag.Reviews)
-        await Console.Out.WriteLineAsync($"game: {review.Game.Name}, user: {review.User.UserName}, rating: {review.Rating}, review: {review.Review}");
+
       return View(game);
     }
-           
-
 
     private List<GameLog> GetReviews(int? gameId, GamesLibrary currentUserLibrary)
     {
@@ -466,7 +449,7 @@ namespace questvault.Controllers
     [Route("search")]
     public IActionResult Search(string searchTerm)
     {
-      if (searchTerm == null || context.Games == null)
+      if( searchTerm == null || context.Games == null )
       {
         return NotFound();
       }
@@ -491,10 +474,10 @@ namespace questvault.Controllers
     /// <param name="newGame">The new game to be added to GameGenre relationship.</param>
     private void ProcessGameGenres(Game game, Game newGame)
     {
-      foreach (var genre in game.GameGenres)
+      foreach( var genre in game.GameGenres )
       {
         var existingGenre = context.Genres.FirstOrDefault(c => c.IgdbGenreId == genre.IgdbGenreId);
-        if (existingGenre != null)
+        if( existingGenre != null )
         {
           // Create a new GameGenre object
           var gameGenre = new GameGenre
