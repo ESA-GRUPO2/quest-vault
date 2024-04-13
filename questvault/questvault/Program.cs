@@ -12,9 +12,9 @@ var configuration = builder.Configuration;
 builder.Services.AddAuthentication()
     .AddGoogle(options =>
     {
-        IConfigurationSection googleAuthNSection = configuration.GetSection("Authentication:Google");
-        options.ClientId = googleAuthNSection["ClientId"];
-        options.ClientSecret = googleAuthNSection["ClientSecret"];
+      IConfigurationSection googleAuthNSection = configuration.GetSection("Authentication:Google");
+      options.ClientId = googleAuthNSection["ClientId"];
+      options.ClientSecret = googleAuthNSection["ClientSecret"];
     });
 
 
@@ -23,21 +23,21 @@ builder.Services.AddAuthentication()
 
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-  ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("ProductionConnection")
+  ?? throw new InvalidOperationException("Connection string 'ProductionConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
   .AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders()
-  
+
 ;
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Identity/Account/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+  options.LoginPath = "/Identity/Account/Login";
+  options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -67,15 +67,15 @@ builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if( app.Environment.IsDevelopment() )
 {
-    app.UseMigrationsEndPoint();
+  app.UseMigrationsEndPoint();
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+  app.UseExceptionHandler("/Home/Error");
+  // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+  app.UseHsts();
 }
 
 
