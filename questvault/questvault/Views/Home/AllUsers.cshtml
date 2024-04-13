@@ -47,14 +47,14 @@
             @if (item.Clearance != 2 && !item.LockoutEnabled)
             {
               <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
-                 class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdminAll" asp-route-id="@item.Id">Make admin</a>
+                 class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveAdminAll" asp-route-id="@item.Id">Make Admin</a>
             }
           </td>
           <td>
             @if (item.Clearance == 0 && !item.LockoutEnabled)
             {
               <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
-                 class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModeratorAll" asp-route-id="@item.Id">Make moderator</a>
+                 class="btn btn-primary nav-btn" asp-controller="Backoffice" asp-action="GiveModeratorAll" asp-route-id="@item.Id">Make Mod</a>
             }
             @if (item.Clearance == 1 && !item.LockoutEnabled)
             {
