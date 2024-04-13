@@ -427,6 +427,7 @@ namespace questvault.Controllers
         userLibrary.Top5Games.Any(g => g.IgdbId == id);
 
       ViewBag.Reviews = GetReviews(id, userLibrary);
+      ViewBag.GamelogId = gameLog.GameLogId;
 
       return View(game);
     }
