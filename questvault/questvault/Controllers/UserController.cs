@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
 using questvault.Models;
-using System.Collections.Generic;
-using System.Runtime.Intrinsics.X86;
 
 namespace questvault.Controllers
 {
@@ -21,20 +19,20 @@ namespace questvault.Controllers
     [Authorize]
     public async Task<IActionResult> PublicProfile(string id)
     {
-      
-      if (id == null)
+
+      if( id == null )
       {
         return NotFound();
       }
 
       var profileData = await ProcessProfileData(id);
 
-      if (profileData == null)
+      if( profileData == null )
       {
         return NotFound();
       }
 
-      if (!profileData.CanViewProfile)
+      if( !profileData.CanViewProfile )
       {
         return RedirectToAction("PrivateProfile", "User", new { id });
       }
@@ -46,19 +44,19 @@ namespace questvault.Controllers
       ViewData["Top5"] = await LibraryController.GetTop5(id, context);
       return View(verifiedProfileData);
     }
-    
+
     [Authorize]
     public async Task<IActionResult> PrivateProfile(string id)
     {
 
-      if (id == null)
+      if( id == null )
       {
         return NotFound();
       }
 
       var profileData = await ProcessProfileData(id);
 
-      if (profileData == null)
+      if( profileData == null )
       {
         return NotFound();
       }
@@ -71,7 +69,7 @@ namespace questvault.Controllers
 
     private async Task<ProfileViewData> ProcessProfileData(string id)
     {
-     
+
       bool friends = false;
       bool send = false;
       bool received = false;
@@ -81,16 +79,16 @@ namespace questvault.Controllers
       var userLogged = await signInManager.UserManager.GetUserAsync(this.User);
       var userProfile = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (userLogged == null || userProfile == null)
+      if( userLogged == null || userProfile == null )
       {
         return null;
       }
 
       // Check for friendships
-      foreach (var friendship in friendships)
+      foreach( var friendship in friendships )
       {
-        if ((friendship.User1 == userLogged && friendship.User2 == userProfile) ||
-            (friendship.User1 == userProfile && friendship.User2 == userLogged))
+        if( ( friendship.User1 == userLogged && friendship.User2 == userProfile ) ||
+            ( friendship.User1 == userProfile && friendship.User2 == userLogged ) )
         {
           friends = true;
           break;
@@ -98,13 +96,13 @@ namespace questvault.Controllers
       }
 
       // Check for friend requests
-      foreach (var request in requests)
+      foreach( var request in requests )
       {
-        if (request.SenderId == userLogged.Id && request.ReceiverId == userProfile.Id)
+        if( request.SenderId == userLogged.Id && request.ReceiverId == userProfile.Id )
         {
           send = true;
         }
-        else if (request.SenderId == userProfile.Id && request.ReceiverId == userLogged.Id)
+        else if( request.SenderId == userProfile.Id && request.ReceiverId == userLogged.Id )
         {
           received = true;
         }
@@ -114,7 +112,7 @@ namespace questvault.Controllers
         Friends = friends,
         Send = send,
         Received = received,
-        CanViewProfile = !(userProfile.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != userProfile),
+        CanViewProfile = !( userProfile.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != userProfile && userProfile.LockoutEnabled ),
         Friendships = friendships,
         FriendshipsRequests = requests,
         UserLogged = userLogged,
@@ -126,7 +124,7 @@ namespace questvault.Controllers
     private async Task<FriendsViewData> GetProfileData(ProfileViewData profileData)
     {
 
-      if (profileData.CanViewProfile)
+      if( profileData.CanViewProfile )
       {
         var userGameLogs = context.GamesLibrary
         .Include(gl => gl.GameLogs)
@@ -185,7 +183,6 @@ namespace questvault.Controllers
 
 
     }
-
 
     public async Task<IActionResult> SendFriendRequestAsync(string id)
     {
