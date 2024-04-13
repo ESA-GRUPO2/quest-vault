@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>h2_No games Added</name>
+   <name>label_Daily Access</name>
    <tag></tag>
-   <elementGuidId>d6a2717e-2f52-431f-b135-f36237d29d08</elementGuidId>
+   <elementGuidId>63938a63-3f92-4a00-9e3c-3bb61c1f2ce7</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>h2</value>
+         <value>div:nth-of-type(3) > label</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/h2</value>
+         <value>//div[@id='main-body']/main/div/div[2]/div[2]/div[3]/label</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
-   <smartLocatorCollection>
-      <entry>
-         <key>SMART_LOCATOR</key>
-         <value>internal:role=heading[name=&quot;No games Added!&quot;i]</value>
-      </entry>
-   </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
@@ -28,87 +22,87 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>h2</value>
-      <webElementGuid>a5344619-4d9e-4850-92c5-a992efc1ffa1</webElementGuid>
+      <value>label</value>
+      <webElementGuid>64568dbb-a8ab-4f80-b1d8-0db311b815fe</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>No games Added!</value>
-      <webElementGuid>eaa8627a-275e-4c05-831f-e179f1ed0693</webElementGuid>
+      <value>Daily Access</value>
+      <webElementGuid>85587b29-5665-4266-97e5-0fee2d7f82f7</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/div[@class=&quot;d-flex main-section-result justify-content-between&quot;]/div[@class=&quot;game-section&quot;]/div[1]/h2[1]</value>
-      <webElementGuid>8745857f-8a2a-49e8-9846-d1f86a0cc11f</webElementGuid>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/div[@class=&quot;container-fluid&quot;]/div[@class=&quot;main-container d-flex justify-content-between mt-5&quot;]/div[3]/label[1]</value>
+      <webElementGuid>8eb0136c-3728-4ea6-8aff-304b3ff1d006</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/h2</value>
-      <webElementGuid>47111943-b1f5-41ab-85e7-39d02fda926b</webElementGuid>
+      <value>//div[@id='main-body']/main/div/div[2]/div[2]/div[3]/label</value>
+      <webElementGuid>83a14082-d06a-4082-b0cc-255ad9ebdf24</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Clear Filters'])[1]/following::h2[1]</value>
-      <webElementGuid>966a773f-b889-4bf7-af48-e3b54e2623d1</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Top 5 Genres'])[1]/following::label[1]</value>
+      <webElementGuid>e8e77f7d-2c5d-46ed-b415-85c3709bb686</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Apply Filters'])[1]/following::h2[1]</value>
-      <webElementGuid>3a8f0bb4-75c9-486f-8b0a-fef64de1c58b</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Daily Logins'])[1]/following::label[2]</value>
+      <webElementGuid>a198433f-4956-4a8b-b1a9-0ed807d3a06f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Go to Games to add some'])[1]/preceding::h2[1]</value>
-      <webElementGuid>f1db9201-d524-4049-97ec-3dbe44dc1afd</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::label[1]</value>
+      <webElementGuid>80e95295-bc34-4f0d-9e31-eb72ecb9baa7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::h2[1]</value>
-      <webElementGuid>58ad0469-c080-4777-86bd-79c4aa7a35c9</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='FAQs'])[1]/preceding::label[1]</value>
+      <webElementGuid>6568d910-1068-4c46-b1f1-bb0c04072a63</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='No games Added!']/parent::*</value>
-      <webElementGuid>5fedee8b-aa49-4d66-af03-6566f358c262</webElementGuid>
+      <value>//*/text()[normalize-space(.)='Daily Access']/parent::*</value>
+      <webElementGuid>cd7ab099-86fd-4131-8ae3-50fdfd7526f2</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//h2</value>
-      <webElementGuid>ce328316-b0b2-4b52-9509-ec9272a3e256</webElementGuid>
+      <value>//div[3]/label</value>
+      <webElementGuid>259e9785-481f-49ee-9d65-70884957d2ab</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//h2[(text() = 'No games Added!' or . = 'No games Added!')]</value>
-      <webElementGuid>7a718ef9-4225-447a-8267-d3da95dfaece</webElementGuid>
+      <value>//label[(text() = 'Daily Access' or . = 'Daily Access')]</value>
+      <webElementGuid>2ea2339f-9422-4c54-89f6-518c1512a483</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>h2_No games Added</name>
+   <name>h4_Registered Accounts</name>
    <tag></tag>
-   <elementGuidId>d6a2717e-2f52-431f-b135-f36237d29d08</elementGuidId>
+   <elementGuidId>506307d1-1f45-4a9d-9f1b-dc179181a225</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>h2</value>
+         <value>h4.mt-2</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/h2</value>
+         <value>//div[@id='main-body']/main/div/div[2]/div/div/h4</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
-   <smartLocatorCollection>
-      <entry>
-         <key>SMART_LOCATOR</key>
-         <value>internal:role=heading[name=&quot;No games Added!&quot;i]</value>
-      </entry>
-   </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
@@ -28,87 +22,95 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>h2</value>
-      <webElementGuid>a5344619-4d9e-4850-92c5-a992efc1ffa1</webElementGuid>
+      <value>h4</value>
+      <webElementGuid>04dd6eeb-8193-4543-9f99-772cc6e7c57e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>mt-2</value>
+      <webElementGuid>085fe2a7-2e16-4be0-a20e-2e8502a4dd50</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>No games Added!</value>
-      <webElementGuid>eaa8627a-275e-4c05-831f-e179f1ed0693</webElementGuid>
+      <value>Registered Accounts </value>
+      <webElementGuid>030eb733-3bcc-4bd4-8a68-be499b915120</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/div[@class=&quot;d-flex main-section-result justify-content-between&quot;]/div[@class=&quot;game-section&quot;]/div[1]/h2[1]</value>
-      <webElementGuid>8745857f-8a2a-49e8-9846-d1f86a0cc11f</webElementGuid>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/div[@class=&quot;container-fluid&quot;]/div[@class=&quot;main-section-title container d-flex justify-content-between align-items-end m-0&quot;]/div[@class=&quot;d-inline-flex align-items-center&quot;]/h4[@class=&quot;mt-2&quot;]</value>
+      <webElementGuid>4a91abb8-3354-45ee-b5b7-eb192cc16934</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/h2</value>
-      <webElementGuid>47111943-b1f5-41ab-85e7-39d02fda926b</webElementGuid>
+      <value>//div[@id='main-body']/main/div/div[2]/div/div/h4</value>
+      <webElementGuid>012d6ab0-ae5f-4043-8ee7-6ebcdc3c3700</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Clear Filters'])[1]/following::h2[1]</value>
-      <webElementGuid>966a773f-b889-4bf7-af48-e3b54e2623d1</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='App Stats'])[1]/following::h4[1]</value>
+      <webElementGuid>6bb48e88-7ceb-4ff2-a074-57bf769e3e65</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Apply Filters'])[1]/following::h2[1]</value>
-      <webElementGuid>3a8f0bb4-75c9-486f-8b0a-fef64de1c58b</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/following::h4[1]</value>
+      <webElementGuid>2b094097-8e4d-4a64-95d6-939dc54adb78</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Go to Games to add some'])[1]/preceding::h2[1]</value>
-      <webElementGuid>f1db9201-d524-4049-97ec-3dbe44dc1afd</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Average Game Rating'])[1]/preceding::h4[1]</value>
+      <webElementGuid>07626668-c00a-4592-ba21-1f8b0eb75222</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::h2[1]</value>
-      <webElementGuid>58ad0469-c080-4777-86bd-79c4aa7a35c9</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Daily Logins'])[1]/preceding::h4[2]</value>
+      <webElementGuid>ed4bb5c5-9f43-42ed-8220-7cbb6c7b70e5</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='No games Added!']/parent::*</value>
-      <webElementGuid>5fedee8b-aa49-4d66-af03-6566f358c262</webElementGuid>
+      <value>//*/text()[normalize-space(.)='Registered Accounts']/parent::*</value>
+      <webElementGuid>ee10fcd5-4519-4dfd-9e23-4422d07e729d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//h2</value>
-      <webElementGuid>ce328316-b0b2-4b52-9509-ec9272a3e256</webElementGuid>
+      <value>//h4</value>
+      <webElementGuid>af96d086-2e92-44aa-a985-70df001345f2</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//h2[(text() = 'No games Added!' or . = 'No games Added!')]</value>
-      <webElementGuid>7a718ef9-4225-447a-8267-d3da95dfaece</webElementGuid>
+      <value>//h4[(text() = 'Registered Accounts ' or . = 'Registered Accounts ')]</value>
+      <webElementGuid>8834d82b-0d45-4eae-85a5-2978db23baf6</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

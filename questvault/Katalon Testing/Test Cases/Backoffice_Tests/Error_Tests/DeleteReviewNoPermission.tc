@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that it is not possible for a normal user to delete someones review</description>
+   <name>DeleteReviewNoPermission</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>ab733989-1c92-4ab0-9aad-767f403456cc</testCaseGuid>
+</TestCaseEntity>
