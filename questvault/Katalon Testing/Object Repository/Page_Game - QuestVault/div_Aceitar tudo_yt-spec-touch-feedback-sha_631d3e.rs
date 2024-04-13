@@ -6,6 +6,10 @@
    <elementGuidId>4daa27a1-b166-4b00-810c-bd95f05accab</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>BASIC</key>
+         <value>id(&quot;dialog&quot;)/div[@id=&quot;content&quot;]/div[@class=&quot;body style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-buttons style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-button-row style-scope ytd-consent-bump-v2-lightbox&quot;]/ytd-button-renderer[@class=&quot;style-scope ytd-consent-bump-v2-lightbox&quot;]/yt-button-shape[1]/button[@class=&quot;yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m&quot;]/yt-touch-feedback-shape[1]/div[@class=&quot;yt-spec-touch-feedback-shape yt-spec-touch-feedback-shape--touch-response-inverse&quot;]/div[@class=&quot;yt-spec-touch-feedback-shape__fill&quot;][count(. | //*[@class = 'yt-spec-touch-feedback-shape__fill']) = count(//*[@class = 'yt-spec-touch-feedback-shape__fill'])]</value>
+      </entry>
+      <entry>
          <key>CSS</key>
          <value></value>
       </entry>
@@ -23,7 +27,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>35b4f338-fd4f-4550-8e28-49c33d053b2c</webElementGuid>
+      <webElementGuid>40d1260c-1e4f-4da9-87e9-cf54f53b168b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -31,7 +35,7 @@
       <name>class</name>
       <type>Main</type>
       <value>yt-spec-touch-feedback-shape__fill</value>
-      <webElementGuid>7e939b0b-3263-417c-affe-94bffbb466bc</webElementGuid>
+      <webElementGuid>e950113b-a902-4317-a501-67638a4e3428</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -39,7 +43,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;dialog&quot;)/div[@id=&quot;content&quot;]/div[@class=&quot;body style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-buttons style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-button-row style-scope ytd-consent-bump-v2-lightbox&quot;]/ytd-button-renderer[@class=&quot;style-scope ytd-consent-bump-v2-lightbox&quot;]/yt-button-shape[1]/button[@class=&quot;yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m&quot;]/yt-touch-feedback-shape[1]/div[@class=&quot;yt-spec-touch-feedback-shape yt-spec-touch-feedback-shape--touch-response-inverse&quot;]/div[@class=&quot;yt-spec-touch-feedback-shape__fill&quot;]</value>
-      <webElementGuid>bf9b4f14-5f04-48f4-a36f-5460080aad5d</webElementGuid>
+      <webElementGuid>08cab77f-f6f9-4fd1-ad2c-9e2af833561b</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -47,7 +51,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='content']/div[2]/div[6]/div/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
-      <webElementGuid>0314b82a-e063-4cac-811f-211557ed3430</webElementGuid>
+      <webElementGuid>db40d72f-e583-4f5f-bfbd-193b60b4f2ed</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -55,6 +59,6 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
-      <webElementGuid>2cc78782-e600-481e-a1fc-d14c8afa3db4</webElementGuid>
+      <webElementGuid>445e2d85-068e-43dc-9295-4129c4257fa2</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

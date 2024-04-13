@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_Log in</name>
+   <name>yt-formatted-string_The Witcher 3 Wild Hunt_9cf09b</name>
    <tag></tag>
-   <elementGuidId>571d2b59-071c-4753-9e99-45fed520375f</elementGuidId>
+   <elementGuidId>bba58c5e-e61e-4c8e-82a0-746b822c573f</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>a.btn.btn-primary.nav-btn</value>
+         <value>yt-formatted-string.style-scope.ytd-watch-metadata</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
+         <value>//div[@id='title']/h1/yt-formatted-string</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -22,93 +22,79 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>a</value>
-      <webElementGuid>65c172b8-82d6-47c5-9a7e-7cc1e0dca4fe</webElementGuid>
+      <value>yt-formatted-string</value>
+      <webElementGuid>c5a98efc-1448-4ded-98b7-e54391975acd</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>btn btn-primary nav-btn</value>
-      <webElementGuid>fc87d51d-d6ff-4747-9b20-fad8a1e45b53</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>href</name>
-      <type>Main</type>
-      <value>/Identity/Account/Login</value>
-      <webElementGuid>21adddb8-3ce7-4544-9afc-e53c4c3c9d9b</webElementGuid>
+      <value>style-scope ytd-watch-metadata</value>
+      <webElementGuid>5c2156b7-2979-4516-9638-0d9a754ec230</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>
-               Log in
-            </value>
-      <webElementGuid>5b34ce55-4c12-42d7-8e0d-119a13fc79d9</webElementGuid>
+      <value>The Witcher 3: Wild Hunt - Game of the Year Edition - Launch Trailer (Official)</value>
+      <webElementGuid>c94e0a29-bcb1-464f-9862-393cba5fee6b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn&quot;]</value>
-      <webElementGuid>34d80a13-dc21-4922-afb8-1977c59a13ce</webElementGuid>
+      <value>id(&quot;above-the-fold&quot;)/div[@id=&quot;title&quot;]/h1[@class=&quot;style-scope ytd-watch-metadata&quot;]/yt-formatted-string[@class=&quot;style-scope ytd-watch-metadata&quot;]</value>
+      <webElementGuid>e01f4618-8a36-486f-9fb0-8d3247890b8e</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
-      <webElementGuid>652eada2-978a-4649-9847-84e8c4b68ea5</webElementGuid>
+      <value>//div[@id='title']/h1/yt-formatted-string</value>
+      <webElementGuid>0f94547f-7cb1-4e82-a8ac-c5f70b6f14db</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::a[2]</value>
-      <webElementGuid>0c1527d5-368e-4196-ad1f-bfcb1d148881</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Desloque para ver mais informações.'])[1]/following::yt-formatted-string[1]</value>
+      <webElementGuid>1d747e07-0431-44db-bb4c-84663c146fc7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='Log in']/parent::*</value>
-      <webElementGuid>ea0ad04c-1cbc-4468-9db9-ce7479a7ceba</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Em direto'])[2]/following::yt-formatted-string[1]</value>
+      <webElementGuid>8c761148-3cd9-4121-8602-a5a78385f4d8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>xpath:href</name>
+      <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//a[contains(@href, '/Identity/Account/Login')]</value>
-      <webElementGuid>4da88f36-37e1-461d-bb72-00c05be2c000</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='IGDBcom'])[2]/preceding::yt-formatted-string[1]</value>
+      <webElementGuid>b311a21c-22a0-4a45-ba94-ed376007331d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li/a</value>
-      <webElementGuid>4c906625-29ed-466e-973c-5c14008960ee</webElementGuid>
+      <value>//h1/yt-formatted-string</value>
+      <webElementGuid>91178b41-692a-45cf-9ab5-4d3b358d20f9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = '/Identity/Account/Login' and (text() = '
-               Log in
-            ' or . = '
-               Log in
-            ')]</value>
-      <webElementGuid>118d0ca0-dfdb-446a-89bf-f894c95abee2</webElementGuid>
+      <value>//yt-formatted-string[(text() = 'The Witcher 3: Wild Hunt - Game of the Year Edition - Launch Trailer (Official)' or . = 'The Witcher 3: Wild Hunt - Game of the Year Edition - Launch Trailer (Official)')]</value>
+      <webElementGuid>fff1d155-d7e8-4c03-a7f0-aae1967a6090</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -23,7 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>video</value>
-      <webElementGuid>4f9a4f67-9bc4-49a0-9f2e-d9814b6ea886</webElementGuid>
+      <webElementGuid>63940ea6-ff66-4d05-8f3d-9700cff95881</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -31,7 +31,7 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>-1</value>
-      <webElementGuid>39011f8b-fcf4-4694-bc6e-3a4a0d139ef2</webElementGuid>
+      <webElementGuid>1a4e269d-7b71-4c96-a03d-3c240c22d8da</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -39,7 +39,7 @@
       <name>class</name>
       <type>Main</type>
       <value>video-stream html5-main-video</value>
-      <webElementGuid>ed929378-42af-46be-9a44-aa3bd30b2d4e</webElementGuid>
+      <webElementGuid>9e39f08a-6435-40f1-9c71-a46b3e9df37d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -47,15 +47,15 @@
       <name>controlslist</name>
       <type>Main</type>
       <value>nodownload</value>
-      <webElementGuid>6e80d5e7-a46d-4347-b747-a2249a58262e</webElementGuid>
+      <webElementGuid>2fceb090-6762-4cd8-9a0e-b24301c14b93</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>src</name>
       <type>Main</type>
-      <value>blob:https://www.youtube.com/d35b5240-f09c-482c-a979-aaacc7d66909</value>
-      <webElementGuid>6b2b2fb8-34c9-4106-b9c9-5a423c403364</webElementGuid>
+      <value>blob:https://www.youtube.com/fdaf085f-6212-4dbc-bb7e-dc95cd87f6d5</value>
+      <webElementGuid>08eb7e21-400a-49da-8007-a54d237d2296</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -63,7 +63,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;movie_player&quot;)/div[@class=&quot;html5-video-container&quot;]/video[@class=&quot;video-stream html5-main-video&quot;]</value>
-      <webElementGuid>cca0f982-9d42-4789-9484-e750bba0d7b6</webElementGuid>
+      <webElementGuid>e9241bde-5a83-4739-a81c-95093554f1a3</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='movie_player']/div/video</value>
-      <webElementGuid>9422abfa-221c-4284-8426-792250cdd3fa</webElementGuid>
+      <webElementGuid>cd566248-611f-45cd-8570-11af214449fc</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -79,14 +79,22 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//video</value>
-      <webElementGuid>7afa600b-3138-4881-b5ad-4394ce991b29</webElementGuid>
+      <webElementGuid>ff3764b5-5077-4eeb-b292-774336a7543d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//video[@src = 'blob:https://www.youtube.com/d35b5240-f09c-482c-a979-aaacc7d66909']</value>
-      <webElementGuid>639e8f7b-2253-4c12-a87f-6b4c063dcbf9</webElementGuid>
+      <value>//video[@src = 'blob:https://www.youtube.com/fdaf085f-6212-4dbc-bb7e-dc95cd87f6d5']</value>
+      <webElementGuid>f12f2967-b427-4e54-92d6-9350a2b99f60</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//video[@src = 'blob:https://www.youtube.com/ad193098-a9cc-4bb3-b250-29d07367069d']</value>
+      <webElementGuid>0908107f-a27d-4b5f-a571-1c076759bde2</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

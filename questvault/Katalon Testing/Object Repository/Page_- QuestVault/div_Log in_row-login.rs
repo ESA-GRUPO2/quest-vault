@@ -7,11 +7,11 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div.row-login</value>
+         <value>ytd-button-renderer.style-scope.ytd-consent-bump-v2-lightbox > yt-button-shape > button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m > yt-touch-feedback-shape > div.yt-spec-touch-feedback-shape.yt-spec-touch-feedback-shape--touch-response-inverse > div.yt-spec-touch-feedback-shape__fill</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//form[@id='account']/div</value>
+         <value>//div[@id='content']/div[2]/div[6]/div/ytd-button-renderer/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -23,26 +23,42 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>bc75909b-8da4-49f0-afed-b57d638cbb15</webElementGuid>
+      <webElementGuid>4aa0f00c-8715-4aea-ab14-494bf2890816</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>row-login</value>
-      <webElementGuid>31005a78-fa27-40e7-9cc9-d3b69efce0f7</webElementGuid>
+      <value>yt-spec-touch-feedback-shape__fill</value>
+      <webElementGuid>37a6bb4b-d9e2-4e5b-b341-0cb11638291b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;account&quot;)/div[@class=&quot;row-login&quot;]</value>
-      <webElementGuid>6ac2a669-bcdd-4ac8-98fa-d780154f75b2</webElementGuid>
+      <value>id(&quot;dialog&quot;)/div[@id=&quot;content&quot;]/div[@class=&quot;body style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-buttons style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-button-row style-scope ytd-consent-bump-v2-lightbox&quot;]/ytd-button-renderer[@class=&quot;style-scope ytd-consent-bump-v2-lightbox&quot;]/yt-button-shape[1]/button[@class=&quot;yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m&quot;]/yt-touch-feedback-shape[1]/div[@class=&quot;yt-spec-touch-feedback-shape yt-spec-touch-feedback-shape--touch-response-inverse&quot;]/div[@class=&quot;yt-spec-touch-feedback-shape__fill&quot;]</value>
+      <webElementGuid>08950f77-cd13-4cda-bc97-27ba04802a0d</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='content']/div[2]/div[6]/div/ytd-button-renderer/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
+      <webElementGuid>f61c34c8-158d-4a6c-bcac-2ebc7b8d03f4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[6]/div/ytd-button-renderer/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
+      <webElementGuid>5fbe63ce-284a-47fb-b6c6-def968baa0ca</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
