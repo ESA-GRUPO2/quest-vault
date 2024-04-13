@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_Statistics</name>
+   <name>a_Account</name>
    <tag></tag>
-   <elementGuidId>33275ada-4e5b-4dc3-b803-7763a673c501</elementGuidId>
+   <elementGuidId>8c2a4332-41b2-4903-8f7e-b51c1ef26b0b</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>li:nth-of-type(6) > a.btn.btn-primary.dropdown-item</value>
+         <value>a.btn.btn-primary.dropdown-item</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[6]/a</value>
+         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[3]/a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -23,15 +23,15 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>f3006254-3fda-406a-b629-e23ebd347f7f</webElementGuid>
+      <webElementGuid>85689897-86eb-45b0-a9b7-b7afa76fde60</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>href</name>
       <type>Main</type>
-      <value>/Statistics/StatisticsPage</value>
-      <webElementGuid>268f100e-4af0-4419-9f28-a10f89ea8e67</webElementGuid>
+      <value>/Identity/Account/Manage/Index</value>
+      <webElementGuid>3ccd9601-a058-44e2-b129-24a99889ea03</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -39,102 +39,94 @@
       <name>class</name>
       <type>Main</type>
       <value>btn btn-primary dropdown-item</value>
-      <webElementGuid>f9a495ec-a8ad-4257-8d23-7e7dba3e9ca1</webElementGuid>
+      <webElementGuid>5802536f-3511-47df-a936-69e737055b82</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Statistics</value>
-      <webElementGuid>95dd18f0-d718-41d4-b02c-daab7c783557</webElementGuid>
+      <value>Account</value>
+      <webElementGuid>4be8410e-d9b7-4493-8e6b-39b0666ab3b5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[6]/a[@class=&quot;btn btn-primary dropdown-item&quot;]</value>
-      <webElementGuid>be43763a-3a9b-4e8d-a82c-a538467eebf6</webElementGuid>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[3]/a[@class=&quot;btn btn-primary dropdown-item&quot;]</value>
+      <webElementGuid>c3094ebf-dc9e-43c5-b82b-8012afe65320</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[6]/a</value>
-      <webElementGuid>b9b21770-fe6b-4796-9654-4a21a1f607a5</webElementGuid>
+      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[3]/a</value>
+      <webElementGuid>0fa47f9a-9f20-4681-bbdb-841a8299ee9f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:link</name>
       <type>Main</type>
-      <value>//a[contains(text(),'Statistics')]</value>
-      <webElementGuid>9bf7e8b5-6b7c-4bf1-b659-84b26227acf0</webElementGuid>
+      <value>//a[contains(text(),'Account')]</value>
+      <webElementGuid>d8f54dd3-0100-4a4a-a6d6-cd0f394d9f9f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Friends'])[1]/following::a[1]</value>
-      <webElementGuid>896232f2-d9dd-4036-9145-c03dcc641890</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='notAdmin'])[1]/following::a[1]</value>
+      <webElementGuid>f895d562-4efc-4e07-8932-d12a663d8b6b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Users'])[1]/following::a[2]</value>
-      <webElementGuid>0e9531b7-8a3a-4572-8045-e8f6293c7c85</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Friends'])[1]/preceding::a[1]</value>
+      <webElementGuid>56ef718e-fdfa-44fe-929c-2cf6cd9bf3a9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/preceding::a[1]</value>
-      <webElementGuid>09384ea1-54ba-4d71-8c4d-cd59e241316f</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/preceding::a[2]</value>
+      <webElementGuid>748ff18f-050b-4591-aa14-de15d2a22de0</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='tBatista'])[2]/preceding::a[1]</value>
-      <webElementGuid>7da9f98d-11ec-429d-8907-c5862fab5627</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:neighbor</name>
-      <type>Main</type>
-      <value>//*/text()[normalize-space(.)='Statistics']/parent::*</value>
-      <webElementGuid>df7f9f14-88a1-4cd1-abeb-a00cde6499cc</webElementGuid>
+      <value>//*/text()[normalize-space(.)='Account']/parent::*</value>
+      <webElementGuid>34ee94df-e640-49e4-b913-83dcbdb20644</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:href</name>
       <type>Main</type>
-      <value>//a[contains(@href, '/Statistics/StatisticsPage')]</value>
-      <webElementGuid>2ef9945c-9ef3-484c-bf87-eb7587b01b4a</webElementGuid>
+      <value>//a[contains(@href, '/Identity/Account/Manage/Index')]</value>
+      <webElementGuid>8cf56e05-dfc4-44e3-8149-b867bf16d088</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li[6]/a</value>
-      <webElementGuid>5ca387bf-2bbb-4fb6-94c6-caddadfcbd08</webElementGuid>
+      <value>//li[5]/div/ul/li[3]/a</value>
+      <webElementGuid>f80bb187-2d82-4bda-938e-b0d2c81f42f0</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = '/Statistics/StatisticsPage' and (text() = 'Statistics' or . = 'Statistics')]</value>
-      <webElementGuid>f5e1cc90-ed6f-4538-9fcc-029143bfc497</webElementGuid>
+      <value>//a[@href = '/Identity/Account/Manage/Index' and (text() = 'Account' or . = 'Account')]</value>
+      <webElementGuid>62d2d072-0feb-4fc3-a1e1-651f250f38de</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

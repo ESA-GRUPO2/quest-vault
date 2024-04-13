@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_Statistics</name>
+   <name>button_Logout</name>
    <tag></tag>
-   <elementGuidId>33275ada-4e5b-4dc3-b803-7763a673c501</elementGuidId>
+   <elementGuidId>f5a8ea15-741d-42bf-9e98-ad815032cba6</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>li:nth-of-type(6) > a.btn.btn-primary.dropdown-item</value>
+         <value>button.btn.btn-primary.dropdown-item</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[6]/a</value>
+         <value>(//button[@type='submit'])[2]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -22,16 +22,16 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>a</value>
-      <webElementGuid>f3006254-3fda-406a-b629-e23ebd347f7f</webElementGuid>
+      <value>button</value>
+      <webElementGuid>8d78b852-791e-4b49-b37d-09dc688e6ad4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>href</name>
+      <name>type</name>
       <type>Main</type>
-      <value>/Statistics/StatisticsPage</value>
-      <webElementGuid>268f100e-4af0-4419-9f28-a10f89ea8e67</webElementGuid>
+      <value>submit</value>
+      <webElementGuid>6a07dd64-f99c-49f1-ad1b-3d6101594bd0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -39,102 +39,100 @@
       <name>class</name>
       <type>Main</type>
       <value>btn btn-primary dropdown-item</value>
-      <webElementGuid>f9a495ec-a8ad-4257-8d23-7e7dba3e9ca1</webElementGuid>
+      <webElementGuid>3e4e247c-8f40-471a-894e-bdaac3c691a2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Statistics</value>
-      <webElementGuid>95dd18f0-d718-41d4-b02c-daab7c783557</webElementGuid>
+      <value>
+                      Logout
+                    </value>
+      <webElementGuid>908f9629-39c4-4688-8dd5-552a55b609de</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[6]/a[@class=&quot;btn btn-primary dropdown-item&quot;]</value>
-      <webElementGuid>be43763a-3a9b-4e8d-a82c-a538467eebf6</webElementGuid>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[7]/form[@class=&quot;form-inline&quot;]/button[@class=&quot;btn btn-primary dropdown-item&quot;]</value>
+      <webElementGuid>b260af71-37ad-4bcf-b8cf-65f6516a45d4</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>(//button[@type='submit'])[2]</value>
+      <webElementGuid>5ea7927a-e3ee-4148-9726-2001721fca81</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[6]/a</value>
-      <webElementGuid>b9b21770-fe6b-4796-9654-4a21a1f607a5</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:link</name>
-      <type>Main</type>
-      <value>//a[contains(text(),'Statistics')]</value>
-      <webElementGuid>9bf7e8b5-6b7c-4bf1-b659-84b26227acf0</webElementGuid>
+      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[7]/form/button</value>
+      <webElementGuid>a13e19ac-2079-405a-ac12-b624061ff21f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Friends'])[1]/following::a[1]</value>
-      <webElementGuid>896232f2-d9dd-4036-9145-c03dcc641890</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Statistics'])[1]/following::button[1]</value>
+      <webElementGuid>d267cd70-6881-4105-a98b-4ba1e188b6ab</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Users'])[1]/following::a[2]</value>
-      <webElementGuid>0e9531b7-8a3a-4572-8045-e8f6293c7c85</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Friends'])[1]/following::button[1]</value>
+      <webElementGuid>fb641ad9-27db-4176-8521-b9d660ef899b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/preceding::a[1]</value>
-      <webElementGuid>09384ea1-54ba-4d71-8c4d-cd59e241316f</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='MyLibrary'])[1]/preceding::button[1]</value>
+      <webElementGuid>e2462c7c-19db-4025-9615-ca8fbd764b90</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='tBatista'])[2]/preceding::a[1]</value>
-      <webElementGuid>7da9f98d-11ec-429d-8907-c5862fab5627</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Collections'])[1]/preceding::button[1]</value>
+      <webElementGuid>e9ee2e49-aef0-4a66-b749-74300ea529c3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='Statistics']/parent::*</value>
-      <webElementGuid>df7f9f14-88a1-4cd1-abeb-a00cde6499cc</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:href</name>
-      <type>Main</type>
-      <value>//a[contains(@href, '/Statistics/StatisticsPage')]</value>
-      <webElementGuid>2ef9945c-9ef3-484c-bf87-eb7587b01b4a</webElementGuid>
+      <value>//*/text()[normalize-space(.)='Logout']/parent::*</value>
+      <webElementGuid>301ee809-251e-479d-ac98-28da46cd6270</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li[6]/a</value>
-      <webElementGuid>5ca387bf-2bbb-4fb6-94c6-caddadfcbd08</webElementGuid>
+      <value>//form/button</value>
+      <webElementGuid>30c7f840-9dee-42da-beb7-7aa7d36f66ac</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = '/Statistics/StatisticsPage' and (text() = 'Statistics' or . = 'Statistics')]</value>
-      <webElementGuid>f5e1cc90-ed6f-4538-9fcc-029143bfc497</webElementGuid>
+      <value>//button[@type = 'submit' and (text() = '
+                      Logout
+                    ' or . = '
+                      Logout
+                    ')]</value>
+      <webElementGuid>74bf8b78-d6c9-442f-b5df-a97dc9a97d74</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

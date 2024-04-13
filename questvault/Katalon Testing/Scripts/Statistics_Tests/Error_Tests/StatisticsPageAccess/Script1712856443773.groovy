@@ -37,7 +37,7 @@ WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/a_tBatis
 
 WebUI.verifyElementNotVisible(findTestObject('Object Repository/Page_Profile - QuestVault/h6_Administrator'))
 
-WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/img_MyLibrary_nav-vector mb-1'))
+WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/img_MyLibrary_mb-1'))
 
 WebUI.verifyElementNotPresent(findTestObject('Object Repository/Page_Profile - QuestVault/a_Statistics'), 0)
 

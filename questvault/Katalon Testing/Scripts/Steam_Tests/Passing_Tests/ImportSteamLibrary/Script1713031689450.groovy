@@ -25,23 +25,29 @@ WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
 
 WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Log in'))
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tBatista')
+WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'notAdmin')
 
 WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.Password'), 'LUp6avagZuk=')
 
 WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
-WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img_MyLibrary_nav-vector mb-1'))
+WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/a_MyLibrary'))
 
-WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/a_tBatista'))
+WebUI.verifyElementText(findTestObject('Object Repository/Page_Library - QuestVault/h2_No games Added'), 'No games Added!')
 
-WebUI.verifyElementText(findTestObject('Object Repository/Page_Profile - QuestVault/h6_Administrator'), 'Administrator')
+WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img_MyLibrary_mb-1'))
 
-WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/img_MyLibrary_mb-1'))
+WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/a_Account'))
 
-WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/a_Statistics'))
+WebUI.click(findTestObject('Object Repository/Page_Account - QuestVault/button_Connect to Steam'))
 
-WebUI.verifyElementText(findTestObject('Object Repository/Page_Statistics - QuestVault/label_Daily Logins'), 'Daily Logins')
+WebUI.waitForPageLoad(2)
+
+WebUI.setText(findTestObject('Object Repository/Page_Account - QuestVault/input_Insert Steam Id_steamId'), '76561198140392808')
+
+WebUI.click(findTestObject('Object Repository/Page_Account - QuestVault/button_Import Library'))
+
+WebUI.verifyElementNotPresent(findTestObject('Page_Library - QuestVault/h2_No games Added'), 0)
 
 WebUI.closeBrowser()
 

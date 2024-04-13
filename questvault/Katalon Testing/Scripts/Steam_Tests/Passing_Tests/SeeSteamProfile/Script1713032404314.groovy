@@ -25,23 +25,21 @@ WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
 
 WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Log in'))
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tBatista')
+WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'notAdmin')
 
 WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.Password'), 'LUp6avagZuk=')
 
 WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
-WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img_MyLibrary_nav-vector mb-1'))
+WebUI.setText(findTestObject('Object Repository/Page_Library - QuestVault/input_Order_searchTerm'), 'tBatista')
 
-WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/a_tBatista'))
+WebUI.sendKeys(findTestObject('Object Repository/Page_Library - QuestVault/input_Order_searchTerm'), Keys.chord(Keys.ENTER))
 
-WebUI.verifyElementText(findTestObject('Object Repository/Page_Profile - QuestVault/h6_Administrator'), 'Administrator')
+WebUI.click(findTestObject('Object Repository/Page_Results - QuestVault/img_Users_nav-vector pe-1'))
 
-WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/img_MyLibrary_mb-1'))
+WebUI.click(findTestObject('Object Repository/Page_Users - QuestVault/span_tBatista'))
 
-WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/a_Statistics'))
-
-WebUI.verifyElementText(findTestObject('Object Repository/Page_Statistics - QuestVault/label_Daily Logins'), 'Daily Logins')
+WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/img_Library_img-size-sm'))
 
 WebUI.closeBrowser()
 

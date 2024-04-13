@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_tBatista</name>
+   <name>div_Team Fortress 2</name>
    <tag></tag>
-   <elementGuidId>4868ef89-ad81-4912-b2f2-ae6292390374</elementGuidId>
+   <elementGuidId>4b021679-9c6a-4cd8-8acd-0c15d4a6cefc</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>a.dropdown-item</value>
+         <value>#appHubAppName</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li/a</value>
+         <value>//div[@id='appHubAppName']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -22,103 +22,103 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>a</value>
-      <webElementGuid>7e0fff53-d096-4d2b-a150-8efbee3a9e3b</webElementGuid>
+      <value>div</value>
+      <webElementGuid>49027d0d-c130-4ac1-8504-e848d68aa069</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>appHubAppName</value>
+      <webElementGuid>82f31045-f1db-4125-94ce-dc95a3800c8e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>dropdown-item</value>
-      <webElementGuid>e0e2aa68-9480-427b-949f-bf5658862ff8</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>href</name>
-      <type>Main</type>
-      <value> /User/PublicProfile/24008a99-0c77-4e4e-9466-37273a9ca306</value>
-      <webElementGuid>c397ca41-5749-4a47-acdf-9accb0f1418c</webElementGuid>
+      <value>apphub_AppName</value>
+      <webElementGuid>bc504075-44b5-4268-859d-124806ef2d69</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>tBatista</value>
-      <webElementGuid>86dbd834-9125-42b1-9611-7dcc93c2e218</webElementGuid>
+      <value>Team Fortress 2</value>
+      <webElementGuid>384d2891-553c-48d7-a11d-56adf59a7080</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[1]/a[@class=&quot;dropdown-item&quot;]</value>
-      <webElementGuid>a7001eb7-5a08-49b0-bd69-a43986554e0a</webElementGuid>
+      <value>id(&quot;appHubAppName&quot;)</value>
+      <webElementGuid>26a4e293-bc28-4eea-9872-e2f0bfdd73f2</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[@id='appHubAppName']</value>
+      <webElementGuid>897107c4-e307-488c-906a-76f1ec823da2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li/a</value>
-      <webElementGuid>af1407ca-d049-403c-b132-61037f2acc06</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:link</name>
-      <type>Main</type>
-      <value>//a[contains(text(),'tBatista')]</value>
-      <webElementGuid>43067466-c294-411f-bd89-76a4921df523</webElementGuid>
+      <value>//div[@id='tabletGrid']/div/div[2]/div[2]/div/div[3]</value>
+      <webElementGuid>576173c0-89bb-40c3-9ed2-5bfa2095d08a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Account'])[1]/preceding::a[1]</value>
-      <webElementGuid>da2c9f50-231f-47e7-b979-c7e59dba3aa4</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Central Comunitária'])[1]/following::div[3]</value>
+      <webElementGuid>921daf5e-7e3d-4e93-90d2-10578bd2b231</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Users'])[1]/preceding::a[2]</value>
-      <webElementGuid>3d60eff2-7bb5-4123-8a9c-612ec2d68133</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Team Fortress 2'])[1]/following::div[7]</value>
+      <webElementGuid>ec4e40c6-30b3-48fe-87e2-be9827be60fe</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='tBatista']/parent::*</value>
-      <webElementGuid>fd4d2df6-9e22-49df-b148-c6a9e58beda8</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Team Fortress 2'])[3]/preceding::div[4]</value>
+      <webElementGuid>59e3e4b3-7034-45d2-9928-312c6f1a3547</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>xpath:href</name>
+      <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//a[contains(@href, ' /User/PublicProfile/24008a99-0c77-4e4e-9466-37273a9ca306')]</value>
-      <webElementGuid>d12a211b-a342-4617-8d06-992586f59c00</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Developer'])[1]/preceding::div[5]</value>
+      <webElementGuid>5f2e3326-49d3-4eae-8ab2-362ed8f84cde</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li[5]/div/ul/li/a</value>
-      <webElementGuid>d203da1e-2c51-4d77-ac62-1a1be21907be</webElementGuid>
+      <value>//div[2]/div/div[2]/div[2]/div/div[3]</value>
+      <webElementGuid>9c9bcd89-23e6-4b09-9178-1aff8df6818d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = ' /User/PublicProfile/24008a99-0c77-4e4e-9466-37273a9ca306' and (text() = 'tBatista' or . = 'tBatista')]</value>
-      <webElementGuid>500efbbe-e807-4ec3-a93f-07a72adc4bc2</webElementGuid>
+      <value>//div[@id = 'appHubAppName' and (text() = 'Team Fortress 2' or . = 'Team Fortress 2')]</value>
+      <webElementGuid>1638d54f-f62d-4c59-92df-845c3cc23235</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

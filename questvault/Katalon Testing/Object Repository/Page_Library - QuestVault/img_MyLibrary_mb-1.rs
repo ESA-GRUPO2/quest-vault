@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>img_MyLibrary_nav-vector mb-1</name>
+   <name>img_MyLibrary_mb-1</name>
    <tag></tag>
-   <elementGuidId>52aca048-6138-43da-98a8-d0c65b719b58</elementGuidId>
+   <elementGuidId>781508a4-ec8c-40db-9eba-4da7a3bf7bae</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>img.nav-vector.mb-1</value>
+         <value>img.mb-1</value>
       </entry>
       <entry>
          <key>XPATH</key>
@@ -23,15 +23,15 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>dc780056-8170-415f-8606-6f9c8e4a7061</webElementGuid>
+      <webElementGuid>c6e9b4dd-0d0a-4bbb-9672-0e8f6aef10ac</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>src</name>
       <type>Main</type>
-      <value>/img/usr_profile/a1e2fbc3-18bc-4fea-ae4e-3639241004d6_myBalls.jpg</value>
-      <webElementGuid>7027b125-8cd6-4206-a97b-fc67e36820bf</webElementGuid>
+      <value>/img/usr_profile/cd6d589c-8a70-4dea-8dc2-a4ef9f4cbaec_pa.jpg</value>
+      <webElementGuid>6b7b7b30-3135-4028-8e76-31e0c0b93f0e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -39,23 +39,23 @@
       <name>alt</name>
       <type>Main</type>
       <value>Key Icon</value>
-      <webElementGuid>ef48a79b-101b-446e-be1e-f8fa410124a6</webElementGuid>
+      <webElementGuid>ffe801d9-2926-405d-b194-8125c0247548</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>nav-vector mb-1</value>
-      <webElementGuid>6ab5ad8c-a3e0-4254-a2bd-8b3ed1fbca6e</webElementGuid>
+      <value>mb-1</value>
+      <webElementGuid>a15dd2b6-db80-4dff-a0a1-580a4a06f75f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/button[@class=&quot;btn btn-primary nav-btn show&quot;]/img[@class=&quot;nav-vector mb-1&quot;]</value>
-      <webElementGuid>ff7b56ff-8cd2-43f8-b62e-64e2a545c418</webElementGuid>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/button[@class=&quot;btn btn-primary nav-btn show&quot;]/img[@class=&quot;mb-1&quot;]</value>
+      <webElementGuid>8d3423a2-5c0e-4f12-842c-81f73ace4e52</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -63,7 +63,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/button/img</value>
-      <webElementGuid>62c1d198-b7e3-465d-a78f-2283f4a5da9a</webElementGuid>
+      <webElementGuid>06230a8c-c4c1-4b82-94ea-27ab4197379a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath:img</name>
       <type>Main</type>
       <value>(//img[@alt='Key Icon'])[2]</value>
-      <webElementGuid>00fe6f14-2b97-4ed5-b6aa-7d00c0be2ccc</webElementGuid>
+      <webElementGuid>af0dedc5-6841-4e36-99ca-d379e71f1227</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -79,14 +79,14 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li[5]/div/button/img</value>
-      <webElementGuid>323a5182-79e1-4db0-b811-9b424c9c6341</webElementGuid>
+      <webElementGuid>d699097d-5c52-458a-bd64-c7c2b853b445</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//img[@src = '/img/usr_profile/a1e2fbc3-18bc-4fea-ae4e-3639241004d6_myBalls.jpg' and @alt = 'Key Icon']</value>
-      <webElementGuid>9d7c0434-f4c7-483e-9a9f-5791d9c84ab3</webElementGuid>
+      <value>//img[@src = '/img/usr_profile/cd6d589c-8a70-4dea-8dc2-a4ef9f4cbaec_pa.jpg' and @alt = 'Key Icon']</value>
+      <webElementGuid>a2104a5f-0c70-4d15-a059-b3a0137f7ddc</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

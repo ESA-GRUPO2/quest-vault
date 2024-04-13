@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_Connect to Steam</name>
+   <tag></tag>
+   <elementGuidId>a6ee59ce-7ed0-4528-8480-c8f4544351de</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>th:nth-of-type(2) > button.btn-blue</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/table/tbody/tr/th[2]/button</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>e15d25d8-0c88-4202-8dee-770660444702</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>btn-blue</value>
+      <webElementGuid>e335f599-6ef5-4a96-8f1f-b3c59d04fd62</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-bs-toggle</name>
+      <type>Main</type>
+      <value>modal</value>
+      <webElementGuid>352e2e4b-f496-426e-8c68-3f6cd879de91</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-bs-target</name>
+      <type>Main</type>
+      <value>#steamModal</value>
+      <webElementGuid>b49ab614-0777-484e-92ba-4800b9950386</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Connect to Steam</value>
+      <webElementGuid>cb07e974-2e17-45fd-8821-49f8c024c79a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/div[@class=&quot;container-fluid mt-4&quot;]/div[@class=&quot;row row-spacing justify-content-end mt-5&quot;]/div[@class=&quot;col-4 me-5&quot;]/table[@class=&quot;table table-sm table-borderless table-profile mt-4&quot;]/tbody[1]/tr[1]/th[2]/button[@class=&quot;btn-blue&quot;]</value>
+      <webElementGuid>ae49edbd-63a7-4b98-a543-a77ea143d90b</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/table/tbody/tr/th[2]/button</value>
+      <webElementGuid>86a02a7a-871b-4745-a59c-8ebd85da80e9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Connections'])[1]/following::button[1]</value>
+      <webElementGuid>6208172e-599b-4604-aafc-5d554e1ae712</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Deactivate Account'])[1]/following::button[1]</value>
+      <webElementGuid>3b65bf46-7b2f-46dd-ba14-202849fa0a46</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Connect to Steam'])[2]/preceding::button[1]</value>
+      <webElementGuid>834036d7-06c9-4620-bec3-4074e0108aba</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Insert Steam Id:'])[1]/preceding::button[2]</value>
+      <webElementGuid>f71fe33c-ba93-4eed-bbc4-065d163bd17c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Connect to Steam']/parent::*</value>
+      <webElementGuid>df2ceedc-f292-4284-a376-3ac78e5c0f45</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//th[2]/button</value>
+      <webElementGuid>e19e8560-73f0-409e-b29a-51c2e859416b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[(text() = 'Connect to Steam' or . = 'Connect to Steam')]</value>
+      <webElementGuid>c8f7aae4-718a-4814-aa58-79c7fd629deb</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

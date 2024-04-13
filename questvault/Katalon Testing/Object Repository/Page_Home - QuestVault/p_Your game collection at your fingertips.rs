@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>p</value>
-      <webElementGuid>697498d6-96c2-4ea9-95fc-e8f3b83f2700</webElementGuid>
+      <webElementGuid>bd9f783d-b679-4726-ac82-d9b8fbd3b1ff</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +37,7 @@
       <name>class</name>
       <type>Main</type>
       <value>fs-1 fw-bolder home-text-color home-main-title</value>
-      <webElementGuid>4846a243-788e-441c-994c-9c2a4bef1ebd</webElementGuid>
+      <webElementGuid>37ba1f6d-75fe-4b83-8e01-16fa88631d44</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +45,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Your game collection at your fingertips.</value>
-      <webElementGuid>846e4876-0775-47c2-92ac-d57b613806e3</webElementGuid>
+      <webElementGuid>a1e13045-dc8d-44a9-b488-f56d54adbed0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +53,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/section[@class=&quot;home-banner-image bg-image-full&quot;]/div[@class=&quot;container h-100 d-flex justify-content-evenly text-center&quot;]/div[@class=&quot;row d-flex justify-content-evenly align-self-center&quot;]/div[@class=&quot;col-8 my-5 d-flex&quot;]/p[@class=&quot;fs-1 fw-bolder home-text-color home-main-title&quot;]</value>
-      <webElementGuid>e6feaccb-176d-48b5-b322-acca1b17a22c</webElementGuid>
+      <webElementGuid>cf91facb-4d96-47a1-935c-3cc2608db268</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -61,7 +61,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='main-body']/main/section/div/div/div/p</value>
-      <webElementGuid>5422ec4d-58e9-47c9-85a3-61b1fbc7aed7</webElementGuid>
+      <webElementGuid>402c31df-b08f-4fa2-8c1f-1cde516d21f3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -69,7 +69,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::p[1]</value>
-      <webElementGuid>74ce2b35-7399-4634-9a6c-27289606ebc4</webElementGuid>
+      <webElementGuid>247b979c-7b43-487d-8041-8660b18c4ec9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,7 +77,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::p[5]</value>
-      <webElementGuid>7e2ad759-9574-49ea-84d7-d7a2ef4dc477</webElementGuid>
+      <webElementGuid>78a7a8b1-083e-4742-8b5b-3ee7e0c02623</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +85,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Your game collection at your fingertips.']/parent::*</value>
-      <webElementGuid>d2f6cc7c-081a-404b-bdf2-54cace386f6b</webElementGuid>
+      <webElementGuid>650b5fb1-72f0-4675-b769-a530a14a0585</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,7 +93,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//p</value>
-      <webElementGuid>a65a6a04-7e07-48eb-848f-89d09d3aefb0</webElementGuid>
+      <webElementGuid>a3e9dffe-0451-4ea0-87f7-828cbc98669e</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -101,6 +101,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//p[(text() = 'Your game collection at your fingertips.' or . = 'Your game collection at your fingertips.')]</value>
-      <webElementGuid>37af397d-8cee-4170-82b6-b3096b422f67</webElementGuid>
+      <webElementGuid>fef015fd-42ba-4b72-bc82-e03bd7d95f71</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

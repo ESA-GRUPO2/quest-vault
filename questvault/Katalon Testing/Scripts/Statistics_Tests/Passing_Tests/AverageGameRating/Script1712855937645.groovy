@@ -31,18 +31,17 @@ WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input
 
 WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
-WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img_MyLibrary_nav-vector mb-1'))
+WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img_MyLibrary_mb-1'))
 
 WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/a_tBatista'))
 
 WebUI.verifyElementText(findTestObject('Object Repository/Page_Profile - QuestVault/h6_Administrator'), 'Administrator')
 
-WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/img_MyLibrary_nav-vector mb-1'))
+WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/img_MyLibrary_mb-1'))
 
 WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/a_Statistics'))
 
-WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Statistics - QuestVault/div_3.12                 Average Game Rating'), 
-    0)
+WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Statistics - QuestVault/h4_Average Game Rating'), 0)
 
 WebUI.closeBrowser()
 

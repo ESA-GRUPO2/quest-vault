@@ -31,17 +31,19 @@ WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input
 
 WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
-WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img_MyLibrary_nav-vector mb-1'))
+WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img_MyLibrary_mb-1'))
 
 WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/a_Users'))
 
 WebUI.click(findTestObject('Object Repository/Page_Users - QuestVault/a_TESTE1'))
 
+WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/button_Admin Actions'))
+
 WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/a_Lockout User'))
 
-WebUI.refresh(FailureHandling.STOP_ON_FAILURE)
+WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/button_Admin Actions'))
 
-WebUI.verifyElementText(findTestObject('Object Repository/Page_Profile - QuestVault/a_Remove Lockout'), 'Remove Lockout')
+WebUI.click(findTestObject('Object Repository/Page_Profile - QuestVault/a_Lockout User'))
 
 WebUI.closeBrowser()
 

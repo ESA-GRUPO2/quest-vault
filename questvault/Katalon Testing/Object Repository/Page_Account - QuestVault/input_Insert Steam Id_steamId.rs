@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_Order_searchTerm</name>
+   <name>input_Insert Steam Id_steamId</name>
    <tag></tag>
-   <elementGuidId>35c0808c-6c2d-4c7b-99e4-b22f2f846c18</elementGuidId>
+   <elementGuidId>303c2b1e-ef5a-4e8d-b58b-3b78c1618dca</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>#searchInput</value>
+         <value>#steamId</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//input[@id='searchInput']</value>
+         <value>//input[@id='steamId']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -23,31 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>input</value>
-      <webElementGuid>f2fc3755-e219-4325-a64a-11df32c9416d</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>id</name>
-      <type>Main</type>
-      <value>searchInput</value>
-      <webElementGuid>cfc4e89f-7640-4e13-a9f8-62f7817c0e65</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>autocomplete</name>
-      <type>Main</type>
-      <value>off</value>
-      <webElementGuid>ba6bef59-dc1d-4a45-a0d5-ec95f844a050</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>name</name>
-      <type>Main</type>
-      <value>searchTerm</value>
-      <webElementGuid>e33ac970-16b2-42f4-8d7c-2574dfece082</webElementGuid>
+      <webElementGuid>d6be7550-a930-479f-b94c-d8e95bd8e054</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -55,62 +31,78 @@
       <name>type</name>
       <type>Main</type>
       <value>text</value>
-      <webElementGuid>36397da5-6417-40ee-8137-08e502be64d5</webElementGuid>
+      <webElementGuid>2aee7da0-5d7e-4005-aea1-8878e5b54b09</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>search-bar-text</value>
-      <webElementGuid>5d0ab840-51f5-4705-bdf8-673e884173a7</webElementGuid>
+      <value>input-purple</value>
+      <webElementGuid>9d30ef4d-3992-481b-ab44-bd26daead78e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>placeholder</name>
       <type>Main</type>
-      <value>Search for games and users</value>
-      <webElementGuid>940f798a-60a6-4e42-badd-45a8a781cd88</webElementGuid>
+      <value>Steam Id</value>
+      <webElementGuid>2658ca58-4ddb-4b5f-ad14-1f3ecdb7c18f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>steamId</value>
+      <webElementGuid>9505483a-ab93-4db8-ab64-c6dff073913d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>name</name>
+      <type>Main</type>
+      <value>steamId</value>
+      <webElementGuid>a83dc63a-079e-4098-ac71-73b8fd88b419</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;searchInput&quot;)</value>
-      <webElementGuid>7d1b9ee5-fcdc-433d-ae69-b98b0f22f444</webElementGuid>
+      <value>id(&quot;steamId&quot;)</value>
+      <webElementGuid>4c114200-9d9f-4784-9775-346c0afdb780</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//input[@id='searchInput']</value>
-      <webElementGuid>d9eb99ca-9040-4d50-ad4b-4d452660bb1d</webElementGuid>
+      <value>//input[@id='steamId']</value>
+      <webElementGuid>5ac584ab-811a-4d4f-a3e2-e51551885f96</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//form[@id='searchForm']/div/input</value>
-      <webElementGuid>b0a7754f-288e-4519-86c6-811296f52c25</webElementGuid>
+      <value>//form[@id='steamForm']/div/div/div/div[2]/input</value>
+      <webElementGuid>22fce103-a078-4b38-b87d-0011e0c2bf22</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//input</value>
-      <webElementGuid>da7b1586-564a-4208-b521-3339b73fc2e4</webElementGuid>
+      <value>//div[2]/input</value>
+      <webElementGuid>78d7784f-b580-4062-9bf8-fd3db0b6b760</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//input[@id = 'searchInput' and @name = 'searchTerm' and @type = 'text' and @placeholder = 'Search for games and users']</value>
-      <webElementGuid>86b11448-b2a6-43fa-9a03-cde711620879</webElementGuid>
+      <value>//input[@type = 'text' and @placeholder = 'Steam Id' and @id = 'steamId' and @name = 'steamId']</value>
+      <webElementGuid>086e706e-2765-4c6d-a132-b7df52d18232</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

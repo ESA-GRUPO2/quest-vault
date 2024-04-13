@@ -23,7 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>a7c2c9e7-465e-4b61-b54b-fd25177bb94c</webElementGuid>
+      <webElementGuid>b7e6a33c-bee5-45c8-9d61-932c7fa8d0d5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -31,7 +31,7 @@
       <name>href</name>
       <type>Main</type>
       <value>/Home/AllUsers</value>
-      <webElementGuid>ea8b0e39-02eb-42e5-a7b3-da48cb34d64e</webElementGuid>
+      <webElementGuid>de6ddf79-6295-43e2-8a35-09b565928a80</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -39,7 +39,7 @@
       <name>class</name>
       <type>Main</type>
       <value>btn btn-primary dropdown-item</value>
-      <webElementGuid>76b56f19-656f-4840-aa98-c39ba6c035bc</webElementGuid>
+      <webElementGuid>fae5bdf3-9846-4749-91af-12c56c87f20c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -47,7 +47,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Users</value>
-      <webElementGuid>2cc2ce15-80db-4e16-8d8f-1d449cef63f8</webElementGuid>
+      <webElementGuid>d27a857a-17b0-4589-9abe-cd65ee364045</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -55,7 +55,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[4]/a[@class=&quot;btn btn-primary dropdown-item&quot;]</value>
-      <webElementGuid>417721e1-8504-4c04-93a7-a0f3677e9d4c</webElementGuid>
+      <webElementGuid>fd6dc488-65f9-4cc8-8cc8-c6a9ab6afeeb</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -63,7 +63,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[4]/a</value>
-      <webElementGuid>60761b8d-b4da-40d4-9c58-a0c2aa25791d</webElementGuid>
+      <webElementGuid>f04d8cf9-f520-4671-b379-1645d8302e6b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath:link</name>
       <type>Main</type>
       <value>//a[contains(text(),'Users')]</value>
-      <webElementGuid>1be4a160-2096-48b9-87c2-495320bd8336</webElementGuid>
+      <webElementGuid>10d2c8c0-f98e-494f-8d42-7815401d16d8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -79,7 +79,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Account'])[1]/following::a[1]</value>
-      <webElementGuid>319a98da-01a2-42c1-b3d5-73978b7388db</webElementGuid>
+      <webElementGuid>d5e0fd98-0292-4348-8454-11ebf4655523</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -87,7 +87,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='tBatista'])[1]/following::a[2]</value>
-      <webElementGuid>2ef49ef1-0042-4c6e-bfd0-8a3c0c8bc801</webElementGuid>
+      <webElementGuid>36862239-230c-4889-9873-801d8d737b6d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -95,7 +95,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Friends'])[1]/preceding::a[1]</value>
-      <webElementGuid>0b355835-9a74-4ea7-ad51-3b727f88666b</webElementGuid>
+      <webElementGuid>56bf8535-1086-4957-9e46-d1346169364f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -103,7 +103,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Statistics'])[1]/preceding::a[2]</value>
-      <webElementGuid>18dc492a-c206-4ac1-a3e9-c7c25d9efe8c</webElementGuid>
+      <webElementGuid>58e3d957-4034-4da2-9e01-6e965b49e3e7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -111,7 +111,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Users']/parent::*</value>
-      <webElementGuid>55907e4c-54d7-4b87-ab3c-e747e8a476e0</webElementGuid>
+      <webElementGuid>9842478e-fccc-4b95-bc67-a5f7c45aae29</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -119,7 +119,7 @@
       <name>xpath:href</name>
       <type>Main</type>
       <value>//a[contains(@href, '/Home/AllUsers')]</value>
-      <webElementGuid>bb97bc0d-0a99-4802-8be1-5ee715699017</webElementGuid>
+      <webElementGuid>96e4c325-490e-41c0-a44d-6009ff2e13fe</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -127,7 +127,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li[5]/div/ul/li[4]/a</value>
-      <webElementGuid>912ecc7b-6f91-43df-9549-96bedf409785</webElementGuid>
+      <webElementGuid>d750059e-b9f4-4572-ab20-9d1599b95588</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -135,6 +135,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//a[@href = '/Home/AllUsers' and (text() = 'Users' or . = 'Users')]</value>
-      <webElementGuid>fb8ab3d6-cd9d-4f64-a3af-f1695c248dfa</webElementGuid>
+      <webElementGuid>b7326a05-c1d3-4300-8ca7-e883db3c3877</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

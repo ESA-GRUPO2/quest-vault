@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_tBatista</name>
+   <name>a_MyLibrary</name>
    <tag></tag>
-   <elementGuidId>4868ef89-ad81-4912-b2f2-ae6292390374</elementGuidId>
+   <elementGuidId>ea4e6598-353e-4923-a85d-c33987383665</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>a.dropdown-item</value>
+         <value>a.btn.btn-primary.nav-btn-2</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li/a</value>
+         <value>//div[@id='navbarSupportedContent']/ul/li[4]/a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -23,102 +23,108 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>7e0fff53-d096-4d2b-a150-8efbee3a9e3b</webElementGuid>
+      <webElementGuid>52315a3f-6954-4174-b87b-115af1f9bf85</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>dropdown-item</value>
-      <webElementGuid>e0e2aa68-9480-427b-949f-bf5658862ff8</webElementGuid>
+      <value>btn btn-primary nav-btn-2</value>
+      <webElementGuid>bfb1527f-8919-4f79-8bfe-a0f5500e8903</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>href</name>
       <type>Main</type>
-      <value> /User/PublicProfile/24008a99-0c77-4e4e-9466-37273a9ca306</value>
-      <webElementGuid>c397ca41-5749-4a47-acdf-9accb0f1418c</webElementGuid>
+      <value>/UserLibrary?id=notAdmin</value>
+      <webElementGuid>048d9955-e533-49a3-908a-090fcfb93dea</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>tBatista</value>
-      <webElementGuid>86dbd834-9125-42b1-9611-7dcc93c2e218</webElementGuid>
+      <value>
+               MyLibrary
+            </value>
+      <webElementGuid>0081017b-2910-4614-8377-7b11a9025db9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[1]/a[@class=&quot;dropdown-item&quot;]</value>
-      <webElementGuid>a7001eb7-5a08-49b0-bd69-a43986554e0a</webElementGuid>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn-2&quot;]</value>
+      <webElementGuid>a5717b7c-36aa-4c54-8a4d-0c7a9980bd85</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li/a</value>
-      <webElementGuid>af1407ca-d049-403c-b132-61037f2acc06</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:link</name>
-      <type>Main</type>
-      <value>//a[contains(text(),'tBatista')]</value>
-      <webElementGuid>43067466-c294-411f-bd89-76a4921df523</webElementGuid>
+      <value>//div[@id='navbarSupportedContent']/ul/li[4]/a</value>
+      <webElementGuid>3359d2ab-943a-48de-ac91-b38c106e512c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Account'])[1]/preceding::a[1]</value>
-      <webElementGuid>da2c9f50-231f-47e7-b979-c7e59dba3aa4</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Status'])[1]/following::a[2]</value>
+      <webElementGuid>0701aec9-cd0d-4ea6-809d-ca290af291e8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Users'])[1]/preceding::a[2]</value>
-      <webElementGuid>3d60eff2-7bb5-4123-8a9c-612ec2d68133</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='notAdmin'])[1]/preceding::a[1]</value>
+      <webElementGuid>cc5791c0-ae22-420c-977f-5bff49ac5da4</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='tBatista']/parent::*</value>
-      <webElementGuid>fd4d2df6-9e22-49df-b148-c6a9e58beda8</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Account'])[1]/preceding::a[2]</value>
+      <webElementGuid>d9ee0dd2-ab60-48f3-a0d8-6e5dd1d4dd72</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='MyLibrary']/parent::*</value>
+      <webElementGuid>bccafe94-599d-4ba8-b5ad-e0b951ce0a35</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:href</name>
       <type>Main</type>
-      <value>//a[contains(@href, ' /User/PublicProfile/24008a99-0c77-4e4e-9466-37273a9ca306')]</value>
-      <webElementGuid>d12a211b-a342-4617-8d06-992586f59c00</webElementGuid>
+      <value>(//a[contains(@href, '/UserLibrary?id=notAdmin')])[2]</value>
+      <webElementGuid>450e1fcd-00be-4465-a739-293d483967d7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li[5]/div/ul/li/a</value>
-      <webElementGuid>d203da1e-2c51-4d77-ac62-1a1be21907be</webElementGuid>
+      <value>//li[4]/a</value>
+      <webElementGuid>9238109a-9416-45ef-8244-21799b3af842</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = ' /User/PublicProfile/24008a99-0c77-4e4e-9466-37273a9ca306' and (text() = 'tBatista' or . = 'tBatista')]</value>
-      <webElementGuid>500efbbe-e807-4ec3-a93f-07a72adc4bc2</webElementGuid>
+      <value>//a[@href = '/UserLibrary?id=notAdmin' and (text() = '
+               MyLibrary
+            ' or . = '
+               MyLibrary
+            ')]</value>
+      <webElementGuid>f0efd683-f7aa-4689-b960-a5ed935bb417</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
