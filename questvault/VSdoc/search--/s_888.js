@@ -1,0 +1,1 @@
+search_result['888']=["topic_00000000000001ED.html","Game.QvRating Property","Gets or sets the rating of the game for our app.\r\nQV -\u003e QuestVault"];

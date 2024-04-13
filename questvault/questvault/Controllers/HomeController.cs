@@ -22,6 +22,10 @@ namespace questvault.Controllers
       _signInManager = signInManager;
     }
 
+    /// <summary>
+    /// Handles the default landing page of the application.
+    /// </summary>
+    /// <returns>A redirection to the user's library if signed in, otherwise returns the default view.</returns>
     public async Task<IActionResult> IndexAsync()
     {
       var accessInstance = new AccessInstance() { AccessDate = DateOnly.FromDateTime(DateTime.Now) };
@@ -47,12 +51,21 @@ namespace questvault.Controllers
       return View();
     }
 
-
+    /// <summary>
+    /// Retrieves all users from the database and displays them.
+    /// </summary>
+    /// <returns>The view containing all users.</returns>
     public async Task<IActionResult> AllUsersAsync()
     {
       var dbContext = _context.Users;
       return View(await dbContext.ToListAsync());
     }
+
+    /// <summary>
+    /// Searches for users based on the provided search term.
+    /// </summary>
+    /// <param name="id">The search term.</param>
+    /// <returns>The view containing search results.</returns>
     [HttpGet]
     [Route("SearchUser/{id}")]
     public async Task<IActionResult> SearchUser(string? id)

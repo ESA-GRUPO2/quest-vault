@@ -1,1 +1,1 @@
-search_result['674']=["topic_0000000000000158_vars--.html","GameLog Fields",""];
+search_result['674']=["topic_0000000000000173_methods--.html","UserController Methods",""];

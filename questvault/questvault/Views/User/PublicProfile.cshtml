@@ -82,7 +82,7 @@
           </a>
 
           @* Admin Actions *@
-          @if (user.Clearance == 2 && User.Identity.Name != Model.user.UserName)
+          @if (user.Clearance == 2 && Model.user.Clearance < 2 && User.Identity.Name != Model.user.UserName)
           {
             <div class="dropdown select-admin ms-3">
               <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

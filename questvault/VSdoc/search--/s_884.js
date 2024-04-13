@@ -1,0 +1,1 @@
+search_result['884']=["topic_00000000000001E9.html","Game.IgdbRating Property","Gets or sets the rating of the game from IGDB."];

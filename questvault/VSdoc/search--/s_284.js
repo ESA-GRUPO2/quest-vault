@@ -1,1 +1,1 @@
-search_result['284']=["topic_0000000000000095.html","DeactivatedAccountModel Class","This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used\r\n    directly from your code. This API may change or be removed in future releases."];
+search_result['284']=["topic_00000000000000A8_attached_props--.html","TwoFactorAuthenticationModel Attached Properties",""];

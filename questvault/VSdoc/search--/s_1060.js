@@ -1,0 +1,1 @@
+search_result['1060']=["topic_0000000000000259.html","IGDBService.GetSteamUrl Method","This method retrieves the Steam URL for a game based on the IGDB game ID."];

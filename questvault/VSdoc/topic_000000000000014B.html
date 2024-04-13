@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>Game.GameGenres Property</title>
+	<title>FriendshipsController.AcceptFriendRequestAsync (String) Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">Game.GameGenres Property</h1>
+		<h1 class="title">FriendshipsController.AcceptFriendRequestAsync (String) Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000125.html">questvault.Models</a>
+<a href="topic_0000000000000134.html">questvault.Controllers</a>
 
 
 
@@ -89,8 +89,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Gets or sets the list of genres associated with the game.
-Represents a many-to-many relationship with Genres.</summary-info>
+        <summary-info>Creates a friendship object between the current user and a selected user.</summary-info>
 
 
 
@@ -140,7 +139,7 @@ Represents a many-to-many relationship with Genres.</summary-info>
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">Public Property GameGenres() As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>(Of <a target="_top" href="topic_0000000000000153.html" onclick="this.target='';return true;">GameGenre</a>)</pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Function AcceptFriendRequestAsync( _&nbsp;<br />   ByVal <i>id</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -179,7 +178,7 @@ Represents a many-to-many relationship with Genres.</summary-info>
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a target="_top" href="topic_0000000000000153.html" onclick="this.target='';return true;">GameGenre</a>&gt; GameGenres {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; AcceptFriendRequestAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>id</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -219,7 +218,7 @@ Represents a many-to-many relationship with Genres.</summary-info>
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br />property <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a target="_top" href="topic_0000000000000153.html" onclick="this.target='';return true;">GameGenre</a>^&gt;^ GameGenres {&nbsp;<br /> <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a target="_top" href="topic_0000000000000153.html" onclick="this.target='';return true;">GameGenre</a>^&gt;^ get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a target="_top" href="topic_0000000000000153.html" onclick="this.target='';return true;">GameGenre</a>^&gt;^ value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ AcceptFriendRequestAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>id</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -269,10 +268,26 @@ Represents a many-to-many relationship with Genres.</summary-info>
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="id" class="parameterList">
+	<dt>
+		<span class="parameter">
+			id
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
+	</dd>
+</dl>
+<p>
+	The id of the user who recieves the friendship 
+</p>
+
+<p />
 
 	<h4 class="subHeading">
-		Property Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a target="_top" href="topic_0000000000000153.html" onclick="this.target='';return true;">GameGenre</a>&gt; 
+		Return Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; 
 	
 
 
@@ -361,11 +376,11 @@ Represents a many-to-many relationship with Genres.</summary-info>
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_000000000000013F.html">Game Class</a><br />
+			<a href="topic_0000000000000147.html">FriendshipsController Class</a><br />
 
 
 
-<a href="topic_0000000000000125.html">questvault.Models Namespace</a><br />
+<a href="topic_0000000000000134.html">questvault.Controllers Namespace</a><br />
 
 
 			

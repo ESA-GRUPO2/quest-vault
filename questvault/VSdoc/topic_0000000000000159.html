@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>GameLog.GameLogId Property</title>
+	<title>GamesController.GetReviews Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">GameLog.GameLogId Property</h1>
+		<h1 class="title">GamesController.GetReviews Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000125.html">questvault.Models</a>
+<a href="topic_0000000000000134.html">questvault.Controllers</a>
 
 
 
@@ -89,7 +89,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Gets or sets the primary key for the game log.</summary-info>
 
 
 
@@ -139,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;Key()&gt; _&nbsp;<br />Public Property GameLogId() As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">Long</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Private Function GetReviews( _&nbsp;<br />   ByVal <i>gameId</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">Integer</a>), _&nbsp;<br />   ByVal <i>currentUserLibrary</i> As <a target="_top" href="topic_000000000000020E.html" onclick="this.target='';return true;">GamesLibrary</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>(Of <a target="_top" href="topic_00000000000001FE.html" onclick="this.target='';return true;">GameLog</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[Key()]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> GameLogId {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">private <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a target="_top" href="topic_00000000000001FE.html" onclick="this.target='';return true;">GameLog</a>&gt; GetReviews(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; <i>gameId</i>,&nbsp;<br />   <a target="_top" href="topic_000000000000020E.html" onclick="this.target='';return true;">GamesLibrary</a> <i>currentUserLibrary</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[Key()]&nbsp;<br />public: &nbsp;<br />property <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> GameLogId {&nbsp;<br /> <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">private: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a target="_top" href="topic_00000000000001FE.html" onclick="this.target='';return true;">GameLog</a>^&gt;^ GetReviews(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; <i>gameId</i>,&nbsp;<br />   <a target="_top" href="topic_000000000000020E.html" onclick="this.target='';return true;">GamesLibrary</a>^ <i>currentUserLibrary</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -257,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   Key()&nbsp;<br />function get GameLogId() : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a>;&nbsp;<br />public &nbsp;<br />   Key()&nbsp;<br />function set GameLogId(value : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a>);</pre>			
+					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -268,10 +267,39 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="gameId" class="parameterList">
+	<dt>
+		<span class="parameter">
+			gameId
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+<dl paramName="currentUserLibrary" class="parameterList">
+	<dt>
+		<span class="parameter">
+			currentUserLibrary
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="topic_000000000000020E.html" onclick="this.target='';return true;">GamesLibrary</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+
+<p />
 
 	<h4 class="subHeading">
-		Property Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> 
+		Return Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a target="_top" href="topic_00000000000001FE.html" onclick="this.target='';return true;">GameLog</a>&gt; 
 	
 
 
@@ -360,11 +388,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000158.html">GameLog Class</a><br />
+			<a href="topic_0000000000000152.html">GamesController Class</a><br />
 
 
 
-<a href="topic_0000000000000125.html">questvault.Models Namespace</a><br />
+<a href="topic_0000000000000134.html">questvault.Controllers Namespace</a><br />
 
 
 			

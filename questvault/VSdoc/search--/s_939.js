@@ -1,0 +1,1 @@
+search_result['939']=["topic_000000000000020C.html","GamePlatform.IgdbPlatformId Property","Gets or sets the ID of the platform."];

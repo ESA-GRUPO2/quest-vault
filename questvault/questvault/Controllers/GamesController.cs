@@ -419,6 +419,7 @@ namespace questvault.Controllers
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
+        ViewBag.GamelogId = gameLog.GameLogId;
       }
       ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
       ViewBag.IsGameTop5 =
@@ -427,7 +428,7 @@ namespace questvault.Controllers
         userLibrary.Top5Games.Any(g => g.IgdbId == id);
 
       ViewBag.Reviews = GetReviews(id, userLibrary);
-      ViewBag.GamelogId = gameLog.GameLogId;
+      
 
       return View(game);
     }

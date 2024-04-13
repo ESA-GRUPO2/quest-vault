@@ -1,1 +1,1 @@
-search_result['576']=["topic_0000000000000123.html","sprint3.Down Method",""];
+search_result['576']=["topic_000000000000013C_overloads--.html","BackofficeController.RemovePermissions Method","Removes all permissions from a user identified by their ID."];

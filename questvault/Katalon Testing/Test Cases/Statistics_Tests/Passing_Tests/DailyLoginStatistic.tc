@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that only an administrator can check the daily logins</description>
+   <name>DailyLoginStatistic</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>8d6131a7-2c31-4be6-9e60-7e23f797680a</testCaseGuid>
+</TestCaseEntity>

@@ -1,1 +1,1 @@
-c['8']=[['9',"ConfirmEmailChangeModel Constructor","topic_0000000000000092.html",0],['10',"Properties","topic_0000000000000091_props--.html",1],['12',"Methods","topic_0000000000000091_methods--.html",1]];
+c['8']=[['9',"ConfirmEmailChangeModel Constructor","topic_00000000000000BC.html",0],['10',"Properties","topic_00000000000000B9_props--.html",1],['12',"Methods","topic_00000000000000B9_methods--.html",1],['14',"Fields","topic_00000000000000B9_vars--.html",1]];

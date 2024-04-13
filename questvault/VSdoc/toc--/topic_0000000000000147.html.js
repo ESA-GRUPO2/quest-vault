@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['381',"questvault.Models Namespace","topic_0000000000000125.html"],['412',"Game Class","topic_000000000000013F.html"],['413',"Properties","topic_000000000000013F_props--.html"],['427',"VideoUrl Property","topic_0000000000000147.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['410',"questvault.Controllers Namespace","topic_0000000000000134.html"],['436',"FriendshipsController Class","topic_0000000000000147.html"]];

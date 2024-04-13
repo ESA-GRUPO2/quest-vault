@@ -1,0 +1,1 @@
+search_result['992']=["topic_000000000000022E.html","Platform.PlatformName Property","Gets or sets the name of the gaming platform."];

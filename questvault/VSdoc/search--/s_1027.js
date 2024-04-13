@@ -1,0 +1,1 @@
+search_result['1027']=["topic_0000000000000242.html","User.Clearance Property","Gets or sets the clearance level of the user."];

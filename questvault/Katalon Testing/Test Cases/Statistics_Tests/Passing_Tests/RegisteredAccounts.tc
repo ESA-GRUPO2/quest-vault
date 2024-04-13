@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that admins can see the number of registered accounts</description>
+   <name>RegisteredAccounts</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>fb559aa3-65d0-467e-841b-6e17eb546ab0</testCaseGuid>
+</TestCaseEntity>

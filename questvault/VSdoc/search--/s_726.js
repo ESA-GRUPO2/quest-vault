@@ -1,1 +1,1 @@
-search_result['726']=["topic_000000000000017D.html","Genre.GameGenres Property","Gets or sets the list of games associated with the genre.\r\nRepresents a many-to-many relationship with Games."];
+search_result['726']=["topic_0000000000000198_methods--.html","AzureMigration Methods",""];

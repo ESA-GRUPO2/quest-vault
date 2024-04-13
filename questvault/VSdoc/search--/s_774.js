@@ -1,1 +1,1 @@
-search_result['774']=["topic_0000000000000198.html","IGDBService Constructor","Constructor that receives IGDB API credentials."];
+search_result['774']=["topic_00000000000001AD.html","removedOwnageStatus.Up Method",""];
