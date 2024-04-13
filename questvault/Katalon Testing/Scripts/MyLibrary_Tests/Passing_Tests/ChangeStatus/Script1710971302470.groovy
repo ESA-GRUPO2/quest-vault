@@ -25,7 +25,7 @@ WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
 
 WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Log in'))
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tBatista')
+WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tiagojoaobatista4@gmail.com')
 
 WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.Password'), 'LUp6avagZuk=')
 
@@ -35,13 +35,19 @@ WebUI.click(findTestObject('Object Repository/Page_Results - QuestVault/img_MyLi
 
 WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img'))
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Page_Game - QuestVault/select_Add Game                            _994cf1'), 
-    'Finished', true)
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/button_Edit GameLog'))
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Page_Game - QuestVault/select_Status                              _84ebf4'), 
-    'Complete', true)
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/button_Complete'))
 
-WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/button_Submit'))
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/span_AbandonedUnfinished and staying that way'))
+
+WebUI.selectOptionByValue(findTestObject('Object Repository/Page_Game - QuestVault/select_Complete                            _f3e361'), 
+    'Abandoned', true)
+
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/button_Save'))
+
+WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Game - QuestVault/div_The Witcher 3 Wild Hunt - Game of the Y_e16226'), 
+    0)
 
 WebUI.closeBrowser()
 

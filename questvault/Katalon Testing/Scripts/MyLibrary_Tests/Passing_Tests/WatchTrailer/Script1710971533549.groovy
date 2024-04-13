@@ -37,7 +37,7 @@ WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img'))
 
 WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/a_The Witcher 3 Wild Hunt - The Beginning trailer'))
 
-WebUI.click(findTestObject('Object Repository/Page_The Witcher 3 Wild Hunt - The Beginnin_b852ab/div_Aceitar tudo_yt-spec-touch-feedback-sha_631d3e'))
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/div_Aceitar tudo_yt-spec-touch-feedback-sha_631d3e'))
 
 WebUI.verifyElementPresent(findTestObject('Object Repository/Page_The Witcher 3 Wild Hunt - The Beginnin_b852ab/yt-icon_Anterior_logo-icon'), 
     0)

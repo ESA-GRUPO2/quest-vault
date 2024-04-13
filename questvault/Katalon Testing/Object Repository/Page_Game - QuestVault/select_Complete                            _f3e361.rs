@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>select_Complete                            _f3e361</name>
+   <tag></tag>
+   <elementGuidId>86149359-55b0-4767-9fa7-a8fca86a99fa</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>#gameStatus</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//select[@id='gameStatus']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>select</value>
+      <webElementGuid>8a00dab9-ee4f-4483-b11c-05ffde9cd97e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>selectpicker select-results</value>
+      <webElementGuid>c078f9a7-1087-43c3-b5f2-ed86efd6f330</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>name</name>
+      <type>Main</type>
+      <value>status</value>
+      <webElementGuid>9e640f56-d2ee-4b91-a7ff-53edc23eed3d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>gameStatus</value>
+      <webElementGuid>5bd72bf9-bd9b-485c-9f43-405079c73387</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>placeholder</name>
+      <type>Main</type>
+      <value>Game Status</value>
+      <webElementGuid>21806b3c-81e7-40ad-8ebd-07736c06a2c5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>
+
+                              Complete
+                            Playing
+                            Complete
+                            Retired
+                            Backlogged
+                            Abandoned
+                            Wishlist
+                          </value>
+      <webElementGuid>06d9aa6d-83be-49d4-aed1-abe241c23e0b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;gameStatus&quot;)</value>
+      <webElementGuid>ef948329-485b-49c2-b30a-36d5999e2701</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//select[@id='gameStatus']</value>
+      <webElementGuid>aca8b2d4-0cc4-417f-8c45-1be8e4791e68</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='gamelogModal']/div/div/div[2]/form/div/div/select</value>
+      <webElementGuid>a417244e-987a-4b60-92ea-f11732bd97e0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Delete Game Log'])[1]/following::select[1]</value>
+      <webElementGuid>ba96a8a6-9ff0-4250-a913-5a3e66ae599f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Add to Top5'])[1]/following::select[1]</value>
+      <webElementGuid>2c6478a4-496a-4ebf-9130-e73a8ab70d1a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Complete'])[3]/preceding::select[1]</value>
+      <webElementGuid>f7cb1215-e6c0-4140-b7b0-428fc4092dde</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Complete'])[4]/preceding::select[1]</value>
+      <webElementGuid>29080016-64f9-42d1-8013-d95c45ba3556</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//select</value>
+      <webElementGuid>de3ec4f7-5298-4b72-9663-219a354ee4d6</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//select[@name = 'status' and @id = 'gameStatus' and @placeholder = 'Game Status' and (text() = '
+
+                              Complete
+                            Playing
+                            Complete
+                            Retired
+                            Backlogged
+                            Abandoned
+                            Wishlist
+                          ' or . = '
+
+                              Complete
+                            Playing
+                            Complete
+                            Retired
+                            Backlogged
+                            Abandoned
+                            Wishlist
+                          ')]</value>
+      <webElementGuid>8a5e5e6f-7e5b-4ac6-8a2c-e54a441b1e12</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

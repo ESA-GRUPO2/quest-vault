@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_MyLibrary</name>
+   <name>a_Log in</name>
    <tag></tag>
-   <elementGuidId>464715df-6847-431c-811b-a737e3a0b1ba</elementGuidId>
+   <elementGuidId>571d2b59-071c-4753-9e99-45fed520375f</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>a.btn.btn-primary.nav-btn-2</value>
+         <value>a.btn.btn-primary.nav-btn</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[4]/a</value>
+         <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
-   <smartLocatorCollection>
-      <entry>
-         <key>SMART_LOCATOR</key>
-         <value>internal:role=link[name=&quot;FilePen Icon MyLibrary&quot;i]</value>
-      </entry>
-   </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
@@ -29,23 +23,23 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>f0dd16ed-d7b6-42ab-9fb7-8a02b96ee583</webElementGuid>
+      <webElementGuid>9aff4855-ba0d-40ec-a009-60d12d624b20</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>btn btn-primary nav-btn-2</value>
-      <webElementGuid>103cd92e-986b-4103-9bae-dbdd2a063dff</webElementGuid>
+      <value>btn btn-primary nav-btn</value>
+      <webElementGuid>add51e7d-9c7c-49bd-a585-187b571c7c8f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>href</name>
       <type>Main</type>
-      <value>/UserLibrary</value>
-      <webElementGuid>6cc09578-594b-4fc5-bc79-0276bd61ca42</webElementGuid>
+      <value>/Identity/Account/Login</value>
+      <webElementGuid>939ef88a-66b2-4005-ae0c-463cdd6ec638</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -53,76 +47,68 @@
       <name>text</name>
       <type>Main</type>
       <value>
-                         MyLibrary
+                         Log in
                     </value>
-      <webElementGuid>9827b460-1910-4eb0-acc4-45735d312a3f</webElementGuid>
+      <webElementGuid>38ca47df-ebb3-4de0-840a-8550b35aa429</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn-2&quot;]</value>
-      <webElementGuid>e6a59276-4d8a-4535-8f59-fc03deb9f3fd</webElementGuid>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn&quot;]</value>
+      <webElementGuid>f532a551-49a0-433a-96f8-3a58cf593645</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li[4]/a</value>
-      <webElementGuid>4c66c977-71d4-43c0-8e5f-5c891a7d5693</webElementGuid>
+      <value>//div[@id='navbarSupportedContent']/ul/li/a</value>
+      <webElementGuid>fed31a6f-19d0-42b9-98fc-ccafe8a8e38a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::a[1]</value>
-      <webElementGuid>fa0107eb-6398-4524-b1c4-97679a0e8edf</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::a[2]</value>
+      <webElementGuid>2366119e-d0ac-444e-8b90-b6572b2748d1</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Profile'])[1]/preceding::a[2]</value>
-      <webElementGuid>f45edc72-2fff-4b98-99d7-b75b0141e50f</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:neighbor</name>
-      <type>Main</type>
-      <value>//*/text()[normalize-space(.)='MyLibrary']/parent::*</value>
-      <webElementGuid>0eee15ec-6ece-49fa-ae5d-b1caad35ad7e</webElementGuid>
+      <value>//*/text()[normalize-space(.)='Log in']/parent::*</value>
+      <webElementGuid>86ebf8b0-1889-4030-8c1b-108906f7ef50</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:href</name>
       <type>Main</type>
-      <value>//a[contains(@href, '/UserLibrary')]</value>
-      <webElementGuid>6284ef51-32e0-4def-aace-8715586addad</webElementGuid>
+      <value>//a[contains(@href, '/Identity/Account/Login')]</value>
+      <webElementGuid>67f98aca-b003-4789-a6a7-5b1c7dce31f6</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li[4]/a</value>
-      <webElementGuid>da71b268-716f-4526-8ebe-ce047ddd798b</webElementGuid>
+      <value>//li/a</value>
+      <webElementGuid>87a49e9c-c00f-49d2-aaeb-c5bdd7e4f7a3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = '/UserLibrary' and (text() = '
-                         MyLibrary
+      <value>//a[@href = '/Identity/Account/Login' and (text() = '
+                         Log in
                     ' or . = '
-                         MyLibrary
+                         Log in
                     ')]</value>
-      <webElementGuid>4c6dec58-9a45-455f-98d7-7e1469a1020e</webElementGuid>
+      <webElementGuid>6387e95d-2383-4231-8233-357bd27d300e</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

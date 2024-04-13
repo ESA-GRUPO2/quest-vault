@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>iframe_Screenshots_card-img col-md-2</name>
+   <name>iframe_Screenshots_card-img col-md-2_1</name>
    <tag></tag>
-   <elementGuidId>6a15681f-5fab-4ac6-a1ca-73a84b1ab4e5</elementGuidId>
+   <elementGuidId>f49bb5eb-7f29-4e99-b84e-f07469a9e1f0</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
@@ -11,16 +11,10 @@
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//iframe</value>
+         <value>//div[@id='main-body']/main/div/section[2]/div/div[2]/iframe</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
-   <smartLocatorCollection>
-      <entry>
-         <key>SMART_LOCATOR</key>
-         <value>iframe</value>
-      </entry>
-   </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
@@ -29,7 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>iframe</value>
-      <webElementGuid>5c0a19b7-61c3-459e-8cb4-ca9e84143625</webElementGuid>
+      <webElementGuid>dad96862-65aa-4d72-bffc-025a60ec0b2f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +31,7 @@
       <name>class</name>
       <type>Main</type>
       <value>card-img col-md-2</value>
-      <webElementGuid>7a09216e-0d66-4498-9588-2ce3e1f99f8b</webElementGuid>
+      <webElementGuid>c458e724-c81a-4316-b890-66a8c6cd28eb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +39,7 @@
       <name>width</name>
       <type>Main</type>
       <value>280</value>
-      <webElementGuid>9bd48d95-e9b1-42f6-8be7-5159b1137fb1</webElementGuid>
+      <webElementGuid>09fb6fb7-d8d4-4aa3-a307-0f9bb0809445</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,15 +47,15 @@
       <name>height</name>
       <type>Main</type>
       <value>318</value>
-      <webElementGuid>b8dce11c-e9d5-401f-9f08-996d4fd4cb09</webElementGuid>
+      <webElementGuid>2f75f55a-75b7-41a8-9b27-ecaee15a3fff</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>src</name>
       <type>Main</type>
-      <value>https://www.youtube.com/embed/5nLipy-Z4yo</value>
-      <webElementGuid>63772bb0-67e1-4d3e-b368-553e2c0a0f6f</webElementGuid>
+      <value>https://www.youtube.com/embed/Upp8cuRmRfQ</value>
+      <webElementGuid>ac545e55-f70d-426c-8f09-7d7917c35b38</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,30 +63,38 @@
       <name>frameborder</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>7c764d98-8bda-4ed5-8a29-61c38dfcd8ea</webElementGuid>
+      <webElementGuid>acb5f06b-011b-4043-a0c8-b35233506130</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;game-details&quot;]/section[@class=&quot;d-flex main-section&quot;]/div[@class=&quot;container-fluid justify-content-between mt-3&quot;]/div[@class=&quot;game-captures align-bottom&quot;]/iframe[@class=&quot;card-img col-md-2&quot;]</value>
-      <webElementGuid>ec0005e1-5ccb-434d-a0f1-43c86989368a</webElementGuid>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;game-details&quot;]/section[@class=&quot;d-flex&quot;]/div[@class=&quot;container-fluid justify-content-between mt-3&quot;]/div[@class=&quot;game-captures align-bottom&quot;]/iframe[@class=&quot;card-img col-md-2&quot;]</value>
+      <webElementGuid>39a0b5fa-541f-486e-9fcb-f8e5751655b9</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/section[2]/div/div[2]/iframe</value>
+      <webElementGuid>465e9ddd-207e-456a-bce9-6f1b8d15dac4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
       <value>//iframe</value>
-      <webElementGuid>b0556af2-1c09-401e-96b5-fbdca925942e</webElementGuid>
+      <webElementGuid>748b9376-1a34-4b52-af73-7c4055ee94f0</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//iframe[@src = 'https://www.youtube.com/embed/5nLipy-Z4yo']</value>
-      <webElementGuid>df88b2b1-6646-486c-8e89-67d22b38a6ff</webElementGuid>
+      <value>//iframe[@src = 'https://www.youtube.com/embed/Upp8cuRmRfQ']</value>
+      <webElementGuid>6d3aa084-af33-4436-8a67-f599403495d4</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
