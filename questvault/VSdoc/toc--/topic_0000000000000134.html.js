@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['381',"questvault.Models Namespace","topic_0000000000000125.html"],['398',"FriendshipRequest Class","topic_0000000000000133.html"],['399',"Properties","topic_0000000000000133_props--.html"],['404',"SenderId Property","topic_0000000000000134.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['410',"questvault.Controllers Namespace","topic_0000000000000134.html"]];

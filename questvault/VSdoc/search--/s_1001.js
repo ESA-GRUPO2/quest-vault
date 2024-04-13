@@ -1,0 +1,1 @@
+search_result['1001']=["topic_0000000000000232.html","Statistics.gameRatingAverage Property","Gets or sets the average game rating."];

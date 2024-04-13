@@ -1,0 +1,1 @@
+search_result['1007']=["topic_0000000000000238.html","Statistics.GenreCount Property","Gets or sets the count of games per genre."];

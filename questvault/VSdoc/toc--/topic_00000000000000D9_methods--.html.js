@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['4',"questvault.Areas.Identity.Pages.Account Namespace","topic_000000000000000E.html"],['61',"ForgotPasswordModel Class","topic_00000000000000D9.html"],['67',"Methods","topic_00000000000000D9_methods--.html"]];

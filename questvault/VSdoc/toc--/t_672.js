@@ -1,0 +1,1 @@
+c['672']=[['673',"Games Property","topic_000000000000021E.html",0],['674',"Genres Property","topic_000000000000021F.html",0],['675',"NumberOfResults Property","topic_000000000000021D.html",0],['676',"Platforms Property","topic_0000000000000220.html",0],['677',"SearchTerm Property","topic_000000000000021C.html",0]];

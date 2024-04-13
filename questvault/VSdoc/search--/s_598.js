@@ -1,1 +1,1 @@
-search_result['598']=["topic_000000000000012E_attached_props--.html","Friendship Attached Properties",""];
+search_result['598']=["topic_0000000000000147_props--.html","FriendshipsController Properties",""];

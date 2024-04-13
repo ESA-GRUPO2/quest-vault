@@ -1,1 +1,1 @@
-search_result['643']=["topic_0000000000000148.html","Game.QvRating Property","Gets or sets the rating of the game for our app.\r\nQV -\u003e QuestVault"];
+search_result['643']=["topic_0000000000000161.html","HomeController.IndexAsync Method","Handles the default landing page of the application."];

@@ -1,0 +1,1 @@
+search_result['1052']=["topic_0000000000000251.html","IGDBService.BuildGameCompanyFromIGDBData Method","Builds a GameCompany object from IGDB game company data."];

@@ -1,1 +1,1 @@
-search_result['780']=["topic_000000000000019E.html","IGDBService.GetPlatforms Method",""];
+search_result['780']=["topic_00000000000001B0_methods--.html","adminStats Methods",""];
