@@ -55,10 +55,20 @@ namespace questvault.Controllers
     /// Retrieves all users from the database and displays them.
     /// </summary>
     /// <returns>The view containing all users.</returns>
+    [Authorize]
     public async Task<IActionResult> AllUsersAsync()
     {
+      var user = await _signInManager.UserManager.GetUserAsync(User);
+      if (user.Clearance > 1)
+      {
       var dbContext = _context.Users;
       return View(await dbContext.ToListAsync());
+
+      }else
+      {
+        return Redirect("/Identity/Account/Login");
+      }
+
     }
 
     /// <summary>
