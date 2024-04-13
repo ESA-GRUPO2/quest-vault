@@ -27,7 +27,9 @@ jobs:
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
 
     - name: Build
-      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} /p:ConnectionStrings:ProductionConnection= \"${{ env.AZURE_SQL_CONNECTION_STRING }}\" --no-restore -v d
+      env: 
+        configuration: ${{ env.CONFIGURATION }} /p:ConnectionStrings:ProductionConnection= "${{ env.AZURE_SQL_CONNECTION_STRING }}"
+      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ configuration }} --no-restore -v d
 
     - name: Test
       run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
