@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_Username_Input.NewUserName</name>
+   <name>input_Log in_Input.EmailUserName</name>
    <tag></tag>
-   <elementGuidId>744bcf0c-0cda-40e5-946a-5d7bd6ffc392</elementGuidId>
+   <elementGuidId>4a4d9ab1-8238-4358-9def-f8e682d86d6f</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value>//*[@id = 'inputName' and @placeholder = 'Tiago' and @name = 'Input.NewUserName']</value>
-      </entry>
-      <entry>
          <key>CSS</key>
-         <value>#inputName</value>
+         <value>#username</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//input[@id='inputName']</value>
+         <value>//input[@id='username']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>BASIC</selectorMethod>
-   <smartLocatorCollection>
-      <entry>
-         <key>SMART_LOCATOR</key>
-         <value>internal:attr=[placeholder=&quot;Tiago&quot;s]</value>
-      </entry>
-   </smartLocatorCollection>
+   <selectorMethod>XPATH</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
@@ -33,15 +23,15 @@
       <name>tag</name>
       <type>Main</type>
       <value>input</value>
-      <webElementGuid>8d569aa1-de78-4968-a16b-3f48e389dc80</webElementGuid>
+      <webElementGuid>01c36e2c-de90-4d61-ba5a-1276a445077f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>false</isSelected>
+      <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>type</name>
       <type>Main</type>
       <value>text</value>
-      <webElementGuid>02953be4-33d5-4627-b39e-ad61f84bed2b</webElementGuid>
+      <webElementGuid>f4a9cc2c-47f4-4b49-a3b7-e541b1e560e2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,23 +39,39 @@
       <name>class</name>
       <type>Main</type>
       <value>form-control-login</value>
-      <webElementGuid>1f0d1cc3-1fd5-4ffd-ac0f-6d8265b45d51</webElementGuid>
+      <webElementGuid>f9447a2f-ad7e-47f9-b4b8-c7f1ed440b13</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>id</name>
       <type>Main</type>
-      <value>inputName</value>
-      <webElementGuid>c7271e0b-3b7b-4aca-9526-132f3eac97ff</webElementGuid>
+      <value>username</value>
+      <webElementGuid>ea49b928-7f9b-414a-aa3b-defb919b2027</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>placeholder</name>
       <type>Main</type>
-      <value>Tiago</value>
-      <webElementGuid>cc48a34d-3cbd-4464-b8e1-8ad222d177a9</webElementGuid>
+      <value>Email/Username</value>
+      <webElementGuid>42c26c63-6c22-487c-8b09-916614012846</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>autocomplete</name>
+      <type>Main</type>
+      <value>username</value>
+      <webElementGuid>b6df7362-aa5c-4c15-9eaf-8b8570ea1536</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-required</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>de4c2f6b-10a3-464d-b5ef-e1997fa87ba8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,78 +79,62 @@
       <name>data-val</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>b0fdde5a-f478-42dc-8372-62da9bbd55f0</webElementGuid>
+      <webElementGuid>c89270f2-7a43-4ba2-8a70-251189cf02b4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>data-val-length</name>
+      <name>data-val-required</name>
       <type>Main</type>
-      <value>This user name already exits.</value>
-      <webElementGuid>e3b128ae-9bed-4184-b241-095ca9c77265</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>data-val-length-max</name>
-      <type>Main</type>
-      <value>100</value>
-      <webElementGuid>76682a4a-b68e-46a8-8881-5541074166fb</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>maxlength</name>
-      <type>Main</type>
-      <value>100</value>
-      <webElementGuid>b0951f6d-6a4e-4b02-a564-17288da8571e</webElementGuid>
+      <value>The EmailUserName field is required.</value>
+      <webElementGuid>5bd06cb9-32ad-4ed5-a9fb-03d9a931c79f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>name</name>
       <type>Main</type>
-      <value>Input.NewUserName</value>
-      <webElementGuid>1d68e75b-3d95-458e-9573-b3b69fea460e</webElementGuid>
+      <value>Input.EmailUserName</value>
+      <webElementGuid>3e4c394a-4566-4aaf-8fa1-2ee056165f2e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;inputName&quot;)</value>
-      <webElementGuid>043d4416-48f3-4362-a396-1c5754b0572b</webElementGuid>
+      <value>id(&quot;username&quot;)</value>
+      <webElementGuid>18d6253d-a347-420f-8c77-f7c69b5f7650</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//input[@id='inputName']</value>
-      <webElementGuid>71b6eff3-3229-40fb-b009-bb3f1bf69c1d</webElementGuid>
+      <value>//input[@id='username']</value>
+      <webElementGuid>a6acdd77-c8d5-4d20-b359-79c6dd649cee</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//form[@id='change-username-form']/div[2]/div/input</value>
-      <webElementGuid>c35c485f-1906-49b7-aeff-061c8d84603d</webElementGuid>
+      <value>//form[@id='account']/div/input</value>
+      <webElementGuid>fc0981cf-cf32-4d4f-b439-52aa4cd44dc9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//div[2]/div/input</value>
-      <webElementGuid>2d71c34f-0fa1-4155-93fb-4b117ce5cf2f</webElementGuid>
+      <value>//input</value>
+      <webElementGuid>46594f4a-1498-4304-81ac-64f8f635fcc5</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//input[@type = 'text' and @id = 'inputName' and @placeholder = 'Tiago' and @name = 'Input.NewUserName']</value>
-      <webElementGuid>cf35338a-6186-4b34-a23c-faf0f3067929</webElementGuid>
+      <value>//input[@type = 'text' and @id = 'username' and @placeholder = 'Email/Username' and @name = 'Input.EmailUserName']</value>
+      <webElementGuid>29c436d5-ba79-4e44-86ce-55b350e741ba</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

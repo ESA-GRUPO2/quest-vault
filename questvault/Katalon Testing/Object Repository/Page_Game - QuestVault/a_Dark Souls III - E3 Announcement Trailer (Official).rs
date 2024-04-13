@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_The Witcher 3 Wild Hunt - The Beginning trailer</name>
+   <name>a_Dark Souls III - E3 Announcement Trailer (Official)</name>
    <tag></tag>
-   <elementGuidId>8d786647-1e23-4d2b-a654-f5794a124c0b</elementGuidId>
+   <elementGuidId>d5796ad0-4bb9-4b67-ae9a-33be60dc1888</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
@@ -15,12 +15,6 @@
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
-   <smartLocatorCollection>
-      <entry>
-         <key>SMART_LOCATOR</key>
-         <value>internal:role=link[name=&quot;The Witcher 3: Wild Hunt - The Beginning trailer&quot;i]</value>
-      </entry>
-   </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
@@ -29,7 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>987be412-465a-4968-8490-8abf47bd48f2</webElementGuid>
+      <webElementGuid>44779f88-aa77-4a98-aa28-fd4899274609</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +31,7 @@
       <name>class</name>
       <type>Main</type>
       <value>ytp-title-link yt-uix-sessionlink</value>
-      <webElementGuid>eb188f0d-1829-4462-8c24-b7f8d1edcee2</webElementGuid>
+      <webElementGuid>c31ebb77-716b-43b2-acc0-359be3e012ab</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +39,7 @@
       <name>target</name>
       <type>Main</type>
       <value>_blank</value>
-      <webElementGuid>406a6383-041c-47c0-9caf-f658b1c9045e</webElementGuid>
+      <webElementGuid>41146065-6012-4111-bc80-18b65f0933aa</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +47,7 @@
       <name>data-sessionlink</name>
       <type>Main</type>
       <value>feature=player-title</value>
-      <webElementGuid>794316d6-8c74-4289-a256-c8d4316a9737</webElementGuid>
+      <webElementGuid>ba9d64e9-421c-4765-aab9-9583ec8a661b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,23 +55,23 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>5e924732-74cb-49a5-ae6f-aefe91af2e77</webElementGuid>
+      <webElementGuid>31cc6d23-601d-4e74-a468-16d2daa97278</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>href</name>
       <type>Main</type>
-      <value>https://www.youtube.com/watch?v=5nLipy-Z4yo</value>
-      <webElementGuid>8aa48330-c6b1-48e1-8a78-aa9b20cd76eb</webElementGuid>
+      <value>https://www.youtube.com/watch?v=Upp8cuRmRfQ</value>
+      <webElementGuid>79370959-60c4-4d33-b702-cda0b47aae3b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>The Witcher 3: Wild Hunt - The Beginning trailer</value>
-      <webElementGuid>6babbe49-3e7e-485e-8e8a-cfa4c0a7e71c</webElementGuid>
+      <value>Dark Souls III - E3 Announcement Trailer (Official)</value>
+      <webElementGuid>ea6c4ec6-b26e-4053-8cab-7e38ac46d6fc</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -85,15 +79,15 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;movie_player&quot;)/div[@class=&quot;ytp-chrome-top ytp-show-cards-title&quot;]/div[@class=&quot;ytp-title&quot;]/div[@class=&quot;ytp-title-text&quot;]/a[@class=&quot;ytp-title-link yt-uix-sessionlink&quot;]</value>
-      <webElementGuid>5c29b7e3-667a-4058-b718-c3fe02645033</webElementGuid>
+      <webElementGuid>c3e2d1a5-8e50-450d-b0bf-e5d6d864b337</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>ref_element</name>
       <type>Main</type>
-      <value>Object Repository/Page_Game - QuestVault/iframe_Screenshots_card-img col-md-2</value>
-      <webElementGuid>9993a3bb-dfc7-4f77-a07d-3614ce50e4a8</webElementGuid>
+      <value>Object Repository/Page_Game - QuestVault/iframe_Screenshots_card-img col-md-2_1</value>
+      <webElementGuid>cdaa908a-a3d9-4864-a7fb-82e9f8880899</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -101,15 +95,15 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='movie_player']/div[3]/div[2]/div/a</value>
-      <webElementGuid>e018bd2f-000e-469e-9284-baacaca8b0b0</webElementGuid>
+      <webElementGuid>d9fedc63-d27e-4357-8240-d75b3d245228</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:link</name>
       <type>Main</type>
-      <value>//a[contains(text(),'The Witcher 3: Wild Hunt - The Beginning trailer')]</value>
-      <webElementGuid>3e53f208-6307-41c1-b57b-02258abd3c09</webElementGuid>
+      <value>//a[contains(text(),'Dark Souls III - E3 Announcement Trailer (Official)')]</value>
+      <webElementGuid>ce98f590-f0c3-4f1e-a2f1-62d38566b159</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,7 +111,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='IGDBcom'])[2]/preceding::a[3]</value>
-      <webElementGuid>554652e1-f34c-45c9-9970-e604bd9c46e8</webElementGuid>
+      <webElementGuid>35fda772-268d-478d-b433-8394bb65f9b2</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -125,23 +119,23 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Pesquisa'])[1]/preceding::a[4]</value>
-      <webElementGuid>11585918-48ff-4d64-98dd-b5a5b952188b</webElementGuid>
+      <webElementGuid>de4aa535-b58f-4713-97f7-36b00b61a9e3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>//*/text()[normalize-space(.)='The Witcher 3: Wild Hunt - The Beginning trailer']/parent::*</value>
-      <webElementGuid>8415087f-2c63-49c0-9ee2-4b27d8f7a3f3</webElementGuid>
+      <value>//*/text()[normalize-space(.)='Dark Souls III - E3 Announcement Trailer (Official)']/parent::*</value>
+      <webElementGuid>acd82166-453a-47b7-a2dc-0c926ced715c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:href</name>
       <type>Main</type>
-      <value>//a[contains(@href, 'https://www.youtube.com/watch?v=5nLipy-Z4yo')]</value>
-      <webElementGuid>fd6beccf-ba7f-4129-8fee-ced9b73a0d34</webElementGuid>
+      <value>//a[contains(@href, 'https://www.youtube.com/watch?v=Upp8cuRmRfQ')]</value>
+      <webElementGuid>1a9ddee1-9e7e-4930-89b2-4d2d48354788</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -149,14 +143,14 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div[2]/div/a</value>
-      <webElementGuid>2faa83a3-f014-442d-9cb8-25feb47dc893</webElementGuid>
+      <webElementGuid>bf1302c9-95ba-4f25-8d59-6bc3f683c66c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = 'https://www.youtube.com/watch?v=5nLipy-Z4yo' and (text() = 'The Witcher 3: Wild Hunt - The Beginning trailer' or . = 'The Witcher 3: Wild Hunt - The Beginning trailer')]</value>
-      <webElementGuid>1f13d034-739e-42de-ad44-2984458a25a4</webElementGuid>
+      <value>//a[@href = 'https://www.youtube.com/watch?v=Upp8cuRmRfQ' and (text() = 'Dark Souls III - E3 Announcement Trailer (Official)' or . = 'Dark Souls III - E3 Announcement Trailer (Official)')]</value>
+      <webElementGuid>d94afe06-7ff4-4aeb-87be-8906e418bfa1</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

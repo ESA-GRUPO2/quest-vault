@@ -6,6 +6,10 @@
    <elementGuidId>294cc16e-755a-4e15-951a-c103ae689085</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>BASIC</key>
+         <value>//*[@id = 'icon-trash' and @src = '/img/vector/trash-can-solid.svg' and @alt = 'Trash Can Icon']</value>
+      </entry>
+      <entry>
          <key>CSS</key>
          <value>#icon-trash</value>
       </entry>
@@ -14,7 +18,7 @@
          <value>//img[@id='icon-trash']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>6a6b0a41-9311-4913-9a49-9ff0ace7a6b0</webElementGuid>
+      <webElementGuid>710a30ef-1fdd-4dc3-91b4-f518aefbe024</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -37,7 +41,7 @@
       <name>id</name>
       <type>Main</type>
       <value>icon-trash</value>
-      <webElementGuid>70de99bc-2b19-442d-bc91-12eaad07afdb</webElementGuid>
+      <webElementGuid>9185acf9-493b-44d2-a8f9-4e6fb44ce3cb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>class</name>
       <type>Main</type>
       <value>nav-vector</value>
-      <webElementGuid>3df60609-d14a-46bc-9995-6b13153692bc</webElementGuid>
+      <webElementGuid>5665f457-e0d2-4665-822c-df2093935269</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -53,7 +57,7 @@
       <name>src</name>
       <type>Main</type>
       <value>/img/vector/trash-can-solid.svg</value>
-      <webElementGuid>e5b73aa0-92e5-4b99-aa6a-21e305ce9bcf</webElementGuid>
+      <webElementGuid>20fa9f23-ac60-4eb1-86c2-64fa3ea4ed8d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -61,7 +65,7 @@
       <name>alt</name>
       <type>Main</type>
       <value>Trash Can Icon</value>
-      <webElementGuid>504167e2-3140-45aa-a3b6-22cc1ee961ea</webElementGuid>
+      <webElementGuid>f52a0486-f4f0-4cbf-801c-b410548f0d63</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,7 +73,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;icon-trash&quot;)</value>
-      <webElementGuid>ca1c0d73-7af8-41b4-b2a4-5e92a97c9af1</webElementGuid>
+      <webElementGuid>9d31a095-31d2-480f-ae22-409b97468ca4</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -77,7 +81,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//img[@id='icon-trash']</value>
-      <webElementGuid>54a78788-fea1-4e4c-9677-05e9ccd0822d</webElementGuid>
+      <webElementGuid>d1e30a42-7992-4a97-b8b8-d829b5cec279</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +89,7 @@
       <name>xpath:img</name>
       <type>Main</type>
       <value>//img[@alt='Trash Can Icon']</value>
-      <webElementGuid>5608aa48-8cc1-4f34-952b-30def93ed670</webElementGuid>
+      <webElementGuid>e1f3b511-7d87-4ee9-b6f5-6108db741003</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,7 +97,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//td/a/img</value>
-      <webElementGuid>fa1d39a5-8d08-47cc-9cfa-92ccdf44801e</webElementGuid>
+      <webElementGuid>94f2a723-7890-4beb-93b6-dfef246c42f9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -101,6 +105,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//img[@id = 'icon-trash' and @src = '/img/vector/trash-can-solid.svg' and @alt = 'Trash Can Icon']</value>
-      <webElementGuid>ef4846ef-c8cb-42bf-a2de-71631814c863</webElementGuid>
+      <webElementGuid>1cca1556-2942-4266-8404-72a19df17fe8</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_MyLibrary</name>
+   <name>a_Games</name>
    <tag></tag>
-   <elementGuidId>464715df-6847-431c-811b-a737e3a0b1ba</elementGuidId>
+   <elementGuidId>8fdae90d-c34b-43ea-9fc4-8f34c51acdcf</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>a.btn.btn-primary.nav-btn-2</value>
+         <value>a.btn.btn-primary.nav-btn</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[4]/a</value>
+         <value>//div[@id='navbarSupportedContent']/ul/li[3]/a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
-   <smartLocatorCollection>
-      <entry>
-         <key>SMART_LOCATOR</key>
-         <value>internal:role=link[name=&quot;FilePen Icon MyLibrary&quot;i]</value>
-      </entry>
-   </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
@@ -29,23 +23,23 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>f0dd16ed-d7b6-42ab-9fb7-8a02b96ee583</webElementGuid>
+      <webElementGuid>9e3aada1-ad83-4dba-9e4f-b8ebfb44d8dd</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>btn btn-primary nav-btn-2</value>
-      <webElementGuid>103cd92e-986b-4103-9bae-dbdd2a063dff</webElementGuid>
+      <value>btn btn-primary nav-btn</value>
+      <webElementGuid>e5628546-4085-4059-813a-76f2605c0e64</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>href</name>
       <type>Main</type>
-      <value>/UserLibrary</value>
-      <webElementGuid>6cc09578-594b-4fc5-bc79-0276bd61ca42</webElementGuid>
+      <value>/Games</value>
+      <webElementGuid>bda1090c-236b-4dea-ab83-510176b8000c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -53,76 +47,68 @@
       <name>text</name>
       <type>Main</type>
       <value>
-                         MyLibrary
+                         Games
                     </value>
-      <webElementGuid>9827b460-1910-4eb0-acc4-45735d312a3f</webElementGuid>
+      <webElementGuid>56b9ce39-2df4-4641-9c40-869d1a498c3f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn-2&quot;]</value>
-      <webElementGuid>e6a59276-4d8a-4535-8f59-fc03deb9f3fd</webElementGuid>
+      <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn&quot;]</value>
+      <webElementGuid>140d2c0c-9953-4cdb-8122-ffa41df41046</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='navbarSupportedContent']/ul/li[4]/a</value>
-      <webElementGuid>4c66c977-71d4-43c0-8e5f-5c891a7d5693</webElementGuid>
+      <value>//div[@id='navbarSupportedContent']/ul/li[3]/a</value>
+      <webElementGuid>43cc32a2-96cf-49a0-b8af-c8874450d74d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::a[1]</value>
-      <webElementGuid>fa0107eb-6398-4524-b1c4-97679a0e8edf</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::a[2]</value>
+      <webElementGuid>d9c2d78b-9154-4f8a-a5ce-6f6eb84823c4</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Profile'])[1]/preceding::a[2]</value>
-      <webElementGuid>f45edc72-2fff-4b98-99d7-b75b0141e50f</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:neighbor</name>
-      <type>Main</type>
-      <value>//*/text()[normalize-space(.)='MyLibrary']/parent::*</value>
-      <webElementGuid>0eee15ec-6ece-49fa-ae5d-b1caad35ad7e</webElementGuid>
+      <value>//*/text()[normalize-space(.)='Games']/parent::*</value>
+      <webElementGuid>e569269e-c3d9-4084-b4f1-7e8fc8843bf2</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:href</name>
       <type>Main</type>
-      <value>//a[contains(@href, '/UserLibrary')]</value>
-      <webElementGuid>6284ef51-32e0-4def-aace-8715586addad</webElementGuid>
+      <value>//a[contains(@href, '/Games')]</value>
+      <webElementGuid>159d40f8-82ef-4740-a3f7-529cf1282d53</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//li[4]/a</value>
-      <webElementGuid>da71b268-716f-4526-8ebe-ce047ddd798b</webElementGuid>
+      <value>//li[3]/a</value>
+      <webElementGuid>949be6f5-c5a7-4d92-9495-0d3dd0437ca3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//a[@href = '/UserLibrary' and (text() = '
-                         MyLibrary
+      <value>//a[@href = '/Games' and (text() = '
+                         Games
                     ' or . = '
-                         MyLibrary
+                         Games
                     ')]</value>
-      <webElementGuid>4c6dec58-9a45-455f-98d7-7e1469a1020e</webElementGuid>
+      <webElementGuid>a9f4fad7-7d15-4eed-9b29-f5728c982bff</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

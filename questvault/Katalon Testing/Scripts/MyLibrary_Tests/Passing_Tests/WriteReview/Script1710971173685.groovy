@@ -31,7 +31,7 @@ WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input
 
 WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Games'))
+WebUI.click(findTestObject('Page_Home - QuestVault/a_MyLibrary'))
 
 WebUI.click(findTestObject('Object Repository/Page_Results - QuestVault/img'))
 

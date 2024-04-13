@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>img</name>
+   <tag></tag>
+   <elementGuidId>f8c652f7-6ceb-462d-9b88-e892c2f90ced</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>a.game-button > img</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[2]/div/a/img</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>64a6bdd9-db15-4ed7-92f5-73776681e53e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>//images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg</value>
+      <webElementGuid>739e3e7b-6836-4f86-b84c-388e7fd8c3e2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;results-game&quot;]/div[@class=&quot;d-flex main-section-result&quot;]/div[@class=&quot;game-section&quot;]/div[@class=&quot;game-row&quot;]/a[@class=&quot;game-button&quot;]/img[1]</value>
+      <webElementGuid>2d7cf0d8-94f4-4d49-8ae9-974f733dbc2a</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/div/a/img</value>
+      <webElementGuid>ec527aee-9e04-4d62-8593-be2a290c9253</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//img[@src = '//images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg']</value>
+      <webElementGuid>586be005-e88c-44a8-bff5-14b20ff35cc6</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

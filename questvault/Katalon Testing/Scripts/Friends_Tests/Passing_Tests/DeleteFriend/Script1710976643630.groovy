@@ -37,6 +37,8 @@ WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Friends')
 
 WebUI.click(findTestObject('Object Repository/Page_Friends - QuestVault/img_Teste_icon-trash'))
 
+WebUI.acceptAlert()
+
 WebUI.verifyElementText(findTestObject('Object Repository/Page_Friends - QuestVault/h2_No friends'), 'No friends!')
 
 WebUI.closeBrowser()

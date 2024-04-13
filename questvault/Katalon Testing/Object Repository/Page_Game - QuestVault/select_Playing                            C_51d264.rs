@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>select_Playing                            C_51d264</name>
+   <tag></tag>
+   <elementGuidId>8319132f-9c18-4958-b74c-befa49f879dd</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>#gameStatus</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//select[@id='gameStatus']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>select</value>
+      <webElementGuid>11c1472d-269e-49f5-b38e-04b1e63424a4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>selectpicker select-results</value>
+      <webElementGuid>15431391-4c47-49f1-89fc-37f1137e2de4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>name</name>
+      <type>Main</type>
+      <value>status</value>
+      <webElementGuid>7753c332-c333-4a11-b064-569f4c59274c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>gameStatus</value>
+      <webElementGuid>772247da-d0de-47ff-8b86-7adb71c124ae</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>placeholder</name>
+      <type>Main</type>
+      <value>Game Status</value>
+      <webElementGuid>72bab2e9-27af-4576-a788-1ad729b4ac87</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>
+
+                            Playing
+                            Complete
+                            Retired
+                            Backlogged
+                            Abandoned
+                            Wishlist
+                          </value>
+      <webElementGuid>3c571ca2-4e2f-4ff1-92f1-5ab79ac12a90</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;gameStatus&quot;)</value>
+      <webElementGuid>da92e540-489d-466e-ae10-ec11d1ccab0f</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//select[@id='gameStatus']</value>
+      <webElementGuid>a8ea1faa-aa9c-4479-81cc-e220ab3176fc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='gamelogModal']/div/div/div[2]/form/div/div/select</value>
+      <webElementGuid>654e046a-df64-47e4-b634-13ab8b69b405</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Game Log'])[1]/following::select[1]</value>
+      <webElementGuid>7b17b142-6b49-4e46-8350-2b2362af820d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Add Game'])[1]/following::select[1]</value>
+      <webElementGuid>ce9dc156-abbe-4ea7-b765-2e7b02f5b6ba</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Game Status'])[1]/preceding::select[1]</value>
+      <webElementGuid>a30839a5-8e65-47c4-8b0d-8d4331e11b89</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//select</value>
+      <webElementGuid>b87f853f-5abb-4a1f-95bc-632cc8d95839</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//select[@name = 'status' and @id = 'gameStatus' and @placeholder = 'Game Status' and (text() = '
+
+                            Playing
+                            Complete
+                            Retired
+                            Backlogged
+                            Abandoned
+                            Wishlist
+                          ' or . = '
+
+                            Playing
+                            Complete
+                            Retired
+                            Backlogged
+                            Abandoned
+                            Wishlist
+                          ')]</value>
+      <webElementGuid>436e11bf-ccd5-4c09-9c90-725920703f54</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
