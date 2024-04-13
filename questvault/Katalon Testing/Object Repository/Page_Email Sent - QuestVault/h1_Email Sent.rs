@@ -6,12 +6,12 @@
    <elementGuidId>6909eab3-69ed-4771-80b1-2939dede3948</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value></value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>h1.h1-forgotp</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::h1[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>h1</value>
-      <webElementGuid>d873319a-15a3-4c1e-af76-d467752a8a0d</webElementGuid>
+      <webElementGuid>a92be086-9351-471a-a504-9dfe797f7742</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +37,7 @@
       <name>class</name>
       <type>Main</type>
       <value>h1-forgotp</value>
-      <webElementGuid>53daf3c3-5338-4254-9a7d-eb206d3e35d2</webElementGuid>
+      <webElementGuid>9bf83676-f4ff-4260-8749-6e2eff87bcc2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +45,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Email Sent</value>
-      <webElementGuid>464fb942-6d24-40f8-bf36-94b89de06833</webElementGuid>
+      <webElementGuid>17a05b9c-aeeb-4358-999b-ad36754eb200</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +53,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>/html[1]/body[@class=&quot;login-body&quot;]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section-forgotp&quot;]/h1[@class=&quot;h1-forgotp&quot;]</value>
-      <webElementGuid>1f277e58-076c-43f1-ac10-c777858c193a</webElementGuid>
+      <webElementGuid>43cbbfd7-998f-452d-899e-2e6b6e8973e3</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -61,15 +61,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::h1[1]</value>
-      <webElementGuid>ee39e237-49a4-457e-b9b4-71868e437805</webElementGuid>
-   </webElementXpaths>
-   <webElementXpaths>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>xpath:neighbor</name>
-      <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='FAQs'])[1]/preceding::h1[1]</value>
-      <webElementGuid>b554526f-f449-4ee9-91b9-3d680c5e08a1</webElementGuid>
+      <webElementGuid>a2d36dce-250e-45ae-949d-8d0a0eab31e9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,7 +69,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Email Sent']/parent::*</value>
-      <webElementGuid>6fbe6fb8-04f6-4016-bc1f-6a4cab25603f</webElementGuid>
+      <webElementGuid>b494e5d9-3261-4f48-8f16-83a2df287901</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +77,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//h1</value>
-      <webElementGuid>d8af2844-630c-4b38-8bea-8aae0e22d813</webElementGuid>
+      <webElementGuid>5a374b58-7923-409d-8c08-c885852cf0f7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,6 +85,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//h1[(text() = 'Email Sent' or . = 'Email Sent')]</value>
-      <webElementGuid>74387752-a328-42d7-8090-8926b1f2b428</webElementGuid>
+      <webElementGuid>91a696aa-f3af-4f46-9bfe-3794af43616d</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

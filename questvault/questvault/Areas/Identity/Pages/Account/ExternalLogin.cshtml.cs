@@ -125,7 +125,7 @@ namespace questvault.Areas.Identity.Pages.Account
                 var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now) };
                 _context.LogginInstances.Add(logginInstance);
                 await _context.SaveChangesAsync();
-                return LocalRedirect(returnUrl);
+                //return LocalRedirect(returnUrl);
                 return RedirectToAction("UserLibrary", "Library", new { id = _signInManager.UserManager.GetUserName(User)});
             }
             if (result.IsLockedOut)

@@ -51,5 +51,8 @@ namespace questvault.Services
     Task<IEnumerable<Platform>> GetPlatformsFromIds(List<long> ids);
 
     Task<IEnumerable<Genre>> GetGenresFromIds(List<long> ids);
+
+    Task<string> GetSteamUrl(long? igdbGameId);
+
   }
 }

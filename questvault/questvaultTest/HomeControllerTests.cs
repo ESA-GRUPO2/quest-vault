@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+using questvault.Controllers;
 using questvault.Data;
 
 namespace questvaultTest
@@ -12,17 +14,22 @@ namespace questvaultTest
     }
 
 
-    // N�vel 1
     [Fact]
-    public void Index_ReturnsViewResult()
+    public async Task Index_ReturnsViewResult()
     {
+      //// Arrange
       //var controller = new HomeController(null, _context);
 
-      //var result = controller.IndexAsync();
-
-      //var viewResult = Assert.IsType<ViewResult>(result);
+      //// Act
+      //var result = await controller.IndexAsync();
+      //var accessInstances = _context.AccessInstances;
+      //// Assert
+      //Assert.Equal(1, accessInstances.Count());
+      //result = await controller.IndexAsync();
+      //result = await controller.IndexAsync();
+      //Assert.Equal(3, accessInstances.Count());
+      //Assert.IsType<ViewResult>(result);
     }
-
 
     //[Fact]
     //public void Privacy_ReturnsViewResult()

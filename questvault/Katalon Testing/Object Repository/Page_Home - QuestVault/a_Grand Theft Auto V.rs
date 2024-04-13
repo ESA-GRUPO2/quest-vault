@@ -6,15 +6,18 @@
    <elementGuidId>86f216ed-69de-45c2-acf0-87da0de55f32</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>BASIC</key>
+         <value>//*[@href = '/Games/Details/1020' and (text() = 'Grand Theft Auto V' or . = 'Grand Theft Auto V')]</value>
+      </entry>
+      <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
          <value>//ul[@id='searchResults']/li[2]/a</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,7 +32,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>fd556a9a-5f51-47bd-b531-079d1494f368</webElementGuid>
+      <webElementGuid>7870df74-9780-4580-9340-53b459914251</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -37,7 +40,7 @@
       <name>href</name>
       <type>Main</type>
       <value>/Games/Details/1020</value>
-      <webElementGuid>e6ea8e48-7434-4685-812e-ceb0f97d130c</webElementGuid>
+      <webElementGuid>bfbfbebd-9ddf-44cc-bb04-6592ee2ddf12</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +48,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Grand Theft Auto V</value>
-      <webElementGuid>0fb072ab-da76-4072-883b-f8cabf20ca26</webElementGuid>
+      <webElementGuid>ab2fc0ba-1e5e-4a71-b084-22740e158308</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +56,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;searchResults&quot;)/li[@class=&quot;list-group-item&quot;]/a[1]</value>
-      <webElementGuid>38e7ab47-a794-4232-a805-ebb1bd0693fd</webElementGuid>
+      <webElementGuid>fcf9c160-96aa-4ef4-8313-1f6484bc243c</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -61,7 +64,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//ul[@id='searchResults']/li[2]/a</value>
-      <webElementGuid>53cc75b9-6d44-4da5-8712-98a445f6fe3f</webElementGuid>
+      <webElementGuid>e1256dd0-0e4d-4c26-966b-bce80e72433c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -69,7 +72,7 @@
       <name>xpath:link</name>
       <type>Main</type>
       <value>//a[contains(text(),'Grand Theft Auto V')]</value>
-      <webElementGuid>31e6401f-4224-40e3-9c51-66d4a443b8db</webElementGuid>
+      <webElementGuid>851ed1b7-58d0-40db-8d71-ce448fcb4264</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,7 +80,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Grand Theft Auto: San Andreas'])[1]/following::a[1]</value>
-      <webElementGuid>59dc02d5-4953-4b58-9b36-acc52764acee</webElementGuid>
+      <webElementGuid>fcaf7503-461d-47a5-bb2a-a73157184cae</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +88,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Grand Theft Auto V']/parent::*</value>
-      <webElementGuid>6e2ccf4b-5b2b-4920-830c-9e5cd58deb44</webElementGuid>
+      <webElementGuid>5396983d-634c-4b7e-8fa5-9eafade9e944</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,7 +96,7 @@
       <name>xpath:href</name>
       <type>Main</type>
       <value>//a[contains(@href, '/Games/Details/1020')]</value>
-      <webElementGuid>bd6e7836-d061-4b80-a9fc-4d7fabe0a942</webElementGuid>
+      <webElementGuid>acc47cd6-cc1b-4b90-bb67-fff1413bfe32</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -101,7 +104,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li[2]/a</value>
-      <webElementGuid>90357be0-b69c-4033-81b5-2e3e6cb0e605</webElementGuid>
+      <webElementGuid>292b16b8-5426-45f6-9408-efc165ad755c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -109,6 +112,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//a[@href = '/Games/Details/1020' and (text() = 'Grand Theft Auto V' or . = 'Grand Theft Auto V')]</value>
-      <webElementGuid>238c904b-1b01-4c75-a9d3-930a8ed53646</webElementGuid>
+      <webElementGuid>08cc557f-0b1e-4a41-b9dc-4987d521f0e7</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

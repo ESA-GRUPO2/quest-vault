@@ -91,7 +91,7 @@
               <div class="row mb-3">
                 <label asp-for="Input.NewUserName" class="col-sm-4 col-form-label text-light">Username</label>
                 <div class="col-sm-8">
-                  <input asp-for="Input.NewUserName" type="text" id="username" class="form-control-login" autocomplete="off" id="inputName" placeholder="@User.Identity?.Name">
+                  <input asp-for="Input.NewUserName" type="text" id="username" class="form-control-login" autocomplete="off" id="inputName" maxlength="32" placeholder="@User.Identity?.Name">
                   <div style="height:1px">
                     <span asp-validation-for="Input.NewUserName" class="text-danger-login-2"></span>
                   </div>

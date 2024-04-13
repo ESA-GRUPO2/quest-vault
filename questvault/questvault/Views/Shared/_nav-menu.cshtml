@@ -11,7 +11,7 @@
   <div class="container-fluid">
     @if (SignInManager.IsSignedIn(User))
     {
-      <a class="nav-logo2" asp-controller="Home" asp-action="Index">
+      <a class="nav-logo2" href="/UserLibrary?id=@SignInManager.UserManager.GetUserName(User)&collection=&releasePlatform=&genre=">
         <img src="\img\logo_icon.png" alt="QuestVault Logo" class="img-fluid">
       </a>
     }

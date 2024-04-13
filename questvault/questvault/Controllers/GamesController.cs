@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using questvault.Data;
 using questvault.Models;
 //using questvault.Migrations;
@@ -119,6 +120,7 @@ namespace questvault.Controllers
           .OrderByDescending(o => o.IgdbRating)
           .ThenByDescending(o => o.TotalRatingCount);
       var list = await PaginatedList<Game>.CreateAsync(query.AsNoTracking(), pageNumber ?? 1, _pageSize);
+      ViewBag.NumberOfResults = query.Count();
       var data = new GameViewData
       {
         SearchTerm = searchTerm,
@@ -395,6 +397,12 @@ namespace questvault.Controllers
       {
         return NotFound();
       }
+      if (String.IsNullOrEmpty(game.SteamUrl))
+      {
+        game.SteamUrl = await igdbService.GetSteamUrl(game.IgdbId);
+        await SaveChangesAsync(context);
+
+      }
 
       var user = await signInManager.UserManager.GetUserAsync(User);
 
@@ -417,7 +425,19 @@ namespace questvault.Controllers
         userLibrary != null &&
         userLibrary.Top5Games != null &&
         userLibrary.Top5Games.Any(g => g.IgdbId == id);
+
+      ViewBag.Reviews = GetReviews(id, userLibrary);
+      ViewBag.GamelogId = gameLog.GameLogId;
+
       return View(game);
+    }
+
+    private List<GameLog> GetReviews(int? gameId, GamesLibrary currentUserLibrary)
+    {
+      if (gameId == null) return [];
+      return [.. context.GameLog
+        .Include(gl => gl.Game).Include(gl => gl.User)
+        .Where(gl => gl.IgdbId == gameId && gl.Rating != null)];
     }
 
     /// <summary>
