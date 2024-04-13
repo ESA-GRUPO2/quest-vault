@@ -1087,6 +1087,10 @@ hr {
     font-weight: bolder;
   }
 
+    .select-admin button:hover, .select-admin button:active, .select-admin button:focus {
+      background: #591414 !important;
+    }
+
   .select-admin .dropdown-menu, .select-admin a {
     background: #cc3d3d !important;
   }
@@ -1409,9 +1413,10 @@ hr {
 .review-card {
   border: 2px solid white;
   border-radius: 15px;
-  width: 100%;
+  width: 50rem;
+  height: 12rem;
   float: left;
-  margin: 2rem 2rem 2rem 2rem;
+  margin: 0 2rem 2rem 2rem;
   padding: 1.5rem 1.5rem 1.5rem 0;
   overflow: hidden; /* Para evitar que o conteúdo se sobreponha */
   display: flex;
@@ -1529,8 +1534,8 @@ body {
 }
 
 .game-button {
-  width: 20%; /* Para distribuir igualmente os botões com alguma margem */
-  height: 20%;
+  width: 13rem; /* Para distribuir igualmente os botões com alguma margem */
+  height: 18rem;
   padding: 0;
   border: 2px solid white;
   background: black;

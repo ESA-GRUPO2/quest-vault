@@ -36,7 +36,7 @@ namespace questvault.Services
                     g.InvolvedCompanies != null &&
                     g.Platforms != null
               )
-        .Select(g => BuildGameFromIGDBGame(g, GetSteamUrl(g.Id).Result));
+        .Select(g => BuildGameFromIGDBGame(g));
     }
 
     public async Task<IEnumerable<Game>> SearchGames(string searchTerm)
@@ -48,7 +48,7 @@ namespace questvault.Services
           "limit 50;";
       var games = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
 
-      return games.Select(g => BuildGameFromIGDBGame(g, GetSteamUrl(g.Id).Result));
+      return games.Select(g => BuildGameFromIGDBGame(g));
     }
 
     public async Task<IEnumerable<Game>> GetPopularGames(int limit)
@@ -60,7 +60,7 @@ namespace questvault.Services
 
       IGDB.Models.Game[] popularGames = await _api.QueryAsync<IGDB.Models.Game>(IGDBClient.Endpoints.Games, query);
 
-      return popularGames.Select(g => BuildGameFromIGDBGame(g, GetSteamUrl(g.Id).Result));
+      return popularGames.Select(g => BuildGameFromIGDBGame(g));
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ namespace questvault.Services
     /// </summary>
     /// <param name="igdbGame">The IGDB game data.</param>
     /// <returns>The constructed Game object.</returns>
-    private static Game BuildGameFromIGDBGame(IGDB.Models.Game igdbGame, string steamUrl)
+    private static Game BuildGameFromIGDBGame(IGDB.Models.Game igdbGame)
     {
       string? url;
       try
@@ -96,8 +96,7 @@ namespace questvault.Services
         IsReleased = igdbGame.FirstReleaseDate.HasValue && igdbGame.FirstReleaseDate.Value.Date < DateTime.Today,
         GameGenres = igdbGame.Genres.Values.Select(genre => BuildGameGenreFromIGDBData(igdbGame, genre)).ToList(),
         GameCompanies = igdbGame.InvolvedCompanies.Values.Select(company => BuildGameCompanyFromIGDBData(igdbGame, company)).ToList(),
-        GamePlatforms = igdbGame.Platforms.Values.Select(platform => BuildGamePlatformFromIGDBData(igdbGame, platform)).ToList(),
-        SteamUrl = steamUrl
+        GamePlatforms = igdbGame.Platforms.Values.Select(platform => BuildGamePlatformFromIGDBData(igdbGame, platform)).ToList()
       };
 
       return game;
@@ -138,8 +137,7 @@ namespace questvault.Services
         IgdbCompanyId = (long) companyData.Company.Id,
         Company = new Company
         {
-          CompanyId = (long) companyData.Company.Id,
-
+          IgdbCompanyId = (long) companyData.Company.Id,
         }
       };
     }
@@ -189,12 +187,11 @@ namespace questvault.Services
     public async Task<IEnumerable<Company>> GetCompaniesFromIds(List<long> ids)
     {
       var endpoint = IGDBClient.Endpoints.Companies;
-      string query = $"fields id, name; where id = ({string.Join(",", ids)});";
+      string query = $"fields id, name; where id = ({string.Join(",", ids)}); limit 400;";
       var companies = await _api.QueryAsync<IGDB.Models.Company>(endpoint, query);
       Console.WriteLine(companies);
       return companies.Select(c => new Company
       {
-        CompanyId = (long) c.Id,
         IgdbCompanyId = (long) c.Id,
         CompanyName = c.Name,
 
@@ -245,7 +242,7 @@ namespace questvault.Services
     /// </summary>
     /// <param name="igdbGameId">The IGDB game ID.</param>
     /// <returns>The Steam URL for the game.</returns>
-    private async Task<string> GetSteamUrl(long? igdbGameId)
+    public async Task<string> GetSteamUrl(long? igdbGameId)
     {
       if( igdbGameId == null ) return string.Empty;
       var query = $"fields url; where game = {igdbGameId} & category = 13;";
