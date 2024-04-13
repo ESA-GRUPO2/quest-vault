@@ -36,6 +36,11 @@
       color: white !important;
       font-weight: 300 !important;
     }
+
+    .footer{
+      margin-top: 10rem;
+      position: relative;
+    }
   </style>
 
   <div class="game-details">
@@ -351,6 +356,7 @@
       </div>
 
       <div class="flex-row justify-content-start mt-5">
+        
         @if (reviews != null && reviews.Count > 0)
         {
           foreach (GameLog review in reviews)

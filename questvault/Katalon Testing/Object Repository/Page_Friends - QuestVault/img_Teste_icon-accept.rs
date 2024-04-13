@@ -6,6 +6,10 @@
    <elementGuidId>2a2f3dd9-c269-4b2e-807d-df14ba15fa0f</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>BASIC</key>
+         <value>//*[@id = 'icon-accept' and @src = '/img/vector/circle-check-solid.svg' and @alt = 'Confirm Icon']</value>
+      </entry>
+      <entry>
          <key>CSS</key>
          <value>#icon-accept</value>
       </entry>
@@ -14,7 +18,7 @@
          <value>//img[@id='icon-accept']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>876ce9d2-f40a-4a98-a59d-343d3a348ca9</webElementGuid>
+      <webElementGuid>c120df93-c18f-4d77-a00c-10a3e70c67f5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -37,7 +41,7 @@
       <name>id</name>
       <type>Main</type>
       <value>icon-accept</value>
-      <webElementGuid>a74963f4-d392-462c-85f8-d211bf0df5a6</webElementGuid>
+      <webElementGuid>1cc6aad6-1323-4c64-9edd-e6c8af58b2c3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>class</name>
       <type>Main</type>
       <value>nav-vector</value>
-      <webElementGuid>763a3878-33e1-4070-a367-0df1502491f3</webElementGuid>
+      <webElementGuid>fd8786bd-a021-4643-bcfe-2e8d73db6e12</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -53,7 +57,7 @@
       <name>src</name>
       <type>Main</type>
       <value>/img/vector/circle-check-solid.svg</value>
-      <webElementGuid>e0c70447-7ebd-4c94-85cc-2ec4a01f33f7</webElementGuid>
+      <webElementGuid>c3ef0624-e422-4976-b680-807f7640dd92</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -61,7 +65,7 @@
       <name>alt</name>
       <type>Main</type>
       <value>Confirm Icon</value>
-      <webElementGuid>6f0f1eb6-d6a9-477a-96cb-97ac5f8a4444</webElementGuid>
+      <webElementGuid>bf13f6fe-acb2-4953-ac78-a1f612f45ec8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,7 +73,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;icon-accept&quot;)</value>
-      <webElementGuid>54308a8b-4f54-41ce-9e25-6349759318f9</webElementGuid>
+      <webElementGuid>66440d6c-63a8-4694-9feb-026fbc6e4cdc</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -77,7 +81,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//img[@id='icon-accept']</value>
-      <webElementGuid>7fb845de-54c7-43fe-b416-7f2440252660</webElementGuid>
+      <webElementGuid>8e80229b-5a4b-48ee-939a-13ae0ef1d0fd</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +89,7 @@
       <name>xpath:img</name>
       <type>Main</type>
       <value>//img[@alt='Confirm Icon']</value>
-      <webElementGuid>ab18ffc4-a446-4023-8d08-ec527a9aa6dd</webElementGuid>
+      <webElementGuid>d18d1c23-e0d5-4c31-a225-d57dee7bc770</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,7 +97,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//td/a/img</value>
-      <webElementGuid>e1fbd4c5-a15c-41f4-a610-edd5bbff5a11</webElementGuid>
+      <webElementGuid>8993dd9c-6b24-4c24-9512-963a6cbd1fc7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -101,6 +105,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//img[@id = 'icon-accept' and @src = '/img/vector/circle-check-solid.svg' and @alt = 'Confirm Icon']</value>
-      <webElementGuid>cd3cd817-8905-4904-b5a3-27cb97900040</webElementGuid>
+      <webElementGuid>2e666b67-9529-4a43-9b41-7b1a66a2aac1</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

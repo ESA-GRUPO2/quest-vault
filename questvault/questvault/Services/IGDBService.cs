@@ -137,8 +137,7 @@ namespace questvault.Services
         IgdbCompanyId = (long) companyData.Company.Id,
         Company = new Company
         {
-          CompanyId = (long) companyData.Company.Id,
-
+          IgdbCompanyId = (long) companyData.Company.Id,
         }
       };
     }
@@ -188,12 +187,11 @@ namespace questvault.Services
     public async Task<IEnumerable<Company>> GetCompaniesFromIds(List<long> ids)
     {
       var endpoint = IGDBClient.Endpoints.Companies;
-      string query = $"fields id, name; where id = ({string.Join(",", ids)});";
+      string query = $"fields id, name; where id = ({string.Join(",", ids)}); limit 400;";
       var companies = await _api.QueryAsync<IGDB.Models.Company>(endpoint, query);
       Console.WriteLine(companies);
       return companies.Select(c => new Company
       {
-        CompanyId = (long) c.Id,
         IgdbCompanyId = (long) c.Id,
         CompanyName = c.Name,
 

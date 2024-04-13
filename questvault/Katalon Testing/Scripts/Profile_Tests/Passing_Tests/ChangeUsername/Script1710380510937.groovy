@@ -31,11 +31,11 @@ WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input
 
 WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_MyLibrary_nav-vector mb-1'))
+WebUI.click(findTestObject('Page_Home - QuestVault/img_MyLibrary_nav-vector mb-1'))
 
 WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Profile'))
 
-WebUI.setText(findTestObject('Object Repository/Page_My Account - QuestVault/input_Username_Input.NewUserName'), 'TiagoB')
+WebUI.setText(findTestObject('Object Repository/Page_My Account - QuestVault/input_Username_Input.NewUserName'), 'tBatista')
 
 WebUI.click(findTestObject('Object Repository/Page_My Account - QuestVault/button_Save Changes'))
 

@@ -120,6 +120,7 @@ namespace questvault.Controllers
           .OrderByDescending(o => o.IgdbRating)
           .ThenByDescending(o => o.TotalRatingCount);
       var list = await PaginatedList<Game>.CreateAsync(query.AsNoTracking(), pageNumber ?? 1, _pageSize);
+      ViewBag.NumberOfResults = query.Count();
       var data = new GameViewData
       {
         SearchTerm = searchTerm,
@@ -418,6 +419,7 @@ namespace questvault.Controllers
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
+        ViewBag.GamelogId = gameLog.GameLogId;
       }
       ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
       ViewBag.IsGameTop5 =
@@ -426,6 +428,7 @@ namespace questvault.Controllers
         userLibrary.Top5Games.Any(g => g.IgdbId == id);
 
       ViewBag.Reviews = GetReviews(id, userLibrary);
+      
 
       return View(game);
     }

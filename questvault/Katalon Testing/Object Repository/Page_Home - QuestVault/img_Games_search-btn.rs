@@ -6,15 +6,19 @@
    <elementGuidId>9c3b791e-b182-4c61-8712-f404903097c2</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>BASIC</key>
+         <value>//*[@src = '\img\vector\magnifying.svg']</value>
+      </entry>
+      <entry>
          <key>CSS</key>
          <value>img.search-btn</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value></value>
+         <value>//li[@id='search']/form/div/button/img</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>c647ee57-a751-477d-aa00-3bad7f0ffb16</webElementGuid>
+      <webElementGuid>442e2ed6-8604-4c8d-a4f1-54a20e54f2f0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -37,7 +41,7 @@
       <name>src</name>
       <type>Main</type>
       <value>\img\vector\magnifying.svg</value>
-      <webElementGuid>9aadc440-0926-4aec-94b4-c3833b54faba</webElementGuid>
+      <webElementGuid>3862f874-c1a2-47b2-b9ae-a9f184b3df4b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>class</name>
       <type>Main</type>
       <value>search-btn</value>
-      <webElementGuid>b716a49f-d7c2-41ff-acdf-5bb2ac1ca18d</webElementGuid>
+      <webElementGuid>073f01d7-7dfe-4854-a605-971028a258bc</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +57,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;search&quot;)/form[1]/div[@class=&quot;search-bar d-flex&quot;]/button[@class=&quot;outside-search&quot;]/img[@class=&quot;search-btn&quot;]</value>
-      <webElementGuid>eac820d3-2afb-483e-8297-4c7cc45ee90c</webElementGuid>
+      <webElementGuid>49b7ee96-a81e-4ccb-8d96-1aad2d12902f</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -61,7 +65,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//li[@id='search']/form/div/button/img</value>
-      <webElementGuid>e60a3998-ba40-4d82-8f8c-00ac2156072d</webElementGuid>
+      <webElementGuid>4f58e877-9e23-4106-bb1b-0aa4c14a6dc4</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -69,7 +73,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//button/img</value>
-      <webElementGuid>da90cd2a-c20f-4b2e-b635-5f0fbc0fe8a9</webElementGuid>
+      <webElementGuid>33de9853-132a-47fc-80f1-d0fe1905450a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,6 +81,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//img[@src = '\img\vector\magnifying.svg']</value>
-      <webElementGuid>b325635c-06c4-467c-b872-539c8d072303</webElementGuid>
+      <webElementGuid>e86235f2-ee6f-4ccf-855f-5c4fb8691e31</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
