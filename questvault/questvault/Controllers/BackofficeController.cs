@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
@@ -13,7 +12,7 @@ namespace questvault.Controllers
 
   public class BackofficeController(ApplicationDbContext context, IServiceIGDB igdbService, SignInManager<User> signInManager) : Controller
   {
-    
+
 
     public async Task<IActionResult> GiveModeratorAll(string id)
     {
@@ -29,12 +28,12 @@ namespace questvault.Controllers
 
 
       // Redirecione para alguma página após a conclusão
-      return RedirectToAction("Profile", "User", new {  id });
+      return RedirectToAction("Profile", "User", new { id });
     }
 
     public static async Task GiveModerator(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
         return; // Retorna NotFound se o ID do usuário não for fornecido
       }
@@ -42,7 +41,7 @@ namespace questvault.Controllers
       // Encontre o usuário pelo ID
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
         return; // Retorna NotFound se o usuário não for encontrado
       }
@@ -56,7 +55,7 @@ namespace questvault.Controllers
 
     public static async Task GiveAdmin(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
         return; // Retorna NotFound se o ID do usuário não for fornecido
       }
@@ -64,7 +63,7 @@ namespace questvault.Controllers
       // Encontre o usuário pelo ID
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
         return; // Retorna NotFound se o usuário não for encontrado
       }
@@ -89,12 +88,12 @@ namespace questvault.Controllers
       await GiveAdmin(id, context);
 
       // Redirecione para alguma página após a conclusão
-      return RedirectToAction("Profile", "User", new {  id });
+      return RedirectToAction("Profile", "User", new { id });
     }
 
     public static async Task RemovePermissions(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
         return; // Retorna NotFound se o ID do usuário não for fornecido
       }
@@ -102,7 +101,7 @@ namespace questvault.Controllers
       // Encontre o usuário pelo ID
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
         return; // Retorna NotFound se o usuário não for encontrado
       }
@@ -130,7 +129,7 @@ namespace questvault.Controllers
 
     public static async Task LockoutUser(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
         return; // Retorna NotFound se o ID do usuário não for fornecido
       }
@@ -138,7 +137,7 @@ namespace questvault.Controllers
       // Encontre o usuário pelo ID
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
         return; // Retorna NotFound se o usuário não for encontrado
       }
@@ -151,7 +150,7 @@ namespace questvault.Controllers
 
     public static async Task RemoveLockoutUser(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
         return; // Retorna NotFound se o ID do usuário não for fornecido
       }
@@ -159,7 +158,7 @@ namespace questvault.Controllers
       // Encontre o usuário pelo ID
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
         return; // Retorna NotFound se o usuário não for encontrado
       }
@@ -204,7 +203,7 @@ namespace questvault.Controllers
     {
       // Atualize a classificação (se necessário)
       var gameLog = await context.GameLog.FirstOrDefaultAsync(g => g.GameLogId == gameLogId);
-      if (gameLog != null)
+      if( gameLog != null )
       {
         gameLog.Rating = null; // Defina a classificação como 0 (ou qualquer outro valor apropriado)
         gameLog.Review = null;
@@ -216,13 +215,13 @@ namespace questvault.Controllers
 
     public async Task<IActionResult> RemoveReview(long id)
     {
-      if (id == 0)
+      if( id == 0 )
       {
         return NotFound(); // Retorna NotFound se o ID do usuário não for fornecido
       }
 
       var gameLog = await context.GameLog.FirstOrDefaultAsync(g => g.GameLogId == id);
-      if (gameLog == null)
+      if( gameLog == null )
       {
         return NotFound();
       }
