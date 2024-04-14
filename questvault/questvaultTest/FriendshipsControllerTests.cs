@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using questvault.Controllers;
 using questvault.Data;
 using questvault.Models;
-using System.Security.Claims;
 
 namespace questvaultTest
 {
@@ -12,10 +11,9 @@ namespace questvaultTest
   {
     private readonly User Sender = new(){Id = "senderId"};
     private readonly User Receiver = new(){Id = "receiverId"};
-    private ClaimsPrincipal claims;
-    private SignInManager<User> signInManager = new FakeSignInManager();
-    private ApplicationDbContext context;
-    private FriendshipsController controller;
+    private readonly SignInManager<User> signInManager = new FakeSignInManager();
+    private readonly ApplicationDbContext context;
+    private readonly FriendshipsController controller;
     private static bool flagRunSettup = false;
 
     private void Setup()
@@ -27,7 +25,6 @@ namespace questvaultTest
         context.Users.Add(Receiver);
         context.SaveChanges();
         signInManager.SignInAsync(Sender, true).Wait();
-        claims = signInManager.ClaimsFactory.CreateAsync(Sender).Result;
       }
     }
 
@@ -60,12 +57,6 @@ namespace questvaultTest
     public async Task SendFriendRequestAsync_ValidId_ReturnsRedirectToRouteResult()
     {
       // Arrange
-      var res = await context.FriendshipRequest.FirstOrDefaultAsync(f => f.SenderId == Sender.Id && f.ReceiverId == Receiver.Id);
-      if( res != null )
-      {
-        context.FriendshipRequest.Remove(res);
-        await context.SaveChangesAsync();
-      }
 
       // Act
       var result = await controller.SendFriendRequestAsync(Receiver.Id);
@@ -75,6 +66,12 @@ namespace questvaultTest
       var redirectToRouteResult = Assert.IsType<RedirectToRouteResult>(result);
       Assert.Equal("Friendships", redirectToRouteResult?.RouteValues?["controller"]);
       Assert.Equal("FriendsPage", redirectToRouteResult?.RouteValues?["action"]);
+      var remove = await context.FriendshipRequest.FirstOrDefaultAsync(f => f.SenderId == Sender.Id && f.ReceiverId == Receiver.Id);
+      if( remove != null )
+      {
+        context.FriendshipRequest.Remove(remove);
+        context.SaveChanges();
+      }
     }
 
     [Fact]
@@ -108,6 +105,12 @@ namespace questvaultTest
       var redirectToRouteResult = Assert.IsType<RedirectToRouteResult>(result);
       Assert.Equal("Friendships", redirectToRouteResult?.RouteValues?["controller"]);
       Assert.Equal("FriendRequests", redirectToRouteResult?.RouteValues?["action"]);
+      var remove = await context.Friendship.FirstOrDefaultAsync(f => f.User1Id == Sender.Id && f.User2Id == Receiver.Id || f.User1Id == Receiver.Id && f.User2Id == Sender.Id);
+      if( remove != null )
+      {
+        context.Friendship.Remove(remove);
+        context.SaveChanges();
+      }
     }
 
     [Fact]
@@ -143,9 +146,9 @@ namespace questvaultTest
     public async Task FriendsPageAsync_UserFound_ReturnsViewWithFriends()
     {
       // Arrange
+      await signInManager.SignInAsync(Sender, true);
       await FriendshipsController.SendFriendRequestAsync(Sender.Id, Receiver.Id, context);
       await FriendshipsController.AcceptFriendRequestAsync(Receiver.Id, Sender.Id, context);
-      var res = context.Friendship.FirstOrDefault(f=> f.User1Id == Sender.Id && f.User2Id == Receiver.Id || f.User1Id == Receiver.Id && f.User2Id == Sender.Id);
 
       // Act
       var result = await controller.FriendsPageAsync();
@@ -154,14 +157,20 @@ namespace questvaultTest
       var viewResult = Assert.IsType<ViewResult>(result);
       var model = Assert.IsAssignableFrom<List<Friendship>>(viewResult.Model);
       Assert.Single(model);
-      Assert.Equal(res?.User1Id + ", " + res?.User2Id, model.ToArray()[0].User1Id + ", " + model.ToArray()[0].User2Id);
       Assert.True(model.FirstOrDefault(m => m.User1Id == Sender.Id && m.User2Id == Receiver.Id || m.User1Id == Receiver.Id && m.User2Id == Sender.Id) != null);
+      var remove = model.FirstOrDefault();
+      if( remove != null )
+      {
+        context.Friendship.Remove(remove);
+        context.SaveChanges();
+      }
     }
 
     [Fact]
     public async Task FriendRequestsAsync_UserFound_ReturnsViewWithFriendshipRequests()
     {
       // Arrange
+      await signInManager.SignInAsync(Sender, true);
       await FriendshipsController.SendFriendRequestAsync(Receiver.Id, Sender.Id, context);
 
       // Act
@@ -170,10 +179,48 @@ namespace questvaultTest
       // Assert
       var viewResult = Assert.IsType<ViewResult>(result);
       var model = Assert.IsAssignableFrom<List<FriendshipRequest>>(viewResult.Model);
-      Assert.True(1 == model.Count);
+      Assert.Single(model);
       Assert.True(model.FirstOrDefault(m => m.SenderId == Receiver.Id && m.ReceiverId == Sender.Id) != null);
+      var remove = model.FirstOrDefault();
+      if( remove != null )
+      {
+        context.FriendshipRequest.Remove(remove);
+        context.SaveChanges();
+      }
     }
 
+    [Fact]
+    public async Task RemoveFriendAsync_ValidArguments_RemovesFriend()
+    {
+      // Arrange
+      await FriendshipsController.SendFriendRequestAsync(Sender.Id, Receiver.Id, context);
+      await FriendshipsController.AcceptFriendRequestAsync(Receiver.Id, Sender.Id, context);
+      bool wereFriendsBefore = context.Friendship.Any(f => f.User1Id == Sender.Id && f.User2Id == Receiver.Id || f.User1Id == Receiver.Id && f.User2Id == Sender.Id);
 
+      // Act
+      await FriendshipsController.RemoveFriendAsync(Sender.Id, Receiver.Id, context);
+      var result = await context.Friendship.FirstOrDefaultAsync(f => f.User1Id == Sender.Id && f.User2Id == Receiver.Id || f.User1Id == Receiver.Id && f.User2Id == Sender.Id);
+
+      // Assert
+      Assert.True(wereFriendsBefore);
+      Assert.Null(result);
+    }
+
+    [Fact]
+    public async Task RemoveFriendAsync_CallsCorrectRemoveFriendAsync()
+    {
+      // Arrange
+      await FriendshipsController.SendFriendRequestAsync(Receiver.Id, Sender.Id, context);
+      await FriendshipsController.AcceptFriendRequestAsync(Sender.Id, Receiver.Id, context);
+
+      // Act
+      var result = await controller.RemoveFriendAsync(Receiver.Id);
+
+      // Assert
+      Assert.NotNull(result);
+      var redirectToRoute = Assert.IsType<RedirectToRouteResult>(result);
+      Assert.Equal("Friendships", redirectToRoute?.RouteValues?["controller"]);
+      Assert.Equal("FriendsPage", redirectToRoute?.RouteValues?["action"]);
+    }
   }
 }
