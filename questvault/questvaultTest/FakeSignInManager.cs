@@ -25,6 +25,7 @@ namespace questvaultTest
       ( (FakeUserManager) UserManager ).ClaimsPrincipal = ClaimsFactory.CreateAsync(user).Result;
       return Task.CompletedTask;
     }
+
     public override Task SignInAsync(User user, bool isPersistent, string? authenticationMethod = null)
     {
       ( (FakeUserManager) UserManager ).CurrentUser = user;
@@ -45,15 +46,18 @@ namespace questvaultTest
               new Mock<IdentityErrorDescriber>().Object,
               new Mock<IServiceProvider>().Object,
               new Mock<ILogger<UserManager<User>>>().Object)
-    { }
-    public User CurrentUser { get; set; }
-    public ClaimsPrincipal ClaimsPrincipal { get; set; }
+    { CurrentUser = null; ClaimsPrincipal = null; }
+
+    public User? CurrentUser { get; set; }
+    public ClaimsPrincipal? ClaimsPrincipal { get; set; }
 
     public override Task<User?> GetUserAsync(ClaimsPrincipal principal) => Task.FromResult(principal == ClaimsPrincipal ? CurrentUser : null);
 
-    public override string? GetUserId(ClaimsPrincipal principal) => principal == ClaimsPrincipal ? CurrentUser.Id : null;
+    public override string? GetUserId(ClaimsPrincipal principal) => principal == ClaimsPrincipal ? CurrentUser?.Id : null;
 
-    public override
+    public override Task<string> GetUserIdAsync(User user) => Task.FromResult(user.Id);
+
+    public override string? GetUserName(ClaimsPrincipal principal) => principal == ClaimsPrincipal ? CurrentUser?.UserName : null;
 
     public override Task<IdentityResult> CreateAsync(User user, string password)
     {
