@@ -1602,3 +1602,32 @@ body {
   height: 10vh;
   width: 25rem;
 }
+
+/*FRIEND REQUESTS*/
+
+.pending-friendreq {
+  color: #98008D !important;
+  font-weight: bold;
+}
+
+#pendingIndicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.blink-text {
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    color: white;
+  }
+
+  to {
+    color: #98008D;
+  }
+}
