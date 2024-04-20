@@ -2,7 +2,7 @@
 @inject SignInManager<User> signinManager
 
 @{
-  ViewData["Title"] = "Game";
+  ViewData["Title"] = Model.Name;
   ViewData["help_Text"] = @"
       This page allows you to see some details about the game,<br/>
       You can add the game to your library, give it a progression<br/>
@@ -46,12 +46,12 @@
   <div class="game-details">
     <section class="d-flex">
       <img class="game-cover image-fluid" src="@Model.ImageUrl" />
-      <div class="container ms-3 mt-4">
+      <div class="container ms-3">
         <h2 class="game-title m-auto">@Html.DisplayFor(model => model.Name)</h2>
         @* <h4>Released on @Model.ReleaseDate</h4> *@
         @if( Model.ReleaseDate.HasValue )
         {
-          <h4>
+          <h4 style="font-weight: 300 !important">
             @if( Model.ReleaseDate.Value < DateTime.Today )
             {
               <text>Released on @Model.ReleaseDate.Value.ToString("MMM dd, yyyy")</text>
@@ -66,7 +66,7 @@
         {
           <text>To be decided.</text>
         }
-        <h5>
+        <h5 style="font-weight: 300 !important">
           By
           @foreach( var c in Model.GameCompanies )
           {
@@ -82,7 +82,7 @@
           <div class="game-filters d-inline-flex mt-3">
             @foreach( var gen in Model.GameGenres )
             {
-              <div class="me-3 text-decoration-underline">
+              <div class="me-3" style="font-weight: 400 !important">
                 @if( gen != null )
                 {
                   @gen.Genre.GenreName
