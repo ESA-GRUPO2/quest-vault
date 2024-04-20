@@ -1,19 +1,23 @@
 ﻿@model List<GameLog>
 <h4 class="text-light mb-4">My Top 5</h4>
 <div class="game-section-border">
-  <div class="d-flex align-items-center justify-content-start">
-    @if (Model != null && Model.Count > 0)
-    {
+
+  @if (Model != null && Model.Count > 0)
+  {
+    <div class="d-flex align-items-center justify-content-start">
       @foreach (GameLog gl in Model)
       {
         <a class="game-button-sm" style="margin: 1rem;" asp-controller="Games" asp-action="Details" asp-route-id="@gl.IgdbId">
           <img src="@gl.Game.ImageUrl" alt="@gl.Game.Name">
         </a>
       }
-    }
-    else
-    {
-      <p class="text-light align-self-center">There are no games in this user's Top 5</p>
-    }
-  </div>
+    </div>
+  }
+  else
+  {
+    <div class="d-flex align-items-center justify-content-center">
+      <p class="text-light align-self-center" style="margin-top: 1rem;">There are no games in this user's Top 5</p>
+    </div>
+  }
+
 </div>
