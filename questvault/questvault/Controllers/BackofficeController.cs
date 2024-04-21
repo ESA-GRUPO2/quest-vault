@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
@@ -19,11 +18,11 @@ namespace questvault.Controllers
     /// </summary>
     /// <param name="id">The ID of the user to grant moderator permissions.</param>
     /// <returns>A redirection to the AllUsers page.</returns>
-    public async Task<IActionResult> GiveModeratorAll(string id)
+    public async Task<IActionResult> MakeModeratorAll(string id)
     {
-      await GiveModerator(id, context);
+      await MakeModerator(id, context);
 
-    
+
       return RedirectToAction("AllUsers", "Home");
     }
 
@@ -32,13 +31,10 @@ namespace questvault.Controllers
     /// </summary>
     /// <param name="id">The ID of the user to grant moderator permissions.</param>
     /// <returns>A redirection to the user's profile page.</returns>
-    public async Task<IActionResult> GiveModerator(string id)
+    public async Task<IActionResult> MakeModerator(string id)
     {
-      await GiveModerator(id, context);
-
-
-      
-      return RedirectToAction("Profile", "User", new {  id });
+      await MakeModerator(id, context);
+      return RedirectToAction("Profile", "User", new { id });
     }
 
     /// <summary>
@@ -47,25 +43,25 @@ namespace questvault.Controllers
     /// <param name="id">The ID of the user to grant moderator permissions.</param>
     /// <param name="context">The application database context.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    public static async Task GiveModerator(string id, ApplicationDbContext context)
+    public static async Task MakeModerator(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
-        return; 
+        return;
       }
 
-      
+
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
-        return; 
+        return;
       }
 
-      
+
       user.Clearance = 1;
 
-     
+
       await context.SaveChangesAsync();
     }
 
@@ -75,24 +71,24 @@ namespace questvault.Controllers
     /// <param name="id">The ID of the user to grant administrator permissions.</param>
     /// <param name="context">The application database context.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    public static async Task GiveAdmin(string id, ApplicationDbContext context)
+    public static async Task MakeAdmin(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
-        return; 
+        return;
       }
 
- 
+
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
-        return; 
+        return;
       }
 
       user.Clearance = 2;
 
-   
+
       await context.SaveChangesAsync();
     }
 
@@ -102,9 +98,9 @@ namespace questvault.Controllers
     /// </summary>
     /// <param name="id">The ID of the user to grant administrator permissions.</param>
     /// <returns>A redirection to the AllUsers page.</returns>
-    public async Task<IActionResult> GiveAdminAll(string id)
+    public async Task<IActionResult> MakeAdminAll(string id)
     {
-      await GiveAdmin(id, context);
+      await MakeAdmin(id, context);
 
       return RedirectToAction("AllUsers", "Home");
     }
@@ -114,12 +110,12 @@ namespace questvault.Controllers
     /// </summary>
     /// <param name="id">The ID of the user to grant administrator permissions.</param>
     /// <returns>A redirection to the user's profile page.</returns>
-    public async Task<IActionResult> GiveAdmin(string id)
+    public async Task<IActionResult> MakeAdmin(string id)
     {
-      await GiveAdmin(id, context);
+      await MakeAdmin(id, context);
 
-      
-      return RedirectToAction("Profile", "User", new {  id });
+      // Redirecione para alguma página após a conclusão
+      return RedirectToAction("Profile", "User", new { id });
     }
     /// <summary>
     /// Removes all permissions from a user identified by their ID.
@@ -129,23 +125,23 @@ namespace questvault.Controllers
     /// <returns>A Task representing the asynchronous operation.</returns>
     public static async Task RemovePermissions(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
-        return; 
+        return;
       }
 
-   
+
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
-        return; 
+        return;
       }
 
-     
+
       user.Clearance = 0;
 
-     
+
       await context.SaveChangesAsync();
     }
     /// <summary>
@@ -156,7 +152,7 @@ namespace questvault.Controllers
     public async Task<IActionResult> RemovePermissionsAll(string id)
     {
       await RemovePermissions(id, context);
-     
+
       return RedirectToAction("AllUsers", "Home");
     }
     /// <summary>
@@ -168,49 +164,49 @@ namespace questvault.Controllers
     {
       await RemovePermissions(id, context);
 
-      
+
       return RedirectToAction("Profile", "User", new { id });
     }
 
     public static async Task LockoutUser(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
-        return; 
+        return;
       }
 
-      
+
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
-        return; 
+        return;
       }
 
       user.LockoutEnabled = true;
 
-      
+
       await context.SaveChangesAsync();
     }
 
     public static async Task RemoveLockoutUser(string id, ApplicationDbContext context)
     {
-      if (id == null)
+      if( id == null )
       {
-        return; 
+        return;
       }
 
       // Encontre o usuário pelo ID
       var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-      if (user == null)
+      if( user == null )
       {
-        return; 
+        return;
       }
 
       user.LockoutEnabled = false;
 
-      
+
       await context.SaveChangesAsync();
     }
     /// <summary>
@@ -221,7 +217,7 @@ namespace questvault.Controllers
     public async Task<IActionResult> LockoutUserAll(string id)
     {
       await LockoutUser(id, context);
-      
+
       return RedirectToAction("AllUsers", "Home");
     }
     /// <summary>
@@ -233,7 +229,7 @@ namespace questvault.Controllers
     {
       await LockoutUser(id, context);
 
-      
+
       return RedirectToAction("Profile", "User", new { id });
     }
     /// <summary>
@@ -244,7 +240,7 @@ namespace questvault.Controllers
     public async Task<IActionResult> RemoveLockoutUserAll(string id)
     {
       await RemoveLockoutUser(id, context);
-      
+
       return RedirectToAction("AllUsers", "Home");
     }
     /// <summary>
@@ -256,7 +252,7 @@ namespace questvault.Controllers
     {
       await RemoveLockoutUser(id, context);
 
-      
+
       return RedirectToAction("Profile", "User", new { id });
     }
     /// <summary>
@@ -267,15 +263,15 @@ namespace questvault.Controllers
     /// <returns>A Task representing the asynchronous operation.</returns>
     public static async Task RemoveReview(long gameLogId, ApplicationDbContext context)
     {
-      
+
       var gameLog = await context.GameLog.FirstOrDefaultAsync(g => g.GameLogId == gameLogId);
-      if (gameLog != null)
+      if( gameLog != null )
       {
-        gameLog.Rating = null; 
+        gameLog.Rating = null;
         gameLog.Review = null;
       }
 
-      
+
       await context.SaveChangesAsync();
     }
     /// <summary>
@@ -285,20 +281,20 @@ namespace questvault.Controllers
     /// <returns>A redirection to the game's details page.</returns>
     public async Task<IActionResult> RemoveReview(long id)
     {
-      if (id == 0)
+      if( id == 0 )
       {
-        return NotFound(); 
+        return NotFound();
       }
 
       var gameLog = await context.GameLog.FirstOrDefaultAsync(g => g.GameLogId == id);
-      if (gameLog == null)
+      if( gameLog == null )
       {
         return NotFound();
       }
 
       await RemoveReview(id, context);
 
-      
+
       return RedirectToAction("Details", "Games", new { id = gameLog.IgdbId });
     }
   }
