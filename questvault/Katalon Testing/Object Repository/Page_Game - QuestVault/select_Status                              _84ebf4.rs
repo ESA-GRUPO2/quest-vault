@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//select[@name='status']</value>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>select</value>
-      <webElementGuid>43708faf-ee18-4b66-9fdb-8482bf205627</webElementGuid>
+      <webElementGuid>004274a5-63ad-451c-9a85-bcd9673a0bf2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +37,7 @@
       <name>(change)</name>
       <type>Main</type>
       <value>onSelected(status.value)</value>
-      <webElementGuid>5dd77e91-ff59-4714-a7a1-8ad02baecf9b</webElementGuid>
+      <webElementGuid>d1b35163-2e81-420c-881c-b933e205b129</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +45,7 @@
       <name>name</name>
       <type>Main</type>
       <value>status</value>
-      <webElementGuid>ae6c7f8b-a4cf-49f6-9d34-e69f37dd617a</webElementGuid>
+      <webElementGuid>5e92c8a2-22b1-4088-951c-f55b617581ec</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +53,7 @@
       <name>class</name>
       <type>Main</type>
       <value>select-results col-1 ms-2 me-2</value>
-      <webElementGuid>986eb854-ffee-4eeb-8a6f-a635c2389961</webElementGuid>
+      <webElementGuid>5f7301ce-d723-4cf8-a517-203a04c9b629</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +61,7 @@
       <name>aria-label</name>
       <type>Main</type>
       <value>Default select example</value>
-      <webElementGuid>9e7141f9-9660-4dc9-aad8-92faff27960c</webElementGuid>
+      <webElementGuid>12edecf6-f069-4b95-ac23-1899c884663c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -76,7 +76,7 @@
                                     Shelved
                                     Abandoned
                                 </value>
-      <webElementGuid>a77926ad-5f67-4bec-9d7d-c706943148f5</webElementGuid>
+      <webElementGuid>df90e1c0-f4a7-4a63-b4f9-d70780253805</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -84,7 +84,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;game-details&quot;]/section[@class=&quot;d-flex main-section&quot;]/div[@class=&quot;container ms-3 mt-4&quot;]/div[@class=&quot;ps-0&quot;]/div[@class=&quot;game-user-status&quot;]/div[@class=&quot;d-inline-flex&quot;]/form[1]/select[@class=&quot;select-results col-1 ms-2 me-2&quot;]</value>
-      <webElementGuid>7d279204-25ca-4d24-90f5-8739c6183412</webElementGuid>
+      <webElementGuid>9d451697-fc00-488d-8277-20997eeaff3c</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -92,7 +92,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//select[@name='status']</value>
-      <webElementGuid>c8a5a60b-e6fc-481a-8c48-9eed6780f099</webElementGuid>
+      <webElementGuid>4e81dfdd-60b8-4d8c-b460-1db14279e739</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -100,7 +100,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Adventure'])[1]/following::select[2]</value>
-      <webElementGuid>2c686c38-f4cf-4dd6-9910-8ed0e1126d56</webElementGuid>
+      <webElementGuid>5fa5a4eb-7609-481a-8072-3e60f9df8419</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -108,7 +108,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Role-playing (RPG)'])[1]/following::select[2]</value>
-      <webElementGuid>7121cf4f-a282-4c7b-98af-cb1205cfb76c</webElementGuid>
+      <webElementGuid>103500a1-8b6f-49fa-9ed3-150d26540a3a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -116,7 +116,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Submit'])[1]/preceding::select[1]</value>
-      <webElementGuid>0e521bba-1b15-44ab-b3e9-c6648e7e2f1e</webElementGuid>
+      <webElementGuid>afcd2284-8f30-4f32-be09-27ba656aaed1</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -124,7 +124,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Remove Game'])[1]/preceding::select[1]</value>
-      <webElementGuid>6f1d81e8-c304-4bd0-8856-e04678e1ef04</webElementGuid>
+      <webElementGuid>5e17e314-0467-4f58-8b54-936ab48ae072</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -132,7 +132,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//select[2]</value>
-      <webElementGuid>8354541c-0d9f-482b-a97d-2ce6d7fdab2d</webElementGuid>
+      <webElementGuid>b12d8028-4ec9-4702-acd0-ec85177627d6</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -154,6 +154,6 @@
                                     Shelved
                                     Abandoned
                                 ')]</value>
-      <webElementGuid>821819bb-824e-4db2-a8a2-4d137d0dae48</webElementGuid>
+      <webElementGuid>2ccd3066-db19-4e11-a151-67188ad10d4b</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -1,0 +1,1 @@
+search_result['838']=["topic_00000000000001CA.html","FriendshipRequest.SenderId Property","Gets or sets the ID of the sender."];

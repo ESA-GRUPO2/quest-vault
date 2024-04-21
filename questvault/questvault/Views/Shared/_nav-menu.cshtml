@@ -5,6 +5,7 @@
   var user = await UserManager.GetUserAsync(User);
 
   var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "user.svg";
+  
 }
 
 <nav class="navbar navbar-dark fixed-top navbar-expand-lg nav-main nav-bg">
@@ -96,8 +97,8 @@
                 }
 
                 <li>
-                  <a style="color: white !important;
-                                        background: #133E7C !important;" href="/Friendships/FriendsPage" class="btn btn-primary dropdown-item">Friends</a>
+                  <a style="color: white; 
+                                        background: #133E7C !important;" id="friendsPageLink" href="/Friendships/FriendsPage" class="btn btn-primary dropdown-item"> <span id="friendsText">Friends</span> <span id="pendingIndicator"></span> </a>
                 </li>
                 @{
                   var user1 = await SignInManager.UserManager.GetUserAsync(this.User);

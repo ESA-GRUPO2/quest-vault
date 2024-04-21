@@ -1,1 +1,1 @@
-search_result['790']=["topic_00000000000001A3.html","IServiceIGDB.GetGenres Method","Gets a collection of genres."];
+search_result['790']=["topic_00000000000001B4_props--.html","Steam Properties",""];

@@ -391,6 +391,11 @@ namespace questvault.Controllers
     [Authorize]
     [HttpPost]
     [Route("ImportLibrary")]
+    /// <summary>
+    /// Imports the game library from Steam for the specified Steam ID.
+    /// </summary>
+    /// <param name="steamId">The Steam ID of the user.</param>
+    /// <returns>A redirection to the user's library view.</returns>
     public async Task<IActionResult> ImportLibrary(string steamId)
     {
       List<SteamAPI.GameInfo> gamesInfoInSteamLibrary = [];
@@ -406,7 +411,8 @@ namespace questvault.Controllers
             GameId = game.GameId,
             IgdbId = game.IgdbId,
             HoursPlayed = gameInfo?.Playtime ?? 0,
-            Status = gameInfo?.Playtime > 0 ? GameStatus.Playing : GameStatus.Backlogged
+            Status = gameInfo?.Playtime > 0 ? GameStatus.Playing : GameStatus.Backlogged,
+            UserId = signInManager.UserManager.GetUserId(User)
           });
         }
         else gamesInfoInSteamLibrary.Add(gameInfo);

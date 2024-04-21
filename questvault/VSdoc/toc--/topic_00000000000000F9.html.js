@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['320',"questvault.Controllers Namespace","topic_00000000000000F0.html"],['329',"GamesController Class","topic_00000000000000F8.html"],['330',"GamesController Constructor","topic_00000000000000F9.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['4',"questvault.Areas.Identity.Pages.Account Namespace","topic_000000000000000E.html"],['103',"LoginWithRecoveryCodeModel Class","topic_00000000000000F9.html"]];

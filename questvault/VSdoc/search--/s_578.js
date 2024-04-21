@@ -1,1 +1,1 @@
-search_result['578']=["topic_0000000000000125.html","questvault.Models Namespace",""];
+search_result['578']=["topic_000000000000013E.html","BackofficeController.RemovePermissions (String) Method","Removes all permissions from a user identified by their ID."];

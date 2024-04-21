@@ -1,1 +1,1 @@
-c['114']=[['115',"ExternalLogins Property","topic_00000000000000D0.html",0],['116',"Input Property","topic_00000000000000CE.html",0],['117',"ReturnUrl Property","topic_00000000000000CF.html",0]];
+c['114']=[['115',"_logger Field","topic_00000000000000FC.html",0],['116',"_signInManager Field","topic_00000000000000FA.html",0],['117',"_userManager Field","topic_00000000000000FB.html",0]];

@@ -1,1 +1,1 @@
-search_result['773']=["topic_0000000000000197_vars--.html","IGDBService Fields",""];
+search_result['773']=["topic_00000000000001AC_vars--.html","removedOwnageStatus Fields",""];

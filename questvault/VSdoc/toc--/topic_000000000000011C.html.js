@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['370',"questvault.Migrations Namespace","topic_000000000000011C.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['4',"questvault.Areas.Identity.Pages.Account Namespace","topic_000000000000000E.html"],['124',"RegisterConfirmationModel Class","topic_0000000000000116.html"],['126',"Properties","topic_0000000000000116_props--.html"],['129',"EmailConfirmationUrl Property","topic_000000000000011C.html"]];

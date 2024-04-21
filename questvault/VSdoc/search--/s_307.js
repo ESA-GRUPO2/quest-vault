@@ -1,1 +1,1 @@
-search_result['307']=["topic_000000000000009D.html","ExternalLoginModel.ProviderDisplayName Property","This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used\r\n    directly from your code. This API may change or be removed in future releases."];
+search_result['307']=["topic_00000000000000B6.html","ConfirmEmailModel Class",""];

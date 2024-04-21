@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_Star Wars Jedi Fallen Order</name>
+   <tag></tag>
+   <elementGuidId>0d7fedad-10cf-400d-9fab-03c402fe841a</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>li.list-group-item > a</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//ul[@id='searchResults']/li/a</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>759b530c-8bdf-41b6-bc51-3be12ac2b71a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/Games/Details/74701</value>
+      <webElementGuid>6a07ebef-58a5-4366-94b4-5efba31b1e56</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Star Wars Jedi: Fallen Order</value>
+      <webElementGuid>b4a8e49b-7ed1-4fcc-ace7-93f8c23b922f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;searchResults&quot;)/li[@class=&quot;list-group-item&quot;]/a[1]</value>
+      <webElementGuid>6954f1cb-0806-4d50-87fd-34f87386722e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//ul[@id='searchResults']/li/a</value>
+      <webElementGuid>196859a0-ee4a-469e-84e0-e43ebc30d556</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'Star Wars Jedi: Fallen Order')]</value>
+      <webElementGuid>fe98fd9d-60ab-49b9-a2e7-b6c75307fccc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Order'])[1]/preceding::a[1]</value>
+      <webElementGuid>bcf02811-9464-4163-ab8e-a0157884892c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Collection'])[1]/preceding::a[1]</value>
+      <webElementGuid>a09fe506-7aca-429d-a684-eecfb2574143</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Star Wars Jedi: Fallen Order']/parent::*</value>
+      <webElementGuid>087f1e21-ee65-405c-be2e-cb6a51184da7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, '/Games/Details/74701')]</value>
+      <webElementGuid>870dd20d-3bf1-4f84-b8f8-21624d3ce9b5</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li/a</value>
+      <webElementGuid>60917027-8658-4262-a402-c8ff9ad74c6e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '/Games/Details/74701' and (text() = 'Star Wars Jedi: Fallen Order' or . = 'Star Wars Jedi: Fallen Order')]</value>
+      <webElementGuid>f9d92c3b-b189-4e05-a9c1-3f8026a91238</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

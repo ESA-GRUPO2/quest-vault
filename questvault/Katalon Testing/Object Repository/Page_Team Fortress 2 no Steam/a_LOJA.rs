@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_LOJA</name>
+   <tag></tag>
+   <elementGuidId>b6d6eeac-382b-4615-bf1b-0b0f8262360f</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>div.supernav_container > a.menuitem.supernav.supernav_active</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='global_header']/div/div[2]/a</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>64fa0538-0fb1-44d8-b26d-cb5e23e48e6c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>menuitem supernav supernav_active</value>
+      <webElementGuid>dbfbe1b3-0ee2-4ca8-a1e6-a1ed2ff2875f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>https://store.steampowered.com/?snr=1_5_9__global-header</value>
+      <webElementGuid>4b263d56-7a92-4c43-829d-d5c436de1297</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-tooltip-type</name>
+      <type>Main</type>
+      <value>selector</value>
+      <webElementGuid>de89d738-667d-492c-b275-c60abf5f9a5e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-tooltip-content</name>
+      <type>Main</type>
+      <value>.submenu_store</value>
+      <webElementGuid>6e18fd9e-34b5-4a92-8cfb-bc20460581c8</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>
+		LOJA	</value>
+      <webElementGuid>2e7df019-1aae-4da6-b963-3f0c4df45566</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;global_header&quot;)/div[@class=&quot;content&quot;]/div[@class=&quot;supernav_container&quot;]/a[@class=&quot;menuitem supernav supernav_active&quot;]</value>
+      <webElementGuid>9f39f477-0f3a-4165-b54f-6e3bd86811e6</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='global_header']/div/div[2]/a</value>
+      <webElementGuid>793bc1ab-efc7-4b90-8c14-7dd3eff10ff9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'LOJA')]</value>
+      <webElementGuid>1c0d9c88-5b2d-4cbd-baa2-aaf7c51b906a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Reembolsos'])[1]/following::a[3]</value>
+      <webElementGuid>15cfd681-10ea-45db-a76a-359657af1c94</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Acordo de Subscrição Steam'])[1]/following::a[4]</value>
+      <webElementGuid>342c73d2-83f9-489f-aecf-17ef1bf5ac2d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='COMUNIDADE'])[1]/preceding::a[1]</value>
+      <webElementGuid>d95a133b-2ce4-4eee-bd71-e1f180a5f1cf</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sobre'])[1]/preceding::a[2]</value>
+      <webElementGuid>8007fe42-36b7-42ba-9aa9-276a3737ca71</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='LOJA']/parent::*</value>
+      <webElementGuid>0b6ec668-7b94-4ce6-b71c-5aeb37b82684</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>(//a[contains(@href, 'https://store.steampowered.com/?snr=1_5_9__global-header')])[2]</value>
+      <webElementGuid>24677b1b-2353-4c38-928c-8ffbcdd06659</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[7]/div/div/div[2]/a</value>
+      <webElementGuid>2009ab4b-7ac6-4052-9ae7-7dcd75eaa0cd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = 'https://store.steampowered.com/?snr=1_5_9__global-header' and (text() = '
+		LOJA	' or . = '
+		LOJA	')]</value>
+      <webElementGuid>67340eba-ab88-4d94-abdd-b48da3f06be2</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

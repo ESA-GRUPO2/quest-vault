@@ -1,0 +1,1 @@
+search_result['902']=["topic_00000000000001F6.html","GameCompany.IgdbCompanyId Property","Gets or sets the ID of the company."];

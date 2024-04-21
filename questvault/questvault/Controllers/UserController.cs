@@ -7,8 +7,16 @@ using questvault.Models;
 
 namespace questvault.Controllers
 {
+  /// <summary>
+  /// Controller responsible for managing user profiles.
+  /// </summary>
   public class UserController(ApplicationDbContext context, SignInManager<User> signInManager) : Controller
   {
+    /// <summary>
+    /// Redirects to the public profile page of the specified user.
+    /// </summary>
+    /// <param name="id">The ID of the user.</param>
+    /// <returns>The public profile view.</returns>
     [Authorize]
     [HttpGet]
     public async Task<IActionResult> Profile(string id)
@@ -16,6 +24,11 @@ namespace questvault.Controllers
       return RedirectToAction("PublicProfile", "User", new { id = id });
     }
 
+    /// <summary>
+    /// Displays the public profile of the specified user.
+    /// </summary>
+    /// <param name="id">The ID of the user.</param>
+    /// <returns>The public profile view.</returns>
     [Authorize]
     public async Task<IActionResult> PublicProfile(string id)
     {
@@ -45,6 +58,11 @@ namespace questvault.Controllers
       return View(verifiedProfileData);
     }
 
+    /// <summary>
+    /// Displays the private profile of the specified user.
+    /// </summary>
+    /// <param name="id">The ID of the user.</param>
+    /// <returns>The private profile view.</returns>
     [Authorize]
     public async Task<IActionResult> PrivateProfile(string id)
     {
@@ -67,6 +85,11 @@ namespace questvault.Controllers
       return View(verifiedProfileData);
     }
 
+    /// <summary>
+    /// Processes the profile data of the specified user.
+    /// </summary>
+    /// <param name="id">The ID of the user.</param>
+    /// <returns>The profile data.</returns>
     private async Task<ProfileViewData> ProcessProfileData(string id)
     {
 
@@ -121,6 +144,11 @@ namespace questvault.Controllers
 
     }
 
+    /// <summary>
+    /// Retrieves the profile data of the specified user.
+    /// </summary>
+    /// <param name="profileData">The profile data.</param>
+    /// <returns>The verified profile data.</returns>
     private async Task<FriendsViewData> GetProfileData(ProfileViewData profileData)
     {
 
@@ -184,30 +212,53 @@ namespace questvault.Controllers
 
     }
 
+    /// <summary>
+    /// Sends a friend request to the specified user.
+    /// </summary>
+    /// <param name="id">The ID of the user to send the request to.</param>
+    /// <returns>The profile view.</returns>
     public async Task<IActionResult> SendFriendRequestAsync(string id)
     {
       await FriendshipsController.SendFriendRequestAsync(signInManager.UserManager.GetUserId(User), id, context);
       return await Profile(id);
     }
 
+    /// <summary>
+    /// Accepts a friend request from the specified user.
+    /// </summary>
+    /// <param name="id">The ID of the user who sent the request.</param>
+    /// <returns>The profile view.</returns>
     public async Task<IActionResult> AcceptFriendRequestAsync(string id)
     {
       await FriendshipsController.AcceptFriendRequestAsync(signInManager.UserManager.GetUserId(User), id, context);
       return await Profile(id);
     }
 
+    /// <summary>
+    /// Rejects a friend request from the specified user.
+    /// </summary>
+    /// <param name="id">The ID of the user who sent the request.</param>
+    /// <returns>The profile view.</returns>
     public async Task<IActionResult> RejectFriendRequestAsync(string id)
     {
       await FriendshipsController.RejectFriendRequestAsync(signInManager.UserManager.GetUserId(User), id, context);
       return await Profile(id);
     }
 
+    /// <summary>
+    /// Removes a friend from the user's friend list.
+    /// </summary>
+    /// <param name="id">The ID of the friend to remove.</param>
+    /// <returns>The profile view.</returns>
     public async Task<IActionResult> RemoveFriendAsync(string id)
     {
       await FriendshipsController.RemoveFriendAsync(signInManager.UserManager.GetUserId(User), id, context);
       return await Profile(id);
     }
 
+    /// <summary>
+    /// Represents the profile view data.
+    /// </summary>
     private class ProfileViewData
     {
       public bool Friends { get; set; }

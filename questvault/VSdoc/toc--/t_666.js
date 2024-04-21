@@ -1,0 +1,1 @@
+c['666']=[['667',"Game Property","topic_000000000000020B.html",0],['668',"IgdbId Property","topic_000000000000020A.html",0],['669',"IgdbPlatformId Property","topic_000000000000020C.html",0],['670',"Platform Property","topic_000000000000020D.html",0]];

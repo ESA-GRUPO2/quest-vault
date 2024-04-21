@@ -1,1 +1,1 @@
-search_result['573']=["topic_0000000000000121_props--.html","sprint3 Properties",""];
+search_result['573']=["topic_000000000000013B.html","BackofficeController.GiveAdmin (String) Method","Grants administrator permissions to a user identified by their ID."];

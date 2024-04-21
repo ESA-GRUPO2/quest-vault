@@ -1,1 +1,1 @@
-c['61']=[['62',"EmailUserName Property","topic_00000000000000B5.html",0],['63',"Password Property","topic_00000000000000B6.html",0],['64',"RememberMe Property","topic_00000000000000B7.html",0]];
+c['61']=[['62',"InputModel Class","topic_00000000000000DD.html",1],['65',"Properties","topic_00000000000000D9_props--.html",1],['67',"Methods","topic_00000000000000D9_methods--.html",1],['69',"Fields","topic_00000000000000D9_vars--.html",1]];

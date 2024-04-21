@@ -1,0 +1,1 @@
+search_result['1070']=["topic_000000000000025E.html","IServiceIGDB.GetGenres Method","Gets a collection of genres."];

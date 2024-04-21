@@ -1,0 +1,1 @@
+search_result['1030']=["topic_0000000000000245.html","User.UpgradeClearance Method","Upgrades the clearance level of the user."];

@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>GamesController.Details Method</title>
+	<title>LoginWithRecoveryCodeModel Constructor</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">GamesController.Details Method</h1>
+		<h1 class="title">LoginWithRecoveryCodeModel Constructor</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_00000000000000F0.html">questvault.Controllers</a>
+<a href="topic_000000000000000E.html">questvault.Areas.Identity.Pages.Account</a>
 
 
 
@@ -89,7 +89,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Retrieves details of a game with the specified ID.</summary-info>
 
 
 
@@ -139,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;HttpGet()&gt; _&nbsp;<br />&lt;Route(&quot;details/{id}&quot;)&gt; _&nbsp;<br />Public Function Details( _&nbsp;<br />   ByVal <i>id</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">Integer</a>) _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Sub New( _&nbsp;<br />   ByVal <i>signInManager</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>(Of <a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>), _&nbsp;<br />   ByVal <i>userManager</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.usermanager-1">UserManager</a>(Of <a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>), _&nbsp;<br />   ByVal <i>logger</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>(Of <a target="_top" href="topic_00000000000000F9.html" onclick="this.target='';return true;">LoginWithRecoveryCodeModel</a>) _&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[HttpGet()]&nbsp;<br />[Route(&quot;details/{id}&quot;)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; Details(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; <i>id</i>&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public LoginWithRecoveryCodeModel(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>&gt; <i>signInManager</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.usermanager-1">UserManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>&gt; <i>userManager</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_00000000000000F9.html" onclick="this.target='';return true;">LoginWithRecoveryCodeModel</a>&gt; <i>logger</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[HttpGet()]&nbsp;<br />[Route(&quot;details/{id}&quot;)]&nbsp;<br />public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ Details(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; <i>id</i>&nbsp;<br />) </pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br />LoginWithRecoveryCodeModel(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>^&gt;^ <i>signInManager</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.usermanager-1">UserManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>^&gt;^ <i>userManager</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_00000000000000F9.html" onclick="this.target='';return true;">LoginWithRecoveryCodeModel</a>^&gt;^ <i>logger</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -269,29 +268,48 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 
 <h4 class="subHeading">
-	Parameters</h4><dl paramName="id" class="parameterList">
+	Parameters</h4><dl paramName="signInManager" class="parameterList">
 	<dt>
 		<span class="parameter">
-			id
+			signInManager
 		</span>
 	</dt>
 	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; 
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>&gt; 
 	</dd>
 </dl>
 <p>
-	The ID of the game. 
+	 
+</p>
+<dl paramName="userManager" class="parameterList">
+	<dt>
+		<span class="parameter">
+			userManager
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.usermanager-1">UserManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>&gt; 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+<dl paramName="logger" class="parameterList">
+	<dt>
+		<span class="parameter">
+			logger
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_00000000000000F9.html" onclick="this.target='';return true;">LoginWithRecoveryCodeModel</a>&gt; 
+	</dd>
+</dl>
+<p>
+	 
 </p>
 
 <p />
 
-	<h4 class="subHeading">
-		Return Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; 
-		<p>
-		An asynchronous task representing the action result. 
-	</p>
-	
 
 
 
@@ -379,11 +397,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_00000000000000F8.html">GamesController Class</a><br />
+			<a href="topic_00000000000000F9.html">LoginWithRecoveryCodeModel Class</a><br />
 
 
 
-<a href="topic_00000000000000F0.html">questvault.Controllers Namespace</a><br />
+<a href="topic_000000000000000E.html">questvault.Areas.Identity.Pages.Account Namespace</a><br />
 
 
 			

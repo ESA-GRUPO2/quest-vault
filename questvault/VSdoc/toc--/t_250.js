@@ -1,1 +1,1 @@
-c['250']=[['251',"OnGetAsync Method","topic_0000000000000055.html",0],['252',"OnPostPasswordAsync Method","topic_0000000000000057.html",0],['253',"OnPostUserNameAsync Method","topic_0000000000000056.html",0]];
+c['250']=[['251',"Enable2faModel Constructor","topic_0000000000000039.html",0],['252',"Properties","topic_0000000000000036_props--.html",1],['254',"Methods","topic_0000000000000036_methods--.html",1],['257',"Fields","topic_0000000000000036_vars--.html",1]];

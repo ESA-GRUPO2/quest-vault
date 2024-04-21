@@ -1,1 +1,1 @@
-search_result['736']=["topic_0000000000000186.html","Platform.PlatformName Property","Gets or sets the name of the gaming platform."];
+search_result['736']=["topic_000000000000019C_props--.html","sprint3 Properties",""];

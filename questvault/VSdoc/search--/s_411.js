@@ -1,1 +1,1 @@
-search_result['411']=["topic_00000000000000CB_methods--.html","LogoutModel Methods",""];
+search_result['411']=["topic_00000000000000E7.html","LoginModel.ExternalLogins Property","This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used\r\n    directly from your code. This API may change or be removed in future releases."];

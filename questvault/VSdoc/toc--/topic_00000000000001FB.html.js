@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['573',"questvault.Models Namespace","topic_00000000000001B8.html"],['647',"GameGenre Class","topic_00000000000001F9.html"],['648',"Properties","topic_00000000000001F9_props--.html"],['651',"IgdbGenreId Property","topic_00000000000001FB.html"]];

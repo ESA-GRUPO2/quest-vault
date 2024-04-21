@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_00000000000001A8.html"],['381',"questvault.Models Namespace","topic_0000000000000125.html"],['406',"FriendshipsModel Class","topic_000000000000013A.html"]];
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['410',"questvault.Controllers Namespace","topic_0000000000000134.html"],['411',"BackofficeController Class","topic_0000000000000135.html"],['412',"Methods","topic_0000000000000135_methods--.html"],['416',"GiveAdminAll Method","topic_000000000000013A.html"]];

@@ -1,1 +1,1 @@
-search_result['577']=["topic_0000000000000124.html","sprint3.BuildTargetModel Method",""];
+search_result['577']=["topic_000000000000013D.html","BackofficeController.RemovePermissionsAll Method","Removes all permissions from a user identified by their ID."];

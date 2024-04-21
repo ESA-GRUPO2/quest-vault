@@ -1,1 +1,1 @@
-search_result['686']=["topic_0000000000000162_events--.html","GamePlatform Events",""];
+search_result['686']=["topic_000000000000017D.html","ProfileViewData Class","Represents the profile view data."];

@@ -1,1 +1,1 @@
-c['309']=[['310',"TwoFactorAuthenticationModel Constructor","topic_0000000000000084.html",0],['311',"Properties","topic_0000000000000083_props--.html",1],['317',"Methods","topic_0000000000000083_methods--.html",1]];
+c['309']=[['310',"InputModel Class","topic_000000000000006B.html",1],['316',"Properties","topic_0000000000000064_props--.html",1],['323',"Methods","topic_0000000000000064_methods--.html",1]];

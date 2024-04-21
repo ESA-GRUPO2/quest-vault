@@ -418,6 +418,7 @@ namespace questvault.Controllers
         ViewBag.Status = gameLog.Status;
         ViewBag.Review = gameLog.Review;
         ViewBag.Rating = gameLog.Rating;
+        ViewBag.GamelogId = gameLog.GameLogId;
       }
       ViewBag.IsGameAddedToLibrary = isGameAddedToLibrary;
       ViewBag.IsGameTop5 =

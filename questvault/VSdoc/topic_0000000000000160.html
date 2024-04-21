@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>GameLog.Rating Property</title>
+	<title>HomeController Constructor</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">GameLog.Rating Property</h1>
+		<h1 class="title">HomeController Constructor</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000125.html">questvault.Models</a>
+<a href="topic_0000000000000134.html">questvault.Controllers</a>
 
 
 
@@ -89,7 +89,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Gets or sets the rating given for the game (nullable).</summary-info>
 
 
 
@@ -139,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;AllowNull()&gt; _&nbsp;<br />Public Property Rating() As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">Integer</a>)</pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Sub New( _&nbsp;<br />   ByVal <i>logger</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>(Of <a target="_top" href="topic_000000000000015C.html" onclick="this.target='';return true;">HomeController</a>), _&nbsp;<br />   ByVal <i>context</i> As <a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a>, _&nbsp;<br />   ByVal <i>signInManager</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>(Of <a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>) _&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[AllowNull()]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; Rating {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public HomeController(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_000000000000015C.html" onclick="this.target='';return true;">HomeController</a>&gt; <i>logger</i>,&nbsp;<br />   <a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a> <i>context</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>&gt; <i>signInManager</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[AllowNull()]&nbsp;<br />public: &nbsp;<br />property <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; Rating {&nbsp;<br /> <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br />HomeController(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_000000000000015C.html" onclick="this.target='';return true;">HomeController</a>^&gt;^ <i>logger</i>,&nbsp;<br />   <a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a>^ <i>context</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>^&gt;^ <i>signInManager</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -268,11 +267,49 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="logger" class="parameterList">
+	<dt>
+		<span class="parameter">
+			logger
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_000000000000015C.html" onclick="this.target='';return true;">HomeController</a>&gt; 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+<dl paramName="context" class="parameterList">
+	<dt>
+		<span class="parameter">
+			context
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+<dl paramName="signInManager" class="parameterList">
+	<dt>
+		<span class="parameter">
+			signInManager
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>&gt; 
+	</dd>
+</dl>
+<p>
+	 
+</p>
 
-	<h4 class="subHeading">
-		Property Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>&gt; 
-	
+<p />
+
 
 
 
@@ -360,11 +397,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000158.html">GameLog Class</a><br />
+			<a href="topic_000000000000015C.html">HomeController Class</a><br />
 
 
 
-<a href="topic_0000000000000125.html">questvault.Models Namespace</a><br />
+<a href="topic_0000000000000134.html">questvault.Controllers Namespace</a><br />
 
 
 			
