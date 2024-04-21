@@ -519,13 +519,14 @@ hr {
   line-height: 30px;
 }
 
-  .nav-btn:hover, .nav-btn:active, .nav-btn:focus {
-    background: #133E7C;
-    color: #ffffff;
-  }
+.nav-btn:hover, .nav-btn:active, .nav-btn:focus {
+  background: #133E7C;
+  color: #ffffff;
+}
 
 .nav-vector {
   height: 1.5rem;
+  filter: invert(8%) sepia(21%) saturate(4513%) hue-rotate(198deg) brightness(89%) contrast(99%);
 }
 
 
@@ -534,10 +535,13 @@ hr {
 }
 
 .nav-avatar {
+  border-radius: 50%; 
+  height: 3.1rem; width: 3.1rem; margin: -6px;
 }
 
-  .nav-avatar:hover, .nav-avatar:active {
-  }
+.nav-avatar:hover, .nav-avatar:active {
+  filter: invert(0%);
+}
 
 .nav-btn-2 {
   background: #98008D;
