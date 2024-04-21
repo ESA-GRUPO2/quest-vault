@@ -1,11 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
-using questvault.Models;
-using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
-using questvault.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using questvault.Data;
+using questvault.Models;
 
 namespace questvault.Controllers
 {
@@ -32,7 +30,7 @@ namespace questvault.Controllers
       _context.AccessInstances.Add(accessInstance);
       await _context.SaveChangesAsync();
 
-      if (_signInManager.IsSignedIn(User))
+      if( _signInManager.IsSignedIn(User) )
       {
         return RedirectToAction("UserLibrary", "Library", new { id = _signInManager.UserManager.GetUserName(User) });
       }
@@ -81,12 +79,12 @@ namespace questvault.Controllers
     public async Task<IActionResult> SearchUser(string? id)
     {
       ViewBag.SearchTerm = id;
-      if (id == null)
+      if( id == null )
       {
         return NotFound();
       }
 
-      var users = _context.Users.Where(u => u.UserName.Contains(id));
+      var users = _context.Users.Where(u => u.UserName!= null && u.UserName.Contains(id) && !u.LockoutEnabled);
       //if (users.IsNullOrEmpty())
       //{
       //    await Console.Out.WriteLineAsync("ai ta null");
