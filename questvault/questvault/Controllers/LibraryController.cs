@@ -37,7 +37,7 @@ namespace questvault.Controllers
       var userLogged = await signInManager.UserManager.GetUserAsync(this.User);
       var user = await context.Users.Where(u => string.Equals(u.NormalizedUserName ,id.ToUpper())).FirstAsync();
 
-      if( user == null || userLogged == null || user.LockoutEnabled )
+      if( user == null || userLogged == null )
       {
         ViewBag.Error = "Invalid user or game ID.";
         return NotFound();

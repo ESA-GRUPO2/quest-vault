@@ -23,7 +23,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+  options.SignIn.RequireConfirmedAccount = true; 
+  options.Lockout.AllowedForNewUsers = false;
+})
   .AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders()
 
