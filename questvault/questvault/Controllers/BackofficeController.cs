@@ -12,7 +12,6 @@ namespace questvault.Controllers
 
   public class BackofficeController(ApplicationDbContext context, IServiceIGDB igdbService, SignInManager<User> signInManager) : Controller
   {
-
     /// <summary>
     /// Grants moderator permissions to a user identified by their ID.
     /// </summary>
