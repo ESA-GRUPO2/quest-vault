@@ -94,15 +94,15 @@
                   <li>
                     <a class="dropdown-item" onclick="return confirm('Are you sure you want to Lockout @Model.user.UserName?')"
                             asp-controller="Backoffice" asp-action="LockoutUser" asp-route-id="@Model.user.Id">
-                      Lockout User
+                            Lockout User
                     </a>
                   </li>
                 }
                 @if (Model.user.LockoutEnabled)
                 {
-                  <a class="dropdown-item" onclick="return confirm('Are you sure you want to remove @Model.user.UserName's Lockout?')"
+                  <a class="dropdown-item" onclick="return confirm('Are you sure you want to remove @Model.user.UserName Lockout?')"
                           asp-controller="Backoffice" asp-action="RemoveLockoutUser" asp-route-id="@Model.user.Id">
-                    Unlock User
+                          Unlock User
                   </a>
                 }
                 else
@@ -110,22 +110,22 @@
                   @if (Model.user.Clearance != 2)
                   {
                     <a class="dropdown-item" onclick="return confirm('Are you sure you make @Model.user.UserName an Administrator?')"
-                            asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@Model.user.Id">
-                      Make Admin
+                        asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@Model.user.Id">
+                        Make Admin
                     </a>
                   }
                   @if (Model.user.Clearance == 0)
                   {
                     <a class="dropdown-item" onclick="return confirm('Are you sure you make @Model.user.UserName a Moderator?')"
-                            asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@Model.user.Id">
-                      Make Mod
+                        asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@Model.user.Id">
+                        Make Mod
                     </a>
                   }
                   @if (Model.user.Clearance == 1)
                   {
                     <a class="dropdown-item" onclick="return confirm('Are you sure you remove @Model.user.UserName from being a Moderator?')"
-                            asp-controller="Backoffice" asp-action="RemovePermissions" asp-route-id="@Model.user.Id">
-                      Remove Mod
+                        asp-controller="Backoffice" asp-action="RemovePermissions" asp-route-id="@Model.user.Id">
+                        Remove Mod
                     </a>
                   }
                 }

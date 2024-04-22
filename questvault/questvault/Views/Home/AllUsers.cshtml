@@ -39,8 +39,9 @@
             }
             @if (item.LockoutEnabled)
             {
-              <a onclick="return confirm('Are you sure you want to remove @item.UserName's Lockout?')"
-                 class="btn btn-primary nav-btn" style="width: 8.5rem" asp-controller="Backoffice" asp-action="RemoveLockoutUserAll" asp-route-id="@item.Id">Unlock User</a>
+              <a onclick="return confirm('Are you sure you want to remove @item.UserName Lockout?')"
+                 class="btn btn-primary nav-btn" style="width: 8.5rem" 
+                 asp-controller="Backoffice" asp-action="RemoveLockoutUserAll" asp-route-id="@item.Id">Unlock User</a>
             }
           </td>
           <td>

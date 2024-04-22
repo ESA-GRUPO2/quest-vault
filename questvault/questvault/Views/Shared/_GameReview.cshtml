@@ -26,12 +26,10 @@
     @if (object.Equals(TempData["_GR-ShowDeleteButton"], true))
     {
       <div class="review-delete d-flex align-items-center col-1">
-
-        <a onclick="return confirm('Are you sure you want to remove @Model.User.UserName's Review?')"
+        <a onclick="return confirm('Are you sure you want to remove @Model.User.UserName Review?')"
            class="btn btn-primary btn-remove d-flex align-items-center" asp-controller="Backoffice" asp-action="RemoveReview" asp-route-id="@Model.GameLogId">
           <img id="icon-trash" class="nav-vector" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
          </a>
-
       </div>
     }
   </div>
