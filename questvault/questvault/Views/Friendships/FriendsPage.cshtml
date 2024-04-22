@@ -33,17 +33,23 @@
       <table class="table d-flex table-dark table-sm table-profile">
         <tbody class="container d-inline-flex">
           <tr class="row d-flex justify-content-between align-items-center">
+
             @foreach (var item in Model)
             {
-              var userAvatar = (item.User2 != null && item.User2.ProfilePhotoPath != null) ? item.User2.ProfilePhotoPath : "user.svg";
+              User user = item.User1;
+              if( user!= null && user.UserName != null && user.UserName.Equals(User.Identity.Name))
+              {
+                user = item.User2;
+              }
+              var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "user.svg";
               <td class="d-flex mt-5 me-4 align-items-center justify-content-center">
 
-                <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { id = item.User2.Id})">
+                <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { id = user.Id})">
                   <img class="user-foto ms-0 me-4 @(userAvatar == "user.svg" ? "p-3":"")" src="~/img/usr_profile/@userAvatar" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
-                  <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.User2.UserName)</span>
+                  <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => user.UserName)</span>
                 </a>
-                <a class="ms-5" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@item.User2.Id"
-                   onclick="return confirm('Are you sure you to remove @item.User2.UserName from your friends?')">
+                <a class="ms-5" asp-controller="Friendships" asp-action="RemoveFriend" asp-route-id="@user.Id"
+                   onclick="return confirm('Are you sure you to remove @user.UserName from your friends?')">
                   <img id="icon-trash" class="nav-vector" src="~/img/vector/trash-can-solid.svg" alt="Trash Can Icon" />
                 </a>
               </td>
