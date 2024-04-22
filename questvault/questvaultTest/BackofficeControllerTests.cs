@@ -33,7 +33,7 @@ namespace questvaultTest
       using( var context = new ApplicationDbContext(options) )
       {
         // Act
-        await BackofficeController.GiveModerator("Moderator", context);
+        await BackofficeController.MakeModerator("Moderator", context);
 
         int result = context.Users.First(u => u.Id == "Moderator").Clearance;
 
@@ -51,7 +51,7 @@ namespace questvaultTest
       dbContextFixture.DbContext.SaveChanges();
 
       // Act
-      var result = await controller.GiveModerator(id);
+      var result = await controller.MakeModerator(id);
 
       // Assert
       Assert.IsType<RedirectToActionResult>(result);
@@ -66,7 +66,7 @@ namespace questvaultTest
       var id = "someId";
 
       // Act
-      var result = await controller.GiveModeratorAll(id);
+      var result = await controller.MakeModeratorAll(id);
 
       // Assert
       Assert.IsType<RedirectToActionResult>(result);
@@ -94,7 +94,7 @@ namespace questvaultTest
       using( var context = new ApplicationDbContext(options) )
       {
         // Act
-        await BackofficeController.GiveAdmin("Admin", context);
+        await BackofficeController.MakeAdmin("Admin", context);
 
         int result = context.Users.First(u => u.Id == "Admin").Clearance;
 
@@ -112,7 +112,7 @@ namespace questvaultTest
       dbContextFixture.DbContext.SaveChanges();
 
       // Act
-      var result = await controller.GiveAdmin(id);
+      var result = await controller.MakeAdmin(id);
 
       // Assert
       Assert.IsType<RedirectToActionResult>(result);
@@ -127,7 +127,7 @@ namespace questvaultTest
       var id = "someId";
 
       // Act
-      var result = await controller.GiveAdminAll(id);
+      var result = await controller.MakeAdminAll(id);
 
       // Assert
       Assert.IsType<RedirectToActionResult>(result);
