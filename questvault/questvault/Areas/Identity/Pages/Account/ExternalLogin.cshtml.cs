@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using questvault.Models;
 using questvault.Data;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 
 namespace questvault.Areas.Identity.Pages.Account
 {
@@ -116,12 +117,28 @@ namespace questvault.Areas.Identity.Pages.Account
         return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
       }
 
+      var user = await _userManager.FindByEmailAsync(info.Principal.FindFirstValue(ClaimTypes.Email));
+      if (user == null)
+      {
+        Console.WriteLine("in: " + Input.Email);
+        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        return Page();
+      }
+      if (user.IsDeactivated)
+      {
+        return RedirectToPage("./DeactivatedAccount", new { ReturnUrl = returnUrl, UserId = user.Id });
+      }
+      if (user.LockoutEnabled)
+      {
+        _logger.LogWarning("User account locked out.");
+        return RedirectToPage("./Lockout");
+      }
       // Sign in the user with this external login provider if the user already has a login.
       var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+      _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
       if (result.Succeeded)
       {
-        _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
-        var user = await _signInManager.UserManager.GetUserAsync(this.User);
+
         var logginInstance = new LoginInstance() { UserId = user.Id, LoginDate = DateOnly.FromDateTime(DateTime.Now) };
         _context.LogginInstances.Add(logginInstance);
         await _context.SaveChangesAsync();
