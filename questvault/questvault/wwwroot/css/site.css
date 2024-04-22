@@ -1602,3 +1602,24 @@ body {
   height: 10vh;
   width: 25rem;
 }
+
+
+/*-------------------------------------------------- ALLUSERS -----------------------------------------------*/
+
+.table-allusers {
+  text-align: right;
+  --bs-table-bg: #091833;
+  background-color: #091833;
+  width: 100% !important;
+}
+
+  .table-allusers tr { 
+    border: solid 1px #d9d9d9 !important;
+    text-align: center;
+    height: 10vh;
+    width: 25rem;
+  }
+
+  .table-allusers td {
+    height: 100% !important;
+  }
