@@ -30,12 +30,12 @@
     @if (Model.Any())
     {
       <table class="table d-flex table-dark table-sm table-profile">
-        <tbody class="container d-inline-flex">
+        <tbody class="container d-inline-flex justify-content-center">
           <tr class="row d-flex justify-content-between align-items-center">
             @foreach (var item in Model)
             {
               var userAvatar = (item.Sender != null && item.Sender.ProfilePhotoPath != null) ? item.Sender.ProfilePhotoPath : "user.svg";
-              <td class="d-flex mt-5 align-items-center justify-content-center">
+              <td class="d-flex mt-5 align-items-center justify-content-evenly">
                 <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { id = item.Sender.Id})">
                   <img class="user-foto ms-0 me-4 @(userAvatar == "user.svg" ? "p-3 ":"")" src="~/img/usr_profile/@userAvatar" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
                   <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.Sender.UserName)</span>
