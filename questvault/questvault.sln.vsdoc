@@ -120,5 +120,6 @@
       <add key="VBdocman_fileNamingConvention"><![CDATA[1]]></add>
     </SettingsGroup>
     <add key="VBdocman_questvault"><![CDATA[default]]></add>
+    <add key="VBdocman_questvaultTest"><![CDATA[default]]></add>
   </appSettings>
 </configuration>

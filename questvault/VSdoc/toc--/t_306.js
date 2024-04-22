@@ -1,1 +1,1 @@
-c['306']=[['307',"OnGet Method","topic_0000000000000081.html",0],['308',"OnPostAsync Method","topic_0000000000000082.html",0]];
+c['306']=[['307',"_logger Field","topic_000000000000005E.html",0],['308',"_userManager Field","topic_000000000000005D.html",0]];

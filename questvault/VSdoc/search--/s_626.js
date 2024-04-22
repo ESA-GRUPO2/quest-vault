@@ -1,1 +1,1 @@
-search_result['626']=["topic_000000000000013C.html","FriendshipsModel.FriendshipList Property",""];
+search_result['626']=["topic_0000000000000155.html","GamesController.Results Method","Gets the view Results with the games based on a search term."];

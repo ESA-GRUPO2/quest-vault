@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using questvault.Data;
@@ -193,6 +194,17 @@ namespace questvault.Controllers
       await RemoveFriendAsync(signInManager.UserManager.GetUserId(User), id, context);
 
       return RedirectToRoute(new { controller = "Friendships", action = "FriendsPage" });
+    }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> GetFriendRequests()
+    {
+      var userlogged = signInManager.UserManager.GetUserId(User);
+
+      var friendRequests = context.FriendshipRequest.Where(r => r.ReceiverId == userlogged).ToList();
+
+      return Json(friendRequests);
     }
   }
 }

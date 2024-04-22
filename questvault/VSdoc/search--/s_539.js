@@ -1,1 +1,1 @@
-search_result['539']=["topic_000000000000010D.html","questvault.Data Namespace",""];
+search_result['539']=["topic_000000000000012B.html","InputModel Class","This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used\r\n    directly from your code. This API may change or be removed in future releases."];

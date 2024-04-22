@@ -1,1 +1,1 @@
-c['14']=[['15',"Properties","topic_000000000000008E_props--.html",1],['17',"Methods","topic_000000000000008E_methods--.html",1]];
+c['14']=[['15',"_signInManager Field","topic_00000000000000BB.html",0],['16',"_userManager Field","topic_00000000000000BA.html",0]];

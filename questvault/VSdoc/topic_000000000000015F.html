@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>GameLog.Status Property</title>
+	<title>_signInManager Field</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">GameLog.Status Property</h1>
+		<h1 class="title">_signInManager Field</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000125.html">questvault.Models</a>
+<a href="topic_0000000000000134.html">questvault.Controllers</a>
 
 
 
@@ -89,7 +89,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Gets or sets the status of the game (nullable).</summary-info>
 
 
 
@@ -139,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;AllowNull()&gt; _&nbsp;<br />Public Property Status() As <a target="_top" href="topic_000000000000016D.html" onclick="this.target='';return true;">GameStatus</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Private ReadOnly _signInManager As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>(Of <a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[AllowNull()]&nbsp;<br />public <a target="_top" href="topic_000000000000016D.html" onclick="this.target='';return true;">GameStatus</a> Status {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">private readonly <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>&gt; _signInManager</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[AllowNull()]&nbsp;<br />public: &nbsp;<br />property <a target="_top" href="topic_000000000000016D.html" onclick="this.target='';return true;">GameStatus</a> Status {&nbsp;<br /> <a target="_top" href="topic_000000000000016D.html" onclick="this.target='';return true;">GameStatus</a> get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="topic_000000000000016D.html" onclick="this.target='';return true;">GameStatus</a> value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">private: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>^&gt;^ _signInManager;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -257,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   AllowNull()&nbsp;<br />function get Status() : <a target="_top" href="topic_000000000000016D.html" onclick="this.target='';return true;">GameStatus</a>;&nbsp;<br />public &nbsp;<br />   AllowNull()&nbsp;<br />function set Status(value : <a target="_top" href="topic_000000000000016D.html" onclick="this.target='';return true;">GameStatus</a>);</pre>			
+					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -270,8 +269,8 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 
 	<h4 class="subHeading">
-		Property Value</h4>
-	<a target="_top" href="topic_000000000000016D.html" onclick="this.target='';return true;">GameStatus</a> 
+		Field Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1">SignInManager</a>&lt;<a target="_top" href="topic_000000000000023D.html" onclick="this.target='';return true;">User</a>&gt; 
 	
 
 
@@ -360,11 +359,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000158.html">GameLog Class</a><br />
+			<a href="topic_000000000000015C.html">HomeController Class</a><br />
 
 
 
-<a href="topic_0000000000000125.html">questvault.Models Namespace</a><br />
+<a href="topic_0000000000000134.html">questvault.Controllers Namespace</a><br />
 
 
 			
@@ -390,4 +389,3 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
     </div>
   </body>
 </html>
-

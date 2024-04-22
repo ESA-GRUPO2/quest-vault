@@ -1,11 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
-using questvault.Models;
-using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
-using questvault.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using questvault.Data;
+using questvault.Models;
 
 namespace questvault.Controllers
 {
@@ -22,13 +20,17 @@ namespace questvault.Controllers
       _signInManager = signInManager;
     }
 
+    /// <summary>
+    /// Handles the default landing page of the application.
+    /// </summary>
+    /// <returns>A redirection to the user's library if signed in, otherwise returns the default view.</returns>
     public async Task<IActionResult> IndexAsync()
     {
       var accessInstance = new AccessInstance() { AccessDate = DateOnly.FromDateTime(DateTime.Now) };
       _context.AccessInstances.Add(accessInstance);
       await _context.SaveChangesAsync();
 
-      if (_signInManager.IsSignedIn(User))
+      if( _signInManager.IsSignedIn(User) )
       {
         return RedirectToAction("UserLibrary", "Library", new { id = _signInManager.UserManager.GetUserName(User) });
       }
@@ -47,23 +49,42 @@ namespace questvault.Controllers
       return View();
     }
 
-
+    /// <summary>
+    /// Retrieves all users from the database and displays them.
+    /// </summary>
+    /// <returns>The view containing all users.</returns>
+    [Authorize]
     public async Task<IActionResult> AllUsersAsync()
     {
+      var user = await _signInManager.UserManager.GetUserAsync(User);
+      if (user.Clearance > 1)
+      {
       var dbContext = _context.Users;
       return View(await dbContext.ToListAsync());
+
+      }else
+      {
+        return Redirect("/Identity/Account/Login");
+      }
+
     }
+
+    /// <summary>
+    /// Searches for users based on the provided search term.
+    /// </summary>
+    /// <param name="id">The search term.</param>
+    /// <returns>The view containing search results.</returns>
     [HttpGet]
     [Route("SearchUser/{id}")]
     public async Task<IActionResult> SearchUser(string? id)
     {
       ViewBag.SearchTerm = id;
-      if (id == null)
+      if( id == null )
       {
         return NotFound();
       }
 
-      var users = _context.Users.Where(u => u.UserName.Contains(id));
+      var users = _context.Users.Where(u => u.UserName!= null && u.UserName.Contains(id) && !u.LockoutEnabled);
       //if (users.IsNullOrEmpty())
       //{
       //    await Console.Out.WriteLineAsync("ai ta null");

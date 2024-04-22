@@ -1,1 +1,1 @@
-search_result['610']=["topic_0000000000000133_methods--.html","FriendshipRequest Methods",""];
+search_result['610']=["topic_000000000000014D.html","FriendshipsController.RejectFriendRequestAsync (String) Method","Deletes a specific object of the type friendRequest"];

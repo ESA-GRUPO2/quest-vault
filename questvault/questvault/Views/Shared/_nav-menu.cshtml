@@ -5,6 +5,7 @@
   var user = await UserManager.GetUserAsync(User);
 
   var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "user.svg";
+  
 }
 
 <nav class="navbar navbar-dark fixed-top navbar-expand-lg nav-main nav-bg">
@@ -75,7 +76,7 @@
           <li class="nav-item ms-3 d-flex align-self-center">
             <div class="dropdown" style="position:relative">
               <button class="btn btn-primary nav-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
-                <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="@(userAvatar=="user.svg" ? "nav-vector mb-1" : "mb-1")" style="@(userAvatar != "user.svg" ? "border-radius: 50%; height: 3.1rem; width: 3.1rem; margin: -6px;" : "filter: invert(8%) sepia(21%) saturate(4513%) hue-rotate(198deg) brightness(89%) contrast(99%);")">
+                <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="@(userAvatar=="user.svg" ? "nav-vector mb-1" : "nav-avatar mb-1")">
               </button>
               <ul class="dropdown-menu" style="right:0; left:auto; background: #133E7C !important;">
                 <li>
@@ -96,13 +97,10 @@
                 }
 
                 <li>
-                  <a style="color: white !important;
-                                        background: #133E7C !important;" href="/Friendships/FriendsPage" class="btn btn-primary dropdown-item">Friends</a>
+                  <a style="color: white; 
+                                        background: #133E7C !important;" id="friendsPageLink" href="/Friendships/FriendsPage" class="btn btn-primary dropdown-item"> <span id="friendsText">Friends</span> <span id="pendingIndicator"></span> </a>
                 </li>
-                @{
-                  var user1 = await SignInManager.UserManager.GetUserAsync(this.User);
-                }
-                @if (user1?.Clearance > 0)
+                @if (user?.Clearance > 0)
                 {
                   <li>
                     <a style="color: white !important;

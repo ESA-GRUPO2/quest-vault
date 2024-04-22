@@ -1,7 +1,14 @@
 ﻿@page
 @model IndexModel
 @{
-  ViewData["Title"] = "Account";
+  if (Model.isPrivate == true)
+  {
+    ViewData["Title"] = "Private Account";
+  }
+  else
+  {
+    ViewData["Title"] = "Public Account";
+  }
   ViewData["ActivePage"] = ManageNavPages.Index;
   ViewData["help_Text"] = @"
        This is your MyAccount page! <br/>
@@ -13,6 +20,7 @@
 
 @{
   var userAvatar = ViewData["UserAvatar"] as string;
+  //var user = await UserManager.GetUserAsync(User);
 }
 <style>
   #username::placeholder {

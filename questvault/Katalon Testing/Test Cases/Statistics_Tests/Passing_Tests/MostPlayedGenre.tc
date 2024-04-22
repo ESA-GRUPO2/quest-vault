@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that an admin  can correctly check the most popular genre</description>
+   <name>MostPlayedGenre</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>8d03ea2f-4b8c-4408-a5c3-a08df477edc1</testCaseGuid>
+</TestCaseEntity>

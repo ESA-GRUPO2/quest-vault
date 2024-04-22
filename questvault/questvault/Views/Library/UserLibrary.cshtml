@@ -205,10 +205,19 @@
       }
       else
       {
+        @if (user.UserName != ViewBag.UserLibraryId)
+        {
+          <div style="text-align: center; height:100%;padding-top:200px">
+            <h2>@ViewBag.UserLibraryId has no games added!</h2>
+          </div>
+        }
+        else
+        {
         <div style="text-align: center; height:100%;padding-top:200px">
           <h2>No games Added!</h2>
           <h3>Go to Games to add some</h3>
         </div>
+        }
       }
     </div>
   </div>

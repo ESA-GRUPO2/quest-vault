@@ -1,0 +1,1 @@
+search_result['1067']=["topic_000000000000025B.html","IServiceIGDB.SearchGamesSteam Method","Searches for games based on names comming from steam on a list of game names."];

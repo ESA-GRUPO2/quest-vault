@@ -21,26 +21,30 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('https://localhost:7074/')
 
-WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
+WebUI.maximizeWindow()
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_Log in'))
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/a_Log in'))
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tBatista')
+WebUI.setText(findTestObject('Object Repository/Page_Game - QuestVault/input_Log in_Input.EmailUserName'), 'tBatista')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.Password'), 'LUp6avagZuk=')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Game - QuestVault/input_Log in_Input.Password'), 'LUp6avagZuk=')
 
-WebUI.click(findTestObject('Object Repository/Page_- QuestVault/button_Log in'))
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/button_Log in'))
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/a_MyLibrary'))
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/img'))
 
-WebUI.click(findTestObject('Object Repository/Page_Library - QuestVault/img'))
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/a_The Witcher 3 Wild Hunt - Game of the Yea_879e5d'))
 
-WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/a_The Witcher 3 Wild Hunt - The Beginning trailer'))
+WebUI.switchToWindowTitle('The Witcher 3: Wild Hunt - Game of the Year Edition - Launch Trailer (Official) - YouTube')
 
-WebUI.click(findTestObject('Object Repository/Page_The Witcher 3 Wild Hunt - The Beginnin_b852ab/div_Aceitar tudo_yt-spec-touch-feedback-sha_631d3e'))
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/div_Aceitar tudo_yt-spec-touch-feedback-sha_631d3e'))
 
-WebUI.verifyElementPresent(findTestObject('Object Repository/Page_The Witcher 3 Wild Hunt - The Beginnin_b852ab/yt-icon_Anterior_logo-icon'), 
-    0)
+WebUI.delay(3)
+
+WebUI.verifyElementText(findTestObject('Object Repository/Page_Game - QuestVault/yt-formatted-string_The Witcher 3 Wild Hunt_9cf09b'), 
+    'The Witcher 3: Wild Hunt - Game of the Year Edition - Launch Trailer (Official)')
+
+WebUI.click(findTestObject('Object Repository/Page_Game - QuestVault/video_PT_video-stream html5-main-video'))
 
 WebUI.closeBrowser()
 

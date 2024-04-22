@@ -33,7 +33,7 @@ body {
 }
 
 .main-section {
-  margin: 0px 5rem 2rem 5rem;
+  margin: 0px 5rem 10rem 5rem;
   color: white;
 }
 
@@ -534,9 +534,14 @@ hr {
 }
 
 .nav-avatar {
+  border-radius: 50%;
+  height: 3.1rem;
+  width: 3.1rem;
+  margin: -6px;
 }
 
   .nav-avatar:hover, .nav-avatar:active {
+    filter: invert(0%);
   }
 
 .nav-btn-2 {
@@ -1601,4 +1606,33 @@ body {
   text-align: center;
   height: 10vh;
   width: 25rem;
+}
+
+/*FRIEND REQUESTS*/
+
+.pending-friendreq {
+  color: #98008D !important;
+  font-weight: bold;
+}
+
+#pendingIndicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.blink-text {
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    color: white;
+  }
+
+  to {
+    color: #98008D;
+  }
 }

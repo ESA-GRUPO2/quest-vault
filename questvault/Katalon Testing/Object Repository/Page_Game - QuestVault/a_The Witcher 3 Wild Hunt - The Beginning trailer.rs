@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>35dbd109-f462-4ee9-881c-59cbed3c1980</webElementGuid>
+      <webElementGuid>987be412-465a-4968-8490-8abf47bd48f2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +37,7 @@
       <name>class</name>
       <type>Main</type>
       <value>ytp-title-link yt-uix-sessionlink</value>
-      <webElementGuid>ec6628eb-6865-4393-87f8-e528d4d92e19</webElementGuid>
+      <webElementGuid>eb188f0d-1829-4462-8c24-b7f8d1edcee2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +45,7 @@
       <name>target</name>
       <type>Main</type>
       <value>_blank</value>
-      <webElementGuid>84560d57-4f24-4326-98cd-8dec69c8c134</webElementGuid>
+      <webElementGuid>406a6383-041c-47c0-9caf-f658b1c9045e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +53,7 @@
       <name>data-sessionlink</name>
       <type>Main</type>
       <value>feature=player-title</value>
-      <webElementGuid>a8a9f633-85b0-4dfa-b27c-faca6ba3d1ae</webElementGuid>
+      <webElementGuid>794316d6-8c74-4289-a256-c8d4316a9737</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +61,7 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>03c9c2dd-37d8-45ed-84b8-fb641e13bb70</webElementGuid>
+      <webElementGuid>5e924732-74cb-49a5-ae6f-aefe91af2e77</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -69,7 +69,7 @@
       <name>href</name>
       <type>Main</type>
       <value>https://www.youtube.com/watch?v=5nLipy-Z4yo</value>
-      <webElementGuid>c9b7aa91-4256-413f-921e-e585ddabc18a</webElementGuid>
+      <webElementGuid>8aa48330-c6b1-48e1-8a78-aa9b20cd76eb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -77,7 +77,7 @@
       <name>text</name>
       <type>Main</type>
       <value>The Witcher 3: Wild Hunt - The Beginning trailer</value>
-      <webElementGuid>61d65670-ed63-4217-bbdf-9ec23b8685b7</webElementGuid>
+      <webElementGuid>6babbe49-3e7e-485e-8e8a-cfa4c0a7e71c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -85,7 +85,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;movie_player&quot;)/div[@class=&quot;ytp-chrome-top ytp-show-cards-title&quot;]/div[@class=&quot;ytp-title&quot;]/div[@class=&quot;ytp-title-text&quot;]/a[@class=&quot;ytp-title-link yt-uix-sessionlink&quot;]</value>
-      <webElementGuid>3e145e6e-787a-49f1-8081-a4efee06b4d8</webElementGuid>
+      <webElementGuid>5c29b7e3-667a-4058-b718-c3fe02645033</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -93,7 +93,7 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/Page_Game - QuestVault/iframe_Screenshots_card-img col-md-2</value>
-      <webElementGuid>029ef525-9a73-43e2-af98-195821bc5437</webElementGuid>
+      <webElementGuid>9993a3bb-dfc7-4f77-a07d-3614ce50e4a8</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -101,7 +101,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='movie_player']/div[3]/div[2]/div/a</value>
-      <webElementGuid>67670cc0-a024-419d-a359-54a799307fd2</webElementGuid>
+      <webElementGuid>e018bd2f-000e-469e-9284-baacaca8b0b0</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -109,7 +109,7 @@
       <name>xpath:link</name>
       <type>Main</type>
       <value>//a[contains(text(),'The Witcher 3: Wild Hunt - The Beginning trailer')]</value>
-      <webElementGuid>124bc9b5-3128-4f5b-b0fc-3aefa25900b8</webElementGuid>
+      <webElementGuid>3e53f208-6307-41c1-b57b-02258abd3c09</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,7 +117,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='IGDBcom'])[2]/preceding::a[3]</value>
-      <webElementGuid>e051ff74-5e0b-4d47-836a-9f007c2b76bd</webElementGuid>
+      <webElementGuid>554652e1-f34c-45c9-9970-e604bd9c46e8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -125,7 +125,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Pesquisa'])[1]/preceding::a[4]</value>
-      <webElementGuid>df560a91-8c6c-4795-b0f0-7d7397f001f6</webElementGuid>
+      <webElementGuid>11585918-48ff-4d64-98dd-b5a5b952188b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -133,7 +133,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='The Witcher 3: Wild Hunt - The Beginning trailer']/parent::*</value>
-      <webElementGuid>bd3da5a5-c123-44f3-9c14-860771946428</webElementGuid>
+      <webElementGuid>8415087f-2c63-49c0-9ee2-4b27d8f7a3f3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -141,7 +141,7 @@
       <name>xpath:href</name>
       <type>Main</type>
       <value>//a[contains(@href, 'https://www.youtube.com/watch?v=5nLipy-Z4yo')]</value>
-      <webElementGuid>3d31156a-62ee-414d-8b48-a49fb61facad</webElementGuid>
+      <webElementGuid>fd6beccf-ba7f-4129-8fee-ced9b73a0d34</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -149,7 +149,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div[2]/div/a</value>
-      <webElementGuid>a5fc8a73-435e-4b0a-b7b8-bad8a8e5076d</webElementGuid>
+      <webElementGuid>2faa83a3-f014-442d-9cb8-25feb47dc893</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -157,6 +157,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//a[@href = 'https://www.youtube.com/watch?v=5nLipy-Z4yo' and (text() = 'The Witcher 3: Wild Hunt - The Beginning trailer' or . = 'The Witcher 3: Wild Hunt - The Beginning trailer')]</value>
-      <webElementGuid>5ebe27ee-f4cd-493d-926d-481576079a21</webElementGuid>
+      <webElementGuid>1f13d034-739e-42de-ad44-2984458a25a4</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

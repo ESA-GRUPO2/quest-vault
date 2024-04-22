@@ -1,1 +1,1 @@
-search_result['683']=["topic_0000000000000161.html","GameLog.Review Property","Gets or sets the review for the game (nullable)."];
+search_result['683']=["topic_000000000000017A.html","UserController.AcceptFriendRequestAsync Method","Accepts a friend request from the specified user."];

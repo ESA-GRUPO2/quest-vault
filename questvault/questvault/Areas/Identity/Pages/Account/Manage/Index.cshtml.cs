@@ -63,6 +63,9 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     [Display(Name = "avatar")]
     public IFormFile ProfilePhoto { get; set; }
 
+    [Display(Name = "isPrivate")]
+    public bool isPrivate { get; set; }
+
     public class InputModel
     {
       /// <summary>
@@ -96,10 +99,12 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       var userName = await userManager.GetUserNameAsync(user);
       var email = await userManager.GetEmailAsync(user);
       var is2faEnabled = await userManager.GetTwoFactorEnabledAsync(user);
+      var user1 = await userManager.GetUserAsync(User);
 
       Username = userName;
       Email = email;
       Is2faEnabled = is2faEnabled;
+      isPrivate = user1.IsPrivate;
       var library = await context.GamesLibrary.
               Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
               FirstOrDefaultAsync(l => l.UserId == user.Id);

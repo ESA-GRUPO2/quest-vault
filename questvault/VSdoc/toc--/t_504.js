@@ -1,1 +1,0 @@
-c['504']=[['505',"IGDBService Constructor","topic_0000000000000198.html",0],['506',"Methods","topic_0000000000000197_methods--.html",1]];

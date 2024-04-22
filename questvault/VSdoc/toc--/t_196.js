@@ -1,1 +1,0 @@
-c['196']=[['197',"Enable2faModel Constructor","topic_000000000000002B.html",0],['198',"Properties","topic_000000000000002A_props--.html",1],['200',"Methods","topic_000000000000002A_methods--.html",1]];

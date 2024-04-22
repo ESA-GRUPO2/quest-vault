@@ -1,1 +1,1 @@
-search_result['584']=["topic_0000000000000126_vars--.html","Company Fields",""];
+search_result['584']=["topic_0000000000000141.html","BackofficeController.LockoutUserAll Method","Locks out a user identified by their ID."];

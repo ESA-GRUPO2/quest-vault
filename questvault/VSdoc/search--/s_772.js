@@ -1,1 +1,1 @@
-search_result['772']=["topic_0000000000000197_props--.html","IGDBService Properties",""];
+search_result['772']=["topic_00000000000001AC_props--.html","removedOwnageStatus Properties",""];

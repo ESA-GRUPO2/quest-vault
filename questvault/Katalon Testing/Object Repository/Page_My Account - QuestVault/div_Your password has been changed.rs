@@ -6,15 +6,21 @@
    <elementGuidId>2837bf28-b13d-4ccf-a82e-ed7f2399c1fc</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>(.//*[normalize-space(text()) and normalize-space(.)='My Account'])[1]/following::div[1]</value>
+         <key>BASIC</key>
+         <value>//*[(text() = 'Your password has been changed.&#xd;
+    ' or . = 'Your password has been changed.&#xd;
+    ')]</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value>div.alert.alert-success.alert-dismissible</value>
       </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='My Account'])[1]/following::div[1]</value>
+      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,7 +35,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>80c4bdd0-dcce-4b44-b99d-1f24e6a581ed</webElementGuid>
+      <webElementGuid>74fabf8f-085b-407b-b944-f7a8d83aba2b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +43,7 @@
       <name>class</name>
       <type>Main</type>
       <value>alert alert-success alert-dismissible</value>
-      <webElementGuid>b85190ad-5ec4-4d33-81ac-1c62c1df4973</webElementGuid>
+      <webElementGuid>bbd901ec-11e1-4943-ab3a-7c0a04cdcb6a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,18 +51,16 @@
       <name>role</name>
       <type>Main</type>
       <value>alert</value>
-      <webElementGuid>922705ba-827e-414d-ad80-7a3cb2da5d19</webElementGuid>
+      <webElementGuid>75c6c686-abf2-4619-83af-a6ef5faab8f6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>
-        
-        Your password has been changed.
+      <value>Your password has been changed.&#xd;
     </value>
-      <webElementGuid>5b232ad3-5192-4f92-8b9c-d3f6b7f1d676</webElementGuid>
+      <webElementGuid>3967842d-8097-4220-8246-d4623fab52b7</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -64,7 +68,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;alert alert-success alert-dismissible&quot;]</value>
-      <webElementGuid>4ff28e59-8c0b-4ba7-8949-7303ce657449</webElementGuid>
+      <webElementGuid>0c8c00d9-3c68-4c1d-9b96-a00a65f4e50e</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -72,7 +76,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='My Account'])[1]/following::div[1]</value>
-      <webElementGuid>0ebca8b6-75ad-4b74-a285-243ee782572d</webElementGuid>
+      <webElementGuid>8de207fc-a95c-42ad-a107-60758b7ed537</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -80,7 +84,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/following::div[2]</value>
-      <webElementGuid>c98aaa14-3a12-4420-adbf-8d4434610530</webElementGuid>
+      <webElementGuid>0af8534c-b31a-40bf-a114-8e68fb96d834</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -88,7 +92,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Account Details'])[1]/preceding::div[1]</value>
-      <webElementGuid>829931f9-bf0b-4d33-bd13-2f2f1c62b5bf</webElementGuid>
+      <webElementGuid>66385611-6072-4c06-b72d-af6f160d6ed6</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -96,7 +100,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Change Avatar'])[1]/preceding::div[3]</value>
-      <webElementGuid>cef76532-5b09-48d1-9dc4-9bed584ff713</webElementGuid>
+      <webElementGuid>ef533275-7ffa-4bd8-8091-820c4d97b00d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -104,7 +108,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Your password has been changed.']/parent::*</value>
-      <webElementGuid>3d72ce0d-30c1-4631-b2c9-58beb3264a1d</webElementGuid>
+      <webElementGuid>85e605d9-075d-4ad7-afbb-ed1faa89dcf2</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -112,7 +116,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//main/div</value>
-      <webElementGuid>aa4b4a09-63a2-43f0-bf55-d8aaef8bdb8c</webElementGuid>
+      <webElementGuid>290e6a86-f06e-4a02-9b78-58e14d26202c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -126,6 +130,6 @@
         
         Your password has been changed.
     ')]</value>
-      <webElementGuid>473c6c35-e4ed-4ed6-8052-535f42199f25</webElementGuid>
+      <webElementGuid>dc76ed31-6afb-4a58-921f-12bfdce576eb</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

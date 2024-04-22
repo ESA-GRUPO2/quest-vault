@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_Log in_row-login</name>
+   <tag></tag>
+   <elementGuidId>877e68d9-0314-4e40-8995-001d14e026e2</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>ytd-button-renderer.style-scope.ytd-consent-bump-v2-lightbox > yt-button-shape > button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-m > yt-touch-feedback-shape > div.yt-spec-touch-feedback-shape.yt-spec-touch-feedback-shape--touch-response-inverse > div.yt-spec-touch-feedback-shape__fill</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='content']/div[2]/div[6]/div/ytd-button-renderer/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>4aa0f00c-8715-4aea-ab14-494bf2890816</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>yt-spec-touch-feedback-shape__fill</value>
+      <webElementGuid>37a6bb4b-d9e2-4e5b-b341-0cb11638291b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;dialog&quot;)/div[@id=&quot;content&quot;]/div[@class=&quot;body style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-buttons style-scope ytd-consent-bump-v2-lightbox&quot;]/div[@class=&quot;eom-button-row style-scope ytd-consent-bump-v2-lightbox&quot;]/ytd-button-renderer[@class=&quot;style-scope ytd-consent-bump-v2-lightbox&quot;]/yt-button-shape[1]/button[@class=&quot;yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m&quot;]/yt-touch-feedback-shape[1]/div[@class=&quot;yt-spec-touch-feedback-shape yt-spec-touch-feedback-shape--touch-response-inverse&quot;]/div[@class=&quot;yt-spec-touch-feedback-shape__fill&quot;]</value>
+      <webElementGuid>08950f77-cd13-4cda-bc97-27ba04802a0d</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='content']/div[2]/div[6]/div/ytd-button-renderer/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
+      <webElementGuid>f61c34c8-158d-4a6c-bcac-2ebc7b8d03f4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[6]/div/ytd-button-renderer/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]</value>
+      <webElementGuid>5fbe63ce-284a-47fb-b6c6-def968baa0ca</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//form[@id='account']/div</value>
+      <webElementGuid>1f6a8522-bbce-4c31-bf36-fe1f004f6ea7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Log in'])[1]/following::div[1]</value>
+      <webElementGuid>2e6bc8d7-5e11-49af-a89d-7f932fa77153</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Log in'])[2]/preceding::div[4]</value>
+      <webElementGuid>d7f5b24c-878b-4faa-9ac8-270cdf456317</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//form/div</value>
+      <webElementGuid>f331112d-c2da-42ff-872b-8b2f7398d251</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

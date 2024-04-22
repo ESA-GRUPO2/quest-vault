@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//iframe</value>
+         <value>//div[@id='main-body']/main/div/section[2]/div/div[2]/iframe</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>iframe</value>
-      <webElementGuid>ada259bc-b76b-42f1-a031-ab0aa85e7881</webElementGuid>
+      <webElementGuid>db7a1f76-7f54-44be-ab6f-3c457dbcee7f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +37,7 @@
       <name>class</name>
       <type>Main</type>
       <value>card-img col-md-2</value>
-      <webElementGuid>47238c16-56bf-4673-94e9-8650a5fecefa</webElementGuid>
+      <webElementGuid>b335283a-772b-4e63-980b-9a556e6c06c3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +45,7 @@
       <name>width</name>
       <type>Main</type>
       <value>280</value>
-      <webElementGuid>8ea119ff-daf8-4d7a-a889-09a26264a17b</webElementGuid>
+      <webElementGuid>f7b31abe-04ad-49d2-a03c-3e1ca96ae28d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,15 +53,15 @@
       <name>height</name>
       <type>Main</type>
       <value>318</value>
-      <webElementGuid>0e3c627d-c4b0-4979-a28d-6f2f0b35537c</webElementGuid>
+      <webElementGuid>0ba97aca-d8e8-4fbc-b27c-ba5522386f4d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>src</name>
       <type>Main</type>
-      <value>https://www.youtube.com/embed/5nLipy-Z4yo</value>
-      <webElementGuid>f02fc6c1-be70-4f99-83e8-a153f8d86329</webElementGuid>
+      <value>https://www.youtube.com/embed/YmLeUJgzsXY</value>
+      <webElementGuid>9f172026-7a08-4201-a349-9ff8c7afeed3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,30 +69,38 @@
       <name>frameborder</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>417d697e-1599-43a3-9101-7614f001602a</webElementGuid>
+      <webElementGuid>1a3653f2-68da-4011-babe-280b1efb9809</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;game-details&quot;]/section[@class=&quot;d-flex main-section&quot;]/div[@class=&quot;container-fluid justify-content-between mt-3&quot;]/div[@class=&quot;game-captures align-bottom&quot;]/iframe[@class=&quot;card-img col-md-2&quot;]</value>
-      <webElementGuid>eb94a4c0-2107-4501-a051-a56ed9dec4ec</webElementGuid>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;game-details&quot;]/section[@class=&quot;d-flex&quot;]/div[@class=&quot;container-fluid justify-content-between mt-3&quot;]/div[@class=&quot;game-captures align-bottom&quot;]/iframe[@class=&quot;card-img col-md-2&quot;]</value>
+      <webElementGuid>da3d53e7-f1ff-4bab-bd5d-2d293eaf7c27</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/section[2]/div/div[2]/iframe</value>
+      <webElementGuid>90db9772-806e-4ec1-a066-2443a87d65dc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
       <value>//iframe</value>
-      <webElementGuid>b2c4ec38-ba59-4e3f-837a-669e073961a6</webElementGuid>
+      <webElementGuid>0c034efa-b98f-4876-a4e4-89e5ef90f9dc</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//iframe[@src = 'https://www.youtube.com/embed/5nLipy-Z4yo']</value>
-      <webElementGuid>82dd4d14-859d-437c-a799-c31f21d4923a</webElementGuid>
+      <value>//iframe[@src = 'https://www.youtube.com/embed/YmLeUJgzsXY']</value>
+      <webElementGuid>62036104-426b-466e-bc36-60b675e4fb0f</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

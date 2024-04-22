@@ -1,1 +1,1 @@
-search_result['681']=["topic_000000000000015F.html","GameLog.Status Property","Gets or sets the status of the game (nullable)."];
+search_result['681']=["topic_0000000000000178.html","UserController.GetProfileData Method","Retrieves the profile data of the specified user."];

@@ -1,1 +1,1 @@
-search_result['395']=["topic_00000000000000C3_vars--.html","LoginWithRecoveryCodeModel Fields",""];
+search_result['395']=["topic_00000000000000E1.html","ForgotPasswordConfirmation.OnGet Method","This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used\r\n    directly from your code. This API may change or be removed in future releases."];

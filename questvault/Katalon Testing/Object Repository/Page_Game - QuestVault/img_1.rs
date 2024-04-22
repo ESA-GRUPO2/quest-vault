@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>img_1</name>
+   <tag></tag>
+   <elementGuidId>c51dc955-e8d3-4e08-84c2-42500d43ca4b</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>a.game-button > img</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/a/img</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>8c9d950d-d47c-4aa1-85ff-716ece74cd90</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>//images.igdb.com/igdb/image/upload/t_cover_big/co1wz4.jpg</value>
+      <webElementGuid>bf5ea0ef-2ba2-45bf-90d3-11e54a14d895</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/div[@class=&quot;d-flex main-section-result justify-content-between&quot;]/div[@class=&quot;game-section&quot;]/div[@class=&quot;d-flex justify-content-start&quot;]/a[@class=&quot;game-button&quot;]/img[1]</value>
+      <webElementGuid>86d38dec-867f-4543-90b4-89b2693eee9c</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/a/img</value>
+      <webElementGuid>d3d2fb0c-f6f6-48aa-8128-ca1ed47df03d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/div/a/img</value>
+      <webElementGuid>ad568a3c-5270-4105-8fd5-abb6a52c68f6</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//img[@src = '//images.igdb.com/igdb/image/upload/t_cover_big/co1wz4.jpg']</value>
+      <webElementGuid>5b9503c0-12d9-4c66-9c43-9e9c4b716715</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//img[@src = '//images.igdb.com/igdb/image/upload/t_cover_big/co1vcf.jpg']</value>
+      <webElementGuid>51b2f828-bf45-4c74-8dd5-58b1fa928246</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

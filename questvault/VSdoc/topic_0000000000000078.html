@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>InputModel.ConfirmPassword Property</title>
+	<title>ManageNavPages.ChangePassword Property</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,7 +74,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">InputModel.ConfirmPassword Property</h1>
+		<h1 class="title">ManageNavPages.ChangePassword Property</h1>
         
 		<div class="metadata">
         Namespace:
@@ -140,7 +140,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;DataType(DataType.Password)&gt; _&nbsp;<br />&lt;Display(Name = &quot;Confirm new password&quot;)&gt; _&nbsp;<br />&lt;Compare(&quot;NewPassword&quot;, ErrorMessage = &quot;The new password and confirmation password do not match.&quot;)&gt; _&nbsp;<br />Public Property ConfirmPassword() As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Public ReadOnly Shared Property ChangePassword() As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -179,7 +179,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[DataType(DataType.Password)]&nbsp;<br />[Display(Name = &quot;Confirm new password&quot;)]&nbsp;<br />[Compare(&quot;NewPassword&quot;, ErrorMessage = &quot;The new password and confirmation password do not match.&quot;)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> ConfirmPassword {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public static <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> ChangePassword {get;}</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -219,7 +219,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[DataType(DataType.Password)]&nbsp;<br />[Display(Name = &quot;Confirm new password&quot;)]&nbsp;<br />[Compare(&quot;NewPassword&quot;, ErrorMessage = &quot;The new password and confirmation password do not match.&quot;)]&nbsp;<br />public: &nbsp;<br />property <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ ConfirmPassword {&nbsp;<br /> <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br />static property <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ ChangePassword {&nbsp;<br /> <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ get( );&nbsp;<br />}</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -258,7 +258,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   DataType(DataType.Password)&nbsp;<br />   Display(Name = &quot;Confirm new password&quot;)&nbsp;<br />   Compare(&quot;NewPassword&quot;, ErrorMessage = &quot;The new password and confirmation password do not match.&quot;)&nbsp;<br />function get ConfirmPassword() : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>;&nbsp;<br />public &nbsp;<br />   DataType(DataType.Password)&nbsp;<br />   Display(Name = &quot;Confirm new password&quot;)&nbsp;<br />   Compare(&quot;NewPassword&quot;, ErrorMessage = &quot;The new password and confirmation password do not match.&quot;)&nbsp;<br />function set ConfirmPassword(value : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>);</pre>			
+					<pre xml:space="preserve" class="brush: js">public static function get ChangePassword() : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -361,7 +361,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000076.html">InputModel Class</a><br />
+			<a href="topic_0000000000000075.html">ManageNavPages Class</a><br />
 
 
 

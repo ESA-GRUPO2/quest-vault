@@ -1,1 +1,1 @@
-search_result['677']=["topic_000000000000015B.html","GameLog.Game Property","Gets or sets the navigation property for the associated game."];
+search_result['677']=["topic_0000000000000174.html","UserController.Profile Method","Redirects to the public profile page of the specified user."];

@@ -1,1 +1,1 @@
-search_result['591']=["topic_000000000000012B_events--.html","ErrorViewModel Events",""];
+search_result['591']=["topic_0000000000000145_overloads--.html","BackofficeController.RemoveReview Method","Removes the review from a game log identified by its ID."];

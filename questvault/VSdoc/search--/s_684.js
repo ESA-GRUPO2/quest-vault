@@ -1,1 +1,1 @@
-search_result['684']=["topic_0000000000000162.html","GamePlatform Class","Represents a many-to-many relationship between Game and Platform entities."];
+search_result['684']=["topic_000000000000017B.html","UserController.RejectFriendRequestAsync Method","Rejects a friend request from the specified user."];

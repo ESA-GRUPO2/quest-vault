@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>FriendshipRequest.Sender Property</title>
+	<title>BackofficeController.GiveModerator (String, ApplicationDbContext) Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">FriendshipRequest.Sender Property</h1>
+		<h1 class="title">BackofficeController.GiveModerator (String, ApplicationDbContext) Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000125.html">questvault.Models</a>
+<a href="topic_0000000000000134.html">questvault.Controllers</a>
 
 
 
@@ -89,6 +89,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
+        <summary-info>Grants moderator permissions to a user identified by their ID.</summary-info>
 
 
 
@@ -138,7 +139,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;ForeignKey(nameof(SenderId))&gt; _&nbsp;<br />&lt;Display(Name = &quot;Sender&quot;)&gt; _&nbsp;<br />Public Overridable Property Sender() As <a target="_top" href="topic_000000000000018C.html" onclick="this.target='';return true;">User</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Shared Function GiveModerator( _&nbsp;<br />   ByVal <i>id</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>, _&nbsp;<br />   ByVal <i>context</i> As <a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +178,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[ForeignKey(nameof(SenderId))]&nbsp;<br />[Display(Name = &quot;Sender&quot;)]&nbsp;<br />public virtual <a target="_top" href="topic_000000000000018C.html" onclick="this.target='';return true;">User</a> Sender {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public static <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a> GiveModerator(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>id</i>,&nbsp;<br />   <a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a> <i>context</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +218,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[ForeignKey(nameof(SenderId))]&nbsp;<br />[Display(Name = &quot;Sender&quot;)]&nbsp;<br />public: &nbsp;<br />virtual property <a target="_top" href="topic_000000000000018C.html" onclick="this.target='';return true;">User</a>^ Sender {&nbsp;<br /> <a target="_top" href="topic_000000000000018C.html" onclick="this.target='';return true;">User</a>^ get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="topic_000000000000018C.html" onclick="this.target='';return true;">User</a>^ value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br />static <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a>^ GiveModerator(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>id</i>,&nbsp;<br />   <a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a>^ <i>context</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -256,7 +257,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   ForeignKey(nameof(SenderId))&nbsp;<br />   Display(Name = &quot;Sender&quot;)&nbsp;<br />function get Sender() : <a target="_top" href="topic_000000000000018C.html" onclick="this.target='';return true;">User</a>;&nbsp;<br />public &nbsp;<br />   ForeignKey(nameof(SenderId))&nbsp;<br />   Display(Name = &quot;Sender&quot;)&nbsp;<br />function set Sender(value : <a target="_top" href="topic_000000000000018C.html" onclick="this.target='';return true;">User</a>);</pre>			
+					<pre xml:space="preserve" class="brush: js">public static function GiveModerator(&nbsp;<br />    <i>id</i> : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>,&nbsp;<br />    <i>context</i> : <a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a>&nbsp;<br />) : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a>;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -267,10 +268,42 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="id" class="parameterList">
+	<dt>
+		<span class="parameter">
+			id
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
+	</dd>
+</dl>
+<p>
+	The ID of the user to grant moderator permissions. 
+</p>
+<dl paramName="context" class="parameterList">
+	<dt>
+		<span class="parameter">
+			context
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="topic_0000000000000187.html" onclick="this.target='';return true;">ApplicationDbContext</a> 
+	</dd>
+</dl>
+<p>
+	The application database context. 
+</p>
+
+<p />
 
 	<h4 class="subHeading">
-		Property Value</h4>
-	<a target="_top" href="topic_000000000000018C.html" onclick="this.target='';return true;">User</a> 
+		Return Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a> 
+		<p>
+		A Task representing the asynchronous operation. 
+	</p>
 	
 
 
@@ -359,11 +392,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000133.html">FriendshipRequest Class</a><br />
+			<a href="topic_0000000000000135.html">BackofficeController Class</a><br />
 
 
 
-<a href="topic_0000000000000125.html">questvault.Models Namespace</a><br />
+<a href="topic_0000000000000134.html">questvault.Controllers Namespace</a><br />
 
 
 			

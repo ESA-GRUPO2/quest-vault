@@ -1,1 +1,1 @@
-search_result['625']=["topic_000000000000013B.html","FriendshipsModel.UserId Property",""];
+search_result['625']=["topic_0000000000000154.html","GamesController.Index Method","Index of the page Games that shows all the games and the filtered ones."];

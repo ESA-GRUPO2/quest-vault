@@ -1,1 +1,1 @@
-search_result['586']=["topic_0000000000000128.html","Company.IgdbCompanyId Property",""];
+search_result['586']=["topic_0000000000000142_overloads--.html","BackofficeController.LockoutUser Method","Locks out a user identified by their ID."];

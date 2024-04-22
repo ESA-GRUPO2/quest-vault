@@ -1,1 +1,1 @@
-search_result['631']=["topic_000000000000013F_events--.html","Game Events",""];
+search_result['631']=["topic_000000000000015A.html","GamesController.Search Method","Gets the games based on a search term.(used in search bar for autocomplete function)"];
