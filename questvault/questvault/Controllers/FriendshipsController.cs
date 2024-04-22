@@ -56,23 +56,19 @@ namespace questvault.Controllers
       }
       var receiver = await context.Users.FindAsync(receiverId);
       var sender = await context.Users.FindAsync(senderId);
-      var friendship = new Friendship { };
       if( receiver != null && sender != null )
       {
-        friendship.User1 = receiver;
-        friendship.User2 = sender;
-        context.Friendship.Add(friendship);
-        var friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == sender.Id && fr.ReceiverId == receiver.Id).ToListAsync();
-        if( friendshipRequest.Any() )
+        var friendshipRequest = await context.FriendshipRequest.FirstOrDefaultAsync(fr => fr.ReceiverId == sender.Id && fr.SenderId == receiver.Id);
+        if (friendshipRequest != null)
         {
-          context.FriendshipRequest.Remove(friendshipRequest.First());
+          var friendship = new Friendship { 
+            User1 = receiver,
+            User2 = sender
+          };
+          context.Friendship.Add(friendship);
+          context.FriendshipRequest.Remove(friendshipRequest);
+          context.SaveChanges();
         }
-        else
-        {
-          friendshipRequest = await context.FriendshipRequest.Where(fr => fr.SenderId == receiver.Id && fr.ReceiverId == sender.Id).ToListAsync();
-          context.FriendshipRequest.Remove(friendshipRequest.First());
-        }
-        context.SaveChanges();
       }
     }
     /// <summary>
