@@ -13,21 +13,21 @@ builder.Services.AddAuthentication()
     .AddGoogle(options =>
     {
       IConfigurationSection googleAuthNSection = configuration.GetSection("Authentication:Google");
-      options.ClientId = googleAuthNSection["ClientId"];
-      options.ClientSecret = googleAuthNSection["ClientSecret"];
+      options.ClientId = googleAuthNSection["ClientId"] ?? throw new Exception("Missing Google Client ID");
+      options.ClientSecret = googleAuthNSection["ClientSecret"] ?? throw new Exception("Missing Google Client Secret");
     });
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
   ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
   .AddEntityFrameworkStores<ApplicationDbContext>()
-  .AddDefaultTokenProviders()
+  .AddDefaultTokenProviders();
 
-;
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -43,27 +43,31 @@ builder.Services.AddControllersWithViews();
 // Emailing Service
 builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
   new EmailSender(
-      configuration["EmailSender:Host"],
+      configuration["EmailSender:Host"] ?? throw new Exception("Missing EmailSender Host"),
       configuration.GetValue<int>("EmailSender:Port"),
       configuration.GetValue<bool>("EmailSender:EnableSSL"),
-      configuration["EmailSender:UserName"],
-      configuration["EmailSender:Password"]
+      configuration["EmailSender:UserName"] ?? throw new Exception("Missing EmailSender UserName"),
+      configuration["EmailSender:Password"] ?? throw new Exception("Missing EmailSender Password")
   )
 );
 
-//IGDB Service
-builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
-    new IGDBService(
-        i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
-        i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
-    )
-);
+// IGDB Service
+builder.Services.AddScoped<IServiceIGDB, IServiceIGDB>(i => new IGDBService(
+    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"] ?? throw new Exception("Missing IGDB Client ID"),
+    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"] ?? throw new Exception("Missing IGDB Client SECRET")
+  ));
 
-builder.Services.AddSingleton(i => new SteamAPI(configuration["SteamAPI:API_KEY"],
-  new IGDBService(
-    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
-    i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
-)));
+
+// Steam API
+builder.Services.AddScoped(i => new SteamAPI(
+    configuration["SteamAPI:API_KEY"] ?? throw new Exception("Missing Steam API Key"),
+    i.GetRequiredService<IServiceIGDB>()
+  ));
+
+
+// Importing Steam library in background
+builder.Services.AddHostedService<BackgroundImportLibrary>();
+builder.Services.AddTransient<BackgroundImportLibrary>();
 
 var app = builder.Build();
 
