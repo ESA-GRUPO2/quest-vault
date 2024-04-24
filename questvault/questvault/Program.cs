@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
-  options.SignIn.RequireConfirmedAccount = true; 
+  options.SignIn.RequireConfirmedAccount = true;
   options.Lockout.AllowedForNewUsers = false;
 })
   .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -55,7 +56,7 @@ builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
   )
 );
 
-//IGDB Service
+// IGDB Service
 builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
     new IGDBService(
         i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
@@ -63,11 +64,17 @@ builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
     )
 );
 
+// SteamAPI
 builder.Services.AddSingleton(i => new SteamAPI(configuration["SteamAPI:API_KEY"],
   new IGDBService(
     i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
     i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
 )));
+
+// Blob container - profile photos
+BlobContainerClient blobContainer = new(configuration.GetConnectionString("Blobconnection"),"users-profile-photos");
+blobContainer.CreateIfNotExists();
+builder.Services.AddSingleton(blobContainer);
 
 var app = builder.Build();
 

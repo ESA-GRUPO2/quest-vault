@@ -7,7 +7,7 @@
        In this page you can see the profile of user with all the information avaliable <br/>
        You can send a friend request so you can stay conected (if he ever comes outside, he will see it)!";
   var user = await UserManager.GetUserAsync(User);
-  var userAvatar = (Model.user != null && Model.user.ProfilePhotoPath != null) ? Model.user.ProfilePhotoPath : "user.svg";
+  var userAvatar = (Model.user != null && Model.user.ProfilePhotoPath != null) ? Model.user.ProfilePhotoPath : "/img/usr_profile/user.svg";
 }
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body class="profile">
@@ -18,7 +18,7 @@
 
       @* Avatar *@
       <div class="d-flex align-items-center justify-content-center user-foto profile-avatar">
-        <img src="~/img/usr_profile/@userAvatar" alt="User avatar" class="@(userAvatar == "user.svg" ? "p-4" : "")" style="@(userAvatar == "user.svg" ? "" : "width: 12rem !important; height: 12rem !important;")">
+        <img src="@userAvatar" alt="User avatar" class="@(userAvatar == "/img/usr_profile/user.svg" ? "p-4" : "")" style="@(userAvatar == "/img/usr_profile/user.svg" ? "" : "width: 12rem !important; height: 12rem !important;")">
       </div>
 
       <div class="d-flex row ms-3 align-items-center col-7">
