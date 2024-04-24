@@ -6,7 +6,7 @@
        This is a private user profile. <br/>
        In this page you can't see much beacause the user hid himself in a cave!<br/>
        If you wanna try your luck send him a friend request (if he ever comes outside, he will see it)!";
-  var userAvatar = (Model.user != null && Model.user.ProfilePhotoPath != null) ? Model.user.ProfilePhotoPath : "user.svg";
+  var userAvatar = (Model.user != null && Model.user.ProfilePhotoPath != null) ? Model.user.ProfilePhotoPath : "/img/usr_profile/user.svg";
 }
 <body class="profile">
 
@@ -16,7 +16,7 @@
 
       @* Avatar *@
       <div class="d-flex align-items-center justify-content-center user-foto profile-avatar col-2">
-        <img src="~/img/usr_profile/@userAvatar" alt="Avatar" class="@(userAvatar == "user.svg" ? "p-4" : "")" style="@(userAvatar == "user.svg" ? "" : "width: 12rem !important; height: 12rem !important;")">
+        <img src="@userAvatar" alt="Avatar" class="@(userAvatar == "/img/usr_profile/user.svg" ? "p-4" : "")" style="@(userAvatar == "/img/usr_profile/user.svg" ? "" : "width: 12rem !important; height: 12rem !important;")">
       </div>
 
       <div class="d-flex row ms-3 align-items-center col-7">

@@ -4,7 +4,7 @@
 @{
   var user = await UserManager.GetUserAsync(User);
 
-  var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "user.svg";
+  var userAvatar = (user != null && user.ProfilePhotoPath != null) ? user.ProfilePhotoPath : "/img/usr_profile/user.svg";
   
 }
 
@@ -76,7 +76,7 @@
           <li class="nav-item ms-3 d-flex align-self-center">
             <div class="dropdown" style="position:relative">
               <button class="btn btn-primary nav-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom:0; border-radius: 50%;  height: 50px; width: 50px;">
-                <img src="~/img/usr_profile/@userAvatar" alt="Key Icon" class="@(userAvatar=="user.svg" ? "nav-vector mb-1" : "nav-avatar mb-1")">
+                <img src="@userAvatar" alt="Key Icon" class="@(userAvatar=="/img/usr_profile/user.svg" ? "nav-vector mb-1" : "nav-avatar mb-1")">
               </button>
               <ul class="dropdown-menu" style="right:0; left:auto; background: #133E7C !important;">
                 <li>
