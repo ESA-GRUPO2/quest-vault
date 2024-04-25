@@ -2,12 +2,13 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
+using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using questvault.Data;
 using Microsoft.IdentityModel.Tokens;
+using questvault.Data;
 using questvault.Models;
 using System.ComponentModel.DataAnnotations;
 
@@ -18,7 +19,8 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
         SignInManager<User> signInManager,
         ILogger<IndexModel> logger,
         ApplicationDbContext context,
-        IWebHostEnvironment webHostEnvironment
+        IWebHostEnvironment webHostEnvironment,
+        BlobContainerClient blobContainer
     ) : PageModel
   {
 
@@ -63,6 +65,9 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     [Display(Name = "avatar")]
     public IFormFile ProfilePhoto { get; set; }
 
+    [Display(Name = "isPrivate")]
+    public bool isPrivate { get; set; }
+
     public class InputModel
     {
       /// <summary>
@@ -96,10 +101,12 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
       var userName = await userManager.GetUserNameAsync(user);
       var email = await userManager.GetEmailAsync(user);
       var is2faEnabled = await userManager.GetTwoFactorEnabledAsync(user);
+      var user1 = await userManager.GetUserAsync(User);
 
       Username = userName;
       Email = email;
       Is2faEnabled = is2faEnabled;
+      isPrivate = user1.IsPrivate;
       var library = await context.GamesLibrary.
               Include(l => l.Top5Games).ThenInclude(gl => gl.Game).
               FirstOrDefaultAsync(l => l.UserId == user.Id);
@@ -121,35 +128,35 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
     public async Task<IActionResult> OnPostProfileAsync()
     {
       var user = await userManager.GetUserAsync(User);
-      if (user == null) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
+      if( user == null ) return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
       ViewData["Privacy"] = user.IsPrivate;
-      foreach (var item in ModelState) await Console.Out.WriteLineAsync($"item: {item}");
-      if (!ModelState.IsValid)
+      foreach( var item in ModelState ) await Console.Out.WriteLineAsync($"item: {item}");
+      if( !ModelState.IsValid )
       {
         ModelState.AddModelError(string.Empty, "Input your current password");
         return Page();
       }
-      if (!Input.NewUserName.IsNullOrEmpty())
+      if( !Input.NewUserName.IsNullOrEmpty() )
       {
-        if (Input.NewUserName.Equals(user.UserName)) ModelState.AddModelError(string.Empty, "Can't change to same username");
+        if( Input.NewUserName.Equals(user.UserName) ) ModelState.AddModelError(string.Empty, "Can't change to same username");
         else
         {
           var setUserNameResult = await userManager.SetUserNameAsync(user, Input.NewUserName);
-          if (!setUserNameResult.Succeeded) ModelState.AddModelError(string.Empty, "This username is already taken");
+          if( !setUserNameResult.Succeeded ) ModelState.AddModelError(string.Empty, "This username is already taken");
           else
           {
             StatusMessage = "Your username has been updated. ";
           }
         }
       }
-      if (!Input.NewPassword.IsNullOrEmpty() && !Input.ConfirmPassword.IsNullOrEmpty())
+      if( !Input.NewPassword.IsNullOrEmpty() && !Input.ConfirmPassword.IsNullOrEmpty() )
       {
         var changePasswordResult = await userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
-        if (!changePasswordResult.Succeeded)
+        if( !changePasswordResult.Succeeded )
         {
-          foreach (var error in changePasswordResult.Errors) ModelState.AddModelError(string.Empty, error.Description);
+          foreach( var error in changePasswordResult.Errors ) ModelState.AddModelError(string.Empty, error.Description);
         }
-        else if (StatusMessage == null) StatusMessage = "Your password has been changed. "; else StatusMessage += "| Your password has been updated. ";
+        else if( StatusMessage == null ) StatusMessage = "Your password has been changed. "; else StatusMessage += "| Your password has been updated. ";
       }
 
       await signInManager.RefreshSignInAsync(user);
@@ -159,39 +166,38 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
 
     public async Task<IActionResult> OnPostAvatarAsync()
     {
-      string filename = UploadFile(ProfilePhoto);
-
       var user = await userManager.GetUserAsync(User);
       if( user == null )
       {
         return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
       }
 
+      string filename = UploadFile(ProfilePhoto, user.Id);
+
       var userToUpdate = await context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
       if( userToUpdate != null )
       {
-        userToUpdate.ProfilePhotoPath = filename;
+        userToUpdate.ProfilePhotoPath = "https://profilephotoblob.blob.core.windows.net/users-profile-photos/" + filename;
         await context.SaveChangesAsync();
       }
 
       return RedirectToPage();
     }
 
-    private string UploadFile(IFormFile ProfilePhoto)
+    private string UploadFile(IFormFile ProfilePhoto, string userId)
     {
       string fileName = null;
-      if( ProfilePhoto == null )
+      if( ProfilePhoto != null && userId != null )
       {
-      }
-      if( ProfilePhoto != null )
-      {
-        string uploadDir = Path.Combine(webHostEnvironment.WebRootPath, "img/usr_profile");
-        fileName = Guid.NewGuid().ToString() + "_" + ProfilePhoto.FileName;
-        string filePath = Path.Combine(uploadDir, fileName);
-
-        using( var filestream = new FileStream(filePath, FileMode.Create) )
+        fileName = userId + ".jpg";
+        try
         {
-          ProfilePhoto.CopyTo(filestream);
+          blobContainer.UploadBlob(fileName, ProfilePhoto.OpenReadStream());
+        }
+        catch( Azure.RequestFailedException )
+        {
+          var client = blobContainer.GetBlobClient(fileName);
+          client.Upload(ProfilePhoto.OpenReadStream(), true); // override = true
         }
       }
       return fileName;

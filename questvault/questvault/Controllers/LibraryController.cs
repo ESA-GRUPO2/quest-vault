@@ -35,7 +35,7 @@ namespace questvault.Controllers
         return NotFound();
       }
       var userLogged = await signInManager.UserManager.GetUserAsync(this.User);
-      var user = await context.Users.Where(u => u.NormalizedUserName == id.ToUpper()).FirstAsync();
+      var user = await context.Users.Where(u => string.Equals(u.NormalizedUserName ,id.ToUpper())).FirstAsync();
 
       if( user == null || userLogged == null )
       {

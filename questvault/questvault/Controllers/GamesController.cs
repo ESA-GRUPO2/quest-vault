@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using questvault.Data;
 using questvault.Models;
 //using questvault.Migrations;
@@ -397,7 +396,7 @@ namespace questvault.Controllers
       {
         return NotFound();
       }
-      if (String.IsNullOrEmpty(game.SteamUrl))
+      if( String.IsNullOrEmpty(game.SteamUrl) )
       {
         game.SteamUrl = await igdbService.GetSteamUrl(game.IgdbId);
         await SaveChangesAsync(context);
@@ -427,18 +426,17 @@ namespace questvault.Controllers
         userLibrary.Top5Games != null &&
         userLibrary.Top5Games.Any(g => g.IgdbId == id);
 
-      ViewBag.Reviews = GetReviews(id, userLibrary);
-      
+      ViewBag.Reviews = GetReviews(id);
 
       return View(game);
     }
 
-    private List<GameLog> GetReviews(int? gameId, GamesLibrary currentUserLibrary)
+    private List<GameLog> GetReviews(int? gameId)
     {
-      if (gameId == null) return [];
+      if( gameId == null ) return [];
       return [.. context.GameLog
         .Include(gl => gl.Game).Include(gl => gl.User)
-        .Where(gl => gl.IgdbId == gameId && gl.Rating != null)];
+        .Where(gl => gl.IgdbId == gameId && gl.Rating != null && gl.User != null && !gl.User.LockoutEnabled)];
     }
 
     /// <summary>
