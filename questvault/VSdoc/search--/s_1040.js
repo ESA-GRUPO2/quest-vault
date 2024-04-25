@@ -1,0 +1,1 @@
+search_result['1040']=["topic_000000000000024A.html","IGDBService Class","Constructor that receives IGDB API credentials."];

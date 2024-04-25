@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[2]/div/a/img</value>
+         <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/a/img</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,38 +29,46 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>8c6d825e-c4c2-452c-8e88-ea72e74d7e87</webElementGuid>
+      <webElementGuid>ef70889e-2e9b-4aed-9e09-fbeb45f00427</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>src</name>
       <type>Main</type>
-      <value>//images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg</value>
-      <webElementGuid>a994f87e-398e-449d-af3a-43486305a836</webElementGuid>
+      <value>//images.igdb.com/igdb/image/upload/t_cover_big/co6rzl.jpg</value>
+      <webElementGuid>533b182c-c554-4de2-976c-632f371cf0b8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;results-game&quot;]/div[@class=&quot;d-flex main-section-result&quot;]/div[@class=&quot;game-section&quot;]/div[@class=&quot;game-row&quot;]/a[@class=&quot;game-button&quot;]/img[1]</value>
-      <webElementGuid>e3a18ea2-3509-4967-b8cb-af1138b398bf</webElementGuid>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;main-section&quot;]/div[@class=&quot;d-flex main-section-result justify-content-between&quot;]/div[@class=&quot;game-section&quot;]/div[@class=&quot;d-flex justify-content-start&quot;]/a[@class=&quot;game-button&quot;]/img[1]</value>
+      <webElementGuid>db72422c-53cc-404e-aefb-5c7d82791c95</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/div[2]/div[2]/div/a/img</value>
+      <webElementGuid>3da779db-fe97-40ab-8eb3-cfcdd7200426</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div[2]/div/a/img</value>
-      <webElementGuid>e975f1f9-f338-444f-8127-b2aa271f30a3</webElementGuid>
+      <webElementGuid>50706fc8-d0e7-4c61-8392-947fe5c25a3f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//img[@src = '//images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg']</value>
-      <webElementGuid>189ecf17-f9d5-4c67-bb1e-4bc7404c5a85</webElementGuid>
+      <value>//img[@src = '//images.igdb.com/igdb/image/upload/t_cover_big/co6rzl.jpg']</value>
+      <webElementGuid>16d9127e-b597-479e-ae7f-4db16c304427</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

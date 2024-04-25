@@ -106,7 +106,7 @@ namespace questvault.Areas.Identity.Pages.Account.Manage
                 }
                 return Page();
             }
-
+            user.LockoutEnabled = false;
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your password has been set.";
 

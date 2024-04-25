@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_Dark Souls III - E3 Announcement Trailer (Official)</name>
+   <tag></tag>
+   <elementGuidId>d5796ad0-4bb9-4b67-ae9a-33be60dc1888</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>a.ytp-title-link.yt-uix-sessionlink</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='movie_player']/div[3]/div[2]/div/a</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>44779f88-aa77-4a98-aa28-fd4899274609</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ytp-title-link yt-uix-sessionlink</value>
+      <webElementGuid>c31ebb77-716b-43b2-acc0-359be3e012ab</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>target</name>
+      <type>Main</type>
+      <value>_blank</value>
+      <webElementGuid>41146065-6012-4111-bc80-18b65f0933aa</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-sessionlink</name>
+      <type>Main</type>
+      <value>feature=player-title</value>
+      <webElementGuid>ba9d64e9-421c-4765-aab9-9583ec8a661b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>0</value>
+      <webElementGuid>31cc6d23-601d-4e74-a468-16d2daa97278</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>https://www.youtube.com/watch?v=Upp8cuRmRfQ</value>
+      <webElementGuid>79370959-60c4-4d33-b702-cda0b47aae3b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Dark Souls III - E3 Announcement Trailer (Official)</value>
+      <webElementGuid>ea6c4ec6-b26e-4053-8cab-7e38ac46d6fc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;movie_player&quot;)/div[@class=&quot;ytp-chrome-top ytp-show-cards-title&quot;]/div[@class=&quot;ytp-title&quot;]/div[@class=&quot;ytp-title-text&quot;]/a[@class=&quot;ytp-title-link yt-uix-sessionlink&quot;]</value>
+      <webElementGuid>c3e2d1a5-8e50-450d-b0bf-e5d6d864b337</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/Page_Game - QuestVault/iframe_Screenshots_card-img col-md-2_1</value>
+      <webElementGuid>cdaa908a-a3d9-4864-a7fb-82e9f8880899</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='movie_player']/div[3]/div[2]/div/a</value>
+      <webElementGuid>d9fedc63-d27e-4357-8240-d75b3d245228</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'Dark Souls III - E3 Announcement Trailer (Official)')]</value>
+      <webElementGuid>ce98f590-f0c3-4f1e-a2f1-62d38566b159</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='IGDBcom'])[2]/preceding::a[3]</value>
+      <webElementGuid>35fda772-268d-478d-b433-8394bb65f9b2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Pesquisa'])[1]/preceding::a[4]</value>
+      <webElementGuid>de4aa535-b58f-4713-97f7-36b00b61a9e3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Dark Souls III - E3 Announcement Trailer (Official)']/parent::*</value>
+      <webElementGuid>acd82166-453a-47b7-a2dc-0c926ced715c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, 'https://www.youtube.com/watch?v=Upp8cuRmRfQ')]</value>
+      <webElementGuid>1a9ddee1-9e7e-4930-89b2-4d2d48354788</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/div/a</value>
+      <webElementGuid>bf1302c9-95ba-4f25-8d59-6bc3f683c66c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = 'https://www.youtube.com/watch?v=Upp8cuRmRfQ' and (text() = 'Dark Souls III - E3 Announcement Trailer (Official)' or . = 'Dark Souls III - E3 Announcement Trailer (Official)')]</value>
+      <webElementGuid>d94afe06-7ff4-4aeb-87be-8906e418bfa1</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

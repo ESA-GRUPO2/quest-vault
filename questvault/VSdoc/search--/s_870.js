@@ -1,0 +1,1 @@
+search_result['870']=["topic_00000000000001E0.html","nJogosWishlist Field","Gets or sets the number of games in the wishlist."];

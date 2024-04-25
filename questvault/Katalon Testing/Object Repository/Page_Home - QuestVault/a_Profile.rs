@@ -6,15 +6,19 @@
    <elementGuidId>0edbdcca-e2f1-4c1d-b910-e20aef7ef61e</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[4]/a</value>
+         <key>BASIC</key>
+         <value>//*[@href = '/Identity/Account/Manage/Index']</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value>li:nth-of-type(4) > a.btn.btn-primary.dropdown-item</value>
       </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[4]/a</value>
+      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>ee2f27ed-9458-4742-9fb7-a890127053db</webElementGuid>
+      <webElementGuid>6639c108-ac59-4955-b015-357964b26fca</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -37,7 +41,7 @@
       <name>href</name>
       <type>Main</type>
       <value>/Identity/Account/Manage/Index</value>
-      <webElementGuid>3c2b3099-7993-46c3-9ba0-c952bc7744df</webElementGuid>
+      <webElementGuid>339a7678-dd42-4033-bfe6-e709f78acb02</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,15 +49,15 @@
       <name>class</name>
       <type>Main</type>
       <value>btn btn-primary dropdown-item</value>
-      <webElementGuid>bf0d0fb3-94fd-417f-993b-d1848d1b7ef9</webElementGuid>
+      <webElementGuid>0fa4725f-396d-4562-bb3d-5b2c81b71b65</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
       <value>Profile</value>
-      <webElementGuid>1d508b74-8a03-45a8-b679-a723151ea119</webElementGuid>
+      <webElementGuid>fe202fd5-b011-40ab-9714-7e83d2fc058e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +65,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/div[@class=&quot;dropdown&quot;]/ul[@class=&quot;dropdown-menu show&quot;]/li[4]/a[@class=&quot;btn btn-primary dropdown-item&quot;]</value>
-      <webElementGuid>d2b51f32-66c6-4fba-be73-3ef1c6afc40c</webElementGuid>
+      <webElementGuid>34840b6e-103b-4ab8-9690-88654eebe4cf</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -69,7 +73,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='navbarSupportedContent']/ul/li[5]/div/ul/li[4]/a</value>
-      <webElementGuid>b4b1ce4f-58a3-4e44-b493-26303def4b8e</webElementGuid>
+      <webElementGuid>cfaf1b61-c37a-478d-8c19-c09846310cae</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,7 +81,7 @@
       <name>xpath:link</name>
       <type>Main</type>
       <value>//a[contains(text(),'Profile')]</value>
-      <webElementGuid>ff05d9de-f951-43ab-ac63-5805d3f2ffdf</webElementGuid>
+      <webElementGuid>d3b50974-adb5-4026-afaa-7ecc2a5ef169</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +89,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</value>
-      <webElementGuid>43e76a36-2528-4649-817d-3570ce158cf2</webElementGuid>
+      <webElementGuid>a481fc72-6f96-4c9e-bcba-aa7601b08bde</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,7 +97,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Logout'])[1]/preceding::a[1]</value>
-      <webElementGuid>6e04b732-d9e5-465a-9f2d-b9bbef74c66d</webElementGuid>
+      <webElementGuid>00fbe89d-ab3f-45d3-8301-69a2155444fd</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -101,7 +105,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Join now'])[1]/preceding::a[1]</value>
-      <webElementGuid>23f84272-4ef0-402c-b676-bbabd8d4bf65</webElementGuid>
+      <webElementGuid>6a07a4be-b00c-4d4b-a21a-3397ebfcc833</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -109,7 +113,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Profile']/parent::*</value>
-      <webElementGuid>97b5cb97-812b-49da-9203-d6a1b1edcfee</webElementGuid>
+      <webElementGuid>ef5cc067-7532-407c-9d65-7d67ebb4b92f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,7 +121,7 @@
       <name>xpath:href</name>
       <type>Main</type>
       <value>//a[contains(@href, '/Identity/Account/Manage/Index')]</value>
-      <webElementGuid>ffaa9af0-5c98-4f22-8c87-8099274c449c</webElementGuid>
+      <webElementGuid>2ca9ff79-4230-46bd-8ed5-510c00ca499e</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -125,7 +129,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li[5]/div/ul/li[4]/a</value>
-      <webElementGuid>64f5acfe-98c8-42a9-83a7-afdd44759c61</webElementGuid>
+      <webElementGuid>d25d2d67-1f32-4301-9c19-1f9339d68630</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -133,6 +137,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//a[@href = '/Identity/Account/Manage/Index' and (text() = 'Profile' or . = 'Profile')]</value>
-      <webElementGuid>fbcbc685-892f-423b-9761-55a38f8632f8</webElementGuid>
+      <webElementGuid>8507e47e-420c-4050-94d0-7a774cf37fb6</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -23,9 +23,9 @@ WebUI.navigateToUrl('https://localhost:7074/')
 
 WebUI.maximizeWindow(FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('Object Repository/Page_Home - QuestVault/img_Log in_nav-vector pe-2'))
+WebUI.click(findTestObject('Page_Home - QuestVault/a_Log in'))
 
-WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tBatista')
+WebUI.setText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.EmailUserName'), 'tiagojoaobatista4@gmail.com')
 
 WebUI.setEncryptedText(findTestObject('Object Repository/Page_- QuestVault/input_Log in_Input.Password'), 'LUp6avagZuk=')
 

@@ -29,7 +29,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>b4920880-30cb-4e8a-8044-6f94fac36d79</webElementGuid>
+      <webElementGuid>f0dd16ed-d7b6-42ab-9fb7-8a02b96ee583</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +37,7 @@
       <name>class</name>
       <type>Main</type>
       <value>btn btn-primary nav-btn-2</value>
-      <webElementGuid>3b5165a2-1692-4b78-9c91-9d7e1d95da75</webElementGuid>
+      <webElementGuid>103cd92e-986b-4103-9bae-dbdd2a063dff</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +45,7 @@
       <name>href</name>
       <type>Main</type>
       <value>/UserLibrary</value>
-      <webElementGuid>54a39c34-77eb-4ae1-b507-9eddc86d518f</webElementGuid>
+      <webElementGuid>6cc09578-594b-4fc5-bc79-0276bd61ca42</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -55,7 +55,7 @@
       <value>
                          MyLibrary
                     </value>
-      <webElementGuid>082198e3-ab0f-4ca6-9521-f03bb4c590dc</webElementGuid>
+      <webElementGuid>9827b460-1910-4eb0-acc4-45735d312a3f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -63,7 +63,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;navbarSupportedContent&quot;)/ul[@class=&quot;navbar-nav ms-auto me-1 mb-lg-0&quot;]/li[@class=&quot;nav-item ms-3 d-flex align-self-center&quot;]/a[@class=&quot;btn btn-primary nav-btn-2&quot;]</value>
-      <webElementGuid>6de1a88e-71fa-437f-9d5a-1d52ccce6eeb</webElementGuid>
+      <webElementGuid>e6a59276-4d8a-4535-8f59-fc03deb9f3fd</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='navbarSupportedContent']/ul/li[4]/a</value>
-      <webElementGuid>f7a26b5e-16c9-4801-a2e7-09fff0347f05</webElementGuid>
+      <webElementGuid>4c66c977-71d4-43c0-8e5f-5c891a7d5693</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -79,7 +79,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/preceding::a[1]</value>
-      <webElementGuid>ec49333d-4326-4be6-9d6b-a8a564e200db</webElementGuid>
+      <webElementGuid>fa0107eb-6398-4524-b1c4-97679a0e8edf</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -87,7 +87,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Profile'])[1]/preceding::a[2]</value>
-      <webElementGuid>3d46bdcb-6370-4b60-ac17-c0837c5b0600</webElementGuid>
+      <webElementGuid>f45edc72-2fff-4b98-99d7-b75b0141e50f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -95,7 +95,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='MyLibrary']/parent::*</value>
-      <webElementGuid>8b4f10db-24fb-4390-822e-3def8e77f3d7</webElementGuid>
+      <webElementGuid>0eee15ec-6ece-49fa-ae5d-b1caad35ad7e</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -103,7 +103,7 @@
       <name>xpath:href</name>
       <type>Main</type>
       <value>//a[contains(@href, '/UserLibrary')]</value>
-      <webElementGuid>7f69b5e1-24c2-42ff-8a24-44a78461b1dd</webElementGuid>
+      <webElementGuid>6284ef51-32e0-4def-aace-8715586addad</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -111,7 +111,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li[4]/a</value>
-      <webElementGuid>fcd376d0-b4fa-44d5-90c6-ed55d0ef1cd2</webElementGuid>
+      <webElementGuid>da71b268-716f-4526-8ebe-ce047ddd798b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -123,6 +123,6 @@
                     ' or . = '
                          MyLibrary
                     ')]</value>
-      <webElementGuid>0a708939-3965-42fe-8b38-9bdd0689a55a</webElementGuid>
+      <webElementGuid>4c6dec58-9a45-455f-98d7-7e1469a1020e</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

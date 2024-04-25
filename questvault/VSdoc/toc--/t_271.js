@@ -1,0 +1,1 @@
+c['271']=[['272',"FormatKey Method","topic_000000000000004D.html",0],['273',"GenerateQrCodeUri Method","topic_000000000000004E.html",0],['274',"LoadSharedKeyAndQrCodeUriAsync Method","topic_000000000000004C.html",0],['275',"OnGetAsync Method","topic_000000000000004A.html",0],['276',"OnPostAsync Method","topic_000000000000004B.html",0]];

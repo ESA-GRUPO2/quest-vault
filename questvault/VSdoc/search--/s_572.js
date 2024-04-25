@@ -1,1 +1,1 @@
-search_result['572']=["topic_0000000000000121_methods--.html","sprint3 Methods",""];
+search_result['572']=["topic_000000000000013A.html","BackofficeController.GiveAdminAll Method","Grants administrator permissions to a user identified by their ID."];

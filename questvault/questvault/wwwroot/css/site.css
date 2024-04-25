@@ -15,6 +15,9 @@
   font-variation-settings: "slnt";
 }
 
+.reviews-container{
+  width:fit-content;
+}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -33,7 +36,7 @@ body {
 }
 
 .main-section {
-  margin: 0px 5rem 2rem 5rem;
+  margin: 0px 5rem 10rem 5rem;
   color: white;
 }
 
@@ -210,7 +213,7 @@ body {
 }
 
 .game-button-sm {
-  width: 140px; /* Para distribuir igualmente os bot�es com alguma margem */
+  width: 140px; 
   height: 200px;
   padding: 0;
   border: 2px solid white;
@@ -224,8 +227,8 @@ body {
   }
 
   .game-button-sm img {
-    width: 100%; /* Definindo a largura m�xima da imagem como 100% do bot�o */
-    height: 100%; /* Definindo a altura m�xima da imagem como 100% do bot�o */
+    width: 100%; 
+    height: 100%; 
     display: block;
   }
 
@@ -534,9 +537,14 @@ hr {
 }
 
 .nav-avatar {
+  border-radius: 50%;
+  height: 3.1rem;
+  width: 3.1rem;
+  margin: -6px;
 }
 
   .nav-avatar:hover, .nav-avatar:active {
+    filter: invert(0%);
   }
 
 .nav-btn-2 {
@@ -1601,4 +1609,54 @@ body {
   text-align: center;
   height: 10vh;
   width: 25rem;
+}
+
+
+/*-------------------------------------------------- ALLUSERS -----------------------------------------------*/
+
+.table-allusers {
+  text-align: right;
+  --bs-table-bg: #091833;
+  background-color: #091833;
+  width: 100% !important;
+}
+
+  .table-allusers tr { 
+    border: solid 1px #d9d9d9 !important;
+    text-align: center;
+    height: 10vh;
+    width: 25rem;
+  }
+
+  .table-allusers td {
+    height: 100% !important;
+  }
+
+/*FRIEND REQUESTS*/
+
+.pending-friendreq {
+  color: #98008D !important;
+  font-weight: bold;
+}
+
+#pendingIndicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.blink-text {
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    color: white;
+  }
+
+  to {
+    color: #98008D;
+  }
 }

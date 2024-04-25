@@ -6,15 +6,19 @@
    <elementGuidId>744bcf0c-0cda-40e5-946a-5d7bd6ffc392</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@id='inputName']</value>
+         <key>BASIC</key>
+         <value>//*[@id = 'inputName' and @placeholder = 'Tiago' and @name = 'Input.NewUserName']</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value>#inputName</value>
       </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//input[@id='inputName']</value>
+      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,15 +33,15 @@
       <name>tag</name>
       <type>Main</type>
       <value>input</value>
-      <webElementGuid>e3e35181-3f39-4484-ab85-74409b16117e</webElementGuid>
+      <webElementGuid>8d569aa1-de78-4968-a16b-3f48e389dc80</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>type</name>
       <type>Main</type>
       <value>text</value>
-      <webElementGuid>6e87d6c1-5082-4186-b258-a927ce426196</webElementGuid>
+      <webElementGuid>02953be4-33d5-4627-b39e-ad61f84bed2b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>class</name>
       <type>Main</type>
       <value>form-control-login</value>
-      <webElementGuid>d86b5334-3d73-4b40-b552-6d53324e7f36</webElementGuid>
+      <webElementGuid>1f0d1cc3-1fd5-4ffd-ac0f-6d8265b45d51</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -53,7 +57,7 @@
       <name>id</name>
       <type>Main</type>
       <value>inputName</value>
-      <webElementGuid>8861efe1-d441-4dba-a259-975325ee8c20</webElementGuid>
+      <webElementGuid>c7271e0b-3b7b-4aca-9526-132f3eac97ff</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -61,7 +65,7 @@
       <name>placeholder</name>
       <type>Main</type>
       <value>Tiago</value>
-      <webElementGuid>96bd1be8-3365-44ce-9062-a736d41a1956</webElementGuid>
+      <webElementGuid>cc48a34d-3cbd-4464-b8e1-8ad222d177a9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,7 +73,7 @@
       <name>data-val</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>3d9a7ba6-0921-4e69-bcf0-1038b9e3de1d</webElementGuid>
+      <webElementGuid>b0fdde5a-f478-42dc-8372-62da9bbd55f0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -77,7 +81,7 @@
       <name>data-val-length</name>
       <type>Main</type>
       <value>This user name already exits.</value>
-      <webElementGuid>b36effe7-4e87-466c-8192-90a0e59ccf5b</webElementGuid>
+      <webElementGuid>e3b128ae-9bed-4184-b241-095ca9c77265</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -85,7 +89,7 @@
       <name>data-val-length-max</name>
       <type>Main</type>
       <value>100</value>
-      <webElementGuid>a895721a-bf75-4c91-b7c5-4fec8c36b2cb</webElementGuid>
+      <webElementGuid>76682a4a-b68e-46a8-8881-5541074166fb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -93,7 +97,7 @@
       <name>maxlength</name>
       <type>Main</type>
       <value>100</value>
-      <webElementGuid>44398cce-3c8b-43a9-89d1-49c8023539e4</webElementGuid>
+      <webElementGuid>b0951f6d-6a4e-4b02-a564-17288da8571e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -101,7 +105,7 @@
       <name>name</name>
       <type>Main</type>
       <value>Input.NewUserName</value>
-      <webElementGuid>904c5cdb-40fe-4c1e-a5cc-d8b37870a0cf</webElementGuid>
+      <webElementGuid>1d68e75b-3d95-458e-9573-b3b69fea460e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -109,7 +113,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;inputName&quot;)</value>
-      <webElementGuid>bc4cd6ca-4cc4-445e-b3fe-6dbc67383729</webElementGuid>
+      <webElementGuid>043d4416-48f3-4362-a396-1c5754b0572b</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -117,7 +121,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//input[@id='inputName']</value>
-      <webElementGuid>19d7efa2-1982-45dc-bfad-c677a4d927cb</webElementGuid>
+      <webElementGuid>71b6eff3-3229-40fb-b009-bb3f1bf69c1d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -125,7 +129,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//form[@id='change-username-form']/div[2]/div/input</value>
-      <webElementGuid>75448569-c64d-411a-bd7e-3f086225ae24</webElementGuid>
+      <webElementGuid>c35c485f-1906-49b7-aeff-061c8d84603d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -133,7 +137,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div[2]/div/input</value>
-      <webElementGuid>fe142c04-0d3c-4b53-b4ec-0e6eaeeaa29a</webElementGuid>
+      <webElementGuid>2d71c34f-0fa1-4155-93fb-4b117ce5cf2f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -141,6 +145,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//input[@type = 'text' and @id = 'inputName' and @placeholder = 'Tiago' and @name = 'Input.NewUserName']</value>
-      <webElementGuid>796602ed-ebc0-4261-a23b-f07f4e00b5b4</webElementGuid>
+      <webElementGuid>cf35338a-6186-4b34-a23c-faf0f3067929</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

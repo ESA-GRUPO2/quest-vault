@@ -1,1 +1,1 @@
-search_result['590']=["topic_000000000000012B_attached_props--.html","ErrorViewModel Attached Properties",""];
+search_result['590']=["topic_0000000000000145.html","BackofficeController.RemoveReview (Int64, ApplicationDbContext) Method","Removes the review from a game log identified by its ID."];

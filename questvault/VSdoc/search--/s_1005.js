@@ -1,0 +1,1 @@
+search_result['1005']=["topic_0000000000000236.html","Statistics.AccessDateCountList Property","Gets or sets the count of accesses per date."];

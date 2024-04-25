@@ -6,6 +6,10 @@
    <elementGuidId>628ec6ca-9d98-4546-8a15-8089d1700178</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>BASIC</key>
+         <value>//*[(text() = 'Submit' or . = 'Submit')]</value>
+      </entry>
+      <entry>
          <key>CSS</key>
          <value>button.btn.btn-primary.btn-blue-big.ms-2.me-2.mb-2</value>
       </entry>
@@ -14,7 +18,7 @@
          <value>(//button[@type='submit'])[3]</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>button</value>
-      <webElementGuid>89ca061e-2967-4913-b259-e01ade24229b</webElementGuid>
+      <webElementGuid>989162d2-ebbc-4ab6-b339-16d8940dff4b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,15 +41,15 @@
       <name>class</name>
       <type>Main</type>
       <value>btn btn-primary btn-blue-big ms-2 me-2 mb-2</value>
-      <webElementGuid>a8c36b3e-8d0f-405e-9e67-e69baa4d8c35</webElementGuid>
+      <webElementGuid>e7024958-516e-4d0e-a3df-fbe0c5fb9f1b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>type</name>
       <type>Main</type>
       <value>submit</value>
-      <webElementGuid>5c085a74-8dcf-419f-94b0-1e639f06f313</webElementGuid>
+      <webElementGuid>9e647d6e-b754-4e8e-b724-fdb9b8e51997</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -53,7 +57,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Submit</value>
-      <webElementGuid>169ff92b-e23e-4367-95f0-d77703059475</webElementGuid>
+      <webElementGuid>3750e9e6-f476-480b-a0e1-fa58c459ae5d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +65,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>/html[1]/body[1]/div[1]/main[@class=&quot;pb-3&quot;]/div[@class=&quot;game-details&quot;]/section[@class=&quot;d-flex main-section&quot;]/div[@class=&quot;container ms-3 mt-4&quot;]/div[@class=&quot;ps-0&quot;]/div[@class=&quot;game-user-status&quot;]/div[@class=&quot;d-inline-flex&quot;]/form[1]/button[@class=&quot;btn btn-primary btn-blue-big ms-2 me-2 mb-2&quot;]</value>
-      <webElementGuid>24ef72bc-7b8f-4902-8781-46dd73927e8b</webElementGuid>
+      <webElementGuid>11e48caf-6e99-48a5-821c-e0f1b480d512</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -69,7 +73,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>(//button[@type='submit'])[3]</value>
-      <webElementGuid>b5813edd-577c-4a93-bc8b-978f6211bb50</webElementGuid>
+      <webElementGuid>83288d33-3946-4b56-a5d8-633d16ed6300</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -77,7 +81,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Adventure'])[1]/following::button[1]</value>
-      <webElementGuid>383e5d8b-b851-44be-b466-c0a9f8e363a4</webElementGuid>
+      <webElementGuid>1dc0fb97-64a8-441f-9e54-d39f3b4f42a8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -85,7 +89,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Role-playing (RPG)'])[1]/following::button[1]</value>
-      <webElementGuid>d9c6b90b-a290-460d-8c86-141d0cc87826</webElementGuid>
+      <webElementGuid>113730c7-db2d-49f7-9df6-31ccfb2e8aba</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,7 +97,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Remove Game'])[1]/preceding::button[1]</value>
-      <webElementGuid>12140bc7-d03b-4736-b8a4-a39fa30cafc0</webElementGuid>
+      <webElementGuid>021d2a1d-3286-47b4-99c7-a0d8c57ec216</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -101,7 +105,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Game Score'])[1]/preceding::button[2]</value>
-      <webElementGuid>8516e0fb-d09f-44a3-a733-0fa3516dd67b</webElementGuid>
+      <webElementGuid>6820bdf6-3d4d-4cdd-aa2e-5b933ce8b16b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -109,7 +113,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Submit']/parent::*</value>
-      <webElementGuid>63b4f51d-94b2-44f5-9973-da0196636a79</webElementGuid>
+      <webElementGuid>71082bbf-489d-488e-b5f8-a10fdab314fb</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,7 +121,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div/form/button</value>
-      <webElementGuid>245bb202-466e-4dec-83ed-a90ce4fe65cf</webElementGuid>
+      <webElementGuid>9e7968b9-4b20-438a-a157-37bf57b01432</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -125,6 +129,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//button[@type = 'submit' and (text() = 'Submit' or . = 'Submit')]</value>
-      <webElementGuid>5a7d660a-941a-457e-9395-aef364f536e5</webElementGuid>
+      <webElementGuid>527aee1d-72a7-4b71-86ca-45d7617bb278</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

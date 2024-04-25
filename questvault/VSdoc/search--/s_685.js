@@ -1,1 +1,1 @@
-search_result['685']=["topic_0000000000000162_attached_props--.html","GamePlatform Attached Properties",""];
+search_result['685']=["topic_000000000000017C.html","UserController.RemoveFriendAsync Method","Removes a friend from the user\u0027s friend list."];
