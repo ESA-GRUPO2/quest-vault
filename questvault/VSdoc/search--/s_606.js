@@ -1,1 +1,1 @@
-search_result['606']=["topic_0000000000000132.html","Friendship.User2 Property",""];
+search_result['606']=["topic_000000000000014B.html","FriendshipsController.AcceptFriendRequestAsync (String) Method","Creates a friendship object between the current user and a selected user."];

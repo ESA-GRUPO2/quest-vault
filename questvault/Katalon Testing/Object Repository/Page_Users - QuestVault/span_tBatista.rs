@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_tBatista</name>
+   <tag></tag>
+   <elementGuidId>5d3ee4dd-d96f-4199-b230-977d7f49d0c7</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>a > span</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='main-body']/main/div/div[2]/div/table/tbody/tr/td/a/span</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>c1e6f3bd-0997-44ca-8773-8db6f39eb418</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>tBatista</value>
+      <webElementGuid>de8a6857-afc5-488c-a54c-0f23d46f11a9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/div[@class=&quot;results-game&quot;]/div[@class=&quot;d-flex main-section-result justify-content-center&quot;]/div[@class=&quot;game-section&quot;]/table[@class=&quot;table d-flex table-dark table-sm table-profile&quot;]/tbody[@class=&quot;container d-inline-flex&quot;]/tr[@class=&quot;row d-flex justify-content-between align-items-center&quot;]/td[@class=&quot;user-results d-flex mt-5 me-4 align-items-center justify-content-center&quot;]/a[1]/span[1]</value>
+      <webElementGuid>9e489a6d-405d-496c-aaf2-a9eab83c0bf4</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/div/div[2]/div/table/tbody/tr/td/a/span</value>
+      <webElementGuid>a6861863-a276-4c22-b62c-711562ec86d1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Copyright @ 2023-2024, QuestVault. All Rights Reserved.'])[1]/preceding::span[1]</value>
+      <webElementGuid>b620a682-3b8d-40e1-982f-0757f5d06c30</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Contact Us'])[1]/preceding::span[1]</value>
+      <webElementGuid>f7958a46-5a80-4a26-8666-361a1dbd7df7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='tBatista']/parent::*</value>
+      <webElementGuid>58985112-3d38-4db5-b7ee-42006287e386</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//a/span</value>
+      <webElementGuid>7d572fd6-e835-4192-9369-fbbf9e793ad4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'tBatista' or . = 'tBatista')]</value>
+      <webElementGuid>fdff382c-49f5-43ed-bbcb-9a37dcbd3358</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

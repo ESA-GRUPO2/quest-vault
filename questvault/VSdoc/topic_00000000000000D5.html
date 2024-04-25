@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>InputModel.UserName Property</title>
+	<title>ExternalLoginModel.OnGetCallbackAsync Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">InputModel.UserName Property</h1>
+		<h1 class="title">ExternalLoginModel.OnGetCallbackAsync Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_000000000000000B.html">questvault.Areas.Identity.Pages.Account</a>
+<a href="topic_000000000000000E.html">questvault.Areas.Identity.Pages.Account</a>
 
 
 
@@ -138,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;Required()&gt; _&nbsp;<br />&lt;StringLength(25, ErrorMessage = &quot;The {0} must be at least {2} and at max {1} characters long.&quot;, MinimumLength = 4)&gt; _&nbsp;<br />&lt;RegularExpression(&quot;([a-zA-Z0-9_\\s]+)&quot;, ErrorMessage = &quot;The {0} must be only Alphanumeric characters.&quot;)&gt; _&nbsp;<br />Public Property UserName() As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Function OnGetCallbackAsync( _&nbsp;<br />   Optional ByVal <i>returnUrl</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a> = null, _&nbsp;<br />   Optional ByVal <i>remoteError</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a> = null _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[Required()]&nbsp;<br />[StringLength(25, ErrorMessage = &quot;The {0} must be at least {2} and at max {1} characters long.&quot;, MinimumLength = 4)]&nbsp;<br />[RegularExpression(&quot;([a-zA-Z0-9_\\s]+)&quot;, ErrorMessage = &quot;The {0} must be only Alphanumeric characters.&quot;)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> UserName {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; OnGetCallbackAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>returnUrl</i> = null,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>remoteError</i> = null&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[Required()]&nbsp;<br />[StringLength(25, ErrorMessage = &quot;The {0} must be at least {2} and at max {1} characters long.&quot;, MinimumLength = 4)]&nbsp;<br />[RegularExpression(&quot;([a-zA-Z0-9_\\s]+)&quot;, ErrorMessage = &quot;The {0} must be only Alphanumeric characters.&quot;)]&nbsp;<br />public: &nbsp;<br />property <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ UserName {&nbsp;<br /> <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ OnGetCallbackAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>returnUrl</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>remoteError</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -256,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   Required()&nbsp;<br />   StringLength(25, ErrorMessage = &quot;The {0} must be at least {2} and at max {1} characters long.&quot;, MinimumLength = 4)&nbsp;<br />   RegularExpression(&quot;([a-zA-Z0-9_\\s]+)&quot;, ErrorMessage = &quot;The {0} must be only Alphanumeric characters.&quot;)&nbsp;<br />function get UserName() : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>;&nbsp;<br />public &nbsp;<br />   Required()&nbsp;<br />   StringLength(25, ErrorMessage = &quot;The {0} must be at least {2} and at max {1} characters long.&quot;, MinimumLength = 4)&nbsp;<br />   RegularExpression(&quot;([a-zA-Z0-9_\\s]+)&quot;, ErrorMessage = &quot;The {0} must be only Alphanumeric characters.&quot;)&nbsp;<br />function set UserName(value : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>);</pre>			
+					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -267,10 +267,39 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="returnUrl" class="parameterList">
+	<dt>
+		<span class="parameter">
+			returnUrl
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+<dl paramName="remoteError" class="parameterList">
+	<dt>
+		<span class="parameter">
+			remoteError
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+
+<p />
 
 	<h4 class="subHeading">
-		Property Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
+		Return Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; 
 	
 
 
@@ -359,11 +388,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_00000000000000D1.html">InputModel Class</a><br />
+			<a href="topic_00000000000000C4.html">ExternalLoginModel Class</a><br />
 
 
 
-<a href="topic_000000000000000B.html">questvault.Areas.Identity.Pages.Account Namespace</a><br />
+<a href="topic_000000000000000E.html">questvault.Areas.Identity.Pages.Account Namespace</a><br />
 
 
 			

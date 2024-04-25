@@ -1,1 +1,1 @@
-search_result['88']=["topic_000000000000002A_attached_props--.html","Enable2faModel Attached Properties",""];
+search_result['88']=["topic_0000000000000030.html","InputModel Class","This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used\r\n    directly from your code. This API may change or be removed in future releases."];

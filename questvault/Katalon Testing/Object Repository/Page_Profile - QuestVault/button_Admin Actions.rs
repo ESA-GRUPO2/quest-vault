@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_Admin Actions</name>
+   <tag></tag>
+   <elementGuidId>1a11f03a-1932-4585-82d8-4bb02fd66d7d</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>button.dropdown-toggle.show</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(//button[@type='button'])[4]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>36ee95ec-1162-4cc1-9b67-a1597a803707</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>dropdown-toggle show</value>
+      <webElementGuid>205a8518-c6f0-4b4e-88da-2706d5623372</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>f4516e42-07f5-47ee-88f8-a118daf77a12</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-bs-toggle</name>
+      <type>Main</type>
+      <value>dropdown</value>
+      <webElementGuid>59de2ae8-7da5-4787-9c3f-bcdad9d3d48d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-expanded</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>db0e741f-5a58-45ad-b083-e7b869246cca</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>
+                Admin Actions
+              </value>
+      <webElementGuid>8a202d93-3f33-4b4f-bdaf-dc9d727d3e9a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;main-body&quot;)/main[@class=&quot;pb-3&quot;]/section[@class=&quot;profile-banner d-flex align-items-center&quot;]/div[@class=&quot;container-fluid d-flex align-items-center justify-content-center mt-3&quot;]/div[@class=&quot;d-flex row ms-3 align-items-center col-7&quot;]/div[@class=&quot;profile-details d-inline-flex mb-4&quot;]/div[@class=&quot;dropdown select-admin ms-3&quot;]/button[@class=&quot;dropdown-toggle show&quot;]</value>
+      <webElementGuid>fda38a50-1d06-4a2c-b1a9-36f71d59583b</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>(//button[@type='button'])[4]</value>
+      <webElementGuid>ad40232e-d5e9-4aa2-a63c-7832dfa71e6e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-body']/main/section/div/div[2]/div/div[2]/button</value>
+      <webElementGuid>8dc8a8a4-226d-4e7c-a72d-6d4fdbeea3f9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Lockout User'])[1]/preceding::button[1]</value>
+      <webElementGuid>cbc1146c-4668-41b4-88d7-7b2316ece47b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Make Admin'])[1]/preceding::button[1]</value>
+      <webElementGuid>f7c9dc92-2d06-4e24-8869-84b6453c172a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Admin Actions']/parent::*</value>
+      <webElementGuid>97c0ac14-09fe-413d-a5c3-6c664b0109bf</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/button</value>
+      <webElementGuid>a61638d6-62c5-4a7e-8df1-141f95169727</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[@type = 'button' and (text() = '
+                Admin Actions
+              ' or . = '
+                Admin Actions
+              ')]</value>
+      <webElementGuid>af033c34-485f-4e8f-979a-3ed3069f087c</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

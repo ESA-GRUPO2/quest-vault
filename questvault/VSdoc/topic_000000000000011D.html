@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>AzureMigration Class</title>
+	<title>RegisterConfirmationModel.OnGetAsync Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">AzureMigration Class</h1>
+		<h1 class="title">RegisterConfirmationModel.OnGetAsync Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_000000000000011C.html">questvault.Migrations</a>
+<a href="topic_000000000000000E.html">questvault.Areas.Identity.Pages.Account</a>
 
 
 
@@ -138,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;DbContext(typeof(ApplicationDbContext))&gt; _&nbsp;<br />&lt;Migration(&quot;20240314003739_AzureMigration&quot;)&gt; _&nbsp;<br />Public Class AzureMigration&nbsp;<br />    Inherits <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration">Migration</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Function OnGetAsync( _&nbsp;<br />   ByVal <i>email</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[DbContext(typeof(ApplicationDbContext))]&nbsp;<br />[Migration(&quot;20240314003739_AzureMigration&quot;)]&nbsp;<br />public class AzureMigration : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration">Migration</a></pre>			
+					<pre xml:space="preserve" class="brush: csharp">public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; OnGetAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>email</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[DbContext(typeof(ApplicationDbContext))]&nbsp;<br />[Migration(&quot;20240314003739_AzureMigration&quot;)]&nbsp;<br />public ref class AzureMigration : public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft::entityframeworkcore::migrations::migration">Migration</a>^</pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ OnGetAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>email</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -256,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   DbContext(typeof(ApplicationDbContext))&nbsp;<br />   Migration(&quot;20240314003739_AzureMigration&quot;)&nbsp;<br />class AzureMigration&nbsp;<br />   extends <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration">Migration</a></pre>			
+					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -267,6 +267,27 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="email" class="parameterList">
+	<dt>
+		<span class="parameter">
+			email
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+
+<p />
+
+	<h4 class="subHeading">
+		Return Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; 
+	
 
 
 
@@ -283,165 +304,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-<div class="section_container">
-	<div class="section_heading">
-		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Methods</a></span>
-		<div>&nbsp;</div>
-	</div>
-
-	<div id="MethodsSection" class="section">	
-  <table class="memberListTable">
-    <tr>
-      <th></th>
-      <th>
-        Name
-      </th>
-      <th>
-        Description
-      </th>
-    </tr>
-
-
-
-
-	<tr class="
-
-
-">
-	<td>
-   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
-
-    
-	  
-
-
-    
-	</td>
-	<td>
-	<a href="topic_0000000000000120.html">BuildTargetModel(ModelBuilder)</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-
-
-">
-	<td>
-   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
-
-    
-	  
-
-
-    
-	</td>
-	<td>
-	<a href="topic_000000000000011F.html">Down(MigrationBuilder)</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-
-
-">
-	<td>
-   <img alt="Protected method" title="Protected method" src="msdn2019/protmethod.png"></img>
-
-    
-	  
-
-
-    
-	</td>
-	<td>
-	<a href="topic_000000000000011E.html">Up(MigrationBuilder)</a>
-
-	</td>
-	<td>
-
-
-
-	</td>
-</tr>
-
-
-
-
-
-
-  </table>
-
-  <a href="#mainBody">
-    Top
-  </a>
-
-	</div>					
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-<!-- Classes -->
-
-<!-- Classes End -->
-
-<!-- Standard Modules -->
-
-<!-- Standard Modules End -->
-
-  
-
-
-
 
 
 
@@ -505,7 +367,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>					
 </div>
 
-
 <div class="section_container">
 	<div class="section_heading">
 		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">See Also</a></span>
@@ -514,10 +375,14 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-	<a href="topic_000000000000011C.html">questvault.Migrations Namespace</a><br />
+			<a href="topic_0000000000000116.html">RegisterConfirmationModel Class</a><br />
 
 
-	
+
+<a href="topic_000000000000000E.html">questvault.Areas.Identity.Pages.Account Namespace</a><br />
+
+
+			
 
 		</div>
 	</div>					

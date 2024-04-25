@@ -1,1 +1,1 @@
-search_result['692']=["topic_0000000000000165.html","GamePlatform.IgdbPlatformId Property","Gets or sets the ID of the platform."];
+search_result['692']=["topic_000000000000017E.html","ProfileViewData.Friends Property",""];

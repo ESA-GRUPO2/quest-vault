@@ -1,0 +1,1 @@
+search_result['927']=["topic_0000000000000205.html","GameLog.Rating Property","Gets or sets the rating given for the game (nullable)."];

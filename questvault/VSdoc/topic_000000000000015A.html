@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>GameLog.GameId Property</title>
+	<title>GamesController.Search Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">GameLog.GameId Property</h1>
+		<h1 class="title">GamesController.Search Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000125.html">questvault.Models</a>
+<a href="topic_0000000000000134.html">questvault.Controllers</a>
 
 
 
@@ -89,7 +89,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Gets or sets the foreign key for the associated game.</summary-info>
+        <summary-info>Gets the games based on a search term.(used in search bar for autocomplete function)</summary-info>
 
 
 
@@ -139,7 +139,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;ForeignKey(&quot;Game&quot;)&gt; _&nbsp;<br />Public Property GameId() As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">Long</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">&lt;Authorize()&gt; _&nbsp;<br />&lt;HttpGet()&gt; _&nbsp;<br />&lt;Route(&quot;search&quot;)&gt; _&nbsp;<br />Public Function Search( _&nbsp;<br />   ByVal <i>searchTerm</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +178,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[ForeignKey(&quot;Game&quot;)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> GameId {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">[Authorize()]&nbsp;<br />[HttpGet()]&nbsp;<br />[Route(&quot;search&quot;)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a> Search(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>searchTerm</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +218,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[ForeignKey(&quot;Game&quot;)]&nbsp;<br />public: &nbsp;<br />property <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> GameId {&nbsp;<br /> <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">[Authorize()]&nbsp;<br />[HttpGet()]&nbsp;<br />[Route(&quot;search&quot;)]&nbsp;<br />public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^ Search(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>searchTerm</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -257,7 +257,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   ForeignKey(&quot;Game&quot;)&nbsp;<br />function get GameId() : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a>;&nbsp;<br />public &nbsp;<br />   ForeignKey(&quot;Game&quot;)&nbsp;<br />function set GameId(value : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a>);</pre>			
+					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   Authorize()&nbsp;<br />   HttpGet()&nbsp;<br />   Route(&quot;search&quot;)&nbsp;<br />function Search(&nbsp;<br />    <i>searchTerm</i> : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>&nbsp;<br />) : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -268,10 +268,29 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="searchTerm" class="parameterList">
+	<dt>
+		<span class="parameter">
+			searchTerm
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
+	</dd>
+</dl>
+<p>
+	The term to search for. 
+</p>
+
+<p />
 
 	<h4 class="subHeading">
-		Property Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64">long</a> 
+		Return Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a> 
+		<p>
+		Json data with games information. 
+	</p>
 	
 
 
@@ -360,11 +379,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000158.html">GameLog Class</a><br />
+			<a href="topic_0000000000000152.html">GamesController Class</a><br />
 
 
 
-<a href="topic_0000000000000125.html">questvault.Models Namespace</a><br />
+<a href="topic_0000000000000134.html">questvault.Controllers Namespace</a><br />
 
 
 			

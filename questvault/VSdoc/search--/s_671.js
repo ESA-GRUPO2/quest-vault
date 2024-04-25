@@ -1,1 +1,1 @@
-search_result['671']=["topic_0000000000000158_events--.html","GameLog Events",""];
+search_result['671']=["topic_0000000000000173.html","UserController Class","Controller responsible for managing user profiles."];

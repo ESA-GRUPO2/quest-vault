@@ -1,1 +1,1 @@
-search_result['568']=["topic_0000000000000120.html","AzureMigration.BuildTargetModel Method",""];
+search_result['568']=["topic_0000000000000138.html","BackofficeController.GiveModerator (String, ApplicationDbContext) Method","Grants moderator permissions to a user identified by their ID."];

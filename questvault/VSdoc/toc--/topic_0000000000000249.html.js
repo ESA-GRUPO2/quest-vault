@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"questvault Reference","topic_0000000000000275.html"],['731',"questvault.Services Namespace","topic_0000000000000247.html"],['732',"EmailSender Class","topic_0000000000000248.html"],['733',"Methods","topic_0000000000000248_methods--.html"],['734',"SendEmailAsync Method","topic_0000000000000249.html"]];

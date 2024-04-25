@@ -1,0 +1,1 @@
+search_result['1071']=["topic_000000000000025F.html","IServiceIGDB.GetCompanies Method","Gets a collection of companies."];

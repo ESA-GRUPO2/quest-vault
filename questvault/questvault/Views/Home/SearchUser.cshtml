@@ -16,7 +16,7 @@
     </form>
 
     <button class="btn btn-purple btn-search-disabled m-2">
-      <img class="nav-vector pe-1" src="~/img/vector/user.svg" alt="User Icon" />
+      <img class="nav-vector pe-1" src="/img/usr_profile/user.svg" alt="User Icon" />
       Users
     </button>
   </div>
@@ -41,12 +41,12 @@
               @foreach (var item in Model)
               {
                 
-                var userAvatar = (item != null && item.ProfilePhotoPath != null) ? item.ProfilePhotoPath : "user.svg";
+                var userAvatar = (item != null && item.ProfilePhotoPath != null) ? item.ProfilePhotoPath : "/img/usr_profile/user.svg";
                 @if (User.Identity.Name != item.UserName)
                 {
                   <td class="user-results d-flex mt-5 me-4 align-items-center justify-content-center">
                     <a style="text-decoration: none; color: white" href="@Url.Action("Profile", "User", new { id = item.Id})">
-                      <img class="user-foto @(userAvatar == "user.svg" ? "p-3 ms-0 me-4":"")" src="~/img/usr_profile/@userAvatar" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
+                      <img class="user-foto @(userAvatar == "/img/usr_profile/user.svg" ? "p-3 ms-0 me-4":"")" src="@userAvatar" style="background: #0ABDC6; height: 4rem; width: 4rem;" />
                       <span style="min-width: 8rem;">@Html.DisplayFor(modelItem => item.UserName)</span>
                     </a>
                   </td>

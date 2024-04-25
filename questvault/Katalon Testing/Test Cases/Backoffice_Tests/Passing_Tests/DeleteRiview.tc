@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifies that only an admin or mod can delete a review</description>
+   <name>DeleteRiview</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a5e1558d-8748-48fe-816c-d5a05d7fb2ec</testCaseGuid>
+</TestCaseEntity>

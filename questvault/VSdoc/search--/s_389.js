@@ -1,1 +1,1 @@
-search_result['389']=["topic_00000000000000C2.html","LoginWith2faModel.OnPostAsync Method",""];
+search_result['389']=["topic_00000000000000E0.html","ForgotPasswordConfirmation Class","This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used\r\n    directly from your code. This API may change or be removed in future releases."];

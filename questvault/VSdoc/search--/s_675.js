@@ -1,1 +1,1 @@
-search_result['675']=["topic_0000000000000159.html","GameLog.GameLogId Property","Gets or sets the primary key for the game log."];
+search_result['675']=["topic_0000000000000173_props--.html","UserController Properties",""];

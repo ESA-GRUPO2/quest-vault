@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>GameLog.Game Property</title>
+	<title>GamesController.ProcessGameGenres Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">GameLog.Game Property</h1>
+		<h1 class="title">GamesController.ProcessGameGenres Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000125.html">questvault.Models</a>
+<a href="topic_0000000000000134.html">questvault.Controllers</a>
 
 
 
@@ -89,7 +89,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Gets or sets the navigation property for the associated game.</summary-info>
+        <summary-info>Processes the game genres and adds the new genres to the database and creates many to many relationship with game.</summary-info>
 
 
 
@@ -139,7 +139,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;ForeignKey(nameof(GameId))&gt; _&nbsp;<br />Public Overridable Property Game() As <a target="_top" href="topic_000000000000013F.html" onclick="this.target='';return true;">Game</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Private Sub ProcessGameGenres( _&nbsp;<br />   ByVal <i>game</i> As <a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a>, _&nbsp;<br />   ByVal <i>newGame</i> As <a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a> _&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +178,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[ForeignKey(nameof(GameId))]&nbsp;<br />public virtual <a target="_top" href="topic_000000000000013F.html" onclick="this.target='';return true;">Game</a> Game {get; set;}</pre>			
+					<pre xml:space="preserve" class="brush: csharp">private <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.void">void</a> ProcessGameGenres(&nbsp;<br />   <a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a> <i>game</i>,&nbsp;<br />   <a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a> <i>newGame</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +218,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[ForeignKey(nameof(GameId))]&nbsp;<br />public: &nbsp;<br />virtual property <a target="_top" href="topic_000000000000013F.html" onclick="this.target='';return true;">Game</a>^ Game {&nbsp;<br /> <a target="_top" href="topic_000000000000013F.html" onclick="this.target='';return true;">Game</a>^ get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="topic_000000000000013F.html" onclick="this.target='';return true;">Game</a>^ value&nbsp;<br /> );&nbsp;<br />}</pre>			
+					<pre xml:space="preserve" class="brush: cpp">private: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.void">void</a> ProcessGameGenres(&nbsp;<br />   <a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a>^ <i>game</i>,&nbsp;<br />   <a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a>^ <i>newGame</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -257,7 +257,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   ForeignKey(nameof(GameId))&nbsp;<br />function get Game() : <a target="_top" href="topic_000000000000013F.html" onclick="this.target='';return true;">Game</a>;&nbsp;<br />public &nbsp;<br />   ForeignKey(nameof(GameId))&nbsp;<br />function set Game(value : <a target="_top" href="topic_000000000000013F.html" onclick="this.target='';return true;">Game</a>);</pre>			
+					<pre xml:space="preserve" class="brush: js">private function ProcessGameGenres(&nbsp;<br />    <i>game</i> : <a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a>,&nbsp;<br />    <i>newGame</i> : <a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a>&nbsp;<br />);</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -268,11 +268,36 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="game" class="parameterList">
+	<dt>
+		<span class="parameter">
+			game
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a> 
+	</dd>
+</dl>
+<p>
+	The existing game be processed. 
+</p>
+<dl paramName="newGame" class="parameterList">
+	<dt>
+		<span class="parameter">
+			newGame
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="topic_00000000000001E3.html" onclick="this.target='';return true;">Game</a> 
+	</dd>
+</dl>
+<p>
+	The new game to be added to GameGenre relationship. 
+</p>
 
-	<h4 class="subHeading">
-		Property Value</h4>
-	<a target="_top" href="topic_000000000000013F.html" onclick="this.target='';return true;">Game</a> 
-	
+<p />
+
 
 
 
@@ -360,11 +385,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000158.html">GameLog Class</a><br />
+			<a href="topic_0000000000000152.html">GamesController Class</a><br />
 
 
 
-<a href="topic_0000000000000125.html">questvault.Models Namespace</a><br />
+<a href="topic_0000000000000134.html">questvault.Controllers Namespace</a><br />
 
 
 			

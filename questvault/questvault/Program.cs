@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -17,18 +18,17 @@ builder.Services.AddAuthentication()
       options.ClientSecret = googleAuthNSection["ClientSecret"];
     });
 
-
-
-
-
-
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
   ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+  options.SignIn.RequireConfirmedAccount = true;
+  options.Lockout.AllowedForNewUsers = false;
+})
   .AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders()
 
@@ -56,7 +56,7 @@ builder.Services.AddTransient<IEmailSender, EmailSender>(i =>
   )
 );
 
-//IGDB Service
+// IGDB Service
 builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
     new IGDBService(
         i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
@@ -64,11 +64,17 @@ builder.Services.AddTransient<IServiceIGDB, IGDBService>(i =>
     )
 );
 
+// SteamAPI
 builder.Services.AddSingleton(i => new SteamAPI(configuration["SteamAPI:API_KEY"],
   new IGDBService(
     i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_ID"],
     i.GetRequiredService<IConfiguration>()["IGDBService:IGDB_CLIENT_SECRET"]
 )));
+
+// Blob container - profile photos
+BlobContainerClient blobContainer = new(configuration.GetConnectionString("Blobconnection"),"users-profile-photos");
+blobContainer.CreateIfNotExists();
+builder.Services.AddSingleton(blobContainer);
 
 var app = builder.Build();
 

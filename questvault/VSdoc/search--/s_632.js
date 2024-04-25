@@ -1,1 +1,1 @@
-search_result['632']=["topic_000000000000013F_methods--.html","Game Methods",""];
+search_result['632']=["topic_000000000000015B.html","GamesController.ProcessGameGenres Method","Processes the game genres and adds the new genres to the database and creates many to many relationship with game."];

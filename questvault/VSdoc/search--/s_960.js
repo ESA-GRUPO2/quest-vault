@@ -1,0 +1,1 @@
+search_result['960']=["topic_000000000000021D.html","GameViewData.NumberOfResults Property","Gets or sets the number of results."];

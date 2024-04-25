@@ -1,1 +1,1 @@
-search_result['587']=["topic_0000000000000129.html","Company.CompanyName Property","Gets or sets the name of the game company."];
+search_result['587']=["topic_0000000000000143.html","BackofficeController.RemoveLockoutUserAll Method","Removes the lockout from a user identified by their ID."];

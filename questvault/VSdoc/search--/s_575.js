@@ -1,1 +1,1 @@
-search_result['575']=["topic_0000000000000122.html","sprint3.Up Method",""];
+search_result['575']=["topic_000000000000013C.html","BackofficeController.RemovePermissions (String, ApplicationDbContext) Method","Removes all permissions from a user identified by their ID."];

@@ -1,1 +1,1 @@
-c['294']=[['295',"OnGetAsync Method","topic_0000000000000079.html",0],['296',"OnPostAsync Method","topic_000000000000007A.html",0]];
+c['294']=[['295',"_signInManager Field","topic_0000000000000051.html",0],['296',"_userManager Field","topic_0000000000000050.html",0],['297',"_userStore Field","topic_0000000000000052.html",0]];
