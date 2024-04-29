@@ -47,7 +47,7 @@
     }
     else
     {
-      <h3>MyLibrary</h3>
+      <h3>My Library</h3>
     }
     <h4 class="justify-content-end ">@ViewBag.NumberOfResults @(ViewBag.NumberOfResults == 1 ? "game" : "games")</h4>
   </div>
@@ -147,7 +147,7 @@
           <ul class="pagination justify-content-center">
             <li class="page-item">
               <a asp-action="UserLibrary"
-                 asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                 asp-route-id="@ViewBag.UserLibraryId"
                  asp-route-collection="@ViewBag.Collection"
                  asp-route-pageNumber="@(Model.Games.PageIndex-1)"
                  class="page-link @prevDisabled" aria-label="Previous">
@@ -159,7 +159,7 @@
             {
               <li class="page-item">
                 <a class="page-link @(1 == currentPage ? "active" : "")" asp-action="UserLibrary"
-                   asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                   asp-route-id="@ViewBag.UserLibraryId"
                    asp-route-collection="@ViewBag.Collection"
                    asp-route-pageNumber="1">1</a>
               </li>
@@ -174,7 +174,7 @@
 
               <li class="page-item">
                 <a class="page-link @(i == currentPage ? "active" : "")" asp-action="UserLibrary"
-                   asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                   asp-route-id="@ViewBag.UserLibraryId"
                    asp-route-collection="@ViewBag.Collection"
                    asp-route-pageNumber="@i">@i</a>
               </li>
@@ -186,14 +186,14 @@
               </li>
               <li class="page-item">
                 <a class="page-link" asp-action="UserLibrary"
-                   asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                   asp-route-id="@ViewBag.UserLibraryId"
                    asp-route-collection="@ViewBag.Collection"
                    asp-route-pageNumber="@(Model.Games.TotalPages)">@Model.Games.TotalPages</a>
               </li>
             }
             <li class="page-item">
               <a asp-action="UserLibrary"
-                 asp-route-id="@SignInManager.UserManager.GetUserName(User)"
+                 asp-route-id="@ViewBag.UserLibraryId"
                  asp-route-collection="@ViewBag.Collection"
                  asp-route-pageNumber="@(Model.Games.PageIndex + 1)"
                  class="page-link @nextDisabled" aria-label="Next">
