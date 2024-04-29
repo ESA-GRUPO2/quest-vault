@@ -45,7 +45,7 @@ namespace questvault.Controllers
         return NotFound();
       }
 
-      if( !profileData.CanViewProfile )
+      if( !profileData.CanViewProfile || profileData.IsLockedOut )
       {
         return RedirectToAction("PrivateProfile", "User", new { id });
       }
@@ -135,7 +135,8 @@ namespace questvault.Controllers
         Friends = friends,
         Send = send,
         Received = received,
-        CanViewProfile = !( userProfile.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != userProfile && userProfile.LockoutEnabled ),
+        CanViewProfile = !( userProfile.IsPrivate && !friends && userLogged.Clearance == 0 && userLogged != userProfile ),
+        IsLockedOut = userProfile.LockoutEnabled,
         Friendships = friendships,
         FriendshipsRequests = requests,
         UserLogged = userLogged,
@@ -265,6 +266,7 @@ namespace questvault.Controllers
       public bool Send { get; set; }
       public bool Received { get; set; }
       public bool CanViewProfile { get; set; }
+      public bool IsLockedOut { get; set; }
       public List<Friendship> Friendships { get; set; }
       public List<FriendshipRequest> FriendshipsRequests { get; set; }
       public User UserLogged { get; set; }
