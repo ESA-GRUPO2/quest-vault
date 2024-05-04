@@ -110,14 +110,14 @@
                   @if (Model.user.Clearance != 2)
                   {
                     <a class="dropdown-item" onclick="return confirm('Are you sure you make @Model.user.UserName an Administrator?')"
-                        asp-controller="Backoffice" asp-action="GiveAdmin" asp-route-id="@Model.user.Id">
+                        asp-controller="Backoffice" asp-action="MakeAdmin" asp-route-id="@Model.user.Id">
                         Make Admin
                     </a>
                   }
                   @if (Model.user.Clearance == 0)
                   {
                     <a class="dropdown-item" onclick="return confirm('Are you sure you make @Model.user.UserName a Moderator?')"
-                        asp-controller="Backoffice" asp-action="GiveModerator" asp-route-id="@Model.user.Id">
+                        asp-controller="Backoffice" asp-action="MakeModerator" asp-route-id="@Model.user.Id">
                         Make Mod
                     </a>
                   }
